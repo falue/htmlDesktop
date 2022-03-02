@@ -1,0 +1,13 @@
+*.pyc
+.cache
+.idea
+.DS_Store
+.AppleDouble
+.Parent
+.vscode
+_autosave-*
+_archive
+_archiv
+_tools
+_tests
+fp-info-cache
