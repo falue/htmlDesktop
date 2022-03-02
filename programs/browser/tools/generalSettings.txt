@@ -1,0 +1,6 @@
+# various settings
+
+env=natascha
+env=leo;win
+env=nicky;win
+env=dani

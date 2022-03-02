@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+
+def bb_findregex(winners, losers, calls=10000, restarts=10):
+    "Find the shortest disjunction of regex components that covers winners but not losers."
+    bb = BranchBoundRandomRestart(winners, calls)
+    covers = eliminate_dominated(regex_covers(winners, losers))
+    for _ in range(restarts):
+        bb.calls = calls
+        bb.search(covers.copy())
+        if bb.calls > 0: # If search was not cut off, we have optimal solution
+            return bb 
+    return bb
+
+class BranchBoundRandomRestart(BranchBound):
+    def search(self, covers, partial=None):
+        """Recursively extend partial regex until it matches all winners in covers.
+        Try all reasonable combinations until we run out of calls."""
+        if self.calls <= 0: 
+            return partial, covers
+        self.calls -= 1
+        covers, partial = simplify_covers(covers, partial)
+        if not covers: # Nothing left to cover; solution is complete
+            self.cheapest = min(partial, self.cheapest, key=len)
+        elif len(OR(partial, min(covers, key=len))) < len(self.cheapest):
+            # Try with and without the greedy-best component
+            K = random.choice((2, 3, 4, 4, 4, 5, 6))
+            F = random.choice((0.1, 0.1, 2.0))
+            def score(c): return K * len(covers[c]) - len(c) + random.uniform(0., F)
+            best = max(covers, key=score) # Best component
+            covered = covers[best] # Set of winners covered by r
+            covers.pop(best)
+            self.search({c:covers[c]-covered for c in covers}, OR(partial, best))
+            self.search(covers, partial)
+        return self.cheapest

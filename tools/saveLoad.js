@@ -1,0 +1,210 @@
+async function save(download) {
+  let saveFileName = await showDialog("Save as", "Enter filename:<br><br>", false, true);
+  // Satanize input saveFileName
+  saveFileName = saveFileName.replace(/[^a-zA-Z0-9\~]/g, "");
+
+  if(saveFileName === "~EMPTY") {
+    showDialog("Abort", "Aborted due to empty file name.");
+    console.log("Abort due to empty input.");
+  } else if(saveFileName) {
+    saveFileName = "desktopSaveFile-"+Date.now()+"-"+saveFileName+"-"+createUniqueId(22);
+    /* cl(saveFileName); */
+    compileSaveFile(saveFileName, download);
+  } else {
+    console.log("Abort due to cancel click.");
+  }
+}
+
+function compileSaveFile(saveFileName, download) {
+  let dataWindows = saveAllWindows();
+  let dataShortcuts = saveAllShortcuts();
+  let systemIcons = saveAllSystemIcons();
+
+  let data = {};
+  data["settingsComment"] = "General settings of this workstation. OS and workstation-name MAY be defined in generalSettings.txt!";
+  data["settings"] = {
+    systemColor: systemColor,
+    desktopColor: gebi("BGColor").value,
+    // TODO no need for complete url.. maybe some problems down the road
+    desktopImg: document
+      .getElementById("desktop")
+      .style.backgroundImage.slice(4, -1)
+      .replace(/"/g, ""),
+      // .split("/").pop(),  // TODO: TEST!!!!!!!!!!!!!! take only the filenmae of the path ??
+    os: os,
+    darkMode: darkMode,
+    username: username,
+    password: password,
+    workstation: workstation
+  };
+  data["systemIconsComment"] = "Only display shown icons (and the defined time)";
+  data["systemIcons"] = systemIcons;
+  data["windowsComment"] = "Live, displayed or hidden windows. accessible programs like terminal, browser or filemanager with a specific folder open";
+  data["windows"] = dataWindows;
+  data["shortcutsComment"] = "define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so'] ";
+  data["shortcuts"] = dataShortcuts;
+
+  /* console.log(data); */
+
+  /* let path = "workstations/"+workstation+"/saves/save.json" */
+
+  if(download) {
+    downloadStringAsFile(JSON.stringify(data), saveFileName);
+  } else {
+    if (typeof(Storage) !== "undefined") {
+      localStorage.setItem(saveFileName, JSON.stringify(data));
+      showDialog("Save", "All your windows & settings are now saved.<br>No manually entered window contents though.", 1500);
+    } else {
+      // Sorry! No Web Storage support..
+      showDialog("No Local Storage", "This browser does not support localStorage. Try downloading the file.");
+    }
+  }
+}
+
+function downloadSaveFileFromStorage(data, name) {
+  downloadStringAsFile(localStorage.getItem(data), name);
+}
+
+function downloadStringAsFile(data, name) {
+  name = name ? name : "export";
+  let a = document.createElement("a");
+    a.href = window.URL.createObjectURL(
+      new Blob([data], { type: "text/plain" })
+    );
+    a.download = name + ".json";
+    a.click();
+}
+
+function loadSaveFile(saveFile) {
+  let data = JSON.parse(localStorage.getItem(saveFile));
+  if(data) {
+    /* cl(data); */
+    return data;
+  } else {
+    cl("There is no localStorage data stored under "+saveFile+". Check your URL.");
+    showDialog("Wrong file name", "There is no localStorage data stored under this filename:<code>"+saveFile+"</code>Check your URL.");
+    return false;
+  }
+}
+
+function clearLocalStorage() {
+  localStorage.clear();
+}
+
+function checkSaveFiles() {
+  let data = [],
+      entry,
+      key,
+      keys = Object.keys(localStorage),
+      i = keys.length;
+
+  while(i--) {
+    entry = localStorage.getItem(keys[i])
+    key = localStorage.key(i);
+    if(key.startsWith("desktopSaveFile-")) data.push({[key]: JSON.parse(entry)});
+  }
+
+  let safedFilesList = gebi("safedFilesList");
+
+  if(Object.keys(data).length) {
+    safedFilesList.innerHTML = "";
+    data.sort(dynamicSort("~firstKey"));
+    
+    for (saveFile of data) {
+      let safeFileKey = Object.keys(saveFile)[0];
+      let safeFileName = safeFileKey.split("-")[2];
+      safeFileName = safeFileName ? safeFileName : "No name";
+      let safeFileDate = safeFileKey.split("-")[1];
+      safeFileDate = new Date(parseInt(safeFileDate)).toLocaleString("de-CH");
+      let listElement = document.createElement("li");
+      listElement.innerHTML = safeFileName + " <span class='small grey'>(" + safeFileDate+ ")</span>";
+      /* listElement.setAttribute("onclick", "loadSaveFile('"+safeFileKey+"'); hide('savedFilesDialog')"); */
+      listElement.setAttribute("onclick", "window.location.href='index.html?loadSaveFile="+safeFileKey+"';");
+      listElement.setAttribute("class", "relative pointer");
+      let downloadButton = document.createElement("i");
+      downloadButton.setAttribute("class", "material-icons small grey right top");
+      downloadButton.setAttribute("title", "Download this save file");
+      downloadButton.setAttribute("onclick", "event.stopPropagation(); downloadSaveFileFromStorage('"+safeFileKey+"', '"+safeFileKey+"');");
+      downloadButton.innerHTML="file_download";
+      listElement.appendChild(downloadButton);
+      safedFilesList.appendChild(listElement);
+    }
+  } else {
+    safedFilesList.innerHTML = "There is no data locally stored.";
+    cl("There is no data locally stored.");
+  }
+}
+
+function saveAllWindows() {
+  let windowsFromDom = document.querySelectorAll("[data-setup-type='window']");
+  let windows = [];
+  for (windowData of windowsFromDom) {
+    let data = JSON.parse(windowData.dataset.setup.replace(/\'/g, '"'));
+    windows.push({
+      windowName: data[0],
+      icon: data[1],
+      contentPath: data[2],
+      x: parseInt(windowData.style.left),
+      y: parseInt(windowData.style.top),
+      w: parseInt(windowData.style.width),
+      h: parseInt(windowData.style.height),
+      hide: windowData.dataset.setupHide == "true",
+      zIndex: parseInt(windowData.style.zIndex),
+    });
+  }
+  return windows;
+}
+
+function saveAllShortcuts() {
+  let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
+  let shortcuts = [];
+  for (shortcut of shortcutsFromDom) {
+    shortcuts.push({
+      name: shortcut.dataset.setupName,
+      icon: shortcut.dataset.setupIcon,
+      x: getPositionInPercentage("left", shortcut.style.left),
+      y: getPositionInPercentage("top", shortcut.style.top),
+      action: shortcut.dataset.setupAction ? shortcut.dataset.setupAction : "",
+    });
+  }
+  return shortcuts;
+}
+
+function getPositionInPercentage(direction, pixelPosition) {
+  // On startup, all objects are pisitioned with percentage
+  if(pixelPosition.endsWith("%")) return parseInt(pixelPosition);
+  pixelPosition=parseInt(pixelPosition);
+
+  if(direction === "left") {
+    let screenWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+    // console.log(screenWidth + " : " + pixelPosition + " -> " + 100/screenWidth*pixelPosition + "%");
+    return 100/screenWidth*pixelPosition;
+  } else {
+    let screenHeight = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
+    // console.log(screenHeight + " : " + pixelPosition + " -> " + 100/screenHeight*pixelPosition + "%");
+    return 100/screenHeight*pixelPosition;
+  }
+
+}
+
+function saveAllSystemIcons() {
+  let iconsFromDom = document.querySelectorAll("[data-setup-system-icons]:not(.hide)"); // ..]
+  let systemIcons = [];
+  for (icon of iconsFromDom) {
+    if (icon.style.display != "none") {
+      /* console.log("is shown: ", icon.innerHTML); */
+      systemIcons.push(icon.innerHTML);
+    }
+  }
+  // Sepcial case for the system clock
+  let clock = gebi("systemIcons-clock");
+  if (clock.style.display == "block") {
+    /* console.log("is shown: clock ", clock.innerHTML.split(":")); */
+    systemIcons.push({ clock: clock.innerHTML.split(":") });
+  }
+  return systemIcons;
+}

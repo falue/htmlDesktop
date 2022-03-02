@@ -1,0 +1,58 @@
+.menu {
+	font-family:Menlo, "Roboto Mono", monospace;
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-width: 5em;
+    min-height: 5em;
+    padding: 10px;
+    color: white;
+    z-index: 1;
+}
+
+.menu-content {
+    color: white;
+	font-family:Menlo, "Roboto Mono", monospace;
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-width: 320px;
+    padding: 15px;
+    margin: 10px;
+    background-color: black;
+    border: thin solid #333333;
+    z-index: 2;
+    max-height: 90%;
+    overflow: auto;
+}
+
+.menu-close {
+    position: absolute;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.menu-close:hover {
+    font-weight: 900;
+    opacity: 1;
+}
+
+a.small.inlineRight {
+    background-color: #333333;
+    padding: 1em;
+    bottom:0.5em;
+    right: 0.5em;
+    cursor: pointer;
+    text-align: center;
+}
+
+a.small.inlineRight:hover {
+    background-color: #444444;
+}

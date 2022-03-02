@@ -1,0 +1,24 @@
+# settings
+# each value can be false or true
+
+darkMode=false
+hideFavorites=false
+hideAddons=false
+hideHomeButton=false
+hideReloadButton=false
+hideLoadingAnimation=false
+
+# loadertype: loaderCircle or loaderLinear
+loaderType=loaderLinear
+
+hideWindowFrame=true
+
+# windowFrameType: windowWindows or windowOsx
+windowFrameType=windowOsx
+
+internetConnection=true
+
+# common color names or HEX #000000 color codes.
+# default for defaults colors.
+browserColor=default
+browserFontColor=default

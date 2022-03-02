@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Terminal</title>
+
+    <link rel="stylesheet" href="tools/style.css">
+    <link rel="stylesheet" href="tools/menu.css">
+
+    <link rel="stylesheet" id="syntaxTheme" href="tools/highlight/styles/an-old-hope.css">  <!--dracula.css-->
+    <!--https://highlightjs.org/static/demo/-->
+    <script src="tools/highlight/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body id="body">
+    <div class="menu" onclick="toggleClass('menu-content', 'hide');">
+    </div>
+
+    <div id="menu-content" class="menu-content hide">
+        <div class="menu-close" onclick="toggleClass('menu-content', 'hide'); return false">✖</div>
+        <h3>FakeTyper v4.2</h1>
+        <br>
+
+        <div class="settingsGroupTitle">
+            General Settings
+        </div>
+        <div class="greyBox">
+            <span title="Like magic, the file types itself">
+                <input id="autoType" type="checkbox" onchange="toggleAutoplay(this.checked)">
+                <label for="autoType">Auto type</label>
+            </span> 
+            <br>
+            <span title="Speed of auto-typing">
+                Speed
+                <input id="speedRange" type="range" value="1" min="1" max="50" onchange="changeSpeed(this.value)" oninput="changeSpeed(this.value)">
+                <span id="speed">1 (human level)</span>
+            </span>
+            <br>
+            <span title="If active, sometimes typing results in more than one key presses to enhance the speed naturally.">
+                <input id="humanTyper" type="checkbox" onchange="randomSpeed(this.checked)" checked="true">
+                <label for="humanTyper">Human typist</label>
+            </span> 
+            <br>
+            <span title="If not auto-typing, there's a blinking cursor when nothing is being typed.">
+                <input id="cursorBox" type="checkbox" onchange="toggleCursor(this.checked)" checked="true">
+                <label for="cursorBox">Cursor</label>
+            </span> 
+            <br>
+            <span title="For performance reasons, the text gets cut off on top. Can be used to auto-erase previous lines.">
+                <input id="truncateText" type="checkbox" onchange="truncateText = !truncateText" checked="true">
+                <label for="truncateText">Truncate Text before</label>
+                <input id="truncateTextBefore" size="6" onchange="truncateTextBefore = this.value"  type="text" value="12000">
+                chars
+            </span> 
+            <br>
+            <span title="Instead of one character being typed at a time, the entire row gets printed. Most useful when auto-typing is active.">
+                <input id="byRows" type="checkbox" onchange="byRows = this.checked">
+                <label for="byRows">Type entire row at once</label>
+            </span>
+            <br>
+            <span title="When the page is reloaded, this many characters are already entered.">
+                Start type at char.
+                <input id="startChar" onchange="startChar = this.value" size="6"  type="text" value="0" max="text.length">
+            </span>
+            &nbsp;
+            <span title="Get current position of your text as a start point.">
+                <a href="javascript:document.getElementById('startChar').value = cursor-1" class="small inlineRight" style="right: 30px; left:initial; bottom: initial; padding:0px 5px">
+                    curr. pos.
+                </a>
+            </span>
+            <br>
+            <span title="Defines where the lowermost text goes">
+                Padding bottom
+                <input id="paddingRange" type="range" value="200" min="10" max="400" step="10" onchange="changePadding(this.value)" oninput="changePadding(this.value)">
+                <span id="padding">200px</span>
+            </span>
+        </div>
+        
+        <br>
+        <div class="settingsGroupTitle" title="The content of the terminal.">Choose file from list to be typed</div>
+        <div class="greyBox">
+            <div id="fileList" class="fileList">
+                No files declared in readTexts.js
+            </div>
+            <br>
+
+            <div class="small" title="Choose a .txt or other plain text file.">Load local plain text file to type</div>
+            <div class="greyBox">
+                <input type="file" id="filetoRead" accept="text/plain">
+            </div>
+            <br>
+
+            <div class="small" title="Enter any text to be displayed. Press display to display, duh.">Type your own or edit current text</div>
+            <textarea id="yourOwnText" class="greyBox"></textarea>
+            <br>
+            <a href="javascript:editBaseText();" class="small inlineRight" class="small inlineRight" style="right: initial; left:initial; bottom: initial; padding:0px 5px">
+                Edit current text
+            </a>
+            <a href="javascript:setOwnText();" class="small inlineRight" style="right: 30px; left:initial; bottom: initial; padding:0px 5px">
+                Display
+            </a>
+            <br>
+        </div>
+        <br>
+
+        <div class="settingsGroupTitle" title="Different languages use different syntax highlighting. Choose a matching Style, choose 'None' for your own colors.">
+            Language</div>
+        <table class="twoColumns greyBox">
+            <tr>
+                <td>
+                    <input type="radio" id="none" name="language" onchange="toggleSyntaxHighlights(this.checked, 'nohighlight')" checked="true">
+                    <label for="none">None</label>
+                </td>
+                <td>
+                    <input type="radio" id="sql" name="language" onchange="toggleSyntaxHighlights(this.checked, 'language-sql')">
+                    <label for="sql">SQL</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" id="javascript" name="language" onchange="toggleSyntaxHighlights(this.checked, 'language-javascript')">
+                    <label for="javascript">Javascript</label>
+                </td>
+                <td>
+                    <input type="radio" id="c" name="language" onchange="toggleSyntaxHighlights(this.checked, 'language-c')">
+                    <label for="c">C</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" id="python" name="language" onchange="toggleSyntaxHighlights(this.checked, 'language-python')">
+                    <label for="python">Python</label>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+
+        <br>
+        <div class="settingsGroupTitle" title="Set your own colors. To set a font color, choose the syntax style 'None'.">
+            Colors
+        </div>
+        <div class="greyBox">
+            <label for="BGColor" class="small">Custom background color:</label>
+            <input id="BGColor" onchange="changeBGColor(this.value)" type="color" value="#000000">
+            <input id="BGColorText" onchange="changeBGColor(this.value)" type="text" size="8" value="#000000">
+            
+            <div id="syntaxThemeColors">
+                <span title="Presets of the color scheme of the terminal." class="small">Font themes</span>
+                <select id="themeSelect" width="50px" onchange="swapSyntaxTheme(this.value); saveInUrl();">
+                    <option value="an-old-hope" selected>An old hope</option>
+                    <option value="default">Default (bright)</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="hybrid">Hybrid (grey, easy on the eyes)</option>
+                    <option value="paraiso-dark">Paraiso dark</option>
+                    <option value="shades-of-purple">Shades of purple</option>
+                    <option value="tomorrow-night-bright">Tomorrow night bright (black BG)</option>
+                    <option value="xt256">XT 256 (old school dark)</option>
+                </select>
+            </div>
+            
+            <div id="customColors">
+                <label for="FontColor" class="small">Custom font color</label>
+                <input id="FontColor" onchange="changeFontColor(this.value)" type="color" value="#FFFFFF">
+                <input id="FontColorText" onchange="changeFontColor(this.value)" type="text" size="8" value="#FFFFFF">
+            </div>
+        </div>
+        <br>
+        <!-- <a href="javascript:saveInUrl();" class="small inlineRight" style="right: initial; left:15px; bottom: initial;">
+                Set current settings as URL
+            </a>
+            <br>
+            <br> -->
+        <div class="settingsGroupTitle" title="There are better and worse options to display this page without the revealing browser bar. Choose A.">
+            For your frameless viewing pleasure
+        </div>
+        <div class="greyBox">
+            A)
+            <a href="https://chrome.google.com/webstore/detail/open-as-popup/ncppfjladdkdaemaghochfikpmghbcpc" target="_blank">
+                Get frameless chrome browser addon
+            </a>
+
+            <br>
+            B) Get borderless
+            <a href="https://apps.apple.com/ch/app/frameless-a-full-screen-web-browser/id933580264?l=en" target="_blank">IOS</a>
+            |
+            <a href="https://play.google.com/store/apps/details?id=com.isolator.fullscreenbrowser2" target="_blank">Android</a>
+            browser
+            <br>
+            C) 
+            <a href="javascript:openInPopUp();">
+               Open this as popUp (best in Safari)
+            </a>
+        </div>
+
+        <br>
+        <a href="javascript:shortenUrl();" class="small inlineRight" class="small inlineRight" style="right: initial; left:initial; bottom: initial; transform: translateY(-15px);">
+            Share settings
+        </span>
+        <br>
+        <a href="../index.html" class="small inlineRight" style="font-size: inherit; right: 15px; bottom: initial; transform: translateY(-15px)">
+            Back
+        </a>
+        <br>
+    </div>
+
+    <div class="terminal nohighlight" id="terminal" onkeydown="type(event, this);" tabindex="0" autofocus onclick="this.focus()"
+    ><span id="cursor" class="cursor blink">_</span
+    ></div>
+
+
+    <!-- <script src="tools/texts.js"></script> -->
+    <script src="tools/readTexts.js"></script>
+    <script src="tools/scripts.js"></script>
+    <script src="tools/urlShorting.js"></script>
+</body>
+</html>

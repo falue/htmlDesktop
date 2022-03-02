@@ -1,0 +1,158 @@
+body {
+	background-color:#444;
+	color:#fff;
+	font-family:Menlo, "Roboto Mono", monospace;
+    font-size:14px;
+    line-height: 22px;
+}
+
+* {
+	margin:0px;
+	padding:0px;	
+    box-sizing: border-box;
+    cursor: default;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                        supported by Chrome, Edge, Opera and Firefox */
+}
+
+img {
+	border:none;
+}
+
+a:link, a:visited, a:focus {
+    text-decoration: none;
+    color: #fff;
+    outline: none;
+}
+
+a:hover, a:active {
+    text-decoration: none;
+    color: #888;
+}
+
+a:focus {
+    outline: none;
+}
+
+hr {
+    margin: 20px 0px;
+    opacity: 0.2;
+}
+
+input {
+    font-family:Menlo, "Roboto Mono", monospace;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[type="button"],
+input[type="submit"] {
+    padding: 0.25em 0.75em;
+    border: none;
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    opacity: 1;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.inlineRight {
+    position: absolute;
+    display: inline;
+    right: 0;
+  }
+
+.horAlign {
+    display: flex;
+    justify-content: center; /* align horizontal */
+}
+
+.vertAlign {
+    display: flex;
+    align-items: center; /* align vertical */
+}
+
+.small {
+    font-size: 0.75em;
+}
+
+@keyframes blink {
+    50% {
+      opacity: 0.0;
+    }
+  }
+  @-webkit-keyframes blink {
+    50% {
+      opacity: 0.0;
+    }
+  }
+  .blink {
+    animation: blink 1s step-start 0s infinite;
+    -webkit-animation: blink 1s step-start 0s infinite;
+  }
+
+  input[type=range] {
+    -webkit-appearance: none; background-color: transparent;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%; height: 0.6em; cursor: pointer; background: #444; border-radius: 0.5em; border: 1px solid #555;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    border: 0.8em solid transparent; height: 3em; width: 3em; border-radius: 100%; background: #666; cursor: col-resize; -webkit-appearance: none; margin-top: -1.3em; background-clip: padding-box;
+  }
+  input[type=range]:hover::-webkit-slider-thumb {
+    border: 0.8em solid transparent; background: #888; background-clip: padding-box;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #444;
+  }
+
+  input[type=range]::-ms-slider-runnable-track {
+    width: 100%; height: 0.6em; cursor: pointer; background: #444; border-radius: 0.5em; border: 1px solid #555;
+  }
+  input[type=range]::-ms-slider-thumb {
+    border: 0.8em solid transparent; height: 3em; width: 3em; border-radius: 100%; background: #666; cursor: col-resize; -ms-appearance: none; margin-top: -1.3em; background-clip: padding-box;
+  }
+  input[type=range]:hover::-ms-slider-thumb {
+    border: 0.8em solid transparent; background: #888; background-clip: padding-box;
+  }
+  input[type=range]:focus::-ms-slider-runnable-track {
+    background: #444;
+  }
+
+  input[type=range]::-moz-slider-runnable-track {
+    width: 100%; height: 0.6em; cursor: pointer; background: #444; border-radius: 0.5em; border: 1px solid #555;
+  }
+  input[type=range]::-moz-slider-thumb {
+    border: 0.8em solid transparent; height: 3em; width: 3em; border-radius: 100%; background: #666; cursor: col-resize; -moz-appearance: none; margin-top: -1.3em; background-clip: padding-box;
+  }
+  input[type=range]:hover::-moz-slider-thumb {
+    border: 0.8em solid transparent; background: #888; background-clip: padding-box;
+  }
+  input[type=range]:focus::-moz-slider-runnable-track {
+    background: #444;
+  }

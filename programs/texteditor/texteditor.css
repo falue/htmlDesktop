@@ -1,0 +1,59 @@
+header {
+    /*  background-color: burlywood; */
+    position: fixed;
+    width: 100%;
+    height: 1.5em;
+    box-sizing: border-box;
+    border-bottom: solid thin grey;
+    background-color: rgba(0,0,0,.05);
+}
+
+.textEditorToolsBar {
+    top: 1.5em;
+    height: 2.1em;
+    padding: .25em;
+    box-sizing: border-box;
+}
+
+.textEditorToolsBar button {
+    border: solid thin grey;
+    padding: .25em;
+}
+
+.textEditorToolsBar > button {
+    margin-right: .5em;
+}
+
+.buttonGroup {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.buttonGroup button {
+    border-left: none;
+}
+
+.buttonGroup button:first-of-type {
+    border-top-left-radius: .25em;
+    border-bottom-left-radius: .25em;
+    border-left: solid thin grey;
+}
+
+.buttonGroup button:last-of-type {
+    border-top-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+}
+
+.textarea {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 3.6em);
+    top: 3.6em;
+    font-size: 1em;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1em;
+    border:none;
+    overflow: auto;
+    resize: none;
+}

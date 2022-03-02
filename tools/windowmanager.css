@@ -1,0 +1,88 @@
+.window {
+  position: absolute;
+  width:600px;
+  height: 320px;
+  min-width: 100px;
+  min-height: 75px;
+  top: 100px;
+  left: 100px;
+  background-color: white;
+}
+
+/* PREVENT DRAGGING/RESIZING INTO IFRAME */
+.windowManagerOverlay {
+  background-color: rgba(0,0,0,0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+.window .content {
+  /* background-color: red; */
+  height: calc(100% - 1.5em);
+  top: 1.5em;
+  overflow: auto;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  z-index: 10;
+}
+
+.window .windowFrame {  
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  box-sizing: border-box;
+}
+
+.window .windowFrame div {
+  display: inline-block;
+}
+
+/* RESIZE */
+.resizable .resizers{
+  position: relative;
+  /* background-color: green; */
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 9;
+}
+
+.resizable .resizers .resizer{
+  width: 10px;
+  height: 10px;
+  /* border-radius: 50%; /*magic to turn square into circle*/
+  background: white;
+  border: 3px solid #4286f4;
+  opacity: 0;
+  position: absolute;
+}
+
+.resizable .resizers .resizer.top-left {
+  left: -5px;
+  top: -5px;
+  cursor: nwse-resize; /*resizer cursor*/
+}
+.resizable .resizers .resizer.top-right {
+  right: -5px;
+  top: -5px;
+  cursor: nesw-resize;
+}
+.resizable .resizers .resizer.bottom-left {
+  left: -5px;
+  bottom: -5px;
+  cursor: nesw-resize;
+}
+.resizable .resizers .resizer.bottom-right {
+  right: -5px;
+  bottom: -5px;
+  cursor: nwse-resize;
+}
+
+/* DRAG */

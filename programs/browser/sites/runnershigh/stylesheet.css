@@ -1,0 +1,23 @@
+a:hover {
+    cursor:pointer;
+}
+
+.website {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.header {
+    position: fixed;
+    height: 18.4vw; /* defines height in percent of width */
+    z-index: 11;
+}
+
+.header img,
+.website img {
+    width: 100%;
+}

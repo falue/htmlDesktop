@@ -1,0 +1,243 @@
+/* TODO: evtl to make zoomable?? */
+/* i.material-icons {
+    font-size: 2em;
+} */
+
+.shortcut {
+    position: absolute;
+    max-width: 8em;
+    /* background-color: thistle; */
+    text-align: center;
+    padding: 0.25em;
+    z-index: 2;
+}
+
+.shortcut:hover {
+    background-color: rgba(255,255,255,.1);
+}
+
+.shortcut img {
+    width: 3.2em;
+    padding-bottom: 0.15em;
+    display: inline-block;
+}
+
+.shortcut span {
+    display: block;
+    color: black;
+    background-color: rgba(255,255,255,.25);
+    padding: 0.15em 0.25em;
+    border-radius: 3px;
+}
+
+input, button {
+    border: none;
+}
+
+input[type=number],
+input[type=password],
+input[type=text] {
+    padding:.15em;
+}
+
+button:not(.systemButton),
+input[type=submit],
+input[type=button]:not(.systemButton) {
+    border: none;
+    padding:.5em;
+}
+
+.dialog label img {
+    width: 2.5em;
+}
+
+.dialog label input[type=checkbox]:checked ~ i,
+.dialog label input[type=radio]:checked ~ img {
+    background-color: rgba(88,150,255,1);
+}
+
+.dialog label input[type=checkbox]:not(:checked) ~ i,
+.dialog label input[type=radio]:not(:checked) ~ img {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.dialog .chooseBox {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: thin grey solid;
+}
+
+.dialog code {
+    display: block;
+    border-radius: 3px;
+    padding: 0.5em;
+    margin: 1em 0;
+    border: thin grey solid;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.dialog .chooseBox i {
+    padding: .25em;
+    margin: .25em;
+}
+
+.dialog .chooseBox input[type=time] {
+    /* width: 2.75em; */
+    color: white;
+    height: 2.75em;
+    padding-left: 1em;
+    margin: .25em;
+    background-color: rgba(255,255,255,0.1);
+    font-family: inherit;
+}
+
+.dialog .chooseBox input[type="time"]::-webkit-calendar-picker-indicator {
+    /* background: none; */ /* disable clock icon in chrome but space is reserved.. */
+    /* display: none; */    /* ..and this also disables nice time chooser */
+}
+
+#savedFilesDialog .chooseBox {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.editTaskbarIcon-clock-hide {
+    position: relative;
+    top: -1.5em;
+    left: 1.5em;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	border: solid grey thin;
+	width: 2em;
+	height: 1.25em;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
+
+header.windowmenu {
+    /* padding-left: 0.25em; */
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+header.windowmenu .programButtons {
+    background-color: none;
+    border-right: solid thin grey;
+    border-left: solid thin white;
+    height: 100%;
+    padding: 0 1em;
+    margin: 0;
+}
+header.windowmenu .programButtons:hover {
+    background-color: rgba(255,255,255,.5);
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.75);
+    font-size: 2em;
+    z-index: 99999;
+    color: white;
+}
+
+.overlay div {
+    text-align: right;
+    position: absolute;
+    top: 10%;
+    right:10%;
+    width: 35%;
+}
+
+/* WTF */
+/* .overlay span {
+    display: block;
+    color: red;
+    font-size: 2em;
+    padding-right: .75em;
+    padding-bottom: .5em;
+    animation: MoveUpDown 1s ease-in-out infinite;
+} */
+
+/* .overlay img {
+    border-radius: 50%;
+    padding-bottom: .5em;
+}
+ */
+.overlay button {
+    margin-top: 1em;
+    font-size: .75em;
+}
+
+.actionMenu {
+    color: white;
+    position: fixed;
+    left: 3.2em;
+    bottom: 2.6em;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.actionMenu .columns {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.actionMenu ul,
+.actionMenu h3,
+.actionMenu h4,
+.actionMenu h5 {
+    /* float: left; */
+    margin: .5em .5em 0 .5em;
+}
+
+.actionMenu ul {
+    margin-bottom: 1em;
+}
+
+.chooseBox li,
+.actionMenu li {
+    padding: .5em;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chooseBox li {
+    width: initial;
+}
+
+.chooseBox li:not(:last-of-type),
+.actionMenu li:not(:last-of-type) {
+    border-bottom: solid grey thin;
+}
+
+.chooseBox li:hover,
+.actionMenu li:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.actionMenu h1,
+.actionMenu h3,
+.actionMenu h4 {
+    opacity: 0.75;
+}
+
+.actionMenu li i {
+    vertical-align: middle;
+}

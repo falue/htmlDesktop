@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Sapienz.ch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- style and script resources -->
+  <link rel="stylesheet" type="text/css" href="../../../../tools/fonts.css" media="all">
+  <link rel="stylesheet" href="../../../../tools/general.css" media="all">
+  <link rel="stylesheet" href="stylesheet.css" media="all">
+  <script src="../../../../tools/general.js"></script>
+  <script src="javascript.js"></script>
+</head>
+
+<body> <!--   class="linkPreview" -->
+  <!-- PRELOAD -->
+  <div class="preload">
+    <img src="imgs/index.jpg" alt="" />
+    <img src="imgs/medien.jpg" alt="" />
+    <img src="imgs/karriere.jpg" alt="" />
+  </div>
+
+
+  <!-- THIS GETS DISPLAYED IF PAGE IS VISITED DIRECTLY FROM WITHIN IFRAME -->
+  <!-- JS of UNIK on iFrame onload= -->
+  <div id="iframeSpoofUrl" class="hide">https://www.sapienz.ch</div>
+  
+  
+  <!-- <h1>METIS WEBSITE</h1>  -->
+  <div class="website header">
+    <img src="imgs/index.jpg" alt="" class="fullscreen">
+    <a href="medien.html" id="mediaButton" class="imageLinks"></a>
+    <a href="karriere.html" id="karriereButton" class="imageLinks"></a>
+    <div id="loginButton" onclick="show('login')" class="imageLinks"></div>
+  </div>
+
+  <div class="website">
+    <img src="imgs/index.jpg" alt="" class="fullscreen">
+  </div>
+
+  <div id="login" class="hide login">
+    <div class="loginWindow shadow">
+      <img src="imgs/logo.jpg" alt="">
+      <span class="top right padding mainColor medium" style="padding-top: 1.4em;">INTRANET</span>
+      <div id="loginForm">
+        <br>
+        <br>
+        <br>
+        <input id="user" placeholder="username" type="text" class="maxWidth" autocomplete="off" data-lpignore="true" data-form-type="other">
+        <input type="password" placeholder="password" onkeyup="this.value += '1'" class="maxWidth" autocomplete="off" data-lpignore="true" data-form-type="other">
+        <br>
+        <div class="maxWidth alignCenter small grey italics">
+          One time token
+          <i class="material-icons small">info</i>
+        </div>
+        <div class="tokens alignCenter">
+            <input type="text" id="rtt-1" onkeyup="getInFocus(this, 'rtt-2')" maxlength="1" class="rtToken alignCenter uppercase" autocomplete="off" data-lpignore="true" data-form-type="other"><!-- 
+          --><input type="text" id="rtt-2" onkeyup="getInFocus(this, 'rtt-3')" maxlength="1" class="rtToken alignCenter uppercase" autocomplete="off" data-lpignore="true" data-form-type="other"><!-- 
+          --><input type="text" id="rtt-3" onkeyup="getInFocus(this, 'rtt-4')" maxlength="1" class="rtToken alignCenter uppercase" autocomplete="off" data-lpignore="true" data-form-type="other"><!-- 
+          --><input type="text" id="rtt-4" onkeyup="getInFocus(this, 'submit')" maxlength="1" class="rtToken alignCenter uppercase" autocomplete="off" data-lpignore="true" data-form-type="other">
+        </div>
+        <br>
+        <br>
+        <div class="bottom right padding loginButtons">
+          <input type="button" value="CANCEL" onclick="hide('login');">
+          <input type="submit" id="submit" value="LOGIN" onclick="goToIntranet(document.getElementById('user').value)">
+        </div>
+      </div>
+      <div id="loading" class="hide alignCenter">
+        <br>
+        <br>
+        STARTUP INTRANET..
+        <br>
+        <br>
+        <i class="material-icons spin mainColor valign large">refresh</i>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- LEAVE IT BE -->
+  <div class="backToIndex">
+    <a href="../../index.html"><i class="material-icons big">menu_book</i></a>
+  </div>
+
+</body>
+</html>

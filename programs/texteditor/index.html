@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>texteditor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="texteditor.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="texteditor.js"></script>
+    <!-- <script src="../../tools/fileparser.js"></script> -->
+
+  </head>
+  <body onload="setup();">
+    <header class="windowmenu">
+      <button class="programButtons">File</button><!-- 
+       --><button class="programButtons">Edit</button><!-- 
+       --><button class="programButtons">View</button><!-- 
+       --><button class="programButtons">Settings</button><!-- 
+       --><button class="programButtons">About</button>
+    </header>
+
+    <header class="windowmenu textEditorToolsBar">
+      <button class="radius3 whiteBg hover">
+        &para; <i class="material-icons small circle greyBg white valign">expand_more</i>
+      </button>
+      <button class="radius3 whiteBg hover">
+        Courier New <i class="material-icons small circle greyBg white valign">unfold_more</i>
+      </button>
+      <button class="radius3 whiteBg hover">
+        Regular <i class="material-icons small circle greyBg white valign">unfold_more</i>
+      </button>
+      <button class="radius3 whiteBg hover">
+        12 <i class="material-icons small circle greyBg white valign">expand_more</i>
+      </button>
+
+      <button class="radius3 hover blackBg">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+      <button class="radius3 hover"><i class="material-icons small valign blue">format_color_fill</i></button>
+
+      <div class="buttonGroup"><!-- 
+      --><button class="hover"><i class="material-icons small valign">format_bold</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">format_italic</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">format_underlined</i></button>
+      </div>
+
+      <div class="buttonGroup"><!-- 
+      --><button class="hover greyBg"><i class="material-icons small white valign">format_align_left</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">format_align_center</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">format_align_right</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">format_align_justify</i></button>
+      </div>
+
+      <button class="radius3 whiteBg hover">
+        1.0 <i class="material-icons small circle greyBg white valign">unfold_more</i>
+      </button>
+
+      <button class="radius3 whiteBg hover">
+        <i class="material-icons small valign grey">format_list_bulleted</i>
+        <i class="material-icons small circle greyBg white valign">expand_more</i>
+      </button>
+
+    </header>
+    <textarea id="textarea" class="textarea"></textarea>
+  </body>
+  </html>

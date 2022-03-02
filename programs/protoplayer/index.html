@@ -1,0 +1,221 @@
+
+<!DOCTYPE HTML>
+    <head>
+    <meta charset="utf-8">
+
+    <title>FLs Proto.io player</title>
+			<link type="text/css" rel="stylesheet" href="./src/stylesheets/preview-export-min.css">
+			<script type="text/javascript" src="./src/scripts/preview-export-min.js"></script>
+
+            <script type="text/javascript">
+                var prx = window.prx || {};
+                prx.orientation = 'landscape';
+                prx.orientations = {};
+                prx.orientations.portrait = 0;
+                prx.orientations.landscape = 1;
+                prx.project = {};
+                prx.project.id = '2357260a-5c29-43bf-8fd5-a8cd04a1aba6';
+                prx.project.title = 'Untitled';
+                prx.project.version = 0;
+                prx.project.livepreview = 0;
+                prx.project.account = "fabianlscher";
+                prx.activePage = {};
+                prx.usercountry = "us";
+                
+                    prx.user = false;
+                
+                prx.skin = 'web';
+                prx.ver = '6.7.3.0';
+                //prx.flashactions = 1;
+                prx.flashactions = 1; //we are not using the DB value anymore
+        
+                prx.nodejsassetsserver = {};
+                prx.nodejsassetsserver.host = ".proto.io";
+                prx.nodejsassetsserver.subdomainprefix = "https://a3";
+                prx.nodejsassetsserver.maxsubdomains = "20";
+                prx.account = "fabianlscher";
+                prx.browserShowScreenshots = 'true';
+                prx.url.crossmsg = 'https://fabianlscher.proto.io';
+                prx.playerUrl = 'https://fabianlscher.proto.io/player/';
+                prx.spaces = false;
+                prx.csrf_token = '0D1EB75387F9D6198559D08E817C03FEED8B77D3FB107C2E6244E00023847122';
+        
+                prx.bShowPlayerBetaPrompt = false;
+        
+                
+            </script>
+
+    <!-- A) COPY <STYLE> FOR RESCALED IFRAME until... -->
+    <style>
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+        body {
+            height: 100%;
+            overflow: auto;
+            background-color: black;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        iframe {
+            position: absolute;
+            left: 0;
+            margin:0;
+            box-sizing:border-box;
+            transform-origin: 0% 0%;
+            border:none;
+        }
+
+        .hiddenMenuButton {
+            position: fixed;
+            bottom:0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            z-index: 999;
+            user-select: none;
+        }
+
+        .menu {
+            display: none;
+            position: fixed;
+            top:50px;
+            left: 50px;
+            box-sizing:border-box;
+            width: 420px;
+            min-height: 200px;
+            padding: 1em  2.5em;
+            border-radius: 5px;
+            background-color: white;            
+            z-index: 999;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+
+        .menu p:last-child {
+            text-align: right;
+            padding-top: 2em;
+        }
+
+        input[type=button] {
+            border: none;
+        }
+
+        .close {
+            padding:.75em 2em;
+            border-radius: 2em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Menü edit -->
+    <div id="hiddenMenuButton" class="hiddenMenuButton" title="dblclick or hover here and press any button for menu" ondblclick="document.getElementById('menu').style.display='block';">
+    </div>
+    <div id="menu" class="menu">
+        <h1>Settings</h1>
+        <p>
+            <input id="keepProportions" type="checkbox" checked onchange="toggleProportions();"/>
+            <label for="keepProportions">Keep proportions</label>
+        </p>
+        <p>
+            <input id="coverWindow" type="checkbox" onchange="toggleWindowcover(this.checked);" checked="true"/>
+            <label for="coverWindow">Cover entire window</label>
+        </p>
+        <p>
+            Background color<br>
+            <label for="changeBgColor">
+                <input id="changeBgColor" type="color" value="#000000" onchange="changeBgColor(this.value);"/>
+                <input type="button" value="black" onclick="changeBgColor('#000000'); document.getElementById('changeBgColor').value='#000000'"/>
+                <input type="button" value="white" onclick="changeBgColor('#FFFFFF'); document.getElementById('changeBgColor').value='#FFFFFF'"/>
+                <input type="button" value="grey" onclick="changeBgColor('#5b5b5b'); document.getElementById('changeBgColor').value='#5b5b5b'"/>
+                <input type="button" value="green" onclick="changeBgColor('#00ff00'); document.getElementById('changeBgColor').value='#00ff00'"/>
+            </label>
+        </p>
+        <p>
+            Proto.io "device" size (default 1600x900)<br>
+            <input id="setIframeSizeX" type="number" value="1600" onchange="setIframeSize(this.value, document.getElementById('setIframeSizeY').value);"/>
+            <label for="setIframeSizeX">px width</label><br>
+            <input id="setIframeSizeY" type="number" value="900" onchange="setIframeSize(document.getElementById('setIframeSizeX').value, this.value);"/>
+            <label for="setIframeSizeY">px height</label><br>
+        </p>
+        <p>
+            <input type="button" class="close" value="Close" onclick="document.getElementById('menu').style.display='none';"/>
+        </p>
+
+    </div>
+    <!-- ORIGINAL IFRAME FROM PROTO EXPORT -->
+    <div id="container" class="container">
+        <iframe id="pio-playerframe" src="./src/index.html" style="width: 1600px; height: 900px;" scrolling="NO" webkitAllowFullScreen mozallowfullscreen allowFullScreen allowvr allow="autoplay"></iframe>
+    </div>
+    
+    <!-- B) COPY <SCRIPT> FOR RESCALED IFRAME -->
+    <script type="text/javascript"> 
+        let keepProportions = true;
+        let coverWindow = false;
+        let iframe = document.getElementById('pio-playerframe');
+        let container = document.getElementById('container');
+        let maxWidth = iframe.clientWidth;
+        let maxHeight = iframe.clientHeight;
+        window.addEventListener("resize", resize);
+        resize();
+
+        let b = document.getElementsByTagName("body")[0];
+        b.addEventListener("keydown", (evt) => {
+            /* console.log(evt.keyCode); */
+            document.getElementById('menu').style.display='block';
+        });
+
+        function toggleProportions() {
+            keepProportions = !keepProportions;
+            resize();
+        }
+
+        function toggleWindowcover(value) {
+            coverWindow = value;
+            resize();
+        }
+        
+        function setIframeSize(width, height) {
+            width = !isNaN(width) ? width + "px" : width;
+            height = !isNaN(height) ? height + "px" : height;
+            iframe.style.width = width;
+            iframe.style.height = height;
+            resize();
+        }
+
+        function changeBgColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+        
+        function resize(){
+            let scaleX = window.innerWidth/maxWidth;
+            let scaleY = window.innerHeight/maxHeight;
+            
+            if(keepProportions && coverWindow) {
+                iframe.style.top = '0';
+                iframe.style.bottom = '0';
+                iframe.style.left = '50%';
+                iframe.style.transform = 'translateX(-50%)';
+
+            } else if(keepProportions) {
+                iframe.style.top = '50%';
+                iframe.style.transform = 'scale(' + scaleX + ') translateY(-50%)';
+                /* iframe.style.transform = 'scale(' + scaleX + ')'; */
+                iframe.style.bottom = 'initial';
+                iframe.style.left = 'initial';
+            
+            } else {
+                iframe.style.top = '0';
+                iframe.style.transform = 'scaleX(' + scaleX + ') scaleY(' + scaleY + ')';
+                iframe.style.bottom = 'initial';
+                iframe.style.left = 'initial';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>UNIK BROWSER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="tools/fonts.css" media="all">
+    <link rel="stylesheet" type="text/css" href="tools/stylesheet.css" media="all">
+    <script src="tools/setup.js"></script>
+    <script src="tools/javascript.js"></script>
+
+  </head>
+  <body>
+
+    <!-- MENU -->
+    <div id="menu" class="menu">
+      <h2>
+        <!-- <i class="material-icons small vertCenter">settings</i> -->
+        UNIK BROWSER
+        <span id="unikVersion" class="unikVersion alignRight italics small">v0.0</span>
+      </h2>
+        <p>
+          <button onclick="show('overlayEnv');" style="width: 100%; margin-bottom: .5em;">Select Character</button>
+          <br>
+        </p>
+        <p>
+          <button onclick="hide('menu'); show('favoritesMenu');" style="width: 100%;">See URLs</button>
+          <br>
+          <br>
+        </p>
+
+        <p>
+          <input id="darkmode" type="checkbox" onchange="toggleDarkMode();">
+          <label for="darkmode">Dark mode</label>
+        </p>
+        <p>
+          <input id="favoritesToggle" type="checkbox" onchange="toggle('favorites');">
+          <label for="favoritesToggle">Hide Favorite list</label>
+        </p>
+        <p>
+          <input id="addonToggle" type="checkbox" onchange="toggle('addons');">
+          <label for="addonToggle">Hide Addons list</label>
+        </p>
+        <p>
+          <input id="homeToggle" type="checkbox" onchange="toggle('homeButton');">
+          <label for="homeToggle">Hide Home button</label>
+        </p>
+        <p>
+          <input id="reloadToggle" type="checkbox" onchange="toggle('reloadButton');">
+          <label for="reloadToggle">Hide Reload button</label>
+        </p>
+        <p>
+        <input id="loadToggle" type="checkbox" onchange="toggle('loaderType');" checked>
+          <label for="loadToggle">Loading animation</label>
+          <br>
+          <div id="loaderType" class="submenu">
+            <input id="loaderCircle" name="loaderType" type="radio" checked>
+            <label for="loaderCircle">
+                Circle
+                <i class="material-icons small spin blue" style="margin-left: 1em;">autorenew</i>
+            </label>
+                <br>
+            <input id="loaderLinear" name="loaderType" type="radio">
+            <label for="loaderLinear">
+                Linear
+                <div style="position: absolute; display: inline-block; width:4em; height: 3px; margin-left: 1em; margin-top: 0.5em;">
+                    <div class="loaderBar"></div>
+                </div>
+            </label>
+          </div>
+        </p>
+
+        <p>
+        <input id="toggleWindowFrame" type="checkbox" onchange="toggle('windowFrameSelector'); toggle('windowFrame');">
+          <label for="toggleWindowFrame">Window Frame</label>
+          <br>
+          <div id="windowFrameSelector" class="submenu">
+            <input id="windowWindows" name="windowFrameSelector" type="radio" checked onchange="show('windowFrameWindows'); hide('windowFrameOsx');">
+            <label for="windowWindows">Windows</label>
+            <br>
+            <input id="windowOsx" name="windowFrameSelector" type="radio" onchange="hide('windowFrameWindows'); show('windowFrameOsx');">
+            <label for="windowOsx">OSX</label>
+          </div>
+        </p>
+
+        <p>
+          <input id="internetToggle" type="checkbox" onchange="toggle('iframe');">
+          <label for="internetToggle">Break the Internet</label>
+        </p>
+
+        <div class="close" onclick="hide('menu');">
+          <button><i class="material-icons small vertCenter">close</i> Close</button>
+        </div>
+    </div>
+
+    <!-- URLS MENU -->
+    <div id="favoritesMenu" class="menu favoritesMenu">
+      <h2>
+        <!-- <i class="material-icons small vertCenter">star</i> -->
+        All working URLs
+      </h2>
+      <div id="savedURLS">
+      </div>
+
+      <p class="small blue">
+        <br>
+        You can also enter these URLs in the fake browser bar.
+        <br>
+      <p class="italics small grey">
+        Note: You can basically enter any URL, and it will try to load the website.
+        But most websites on the web forbid this for security reasons.
+      </p>
+
+      <div class="close" onclick="hide('favoritesMenu');">
+        <button>
+          <i class="material-icons small vertCenter">close</i> Close
+        </button>
+      </div>
+    </div>
+
+    <!-- FAKE BROWSER START -->
+    <div class="fake-browser">
+        <!-- WINDOW FRAME -->
+        <div id="windowFrame" class="windowFrame">
+            <!-- WINDOWS -->
+            <div id="windowFrameWindows" class="windowFrameWindows">
+              <img src="tools/img/winUnik.jpg" alt="">
+              <img class="winBtns" src="tools/img/winBtns.jpg" alt="">
+            </div>
+            <!-- OSX -->
+            <div id="windowFrameOsx" class="windowFrameOsx">
+              <div class="buttons">
+                <span class="bt-1"></span>
+                <span class="bt-2"></span>
+                <span class="bt-3"></span>
+              </div>
+              <div class="windowTitle">UNIK BROWSER 4.1</div>
+            </div>
+        </div>
+
+        <!-- ADRESSBAR -->
+        <div class="fake-browser-bar">
+            <div id="navigationalButtons" class="navigationalButtons">
+                <i id="historyBackButton" class="material-icons circleButtons" onclick="historyBack();">arrow_back</i>
+                <i id="historyForwardButton" class="material-icons circleButtons" onclick="historyForward();">arrow_forward</i>
+                <i id="homeButton" class="material-icons" onclick="goToUrl('https://telefabi.ch');">home</i>
+                <i id="reloadButton" class="material-icons" onclick="reloadIframe();">cached</i>
+            </div>
+            <div class="hamburger-menu" onclick="toggle('menu'); hide('favoritesMenu');">
+              <i class="material-icons">more_vert</i>
+            </div>
+            <div id="addons" class="addons">
+                <i class="material-icons">extension</i>
+                <i class="material-icons">music_note</i>
+                <i class="material-icons" onclick="toggleElement('iframe')">toggle_off</i>
+                <i class="material-icons">playlist_add_check</i>
+                <i class="material-icons">account_circle</i>
+            </div>
+            <div class="address-bar">
+                <div class="lock">
+                    <i id="httpsLock" class="material-icons green">lock</i>
+                </div>
+
+                <!-- BROWSER BAR -->
+                <input
+                    type="text" 
+                    id="url-bar"
+                    placeholder="URL.."
+                    class="address-bar-text-input"
+                    value="https://www.testdomain.com/"
+                    onClick="this.select();"
+                    onChange="goToUrl(this.value);"
+                    autocomplete="off" data-lpignore="true" data-form-type="other"
+                />
+                
+                <div class="address-bar-fave">
+                    <i class="material-icons" id="afterUrlIcon" onmouseover="hoverIcon(this, 'star_outline', 'star')">star_outline</i>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAVORITE LIST -->
+        <div id="favorites" class="fake-browser-bar favorites">
+          <div class="favoritesToggle"  onclick="toggle('favoritesMenu'); hide('menu');">
+            <i class="material-icons">keyboard_double_arrow_right</i>
+          </div>
+        </div>
+        
+        <!-- OS WINDOWS HINT -->
+        <div id="overlayWin" class="overlay">
+          <div>
+            <span>&uarr;</span>
+            <img src="tools/img/open-in-popup.jpg" alt=""><br>
+            Klicke auf das Addon 
+            <a href="https://chrome.google.com/webstore/detail/open-as-popup/ncppfjladdkdaemaghochfikpmghbcpc?hl=en" style="color: white;" target="_blank">
+            "Open-as-popup"</a>, um den echten Browser zu verstecken.
+            <br>
+            <button onclick="hide('overlayWin');">OK, gemacht</button>
+          </div>
+        </div>
+        
+        <!-- SELECT ENVIRONMENT -->
+        <div id="overlayEnv" class="overlay">
+          <div>
+            <h2>Select Character</h2>
+            <p id="characterList">
+              <!-- <a href="index.html?env=natascha">
+                <button><i class="material-icons vertCenter">computer</i> Natascha OSX</button>
+              </a>
+              <br>
+              <a href="index.html?env=leo&win=true">
+                <button><i class="material-icons vertCenter">computer</i> Leo WIN</button>
+              </a> -->
+            </p>
+            <!-- <p>&nbsp;</p>
+            <button onclick="hide('overlayEnv');">Ignore</button> -->
+          </div>
+        </div>
+
+        <!-- SERVE ERROR -->
+        <div id="overlayServerError" class="overlay">
+          <div>
+            <h2 class="red">This must be served</h2>
+            This file cannot be opened straight away. Start an apache server first.
+          </div>
+        </div>
+
+        
+        <!-- WINDOW CONTENT -->
+        <div class="fake-browser-container">
+            <div id="linearLoader" class="linearLoader"><div class="loaderBar"></div></div>
+
+            <!-- <iframe id="iframe" src="https://www.telefabi.ch" onload="delayHideLoader();" onerror="alert('error!')"></iframe> -->
+            <iframe id="iframe" src="https://www.telefabi.ch" onload="setNewTitle(); delayHideLoader();" onerror="alert('error!')"></iframe>
+            
+            <div class="no-internet">
+                <h1>NO INTERNET :(</h1>
+                Please contact your administrator.
+            </div>
+        </div>
+    </div>
+
+    <!-- Create favorite list, set defaults and make certain links fixed -->
+    <script>setup();</script>
+    
+  </body>
+</html>

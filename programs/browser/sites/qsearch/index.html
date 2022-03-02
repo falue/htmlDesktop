@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QSEARCH</title>
+
+  <!-- style and script resources -->
+  <link rel="stylesheet" type="text/css" href="../../../../tools/fonts.css" media="all">
+  <link rel="stylesheet" href="../../../../tools/general.css" media="all">
+  <link rel="stylesheet" href="stylesheet.css" media="all">
+  <script src="../../../../tools/general.js"></script>
+  <script src="javascript.js"></script>
+  <script src="searchTerms.js"></script>
+</head>
+
+<!-- <body id="body" class="results"> -->
+<body id="body" class="home">
+  <!-- THIS GETS DISPLAYED IF PAGE IS VISITED DIRECTLY FROM WITHIN IFRAME -->
+  <!-- JS of UNIK on iFrame onload= -->
+  <div id="iframeSpoofUrl" class="hide"></div>
+
+  <article>
+    <!-- LOGO -->
+    <img class="logo" src="imgs/logo.png" onclick="goToHome();">
+    <div class="logoFont">QSEARCH</div>
+
+    <!-- <div id="test" onclick="test();">
+      testing..
+    </div> -->
+
+    <!-- SEARCH FIELD -->
+    <div class="searchbox nobr">
+      <input id="searchbarInput" class="inlineBlock" type="text" onkeydown="typing(event, this.value);"><!-- 
+       --><button id="searchbarButton" class="clear" onclick="search(document.getElementById('searchbarInput').value);">
+        <i class="material-icons black">search</i>
+      </button>
+      <i class="dots material-icons">more_vert</i>
+    </div>
+
+      <!-- SEARCH MENU -->
+      <div class="searchMenu grey">
+        <span>Alle</span>
+        <span>News</span>
+        <span>Bilder</span>
+        <span>Shopping</span>
+        <span>Maps</span>
+        <span>Mehr</span>
+      </div>
+      
+    <!-- LANGUAGES -->
+    <footer class="grey">
+      QSearch angeboten auf:
+      <br>
+      <a href="#" class="qsearchBlue">English</a>
+      <a href="#" class="qsearchBlue">Fran&ccedil;ais</a>
+      <a href="#" class="qsearchBlue">Italiano</a>
+      <a href="#" class="qsearchBlue">Rumantsch</a>
+    </footer>
+
+  </article>
+
+  <!-- RESULTS -->
+  <div id="resultsList" class="resultsList">
+    <span class="grey">No Results.</span>
+  </div>
+
+  <!-- LEAVE IT BE -->
+  <div class="backToIndex">
+    <a href="../../index.html"><i class="material-icons big">menu_book</i></a>
+  </div>
+
+</body>
+</html>

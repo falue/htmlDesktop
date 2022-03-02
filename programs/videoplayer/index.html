@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PLAYBACK</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            padding: 0;
+            margin: 0;
+            background-color: black;
+            height: 100%;
+            color: white;
+        }
+
+        body {
+            display: flex;
+            box-orient: horizontal;
+            background: #333;
+            color: white;
+        }
+
+        aside {
+            width: 420px;
+            background: #444;
+        }
+
+        aside div {
+            padding: 5px 20px;
+            width: 420px;
+            border-bottom: 1px solid #222;
+            border-top: 1px solid #888;
+            transition: background 0.3s ease;
+        }
+
+        aside div:first-child {
+            padding-top: 20px;
+        }
+
+        aside div:last-child {
+            border-radius: 0 0 4px 0;
+        }
+
+        aside div:hover {
+            background: #666;
+        }
+
+        label {
+            display: block;
+            font: 13px "Helvetica", sans-serif;
+            color: white;
+        }
+
+        strong {
+            font-weight: bold;
+            padding: 0 3px;
+            user-select: none;
+        }
+
+        code {
+            display: inline-block;
+            font: 12px "Courier new";
+            float: right;
+        }
+
+        video,
+        select,
+        button:focus, button:active,
+        input:focus, input:active {
+            outline: none;
+        }
+
+        select, input, button {
+            background: #777;
+            width: 100%;
+            height: 20px;
+            border: none;
+            color: white;
+        }
+
+        input, button {
+            appearance: none !important;
+        }
+
+        select:hover, input:hover, button:hover {
+            background: #999;
+            cursor: pointer;
+        }
+
+        input[type="range"]:hover {
+            cursor: col-resize;
+        }
+
+        .hide {
+            display: none !important;
+        }
+
+        button.small {
+            width: auto;
+        }
+
+        button.medium {
+            width: auto;
+            min-width: 50px;
+            margin: 0.5em 0;
+        }
+
+        input::-webkit-slider-thumb {
+            appearance: none !important;
+            width: 32px;
+            height: 20px;
+            background: #111;
+            border-radius: 3px;
+        }
+
+        section {
+            box-flex: 1;
+            padding: 0;
+            background: #333;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        video {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            background: black;
+            z-index: 2;
+        }
+
+        video.noControls {
+            cursor: none;
+        }
+
+        .menu-hidden {
+            position: fixed;
+            top:0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            z-index: 3;
+        }
+
+        .small {
+        font-size: 0.75em;
+        }
+
+        /* hide controls in fullscreen*/
+        .noControls .custom-video-controls {
+            z-index: 2147483647;
+        }
+
+        video.noControls::-webkit-media-controls-enclosure {
+            display: none !important;
+        }
+
+        video.noControls::-webkit-media-controls {
+            display: none !important;
+        }
+
+        .noControls::-webkit-media-controls {
+            display: none !important;
+        }
+    </style>
+
+    <script>
+        let timeout;
+        let timeoutSpeedChange;
+
+        // Feel free to fork and improve on this if you'd like
+        function setColors() {
+            let speed = document.getElementById("speed").value;
+            let blur = document.getElementById("blur").value;
+            let saturate = document.getElementById("saturate").value;
+            let hue = document.getElementById("hue").value;
+            let brightness = document.getElementById("brightness").value;
+            let contrast = document.getElementById("contrast").value;
+            let invert = document.getElementById("invert").value;
+            let sepia = document.getElementById("sepia").value;
+
+            let filters = "blur(" + blur + "px) saturate(" + saturate + ") hue-rotate(" + hue + "deg) brightness(" + brightness + "%) contrast(" + contrast + ") invert(" + invert + ") sepia(" + sepia + ")";
+            document.getElementById("video").style.webkitFilter = filters;
+            document.getElementById("video").style.filter = filters;
+            changeSpeed(speed);
+
+            document.getElementById("speed-val").innerHTML = speed/10;
+            document.getElementById("blur-val").innerHTML = blur;
+            document.getElementById("saturate-val").innerHTML = saturate;
+            document.getElementById("hue-val").innerHTML = hue;
+            document.getElementById("brightness-val").innerHTML = brightness;
+            document.getElementById("contrast-val").innerHTML = contrast;
+            document.getElementById("invert-val").innerHTML = invert;
+            document.getElementById("sepia-val").innerHTML = sepia;
+        }
+
+        function toggleClass(id, className) {
+            let element = document.getElementById(id);
+            element.classList.toggle(className);
+        }
+
+        function changeSpeed(value) {
+            value /= 10;
+            document.getElementById("speed-val").innerHTML = value;
+            let video = document.getElementById("video");
+
+            //console.log(timeout, timeoutSpeedChange);
+
+            if(value <= 16) {
+                // use standard browser playback speed mode
+
+                //console.log("clear timeouts");
+                clearTimeout(timeout);
+                timeout = "";
+                clearTimeout(timeoutSpeedChange);
+                timeoutSpeedChange = "";
+
+                video.playbackRate = value;
+                if(video.paused) video.play();
+            } else {
+                // horsin' around
+                if(!timeoutSpeedChange) {
+                    timeoutSpeedChange = setTimeout(function() {
+                        console.log("timeoutSpeedChange NOW!");
+                        video.playbackRate = 1;
+                        video.pause();
+                        clearTimeout(timeout);
+                        timeout = "";
+                        clearTimeout(timeoutSpeedChange);
+                        timeoutSpeedChange = "";
+                        fasterPussycat(value);
+                    }, 250);
+                }
+            }
+        }
+
+        function fasterPussycat(value) {
+            let video = document.getElementById("video");
+            let currentTime = video.currentTime;
+            timeout = setTimeout(function() {
+                let jump = currentTime + value/100;
+                if(jump > video.duration) jump = value/100;
+                //console.log(value, jump);
+                video.currentTime = jump;
+                fasterPussycat(value);
+            }, 40);  // 40 für 25fps
+        }
+
+        function loadVideoFile(videoFile) {
+            var file = videoFile.files[0];
+            var type = file.type;
+            var videoNode = document.querySelector('video');
+            var canPlay = videoNode.canPlayType(type);
+            var fileURL = URL.createObjectURL(file);
+            videoNode.src = fileURL;
+        }
+        
+
+        function changeSource(source) {
+            document.getElementById("video").src = source;
+        }
+    </script>
+</head>
+<body>
+
+<div id="menu-hidden" class="hide menu-hidden" onclick="toggleClass('menu', 'hide'); toggleClass('menu-hidden', 'hide')">&nbsp;</div>
+<aside id="menu">
+    <div>
+        <label><strong>REPLAY</strong></label><code><a href="../Webapps/index.html"><button>Back</button></a></code>
+        <button class="medium"
+                onClick="document.getElementById('video').hasAttribute('controls') ? [document.getElementById('video').removeAttribute('controls'), document.getElementById('video').classList.add('noControls')] : [document.getElementById('video').setAttribute('controls', ''),  document.getElementById('video').classList.remove('noControls')];">
+            Toggle Controls
+        </button>
+        <button class="medium" onClick="document.getElementById('video').paused ? document.getElementById('video').play() : document.getElementById('video').pause();">Play / Pause</button>
+        <button class="medium" onClick="document.getElementById('video').hasAttribute('muted') ? document.getElementById('video').removeAttribute('muted') : document.getElementById('video').setAttribute('muted', '');">Toggle Mute</button>
+
+        <button class="medium" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">Open in Pop Up</button>
+
+        <button class="medium" onclick="toggleClass('menu', 'hide'); toggleClass('menu-hidden', 'hide')">Toggle Menu</button>
+
+    </div>
+    <div>
+        <label>
+            <strong>Sources</strong>
+        </label>
+        <select onChange="changeSource(this.value)">
+            <option value="bigBuckBunny.mp4" selected>Big Buck Bunny</option>
+
+            <option value="" disabled="disabled">----------</option>
+
+            <option value="Mathematikerin Büro/Beamer Zahlen.mp4">Mathematikerin B&uuml;ro/Beamer Zahlen</option>
+            <option value="Mathematikerin Büro/graph_rot.mp4">Mathematikerin B&uuml;ro/graph rot</option>
+            <option value="Mathematikerin Büro/homebrew_ffmpeg_6x.mp4">Mathematikerin B&uuml;ro/homebrew_ffmpeg_6x</option>
+
+            <option value="" disabled="disabled">----------</option>
+
+            <option value="Mathematikerin ZLS/netzwerk.mp4">Mathematikerin ZLS/netzwerk</option>
+            <option value="Mathematikerin ZLS/netzwerk2.mp4">Mathematikerin ZLS/netzwerk2</option>
+            <option value="Mathematikerin ZLS/graph_gruen.mp4">Mathematikerin ZLS/graph gr&uuml;n</option>
+
+            <option value="" disabled="disabled">----------</option>
+
+            <option value="TwingTec Ingenieur/Fusion Flange shaft.mp4">TwingTec/Flange</option>
+            <option value="TwingTec Ingenieur/Fusion Flange shaft negate.mp4">TwingTec/Flange negate</option>
+            <option value="TwingTec Ingenieur/Fusion Flange shaft negate speed_025.mp4">TwingTec/Flange negate fast</option>
+            <option value="TwingTec Ingenieur/Fusion Flange shaft negate speed_01.mp4">TwingTec/Flange negate ultra fast</option>
+            <option value="TwingTec Ingenieur/Fusion Flange shaft windowed.mp4">TwingTec/Flange windowed</option>
+            <option value="TwingTec Ingenieur/Fusion Flange shaft windowed negate.mp4">TwingTec/Flange windowed negate</option>
+
+            <option value="TwingTec Ingenieur/Fusion stratos.mp4">TwingTec/stratos</option>
+            <option value="TwingTec Ingenieur/Fusion stratos negate.mp4">TwingTec/stratos negate</option>
+            <option value="TwingTec Ingenieur/Fusion stratos negate speed_01.mp4">TwingTec/stratos negate fast</option>
+            <option value="TwingTec Ingenieur/Fusion stratos negate speed_025.mp4">TwingTec/stratos negate ultra fast</option>
+            <option value="TwingTec Ingenieur/Fusion stratos windowed.mp4">TwingTec/stratos windowed</option>
+            <option value="TwingTec Ingenieur/Fusion stratos windowed negate.mp4">TwingTec/stratos windowed negate</option>
+
+            <option value="" disabled="disabled">----------</option>
+
+            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2009 mogliche Projektion 1.mp4">TwingTec/Archiv/Einstein 2009</option>
+            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2009 mogliche Projektion 2.mp4">TwingTec/Archiv/Einstein 2009 2</option>
+            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2009 max Ausspielung.mp4">TwingTec/Archiv/Einstein 2009 max</option>
+            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2013 mogliche Projektion 1.mp4">TwingTec/Archiv/Einstein 2013</option>
+            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2013 max Ausspielung.mp4">TwingTec/Archiv/Einstein 2013 max</option>
+        </select>
+
+        <hr>
+        <input id="movieSelector" type="file" accept="video/*" onChange="loadVideoFile(this)">
+        <!--            <option value="Externe_D_19-144608-2_Schweizer_Filmwochens_FARO.mxf">mxf - 2 Schweizer Filmwochens FARO</option>-->
+
+    </div>
+    <div>
+        <label>
+            <strong>Speed</strong><code><span id="speed-val">1</span>x</code>
+            <button class="small" onClick="document.getElementById('speed').value=10; setColors()" title="Set to default">default</button>
+            
+        </label>
+        <input id="speed" type="range" value="10" min="1" max="160" onchange="changeSpeed(this.value)" oninput="changeSpeed(this.value)">
+        
+    </div>
+    <div>
+        <label>
+            <strong>Blur</strong><code><span id="blur-val">0</span>px</code>
+            <button class="small" onClick="document.getElementById('blur').value=0; setColors()" title="Set to default">default</button>
+        </label>
+        <input id="blur" type="range" min="0" max="30" step="1" value="0" oninput="setColors()"/>
+    </div>
+    <div>
+        <label><strong>Saturation</strong><code><span id="saturate-val">1</span></code>
+            <button class="small" onClick="document.getElementById('saturate').value=1; setColors()" title="Set to default">default</button>
+        </label>
+        <input id="saturate" type="range" min="0" max="25" step="0.1" value="1" oninput="setColors()"/>
+    </div>
+    <div>
+        <label><strong>Hue</strong><code><span id="hue-val">0</span>deg</code>
+        <button class="small" onClick="document.getElementById('hue').value=0; setColors()" title="Set to default">default</button>
+        </label>
+        <input id="hue" type="range" min="0" max="360" step="1" value="0" oninput="setColors()"/>
+    </div>
+    <div>
+        <label>
+            <strong>Brightness</strong><code><span id="brightness-val">0</span>%</code>
+        <button class="small" onClick="document.getElementById('brightness').value=100; setColors()" title="Set to default">default</button>
+        </label>
+        <input id="brightness" type="range" min="0" max="1600" step="10" value="100" oninput="setColors()"/>
+    </div>
+    <div>
+        <label><strong>Contrast</strong><code><span id="contrast-val">0</span></code>
+            <button class="small" onClick="document.getElementById('contrast').value=1; setColors()" title="Set to default">default</button>
+        </label>
+        <input id="contrast" type="range" min="0" max="15" step="0.05" value="1" oninput="setColors()"/>
+    </div>
+    <div>
+        <label><strong>Invert</strong><code><span id="invert-val">0</span></code>
+            <button class="small" onClick="document.getElementById('invert').value=0; setColors()" title="Set to default">default</button>
+        </label>
+        <input id="invert" type="range" min="0" max="1" step="0.05" value="0" oninput="setColors()"/>
+    </div>
+    <div>
+        <label><strong>Sepia</strong><code><span id="sepia-val">0</span></code>
+            <button class="small" onClick="document.getElementById('sepia').value=0; setColors()" title="Set to default">default</button>
+        </label>
+        <input id="sepia" type="range" min="0" max="1" step="0.05" value="0" oninput="setColors()"/>
+    </div>
+    <div>
+        <button onClick="document.getElementById('speed').value=10; document.getElementById('blur').value=0; document.getElementById('saturate').value=1; document.getElementById('hue').value=0; document.getElementById('brightness').value=100; document.getElementById('contrast').value=1; document.getElementById('invert').value=0; document.getElementById('sepia').value=0; setColors()">
+            default all
+        </button>
+        <span class="small">
+            <br>
+            <br>
+            <a href="index.html" target="popup" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">
+                <input type="button" value="Open in popUp">
+            </a> (Best in Desktop Safari)
+            <br>
+            Get borderless browser: 
+            <a href="https://apps.apple.com/ch/app/frameless-a-full-screen-web-browser/id933580264?l=en" target="_blank">IOS</a>
+            |
+            <a href="https://play.google.com/store/apps/details?id=com.isolator.fullscreenbrowser2" target="_blank">Android</a>
+        </span>
+        <br>
+    </div>
+    
+</aside>
+
+
+<section>
+    <video id="video" width="640" height="480"
+    loop
+    autoplay="true"
+    class="noControls"
+    ondblclick="this.webkitRequestFullscreen()"
+    muted>
+
+    <!--onpause="clearTimeout(timeout)"-->
+        <source src="bigBuckBunny.mp4" type="video/mp4"/>
+        Your not cool and I won't let you watch this awesome video of cats.
+    </video>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Sapienz.ch - Intranet / L. Kempp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- style and script resources -->
+  <link rel="stylesheet" type="text/css" href="../../../../tools/fonts.css" media="all">
+  <link rel="stylesheet" href="../../../../tools/general.css" media="all">
+  <link rel="stylesheet" href="stylesheet.css" media="all">
+  <script src="../../../../tools/general.js"></script>
+  <script src="javascript.js"></script>
+</head>
+
+<body class="intranet" onload="loadFileBrowser();">
+  <!-- THIS GETS DISPLAYED IF PAGE IS VISITED DIRECTLY FROM WITHIN IFRAME -->
+  <!-- JS of UNIK on iFrame onload= -->
+  <div id="iframeSpoofUrl" class="hide">https://www.sapienz.ch/intranet/lkempp</div>
+  
+
+
+  <div class="website header">
+    <!-- <img src="imgs/index.jpg" alt="" class="fullscreen"> -->
+    <img src="imgs/logo.jpg" alt="" class="pointer" onclick="window.location.href = 'index.html';">
+
+    <!-- STATUSBAR -->
+    <div class="mainColor statusbar">
+      Desktop <span class="op25">|</span>
+      Remote  <span class="op25">|</span>
+      Sitzungen <span class="op25">|</span>
+      Forschung <span class="op25">|</span>
+      DAU <span class="op25">|</span>
+      Sapienz
+    </div>
+    <div class="right top settings padding2 mainColor pointer" onclick="window.location.href = 'index.html';">
+      <br>
+      INTRANET L. KEMPP
+      <i class="material-icons grey small valignText">settings</i>
+      <i class="material-icons clear small valignText">settings</i>
+      <br>
+      <span class="small grey">
+        Logout | Einstellungen
+      </span>
+    </div>
+
+    <table class="menu">
+      <tr>
+        <th><i class="material-icons mainColor">science</i></th>
+        <th><i class="material-icons mainColor">create_new_folder</i></th>
+        <th><i class="material-icons mainColor">no_accounts</i></th>
+        <th><i class="material-icons mainColor">account_tree</i></th>
+        <th><i class="material-icons mainColor">biotech</i></th>
+        <th><i class="material-icons mainColor">storage</i></th>
+        <th><i class="material-icons mainColor">insert_link</i></th>
+        <th><i class="material-icons mainColor">backup</i></th>
+        <th><i class="material-icons mainColor">storm</i></th>
+        <th><i class="material-icons mainColor">star</i></th>
+        <th><i class="material-icons mainColor">computer</i></th>
+        <th><i class="material-icons mainColor">cast_connected</i></th>
+      </tr>
+    </table>  
+  </div>  
+
+  <div class="website">
+    <div class="userMenu">
+      <h3>
+        Schnellaktionen
+        <i class="material-icons mainColor valignText">bolt</i>
+      </h3>
+
+      <div class="box">
+        <div class="title">Anfrage aufgeben</div>
+        <div class="content">
+          <ul>
+            <li>IT Support</li>
+            <li>Analytics Auszug <i class="material-icons mainColor small valignText">open_in_new</i></li>
+            <li>Systeme: L &middot; SPZ</li>
+            <li>Formulare div.</li>
+            <li>Parkieren</li>
+            <li>Anmeldung Besucher</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="title">
+          Raumreservation
+          <i class="material-icons mainColor small valignText">add_circle</i>
+        </div>
+        <div class="content">
+          <span class="italics grey">Aktuell keine Reservationen</span>
+        </div>
+      </div>
+      
+      <div class="tile mainColorBg">
+        <i class="material-icons white valignText">edit_calendar</i>
+      </div>
+      <div class="tile mainColorBg">
+        <i class="material-icons white valignText">room_preferences</i>
+      </div>
+      <div class="tile mainColorBg">
+        <i class="material-icons white valignText">queue_play_next</i>
+      </div>
+      <div class="tile mainColorBg">
+        <i class="material-icons white valignText">pending</i>
+      </div>
+
+      <br>
+      <div class="grey small">
+        [2238-8] Setup &middot; A &middot; B &middot; C
+      </div>
+    </div>
+
+    <div class="tools">
+      <h3>
+        Letzte Aktivitäten
+        <i class="material-icons mainColor valignText">dynamic_form</i>
+      </h3>
+
+      <div class="box">
+        <div class="content grey small ellipsis">
+          2021-01-10 18:43:05.916563+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Eingang] Has work (allow: 1, force: 1) for IMAPtrackbox [exists: 732, unseen: 0, UID next: 3565, UID validity: 1385501588, highest modseq: 5461] and local data [exists: 732, unseen: 0, UID next: 3565, UID validity: 1385501588, highest modseq: 5461], can trust exists: 1, supports modseq: 1<br>
+          2021-01-10 18:43:05.916575+0100 0x16cd30b  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Gesendet] Operation { changed since: 1749, highest UID: 1280} created<br>
+          2021-01-10 18:43:05.916884+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Eingang] Updated -- _messageNumbersNeedingUIDs (732): 1:732; _messageNumbersNeedingSkeletons (0): (null); _uidsNeedingSkeletons (0): (null), localHighestUIDToCheck: 3563<br>
+          2021-01-10 18:43:05.916942+0100 0x16cd75e  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:IMAPConnection] [goethe.metanet.ch] Wrote: 3027.11192 UID FETCH 1:1280 (FLAGS UID) (CHANGEDSINCE 1749 VANISHED)<br>
+          2021-01-10 18:43:05.917026+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Eingang] Operation {} finished<br>
+          2021-01-10 18:43:05.917181+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Eingang] Recalculated priorities - network: 24, persistence: 0<br>
+          2021-01-10 18:43:05.917256+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track] Assigning active tasks with selected trackboxes: Eingang, Gesendet<br>
+          2021-01-10 18:43:05.916575+0100 0x16cd30b  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Gesendet] Operation { changed since: 1749, highest UID: 1280} created<br>
+          2021-01-10 18:43:05.916884+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Eingang] Updated -- _messageNumbersNeedingUIDs (732): 1:732; _messageNumbersNeedingSkeletons (0): (null); _uidsNeedingSkeletons (0): (null), localHighestUIDToCheck: 3563<br>
+          2021-01-10 18:43:05.916942+0100 0x16cd75e  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:IMAPConnection] [goethe.metanet.ch] Wrote: 3027.11192 UID FETCH 1:1280 (FLAGS UID) (CHANGEDSINCE 1749 VANISHED)<br>
+          2021-01-10 18:43:05.917026+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Eingang] Operation {} finished<br>
+          2021-01-10 18:43:05.917181+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Eingang] Recalculated priorities - network: 24, persistence: 0<br>
+          2021-01-10 18:43:05.917256+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track] Assigning active tasks with selected trackboxes: Eingang, Gesendet<br>
+          2021-01-10 18:43:05.916575+0100 0x16cd30b  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Gesendet] Operation { changed since: 1749, highest UID: 1280} created<br>
+          2021-01-10 18:43:05.916884+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Eingang] Updated -- _messageNumbersNeedingUIDs (732): 1:732; _messageNumbersNeedingSkeletons (0): (null); _uidsNeedingSkeletons (0): (null), localHighestUIDToCheck: 3563<br>
+          2021-01-10 18:43:05.916942+0100 0x16cd75e  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:IMAPConnection] [goethe.metanet.ch] Wrote: 3027.11192 UID FETCH 1:1280 (FLAGS UID) (CHANGEDSINCE 1749 VANISHED)<br>
+          2021-01-10 18:43:05.917026+0100 0x16cd75d  Default     0x0         781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Eingang] Operation {} finished<br>
+          [...]
+        </div>
+      </div>
+      <br>
+      <i class="material-icons grey small valignText">vpn_key</i>
+      <i class="material-icons grey small valignText">developer_mode</i>
+      <i class="material-icons grey small valignText">analytics</i>
+      <i class="material-icons mainColor small valignText">stacked_line_chart</i>
+      <i class="material-icons grey small valignText">schema</i>
+    </div>
+
+    <!-- HOME TILES -->
+    <div class="homeTiles">
+      <h3>
+        Home Tiles
+        <i class="material-icons mainColor valignText">edit</i>
+      </h3>
+      <div class="homeTile shadowLight">
+        <i class="material-icons white xlarge valignText">desktop_windows</i>
+        <div>Dateibrowser LOKAL</div>
+      </div>
+      <div class="homeTile shadowLight">
+        <i class="material-icons white xlarge valignText">cloud_circle</i>
+        <div>Dateibrowser CLOUD</div>
+      </div>
+      <br>
+      <div class="homeTile shadowLight">
+        <i class="material-icons white xlarge valignText">dns</i>
+        <div>Server Zugriff</div>
+      </div>
+      <div class="homeTile shadowLight">
+        <i class="material-icons white xlarge valignText">receipt_long</i>
+        <div>Online Formulare</div>
+      </div>
+      
+    </div>
+    
+  </div>
+
+
+  <!-- GALLERY -->
+  <div id="gallery" class="gallery hide">
+    <div class="galleryWindow shadow">
+      <div class="galleryImageLoader maxWidth"></div>
+      <div id="galleryImage" class="maxWidth" onclick="openImage(1);"></div>
+      <br>
+      <br>
+      <div id="galleryDesc" class="bottom mainColor left padding loginButtons">
+        loading..
+      </div>
+      <div class="bottom right grey padding loginButtons">
+        <button class="valign" onclick="openImage(-1);">
+          <i class="material-icons">arrow_back</i></button>
+        &nbsp;
+        <button class="valign" onclick="openImage(1);">
+          <i class="material-icons">arrow_forward</i></button>
+        &nbsp;
+        <button onclick="closeGallery()">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- LEAVE IT BE -->
+  <div class="backToIndex">
+    <a href="../../index.html"><i class="material-icons big">menu_book</i></a>
+  </div>
+
+</body>
+</html>

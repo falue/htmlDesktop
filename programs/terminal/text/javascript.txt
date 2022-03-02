@@ -1,0 +1,189 @@
+let text = "All work and no play makes Jack a dull boy.";
+let baseText = text;
+let cursor = 0;
+let speed = 1;
+var humanTyper = true;
+var blinkingCursor = true;
+let autoType;
+let timout;
+
+startup();
+
+function startup() {
+    document.getElementById("filetoRead").addEventListener("change",function(){
+        var file = this.files[0];
+
+        if (file) {
+            var reader = new FileReader();                    
+            reader.onload = function (evt) {
+                console.log(evt);
+                cursor = 0;
+                //document.getElementById("editor").value = evt.target.result;
+                text = evt.target.result;
+                baseText = text;
+            };        
+            reader.onerror = function (evt) {
+                console.error("An error ocurred reading the file",evt);
+            };        
+            reader.readAsText(file, "UTF-8");
+        }
+    },false);
+}
+
+function toggleClass(id, className) {
+    let element = document.getElementById(id);
+    element.classList.toggle(className);
+}
+
+function type(event, id) {
+    //console.log("typed");
+
+
+    getNewPosition(event, id);
+    let snippet = text.substring(0, cursor+speed).replace(/\n/g, "<br>").replace(/  /g, " &nbsp;").replace(/\t/g, " &nbsp; &nbsp;");
+
+    // snippet to html codes?
+    id.innerHTML = snippet;
+    if(blinkingCursor) id.innerHTML += "<span id=\"cursor\" class=\"cursor blink\">_</span>";
+
+    // hide cursor
+    document.getElementById("cursor").style.display = "none";
+
+    // cancel timeout
+    clearTimeout(timout);
+
+    //scroll to bottom if needed
+    updateScroll();
+
+    // update syntax highlighting
+    if(!document.getElementById("none").checked) {
+        hljs.configure({useBR: true});
+        document.querySelectorAll('div.terminal').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+    }
+
+    // set timeout & make visible again
+    timout = setTimeout(function() {
+        document.getElementById("cursor").style.display = "inline";
+    }, 450);
+}
+
+function updateScroll(){
+    let container = document.getElementById("terminal");
+    container.scrollTop = container.scrollHeight - container.clientHeight;
+}
+
+function getNewPosition(event, id) {
+    let KeyID = event.keyCode;
+    switch(KeyID) {
+        case 8:
+            console.log("backspace");
+            cursor -= speed;
+            break; 
+        
+        /* case 13:
+            console.log("enter");
+            // does not work because whole text gets replaced again
+            document.getElementById("terminal").innerHTML += "br";
+            break; */
+            
+        case 27:
+            console.log("esc");
+            document.getElementById("terminal").innerHTML = "";
+            cursor = 0;
+            break;
+
+        case 46:
+            console.log("delete");
+            break;
+
+        default:
+            if(humanTyper) cursor += Math.random() * speed;
+            cursor += speed;
+            break;
+    }
+    // do not set cursor before 0
+    cursor = cursor < 0 ? 0 : cursor;
+
+    // doublicate text if end reached
+    if(cursor >= text.length) {
+        text += "\n" + baseText;
+    }
+    //cursor = cursor > text.length ? text.length : cursor;
+    // console.log(cursor);
+}
+
+function changeSpeed(value) {
+    speed = parseInt(value);
+    document.getElementById("speed").innerHTML = speed + (speed == 1 ? " (human level)" : speed > 12 ? " (uber human)" : "");
+}
+
+function randomSpeed(value) {
+    humanTyper = value;
+}
+
+function toggleCursor(value) {
+    blinkingCursor = value;
+    console.log(value);
+}
+
+function changeBGColor(value) {
+    console.log(value);
+    document.body.style.backgroundColor = value;
+    document.getElementById('terminal').style.backgroundColor = value;
+    document.getElementById("BGColor").value = value;
+    document.getElementById("BGColorText").value = value;
+}
+
+function changeFontColor(value) {
+    console.log(value);
+    document.body.style.color = value;
+    document.getElementById("FontColor").value = value;
+    document.getElementById("FontColorText").value = value;
+}
+
+function toggleAutoplay(value) {
+    if(value) {
+        let delay = Math.floor(Math.random() * 800/speed);
+        autoType = setTimeout(function() {
+            let initSpeed = speed;
+            speed = 1;  // change speed so that only one key is mashed
+            type("", document.getElementById('terminal'));
+            speed = initSpeed;  // reset speed so fast speed = faster typing
+            toggleAutoplay(true);
+        }, delay);
+    } else {
+        console.log("stop autoplay")
+        clearTimeout(autoType);
+    }
+}
+
+function loadText(value) {
+    text = texts[value];
+    baseText = text;
+    cursor = 0;
+}
+
+function toggleSyntaxHighlights(value, language) {
+    let element = document.getElementById("terminal");
+    if(value) {
+        element.className = "";
+        element.classList.add("terminal");
+        element.classList.add(language);
+
+        hljs.configure({useBR: true});
+        document.querySelectorAll('div.terminal').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+    } else {
+        element.className = "";
+        element.classList.add("terminal");
+        element.classList.add("nohighlight");
+    }
+}
+
+function swapSyntaxTheme(value) {
+    console.log(value);
+    document.getElementById("syntaxTheme").href= "tools/highlight/styles/" + value + ".css";
+}

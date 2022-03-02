@@ -1,0 +1,6 @@
+
+C:\Users\akad\AppData\Local\Programs\Python\Python36-32> python sendmails.py -f “addresses.log” -fa “Mind of the month.PDF”
+            establish connection..
+            [done]
+            start sending emails..
+            

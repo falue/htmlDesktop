@@ -1,0 +1,4 @@
+# Define all available workstations here
+
+workstation=test;mac
+workstation=dude;windows

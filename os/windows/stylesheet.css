@@ -1,0 +1,214 @@
+body {
+    user-select: none;
+}
+
+.desktop {
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 0;
+    background-image: url(desktop.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.systemColors {
+    background-color: black;
+    color: white;
+}
+
+/* SHENANIGANS */
+
+.lockScreen > div {
+    font-size: 1.25em;
+    /* background-color: red; */
+    height: 6em;
+    line-height: 1.5em;
+}
+
+/* WINDOW */
+.window {
+    background: white;
+    /* border: 5px solid #4286f4; */
+    border-radius: 5px;
+}
+
+.window .content {
+    height: calc(100% - 1.5em);
+    top: 1.5em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.window .windowFrame {  
+    /* background-color: black;
+    color: white; */
+    height: 1.5em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.window .windowFrame .windowTitle span {
+    font-size: .75em;
+}
+
+.window .windowFrame .windowTitle i  {
+    padding: 0.25em .25em 0 .5em;
+}
+
+.window .windowFrame .windowActions {
+    padding: 0.25em;
+}
+
+
+/* TASKBAR */
+.systemBar {
+    /* color: grey; */
+    position: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    bottom: 0;
+    padding-left: .5em;
+    /* background-color: black; */
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.systemBar div {
+    padding: 0.5em 0;
+}
+
+.systemBar div:not(.hide) {
+    display: inline-block;
+}
+
+.systemBar .spacer {
+    padding: .75em 0;
+    width: 1px;
+    margin: 0;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.taskbar {
+    white-space: nowrap;
+}
+
+.systemBar .buttonGroup button {
+    border-radius: 0;
+    border-left: none;
+}
+
+.systemBar .buttonGroup button:first-of-type {
+    border-top-left-radius: .25em;
+    border-bottom-left-radius: .25em;
+    border-left: solid thin grey;
+}
+
+.systemBar .buttonGroup button:last-of-type {
+    border-top-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+}
+
+.systemBar .taskbar button {
+    max-width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 .5em 0 0;
+}
+
+.systemBar button {
+    border: solid thin grey;
+    height: 2em;
+    padding: .2em .5em;
+    border-radius: .25em;
+    /* color: white; */
+    /* background-color: black; */
+}
+
+.systemBar button:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.systemBar button i.small {
+    margin-right: 0.25em;
+}
+
+.systemBar button i:not(.small) {
+    transform: translateY(-.1em);
+}
+
+.systemBar .systemIcons {
+    border-left: thin solid rgba(255,255,255,0.3);
+    padding: 0.25em 0.5em 0 1em;
+    /* background-color: black; */
+}
+
+.systemBar .systemIcons div:not(.hide) {
+    display: inline-block;
+}
+
+/* .systemBar .systemIcons div.systemClock { */
+.systemClock,
+#systemIcons-clock {
+    padding: 0 .25em .5em .25em !important;
+}
+
+.startMenu {
+    /* color: white; */
+    position: fixed;
+    left: 0;
+    bottom: 2.6em;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.startMenu .columns {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.startMenu ul,
+.startMenu h3,
+.startMenu h4,
+.startMenu h5 {
+    /* float: left; */
+    margin: .5em .5em 0 .5em;
+}
+
+.startMenu ul {
+    margin-bottom: 1em;
+}
+
+.startMenu li {
+    padding: .5em;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.startMenu li:not(:last-of-type) {
+    border-bottom: solid grey thin;
+}
+
+.startMenu li:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.startMenu h1,
+.startMenu h3,
+.startMenu h4 {
+    opacity: 0.75;
+}
+
+.startMenu li i {
+    vertical-align: middle;
+}

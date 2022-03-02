@@ -1,0 +1,145 @@
+* {
+    user-select: none;
+}
+
+header {
+   /*  background-color: burlywood; */
+    height: 1.5em;
+    /* padding: 1em; */
+    box-sizing: border-box;
+    border-bottom: solid thin grey;
+    background-color: rgb(242,242,242);
+}
+
+.fileManagerTools {
+    height: 3em;
+    padding: .65em .5em;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.fileManagerTools button {
+    opacity: .6;
+    /* padding-right: 1em !important; */
+    border: solid thin lightgrey !important;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,1);
+    transform: translateY(-.5em);
+}
+
+.fileManagerTools button:hover {
+    opacity: 1;
+}
+
+.fileManagerToolsRight {
+    top:0;
+    right:0;
+    padding: .65em .5em;
+    background-color: rgb(242,242,242);
+}
+
+.fileManagerPath {
+    height: 2em;
+    padding: .35em .5em;
+    box-sizing: border-box;
+    position: relative;
+}
+.fileManagerPath #fileManagerPath {
+    position: absolute;
+    left: 20%;
+    top: 0.35em;
+    width: calc(80% - 3em);
+    border: thin grey solid;
+    background-color: white;
+    padding: 0 0.25em;
+}
+.fileManagerPath div:not(#fileManagerPath) {
+    position: absolute;
+    top: 0.25em;
+    right: .35em;
+}
+
+.browser {
+    /* background-color:blanchedalmond; */
+    height: calc(100% - 6.5em);
+    overflow: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.treeView {
+    padding: 1em 0;
+    height: 100%;
+    width: 20%;
+    min-width: 10em;
+    border-right: solid grey thin;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    float:left;
+}
+
+.content {
+    padding: 1em;
+    height: 100%;
+    top: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.fileTile {
+    /* background-color: burlywood; */
+    margin: 0 1.5em 1em 0;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 5em;
+    height: 5em;
+    overflow: hidden;
+    text-align: center;
+}
+
+.fileTile:hover img {
+    background-color: rgba(0,0,0,.15);
+}
+
+.fileTile img {
+    height: 65%;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,.05);
+    border-radius: 0.2em;
+}
+
+.fileTile div {
+    height: 35%;
+    font-size: 0.8em;
+    box-sizing: border-box;
+    /* display: table-r; */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.treeView li {
+    white-space: nowrap;
+    border-bottom: thin solid rgba(0,0,0,.1);
+    padding: .25em .5em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.treeView img {
+    height: 1em;
+    margin-right: 0.25em;
+}
+
+.subfolderLevel1 { margin-left: 1em; }
+.subfolderLevel2 { margin-left: 2em; }
+.subfolderLevel3 { margin-left: 3em; }
+.subfolderLevel4 { margin-left: 4em; }
+.subfolderLevel5 { margin-left: 5em; }
+.subfolderLevel6 { margin-left: 6em; }
+.subfolderLevel7 { margin-left: 7em; }
+.subfolderLevel8 { margin-left: 8em; }

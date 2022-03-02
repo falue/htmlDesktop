@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>ColorMarker</title>
+
+  <link rel="stylesheet" href="tools/general.css">
+  <link rel="stylesheet" href="tools/menu.css">
+  <link rel="stylesheet" href="tools/style.css">
+
+  <!-- Disable zoom, pinch, swipe -->
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+  <!-- Allow to launch "without" browser from home screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+  <control usercontrol="off" devices="mobile.or.tablet" />
+
+</head>
+
+<body class="noselect">
+    <div class="menu" onclick="toggleClass('menu-content', 'hide');">
+    </div>
+    <div id="menu-content" class="menu-content hide">
+        <div class="menu-close" onclick="toggleClass('menu-content', 'hide'); return false">✖</div>
+        <h3>Settings</h1>
+        <hr>
+        
+        Main Color:
+        <input id="mainFrameColor" onchange="changeMainColor(this.value)" oninput="changeMainColor(this.value)" type="color" value="#00FF00">
+        <input id="mainFrameText" onchange="changeMainColor(this.value)" type="text" value="#00FF00">
+        <br>
+        <input type="button" value="green" onclick="changeMainColor('#00FF00')"> 
+        <input type="button" value="blue" onclick="changeMainColor('#0000FF')">
+        <input type="button" value="white" onclick="changeMainColor('#FFFFFF')">
+        <input type="button" value="grey" onclick="changeMainColor('#666666')">
+        <input type="button" value="black" onclick="changeMainColor('#000000')">
+        <input type="button" value="pink" onclick="changeMainColor('#ff70d2')">
+        <br>
+        <br>
+        Checkerboard:
+        <input type="checkbox" onchange="checkerboard(this.value); toggleClass('checkerboardControls', 'hide')">
+        <div id="checkerboardControls" class="hide">
+            Checkerboard size:
+            <input type="range" value="10" min="1" max="100" onchange="checkerboardSize(this.value)" oninput="checkerboardSize(this.value)">
+            <span id="checkerboardSizeText">1.0</span>
+        </div>
+
+        <hr>
+        Show markers: <input type="checkbox" onchange="toggleClass('markers', 'hide'); toggleClass('markerControls', 'hide')" checked="true">
+        <div id="markerControls">
+            <br>
+            Number of markers:
+            <br>
+            <input type="radio" id="one" name="language" onchange="changeMarkers(1)">
+            <label for="one">1&emsp;</label>&emsp;
+
+            <input type="radio" id="four" name="language" onchange="changeMarkers(4)" checked="true">
+            <label for="four">4&emsp;</label>&emsp;
+
+            <input type="radio" id="four" name="language" onchange="changeMarkers(5)">
+            <label for="four">5&emsp;</label>&emsp;
+            
+            <input type="radio" id="six" name="language" onchange="changeMarkers(6)">
+            <label for="six">6&emsp;</label>&emsp;
+
+            <input type="radio" id="eight" name="language" onchange="changeMarkers(8)">
+            <label for="eight">8&emsp;</label>&emsp;<br>
+
+            <br>
+            Size of markers:
+            <input type="range" value="3" min="1" max="20" onchange="changeMarkerSize(this.value)" oninput="changeMarkerSize(this.value)">
+            <span id="markerSizeText">3</span>
+            <br>
+            <br>
+            Marker Color:
+            <input id="markerColor" onchange="changeMarkerColor(this.value)" oninput="changeMarkerColor(this.value)" type="color" value="#FFFFFF">
+            <input id="markerText" onchange="changeMarkerColor(this.value)" type="text" value="#000000">
+            <br>
+            <input type="button" value="white" onclick="changeMarkerColor('#FFFFFF')">
+            <input type="button" value="black" onclick="changeMarkerColor('#000000')">
+            <br>
+            <br>
+            Marker icon:
+            <input id="markerIcon" onchange="changeMarkerIcon(this.value)" oninput="changeMarkerIcon(this.value)" type="text" value="marker" size="6" style="text-align: center;" maxlength="1">
+            <br>
+            <input type="button" value="marker" onclick="document.getElementById('markerIcon').value = 'marker'; changeMarkerIcon('marker');">
+            <input type="button" value="&times;" onclick="document.getElementById('markerIcon').value = '&times;'; changeMarkerIcon('&times;');">
+            <input type="button" value="+" onclick="document.getElementById('markerIcon').value = '+'; changeMarkerIcon('+');">
+            <input type="button" value="&middot;" onclick="document.getElementById('markerIcon').value = '&middot;'; changeMarkerIcon('&middot;');">
+            <input type="button" value="&#9709;" onclick="document.getElementById('markerIcon').value = '&#9709;'; changeMarkerIcon('&#9709;');">
+            <input type="button" value="&#9650;" onclick="document.getElementById('markerIcon').value = '&#9650;'; changeMarkerIcon('&#9650;');">
+        </div>
+        <hr>
+        <span class="small">
+        <a href="index.html" target="popup" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">
+            <input type="button" value="Open in popUp">
+        </a> (Best in Desktop Safari)
+        <br>
+        Get borderless browser: 
+        <a href="https://apps.apple.com/ch/app/frameless-a-full-screen-web-browser/id933580264?l=en" target="_blank">IOS</a>
+        |
+        <a href="https://play.google.com/store/apps/details?id=com.isolator.fullscreenbrowser2" target="_blank">Android</a>
+    </span>
+        <a href="../index.html" class="small inlineRight" style="padding-right: 15px;">Back</a>
+        <br>
+    </div>
+
+
+    <div id="mainFrame" class="mainFrame">
+        <div id="markers" class="markers grid-container">
+            <div class="grid-item vertAlign horAlign"><img class="svgMarker" src="tools/marker.svg" alt=""/></div>
+            <div class="grid-item vertAlign horAlign"><img class="svgMarker" src="tools/marker.svg" alt=""/></div>
+            <div class="grid-item vertAlign horAlign"><img class="svgMarker" src="tools/marker.svg" alt=""/></div>
+            <div class="grid-item vertAlign horAlign"><img class="svgMarker" src="tools/marker.svg" alt=""/></div>
+          </div>
+    </div>
+
+
+
+    <script src="tools/scripts.js"></script>
+</body>
+</html>

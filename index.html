@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>DESKTOP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="tools/fonts.css" media="all">
+    <link rel="stylesheet" href="tools/general.css" media="all">
+    <link rel="stylesheet" href="tools/windowmanager.css" media="all">
+    <link rel="stylesheet" href="tools/desktop.css" media="all">
+    <!-- <link rel="stylesheet" href="tools/index/stylesheet.css" media="all"> -->
+    <!-- <script src="tools/index/javascript.js"></script> -->
+    <script src="tools/general.js"></script>
+    <script src="tools/fileparser.js"></script>
+    <script src="tools/setup.js"></script>
+    <script src="tools/desktop.js"></script>
+    <script src="tools/saveLoad.js"></script>
+
+  </head>
+  <body onload="setup();" class="maxWidth maxHeight fixed">
+
+    <!-- SELECT Workstation -->
+    <div id="overlayWorkstation" class="overlay">  <!-- hide -->
+      <div>
+        <h2>Select Workstation</h2>
+        <p id="workstationList">
+          <!-- <a href="index.html?workstation=test&os=mac">
+            <button class="systemButton"><i class="material-icons vertCenter">computer</i> Test MAC</button>
+          </a>
+          <br>
+          <a href="index.html?workstation=dude&os=windows">
+            <button class="systemButton"><i class="material-icons vertCenter">computer</i> Dude WIN</button>
+          </a> -->
+        </p>
+        <p>&nbsp;</p>
+        <button class="systemButton greyBg" onclick="hide('overlayWorkstation');">Close</button>
+      </div>
+    </div>
+
+    <!-- SHENANIGANS -->
+    <!-- lock screen -->
+    <div id="lockScreen" class="hide">
+      <div class="lockScreen fixed centerContent systemColors maxWidth maxHeight alignCenter" style="z-index: 9999;">
+        <div>
+          WELCOME
+          <form action="javascript:login(gebi('lockScreenPassword').value);">
+            <input id="passwordCheck" type="hidden" placeholder="password">
+            <input id="lockScreenText" type="text" placeholder="user">
+            <input id="lockScreenPassword" type="password" placeholder="password">
+            <input type="submit" class="systemButton" value="login">
+            <div id="wrongPassword" class="hide red sine">
+              WRONG PASSWORD
+            </div>
+            <div id="loginLoader" class="hide">
+              <i class="material-icons spin valign white relative">refresh</i>
+              <span id="loginLoaderBar">0%</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLACKOUT -->
+    <div id="blackout" onclick="hide(this.id);" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 9999;"></div>
+    
+    <!-- SCREENSAVER -->
+    <video id="screensaver" onclick="this.pause(); this.currentTime=0; hide(this.id);" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 9999; object-fit: cover;" playsinline loop muted>
+      <source id="screensaverSrc" src="os/windows/screensaver.mp4" type="video/mp4">
+    </video>
+
+    <!-- DESKTOP -->
+    <div id="desktop" class="desktop" ondragover="dragoverHandler(event)" ondrop="dropHandler(event)">
+    </div>
+
+    <!-- START MENU -->
+    <div id="startMenu" class="hide">
+      <div class="startMenu systemColors shadow">
+        <div class="columns">
+          <h3 class="">
+            <i class="material-icons blue large valign">home</i>
+            Start menu
+          </h3>
+          <ul>
+            <li onclick="saveAllShortcuts();">TEST saveAllShortcuts()</li>
+            <li id="usernameStartMenu"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTION MENU -->
+    <div id="actionMenu" class="hide">
+      <div class="actionMenu darkGreyBg shadow">
+        <div class="columns">
+          <h3 class="grey">
+            <i class="material-icons blue large valign">theater_comedy</i>
+            Role actions
+          </h3>
+          <ul>
+            <li onclick="show('blackout'); hide('actionMenu');">
+              <!-- <i class="material-icons blue small">flare</i> -->
+              <i class="material-icons blue small">stream</i>
+              Blackout
+            </li>
+            <li onclick="gebi('screensaverSrc').setAttribute('src', 'os/'+os+'/screensaver.mp4'); show('screensaver'); hide('actionMenu'); gebi('screensaver').load(); gebi('screensaver').play();">
+              <i class="material-icons blue small">dark_mode</i>
+              Screensaver
+            </li>
+            <li id="logoutAction" class="hide" onclick="show('lockScreen'); gebi('lockScreen').style.display='flex'; hide('actionMenu'); gebi('lockScreenText').focus();">
+              <i class="material-icons blue small">logout</i>
+              Logout User <span id="passwordHint" class="small grey"></span>
+            </li>
+          </ul>
+          
+          <h4 class="grey">Available windows for this workstation</h4>
+          <ul id="currentWindowActions">
+            <li class="small grey italics">No windows defined in windows.json for current workstation</li>
+          </ul>
+
+
+          <h4 class="grey">All available programs</h4>
+          <ul>
+            <li class="grey italics">
+              <button title="Terminal - Update" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false);" >
+                <i class="material-icons">code</i>
+              </button>
+              <button title="Terminal - System LOGs" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false);" >
+                <i class="material-icons">code</i>
+              </button>
+              <button title="Terminal - Lorem Ipsum binary" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=lorem_ipsum_binary&theme=hybrid&speed=50&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', 5,5, 666,450, false);" >
+                <i class="material-icons">code</i>
+              </button>
+              <button title="Terminal - hexdump" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=12&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', 5,5, 666,450, false);" >
+                <i class="material-icons">code</i>
+              </button>
+              <button title="Terminal - Selber tippen - sql 'hack'" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=119&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false);" >
+                <i class="material-icons">code</i>
+              </button>
+              <button title="Terminal - Selber tippen - python script" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false);" >
+                <i class="material-icons">code</i>
+              </button>
+            </li>
+            <li>
+              <button onclick="addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation='+workstation, 5,5, 600,350, false)" title="File manager" class="valign">
+                <i class="material-icons">folder</i>
+              </button>
+              <button onclick="addWindow('Text editor', 'edit_note', 'texteditor', 5,5, 666,450, false)" title="Text editor" class="valign">
+                <i class="material-icons">edit_note</i>
+              </button>
+              <button onclick="addWindow('Browser', 'public', 'browser/index.html?env=dani', 5,5, 1200,650, false)" title="Browser" class="valign">
+                <i class="material-icons">public</i>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="columns">
+          <h3 class="grey">
+            <i class="material-icons blue large valign">videocam</i>
+            Operator actions & settings
+          </h3>
+
+          <ul>
+            <li>
+              <span onclick="cycleBackgroundImage();">
+                <i class="material-icons blue small">desktop_windows</i>
+                Cycle background image
+              </span>
+              <label for="BGColor" class="grey small">| Set Color:</label>
+              <input id="BGColor" type="color" class="valign" oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value;" value="#000000">
+            </li>
+            <li>
+              <i class="material-icons blue small">color_lens</i>
+              <label for="systemColorPicker">
+                Set system color:
+              </label>
+              <input id="systemColorPicker" type="color" class="valign" oninput="setSystemColors(this.value);" value="#000000">
+            </li>
+            <li>
+              <i class="material-icons blue small">format_size</i>
+              GUI size:
+              <i class="material-icons valign blue" style="font-size: 24px;" onclick="document.getElementsByTagName('body')[0].style.fontSize = parseInt(document.defaultView.getComputedStyle(document.getElementsByTagName('body')[0]).fontSize) - 2 + 'px';" class="large">zoom_out</i>
+              <span class="grey small">|</span>
+              <i class="material-icons valign blue" style="font-size: 24px;" onclick="document.getElementsByTagName('body')[0].style.fontSize = parseInt(document.defaultView.getComputedStyle(document.getElementsByTagName('body')[0]).fontSize) + 2 + 'px';" class="large">zoom_in</i>
+              <span class="grey small">|</span>
+              <i class="material-icons valign blue" style="font-size: 24px;" onclick="document.getElementsByTagName('body')[0].style.fontSize = '1rem';" class="large">zoom_out_map</i>
+            </li>
+            <li onclick="createShortcut(); hide('actionMenu');">
+              <!-- <i class="material-icons blue small">grid_view</i> -->
+              <i class="material-icons blue small">queue</i>
+              Add desktop shortcut..
+            </li>
+            <li onclick="clutterDesktop(4);">
+              <!-- <i class="material-icons blue small">widgets</i>
+              <i class="material-icons blue small">dynamic_feed</i> -->
+              <i class="material-icons blue small mirrorY">auto_awesome_motion</i>
+              Clutter desktop
+              <!-- <input type="number" id="clutterDesktopCount" value="4"> -->
+              <!-- <button onclick="clutterDesktop(parseInt(gebi('clutterDesktopCount').value));">Go</button> -->
+            </li>
+
+            <li onclick="show('overlayWorkstation'); hide('actionMenu');">
+              <i class="material-icons blue small">computer</i>
+              Change workstation
+            </li>
+            <li>
+              <i class="material-icons blue small">apple</i>
+              Swap OS:
+              <span class="hover" onclick="window.location.href = 'index.html?os=windows&workstation='+workstation;">WIN</span>
+              &middot;
+              <span class="hover" onclick="window.location.href = 'index.html?os=mac&workstation='+workstation;">MAC</span>
+              &middot;
+              <span class="hover" onclick="window.location.href = 'index.html?os=linux&workstation='+workstation;">Linux</span>
+            </li>
+            <!-- <li onclick="window.location.href = 'jsoneditor'">
+              <i class="material-icons blue small">edit</i>
+              Edit JSON files
+            </li> -->
+            <li title="Save these settings, Window & Shortcut arrangement">
+              <span onclick="save(false);">
+                <i class="material-icons blue small">save</i>
+                Save to cache
+              </span>
+              <span onclick="save(true);">
+                <span class="grey">|</span>
+                <i class="material-icons small blue">file_download</i>
+                Download file
+              </span>
+            </li>
+            <li onclick="show('savedFilesDialog'); checkSaveFiles();">
+              <i class="material-icons blue small">rotate_left</i>
+              Load save file..
+            </li>
+            <li onclick="window.location.href = 'index.html?os='+os+'&workstation='+workstation;">
+              <i class="material-icons blue small">sync</i>
+              Reset
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYSTEMBAR -->
+    <div id="systemBar" class="systemBar systemColors">
+
+      <!-- START BUTTON -->
+      <div>
+        <button onclick="toggle('startMenu')" class="valign systemColors">
+          <i class="material-icons">house</i>
+        </button>
+      </div>
+
+      <div class="spacer">&nbsp;</div>
+       
+      <!-- PROGRAM FAST ACCESS -->
+       <div class="buttonGroup">
+        <button onclick="toggle('actionMenu')" class="valign systemColors">
+          <i class="material-icons">bolt</i>
+        </button><!-- 
+        --><button onclick="addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation='+workstation, 5,5, 600,350, false)" title="File manager" class="valign systemColors">
+          <i class="material-icons">folder</i>
+        </button><!-- 
+        --><button onclick="addWindow('Browser', 'public', 'browser/index.html?env=dani', 5,5, 1200,650, false)" title="Browser" class="valign systemColors">
+          <i class="material-icons">public</i>
+        </button><!-- 
+      --><button onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200', 5,5, 666,450, false)" title="Terminal" class="valign systemColors">
+          <i class="material-icons">code</i>
+        </button><!-- 
+      --><button onclick="addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=This+is+a+test+text.%0D%0ABeware%21+here+be+demons.', 5,5, 666,450, false)" title="Text editor" class="valign systemColors">
+          <i class="material-icons">edit_note</i>
+        </button>
+      </div>
+      
+      <div class="spacer">&nbsp;</div>
+       
+      <div id="taskbar" class="taskbar"></div>
+
+      <!-- TASKBAR ICONS -->
+      <div id="systemIcons" class="systemIcons right systemColors" onclick="show('editTaskbarIcons')">
+            <div class="op50"><i data-setup-system-icons class="material-icons hover" id="systemIcons-expand_less">expand_less</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-account_circle">account_circle</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-wifi">wifi</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover hide" id="systemIcons-wifi_off">wifi_off</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-usb">usb</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-bluetooth">bluetooth</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover hide" id="systemIcons-gpp_maybe">gpp_maybe</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-shield">shield</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover hide" id="systemIcons-warning">warning</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover hide" id="systemIcons-mail">mail</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-lan">lan</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-cloud">cloud</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-volume_up">volume_up</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover hide" id="systemIcons-volume_mute">volume_mute</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-watch_later">watch_later</i></div><!-- 
+         --><div class="systemClock valign"><div data-setup-system-icons class="hover hide" id="systemIcons-clock">11:12</div></div><!-- 
+      --></div>
+    </div>
+
+    <!-- DIALOG: AUTO DIALOG -->
+    <div id="autoDialog" class="dialog hide">
+      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+        <div class="darkGreyBg padding shadow white minWidth300 maxWidth400 absolute radius5">
+          <h3 class="grey alignCenter">
+            <i class="material-icons blue valign">info</i>
+            <span id="autoDialogTitle"></span>
+          </h3>
+          <br>
+          <div id="autoDialogText"></div>
+
+          <input type="text" id="autoDialogInput" class="maxWidth radius2" placeholder="Type.."></input>
+
+          <div id="autoDialogCancelButton" class="left relative padding">
+            <button class="systemButton greyBg" onclick="hide('autoDialog');">Cancel</button>
+          </div>
+
+          <div id="autoDialogCloseButton" class="right relative padding">
+            <button id="autoDialogCloseButtonButton" class="systemButton" onclick="hide('autoDialog');">Close</button>
+          </div>
+          <div id="autoDialogLoading" class="right relative padding grey">
+            <i class="material-icons blue valign spin">refresh</i>
+          </div>
+            <br>
+            <br>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIALOG: SAVED FILES FROM LOCAL STORAGE -->
+    <div id="savedFilesDialog" class="dialog hide">
+      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+        <div class="darkGreyBg padding shadow white minWidth300 maxWidth500 absolute radius5">
+          <h3 class="grey alignCenter">
+            <i class="material-icons blue valign ">storage</i>
+            Saved Files
+          </h3>
+          <br>
+          <div class="chooseBox radius5">
+            <ul id="safedFilesList">
+              <li class="grey italics">No save files.</li>
+            </ul>
+          </div>
+
+          <div class="left relative padding">
+            <button id="clearStorageButton" class="systemButton greyBg" onclick="swap('clearStorageButton', 'clearStorageButtonYesPlease');">Clear all storage</button>
+            <button id="clearStorageButtonYesPlease" class="systemButton redBg hide" onclick="clearLocalStorage(); hide('savedFilesDialog'); swap('clearStorageButtonYesPlease', 'clearStorageButton');">Are you sure?</button>
+          </div>
+          <div class="right relative padding">
+            <button class="systemButton" onclick="hide('savedFilesDialog');">Close</button>
+          </div>
+            <br>
+            <br>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIALOG: EDIT SHORTCUTS -->
+    <div id="editShortcut" class="hide dialog">
+      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+        <div class="darkGreyBg padding shadow white maxWidth300 absolute radius5">
+          <h3 class="grey alignCenter">
+            <i class="material-icons blue valign ">edit_location_alt</i>
+            Shortcut settings
+          </h3>
+          <br>
+          <input type="hidden" id="editShortcutId">
+          
+          <!-- <input type="text" id="editShortcutIcon"> -->
+          <div class="editIcon radius5 alignCenter chooseBox">
+            <label for="editIconfolderFull">
+            <input class="hide" type="radio" id="editIconfolderFull" name="editShortcutIcon" value="folderFull.png">
+            <img class="radius5" src="os/windows/systemIcons/folderFull.png"></label>
+            
+            <label for="editIconfolderEmpty">
+            <input class="hide" type="radio" id="editIconfolderEmpty" name="editShortcutIcon" value="folderEmpty.png">
+            <img class="radius5" src="os/windows/systemIcons/folderEmpty.png"></label>
+
+            <label for="editIconfileImage">
+            <input class="hide" type="radio" id="editIconfileImage" name="editShortcutIcon" value="fileImage.png">
+            <img class="radius5" src="os/windows/systemIcons/fileImage.png"></label>
+            
+            <label for="editIconfileMovie">
+            <input class="hide" type="radio" id="editIconfileMovie" name="editShortcutIcon" value="fileMovie.png">
+            <img class="radius5" src="os/windows/systemIcons/fileMovie.png"></label>
+            
+            <label for="editIconfile">
+            <input class="hide" type="radio" id="editIconfile" name="editShortcutIcon" value="file.png">
+            <img class="radius5" src="os/windows/systemIcons/file.png"></label>
+
+            <label for="editIconhdd">
+            <input class="hide" type="radio" id="editIconhdd" name="editShortcutIcon" value="hdd.png">
+            <img class="radius5" src="os/windows/systemIcons/hdd.png"></label>
+            
+            <label for="editIcondvd">
+            <input class="hide" type="radio" id="editIcondvd" name="editShortcutIcon" value="dvd.png">
+            <img class="radius5" src="os/windows/systemIcons/dvd.png"></label>
+            
+            <label for="editIcontrashEmpty">
+            <input class="hide" type="radio" id="editIcontrashEmpty" name="editShortcutIcon" value="trashEmpty.png">
+            <img class="radius5" src="os/windows/systemIcons/trashEmpty.png"></label>
+            
+            <label for="editIcontrashFull">
+            <input class="hide" type="radio" id="editIcontrashFull" name="editShortcutIcon" value="trashFull.png">
+            <img class="radius5" src="os/windows/systemIcons/trashFull.png"></label>
+          </div>
+          <input type="text" class="maxWidth radius2" id="editShortcutName" placeholder="Insert displayed filename">
+          <br>
+          <br>
+          <textarea type="text" class="maxWidth radius2" id="editShortcutAction" placeholder="Javascript command.."></textarea>
+          <br>
+          
+          <div class="left relative padding">
+            <button class="systemButton redBg" onclick="gebi(gebi('editShortcutId').value).remove(); hide('editShortcut');">Remove</button>
+          </div>
+          <div class="right relative padding">
+            <button class="systemButton greyBg" onclick="hide('editShortcut');">Cancel</button>
+            <button class="systemButton" onclick="saveShortcut(gebi('editShortcutId').value); hide('editShortcut');">Save</button>
+          </div>
+            <br>
+            <br>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIALOG TASKBAR ICONS EDIT -->
+    <div id="editTaskbarIcons" class="hide dialog">
+      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+        <div class="darkGreyBg padding shadow white maxWidth300 absolute radius5">
+          <h3 class="grey alignCenter">
+            <i class="material-icons blue valign ">call_to_action</i>
+           Toggle taskbar icons
+          </h3>
+          <br>
+          <input type="hidden" id="editShortcutId">
+          
+          <div class="chooseBox editIcon radius5 alignCenter">
+            <label for="editTaskbarIcon-expand_less" class="pointer">
+              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-expand_less" name="editTaskbarIcon" value="expand_less">
+              <i class="material-icons radius5 valign">expand_less</i>
+            </label>
+
+            <label for="editTaskbarIcon-account_circle" class="pointer">
+              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-account_circle" name="editTaskbarIcon" value="account_circle">
+              <i class="material-icons radius5 valign">account_circle</i>
+            </label>
+
+            <label for="editTaskbarIcon-wifi" class="pointer">
+              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-wifi" name="editTaskbarIcon" value="wifi">
+              <i class="material-icons radius5 valign">wifi</i>
+            </label>
+
+            <label for="editTaskbarIcon-wifi_off" class="pointer">
+              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-wifi_off" name="editTaskbarIcon" value="wifi_off">
+              <i class="material-icons radius5 valign">wifi_off</i>
+            </label>
+
+            <label for="editTaskbarIcon-usb" class="pointer">
+              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-usb" name="editTaskbarIcon" value="usb">
+              <i class="material-icons radius5 valign">usb</i>
+            </label>
+
+            <label for="editTaskbarIcon-bluetooth" class="pointer">
+              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-bluetooth" name="editTaskbarIcon" value="bluetooth">
+              <i class="material-icons radius5 valign">bluetooth</i>
+            </label>
+
+            <label for="editTaskbarIcon-gpp_maybe" class="pointer">
+              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-gpp_maybe" name="editTaskbarIcon" value="gpp_maybe">
+              <i class="material-icons radius5 valign">gpp_maybe</i>
+            </label>
+
+            <label for="editTaskbarIcon-shield" class="pointer">
+              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-shield" name="editTaskbarIcon" value="shield">
+              <i class="material-icons radius5 valign">shield</i>
+            </label>
+
+            <label for="editTaskbarIcon-warning" class="pointer">
+              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-warning" name="editTaskbarIcon" value="warning">
+              <i class="material-icons radius5 valign">warning</i>
+            </label>
+
+            <label for="editTaskbarIcon-mail" class="pointer">
+              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-mail" name="editTaskbarIcon" value="mail">
+              <i class="material-icons radius5 valign">mail</i>
+            </label>
+
+            <label for="editTaskbarIcon-lan" class="pointer">
+              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-lan" name="editTaskbarIcon" value="lan">
+              <i class="material-icons radius5 valign">lan</i>
+            </label>
+
+            <label for="editTaskbarIcon-cloud" class="pointer">
+              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-cloud" name="editTaskbarIcon" value="cloud">
+              <i class="material-icons radius5 valign">cloud</i>
+            </label>
+
+            <label for="editTaskbarIcon-volume_up" class="pointer">
+               <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-volume_up" name="editTaskbarIcon" value="volume_up">
+              <i class="material-icons radius5 valign">volume_up</i>
+            </label>
+
+            <label for="editTaskbarIcon-volume_mute" class="pointer">
+              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-volume_mute" name="editTaskbarIcon" value="volume_mute">
+              <i class="material-icons radius5 valign">volume_mute</i>
+            </label>
+
+            <label for="editTaskbarIcon-watch_later" class="pointer">
+              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-watch_later" name="editTaskbarIcon" value="watch_later">
+              <i class="material-icons radius5 valign">watch_later</i>
+            </label>
+
+            <label for="editTaskbarIcon-clock" class="pointer relative nobr ">
+              <i class="inlineBlock material-icons editTaskbarIcon-clock-hide hover tiny redBg circle" onclick="gebi('editTaskbarIcon-clock').value = ''; gebi('editTaskbarIcon-clock').classList.remove('blueBg'); hide('systemIcons-clock');">close</i>
+              <input class="radius5" placeholder="HH:MM" type="time" oninput="this.value ? [this.classList.add('blueBg'), show('systemIcons-clock'), gebi('systemIcons-clock').innerHTML = this.value] :  [this.classList.remove('blueBg'), hide('systemIcons-clock')]" id="editTaskbarIcon-clock" name="editTaskbarIcon" value="">
+            </label>
+
+          </div>
+            <div class="right padding">
+              <button class="systemButton" onclick="hide('editTaskbarIcons');">Done</button>
+            </div>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="tools/windowmanager.js"></script>
+  </body>
+</html>
+
