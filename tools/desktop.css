@@ -134,6 +134,7 @@ header.windowmenu .programButtons {
     padding: 0 1em;
     margin: 0;
 }
+
 header.windowmenu .programButtons:hover {
     background-color: rgba(255,255,255,.5);
 }
@@ -230,6 +231,18 @@ header.windowmenu .programButtons:hover {
 .chooseBox li:hover,
 .actionMenu li:hover {
     background-color: rgba(255,255,255,0.2);
+}
+
+#savedFilesDialog .chooseBox li:hover i {
+    opacity: 1;
+}
+
+#savedFilesDialog .chooseBox li i {
+    opacity: 0;
+}
+
+.deleteButton {
+    right: 1.75em;
 }
 
 .actionMenu h1,

@@ -91,6 +91,11 @@ function clearLocalStorage() {
   localStorage.clear();
 }
 
+function clearLocalStorageItem(key) {
+  localStorage.removeItem(key);
+  checkSaveFiles();
+}
+
 function checkSaveFiles() {
   let data = [],
       entry,
@@ -121,11 +126,20 @@ function checkSaveFiles() {
       /* listElement.setAttribute("onclick", "loadSaveFile('"+safeFileKey+"'); hide('savedFilesDialog')"); */
       listElement.setAttribute("onclick", "window.location.href='index.html?loadSaveFile="+safeFileKey+"';");
       listElement.setAttribute("class", "relative pointer");
+      listElement.setAttribute("title", "Load this save file");
+
+      let deleteButton = document.createElement("i");
+      deleteButton.setAttribute("class", "deleteButton material-icons small white redBg circle right top");
+      deleteButton.setAttribute("title", "Remove this save file");
+      deleteButton.setAttribute("onclick", "event.stopPropagation(); clearLocalStorageItem('"+safeFileKey+"');");
+      deleteButton.innerHTML="delete";
+
       let downloadButton = document.createElement("i");
-      downloadButton.setAttribute("class", "material-icons small grey right top");
+      downloadButton.setAttribute("class", "material-icons small white blueBg circle right top");
       downloadButton.setAttribute("title", "Download this save file");
       downloadButton.setAttribute("onclick", "event.stopPropagation(); downloadSaveFileFromStorage('"+safeFileKey+"', '"+safeFileKey+"');");
       downloadButton.innerHTML="file_download";
+      listElement.appendChild(deleteButton);
       listElement.appendChild(downloadButton);
       safedFilesList.appendChild(listElement);
     }
