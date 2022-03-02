@@ -329,7 +329,7 @@
     <!-- DIALOG: SAVED FILES FROM LOCAL STORAGE -->
     <div id="savedFilesDialog" class="dialog hide">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
-        <div class="darkGreyBg padding shadow white minWidth300 maxWidth500 absolute radius5">
+        <div class="darkGreyBg padding shadow white minWidth400 maxWidth500 absolute radius5">
           <h3 class="grey alignCenter">
             <i class="material-icons blue valign ">storage</i>
             Saved Files
@@ -343,7 +343,10 @@
 
           <div class="left relative padding">
             <button id="clearStorageButton" class="systemButton greyBg" onclick="swap('clearStorageButton', 'clearStorageButtonYesPlease');">Clear all storage</button>
-            <button id="clearStorageButtonYesPlease" class="systemButton redBg hide" onclick="clearLocalStorage(); hide('savedFilesDialog'); swap('clearStorageButtonYesPlease', 'clearStorageButton');">Are you sure?</button>
+            <div id="clearStorageButtonYesPlease" class="hide">
+              <button class="systemButton redBg" onclick="clearLocalStorage(); hide('savedFilesDialog'); swap('clearStorageButtonYesPlease', 'clearStorageButton');">Are you sure?</button>
+              <i class="material-icons greyBg circle hover white valignCenter" id="clearStorageButtonNoThanks" onclick="swap('clearStorageButtonYesPlease', 'clearStorageButton');">close</i>
+            </div>
           </div>
           <div class="right relative padding">
             <button class="systemButton" onclick="hide('savedFilesDialog');">Close</button>
