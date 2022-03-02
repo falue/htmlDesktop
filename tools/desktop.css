@@ -241,8 +241,31 @@ header.windowmenu .programButtons:hover {
     opacity: 0;
 }
 
-.deleteButton {
-    right: 1.75em;
+#savedFilesDialog .deleteButton {
+    right: 2em;
+}
+
+.fileUploadButton {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileUploadButton i {
+    transform: scale(1.5) translateY(.125em);
+    position: relative;
+    z-index: 0;
+}
+
+.fileUploadButton input {
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .actionMenu h1,

@@ -222,10 +222,10 @@
                 <i class="material-icons blue small">save</i>
                 Save to cache
               </span>
-              <span onclick="save(true);">
+              <span onclick="save(true);" title="Download current settings as .json file">
                 <span class="grey">|</span>
                 <i class="material-icons small blue">file_download</i>
-                Download file
+                Download cache
               </span>
             </li>
             <li onclick="show('savedFilesDialog'); checkSaveFiles();">
@@ -349,6 +349,10 @@
             </div>
           </div>
           <div class="right relative padding">
+            <button class="fileUploadButton systemButton greyBg">
+              <input type="file" id="uploadSaveFileButton" title="Upload .json file" onchange="uploadLocalSaveFile(this.files)" accept="application/JSON">
+              <i class="material-icons small">upload</i>
+            </button>
             <button class="systemButton" onclick="hide('savedFilesDialog');">Close</button>
           </div>
             <br>

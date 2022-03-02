@@ -1,3 +1,4 @@
+/* SAVING */
 async function save(download) {
   let saveFileName = await showDialog("Save as", "Enter filename:<br><br>", false, true);
   // Satanize input saveFileName
@@ -61,6 +62,7 @@ function compileSaveFile(saveFileName, download) {
   }
 }
 
+/* DOWNLOAD */
 function downloadSaveFileFromStorage(data, name) {
   downloadStringAsFile(localStorage.getItem(data), name);
 }
@@ -75,6 +77,40 @@ function downloadStringAsFile(data, name) {
     a.click();
 }
 
+/* UPLOAD */
+async function uploadLocalSaveFile(files) {
+  let file = files[0];
+  if (file) {
+    let arrayBuffer = await readLocalFileAsync(file);
+    let data = arrayBufferToString(arrayBuffer)
+    /* Create filname */
+    let customNameFromFile = file["name"].split(".")[0].replace(/[^a-zA-Z0-9\~]/g, "");
+    /* let saveFileName = "desktopSaveFile-" + file["lastModified"] + "-"+ customNameFromFile + "-" + createUniqueId(22)+".json"; */
+    let saveFileName = "desktopSaveFile-"+Date.now()+"-"+ customNameFromFile+"-" + createUniqueId(22)+".json";
+    // Save to localStorage
+    localStorage.setItem(saveFileName, data);
+    window.location.href = 'index.html?loadSaveFile='+saveFileName;
+  }
+}
+
+function readLocalFileAsync(file) {
+  return new Promise((resolve, reject) => {
+    let reader = new FileReader();
+
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+    reader.onerror = reject;
+    reader.readAsArrayBuffer(file);
+  })
+}
+
+function arrayBufferToString(arrayBuffer, decoderType='utf-8') {
+  let decoder = new TextDecoder(decoderType);
+  return decoder.decode(arrayBuffer);
+}
+
+/* SAVE FILE MANIPULATION */
 function loadSaveFile(saveFile) {
   let data = JSON.parse(localStorage.getItem(saveFile));
   if(data) {
@@ -149,6 +185,7 @@ function checkSaveFiles() {
   }
 }
 
+/* SAVING */
 function saveAllWindows() {
   let windowsFromDom = document.querySelectorAll("[data-setup-type='window']");
   let windows = [];
