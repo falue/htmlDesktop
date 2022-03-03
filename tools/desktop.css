@@ -116,6 +116,7 @@ input[type="color"] {
 input[type="color"]::-webkit-color-swatch-wrapper {
 	padding: 0;
 }
+
 input[type="color"]::-webkit-color-swatch {
 	border: none;
 }
@@ -216,6 +217,12 @@ header.windowmenu .programButtons:hover {
 .chooseBox li:hover,
 .actionMenu li:hover {
     background-color: rgba(255,255,255,0.2);
+}
+
+.dialog input[type=text],
+.dialog textarea {
+    padding: .75em .5em;
+    margin: .5em 0;
 }
 
 #savedFilesDialog .chooseBox li:hover i {

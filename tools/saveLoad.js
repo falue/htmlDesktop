@@ -1,6 +1,6 @@
 /* SAVING */
 async function save(download) {
-  let saveFileName = await showDialog("Save as", "Enter filename:<br><br>", false, true);
+  let saveFileName = await showDialog("Save as", "Enter filename:", false, true);
   // Satanize input saveFileName
   saveFileName = saveFileName.replace(/[^a-zA-Z0-9\~]/g, "");
 
