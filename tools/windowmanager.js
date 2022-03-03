@@ -340,7 +340,7 @@ function editShortcut(id) {
     /* radioButton.setAttribute("value", labelImg.src); */
   }
 
-  gebi('editShortcutName').value = currentShortcut.getElementsByClassName("filename")[0].innerHTML;
+  gebi('editShortcutName').value = currentShortcut.getElementsByClassName("filename")[0].innerHTML.replace(/&amp;/g, "&");
   gebi('editShortcutAction').value = currentShortcut.getAttribute('ondblclick') ? currentShortcut.getAttribute('ondblclick') : "";
 }
 
@@ -348,7 +348,7 @@ function editShortcut(id) {
 function saveShortcut(id) {
   hide("editShortcut");
   let currentShortcut = gebi(id);
-  let name = gebi('editShortcutName').value;
+  let name = gebi('editShortcutName').value.replace(/[\"'`\{\}\[\]\\]/g, "");
   currentShortcut.getElementsByClassName("filename")[0].innerHTML = name;
   let action = gebi('editShortcutAction').value;
   console.log(action);
