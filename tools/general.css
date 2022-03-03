@@ -246,6 +246,43 @@ hr { border-color: rgba(255,255,255,.3); margin: 1.5em 0; }
 .blackBgTransparent { background-color: rgba(0,0,0,0.3) !important; }
 .whiteBgTransparent { background-color: rgba(255,255,255,0.3) !important; }
 
+/* BORDERS */
+.dottedGrey {
+    /* Adjust "50%" to skew relation between spaces and slashes: 25%=short slashes, 50%=eqal, 75%=long slashes */
+    background: linear-gradient(to right, grey 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(grey 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(to right, grey 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(grey 50%, rgba(255, 255, 255, 0) 0%);
+    background-position: top, right, bottom, left;
+    background-repeat: repeat-x, repeat-y;
+    /* Adjust horz.slash/space-size, horz thickness, vert.slash/space-size, vert thickness: */
+    background-size: 8px 1px, 1px 8px;
+}
+
+.dottedWhite {
+    /* Adjust "50%" to skew relation between spaces and slashes: 25%=short slashes, 50%=eqal, 75%=long slashes */
+    background: linear-gradient(to right, white 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(white 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(to right, white 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(white 50%, rgba(255, 255, 255, 0) 0%);
+    background-position: top, right, bottom, left;
+    background-repeat: repeat-x, repeat-y;
+    /* Adjust horz.slash/space-size, horz thickness, vert.slash/space-size, vert thickness: */
+    background-size: 8px 1px, 1px 8px;
+}
+
+.dottedBlack {
+    /* Adjust "50%" to skew relation between spaces and slashes: 25%=short slashes, 50%=eqal, 75%=long slashes */
+    background: linear-gradient(to right, black 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(black 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(to right, black 50%, rgba(255, 255, 255, 0) 0%),
+    linear-gradient(black 50%, rgba(255, 255, 255, 0) 0%);
+    background-position: top, right, bottom, left;
+    background-repeat: repeat-x, repeat-y;
+    /* Adjust horz.slash/space-size, horz thickness, vert.slash/space-size, vert thickness: */
+    background-size: 8px 1px, 1px 8px;
+}
+
 /* INPUTS */
 textarea:focus,
 input:focus { outline: none; }
