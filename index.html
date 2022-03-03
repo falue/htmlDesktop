@@ -41,20 +41,30 @@
     <!-- SHENANIGANS -->
     <!-- lock screen -->
     <div id="lockScreen" class="hide">
-      <div class="lockScreen fixed centerContent systemColors maxWidth maxHeight alignCenter" style="z-index: 9999;">
-        <div>
-          WELCOME
+      <div id="lockScreenSystemColorOverlay" class="fixed centerContent systemColors maxWidth maxHeight" style="z-index: 9998;">
+      </div>
+      <div id="lockScreenColorOverlay" class="lockScreen fixed centerContent maxWidth maxHeight alignCenter" style="z-index: 9999;">
+        <div id="lockScreenWindow" class="systemColors whiteBgTransparent padding05 radius10">
+          <img id="lockScreenUserPicture" class="shadow radius5" src="workstations/dude/userpicture.jpg" alt="">
+          <div class="black small italics" id="lockScreenUserName">USERNAME</div>
+          <br>
           <form action="javascript:login(gebi('lockScreenPassword').value);">
             <input id="passwordCheck" type="hidden" placeholder="password">
-            <input id="lockScreenText" type="text" placeholder="user">
-            <input id="lockScreenPassword" type="password" placeholder="password">
-            <input type="submit" class="systemButton" value="login">
-            <div id="wrongPassword" class="hide red sine">
-              WRONG PASSWORD
-            </div>
-            <div id="loginLoader" class="hide">
-              <i class="material-icons spin valign white relative">refresh</i>
-              <span id="loginLoaderBar">0%</span>
+            <input id="lockScreenText" class="padding radius10 clearBorder" type="text" placeholder="user" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
+            <br>
+            <input id="lockScreenPassword" class="padding radius10 clearBorder" type="password" placeholder="password" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
+            <br>
+            <div class="relative">
+              <!-- <div id="wrongPassword" class="hide red sine20">
+                WRONG PASSWORD
+              </div> -->
+              <button type="submit" class="systemColors radius10">
+                <span id="loginbuttonText">Login</span>
+                <div id="loginLoader" class="hide ">
+                  <i class="material-icons spin valign small systemColors relative">refresh</i>
+                  <span id="loginLoaderBar">0%</span>
+                </div>
+              </button>
             </div>
           </form>
         </div>
@@ -107,7 +117,7 @@
               <i class="material-icons blue small">dark_mode</i>
               Screensaver
             </li>
-            <li id="logoutAction" class="hide" onclick="show('lockScreen'); gebi('lockScreen').style.display='flex'; hide('actionMenu'); gebi('lockScreenText').focus();">
+            <li id="logoutAction" class="hide" onclick="showLockScreen(); hide('actionMenu');">
               <i class="material-icons blue small">logout</i>
               Logout User <span id="passwordHint" class="small grey"></span>
             </li>

@@ -22,12 +22,60 @@ body {
 }
 
 /* SHENANIGANS */
-
 .lockScreen > div {
     font-size: 1.25em;
-    /* background-color: red; */
-    height: 6em;
     line-height: 1.5em;
+    padding:1.5em 2em;
+}
+
+.lockScreen #lockScreenUserPicture {
+    width: 5em;
+}
+
+.lockScreen input {
+    padding: .5em 1em;
+    margin-bottom: 1em;
+}
+
+.lockScreen button {
+    padding: .5em 1em;
+    margin: 2em 0 0.25em 0;
+}
+
+#lockScreenColorOverlay {
+    background: rgba(131,58,180,.35);
+    background: linear-gradient(329deg, rgba(131,58,180,.35) 0%, rgba(253,29,29,.35) 50%, rgba(252,176,69,.35) 100%);
+}
+
+#lockScreen.loginAnimation #lockScreenColorOverlay {
+    animation: animateBgColor 750ms ease-in-out 1 forwards;
+    animation: fadeoutLoginWindow 1500ms ease-in-out 1 forwards;
+}
+
+.loginAnimation #lockScreenSystemColorOverlay {
+    animation: fadeoutLoginWindow 2s ease-in-out 1 forwards;
+}
+
+@keyframes animateBgColor {
+    0%   { background-size: 100%; }
+    100%  { background-size: 600%; }
+}
+
+@keyframes fadeoutLoginWindow {
+    0%  { opacity: 1; }
+    50%  { opacity: 1; }
+    100%  { opacity: 0; }
+}
+
+#wrongPassword {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* background-color: teal; */
+    /* text-align: left; */
+    width: 100%;
+    font-size: .75em;
+    line-height: 2em;
 }
 
 /* WINDOW */

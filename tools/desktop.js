@@ -15,20 +15,41 @@ function setDesktopImg(path) {
     gebi("desktop").style.backgroundImage = "url("+path+")";
 }
 
+function showLockScreen() {
+    show('lockScreen');
+    gebi('lockScreenText').focus();
+    gebi('lockScreenUserName').innerHTML = username;
+    gebi('lockScreenUserPicture').src = 'workstations/'+workstation+'/userpicture.jpg';
+}
+
 async function login(password) {
     let correctPassword = gebi("passwordCheck").value;
-    if(password === correctPassword) {
-        hide('wrongPassword');
+    if(password.includes(correctPassword)) {
+        /* hide('wrongPassword'); */
+        hide('loginbuttonText');
         show('loginLoader');
         /* await delay(3500); */
-        await counter("loginLoaderBar", "%", 3500, 95, 0, 100);
+        await counter("loginLoaderBar", "%", 3000, 92, 0, 100);
+        cl("start animation");
+        gebi('lockScreen').classList.add('loginAnimation');
+        gebi('loginLoaderBar').innerHTML = "Logging in.."
+        await delay(2000);  // wait for color animation
+        cl("finish animation");
         hide('lockScreen');
+
+        /* Reset login window */
         hide('loginLoader');
         gebi('lockScreenText').value='';
         gebi('lockScreenPassword').value='';
+        show('loginbuttonText');
+        gebi('lockScreen').classList.remove('loginAnimation');
+        gebi('lockScreenPassword').classList.remove('redBorder');
     } else {
-        toggle('wrongPassword');
+        /* toggle('wrongPassword'); */
         gebi('lockScreenPassword').value='';
+        gebi('lockScreenPassword').classList.add('wiggleX', 'redBorder');
+        await delay(1000);  // wait for color animation
+        gebi('lockScreenPassword').classList.remove('wiggleX');
     }
 }
 

@@ -247,6 +247,9 @@ hr { border-color: rgba(255,255,255,.3); margin: 1.5em 0; }
 .whiteBgTransparent { background-color: rgba(255,255,255,0.3) !important; }
 
 /* BORDERS */
+.redBorder { border: thin solid rgba(255,80,80,1) !important; }
+.clearBorder { border: thin solid rgba(0,0,0,0); }
+
 .dottedGrey {
     /* Adjust "50%" to skew relation between spaces and slashes: 25%=short slashes, 50%=eqal, 75%=long slashes */
     background: linear-gradient(to right, grey 50%, rgba(255, 255, 255, 0) 0%),
@@ -330,8 +333,11 @@ textarea {
 .blink { animation: blinker 1s linear infinite; }
 .fade { animation: fader 1s linear infinite; }
 .sine { animation: fader 1s ease-in-out infinite; }
+.sine20 { animation: fader50 1s ease-in-out infinite; }
 .moveUpDown { animation: moveUpDown 1s ease-in-out infinite; }
 .shake { animation: shake 0.5s linear 1; }
+.shine { animation: shake 1s ease-in-out infinite; }
+.wiggle, .wiggleX { animation: wiggleX 300ms ease-in-out 1; }
   
 @keyframes spinner { 
     100% { transform:rotate(360deg); } 
@@ -359,6 +365,13 @@ textarea {
     100% { opacity: 0; }
 }
 
+
+@keyframes fader50 {
+    0%   { opacity: .5; }
+    50%  { opacity: 1; }
+    100% { opacity: .5; }
+}
+
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -373,6 +386,13 @@ textarea {
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+@keyframes wiggleX {
+    0% { transform: translateX(1px); }
+    20% { transform: translateX(-5px); }
+    60% { transform: translateX(5px); }
+    80% { transform: translateX(-1px); }
+    100% { transform: translateX(1px); }
+}
 /* @-webkit-keyframes sineWave {
     0%   { opacity: 0; }
     50%  { opacity: 1; }
