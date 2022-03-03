@@ -160,21 +160,6 @@ header.windowmenu .programButtons:hover {
     width: 35%;
 }
 
-/* WTF */
-/* .overlay span {
-    display: block;
-    color: red;
-    font-size: 2em;
-    padding-right: .75em;
-    padding-bottom: .5em;
-    animation: MoveUpDown 1s ease-in-out infinite;
-} */
-
-/* .overlay img {
-    border-radius: 50%;
-    padding-bottom: .5em;
-}
- */
 .overlay button {
     margin-top: 1em;
     font-size: .75em;

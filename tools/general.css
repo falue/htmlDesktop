@@ -293,6 +293,7 @@ textarea {
 .blink { animation: blinker 1s linear infinite; }
 .fade { animation: fader 1s linear infinite; }
 .sine { animation: fader 1s ease-in-out infinite; }
+.moveUpDown { animation: moveUpDown 1s ease-in-out infinite; }
 
 @keyframes spinner { 
     100% { transform:rotate(360deg); } 
@@ -301,6 +302,10 @@ textarea {
     100% { transform:rotate(-360deg); } 
 }
 
+@keyframes moveUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
 
 @-webkit-keyframes blinker {
     0%   { opacity: 0; }
