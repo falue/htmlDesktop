@@ -8,13 +8,13 @@ function gebi(id) {
 
 function hide(id) {
 	for(i=0; i< arguments.length; i++) { 
-		gebi(arguments[i]).style.display = 'none';
+		gebi(arguments[i]).classList.add('hide');
 	}
 }
 
 function show(id) {
 	for(i=0; i< arguments.length; i++) { 
-		gebi(arguments[i]).style.display = 'block';
+		gebi(arguments[i]).classList.remove('hide');
 	}
 }
 
