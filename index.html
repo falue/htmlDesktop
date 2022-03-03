@@ -331,7 +331,9 @@
           <br>
           <div id="autoDialogText"></div>
 
-          <input type="text" id="autoDialogInput" class="maxWidth radius2 padding" placeholder="Type.."></input>
+          <input type="text" id="autoDialogInput" class="maxWidth radius2 padding" placeholder="Type.."
+            onkeydown="if(event.key === 'Enter') gebi('autoDialogCloseButtonButton').click();"
+          ></input>
 
           <br>
 
