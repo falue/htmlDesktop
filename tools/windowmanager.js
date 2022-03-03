@@ -267,10 +267,14 @@ function bringToFront(id) {
   }
 }
 
-function minimizeWindow(id) {
-  console.log("minimizeWindow WTF: "+id);
-  gebi(id).setAttribute("data-setup-hide", true);
+async function minimizeWindow(id) {
+  /* console.log("minimizeWindow WTF: "+id); */
+  let currentWindow = gebi(id);
+  currentWindow.setAttribute("data-setup-hide", true);
+  currentWindow.classList.add("minimizeWindow");
+  await delay(1000);
   hide(id);
+  currentWindow.classList.remove("minimizeWindow");
 }
 
 function getWindowFromTaskbar(id) {

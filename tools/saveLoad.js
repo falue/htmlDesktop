@@ -78,6 +78,7 @@ function downloadStringAsFile(data, name) {
 }
 
 /* UPLOAD */
+// https://simon-schraeder.de/posts/filereader-async/
 async function uploadLocalSaveFile(files) {
   let file = files[0];
   if (file) {

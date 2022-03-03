@@ -262,3 +262,10 @@ header.windowmenu .programButtons:hover {
 .actionMenu li i {
     vertical-align: middle;
 }
+
+.minimizeWindow { animation: minimizeWindow .15s ease-in 1 forwards; }
+
+@keyframes minimizeWindow {
+    0%   { margin-top: 0; transform: scale(1); }
+    100% { margin-top: 100%; transform: scaleX(.8); }
+}
