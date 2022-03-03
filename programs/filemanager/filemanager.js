@@ -1,5 +1,5 @@
 let os = "windows";
-let workstation = "dude";
+let workstation = "_generic";
 let rootFolders;
 let rootName;
 
