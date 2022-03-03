@@ -444,3 +444,30 @@ function clutterDesktop(count) {
     placeShortcut(name, randomIcon[rand], x,y, "");
   }
 }
+
+function alignShortcutsToGrid() {
+  let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
+  for (shortcut of shortcutsFromDom) {
+    shortcut.style.left = clamp(Math.floor(parseInt(shortcut.style.left)/10)*10+1, 1, 90)+"%";
+    shortcut.style.top = clamp(Math.floor(parseFloat(shortcut.style.top)/12)*12+1, 1, 85)+"%";
+  }
+}
+
+function tidyUpShortcuts() {
+  let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
+  let xOffset = 1;
+  let yOffset = 1;
+  for (shortcut of shortcutsFromDom) {
+    shortcut.style.left = xOffset + "%";
+    shortcut.style.top = yOffset + "%";
+    if(yOffset < 85) {
+      yOffset += 12;
+    } else if(xOffset > 90) {
+      yOffset = 1;
+      xOffset = 1;
+    } else  {
+      yOffset = 1;
+      xOffset += 10;
+    }
+  }
+}

@@ -156,6 +156,12 @@ function chooseRandomKey(arrayToChoose) {
   return randomBetween(0, max-1);
 }
 
+function clamp(value, min, max) {
+  if(value > max) { return max; } else 
+  if(value < min) { return min; }
+  return value;
+}
+
 function createUniqueId(max) {
   if(!max) max = 28;
   /* return Math.floor(Math.random() * 32000) + "-" + Date.now(); */

@@ -102,6 +102,7 @@
     <!-- ACTION MENU -->
     <div id="actionMenu" class="hide">
       <div class="actionMenu darkGreyBg shadow">
+        <!-- Role actions -->
         <div class="columns">
           <h3 class="grey">
             <i class="material-icons blue large valign">theater_comedy</i>
@@ -165,6 +166,7 @@
           </ul>
         </div>
 
+        <!-- Operator actions & settings -->
         <div class="columns">
           <h3 class="grey">
             <i class="material-icons blue large valign">videocam</i>
@@ -202,14 +204,25 @@
               Add desktop shortcut..
             </li>
             <li onclick="clutterDesktop(4);">
-              <!-- <i class="material-icons blue small">widgets</i>
-              <i class="material-icons blue small">dynamic_feed</i> -->
-              <i class="material-icons blue small mirrorY">auto_awesome_motion</i>
+              <!-- <i class="material-icons blue small">widgets</i> -->
+              <!-- <i class="material-icons blue small">dynamic_feed</i> -->
+              <!-- <i class="material-icons blue small mirrorY">auto_awesome_motion</i> -->
+              <!-- <i class="material-icons blue small">scatter_plot</i> -->
+              <i class="material-icons blue small">bubble_chart</i>
               Clutter desktop
               <!-- <input type="number" id="clutterDesktopCount" value="4"> -->
               <!-- <button onclick="clutterDesktop(parseInt(gebi('clutterDesktopCount').value));">Go</button> -->
             </li>
-
+            <li onclick="alignShortcutsToGrid();">
+              <!-- <i class="material-icons blue small mirrorY">grid_4x4</i> -->
+              <i class="material-icons blue small">apps</i>
+              Align shortcuts to grid
+            </li>
+            <li onclick="tidyUpShortcuts();">
+              <!-- <i class="material-icons blue small mirrorY">grid_4x4</i> -->
+              <i class="material-icons blue small rotate180">signal_cellular_alt</i>
+              Tidy up shortcuts
+            </li>
             <li onclick="show('overlayWorkstation'); hide('actionMenu');">
               <i class="material-icons blue small">computer</i>
               Change workstation
