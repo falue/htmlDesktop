@@ -1,14 +1,42 @@
-let bgImg = 0;
-let totalBgImgs = 4;
+let bgImgCounter = 0;
+let bgImgBasePath = "os/_generic/desktops/";
 
-function cycleBackgroundImage() {
-    if(bgImg > totalBgImgs+1) bgImg = 0;
-    bgImg++;
-    let bgPath = "os/_general/desktops/"+bgImg+".jpg";
-    if(bgImg > totalBgImgs) bgPath = "workstations/"+workstation+"/desktop.jpg";
-    if(bgImg > totalBgImgs+1) bgPath = "os/"+os+"/desktop.jpg";
-    // console.log(bgPath);
-    setDesktopImg(bgPath);
+async function cycleBackgroundImage() {
+    let bgPath;
+    // Show generic Desktop of OS
+    if(bgImgCounter === 0 && bgImgBasePath == "os/_generic/desktops/") {
+        cl("set generic desktop of OS.");
+        setDesktopImg("os/"+os+"/desktop.jpg");
+        bgImgCounter++;  // For further manual clicking
+        return;
+    } else if(bgImgCounter === 0) {
+        bgImgCounter = 1;
+    }
+    fetch(bgImgBasePath+bgImgCounter+".jpg", { method: 'HEAD' })
+    .then(res => {
+        if (res.ok) {
+            // Image is found
+            bgPath = bgImgBasePath+bgImgCounter+".jpg"
+            cl('Image exists. :'+bgPath);
+            setDesktopImg(bgPath);
+            bgImgCounter++;  // For further manual clicking
+        } else {
+            // Image is not found. reset counter, swap bgImgBasePath around and click again.
+            cl('Image does not exist. :'+bgImgBasePath+bgImgCounter+".jpg");
+            bgImgCounter = 0;  // TODO: only set to 0 if cycle repeats complete
+            bgImgBasePath = bgImgBasePath === "os/_generic/desktops/" ? "workstations/"+workstation+"/desktops/" : "os/_generic/desktops/";
+            cycleBackgroundImage();
+        }
+    }).catch(err => console.log('Error:', err));
+}
+
+// NOT async but maybe super for other things?
+// fileExists("foo.gif", function(){ cl("good"); }, function(){ cl("bad"); } );
+function fileExists(imageSrc, good, bad) {
+    let img = new Image();
+    img.src = imageSrc;
+    img.onload = good; 
+    img.onerror = bad;
 }
 
 function setDesktopImg(path) {

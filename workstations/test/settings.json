@@ -3,7 +3,7 @@
     "settings": {
         "systemColor": "#541d1d",
         "desktopColor": "#000000",
-        "desktopImg": "workstations/test/desktop.jpg",
+        "desktopImg": "workstations/test/desktops/1.jpg",
         "os": "mac",
         "darkMode": true,
         "username": "pipigaggi",

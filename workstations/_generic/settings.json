@@ -3,7 +3,7 @@
     "settings": {
         "systemColor": "#541d1d",
         "desktopColor": "#000000",
-        "desktopImg": "workstations/_generic/desktop.jpg",
+        "desktopImg": "workstations/_generic/desktops/1.jpg",
         "os": "windows",
         "darkMode": true,
         "username": "Generic User",
