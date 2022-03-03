@@ -49,6 +49,21 @@ function hideClass(className) {
 	}
 }
 
+
+function showCssQuery(query) {
+  let elements = document.querySelectorAll(query);
+  for(i=0; i< elements.length; i++) {
+		elements[i].classList.remove('hide');
+	}
+}
+
+function hideCssQuery(query) {
+  let elements = document.querySelectorAll(query);
+  for(i=0; i< elements.length; i++) { 
+		elements[i].classList.add('hide');
+	}
+}
+
 function toggleClass(className) {
   /* console.log(className); */
   let element = document.getElementsByClassName(className)[0];
