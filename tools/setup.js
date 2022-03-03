@@ -128,18 +128,17 @@ async function setupWorkstationChooser(path) {
           let values = value.split(";");
           let workstationDisplay = values[0];
           let osDisplay = values[1] ? values[1] : "nothing";
-          //if(workstationDisplay === workstation) returnOs = osDisplay;
           let workstationList = gebi('workstationList');
 
           let a = document.createElement("a");
           let link = "index.html?workstation="+workstationDisplay+"&os=";
-          link += osDisplay;  // == "win" ? "&os=win" : "";
+          link += osDisplay;
           a.href = link;
           let button = document.createElement("button");
           osDisplay = osDisplay ? ", " + osDisplay.toUpperCase() : "";
           button.innerHTML = " " + workstationDisplay[0].toUpperCase() + workstationDisplay.slice(1) + osDisplay;
           let i = document.createElement("i");
-          i.classList.add("material-icons");
+          i.classList.add("material-icons", "valign");
           i.innerHTML = "computer";
           button.classList.add("systemButton");
           button.prepend(i);

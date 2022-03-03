@@ -156,7 +156,6 @@ header.windowmenu .programButtons:hover {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,.75);
     font-size: 2em;
     z-index: 99999;
     color: white;
@@ -173,6 +172,11 @@ header.windowmenu .programButtons:hover {
 .overlay button {
     margin-top: 1em;
     font-size: .75em;
+}
+
+.overlay button i {
+    font-size: 1.25em;
+    margin-right: .25em;
 }
 
 .actionMenu {
