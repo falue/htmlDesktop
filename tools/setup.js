@@ -11,9 +11,6 @@ let username;
 let password;
 
 async function setup() {
-  // Get general settings
-  /* setupWorkstationChooser(); */
-
   // Get Workstation parameter
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -24,8 +21,6 @@ async function setup() {
     // User wants to load a file via URL parameters
     data = loadSaveFile(urlParams.get('loadSaveFile'));
     if(!data) return;  // If file path is wrong (dialog from loadSaveFile())
-    /* cl(data);
-    cl(data.settings); */
     workstation = data.settings.workstation;
   } else if(workstation) {
     // Use default, git-synchronized settings 
@@ -51,7 +46,7 @@ async function setup() {
     windows = data.windows;
     shortcuts = data.shortcuts;
     systemIcons = data.systemIcons;
-    cl("OS by settings.js or by localStorage is: " + os);
+    // cl("OS by settings.js or by localStorage is: " + os);
   }
 
   // Fill the workstation chooser overlay
@@ -60,7 +55,7 @@ async function setup() {
   if(!workstation) { 
     // Missing workstation in url
     show('overlayWorkstation');
-    console.log("No workstation defined in URL. Abort setup() but show workstation chooser.")
+    cl("No workstation defined in URL. Abort setup() but show workstation chooser.")
     return;
   }
 
@@ -72,26 +67,26 @@ async function setup() {
 
   // Add OS specific styles
   addStylesheet("os/"+os+"/stylesheet.css");
-  console.log("Final workstation: " + workstation + ", OS: " + os);
+  //  cl("Final workstation: " + workstation + ", OS: " + os);
 
   // Workstation is chosen, read workstation settings
   // Setup settings
   setupSettings(settings);
-  cl("SETUP: setupSettings success ");
+  // cl("SETUP: setupSettings success ");
 
   // Loop over shortcuts
   for (let shortcut of shortcuts) {
     placeShortcut(shortcut["name"], shortcut["icon"], shortcut["x"],shortcut["y"], shortcut["action"]);
   }
-  cl("SETUP: placeShortcut success, "+shortcuts.length+" shortcuts placed.");
+  // cl("SETUP: placeShortcut success, "+shortcuts.length+" shortcuts placed.");
 
   // Loop over windows
   setupWindows(windows);
-  cl("SETUP: windows success, "+windows.length+" windows placed.");
+  // cl("SETUP: windows success, "+windows.length+" windows placed.");
   
   // Loop over windows
   setupSystemIcons(systemIcons);
-  cl("SETUP: systemIcons success, "+systemIcons.length+" icons displayed.");
+  // cl("SETUP: systemIcons success, "+systemIcons.length+" icons displayed.");
 
   // Create generic Shortcuts if none are defined
   if(!shortcuts.length) {
@@ -102,7 +97,7 @@ async function setup() {
     placeShortcut("Trash", "trashFull.png", 93,80, "");
   }
 
-  cl("SETUP: Finished!");
+  // cl("SETUP: Finished!");
 
   return;
 }
