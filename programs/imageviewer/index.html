@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>imageviewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="imageviewer.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="imageviewer.js"></script>
+
+  </head>
+  <body onload="setupImageViewer();">
+    <header class="windowmenu">
+      <button class="programButtons">File</button><!-- 
+      --><button class="programButtons">Edit</button><!-- 
+      --><button class="programButtons">Go to</button><!-- 
+      --><button class="programButtons">Remote</button><!-- 
+      --><button class="programButtons">Settings</button><!-- 
+      --><button class="programButtons">Share</button><!-- 
+      --><button class="programButtons">View</button><!-- 
+       --><button class="programButtons">About</button>
+    </header>
+
+    <div id="content" class="content">
+      <div class="imageNavigation left" onclick="navigateGallery(-1);"></div>
+      <div class="imageNavigation right" onclick="navigateGallery(1);"></div>
+    </div>
+
+  </body>
+  </html>

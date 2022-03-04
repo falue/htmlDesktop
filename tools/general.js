@@ -162,6 +162,12 @@ function clamp(value, min, max) {
   return value;
 }
 
+function wrapAround(value, min, max) {
+  if(value > max) { return min; } else
+  if(value < min) { return max; }
+  return value;
+}
+
 function createUniqueId(max) {
   if(!max) max = 28;
   /* return Math.floor(Math.random() * 32000) + "-" + Date.now(); */
