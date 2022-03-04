@@ -17,6 +17,9 @@
     <script src="tools/desktop.js"></script>
     <script src="tools/saveLoad.js"></script>
 
+    <!-- No robots allowed -->
+    <meta name="robots" content="noindex" />
+
   </head>
   <body onload="setup();" class="maxWidth maxHeight fixed">
 
@@ -50,9 +53,9 @@
           <br>
           <form action="javascript:login(gebi('lockScreenPassword').value);">
             <input id="passwordCheck" type="hidden" placeholder="password">
-            <input id="lockScreenText" class="padding radius10 clearBorder" type="text" placeholder="user" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
+            <input id="lockScreenText" autocomplete="off" data-form-type="other" class="padding radius10 clearBorder" type="text" placeholder="user" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
             <br>
-            <input id="lockScreenPassword" class="padding radius10 clearBorder" type="password" placeholder="password" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
+            <input id="lockScreenPassword" autocomplete="off" data-form-type="other" class="padding radius10 clearBorder" type="password" placeholder="password" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
             <br>
             <div class="relative">
               <!-- <div id="wrongPassword" class="hide red sine20">
