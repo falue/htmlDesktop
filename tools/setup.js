@@ -103,8 +103,11 @@ async function setup() {
 }
 
 function addStylesheet(path) {
+  let currentStylesheet = gebi('osStylesheet');
+  if(currentStylesheet) currentStylesheet.remove();
   let head = document.head;
   let link = document.createElement("link");
+  link.id = "osStylesheet"
   link.type = "text/css";
   link.rel = "stylesheet";
   link.href = path;
