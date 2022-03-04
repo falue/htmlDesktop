@@ -8,7 +8,7 @@ header {
     box-sizing: border-box;
     border-bottom: solid thin grey;
     background-color: rgb(242,242,242);
-    z-index: 2;
+    z-index: 5;
 }
 
 
@@ -16,14 +16,18 @@ header {
     /* padding: 1em; */
     height: calc(100% - 1.5em);
     top: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    /* overflow-x: hidden;
+    overflow-y: auto; */
     box-sizing: border-box;
     background-color: black;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     z-index: 1;
+}
+
+.onlyOneImage .imageNavigation {
+    display: none;
 }
 
 .imageNavigation {
@@ -67,3 +71,49 @@ header {
     right: 1em;
 }
 
+.thumbnails {
+    opacity: 0.75;
+    position: absolute;
+    height: 6em;
+    width: 100%;
+    padding: 1em;
+    bottom: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-sizing: border-box;
+    /* background-color: rgba(123,45,4,.5); */
+    z-index: 3;
+    text-align: center;
+    /* scroll-behavior: smooth; */
+    /* transform: translateY(2.5em); */
+
+    padding-top: 3em;
+    transition: padding-top 200ms, opacity 350ms;
+}
+.thumbnails:hover {
+    opacity: 1;
+    /* transform: translateY(0); */
+    padding-top: 1em;
+}
+
+.thumbnails .thumbnail {
+    border: thin grey solid;
+    height: 100%;
+    width: 5.5em;  /* random width*/
+    margin: 0 .5em;
+    background-color: cornflowerblue;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.thumbnail.active {
+    border: thin red solid;
+}
+
+.video {
+    /* ... */
+    z-index: 2; /* ! */
+}
