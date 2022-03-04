@@ -117,6 +117,18 @@ input[type=button]:not(.systemButton) {
     left: 1.5em;
 }
 
+.keyboardKey {
+    border-radius: 1em;
+    min-width: 1.2em;
+    height: 1.2em;
+    overflow: hidden;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin-right: .25em;
+    padding: 0.05em 0.35em 0.35em 0.35em;
+    display: inline-block;
+}
+
 input[type="color"] {
 	-webkit-appearance: none;
 	border: solid grey thin;

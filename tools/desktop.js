@@ -212,3 +212,70 @@ async function showNote(title, text, icon, deathDelay) {
     // If no notes present, hide div
     if(!listOfNotes.innerHTML) hide("autoNote");
 }
+
+
+function keyboardController(event) {
+    // Ignore presses in textfield etc
+    if(event.target.localName === "body") {
+        let key = event.key;
+        switch(key) {
+            case "1": addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false); break;
+            case "2": addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation='+workstation, 5,5, 600,350, false); break;
+            case "3": addWindow('Text editor', 'edit_note', 'texteditor', 5,5, 666,450, false); break;
+            case "4": addWindow('Browser', 'public', 'browser/index.html?env='+workstation, 5,5, 1200,650, false); break;
+            case "5": addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation='+workstation+'&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', 5,5, 666,450, false); break;
+            case "-": guiZoom(-2); break;
+            case "+": guiZoom(2); break;
+            case "=": guiZoomInitial(); break;
+            case "b": toggle('blackout'); break;
+            case "c": createShortcut(); break;
+            case "S": save(false); break;
+            case "d": clutterDesktop(4); break;
+            case "Escape": screenSaver(); break;
+
+            /* case "arrowright": cl("arrow right!"); break;
+            case "arrowleft": cl("arrow left!"); break;
+            case "arrowup": cl("arrow up!"); break;
+            case "arrowdown": cl("arrow down!"); break;
+            case " ": cl("space!"); break;
+            case "backspace": cl("backspace!"); break; 
+            case "enter": cl("enter!"); break;
+            case "delete": cl("delete"); break;
+            case "meta": cl("cmd"); break;
+            case "shift": cl("shift"); break;
+            case "alt": cl("alt"); break;
+            case "control": cl("control"); break;
+            case "shift": cl("shift"); break; */
+
+            default:
+                cl("anything else. Key: ");
+                cl(key);
+                hide('blackout');
+                screensaverHide();
+                break;
+        }
+    }
+}
+
+
+function screenSaver() {
+    gebi('screensaverSrc').setAttribute('src', 'os/'+os+'/screensaver.mp4');
+    show('screensaver');
+    gebi('screensaver').load();
+    gebi('screensaver').play();
+}
+
+function screensaverHide() {
+    let screensaver = gebi('screensaver');
+    screensaver.pause(); screensaver.currentTime=0; hide(screensaver.id);
+}
+
+
+function guiZoom(value) {
+    let currentFontSize = document.defaultView.getComputedStyle(document.getElementsByTagName('body')[0]).fontSize;
+    document.getElementsByTagName('body')[0].style.fontSize = (parseInt(currentFontSize) + value) + 'px';
+}
+
+function guiZoomInitial() {
+    document.getElementsByTagName('body')[0].style.fontSize = '1rem';
+}

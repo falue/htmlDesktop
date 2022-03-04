@@ -99,7 +99,7 @@ function navigateGallery(direction) {
 }
 
 
-function keyboardController(event) {
+function keyboardControllerImageViewer(event) {
     let KeyID = event.keyCode;
     switch(KeyID) {
 
