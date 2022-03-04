@@ -98,3 +98,55 @@ function navigateGallery(direction) {
     imageIndex = wrapAround(imageIndex, 0, files.length-1);
     showImage(imageIndex);
 }
+
+
+function keyboardController(event) {
+    let KeyID = event.keyCode;
+    switch(KeyID) {
+
+        case 39:
+            cl("arrow right");
+            navigateGallery(1);
+            break;
+
+        case 37:
+            cl("arrow left");
+            navigateGallery(-1);
+            break;
+
+        case 32:
+            cl("space..");
+            if(files[imageIndex].endsWith(".mp4")) {
+                let player = gebi('videoJsPlayerWrapper_html5_api');
+                if(player) {
+                    if (player.paused) {
+                        player.play(); 
+                    } else {
+                        player.pause();
+                    }
+                }
+            }
+            break;
+
+        case 8:
+            cl("backspace");
+            break; 
+            
+        case 13:
+            cl("enter");
+            break;
+            
+        case 27:
+            cl("esc");
+            break;
+
+        case 46:
+            cl("delete");
+            break;
+
+        default:
+            cl("anything else. KeyID: ");
+            cl(KeyID);
+            break;
+    }
+}
