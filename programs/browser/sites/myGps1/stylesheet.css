@@ -1,0 +1,301 @@
+body {
+    user-select: none;
+}
+
+h1, h2, h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(0,128,128);
+}
+
+.mainColor {
+    color: rgb(0,128,128);
+}
+.mainColorBg {
+    background-color: rgb(0,128,128);
+}
+
+li {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
+
+/* MAIN GUI */
+.appTitle {
+    padding-bottom: .15em;
+    font-style: italic;
+}
+
+.appTitle i {
+    vertical-align:middle;
+}
+
+header {
+    position: relative;
+}
+
+article {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.history {
+    padding: 3em 0 0 3em;
+}
+
+.history i {
+    margin-left: 0.5em;
+}
+
+.history i:hover {
+    color: black;
+}
+
+.history span.grey {
+}
+
+#stage1 footer {
+    position: fixed;
+    width: 100%;
+    height: 3.5em;
+    padding-top: 1em;
+    bottom: 0;
+    background-color: white;
+    box-sizing: border-box;
+    border-top: solid lightgrey thin;
+}
+
+#stage1 footer i {
+    margin-left: 0.5em;
+    vertical-align: middle;
+}
+
+#stage1 .tools {
+    background-color: white;
+    padding: 1em;
+    width: 16em;
+    top: 1em;
+    right: 1em;
+    position: absolute;
+    z-index: 2;
+    border-radius: 4px;
+}
+
+#stage1 .tools.tools2 {
+    right: 20em;
+}
+
+#stage1 .tools .titleList {
+    padding-left: .5em;
+    border-radius: 5px;
+    margin-bottom: .5em;
+}
+
+#stage1 .tools li {
+    font-size: 1em;
+    padding: .75em 0;
+    border-bottom: solid rgba(0,0,0,0.15) thin;
+}
+
+
+#stage1 .tools li i {
+    vertical-align: middle;
+}
+
+.statusbar {
+    padding: .5em;
+    border-bottom: solid grey thin;
+}
+
+.toolbar {
+    padding-bottom: .5em;
+}
+
+.mainButtons {
+    padding: 1em;
+}
+
+.settings:hover {
+    color:yellow;
+}
+
+button {
+    border-radius: 4px;
+    text-transform: uppercase;
+    background-color:mediumaquamarine;
+}
+
+
+
+/* STAGES */
+.stage {
+    position: relative;
+    display: none;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position:relative;
+    padding:1em;
+}
+
+#stage0 {
+    display: block;
+}
+
+#stage1 button {
+    font-size: 1.25em;
+    margin-bottom: .25em;
+}
+
+#stage1 li {
+    padding-bottom: .75em;
+}
+
+#stage0, #stage2 {
+    font-size: 1.2em;
+    padding-top:18%;
+    text-align: center;
+    box-shadow: inset -10px -40px 120px rgba(0,0,0,0.35);
+}
+
+.mapContainer {
+    position:absolute;
+    overflow: auto;
+    background-color: lightgrey;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-1em);
+}
+
+.map {
+    position:absolute;
+    background-color: lightgrey;
+    width: 2000px;
+    height: 1843px;  /* proportionen vom bild auf 2000 skaliert */
+    background-image: url(imgs/map.png);
+    background-repeat: no-repeat;
+    background-size: 2000px;
+    background-position-y: top;
+    transform: scale(.4);
+    transform-origin: center middle;
+    transition: all 200ms ease-in-out;
+    z-index: 1;
+}
+
+.mapNavi {
+    background-color: white;
+    padding: 1em;
+    width: 12em;
+    top: 6em;
+    right: 1em;
+    position: absolute;
+    z-index: 2;
+    border-radius: 4px;
+}
+
+.mapNavi .titleList {
+    padding-left: .5em;
+    border-radius:5px;
+    margin-bottom: .5em;
+}
+
+.mapNavi li {
+    padding: .25em 0;
+    border-bottom: solid rgba(0,0,0,0.15) thin;
+}
+
+.mapTools {
+    position: absolute;
+    z-index: 2;
+}
+
+.mapTools div {
+    width: 3.2em;
+    text-align: center;
+    display: inline-block;
+    background-color: white;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    /* transform: translateY(0em); */
+}
+.mapTools div:hover {
+    color: white;
+    background-color: rgb(0,128,128);
+}
+
+.pin {
+    position:absolute;
+    font-size: 4em;
+}
+
+.pin i {
+    font-size: .75em;
+}
+
+.pin div {
+    width: 200px;
+    font-size: 0.3em;
+    padding:5px 10px;
+    position: absolute;
+    text-align: center;
+    background-color: rgba(255,255,255,.75);
+    border-radius: 12px;
+    color: black;
+    top:-60px;
+    left:-85px;
+    /* transform: translate(-25%, -100%); */
+}
+
+.pin div i {
+    font-size: 1.25em;
+    vertical-align: middle;
+}
+
+.pieter {
+    /* color: rgb(0,128,128); */
+    color: red;
+    left:50%;
+    top:50%;
+}
+
+.pinIcon {
+    border: solid rgba(0,128,128,0) 3px;
+}
+
+.pulsating {
+    border-radius:50%;
+    animation: pulsate 666ms ease-out infinite,  pulsateCircle 400ms linear infinite;
+}
+
+.doro {
+    color: red;
+    left:44.8%;
+    top:14.5%;
+}
+
+.doro i {
+    text-shadow: 0 0 10px white;
+}
+
+
+/* ANIMATIONS */
+@-webkit-keyframes pulsate {
+    0%   { text-shadow: 0 0 0 cyan; }
+    22%  { text-shadow: 0 0 10px white; }
+    55%  { text-shadow: 0 0 17px white; }
+    100% { text-shadow: 0 0 0 cyan; }
+}
+
+@-webkit-keyframes pulsateCircle {
+    0%   { border: solid rgba(0,128,128,0) 3px; }
+    30%   { border: solid rgba(0,128,128,0) 3px; }
+    50%  { border: solid rgba(0,128,128,1) 3px; }
+    80%  { border: solid rgba(0,128,128,1) 3px; }
+    100%   { border: solid rgba(0,128,128,0) 3px; }
+}

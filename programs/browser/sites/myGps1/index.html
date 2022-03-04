@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MyGPS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../tools/fonts.css?v=3" media="all">
+    <link rel="stylesheet" href="../tools/general.css?v=1" media="all">
+    <link rel="stylesheet" href="stylesheet.css?v=3" media="all">
+    <script src="../tools/general.js?v=1"></script>
+    <script src="stages.js"></script>
+    <script src="animation.js"></script>
+    <script src="javascript.js"></script>
+    
+  </head>
+  <body>
+    <div class="preload">
+      <img src="imgs/map.png" alt="" />
+    </div>
+
+    <article id="article">
+      <header class="mainColorBg white">
+        <div class="statusbar">
+          <h1 class="appTitle white">
+            <i class="material-icons white big">share_location</i>
+            MyGPS
+          </h1>
+          <button>File</button>
+          <button>Edit </button>
+          <button>View</button>
+          <button>Connect</button>
+          <button>Setup</button>
+          <button>Help</button>
+          <button>Upgrade</button>
+        </div>
+        <div class="right top mainButtons white" onclick="resetAllStages();">
+            <i class="material-icons ">tap_and_play</i>
+            <i class="material-icons ">person</i>
+            <i class="material-icons ">settings</i>
+        </div>
+      </header>
+
+      <!-- STAGES -->
+      <!-- STARTUP -->
+      <div class="stage" id="stage0" onclick="loadGPSHistory();">
+        <!-- stage 0<br> -->
+        <h1>MyGPS wird gestartet</h1><br>
+        Gerät wird verbunden..<br>
+        <br>
+        <i class="material-icons mainColor sine large">bluetooth</i>
+      </div>
+
+      <!-- HISTORY -->
+      <div class="stage" id="stage1">
+        <!-- stage 1<br> -->
+        <div class="toolbar">
+          <h1>GPS LOCATION HISTORY</h1>
+        </div>
+        Tracker "PIETER"
+        <br>
+        <span class="small grey">Tracker v4135.4554A</span>
+        <br>
+        <br>
+
+        <div class="history">
+          <ul>
+            <li>
+              <button>ROUTE 1 13.01. 2022 - 4.2km</button>
+              <br>
+              <span class="grey">
+                <i class="material-icons small">gps_fixed</i>
+                <i class="material-icons small">map</i>
+                <i class="material-icons small">explore</i>
+                <i class="material-icons small">near_me</i>
+                <i class="material-icons small">public</i>
+                <i class="material-icons small">timeline</i>
+                <i class="material-icons small">waterfall_chart</i>
+                <i class="material-icons small">track_changes</i>
+              </span>
+            </li>
+            <li>
+              <button>ROUTE 2 13.01. 2022 - 1.6km</button>
+              <br>
+              <span class="grey">
+                <i class="material-icons small">gps_fixed</i>
+                <i class="material-icons small">map</i>
+                <i class="material-icons small">explore</i>
+                <i class="material-icons small">near_me</i>
+                <i class="material-icons small">public</i>
+                <i class="material-icons small">timeline</i>
+                <i class="material-icons small">waterfall_chart</i>
+                <i class="material-icons small">track_changes</i>
+              </span>
+            </li>
+            <li>
+              <button>ROUTE 3 14.01. 2022 - 0.8km</button>
+              <br>
+              <span class="grey">
+                <i class="material-icons small">gps_fixed</i>
+                <i class="material-icons small">map</i>
+                <i class="material-icons small">explore</i>
+                <i class="material-icons small">near_me</i>
+                <i class="material-icons small">public</i>
+                <i class="material-icons small">timeline</i>
+                <i class="material-icons small">waterfall_chart</i>
+                <i class="material-icons small">track_changes</i>
+              </span>
+            </li>
+            <li><button onclick="nextStage()">ROUTE 4 15.01. 2022 - 2.4km</button>
+            <br>
+            <span class="grey">
+              <i class="material-icons small">gps_fixed</i>
+              <i class="material-icons small">map</i>
+              <i class="material-icons small">explore</i>
+              <i class="material-icons small">near_me</i>
+              <i class="material-icons small">public</i>
+              <i class="material-icons small">timeline</i>
+              <i class="material-icons small">waterfall_chart</i>
+              <i class="material-icons small">track_changes</i>
+            </span>
+            </li>
+          </ul>
+
+          <input type="checkbox"> &emsp; Benachrichtigungen<br>
+          <!-- <input type="checkbox"> &emsp; Geräte Automatik<br> -->
+          <!-- <input type="checkbox" checked> &emsp; Icons<br> -->
+          <input type="checkbox" checked> &emsp; History loggen<br>
+          <input type="checkbox" checked> &emsp; Automatische Updates<br>
+        </div>
+
+        <footer class="grey">
+          <i class="material-icons mainColor">restart_alt</i> Ger&auml;t neustarten
+          <i class="material-icons mainColor">sim_card_download</i> SIM Setup
+          <i class="material-icons mainColor">security_update</i> Sicherheitsupdate 
+          <i class="material-icons mainColor">security_update_warning</i> Warnungen
+          <i class="material-icons mainColor">settings_system_daydream</i> Daydream&trade;
+          <i class="material-icons mainColor">bluetooth</i> Verbindungen
+          <i class="material-icons mainColor">map</i> Kartendaten
+          <i class="material-icons mainColor">alt_route</i> Versionierung
+        </footer>
+
+        <div class="tools shadow">
+          <ul>
+            <li class="titleList mainColorBg"><h2 class="white">
+              <i class="material-icons valign">handyman</i>
+              Werkzeuge
+            </h2></li>
+            </ul>
+            <i class="material-icons big black">person_search</i>
+            <i class="material-icons big black">person_pin</i>
+            <ul>
+            <li><i class="material-icons mainColor">language</i> Tracking</li>
+            <li><i class="material-icons mainColor">analytics</i> Rapporte</li>
+            <li><i class="material-icons mainColor">task</i> Aufgaben</li>
+            <li><i class="material-icons mainColor">local_shipping</i> Flotte</li>
+          </ul>
+          <br>
+          <i class="material-icons small grey">file_download</i>
+          <i class="material-icons small grey">settings</i>
+          <i class="material-icons small grey">upload_file</i>
+        </div>
+
+        <div class="tools tools2 shadow">
+          <ul>
+            <li class="titleList mainColorBg"><h2 class="white">
+              <i class="material-icons valign">info</i>
+              Geschichte
+            </h2></li>
+          </ul>
+          Fortgeschr. <span class="grey">|</span>
+          Genauigkeit <span class="grey">|</span>
+          TAIL&trade;
+          <br>
+          <br>
+          <img src="imgs/calendar.png" class="width100" alt=""/>
+          <br>
+          <br>
+          <span class="small grey">MyGPS v1.2.0.1</span>
+        </div>
+      </div>
+
+      <!-- LOADING.. -->
+      <div class="stage" id="stage2">
+        <!-- stage 2<br> -->
+        <h1>FETCHING DATA ROUTE 4</h1><br>
+        Loading Route 4 <span class="grey">|</span> 15.01. 2022 <span class="grey">|</span> PIETER
+        <br>
+        <i class="material-icons mainColor spin large">refresh</i>
+      </div>
+
+      <!-- MAP WITH ROUTE 4 -->
+      <div class="stage" id="stage3">
+        <!-- <span onclick="nextStage()">go to start</span><br> -->
+        <!-- stage 3<br> -->
+        <div class="toolbar">
+          <h1>
+            PIETER - ROUTE 4 
+          </h1>
+
+          <!-- Speed adjustment -->
+          <h1 id="speedAdjust" class="hide red">
+            Animation speed: 
+            <input type="range" value="4" min="0.1" max="10" step="0.1" class="flipX"
+              onmousedown="adjustSpeedStart();"
+              oninput="adjustSpeedDisplay(this.value);"
+              onchange="adjustSpeed(this.value);"
+            >
+            <span id="speed">6</span>
+          </h1>
+
+          <span class="small grey">
+            15.01. 2022 - 2.4km
+          </span>
+        </div>
+
+        <div class="mapTools">
+          <div>
+            <i class="material-icons" id="play" onclick="startAnimationPieter()">play_arrow</i>
+            <i class="material-icons hide flipX" id="reset" onclick="resetPieter()">refresh</i>
+            <i class="material-icons hide" id="pause" onclick="stopAnimationPieter()">pause</i>
+          </div>
+          <div onclick="zoom(.15)"><i class="material-icons">zoom_in</i></div>
+          <div onclick="zoom(-.15)"><i class="material-icons">zoom_out</i></div>
+          <div onclick="resetZoom()"><i class="material-icons">zoom_out_map</i></div>
+          <div><i class="material-icons">explore</i></div>
+          <div><i class="material-icons">layers</i></div>
+          <div onclick="toggle('speedAdjust');"><i class="material-icons">insert_chart_outlined</i></div>
+        </div>
+
+        <!-- map -->
+        <div id="mapContainer" class="mapContainer">
+          <div id="map" class="map" onmousewheel="saveScrollPosition()" onclick="zoom(.15)">
+
+            <div id="target" class="pin pieter">
+              <!-- onclick="stopAnimationPieter()" -->
+              <div class="shadow">
+                <h3><i class="material-icons">podcasts</i> PIETER</h3>
+                <span id="coordinates">47.564656, 7.595582</span>
+                <!-- >> 47.557995, 7.588072 -->
+              </div>
+              <i id="pinPieter" class="material-icons pinIcon">location_on</i>
+            </div>
+
+            <div id="doro" class="pin doro">
+              <div class="shadow">
+                <h3><i class="material-icons">podcasts</i> Ich</h2>
+                47.572633, 7.572217
+              </div>
+              <i class="material-icons pinIcon">adjust</i>
+            </div>
+          </div>
+          </div>
+
+          <!-- navi -->
+          <div class="mapNavi shadow">
+            <ul>
+              <li class="titleList mainColorBg"><h2 class="white">TOOLS</h2></li>
+              <li><i class="material-icons small grey">gps_fixed</i> Lock GPS</li>
+              <li><i class="material-icons small grey">map</i> Maps</li>
+              <li><i class="material-icons small grey">explore</i> Explore</li>
+              <li><i class="material-icons small grey">near_me</i> Retrieve</li>
+              <li><i class="material-icons small grey">public</i> Export</li>
+              <li><i class="material-icons small grey">timeline</i> Timelines</li>
+              <li><i class="material-icons small grey">waterfall_chart</i> Statistics</li>
+              <li><i class="material-icons small grey">track_changes</i> Track changes</li>
+            </ul>
+            <br>
+            <span class="small grey">Ger&auml; IMEI 8010804.6</span><br>
+            <span class="small grey">Tracker v4135.4554A</span><br>
+          </div>
+      </div>
+
+    </article>
+
+
+
+    <script>
+      // use this for starting at stage 3
+      /* resetStages();
+      playStage(1);
+      hide("stage0"); // whyever.. */
+
+      // Used because CSS is not the same as javascript positioning
+      resetZoom();
+      resetScrollPosition("initial");
+
+      resetAllStages();
+    </script>
+
+
+    <!-- LEAVE IT BE -->
+    <div class="backToIndex">
+      <a href="../index.html"><i class="material-icons big">menu_book</i></a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MyGPS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../tools/fonts.css?v=3" media="all">
+    <link rel="stylesheet" href="../tools/general.css?v=1" media="all">
+    <link rel="stylesheet" href="stylesheet.css?v=3" media="all">
+    <script src="../tools/general.js?v=1"></script>
+    <script src="animation.js"></script>
+    <script src="javascript.js"></script>
+    
+  </head>
+  <body>
+    <div class="preload">
+      <img src="imgs/map.png" alt="" />
+    </div>
+
+    <article id="article">
+      <header class="mainColorBg white">
+        <div class="statusbar">
+          <h1 class="appTitle white">
+            <i class="material-icons white big">share_location</i>
+            MyGPS
+          </h1>
+          <button>File</button>
+          <button>Edit </button>
+          <button>View</button>
+          <button>Connect</button>
+          <button>Setup</button>
+          <button>Help</button>
+          <button onclick="toggleRecordingPoints('mapContainer')">Upgrade</button>
+        </div>
+        <div class="right top mainButtons white" onclick="resetAllStages();">
+            <i class="material-icons ">tap_and_play</i>
+            <i class="material-icons ">person</i>
+            <i class="material-icons ">settings</i>
+        </div>
+      </header>
+
+      <!-- MAP WITH LIVE ROUTE -->
+      <div class="stage" id="stage3">
+        <div class="toolbar">
+          <h1>
+            PIETER - LIVE TRACKING
+          </h1>
+
+          <!-- Speed adjustment -->
+          <h1 id="speedAdjust" class="hide red">
+            Animation speed: 
+            <input type="range" value="4" min="0.1" max="10" step="0.1" class="flipX"
+              onmousedown="adjustSpeedStart();"
+              oninput="adjustSpeedDisplay(this.value);"
+              onchange="adjustSpeed(this.value);"
+            >
+            <span id="speed">6</span>
+          </h1>
+
+          <span class="small grey">
+            Ger&auml; IMEI 8010804.6 | v4135.4554A
+          </span>
+        </div>
+
+        <div class="mapTools">
+          <div onclick="zoom(.15)"><i class="material-icons">zoom_in</i></div>
+          <div onclick="zoom(-.15)"><i class="material-icons">zoom_out</i></div>
+          <div onclick="resetZoom()"><i class="material-icons">zoom_out_map</i></div>
+          <div class="absolute">
+            <i class="material-icons">explore</i>
+
+            <div class="hiddenButtons height100">
+              <span class="clear" id="play" onclick="startAnimationDoro()">play</span>
+              <span class="clear hide" id="reset" onclick="resetDoro()">refresh</span>
+              <span class="clear hide" id="pause" onclick="stopAnimationDoro()">pause</span>
+            </div>
+          </div>
+          <div><i class="material-icons">layers</i></div>
+          <div onclick="toggle('speedAdjust');"><i class="material-icons">insert_chart_outlined</i></div>
+        </div>
+
+        <!-- map -->
+        <div id="mapContainer" class="mapContainer">          
+          <div id="map" class="map" onmousewheel="saveScrollPosition()" onclick="zoom(.15)">
+
+            <div class="pin pieter">
+              <!-- onclick="stopAnimationPieter()" -->
+              <div class="shadow">
+                <h3><i class="material-icons">podcasts</i> PIETER</h3>
+                <span id="coordinatesPieter">47.585113, 7.588076</span>
+              </div>
+              <i id="pinPieter" class="material-icons pinIcon">adjust</i>
+            </div>
+
+            <div id="target" class="pin doro">
+              <div class="shadow">
+                <h3><i class="material-icons">podcasts</i> Ich</h2>
+                  <span id="coordinatesDoro">47.586398, 7.588711</span>
+              </div>
+              <i id="pinDoro" class="material-icons pinIcon">location_on</i>
+            </div>
+          </div>
+          </div>
+
+          <!-- navi -->
+          <div id="naviTools" class="mapNavi shadow">
+            <ul>
+              <li class="titleList mainColorBg"><h2 class="white">TOOLS</h2></li>
+              <li><i class="material-icons small grey">gps_fixed</i> Lock GPS</li>
+              <li><i class="material-icons small grey">map</i> Maps</li>
+              <li><i class="material-icons small grey">explore</i> Explore</li>
+              <li><i class="material-icons small grey">near_me</i> Retrieve</li>
+              <li><i class="material-icons small grey">public</i> Export</li>
+              <li><i class="material-icons small grey">timeline</i> Timelines</li>
+              <li><i class="material-icons small grey">waterfall_chart</i> Statistics</li>
+              <li><i class="material-icons small grey">track_changes</i> Track changes</li>
+            </ul>
+            <br>
+            <span class="small grey">Ger&auml; IMEI 8010804.6</span><br>
+            <span class="small grey">Tracker v4135.4554A</span><br>
+          </div>
+      </div>
+
+    </article>
+
+
+
+    <script>
+      // use this for starting at stage 3
+      /* resetStages();
+      playStage(1);
+      hide("stage0"); // whyever.. */
+
+      // Used because CSS is not the same as javascript positioning
+      resetZoom();
+      resetScrollPosition("initial");
+
+      /* resetAllStages(); */
+    </script>
+
+
+    <!-- LEAVE IT BE -->
+    <div class="backToIndex">
+      <a href="../index.html"><i class="material-icons big">menu_book</i></a>
+    </div>
+  </body>
+</html>

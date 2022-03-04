@@ -248,8 +248,6 @@ function keyboardController(event) {
             case "shift": cl("shift"); break; */
 
             default:
-                cl("anything else. Key: ");
-                cl(key);
                 hide('blackout');
                 screensaverHide();
                 break;
