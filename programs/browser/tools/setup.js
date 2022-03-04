@@ -94,31 +94,6 @@ async function setupSettings(path) {
           document.getElementById("loaderLinear").checked = true;
         break;
 
-      case "hideWindowFrame":
-        if (value) {
-          document.getElementById("toggleWindowFrame").checked = false;
-          hide("windowFrame");
-          hide("windowFrameSelector");
-        } else {
-          document.getElementById("toggleWindowFrame").checked = true;
-          show("windowFrame");
-          show("windowFrameSelector");
-        }
-        break;
-
-      case "windowFrameType":
-        if (value == "windowWindows") {
-          document.getElementById("windowWindows").checked = true;
-          show('windowFrameWindows');
-          hide('windowFrameOsx');
-        }
-        if (value == "windowOsx") {
-          document.getElementById("windowOsx").checked = true;
-          hide('windowFrameWindows');
-          show('windowFrameOsx');
-        }
-        break;
-
       case "internetConnection":
         if (!value) {
           document.getElementById("internetToggle").checked = true;

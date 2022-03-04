@@ -305,7 +305,7 @@ body {
 }
 
 .menu .close {
-    position: relative;
+    position: relative; 
     padding-top: .5em;
     bottom: 0;
     text-align: right;
@@ -314,68 +314,9 @@ body {
     box-sizing: content-box;
 }
 
-#windowFrameSelector {
-    display: none;
-}
-
-.windowFrame {
-    /* display: none; */
-    position: relative;
-}
-
-.windowFrameWindows {
-    height: 31px;
-    background-color: black;
-}
-
-.windowFrameWindows img {
-    height: 100%;
-}
-
-.windowFrameWindows .winBtns,
 .alignRight {
     position: absolute;
     right: 0;
-}
-
-.windowFrameOsx {
-    box-sizing:content-box;
-    padding-top: 2px;
-    padding-left: 5px;
-    background-color: #ddd;
-    border-bottom: 1px solid #ccc;
-    display: none;
-}
-
-.windowFrameOsx .buttons {
-    display: inline-block;
-    width: 60px;
-}
-
-.windowFrameOsx .buttons span {
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-    float: left;
-    margin: 0 0 0 6px;
-}
-
-.windowFrameOsx .windowTitle {
-    font-size: .8em;
-    text-align: center;
-    width: calc(100% - 90px);
-    display: inline-block;
-    opacity:0.75;
-}
-
-.windowFrameOsx .buttons .bt-1 {
-    background-color: #FF7F71;
-}
-.windowFrameOsx .buttons .bt-2 {
-    background-color: #FFE238;
-}
-.windowFrameOsx .buttons .bt-3 {
-    background-color: #5AC05A;
 }
 
 /* LOADER */
@@ -502,8 +443,7 @@ button:hover {
 }
 
 /* DARK MODE */
-.dark .fake-browser-bar,
-.dark .windowFrameOsx {
+.dark .fake-browser-bar {
     color: white;
     background-color: rgb(43, 43, 43);
     border-color: #111111;
@@ -558,7 +498,7 @@ button:hover {
 
 /* MOBILE */
 @media (max-width: 800px) {
-    #addons, #navigationalButtons, #favorites, .windowFrame, .hideMobile {
+    #addons, #navigationalButtons, #favorites, .hideMobile {
         display: none;
     }
     .fake-browser-bar .hamburger-menu {

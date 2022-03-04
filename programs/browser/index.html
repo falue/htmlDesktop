@@ -68,19 +68,6 @@
         </p>
 
         <p>
-        <input id="toggleWindowFrame" type="checkbox" onchange="toggle('windowFrameSelector'); toggle('windowFrame');">
-          <label for="toggleWindowFrame">Window Frame</label>
-          <br>
-          <div id="windowFrameSelector" class="submenu">
-            <input id="windowWindows" name="windowFrameSelector" type="radio" checked onchange="show('windowFrameWindows'); hide('windowFrameOsx');">
-            <label for="windowWindows">Windows</label>
-            <br>
-            <input id="windowOsx" name="windowFrameSelector" type="radio" onchange="hide('windowFrameWindows'); show('windowFrameOsx');">
-            <label for="windowOsx">OSX</label>
-          </div>
-        </p>
-
-        <p>
           <input id="internetToggle" type="checkbox" onchange="toggle('iframe');">
           <label for="internetToggle">Break the Internet</label>
         </p>
@@ -117,24 +104,6 @@
 
     <!-- FAKE BROWSER START -->
     <div class="fake-browser">
-        <!-- WINDOW FRAME -->
-        <div id="windowFrame" class="windowFrame">
-            <!-- WINDOWS -->
-            <div id="windowFrameWindows" class="windowFrameWindows">
-              <img src="tools/img/winUnik.jpg" alt="">
-              <img class="winBtns" src="tools/img/winBtns.jpg" alt="">
-            </div>
-            <!-- OSX -->
-            <div id="windowFrameOsx" class="windowFrameOsx">
-              <div class="buttons">
-                <span class="bt-1"></span>
-                <span class="bt-2"></span>
-                <span class="bt-3"></span>
-              </div>
-              <div class="windowTitle">UNIK BROWSER 4.1</div>
-            </div>
-        </div>
-
         <!-- ADRESSBAR -->
         <div class="fake-browser-bar">
             <div id="navigationalButtons" class="navigationalButtons">

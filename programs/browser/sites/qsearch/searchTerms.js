@@ -1,30 +1,3 @@
-/* let searchTerms = {
-    "metis": [
-        ["realLink", "spoofLink", "metis 1", "beschreibung"],
-        ["realLink", "spoofLink", "metis 2", "beschreibung"],
-        ["realLink", "spoofLink", "metis 3", "beschreibung"],
-    ],
-    "whateverman": [
-        ["realLink", "spoofLink", "whateverman 1", "beschreibung"],
-        ["realLink", "spoofLink", "whateverman 2", "beschreibung"],
-        ["realLink", "spoofLink", "whateverman 3", "beschreibung"],
-        ["realLink", "spoofLink", "whateverman 3", "beschreibung"],
-        ["realLink", "spoofLink", "whateverman 3", "beschreibung"],
-        ["realLink", "spoofLink", "whateverman 3", "beschreibung"],
-        ["realLink", "spoofLink", "whateverman 3", "beschreibung"],
-    ],
-    "sapienz": [
-        ["realLink", "spoofLink", "Sapienz 1", "beschreibung"],
-        ["realLink", "spoofLink", "Sapienz 2", "beschreibung"],
-        ["realLink", "spoofLink", "Sapienz 3", "beschreibung"],
-    ],
-    "a": [
-        ["../metis", "spoofLink", "Sapienz 1", "beschreibung"],
-        ["", "Et-laboris-sunt-consequat-elit-mollit-eiusmod-mollit-velit-sunt-ea-voluptate.", "Sapienz 2", "beschreibung"],
-        ["", "spoofLink", "Sapienz 3", "Veniam ut id qui ullamco.Tempor cillum eiusmod nisi sint mollit esse ut ullamco nulla. Do nulla veniam occaecat nostrud aliqua tempor et. Tempor consectetur qui velit aliquip irure nulla excepteur. Reprehenderit sint id velit irure duis in cillum exercitation ex est nisi laborum culpa in. Id dolore ea aliquip consectetur aute elit do consequat non labore aliquip. Amet irure nostrud dolore duis in mollit nisi nulla et cupidatat Lorem duis."],
-    ],
-};  */
-
 let searchTerms = {
   "sapienz": [
     [
