@@ -251,8 +251,12 @@ header.windowmenu .programButtons:hover {
     padding-top: .5em;
 }
 
-#savedFilesDialog .deleteButton {
+#savedFilesDialog .renameButton {
     right: 2em;
+}
+
+#savedFilesDialog .deleteButton {
+    right: 4em;
 }
 
 .fileUploadButton {
