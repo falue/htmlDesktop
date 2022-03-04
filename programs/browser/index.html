@@ -21,10 +21,6 @@
         <span id="unikVersion" class="unikVersion alignRight italics small">v0.0</span>
       </h2>
         <p>
-          <button onclick="show('overlayEnv');" style="width: 100%; margin-bottom: .5em;">Select Character</button>
-          <br>
-        </p>
-        <p>
           <button onclick="hide('menu'); show('favoritesMenu');" style="width: 100%;">See URLs</button>
           <br>
           <br>
@@ -187,38 +183,7 @@
           </div>
         </div>
         
-        <!-- OS WINDOWS HINT -->
-        <div id="overlayWin" class="overlay">
-          <div>
-            <span>&uarr;</span>
-            <img src="tools/img/open-in-popup.jpg" alt=""><br>
-            Klicke auf das Addon 
-            <a href="https://chrome.google.com/webstore/detail/open-as-popup/ncppfjladdkdaemaghochfikpmghbcpc?hl=en" style="color: white;" target="_blank">
-            "Open-as-popup"</a>, um den echten Browser zu verstecken.
-            <br>
-            <button onclick="hide('overlayWin');">OK, gemacht</button>
-          </div>
-        </div>
-        
-        <!-- SELECT ENVIRONMENT -->
-        <div id="overlayEnv" class="overlay">
-          <div>
-            <h2>Select Character</h2>
-            <p id="characterList">
-              <!-- <a href="index.html?env=natascha">
-                <button><i class="material-icons vertCenter">computer</i> Natascha OSX</button>
-              </a>
-              <br>
-              <a href="index.html?env=leo&win=true">
-                <button><i class="material-icons vertCenter">computer</i> Leo WIN</button>
-              </a> -->
-            </p>
-            <!-- <p>&nbsp;</p>
-            <button onclick="hide('overlayEnv');">Ignore</button> -->
-          </div>
-        </div>
-
-        <!-- SERVE ERROR -->
+        <!-- SERVER ERROR -->
         <div id="overlayServerError" class="overlay">
           <div>
             <h2 class="red">This must be served</h2>

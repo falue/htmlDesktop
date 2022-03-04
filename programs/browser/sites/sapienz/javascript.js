@@ -52,16 +52,22 @@ async function loadFileBrowser() {
     show('filelist');
 }
 
-function unloadImages() {
-    document.getElementById('imageLoadingFolderClosed').style.display = "table-row";
+function unloadImages(folderName) {
     /* document.getElementById('openFolderFamily').style.display = "table-row"; */
-    hide('openFolderFamily');
-    hide('openFolderLena');
-    hide('closedFolderFamily');
-    /* document.getElementById('openFolderLena').style.display = "table-row"; */
-    hide('closedFolderLena');
-    hide('imageLoadingFolder');
-    hideClass('imageGalleryTr');
+    if(folderName == 'bilder') {
+        document.getElementById('imageLoadingFolderClosed').style.display = "table-row";
+        hide('openFolderFamily');
+        hide('openFolderLena');
+        hide('closedFolderFamily');
+        /* document.getElementById('openFolderLena').style.display = "table-row"; */
+        hide('closedFolderLena');
+        hide('imageLoadingFolder');
+        hideCssQuery('.imageGalleryTr:not(.team)');
+    } else {
+        document.getElementById('closedFolderTeam').style.display = "table-row";
+        hide('openFolderTeam');
+        hideCssQuery('.imageGalleryTr.team');
+    }
     hideClass('subfolder');
 }
 
@@ -96,7 +102,7 @@ let lena = [
     "imgs/gallery/lena/9.jpg",
 ]
 let fileNamesLena = [
-    "Bilder/Lena/IMG_100322.jpg",
+    "Bilder/Lena/WTFIMG_100322.jpg",
     "Bilder/Lena/IMG_100323.jpg",
     "Bilder/Lena/IMG_100324.jpg",
     "Bilder/Lena/IMG_100325.jpg",
@@ -105,6 +111,50 @@ let fileNamesLena = [
     "Bilder/Lena/IMG_100328.jpg",
     "Bilder/Lena/IMG_100329.jpg",
     "Bilder/Lena/IMG_100330.jpg",
+]
+
+
+let team = [
+    "imgs/gallery/team/1.jpg",
+    "imgs/gallery/team/2.jpg",
+    "imgs/gallery/team/3.jpg",
+    "imgs/gallery/team/4.jpg",
+    "imgs/gallery/team/5.jpg",
+    "imgs/gallery/team/6.jpg",
+    "imgs/gallery/team/7.jpg",
+    "imgs/gallery/team/8.jpg",
+    "imgs/gallery/team/9.jpg",
+    "imgs/gallery/team/10.jpg",
+    "imgs/gallery/team/11.jpg",
+    "imgs/gallery/team/12.jpg",
+    "imgs/gallery/team/13.jpg",
+    "imgs/gallery/team/14.jpg",
+    "imgs/gallery/team/15.jpg",
+    "imgs/gallery/team/16.jpg",
+    "imgs/gallery/team/17.jpg",
+    "imgs/gallery/team/18.jpg",
+    "imgs/gallery/team/19.jpg"
+]
+let fileNamesTeam = [
+    "Team/IMG_9647.jpg",
+    "Team/IMG_9646.jpg",
+    "Team/IMG_9637.jpg",
+    "Team/IMG_9638.jpg",
+    "Team/IMG_9639.jpg",
+    "Team/IMG_9641.jpg",
+    "Team/IMG_9643.jpg",
+    "Team/IMG_9644.jpg",
+    "Team/IMG_9645.jpg",
+    "Team/IMG_5621.jpg",
+    "Team/IMG_6546.jpg",
+    "Team/IMG_9636.jpg",
+    "Team/dbc2fef8-f4cf-40b8-8da7-16e409003a46.jpg",
+    "Team/f529b581-fe79-4c62-a0b9-3114292a87b5.jpg",
+    "Team/IMG_0835.jpg",
+    "Team/7aed29c0-96e5-4dc5-93da-b261bf4988ba.jpg",
+    "Team/46eb7a82-60db-4d1c-b6a3-7ad92e01cb28.jpg",
+    "Team/55dcff66-1b39-4fa5-ae97-f11e9a90e7c9.jpg",
+    "Team/03a29179-db9b-477f-a262-d4deb9d14f1b.jpg",
 ]
 
 let imageIndex = 0;

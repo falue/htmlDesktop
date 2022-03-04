@@ -5,43 +5,17 @@ async function setup() {
   // Set unik version
   document.getElementById('unikVersion').innerHTML = "v" + unikVersion;
 
-  // Detect history back/foreward button presses
-  /* console.log("workds"); */
-  /* window.addEventListener('popstate', (event) => {
-    console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
-  }); */
-  /* window.onpopstate = function(event) {
-      console.log("location: " + document.location);
-      if(event.originalEvent.state != null){
-        console.log("chrome");
-      }
-  } */
-  
-  /* if (window.history && window.history.pushState) {
-    console.log("hard refreshed");
-  } */
-
-
-  /* window.onpopstate = function(event) {
-    console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
-  }; */
-
-  // Get general settings
-  setupGeneralSettings();
-
   // Get Envirenment parameter
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const env = urlParams.get('env');
-  let path = "environments/" + env;
+  let path = "../../workstations/"+ env +"/browser";
 
   // If env is chosen, read env settings & URLs
   if(env) {
     // Get os parameter if set
     const os = urlParams.get('os');
-    if(os === "win") {
-      show('overlayWin');
-    }
+    
     // Setup settings
     setupSettings(path);
     
@@ -49,50 +23,12 @@ async function setup() {
     setupFavorites(path);
   } else {
     // If no parameter env is set, display character chooser
-    show("overlayEnv");
+    console.log("no env in URL !!!")
   }
 
   // Force cache reload iframe
   reloadIframe();
 
-}
-
-async function setupGeneralSettings() {
-    // set settings like dark mode etc
-    let settingsData = await parseFile("tools/generalSettings.txt");
-    settingsData.forEach(function (e) {
-      // do stuff with
-      let settings = e.split("=");
-      let setting = settings[0];
-      let value = settings[1];
-      value = value === "true" ? true : value;
-      value = value === "false" ? false : value;
-  
-      switch (setting) {
-        case "env":
-          /* Setup all characters in characters list */
-          let values = value.split(";");
-          let character = values[0];
-          let os = values[1] ? values[1] : "";
-          let characterList = document.getElementById('characterList');
-
-          let a = document.createElement("a");
-          let link = "index.html?env="+character;
-          link += os == "win" ? "&os=win" : "";
-          a.href = link;
-          let button = document.createElement("button");
-          os = os ? ", " + os.toUpperCase() : "";
-          button.innerHTML = " " + character[0].toUpperCase() + character.slice(1) + os;
-          let i = document.createElement("i");
-          i.classList.add("material-icons");
-          i.innerHTML = "computer";
-          button.prepend(i);
-          a.prepend(button);
-          characterList.appendChild(a);
-          characterList.appendChild(document.createElement("br"));
-          break;
-      }
-    });
 }
 
 async function setupSettings(path) {
@@ -294,7 +230,6 @@ async function parseFile(filepath) {
   }).catch((error) => {
     // Catch error i case server is not working
     console.log("Cannot load file: " + filepath);
-    hide("overlayEnv");
     show("overlayServerError");
   });
 

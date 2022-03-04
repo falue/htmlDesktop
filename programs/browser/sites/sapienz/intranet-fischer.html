@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- style and script resources -->
-  <link rel="stylesheet" type="text/css" href="../../../../tools/fonts.css" media="all">
-  <link rel="stylesheet" href="../../../../tools/general.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+  <link rel="stylesheet" href="../../tools/general.css" media="all">
   <link rel="stylesheet" href="stylesheet.css" media="all">
-  <script src="../../../../tools/general.js"></script>
+  <script src="../../tools/general.js"></script>
   <script src="javascript.js"></script>
 </head>
 
@@ -210,7 +210,7 @@
           </tr>
           
           <!-- OPEN FOLDER BILDER -->
-          <tr id="imageLoadingFolder" class="hide" onclick="unloadImages();">
+          <tr id="imageLoadingFolder" class="hide" onclick="unloadImages('bilder');">
             <td><i class="material-icons mainColor small valignText">folder</i></td>
             <td>Bilder</td>
             <td>-</td>
@@ -530,6 +530,54 @@
             <td>2522</td>
             <td>None</td>
           </tr>
+
+          <!-- 
+            
+
+
+Beiträge
+Bilder:
+    Allgemein
+    Diverses
+    Family:
+        bilder.jpg
+        ....
+    Lena:
+        bilder.jpg
+        ...
+    Mediathek
+    Portraits
+    Team:
+      Neues Bild von dropbox 1.jpg
+      Neues Bild von dropbox 2.jpg
+      Neues Bild von dropbox 3.jpg
+      Neues Bild von dropbox 4.jpg
+      ....
+      "Theoretisch noch mehr dateien die nicht gesehen werden aber hier aufgelistet sind 1".jpg
+      "Theoretisch noch mehr dateien die nicht gesehen werden aber hier aufgelistet sind 2".jpg
+      "Theoretisch noch mehr dateien die nicht gesehen werden aber hier aufgelistet sind 3".jpg
+      "Theoretisch noch mehr dateien die nicht gesehen werden aber hier aufgelistet sind 4".jpg
+      "Theoretisch noch mehr dateien die nicht gesehen werden aber hier aufgelistet sind 5".jpg
+      ....
+    ....
+Daten
+Desktop
+Dokumente
+Downloads
+Dropbox
+Cloud Server
+Musik
+Sci-Hub
+
+Videos
+Zuletzt verwendet
+
+
+
+
+
+
+           -->
 
           <!-- OTHER FOLDERS -->
           <tr class="hide subfolder" onclick="">
@@ -1168,7 +1216,8 @@
             <td>-</td>
           </tr>
           
-          <tr>
+          <!-- Sci-hub.com -->
+<!--           <tr>
             <td><i class="material-icons mainColor small valignText">folder_open</i></td>
             <td>Sci-Hub</td>
             <td>-</td>
@@ -1176,6 +1225,655 @@
             <td>rwxr-xr-x (755)</td>
             <td>-</td>
             <td>-</td>
+          </tr> -->
+
+          <!-- BEWARE TEAM -->
+          <!-- CLOSED FOLDER LENA -->
+          <tr id="closedFolderTeam" class="" onclick="loadImages('team');">
+            <td><i class="material-icons mainColor small valignText">folder_open</i></td>
+            <td>Team</td>
+            <td>-</td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          
+          <!-- OPEN FOLDER team -->
+          <tr id="openFolderTeam" class="hide imageGalleryTr team" onclick="unloadImages('team');">
+            <td><i class="material-icons mainColor small valignText">folder</i></td>
+            <td>Team</td>
+            <td>-</td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+
+          <tr id="imageLoadingTeam" class="hide">
+            <td></td>
+            <td>
+              <!-- <i class="material-icons clear small valignText">image</i> -->
+              <i class="material-icons spin mainColor valign small">refresh</i> Wird geladen.. <span id="loadingGalleryTeam">0%</span></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9647.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9646.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9637.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9638.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9639.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9641.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9643.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9644.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9645.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_5621.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6546.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_9636.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              dbc2fef8-f4cf-40b8-8da7-16e409003a46.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              f529b581-fe79-4c62-a0b9-3114292a87b5.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_0835.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              7aed29c0-96e5-4dc5-93da-b261bf4988ba.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              46eb7a82-60db-4d1c-b6a3-7ad92e01cb28.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              55dcff66-1b39-4fa5-ae97-f11e9a90e7c9.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              03a29179-db9b-477f-a262-d4deb9d14f1b.jpg
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6514.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6515.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6516.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6517.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6518.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6519.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6520.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6521.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6522.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6523.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6524.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6525.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6526.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6527.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6528.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6529.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6530.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6531.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6532.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6533.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6534.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6535.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6536.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6537.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6538.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6539.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6540.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6541.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6542.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6543.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6544.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
+          </tr>
+          <tr class="hide imageGalleryTr team" onclick="openGallery(team, fileNamesTeam);">
+            <td></td>
+            <td>
+              <i class="material-icons mainColor small valignText">image</i>
+              IMG_6545.JPG
+            </td> 
+            <td>2.2<span class="grey op75">mb</span></td>
+            <td>RF</td>
+            <td>rwxr-xr-x (755)</td>
+            <td>2522</td>
+            <td>None</td>
           </tr>
           
           <tr>
@@ -1198,6 +1896,7 @@
             <td>-</td>
           </tr>
           
+          <!-- SYSTEM things -->
           <tr>
             <td>&nbsp;</td>
             <td class="small grey"><br>System</td>
