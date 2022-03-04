@@ -352,7 +352,6 @@ function saveShortcut(id) {
   let name = gebi('editShortcutName').value.replace(/[\"'`\{\}\[\]\\]/g, "");
   currentShortcut.getElementsByClassName("filename")[0].innerHTML = name;
   let action = gebi('editShortcutAction').value;
-  console.log(action);
   if(action) {
     currentShortcut.setAttribute('ondblclick', action);
   } else {

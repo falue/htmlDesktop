@@ -270,7 +270,6 @@ function screensaverHide() {
     screensaver.pause(); screensaver.currentTime=0; hide(screensaver.id);
 }
 
-
 function guiZoom(value) {
     let currentFontSize = document.defaultView.getComputedStyle(document.getElementsByTagName('body')[0]).fontSize;
     document.getElementsByTagName('body')[0].style.fontSize = (parseInt(currentFontSize) + value) + 'px';
