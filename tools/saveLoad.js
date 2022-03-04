@@ -54,7 +54,9 @@ function compileSaveFile(saveFileName, download) {
   } else {
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem(saveFileName, JSON.stringify(data));
-      showDialog("Save", "All your windows & settings are now saved.<br>No manually entered window contents though.", 1500);
+      showDialog("Saved", "All your windows & settings are now saved.<br>No manually entered window contents though.", 1500);
+      // Rewrite URL to allow later cmd + r by user
+      history.pushState({}, null, "index.html?loadSaveFile="+saveFileName);
     } else {
       // Sorry! No Web Storage support..
       showDialog("No Local Storage", "This browser does not support localStorage. Try downloading the file.");
