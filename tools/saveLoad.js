@@ -54,7 +54,8 @@ function compileSaveFile(saveFileName, download) {
   } else {
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem(saveFileName, JSON.stringify(data));
-      showDialog("Saved", "All your windows & settings are now saved.<br>No manually entered window contents though.", 1500);
+      /* showDialog("Saved", "All your windows & settings are now saved.<br>No manually entered window contents though.", 1500); */
+      showNote("Saved", "All your windows & settings are now saved.<br>No manually entered window contents though.", "save", 3500);
       // Rewrite URL to allow later cmd + r by user
       history.pushState({}, null, "index.html?loadSaveFile="+saveFileName);
     } else {

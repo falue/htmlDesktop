@@ -338,6 +338,7 @@ textarea {
 .shake { animation: shake 0.5s linear 1; }
 .shine { animation: shake 1s ease-in-out infinite; }
 .wiggle, .wiggleX { animation: wiggleX 300ms ease-in-out 1; }
+.fadeOut { animation: fadeOut 1s linear 1 forwards; }
   
 @keyframes spinner { 
     100% { transform:rotate(360deg); } 
@@ -365,11 +366,15 @@ textarea {
     100% { opacity: 0; }
 }
 
-
 @keyframes fader50 {
     0%   { opacity: .5; }
     50%  { opacity: 1; }
     100% { opacity: .5; }
+}
+
+@keyframes fadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 @keyframes shake {

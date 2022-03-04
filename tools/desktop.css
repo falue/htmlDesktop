@@ -238,6 +238,29 @@ header.windowmenu .programButtons:hover {
     margin: .5em 0;
 }
 
+.autoNote {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    color: white;
+    min-width: 8em;
+    max-width: 20em;
+}
+
+.autoNote div {
+    padding: 1em;
+    margin: 1em;
+}
+
+.autoNote div h3 i {
+    margin-right: .25em;
+}
+
+.autoNote div h3 {
+   padding-bottom: .5em;
+}
+
 #savedFilesDialog .chooseBox li:hover i {
     opacity: 1;
 }

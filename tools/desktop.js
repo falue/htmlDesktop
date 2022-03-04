@@ -168,3 +168,47 @@ async function showDialog(title, text, selfClosing, input) {
         hide("autoDialogLoading");
     }
 }
+
+
+async function showNote(title, text, icon, deathDelay) {
+    show("autoNote");
+    let  = title;
+    /* gebi("autoNoteText").innerHTML = text; */
+    let listOfNotes = gebi('autoNote');
+    let id = "note-"+createUniqueId();
+
+    let note = document.createElement("div");
+    note.id = id;
+    note.classList.add("shadow", "darkGreyBg", "radius5");
+    note.setAttribute("onclick", 'this.remove();');
+    
+    let titleElement = document.createElement("h3");
+    titleElement.classList.add("grey");
+    
+    let iconElement = document.createElement("i");
+    iconElement.classList.add("material-icons", "blue", "small", "valign");
+    iconElement.appendChild(document.createTextNode(icon));
+    
+    titleElement.appendChild(iconElement);
+    titleElement.appendChild(document.createTextNode(title));
+    
+    let textElement = document.createElement("span");
+    textElement.innerHTML = text;
+    
+    note.appendChild(titleElement);
+    note.appendChild(textElement);
+    listOfNotes.appendChild(note);
+
+    await delay(deathDelay);
+
+    // maybe div was closed by user in the meantime
+    let currentNote = gebi(id);
+    if(currentNote) {
+        currentNote.classList.add("fadeOut");
+        await delay(500);
+        currentNote.remove();
+    }
+
+    // If no notes present, hide div
+    if(!listOfNotes.innerHTML) hide("autoNote");
+}
