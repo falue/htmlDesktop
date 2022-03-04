@@ -1,0 +1,283 @@
+ <!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SFiletransfer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js"></script>
+    
+  </head>
+  <body>
+    <!-- <i class="material-icons small spin blue" style="margin-left: 1em;">autorenew</i> -->
+    <div class="grey statusbar">
+      File <span class="op25">|</span>
+      Edit  <span class="op25">|</span>
+      View <span class="op25">|</span>
+      Connect <span class="op25">|</span>
+      Library <span class="op25">|</span>
+      Help
+    </div>
+    <div class="right top settings"><i class="material-icons grey">settings</i></div>
+
+
+    <table class="menu">
+        <tr>
+          <th><i class="material-icons">star</i></th>
+          <th><i class="material-icons">create_new_folder</i></th>
+          <th><i class="material-icons">no_accounts</i></th>
+          <th><i class="material-icons">account_tree</i></th>
+          <th><i class="material-icons">storage</i></th>
+          <th><i class="material-icons">insert_link</i></th>
+          <th><i class="material-icons">backup</i></th>
+          <th><i class="material-icons">storm</i></th>
+        </tr>
+    </table>
+
+    <div class="filelist path">
+      Path: ./files/vergaliumFiles/
+    </div>
+
+    <div class="filelist">
+      <table>
+        <tr>
+          <th>
+          </th>
+          <th>Filename<i class="material-icons grey advanced op50">arrow_drop_up</i>
+          </th>
+          <th>Size
+          </th>
+          <th>Owner
+          </th>
+          <th>Rights
+          </th>
+          <th>Checksum
+          </th>
+          <th>Group
+          </th>
+        </tr>
+      <!-- TH end -->
+      
+      <tr onclick="toggleSelection(this)"><!-- access_regulations.csv -->
+        <td><i class="material-icons grey">text_snippet</i></td>
+        <td>access_regulations.csv</td>
+        <td>251<span class="grey op75">kb</span></td>
+        <td>HFL-22</td>
+        <td>rwxr-xr-x (755)</td>
+        <td>2522</td>
+        <td>None</td>
+      </tr>
+        <tr onclick="toggleSelection(this)"><!-- vergalium/ -->
+          <td><i class="material-icons grey">folder_open</i></td>
+          <td>vergalium/logs-temp/</td>
+          <td>4.15<span class="grey op75">mb</span></td>
+          <td>HFL-22</td>
+          <td>rwxr-xr-x (755)</td>
+          <td>2522</td>
+          <td>None</td>
+        </tr>
+        <tr onclick="toggleSelection(this)"><!-- vergalium-SECURE_BARRIER.keys -->
+          <td><i class="material-icons grey">text_snippet</i></td>
+          <td>vergalium-SECURE_BARRIER.keys</td>
+          <td>112<span class="grey op75">kb</span></td>
+          <td>HFL-22</td>
+          <td>rwxr-xr-x (755)</td>
+          <td>2522</td>
+          <td>None</td>
+        </tr>
+        <tr onclick="toggleSelection(this)"><!-- vergalium%20Protokoll%20%C3%BCber_PCF-54986.doc.PDF -->
+          <td><i class="material-icons grey">picture_as_pdf</i></td>
+          <td>vergalium%20Protokoll%20%C3%BCber_PCF-54986.doc.PDF</td>
+          <td>1.1<span class="grey op75">mb</span></td>
+          <td>HFL-22</td>
+          <td>rwxr-xr-x (755)</td>
+          <td>2522</td>
+          <td>None</td>
+        </tr>
+        <tr onclick="toggleSelection(this)"><!-- Protokoll%20Reparatur%20Sicherheitsschranke.docx -->
+          <td><i class="material-icons grey">description</i></td>
+          <td>Protokoll%20Reparatur%20Sicherheitsschranke.docx</td>
+          <td>3.9<span class="grey op75">mb</span></td>
+          <td>HFL-22</td>
+          <td>rwxr-xr-x (755)</td>
+          <td>2522</td>
+          <td>None</td>
+        </tr>
+        <tr onclick="toggleSelection(this)"><!-- security-log_787996.csv -->
+          <td><i class="material-icons grey">text_snippet</i></td>
+          <td>security-log_787996.csv</td>
+          <td>902<span class="grey op75">kb</span></td>
+          <td>HFL-22</td>
+          <td>rwxr-xr-x (755)</td>
+          <td>2522</td>
+          <td>None</td>
+        </tr>
+        <tr onclick="toggleSelection(this)"><!-- security-log_vergalium-457895-A.csv -->
+          <td><i class="material-icons grey">text_snippet</i></td>
+          <td>security-log_vergalium-457895-A.csv</td>
+          <td>1.2<span class="grey op75">mb</span></td>
+          <td>HFL-22</td>
+          <td>rwxr-xr-x (755)</td>
+          <td>2522</td>
+          <td>None</td>
+        </tr>
+        <tr onclick="toggleSelection(this)"><!-- security-log_vergalium-457895-B.csv -->
+          <td><i class="material-icons grey">text_snippet</i></td>
+          <td>security-log_vergalium-457895-B.csv</td>
+          <td>660.0<span class="grey op75">kb</span></td>
+          <td>HFL-22</td>
+          <td>rwxr-xr-x (755)</td>
+          <td>2522</td>
+          <td>None</td>
+        </tr>
+        <tr onclick="toggleSelection(this)"><!-- Sitzungsprotokoll.docx -->
+          <td><i class="material-icons grey">description</i></td>
+          <td>Sitzungsprotokoll.docx</td>
+          <td>2.74<span class="grey op75">mb</span></td>
+          <td>HFL-22</td>
+          <td>rwxr-xr-x (755)</td>
+          <td>2522</td>
+          <td>None</td>
+        </tr>
+        <tr onclick="toggleSelection(this)"><!-- user_credentials-BU.log -->
+          <td><i class="material-icons grey">text_snippet</i></td>
+          <td>user_credentials-BU.log</td>
+          <td>64<span class="grey op75">kb</span></td>
+          <td>HFL-22</td>
+          <td>rwxr-xr-x (755)</td>
+          <td>2522</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+
+        
+
+      </table>
+    </div>
+    
+    <div class="footer">
+      <table>
+        <tr>
+          <td>
+            <div class="alignLeft">
+              Presets <i class="material-icons grey advanced">keyboard_arrow_down</i>
+            </div>
+          </td>
+          <td class="alignRight">
+            <button class="systemButton cancel">Disconnect</button>
+            <button class="systemButton greenBg black">UPLOAD</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+
+
+    <!-- LEAVE IT BE -->
+    <div class="backToIndex">
+      <a href="../index.html"><i class="material-icons big">menu_book</i></a>
+    </div>
+  </body>
+</html>

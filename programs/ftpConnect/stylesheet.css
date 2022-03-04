@@ -1,0 +1,199 @@
+* {
+    user-select: none;
+}
+
+body {
+    background-color: rgb(21, 30, 35);
+    color: white;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.authWindow {
+    padding: 1em;
+}
+
+.overview {
+    padding: 4em;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding-bottom: .25em;
+}
+
+td:first-child {
+    width: 33%;
+    text-align: right;
+    padding-right: 1em;
+    /* border: solid red thin; */
+}
+
+
+
+input:not([type=checkbox]),
+select {
+    border: thin rgba(255, 255, 255, 0.25) solid;
+    width: 100%;
+    border-radius: .35em;
+    box-sizing: border-box;
+    color: white;
+    background-color: black;
+    padding: .2em .5em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    outline: none;
+
+}
+
+button {
+    border-radius: initial;
+    background-color: grey;
+    border: solid #efefef thin;
+    border-bottom: solid rgba(152, 152, 152, 1) thin;
+    border-right: solid rgba(0, 0, 0, 0.5) thin;
+}
+
+button:hover,
+button:active {
+    background-color: rgba(152, 152, 152, 1) !important;
+}
+
+.pw {
+    width: 65% !important;
+    margin-right: 1em;
+}
+
+/* :not(.port):not(.server) */
+
+.server {
+    width: 65% !important;
+    margin-right: 1em;
+}
+
+.port {
+    width: 12% !important;
+}
+
+.anonymous {
+    margin-left: .2em;
+    margin-right: 1em;
+}
+
+.anonymous:before {
+    background-color: transparent !important;
+}
+
+.advanced {
+    transform: translateY(.25em);
+}
+
+
+/* FILELIST / index 2 */
+.statusbar {
+    padding: .5em;
+    border-bottom: solid grey thin;
+}
+
+.statusbar span {
+    padding: 0 1em;
+}
+
+.menu {
+    border-bottom: solid grey thin;
+    height: 4em;
+    border-collapse: collapse;
+}
+
+.menu i {
+    font-size: 1.75em;
+    color: lightblue;
+
+}
+
+.menu th:not(:last-of-type) {
+    border-right: solid rgba(255,255,255,.2) thin;
+}
+
+.menu th:hover {
+    background-color: rgba(255,255,255,.1);
+}
+
+.settings {
+    padding: .2em;
+}
+
+.filelist.path {
+    padding:.5em .5em 0 .5em;
+}
+
+.filelist {
+    background-color: lavender;
+    color: grey;
+    width: 100%;
+    max-height: 24em;
+    overflow: auto;
+    user-select: none;
+}
+
+.selected i,
+.filelist tr.selected td:nth-child(2),
+.selected {
+    background-color: rgb(52, 52, 223) !important;
+    color: white !important;
+}
+
+.filelist table {
+    width: 150%;
+    border-collapse: collapse;
+}
+
+.filelist td {
+    text-align: left;
+    width: initial;
+    border-right: solid thin lightgrey;
+    padding-left: .25em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.filelist th {
+    font-weight: normal;
+    text-align: left;
+    border-bottom: solid thin grey;
+    padding-left: .25em;
+}
+
+.filelist td:nth-child(1) {
+    width: 1.75em;
+    padding-right: initial;
+}
+.filelist td:nth-child(2) {
+    color: black;
+    padding-right: 1em;
+    width: 35%;
+}
+.filelist td:nth-child(3),
+.filelist td:nth-child(6),
+.filelist td:nth-child(4) {
+    width: 5em;
+}
+.filelist td:nth-child(5) {
+    font-style: italic;
+    width: 8em;
+}
+
+.filelist tr:nth-child(even) {
+    background: lightgrey;
+}
+.filelist tr:nth-child(even) td:not(:last-of-type) {
+    border-right: solid thin white;
+}
+/* .filelist tr:nth-child(odd) {background: blue} */
+
+.footer {
+    border-top: solid grey thin;
+    padding: 0.5em;
+}

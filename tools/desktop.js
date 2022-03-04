@@ -224,6 +224,8 @@ function keyboardController(event) {
             case "3": addWindow('Text editor', 'edit_note', 'texteditor', 5,5, 666,450, false); break;
             case "4": addWindow('Browser', 'public', 'browser/index.html?env='+workstation, 5,5, 1200,650, false); break;
             case "5": addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation='+workstation+'&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', 5,5, 666,450, false); break;
+            case "6": addWindow('FTP Client', 'storm', 'ftp', 5,5, 850,590, false); break;
+            case "7": addWindow('FTP Client - Connect', 'storm', 'ftpConnect', 55,5, 666,480, false); break;
             case "-": guiZoom(-2); break;
             case "+": guiZoom(2); break;
             case "=": guiZoomInitial(); break;
