@@ -243,7 +243,12 @@ header.windowmenu .programButtons:hover {
 }
 
 #savedFilesDialog .chooseBox li i {
+    margin-top: 1em;
     opacity: 0;
+}
+
+#savedFilesDialog .chooseBox li div {
+    padding-top: .5em;
 }
 
 #savedFilesDialog .deleteButton {

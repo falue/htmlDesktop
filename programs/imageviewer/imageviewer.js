@@ -77,7 +77,6 @@ function showImage(index) {
 }
 
 async function setVideoSrc(videoSource, type) {
-    cl("laod video");
     let player = videojs(document.querySelector('.video-js'));
     player.src({
         "src": videoSource,

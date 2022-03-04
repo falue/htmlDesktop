@@ -159,11 +159,24 @@ function checkSaveFiles() {
       let safeFileDate = safeFileKey.split("-")[1];
       safeFileDate = new Date(parseInt(safeFileDate)).toLocaleString("de-CH");
       let listElement = document.createElement("li");
-      listElement.innerHTML = safeFileName + " <span class='small grey'>(" + safeFileDate+ ")</span>";
+      listElement.innerHTML = safeFileName + " <span class='grey'>" + saveFile[safeFileKey]["settings"]["workstation"] + "</span>";
       /* listElement.setAttribute("onclick", "loadSaveFile('"+safeFileKey+"'); hide('savedFilesDialog')"); */
       listElement.setAttribute("onclick", "window.location.href='index.html?loadSaveFile="+safeFileKey+"';");
       listElement.setAttribute("class", "relative pointer");
       listElement.setAttribute("title", "Load this save file");
+      
+      // add workstation
+      /* let saveFile[safeFileKey]["settings"]; */
+      let countWindows = Object.keys(saveFile[safeFileKey]["windows"]).length;
+      let infoText = [
+        safeFileDate,
+        saveFile[safeFileKey]["settings"]["username"],
+        countWindows + (countWindows === 1 ? " window" : " windows")
+      ];
+      let info = document.createElement("div");
+      info.setAttribute("class", "grey small");
+      info.appendChild(document.createTextNode(infoText.join(", ")));
+      listElement.appendChild(info);
 
       let deleteButton = document.createElement("i");
       deleteButton.setAttribute("class", "deleteButton material-icons small white redBg circle right top");
