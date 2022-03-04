@@ -342,6 +342,7 @@ function editShortcut(id) {
 
   gebi('editShortcutName').value = currentShortcut.getElementsByClassName("filename")[0].innerHTML.replace(/&amp;/g, "&");
   gebi('editShortcutAction').value = currentShortcut.getAttribute('ondblclick') ? currentShortcut.getAttribute('ondblclick') : "";
+  gebi('editShortcutName').focus();
 }
 
 // Saves edits on shortcuts

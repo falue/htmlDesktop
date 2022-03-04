@@ -342,9 +342,7 @@
           <input type="text" id="autoDialogInput" class="maxWidth radius2 padding" placeholder="Type.."
             onkeydown="if(event.key === 'Enter') gebi('autoDialogCloseButtonButton').click();"
           ></input>
-
           <br>
-
           <div id="autoDialogCancelButton" class="left relative padding">
             <button class="systemButton greyBg" onclick="hide('autoDialog');">Cancel</button>
           </div>
@@ -444,7 +442,8 @@
             <input class="hide" type="radio" id="editIcontrashFull" name="editShortcutIcon" value="trashFull.png">
             <img class="radius5" src="os/windows/systemIcons/trashFull.png"></label>
           </div>
-          <input type="text" class="maxWidth radius2" id="editShortcutName" placeholder="Insert displayed filename">
+          <input type="text" class="maxWidth radius2" id="editShortcutName" placeholder="Insert displayed filename"
+            onkeydown="if(event.key === 'Enter') gebi('saveShortcutButton').click();">
           <textarea type="text" class="maxWidth radius2" id="editShortcutAction" placeholder="Javascript command.."></textarea>
           <br>
           
@@ -453,7 +452,7 @@
           </div>
           <div class="right relative padding">
             <button class="systemButton greyBg" onclick="hide('editShortcut');">Cancel</button>
-            <button class="systemButton" onclick="saveShortcut(gebi('editShortcutId').value); hide('editShortcut');">Save</button>
+            <button id="saveShortcutButton" class="systemButton" onclick="saveShortcut(gebi('editShortcutId').value); hide('editShortcut');">Save</button>
           </div>
             <br>
             <br>
