@@ -120,6 +120,21 @@ function getScreenSize() {
   return [screenWidth, screenHeight];
 }
 
+function getPositionInPercentage(direction, pixelPosition) {
+  // On startup, all objects are positioned with percentage, so just leave
+  if(typeof(pixelPosition) === "string" && pixelPosition.endsWith("%")) return parseInt(pixelPosition);
+  pixelPosition=parseInt(pixelPosition);
+  /* pixelPosition=parseFloat(pixelPosition); */
+  let screenSizes = getScreenSize();
+  if(direction === "left") {
+    // console.log(screenWidth + " : " + pixelPosition + " -> " + 100/screenWidth*pixelPosition + "%");
+    return 100/screenSizes[0]*pixelPosition;
+  } else {
+    // console.log(screenHeight + " : " + pixelPosition + " -> " + 100/screenHeight*pixelPosition + "%");
+    return 100/screenSizes[1]*pixelPosition;
+  }
+}
+
 function delay(delayTimeMs) {
   return new Promise(resolve => setTimeout(resolve, delayTimeMs));
 }

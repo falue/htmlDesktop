@@ -440,8 +440,8 @@ function clutterDesktop(count) {
 
   for (i = 1; i <= count; i++) {
     /* console.log(i); */
-    x = randomBetween(0, 93);
-    y = randomBetween(0, 80);
+    x = randomBetween(1, 93);
+    y = randomBetween(1, 85);
     rand = chooseRandomKey(randomIcon);
     /* console.log(rand, x, y, randomIcon[rand]); */
     name = randomNameParts[chooseRandomKey(randomNameParts)];
@@ -455,27 +455,44 @@ function clutterDesktop(count) {
 
 function alignShortcutsToGrid() {
   let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
+  let generalOffsetX = 0;
+  let currentOffsetX  = 0;
   for (shortcut of shortcutsFromDom) {
-    shortcut.style.left = clamp(Math.floor(parseInt(shortcut.style.left)/10)*10+1, 1, 90)+"%";
+    currentOffsetX = shortcut.getBoundingClientRect()["width"];
+    currentOffsetX = getPositionInPercentage("left", currentOffsetX);
+    // Magic: get difference between imaginary rectangle (12% width) and the shortcut. 
+    //   Divide by 2 and add this to the .stlye.left after clamping. I'm smart!
+    currentOffsetX = (14-currentOffsetX)/2-3;
+    shortcut.style.left = clamp((Math.floor(parseInt(shortcut.style.left)/7)*7+generalOffsetX), generalOffsetX, 92)+currentOffsetX+"%"; 
     shortcut.style.top = clamp(Math.floor(parseFloat(shortcut.style.top)/12)*12+1, 1, 85)+"%";
   }
 }
 
 function tidyUpShortcuts() {
   let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
-  let xOffset = 1;
+  let xOffset = -2;  // compensate optically space to left screen border
   let yOffset = 1;
+  let currentOffsetX  = 0;
   for (shortcut of shortcutsFromDom) {
-    shortcut.style.left = xOffset + "%";
+    currentOffsetX = shortcut.getBoundingClientRect()["width"];
+    currentOffsetX = getPositionInPercentage("left", currentOffsetX);
+    // Magic: get difference between imaginary rectangle (12% width) and the shortcut. 
+    //   Divide by 2 and add this to the .stlye.left after clamping. I'm smart!
+    currentOffsetX = (12-currentOffsetX)/2;
+    shortcut.style.left = xOffset + currentOffsetX + "%";
     shortcut.style.top = yOffset + "%";
+
     if(yOffset < 85) {
+      // Switch to next row
       yOffset += 12;
-    } else if(xOffset > 90) {
+    } else if(xOffset > 88) {
+      // Start over top left
       yOffset = 1;
-      xOffset = 1;
+      xOffset = -2;
     } else  {
+      // Switch to next column
       yOffset = 1;
-      xOffset += 10;
+      xOffset += 7;
     }
   }
 }

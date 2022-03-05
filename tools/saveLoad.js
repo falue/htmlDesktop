@@ -272,20 +272,6 @@ function saveAllShortcuts() {
   return shortcuts;
 }
 
-function getPositionInPercentage(direction, pixelPosition) {
-  // On startup, all objects are positioned with percentage, so just leave
-  if(pixelPosition.endsWith("%")) return parseInt(pixelPosition);
-  pixelPosition=parseInt(pixelPosition);
-  let screenSizes = getScreenSize();
-  if(direction === "left") {
-    // console.log(screenWidth + " : " + pixelPosition + " -> " + 100/screenWidth*pixelPosition + "%");
-    return 100/screenSizes[0]*pixelPosition;
-  } else {
-    // console.log(screenHeight + " : " + pixelPosition + " -> " + 100/screenHeight*pixelPosition + "%");
-    return 100/screenSizes[1]*pixelPosition;
-  }
-}
-
 function saveAllSystemIcons() {
   let iconsFromDom = document.querySelectorAll("[data-setup-system-icons]:not(.hide)"); // ..]
   let systemIcons = [];
