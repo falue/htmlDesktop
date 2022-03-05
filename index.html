@@ -24,9 +24,10 @@
   <body onload="setup();" class="maxWidth maxHeight fixed" onkeydown="keyboardController(event);">
 
     <!-- SELECT Workstation -->
-    <div id="overlayWorkstation" class="overlay hide darkGreyBg">
+    <div id="overlayWorkstation" class="overlay hide fancy">
       <div>
         <h2>Select Workstation</h2>
+        <p>&nbsp;</p>
         <p id="workstationList">
           <!-- <a href="index.html?workstation=test&os=mac">
             <button class="systemButton"><i class="material-icons vertCenter">computer</i> Test MAC</button>
@@ -37,7 +38,9 @@
           </a> -->
         </p>
         <p>&nbsp;</p>
-        <button class="systemButton greyBg" onclick="hide('overlayWorkstation');">Close</button>
+        <button id="closeOverlayWorkstation" class="systemButton greyBg hide" onclick="hide('overlayWorkstation');">
+          <i class="material-icons">close</i>
+        </button>
       </div>
     </div>
 
@@ -239,7 +242,7 @@
               <i class="material-icons blue small rotate180">signal_cellular_alt</i>
               Tidy up shortcuts
             </li>
-            <li onclick="show('overlayWorkstation'); hide('actionMenu');">
+            <li onclick="show('overlayWorkstation'); show('closeOverlayWorkstation'); hide('actionMenu');">
               <i class="material-icons blue small">computer</i>
               Change workstation
             </li>
