@@ -357,6 +357,7 @@ function editShortcut(id) {
 function saveShortcut(id) {
   hide("editShortcut");
   let currentShortcut = gebi(id);
+  let currentOffsetX = currentShortcut.getBoundingClientRect()["width"];
   let name = gebi('editShortcutName').value.replace(/[\"'`\{\}\[\]\\]/g, "");
   currentShortcut.getElementsByClassName("filename")[0].innerHTML = name;
   let action = gebi('editShortcutAction').value;
@@ -371,6 +372,12 @@ function saveShortcut(id) {
   currentShortcut.setAttribute("data-setup-name", name);
   currentShortcut.setAttribute("data-setup-icon", icon);
   currentShortcut.setAttribute("data-setup-action", action);
+
+  // Reposition center
+  // Split difference of shortCut width before and after renaming
+  let newOffsetX = (currentShortcut.getBoundingClientRect()["width"]-currentOffsetX)/2;
+  newOffsetX = getPositionInPercentage("left", newOffsetX);
+  currentShortcut.style.left = parseInt(currentOffsetX.style.left)-newOffsetX+"%"; 
 }
 
 // makes a new shortcut on demand
