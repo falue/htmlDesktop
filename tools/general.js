@@ -110,6 +110,16 @@ function scrollToTop(id) {
   element.scrollTop=0;
 }
 
+function getScreenSize() {
+  let screenWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+  let screenHeight = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
+  return [screenWidth, screenHeight];
+}
+
 function delay(delayTimeMs) {
   return new Promise(resolve => setTimeout(resolve, delayTimeMs));
 }

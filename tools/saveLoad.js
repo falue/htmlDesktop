@@ -273,24 +273,17 @@ function saveAllShortcuts() {
 }
 
 function getPositionInPercentage(direction, pixelPosition) {
-  // On startup, all objects are pisitioned with percentage
+  // On startup, all objects are positioned with percentage, so just leave
   if(pixelPosition.endsWith("%")) return parseInt(pixelPosition);
   pixelPosition=parseInt(pixelPosition);
-
+  let screenSizes = getScreenSize();
   if(direction === "left") {
-    let screenWidth = window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth;
     // console.log(screenWidth + " : " + pixelPosition + " -> " + 100/screenWidth*pixelPosition + "%");
-    return 100/screenWidth*pixelPosition;
+    return 100/screenSizes[0]*pixelPosition;
   } else {
-    let screenHeight = window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight;
     // console.log(screenHeight + " : " + pixelPosition + " -> " + 100/screenHeight*pixelPosition + "%");
-    return 100/screenHeight*pixelPosition;
+    return 100/screenSizes[1]*pixelPosition;
   }
-
 }
 
 function saveAllSystemIcons() {

@@ -285,12 +285,20 @@ function getWindowFromTaskbar(id) {
 }
 
 function maximizeWindow(id) {
-  console.log("maximizeWindow: "+id);
+  /* console.log("maximizeWindow: "+id); */
+  let screenSizes = getScreenSize();
+  let systemBar = gebi('systemBar').getBoundingClientRect();
+  let systemBarHeight = systemBar["height"];
+  let systemBarPosition = systemBar["top"];
+
   let windowContainer = gebi(id);
   windowContainer.style.left = "0px";
-  windowContainer.style.top = "0px";
-  windowContainer.style.width = "100%";
-  windowContainer.style.height = "100%";
+  // Shift beneath the taskbar if taskbar is on top (linux, mac)
+  windowContainer.style.top = systemBarPosition === 0 ? systemBarHeight+"px" : 0+"px";
+  // get pixel not 100% for later loading
+  windowContainer.style.width = screenSizes[0]+"px";
+  // get pixel not 100% for later loading. Remove taskbar height to not be underneath.
+  windowContainer.style.height = screenSizes[1]-systemBarHeight+"px";
   bringToFront(id);
 
   let resetMaxButton = gebi("maximizeWindow-"+id);
