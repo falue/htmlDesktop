@@ -139,42 +139,42 @@
           <h4 class="grey">All available programs</h4>
           <ul>
             <li class="grey italics">
-              <button title="Terminal - Update" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false);" >
+              <button title="Terminal - Update" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);" >
                 <i class="material-icons">code</i>
               </button>
-              <button title="Terminal - System LOGs" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false);" >
+              <button title="Terminal - System LOGs" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);" >
                 <i class="material-icons">code</i>
               </button>
-              <button title="Terminal - Lorem Ipsum binary" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=lorem_ipsum_binary&theme=hybrid&speed=50&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', 5,5, 666,450, false);" >
+              <button title="Terminal - Lorem Ipsum binary" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=lorem_ipsum_binary&theme=hybrid&speed=50&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);" >
                 <i class="material-icons">code</i>
               </button>
-              <button title="Terminal - hexdump" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=12&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', 5,5, 666,450, false);" >
+              <button title="Terminal - hexdump" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=12&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);" >
                 <i class="material-icons">code</i>
               </button>
-              <button title="Terminal - Selber tippen - sql 'hack'" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=119&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false);" >
+              <button title="Terminal - Selber tippen - sql 'hack'" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=119&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);" >
                 <i class="material-icons">code</i>
               </button>
-              <button title="Terminal - Selber tippen - python script" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false);" >
+              <button title="Terminal - Selber tippen - python script" class="valign" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);" >
                 <i class="material-icons">code</i>
               </button>
             </li>
             <li>
-              <button onclick="addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation=_generic', 5,5, 600,350, false)" title="File manager" class="valign">
+              <button onclick="addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation=_generic', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 600,350, false)" title="File manager" class="valign">
                 <i class="material-icons">folder</i>
               </button>
-              <button onclick="addWindow('Text editor', 'edit_note', 'texteditor', 5,5, 666,450, false)" title="Text editor" class="valign">
+              <button onclick="addWindow('Text editor', 'edit_note', 'texteditor', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false)" title="Text editor" class="valign">
                 <i class="material-icons">edit_note</i>
               </button>
-              <button onclick="addWindow('Browser', 'public', 'browser/index.html?workstation='+workstation, 5,5, 1200,650, false)" title="Browser" class="valign">
+              <button onclick="addWindow('Browser', 'public', 'browser/index.html?workstation='+workstation,incrementWindowsPosition('x'), incrementWindowsPosition('y'), 1200,650, false)" title="Browser" class="valign">
                 <i class="material-icons">public</i>
               </button>
-              <button onclick="addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation=_generic&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', 5,5, 666,450, false)" title="Image viewer" class="valign">
+              <button onclick="addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation=_generic&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false)" title="Image viewer" class="valign">
                 <i class="material-icons">image</i>
               </button>
-              <button onclick="addWindow('FTP Client', 'storm', 'ftp', 5,5, 850,590, false)" title="FTP Client" class="valign">
+              <button onclick="addWindow('FTP Client', 'storm', 'ftp', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 850,590, false)" title="FTP Client" class="valign">
                 <i class="material-icons">storm</i>
               </button>
-              <button onclick="addWindow('FTP Client - Connect', 'storm', 'ftp/connect.html', 55,5, 666,480, false)" title="FTP Client - Connect" class="valign">
+              <button onclick="addWindow('FTP Client - Connect', 'storm', 'ftp/connect.html', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,480, false)" title="FTP Client - Connect" class="valign">
                 <i class="material-icons">storm</i>
               </button>
             </li>
@@ -300,18 +300,18 @@
         <button title="Action menu" onclick="toggle('actionMenu')" class="valign systemColors">
           <i class="material-icons">bolt</i>
         </button><!-- 
-        --><button title="File manager" onclick="addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation='+workstation, 5,5, 600,350, false)" title="File manager" class="valign systemColors">
+        --><button title="File manager" onclick="addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation='+workstation, incrementWindowsPosition('x'), incrementWindowsPosition('y'), 600,350, false)" title="File manager" class="valign systemColors">
           <i class="material-icons">folder</i>
         </button><!-- 
-        --><button title="Browser" onclick="addWindow('Browser', 'public', 'browser/index.html?workstation='+workstation, 5,5, 1200,650, false)" title="Browser" class="valign systemColors">
+        --><button title="Browser" onclick="addWindow('Browser', 'public', 'browser/index.html?workstation='+workstation, incrementWindowsPosition('x'), incrementWindowsPosition('y'), 1200,650, false)" title="Browser" class="valign systemColors">
           <i class="material-icons">public</i>
         </button><!-- 
-      --><button title="Terminal" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200', 5,5, 666,450, false)" title="Terminal" class="valign systemColors">
+      --><button title="Terminal" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false)" title="Terminal" class="valign systemColors">
           <i class="material-icons">code</i>
         </button><!-- 
-      --><button title="Text editor" onclick="addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=This+is+a+test+text.%0D%0ABeware%21+here+be+demons.', 5,5, 666,450, false)" title="Text editor" class="valign systemColors">
+      --><button title="Text editor" onclick="addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=This+is+a+test+text.%0D%0ABeware%21+here+be+demons.', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false)" title="Text editor" class="valign systemColors">
           <i class="material-icons">edit_note</i><!-- 
-      --><button title="Image viewer" onclick="addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation='+workstation+'&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', 5,5, 666,450, false)" title="Imageviewer" class="valign systemColors">
+      --><button title="Image viewer" onclick="addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation='+workstation+'&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false)" title="Imageviewer" class="valign systemColors">
           <i class="material-icons">image</i>
         </button>
       </div>

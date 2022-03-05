@@ -1,3 +1,5 @@
+let newWindowPositions = {"x": 5,"y": 5};
+
 /*Make resizable div by Hung Nguyen*/
 // see https://medium.com/the-z/making-a-resizable-div-in-js-is-not-easy-as-you-think-bda19a1bc53d
 
@@ -502,4 +504,12 @@ function tidyUpShortcuts() {
       xOffset += 7;
     }
   }
+}
+
+function incrementWindowsPosition(axe) {
+  newWindowPositions[axe] += 3;
+  // Reset once if edge of desktop reached
+  // Second go-round overlaps. But then again, if you have this many windows, you're the problem.
+  if(newWindowPositions[axe] > 50) newWindowPositions = {"x": 11,"y": 3};
+  return newWindowPositions[axe];
 }
