@@ -134,7 +134,7 @@
     padding: .75em 0;
     width: 1px;
     margin: 0;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.2);
 }
 
 .taskbar {
@@ -149,7 +149,7 @@
 .systemBar .buttonGroup button:first-of-type {
     border-top-left-radius: .25em;
     border-bottom-left-radius: .25em;
-    border-left: solid thin grey;
+    border-left: solid thin rgba(255,255,255,0.2);
 }
 
 .systemBar .buttonGroup button:last-of-type {
@@ -204,12 +204,16 @@
 .startMenu {
     /* color: white; */
     position: fixed;
-    left: 0;
-    bottom: 2.6em;
+    left: .3em;
+    bottom: 3em;
     /* background-color: black; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.fastAccess {
+    
 }
 
 .startMenu .columns {
@@ -232,18 +236,19 @@
 }
 
 .startMenu li {
+    position: relative;
     padding: .5em;
     width: 300px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis; */
 }
 
 .startMenu li:not(:last-of-type) {
-    border-bottom: solid grey thin;
+    border-bottom: solid rgba(255,255,255,0.2) thin;
 }
 
-.startMenu li:hover {
+.startMenu li:not(.noLiHover):hover {
     background-color: rgba(255,255,255,0.2);
 }
 
@@ -255,4 +260,29 @@
 
 .startMenu li i {
     vertical-align: middle;
+}
+
+/* SUBMENU */
+.startMenu ul div.submenu {
+    display: none;
+    position: absolute;
+    top: -2em;
+    left: 90%;
+    box-sizing: content-box;
+    border: 1em transparent solid;
+    border-left: 2.5em transparent solid;
+}
+
+.startMenu li:hover div.submenu {
+    display: block;
+}
+
+.startMenu ul div.submenu ul {
+    padding: .5em;
+    max-height:20em;
+    overflow: auto;
+}
+
+.startMenu ul div.submenu ul li {
+    padding: .8em;
 }

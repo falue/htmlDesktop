@@ -179,7 +179,7 @@ async function setupSettings(settings) {
         if (value) {
           username = value;
           /* console.log("Username is " + value); */
-          gebi('usernameStartMenu').innerHTML = "Logged in as " + value;
+          gebi('usernameStartMenu').innerHTML = value;
         }
       break;
       case "password":
@@ -187,7 +187,7 @@ async function setupSettings(settings) {
           password = value;
           /* console.log("the password is " + value); */
           gebi("passwordCheck").value = value;
-          gebi("passwordHint").innerHTML = "Password is " + value;
+          gebi("passwordHint").innerHTML = value;
           show('logoutAction');
         }
       break;
@@ -215,7 +215,7 @@ async function setupSettings(settings) {
 function setupWindows(windows) {
     // Loop over windows
   let listOfWindows = gebi('currentWindowActions');
-  listOfWindows.innerHTML = "";
+  if(Object.keys(windows).length) listOfWindows.innerHTML = "";
 
   /* for (let window of windows.windows) { */
   for (let window of windows) {
@@ -223,7 +223,7 @@ function setupWindows(windows) {
     /* Add links to start menu */
     let listElement = document.createElement("li");
     let windowIcon = document.createElement("i");
-    windowIcon.setAttribute("class", "material-icons small blue");
+    windowIcon.setAttribute("class", "material-icons small systemColors clearBg");
     windowIcon.appendChild(document.createTextNode(window["icon"]));
     listElement.appendChild(windowIcon);
     listElement.appendChild(document.createTextNode(" "+window["windowName"]));

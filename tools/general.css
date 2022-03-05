@@ -158,6 +158,8 @@ a:focus { outline: none; }
 .overflowAutoY, .overflowYAuto { overflow-y: auto; }
 
 .padding05 { padding: 0.5em; }
+.padding60 { padding: 0.6em; }
+.padding75 { padding: 0.75em; }
 .padding, .padding1 { padding: 1em; }
 .padding2 { padding: 2em; }
 .padding3 { padding: 3em; }
@@ -222,9 +224,11 @@ hr { border-color: rgba(255,255,255,.3); margin: 1.5em 0; }
 /* TRANSFORMERS */
 .flipX, .mirrorX { transform: scaleX(-1); }
 .flipY, .mirrorY { transform: scaleY(-1); }
+.rotate45 { transform: rotate(45deg); }
 .rotate90 { transform: rotate(90deg); }
 .rotate180 { transform: rotate(180deg); }
 .rotate270 { transform: rotate(270deg); }
+.rotate-45, .rotate315 { transform: rotate(315deg); }
 
 /* COLORS */
 .red { color: rgba(255,80,80,1) !important; }
@@ -235,6 +239,9 @@ hr { border-color: rgba(255,255,255,.3); margin: 1.5em 0; }
 .black { color: #000000 !important; }
 .white { color: white !important; }
 .clear { color: rgba(0,0,0,0) !important; }
+.blackTransparent { color: rgba(0,0,0,0.3) !important; }
+.whiteTransparent { color: rgba(255,255,255,0.3) !important; }
+
 .redBg { background-color: rgba(255,80,80,1) !important; }
 .greenBg { background-color: rgb(150, 255, 80) !important; }
 .blueBg { background-color: rgba(88,150,255,1) !important; }

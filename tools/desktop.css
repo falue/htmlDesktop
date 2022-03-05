@@ -205,7 +205,7 @@ header.windowmenu .programButtons:hover {
     color: white;
     position: fixed;
     left: 3.2em;
-    bottom: 2.6em;
+    bottom: 3em;
     /* background-color: black; */
     display: flex;
     flex-direction: row;
