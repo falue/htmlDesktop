@@ -212,10 +212,6 @@
     flex-wrap: wrap;
 }
 
-.fastAccess {
-    
-}
-
 .startMenu .columns {
     display: flex;
     flex-direction: column;
@@ -238,10 +234,7 @@
 .startMenu li {
     position: relative;
     padding: .5em;
-    width: 300px;
-    /* overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; */
+    width: 17em;
 }
 
 .startMenu li:not(:last-of-type) {
