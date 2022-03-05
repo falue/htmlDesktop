@@ -162,7 +162,7 @@
               <button onclick="addWindow('Text editor', 'edit_note', 'texteditor', 5,5, 666,450, false)" title="Text editor" class="valign">
                 <i class="material-icons">edit_note</i>
               </button>
-              <button onclick="addWindow('Browser', 'public', 'browser/index.html?env='+workstation, 5,5, 1200,650, false)" title="Browser" class="valign">
+              <button onclick="addWindow('Browser', 'public', 'browser/index.html?workstation='+workstation, 5,5, 1200,650, false)" title="Browser" class="valign">
                 <i class="material-icons">public</i>
               </button>
               <button onclick="addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation=_generic&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', 5,5, 666,450, false)" title="Image viewer" class="valign">
@@ -300,7 +300,7 @@
         --><button title="File manager" onclick="addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation='+workstation, 5,5, 600,350, false)" title="File manager" class="valign systemColors">
           <i class="material-icons">folder</i>
         </button><!-- 
-        --><button title="Browser" onclick="addWindow('Browser', 'public', 'browser/index.html?env='+workstation, 5,5, 1200,650, false)" title="Browser" class="valign systemColors">
+        --><button title="Browser" onclick="addWindow('Browser', 'public', 'browser/index.html?workstation='+workstation, 5,5, 1200,650, false)" title="Browser" class="valign systemColors">
           <i class="material-icons">public</i>
         </button><!-- 
       --><button title="Terminal" onclick="addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200', 5,5, 666,450, false)" title="Terminal" class="valign systemColors">
@@ -570,55 +570,55 @@
           <br>
         </div>
       </div>
-    </div>
-  </div>
-  
-  <!-- KEYBOARD CONTROL -->
-  <div id="keyboardControls" class="hide dialog">
-    <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
-      <div class="darkGreyBg padding shadow white minWidth300 maxWidth400 absolute radius5">
-        <h3 class="grey alignCenter">
-          <i class="material-icons blue valign">keyboard</i>
-          Keyboard controls
-        </h3>
-        <br>
-
-        <div class="grey">
-          These shortcuts works everywhere in the OS, but not if you have the contents of a window active.
-          <br>
-          Best to click on the desktop first.
-        </div>
-        <br>
-        <div class="editIcon radius5 alignCenter chooseBox">
-          <ul>
-            <li class="alignLeft"><span class="blueBg keyboardKey">1</span> Start program: Terminal </li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">2</span> Start program: File manager</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">3</span> Start program: Text editor</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">4</span> Start program: Browser</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">5</span> Start program: Image viewer</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">6</span> Start program: FTP Client</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">7</span> Start program: FTP Client (Connection)</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">+</span> GUI Zoom in</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">-</span> GUI Zoom out</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">=</span> GUI reset zoom</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">b</span> Blackout screen</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">c</span> Create new shortcut</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">shift</span> + <span class="blueBg keyboardKey">s</span> Save as new file</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">d</span> Clutter desktop</li>
-            <li class="alignLeft"><span class="blueBg keyboardKey">esc</span> ScreenSaver</li> 
-          </ul>
-        </div>
-
-        <div class="right relative padding">
-          <button class="systemButton" onclick="hide('keyboardControls');">Close</button>
-        </div>
-          <br>
-          <br>
       </div>
     </div>
-  </div>
-  
-  <!-- AUTO NOTE -->
+    
+    <!-- KEYBOARD CONTROL -->
+    <div id="keyboardControls" class="hide dialog">
+      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+        <div class="darkGreyBg padding shadow white minWidth300 maxWidth400 absolute radius5">
+          <h3 class="grey alignCenter">
+            <i class="material-icons blue valign">keyboard</i>
+            Keyboard controls
+          </h3>
+          <br>
+
+          <div class="grey">
+            These shortcuts works everywhere in the OS, but not if you have the contents of a window active.
+            <br>
+            Best to click on the desktop first.
+          </div>
+          <br>
+          <div class="editIcon radius5 alignCenter chooseBox">
+            <ul>
+              <li class="alignLeft"><span class="blueBg keyboardKey">1</span> Start program: Terminal </li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">2</span> Start program: File manager</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">3</span> Start program: Text editor</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">4</span> Start program: Browser</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">5</span> Start program: Image viewer</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">6</span> Start program: FTP Client</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">7</span> Start program: FTP Client (Connection)</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">+</span> GUI Zoom in</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">-</span> GUI Zoom out</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">=</span> GUI reset zoom</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">b</span> Blackout screen</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">c</span> Create new shortcut</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">shift</span> + <span class="blueBg keyboardKey">s</span> Save as new file</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">d</span> Clutter desktop</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">esc</span> ScreenSaver</li> 
+            </ul>
+          </div>
+
+          <div class="right relative padding">
+            <button class="systemButton" onclick="hide('keyboardControls');">Close</button>
+          </div>
+            <br>
+            <br>
+        </div>
+      </div>
+    </div>
+    
+    <!-- AUTO NOTE -->
     <div id="autoNote" class="autoNote "> <!-- hide -->
     </div>
 

@@ -1,0 +1,182 @@
+{   
+    "comment1": "Browser settings",
+    "settings": {
+            "darkMode": true,
+            "hideFavorites": false,
+            "hideAddons": false,
+            "hideHomeButton": false,
+            "hideReloadButton": false,
+            "hideLoadingAnimation": false,
+            "internetConnection": true,
+        "comment2": "loaderCircle or loaderLinear",
+            "loaderType": "loaderLinear"
+    },
+    "comment2": ["URL and favorites list",
+                "Comma and space seperated list:",
+                "  showInFavorites, materialIcon, realUrl, spoofUrl, onclick",
+                "     showInFavorites: 'show' or 'hide' determines if the URL is in the favorites list",
+                "     materialIcon: Available icons see https://fonts.google.com/icons?selected=Material+Icons:settings",
+                "     realUrl: Enter the path to your local index file or enter any valid real URL.",
+                "               If realUrl is './', it will not have become link but will be displayed as a spoof favorite.",
+                "     spoofUrl: The Url to enter in the URL bar to visit site.",
+                "     favoritesName: The display name in the favorites list.",
+                "     metaName: Will be displayed only in the URL overview (top right) eg. for better naming",
+                "                  of different scenes with the same URL",
+                "     onclick: Optional javascript function to execute.",
+                "First entry of this list is also acting as the home page."],
+    "urls": [
+        {
+            "spoofUrl": "qsearch.ch",
+            "realUrl": "sites/qsearch/index.html",
+            "favoritesName": "qsearch.ch",
+            "metaName": false,
+            "materialIcon": "travel_explore",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "youtube.com",
+            "realUrl": "sites/youtube",
+            "favoritesName": "youtube.com",
+            "metaName": false,
+            "materialIcon": "smart_display",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "telefabi.ch",
+            "realUrl": "sites/telefabi",
+            "favoritesName": "telefabi.ch",
+            "metaName": false,
+            "materialIcon": "code",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "metis.ch",
+            "realUrl": "sites/metis",
+            "favoritesName": "metis.ch",
+            "metaName": false,
+            "materialIcon": "science",
+            "showInFavorites": false,
+            "onclick": false
+        },{
+            "spoofUrl": "sapienz.ch",
+            "realUrl": "sites/sapienz",
+            "favoritesName": "sapienz.ch",
+            "metaName": false,
+            "materialIcon": "biotech",
+            "showInFavorites": false,
+            "onclick": false
+        },{
+            "spoofUrl": "sapienz.ch/fischer",
+            "realUrl": "sites/sapienz/intranet-fischer.html",
+            "favoritesName": "sapienz.ch f.",
+            "metaName": "sapienz INTRANET FISCHER",
+            "materialIcon": "biotech",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "sapienz.ch/kemp",
+            "realUrl": "sites/sapienz/intranet-kemp.html",
+            "favoritesName": "sapienz.ch k.",
+            "metaName": "sapienz INTRANET KEMPP",
+            "materialIcon": "biotech",
+            "showInFavorites": false,
+            "onclick": false
+        },{
+            "spoofUrl": "sites/runnershigh",
+            "realUrl": "sites/runnershigh",
+            "favoritesName": "runnershigh.ch",
+            "metaName": false,
+            "materialIcon": "directions_run",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "honestjane.com",
+            "realUrl": "https://petiteboule.wixsite.com/honestjane",
+            "favoritesName": "honestjane.com",
+            "metaName": false,
+            "materialIcon": "face",
+            "showInFavorites": false,
+            "onclick": "document.getElementsByTagName('iframe')[0].style.top='-50px'"
+        },{
+            "spoofUrl": "mygps.com/1",
+            "realUrl": "sites/myGps1",
+            "favoritesName": "myGps1",
+            "metaName": false,
+            "materialIcon": "map",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "mygps.com/2",
+            "realUrl": "sites/myGps2",
+            "favoritesName": "myGps2",
+            "metaName": false,
+            "materialIcon": "map",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "mygps.com/3",
+            "realUrl": "sites/myGps3",
+            "favoritesName": "myGps3",
+            "metaName": false,
+            "materialIcon": "map",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "cityflesh.com",
+            "realUrl": "sites/cityflesh",
+            "favoritesName": "the naughties",
+            "metaName": false,
+            "materialIcon": "adjust",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "translocate.io",
+            "metaName": false,
+            "materialIcon": "train",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "theeatguide.com",
+            "metaName": false,
+            "materialIcon": "restaurant",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "_ARCHIV",
+            "metaName": false,
+            "materialIcon": "folder_open",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "Music",
+            "metaName": false,
+            "materialIcon": "folder_open",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "Notizen",
+            "metaName": false,
+            "materialIcon": "folder_open",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "Research",
+            "metaName": false,
+            "materialIcon": "folder_open",
+            "showInFavorites": true,
+            "onclick": false
+        }
+    ]
+}

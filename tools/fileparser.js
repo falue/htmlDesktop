@@ -10,9 +10,9 @@ async function parseFile(filepath) {
       return response;
     }).catch((error) => {
       // Catch error i case server is not working
-      console.log("Cannot load file: " + filepath);
-      hide("overlayEnv");
-      show("overlayServerError");
+      console.log("Cannot load file because server is not working: " + filepath);
+      /* hide("overlayEnv");
+      show("overlayServerError"); */
     });
   
     // Read response stream as text

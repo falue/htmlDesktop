@@ -7,6 +7,7 @@
     <!-- style and script resources -->
     <link rel="stylesheet" type="text/css" href="tools/fonts.css" media="all">
     <link rel="stylesheet" type="text/css" href="tools/stylesheet.css" media="all">
+    <script src="../../tools/fileparser.js"></script>
     <script src="tools/setup.js"></script>
     <script src="tools/javascript.js"></script>
 
@@ -68,7 +69,7 @@
         </p>
 
         <p>
-          <input id="internetToggle" type="checkbox" onchange="toggle('iframe');">
+          <input id="internetToggle" type="checkbox" onchange="toggle('iframe'); document.getElementById('noInternet').innerHTML = 'NO INTERNET :(';">
           <label for="internetToggle">Break the Internet</label>
         </p>
 
@@ -109,7 +110,7 @@
             <div id="navigationalButtons" class="navigationalButtons">
                 <i id="historyBackButton" class="material-icons circleButtons" onclick="historyBack();">arrow_back</i>
                 <i id="historyForwardButton" class="material-icons circleButtons" onclick="historyForward();">arrow_forward</i>
-                <i id="homeButton" class="material-icons" onclick="goToUrl('https://telefabi.ch');">home</i>
+                <i id="homeButton" class="material-icons" onclick="goToUrl('sites/telefabi');">home</i>
                 <i id="reloadButton" class="material-icons" onclick="reloadIframe();">cached</i>
             </div>
             <div class="hamburger-menu" onclick="toggle('menu'); hide('favoritesMenu');">
@@ -166,10 +167,10 @@
             <div id="linearLoader" class="linearLoader"><div class="loaderBar"></div></div>
 
             <!-- <iframe id="iframe" src="https://www.telefabi.ch" onload="delayHideLoader();" onerror="alert('error!')"></iframe> -->
-            <iframe id="iframe" src="https://www.telefabi.ch" onload="setNewTitle(); delayHideLoader();" onerror="alert('error!')"></iframe>
+            <iframe id="iframe" src="sites/telefabi" onload="setNewTitle(); delayHideLoader();" onerror="alert('error!')"></iframe>
             
             <div class="no-internet">
-                <h1>NO INTERNET :(</h1>
+                <h1 id="noInternet">NO INTERNET :(</h1>
                 Please contact your administrator.
             </div>
         </div>

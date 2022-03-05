@@ -4,21 +4,22 @@ function goToUrl(url, spoofUrl = url) {
   // reset css top
   iframe.style.top="0";
 
-  // If manual entered URL is a spoofed one, fake URL
-  spoofUrls.forEach(function (e) {
-    let realUrl = e[0];
-    let spoofUrl = e[1];
-    let optionalOnClick = e[2];
-    // TODO if only part was entered does not work
-    if(url.includes(spoofUrl)) {
-      url = realUrl;
-      spoofUrl = spoofUrl;
-      eval(optionalOnClick);
+  console.log(url, spoofUrl);
+
+  // Manual entered URL is not the complete path.
+  // Grab the complete path from the spoofUrls list.
+  // If the URL was given by click, this runs empty.
+  for(let spoofs of spoofUrls) {
+    if(spoofs[1].includes(url)) {
+      url = spoofs[0];
+      spoofUrl = spoofs[1];
+      eval(spoofs[2]);
+      break;
     }
-  })
+  }
 
   // Load url in iFrame
-  iframe.src = url;  // set src to exactly what is typed
+  iframe.src = url;
 
   // Display fake or real
   spoofUrl = spoofUrl.startsWith('http://') || spoofUrl.startsWith('https://') ? spoofUrl : "https://" + spoofUrl;
@@ -63,6 +64,7 @@ function setNewTitle() {
     // "Disable" internet
     if(iframeTitle == "File not found") {
       hide('iframe');
+      document.getElementById('noInternet').innerHTML = "404 Not found";
     } else {
       show('iframe');
     }
