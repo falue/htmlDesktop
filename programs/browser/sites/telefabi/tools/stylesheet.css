@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
+    hyphens: auto;
+}
+
+a:link,
+a:visited,
+a:focus {
+  text-decoration: none;
+  color: rgba(88,150,255,1);
+  outline: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline rgba(88,150,255,0.2) 3px;
+  color: rgba(88,150,255,0.75);
+}
+
+a.active {
+  text-decoration: underline rgba(88,150,255,0.2) 3px;
+}
+
+a:focus {
+  outline: none;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.italics {
+    font-style: italic;
+}
+
+article {
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    text-align: center;
+}
+
+.logo {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 330px;
+    height: 330px;
+    background-image: url(imgs/fl.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.text {
+    box-sizing: content-box;
+    padding: 1em 4em;
+    font-family: Roboto, 'Courier New', Courier, monospace;
+}
+
+.nobr {
+    white-space: nowrap;
+}
+
+h1 {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    font-family: Montserrat, 'Courier New', Courier, monospace;
+    user-select: none;
+}
+
+.divider {
+    margin: 0 0.75em;
+    opacity: .2;
+}
+
+.footnote {
+    position: relative;
+    color: blue;
+    font-size: 0.75em;
+}
+
+.footnote .note {
+    display: none;
+    white-space:initial;
+}
+
+.footnoteCheck {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -.5em;
+    top: 0;
+}
+
+.footnoteCheck:checked + label,
+.footnote:hover .note {
+    display: block;
+    position: absolute;
+    width: 400px;
+    top:0;
+    margin-top: -.5em;
+    left: -200px;
+    padding: 0.3em 1.2em;
+    z-index: 666;
+    text-align: left;
+    color: black;
+    background-color: white;
+    border: thin rgba(0,0,0,.1) solid;
+    border-radius: 0.2em;
+    box-shadow: 0px 0px 16px white;
+}
+
+.themoreyouknow {
+    text-align: right;
+    width: 100%;
+    position: relative;
+    font-size: .9em;
+    opacity: .8;
+}
+
+@media (max-width: 800px) {
+    .text {
+        padding: 1em;
+    }
+
+    .footnoteCheck:checked + label,
+    .footnote:hover .note {
+        position: fixed;
+        width: 80%;
+        max-width: 550px;
+        left:6%;
+        top: 6%;
+    }
+}
