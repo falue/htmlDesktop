@@ -2,6 +2,11 @@
 /* i.material-icons {
     font-size: 2em;
 } */
+body {
+    user-select: none;
+    overflow: hidden;
+}
+
 
 .shortcut {
     position: absolute;
