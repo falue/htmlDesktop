@@ -357,7 +357,7 @@
 
       <!-- START BUTTON -->
       <div>
-        <button onclick="toggle('startMenu')" class="valign systemColors">
+        <button onclick="toggle('startMenu'); hide('actionMenu');" class="valign systemColors">
           <i class="material-icons">house</i>
         </button>
       </div>
@@ -366,7 +366,7 @@
        
       <!-- PROGRAM FAST ACCESS -->
        <div class="buttonGroup">
-        <button title="Action menu" onclick="toggle('actionMenu')" class="valign systemColors">
+        <button title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors">
           <i class="material-icons">bolt</i>
         </button><!-- 
         --><button title="File manager" onclick="addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation='+workstation, incrementWindowsPosition('x'), incrementWindowsPosition('y'), 600,350, false)" title="File manager" class="valign systemColors">
