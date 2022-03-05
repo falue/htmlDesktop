@@ -97,7 +97,7 @@
             <i class="material-icons blue large valign">home</i>
             Start menu
             <br>
-            <span class="grey small italics">Logged in as <span id="usernameStartMenu"></span>
+            <span class="op75 small italics">Logged in as <span id="usernameStartMenu"></span>
               &middot;
               <i class="material-icons small valign">account_circle</i>
               <i class="material-icons small valign">info</i>
@@ -218,12 +218,15 @@
               <i class="material-icons systemColors clearBg op50">settings</i>
               Preferences
             </li>
-            <li id="logoutAction" class="hide noLiHover" onclick="showLockScreen(); hide('startMenu');">
-              <i class="material-icons systemColors clearBg op50">power_settings_new</i>
-              Power
-              <i class="material-icons clear">logout</i>
-              <i class="material-icons systemColors clearBg op50">logout</i>
-              Logout User
+            <li class="noLiHover powerButtons">
+              <div>
+                <i class="material-icons systemColors clearBg op50">power_settings_new</i>
+                Power
+              </div>
+              <div id="logoutAction" class="hide right relative top" onclick="showLockScreen(); hide('startMenu');">
+                <i class="material-icons systemColors clearBg op50">logout</i>
+                Logout User
+              </div>
             </li>
           </ul>
         </div>
