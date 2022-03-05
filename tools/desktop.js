@@ -58,11 +58,11 @@ async function login(password) {
         show('loginLoader');
         /* await delay(3500); */
         await counter("loginLoaderBar", "%", 3000, 92, 0, 100);
-        cl("start animation");
+        /* cl("start animation"); */
         gebi('lockScreen').classList.add('loginAnimation');
         gebi('loginLoaderBar').innerHTML = "Logging in.."
-        await delay(2000);  // wait for color animation
-        cl("finish animation");
+        await delay(3000);  // wait for color animation
+        /* cl("finish animation"); */
         hide('lockScreen');
 
         /* Reset login window */
