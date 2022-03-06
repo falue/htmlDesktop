@@ -49,7 +49,6 @@ header {
     width: 100%;
     height: calc(100% - 3.6em);
     top: 3.6em;
-    padding: 1em;
     box-sizing: border-box;
 }
 
@@ -58,6 +57,7 @@ header {
     padding: 0;
     height: 100%;
     font-size: 1em;
+    padding: 18px;  /* px to not zoom with the text but keep the scrollbar in place */
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
     border:none;
