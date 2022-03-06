@@ -1,7 +1,8 @@
 let os = "windows";
 let workstation = "_generic";
-let rootFolders;
-let rootName;
+let selectedFolder;
+let rootNameDisplay;
+
 
 async function setupFileManager() {
     const queryString = window.location.search;
@@ -9,190 +10,221 @@ async function setupFileManager() {
     os = urlParams.get('os');
     workstation = urlParams.get('workstation');
     
-    let rootFolderPath = "../../os/" + os + "/folders.json";
+    let rootFolderPath = "../../workstations/" + workstation + "/folders.json";
     rootFolders = await parseFile(rootFolderPath);
-    /* console.log(rootFolderPath); */
-    /* console.log(os); */
-
-    // Replace hardcoded root HDD icon 
-    document.getElementById('rootIcon').src =  "../../os/"+os+"/systemIcons/hdd.png";
     
-    let rootDisplayName;
+    let computerName;
+    // Only for display on top of treeview and in the path-input
     switch(os) {
         case "mac":
-            rootName = "Macintosh HD"
-            rootDisplayName = "Macintosh HD"
+            rootNameDisplay = "Macintosh HD"
+            computerName = "Macintosh HD"
         break;
         case "windows":
-            rootName = "C:"
-            rootDisplayName = "This PC"
+            rootNameDisplay = "C:"
+            computerName = "This PC"
         break;
         case "linux":
-            rootName = "Linux"
-            rootDisplayName = "Linux"
+            rootNameDisplay = "Linux"
+            computerName = "Linux"
         break;
     }
 
-    document.getElementById('rootName').innerHTML = rootDisplayName;
-    document.getElementById('fileManagerPath').innerHTML = rootName+"/";
-    
+    let rootName = "Root";
 
-    /* for (var key in rootFolders) { */
-    for (let file of rootFolders) {
-        //console.log(file[0], file);
-        printFileOrFolder("root", file);
-    }
-
-    let folderContent;
+    // Opened folder
     if(urlParams.get('folderContent')) {
-        folderContent = urlParams.get('folderContent');
-        folderContent = await parseFile("../../workstations/"+workstation+"/folders/"+folderContent);
-        /* console.log(folderContent); */
+        // Folder was specified in URL
+        selectedFolder = [rootName, urlParams.get('folderContent')].join("/");
     } else {
-        folderContent = "";
+        // Open root folder if nothing specified in URL
+        updateFolderContent(rootName, rootFolders[0]["Root"]);
     }
-
-    updateFolderContent(folderContent);
+    
+    // Cycle through all files to be displayed in treeview
+    let list = document.getElementById('treeView');
+    for (let file of rootFolders) {
+        addFileToTree(list, file, rootName, computerName);
+    }
 }
 
-function updateFolderContentFromRoot(partOfFolders, folderContentKey) {
-    /* console.log("looking for.. " + folderContentKey); */
-    partOfFolders = partOfFolders ? partOfFolders : rootFolders;
+// Display all files and folders in treeview
+function addFileToTree(element, content, rootName, computerName) {
+    let isFile = typeof(content[0]) === "string";
+    let id = "filesystem-"+createUniqueId(16);
+    let folderName = Object.keys(content)[0];
+    let li = document.createElement("li");
+    li.id = id;
 
-    for (let i = 0, len = partOfFolders.length; i < len; i++) {
-        /* console.log(folderContentKey + " != " + Object.keys(partOfFolders[i])); */
-        if (folderContentKey in partOfFolders[i]) {
-        /* if (Object.keys(partOfFolders[i]) == folderContentKey) { */
-            /* console.log("match !"); */
-            document.getElementById('fileManagerPath').innerHTML = rootName + "/" + folderContentKey;
-            /* let newFolders = partOfFolders[i][Object.keys(partOfFolders[i])]; */
-            let newFolders = partOfFolders[i][folderContentKey];
-            updateFolderContent(newFolders);
-            return;
+    if(isFile) {
+        // Add file to UL
+        /* cl("FILE: " + content); */
+        let span = document.createElement("span");
+        span.setAttribute("class", "tree_label");
+        // Create icon
+        let icon = document.createElement("img");
+        icon.setAttribute("id", "icon-"+id);
+        icon.setAttribute("src", "../../os/"+os+"/systemIcons"+iconDecider(content[0], false));
+        icon.setAttribute("alt", "");
+        
+        // Add file to list
+        span.appendChild(icon);
+        span.appendChild(document.createTextNode(content[0]));
+        li.appendChild(span);
+        element.appendChild(li);
+
+    } else {
+        // Add folder to UL
+        /* cl("FOLDER: " + folderName + " ("+content[folderName].length+")"); */
+        let icon = document.createElement("img");
+        icon.setAttribute("id", "icon-"+id);
+        icon.setAttribute("src", "../../os/"+os+"/systemIcons"+iconDecider(folderName, content[folderName].length));
+        icon.setAttribute("alt", "");
+        li.appendChild(icon);
+        let checkbox = document.createElement("input");
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.setAttribute("id", "checkbox-"+id);
+        li.appendChild(checkbox);
+        let label = document.createElement("label");
+        label.setAttribute("for", "checkbox-"+id);
+        label.setAttribute("class", "tree_label");
+        label.appendChild(document.createTextNode((folderName === "Root"? computerName : folderName)));
+        li.appendChild(label);
+
+        // Cleanup folder path: If root folder, this would double itslef ("Root/Root") idk..
+        let currentFolderpath;
+        if(rootName === folderName) {
+            currentFolderpath = rootName;
+        } else {
+            currentFolderpath = [rootName, folderName].join("/");
         }
-        // Iterate subfolders
-        if(!partOfFolders[i][0]) {
-            updateFolderContentFromRoot(partOfFolders[i][Object.keys(partOfFolders[i])], folderContentKey);
+
+        // Open clicked folder in content beside:
+        label.onclick = function() {
+            gebi('fileManagerPath').innerHTML = currentFolderpath.replace("Root", rootNameDisplay);
+            updateFolderContent(currentFolderpath, content[folderName]);
+        };
+
+        if(content[folderName].length) {
+            // This folder has files in it! Make subfolder.
+            
+            // If in URL folderContent was defined, open this as path:
+            if(selectedFolder && selectedFolder === currentFolderpath) {
+                updateFolderContent(currentFolderpath, content[folderName]);
+                gebi('fileManagerPath').innerHTML = selectedFolder.replace("Root", rootNameDisplay);
+            }
+            
+            // Always open Root folder
+            if(computerName) {
+                checkbox.checked = "true"
+                computerName = false;
+            }
+            // Open folders along the way to selectedFolder
+            if(selectedFolder && selectedFolder.startsWith(currentFolderpath)) {
+                checkbox.checked = "true"
+            } 
+            
+            // Add new UL to LI
+            let subFolderElement = document.createElement("ul");
+            checkbox.setAttribute("onchange", "openCloseFolderIcon('"+id+"');");
+            li.appendChild(subFolderElement);
+
+            // Go deeper
+            for (let file of content[folderName]) {
+                addFileToTree(subFolderElement, file, currentFolderpath, computerName);
+            }
+        } else {
+            // There are no contents of this folder. No click for you & files to render
+            checkbox.setAttribute("disabled", "true");
         }
+
+        // Add the empty or full folder to list
+        element.appendChild(li);
     }
-    return;
 }
 
-function updateFolderContent(folderContent) {
+// Display files of openend folder in content area
+function updateFolderContent(path, folderContent) {
     // Clear area
     let container = document.getElementById('folderContent');
     container.innerHTML = "";
 
-    /* document.getElementById('fileManagerPath').innerHTML = rootName+"/"+folderContent[0]; */
+    // Add folder info
+    let countFilesInFolder = Object.keys(folderContent).length;
+    gebi('folderInfo').innerHTML = countFilesInFolder + (countFilesInFolder === 1 ? " file" : " files");
 
     for (let file of folderContent) {
+        // Make a copy! because apparently changes on "file" changes the initial array..?
+        let currentFile = {...file};
+        let filename = currentFile[0];
+        let extension;
+        let action = currentFile[1];
+        let size = currentFile[2];
+        let data = currentFile[3];
         // TODO List view with file[1] etc
-        /* let fileInfo = file[0] +" ("+file[1]+") ("+file[2]+") ("+file[3]+")"; */
+        // let fileInfo = file[0] +" ("+file[1]+") ("+file[2]+")";
+
+        // Check if it's folder
         let isFolder = false;
-        if(!file[0]) {
-            file[0] = Object.keys(file)[0];
+        if(!filename) {
+            filename = Object.keys(currentFile)[0];
             isFolder = true;
+        } else {
+            extension = filename.split(".")[1].toLowerCase();
         }
-        /* document.getElementById('folderContent').innerHTML += "<br>"; */
+        
+        // Create shortcuts
         let fileTile = document.createElement("div");
         let fileName = document.createElement("div");
-
         let fileIcon = document.createElement("img");
         fileIcon.setAttribute("alt", "");
-        fileIcon.setAttribute("src", "os/"+os+"/workstation/"+workstation+"/"+iconDecider(currentFile[0], isFolder));
+        fileIcon.setAttribute("src", "../../os/"+os+"/systemIcons"+iconDecider(filename, isFolder));
         fileTile.appendChild(fileIcon);
-
-        fileName.appendChild(document.createTextNode(file[0]));
+        fileName.appendChild(document.createTextNode(filename));
         fileTile.setAttribute("class", "fileTile");
+
+        // Set actions ondblclick
+        if(action && action !== "action") {
+            // An action is defined manually in folders.json
+            fileTile.setAttribute("ondblclick", action);
+        } else {
+            // On DBLclikc: open programs
+            if(["jpg","jpeg","png","tiff","psd","pdf","mp4","avi","mpeg","mkv"].includes(extension)) {
+                // Image: filename can be named anything.
+                //   Image viewer only opens if real path is defined in data (eg. "1.jpg" or "1.jpg|2.jpg").
+                //   path relative to workstation root.
+                if(data && data !== "data") {
+                    fileTile.setAttribute("ondblclick", "parent.addWindow('Image viewer', 'image', 'imageviewer/index.html?os="+os+"&workstation="+workstation+"&files="+data+"', 5,5, 666,450, false)");
+                }
+            } else if(["doc","docx","pyc","py","txt","rtf"].includes(extension)) {
+                // Text file
+                //   If nothing is in data element, open random text
+                let text = data && data !== "data" ? data : "random";
+                fileTile.setAttribute("ondblclick", "parent.addWindow('Text editor', 'edit_note', 'texteditor/index.html?text="+text+"', 5, 5, 666,450, false)");
+            } else if(isFolder) {
+                // Open folder directly
+                // Find index of subfolder in current folder
+                // Maybe terrible..
+                let indexOfSubfolder = folderContent.map(e => Object.keys(e)[0]).indexOf(filename);
+                let nextPath = [path, filename].join("/");
+                fileTile.ondblclick = function() {
+                    gebi('fileManagerPath').innerHTML = nextPath.replace("Root", rootNameDisplay);
+                    updateFolderContent(nextPath, folderContent[indexOfSubfolder][filename]);
+                };
+            }
+        }
         fileTile.appendChild(fileName);
         container.appendChild(fileTile);
     }
 }
 
-function printFileOrFolder(root, content) {
-    let folderName = Object.keys(content)[0];
-    let fileOrFolder = content[0] ? content[0] : folderName;
-    let id = makeValidId(root+"/"+fileOrFolder);
-
-    let container = document.getElementById('treeView');
-    let listElement = document.createElement("li");
-    let fileIcon = document.createElement("img");
-    listElement.setAttribute("id", id);
-    fileIcon.setAttribute("alt", "");
-
-    // Hide subfolders initially, inset
-    let folderLevel = (root.match(/\//g)||[]).length;
-    if(folderLevel > 0) {
-        listElement.classList.add("subfolderLevel"+folderLevel);
-        listElement.classList.add("hide");
-    }
-
-    // Add all steps of the folder structure as classes to the list
-    // to open and close everything fomr higher-upper folders...
-    let className = "";
-    let folderJunks = root.split("/");
-    for (i = folderJunks.length-1; i >= 0; i--) {
-        className = makeValidId(folderJunks.join("/"));
-        folderJunks.pop();
-        listElement.classList.add(className);
-    }
-
-    let fileName = document.createElement("span");
-
-    if(typeof(content[folderName]) === "object") {
-        /* console.log(id) */
-        // Its a folder - make clickable and display
-        fileIcon.setAttribute("src", iconDecider(folderName, content[folderName].length));
-        if(content[folderName].length) {
-            listElement.setAttribute("onclick", "toggleClass('"+id+"'); updateFolderContentFromRoot('', '"+folderName+"');");
-            /* console.log(JSON.stringify(content[folderName])); */
-        }
-        fileName.appendChild(document.createTextNode(folderName));
-        listElement.appendChild(fileIcon);
-        listElement.appendChild(fileName);
-        container.appendChild(listElement);
-        // Go deeper into the void
-        for (let file of content[folderName]) {
-            printFileOrFolder(root+"/"+folderName, file);
-        }
+// Swap icon in treeview
+function openCloseFolderIcon(id) {
+    let checkbox = document.getElementById("checkbox-"+id);
+    let icon = document.getElementById("icon-"+id);
+    if(checkbox.checked) {
+        icon.src = "../../os/"+os+"/systemIcons/folderEmpty.png"
     } else {
-        // Its a file - display
-        fileIcon.setAttribute("src", iconDecider(fileOrFolder, false));
-        fileName.appendChild(document.createTextNode(fileOrFolder));
-        listElement.appendChild(fileIcon);
-        listElement.appendChild(fileName);
-        container.appendChild(listElement);
+        icon.src = "../../os/"+os+"/systemIcons/folderFull.png"
     }
 }
-
-function makeValidId(value) {
-    return value.replace(/ /g, "-").replace(/\//g, "-").replace(/\./g, "-");
-}
-
-function iconDecider(filename, folder) {
-    let path = "../../os/" + os + "/systemIcons/";
-    if(folder === 0) return path + "folderEmpty.png";
-    if(folder > 0) return path + "folderFull.png";
-
-    let fileEnding = (filename.split(".")[1] + "").toLowerCase();  // yes this ignores a dot in bewtween filenames
-    /* console.log(fileEnding); */
-
-    switch (fileEnding) {
-        case "jpg": path += "fileImage.png"; break;
-        case "jpeg": path += "fileImage.png"; break;
-        case "png": path += "fileImage.png"; break;
-        case "tiff": path += "fileImage.png"; break;
-        case "psd": path += "fileImage.png"; break;
-        case "mov": path += "fileMovie.png"; break;
-        case "mp4": path += "fileMovie.png"; break;
-        case "avi": path += "fileMovie.png"; break;
-        case "mpeg": path += "fileMovie.png"; break;
-        case "mkv": path += "fileMovie.png"; break;
-        case "hdd": path += "hdd.png"; break;
-        case "ssd": path += "hdd.png"; break;
-        case "trash": path += "trashFull.png"; break;
-        default: path += "file.png"
-    }
-
-    return path;
-} 

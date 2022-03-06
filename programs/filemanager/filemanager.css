@@ -66,13 +66,12 @@ header {
     overflow: auto;
     box-sizing: border-box;
     position: relative;
-}
 
-.treeView {
-    padding: 1em 0;
-    height: 100%;
+    padding: 0 .5em 0 1.5em;
+    /* height: 100%; */
     width: 20%;
-    min-width: 10em;
+    /* width: 95%; */
+    min-width: 12em;
     border-right: solid grey thin;
     box-sizing: border-box;
     overflow-x: hidden;
@@ -87,6 +86,12 @@ header {
     overflow-x: hidden;
     overflow-y: auto;
     box-sizing: border-box;
+}
+
+#folderInfo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }
 
 .fileTile {
@@ -143,3 +148,15 @@ header {
 .subfolderLevel6 { margin-left: 6em; }
 .subfolderLevel7 { margin-left: 7em; }
 .subfolderLevel8 { margin-left: 8em; }
+
+
+/* ul, li {
+    border:black solid thin;
+    padding: .5em;
+    margin: .5em;
+}
+
+li {
+    border:red solid thin;
+    margin-bottom: .5em;
+} */

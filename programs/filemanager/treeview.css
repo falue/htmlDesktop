@@ -1,0 +1,145 @@
+
+.tree {
+    padding: 1em;
+}
+
+.tree input {
+    opacity: 0;
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+.tree img {
+    height: 1.5em;
+    position: absolute;
+    margin-top:-.1em;
+    margin-left:-2.75em;
+    z-index: 1;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.tree input~ul {
+    display: none;
+}
+
+.tree input:checked~ul {
+    display: block;
+}
+
+/* ————————————————————–
+    Tree rows
+  */
+.tree li {
+    line-height: 1.2;
+    position: relative;
+    padding: 0 0 1em 1em;
+}
+
+.tree ul li {
+    padding: .5em 0 0 1.5em;
+}
+
+.tree>li:last-child {
+    padding-bottom: 0;
+}
+
+/* ————————————————————–
+    Tree labels
+  */
+.tree_label {
+    position: relative;
+    display: inline-block;
+   /*  background: red; */
+}
+
+label.tree_label {
+    /* cursor: pointer; */
+}
+
+label.tree_label:hover {
+    /* color: blue; */
+}
+
+/* ————————————————————–
+    Tree expanded icon
+  */
+
+/* CLOSED FOLDER ICON */
+label.tree_label:before {
+    /* background: #000;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    float: left;
+    margin: 0 1em 0 -2em;
+    width: 1em;
+    height: 1em;
+    /* border-radius: 1em; *
+    content: '+';
+    text-align: center;
+    line-height: .9em; */
+}
+
+/* OPEN FOLDER ICON */
+.tree :checked~label.tree_label:before {
+    /* content: '-'; */
+}
+
+/* ————————————————————–
+    Tree branches
+  */
+.tree li:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -.5em;
+    display: block;
+    width: 0;
+    border-left: 1px solid rgba(0,0,0,.15);
+    content: "";
+}
+
+.tree_label:after {
+    position: absolute;
+    top: 0;
+    left: -2em;
+    display: block;
+    height: 0.5em;
+    width: 1.5em;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    border-left: 1px solid rgba(0,0,0,.15);
+    /* border-radius: 0 0 0 .3em; */
+    content: '';
+}
+
+label.tree_label:after {
+    /* border-bottom: 0; */
+}
+
+:checked~label.tree_label:after {
+    /* border-radius: 0 .3em 0 0; */
+    border-top: 1px solid rgba(0,0,0,.15);
+    border-right: 1px solid rgba(0,0,0,.15);
+    border-bottom: 0;
+    border-left: 0;
+    bottom: 0;
+    top: 0.5em;
+    height: auto;
+}
+
+.tree li:last-child:before {
+    height: 1em;
+    bottom: auto;
+}
+
+.tree>li:last-child:before {
+    display: none;
+}
+
+.tree_custom {
+    display: block;
+    /* background: #eee; */
+    padding: 1em;
+    border-radius: 0.3em;
+}

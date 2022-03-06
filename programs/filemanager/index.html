@@ -8,15 +8,11 @@
     <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
     <link rel="stylesheet" href="../../tools/general.css" media="all">
     <link rel="stylesheet" href="filemanager.css" media="all">
+    <link rel="stylesheet" href="treeview.css" media="all">
     <link rel="stylesheet" href="../../tools/desktop.css" media="all">
-    <!-- <link rel="stylesheet" href="../../tools/windowmanager.css" media="all">
-    <link rel="stylesheet" href="../../tools/desktop.css" media="all"> -->
-    <!-- <link rel="stylesheet" href="../../tools/index/stylesheet.css" media="all"> -->
-    <!-- <script src="tools/index/javascript.js"></script> -->
     <script src="../../tools/general.js"></script>
     <script src="filemanager.js"></script>
     <script src="../../tools/fileparser.js"></script>
-    <!-- <script src="../../tools/desktop.js"></script> -->
 
   </head>
   <body onload="setupFileManager();">
@@ -72,12 +68,19 @@
     </header>
 
     <div class="browser">
-      <ul id="treeView" class="treeView">
-        <li class="root"><img alt="" src="../../os/windows/systemIcons/folderFull.png"><span>Quick access</span></li>
-        <li class="root">&nbsp;</li>
-        <li class="root"><img alt="" id="rootIcon" src="../../os/windows/systemIcons/trashFull.png"><span id="rootName">Root</span></li>
+      <!-- STATIC HARDCODED TREEVIEW -->
+      <!-- TODO -->
+
+      <!-- MAIN TREE VIEW -->
+      <ul id="treeView" class="tree">
       </ul>
-      <div id="folderContent" class="content"></div>
     </div>
+
+    <!-- FOLDER CONTENTS -->
+    <div id="folderContent" class="content"></div>
+    
+    <!-- FOLDER CONTENT INFOS -->
+    <div id="folderInfo" class="grey small padding05">0 files</div>
+
   </body>
   </html>
