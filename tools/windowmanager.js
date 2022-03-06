@@ -359,7 +359,7 @@ function editShortcut(id) {
 function saveShortcut(id) {
   hide("editShortcut");
   let currentShortcut = gebi(id);
-  let currentOffsetX = currentShortcut.getBoundingClientRect()["width"];
+  let currentOffsetX = currentShortcut.getBoundingClientRect();
   let name = gebi('editShortcutName').value.replace(/[\"'`\{\}\[\]\\]/g, "");
   currentShortcut.getElementsByClassName("filename")[0].innerHTML = name;
   let action = gebi('editShortcutAction').value;
@@ -377,9 +377,10 @@ function saveShortcut(id) {
 
   // Reposition center
   // Split difference of shortCut width before and after renaming
-  let newOffsetX = (currentShortcut.getBoundingClientRect()["width"]-currentOffsetX)/2;
+  let newOffsetX = (currentShortcut.getBoundingClientRect()["width"]-currentOffsetX["width"])/2;
   newOffsetX = getPositionInPercentage("left", newOffsetX);
-  currentShortcut.style.left = parseInt(currentOffsetX.style.left)-newOffsetX+"%"; 
+  let currentOffsetXPercent = getPositionInPercentage("left", currentOffsetX["left"]);
+  currentShortcut.style.left = currentOffsetXPercent-newOffsetX+"%"; 
 }
 
 // makes a new shortcut on demand
@@ -433,7 +434,6 @@ function placeShortcut(name, icon, x,y, action) {
 }
 
 function clutterDesktop(count) {
-  /* TODO GET ICON PATH FROM FILENAME & EXTENSION */
   let randomNameParts = [
     "File", "file", "Document", "Home", "Personal", "var", "VAR", "Favorites", "A-433", "Photos", "Links", "Important",
   ]
