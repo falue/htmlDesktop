@@ -433,16 +433,17 @@ function placeShortcut(name, icon, x,y, action) {
 }
 
 function clutterDesktop(count) {
-  let randomIcon = [
-    "folderFull.png", "folderFull.png", "folderFull.png", "folderFull.png", "folderFull.png", "folderEmpty.png", "folderEmpty.png", "fileMovie.png", "fileImage.png", "fileImage.png", "fileImage.png", "fileImage.png", "fileImage.png", "file.png", "file.png", "file.png", "file.png", "file.png" ]
+  /* TODO GET ICON PATH FROM FILENAME & EXTENSION */
   let randomNameParts = [
     "File", "file", "Document", "Home", "Personal", "var", "VAR", "Favorites", "A-433", "Photos", "Links", "Important",
   ]
   let randomNameSuffix = [
-    "", "", "", "", "", "", "", ".avi", ".png", ".jpg", ".jpg", ".JPG", ".jpeg", "", "", "", "", ""
+    "", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "",
+    "", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "",
+    ".jpg", ".jpeg", ".png", ".tiff", ".psd", ".doc", ".docx", ".pyc", ".py", ".txt", ".rtf", ".pdf", ".zip", ".mp3", ".mp4", ".avi", ".mpeg", ".mkv", ".trash",
+    ".avi", ".png", ".jpg", ".jpg", ".JPG", ".jpeg", ".zip", ".mp4", ".txt", ".doc", ".mp3" , ".pyc", ".pdf", ".pdf", ".PDF" 
   ]
 
-  let rand;
   let x;
   let y;
   let name;
@@ -451,14 +452,13 @@ function clutterDesktop(count) {
     /* console.log(i); */
     x = randomBetween(1, 93);
     y = randomBetween(1, 85);
-    rand = chooseRandomKey(randomIcon);
     /* console.log(rand, x, y, randomIcon[rand]); */
     name = randomNameParts[chooseRandomKey(randomNameParts)];
-    name += randomBetween(0, 100) > 85 ? " " + createUniqueId() : "";
+    name += randomBetween(0, 100) > 85 ? " " + createUniqueId(5) : "";
     name += randomBetween(0, 100) > 75 ? " Copy" : "";
-    name += randomNameSuffix[rand];
+    name += randomNameSuffix[chooseRandomKey(randomNameSuffix)];
     //console.log(name);
-    placeShortcut(name, randomIcon[rand], x,y, "");
+    placeShortcut(name, iconDecider(name, name.split(".").length === 1), x,y, "");
   }
 }
 

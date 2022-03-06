@@ -91,6 +91,7 @@ input[type=button]:not(.systemButton) {
     background-color: rgba(255,255,255,0.1);
 }
 
+.dialog .chooseBox label img,
 .dialog .chooseBox i {
     padding: .25em;
     margin: .25em;

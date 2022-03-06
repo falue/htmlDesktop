@@ -99,7 +99,7 @@ function updateFolderContent(folderContent) {
 
         let fileIcon = document.createElement("img");
         fileIcon.setAttribute("alt", "");
-        fileIcon.setAttribute("src", iconDecider(file[0], isFolder));
+        fileIcon.setAttribute("src", "os/"+os+"/workstation/"+workstation+"/"+iconDecider(currentFile[0], isFolder));
         fileTile.appendChild(fileIcon);
 
         fileName.appendChild(document.createTextNode(file[0]));
