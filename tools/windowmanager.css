@@ -13,10 +13,10 @@
 .windowManagerOverlay {
   background-color: rgba(0,0,0,0);
   position: absolute;
-  top: 0;
+  top: 1.5em;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 1.5em);
   z-index: 999;
 }
 

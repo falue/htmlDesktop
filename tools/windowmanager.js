@@ -16,6 +16,7 @@ function makeResizableDiv(div) {
   for (let i = 0;i < resizers.length; i++) {
     const currentResizer = resizers[i];
     currentResizer.addEventListener('mousedown', function(e) {
+      /* console.log("Start resize"); */
       e.preventDefault()
       original_width = parseFloat(getComputedStyle(element, null).getPropertyValue('width').replace('px', ''));
       original_height = parseFloat(getComputedStyle(element, null).getPropertyValue('height').replace('px', ''));
@@ -24,13 +25,20 @@ function makeResizableDiv(div) {
       original_mouse_x = e.pageX;
       original_mouse_y = e.pageY;
       window.addEventListener('mousemove', resize);
-      window.addEventListener('mouseup', stopResize);
+      window.addEventListener('mouseup', stopResizeIntermediate);
+      // Bring to front so user can see window
+      bringToFront(element.id);
+      // .. but show overlay to not interfere right after (!)
+      showClass('windowManagerOverlay');
     })
+
+    function stopResizeIntermediate() {
+      // I need this so i can grab the element, and to later stop it
+      stopResize(element);
+    }
     
     function resize(e) {
       /* console.log("do a resize"); */
-      showClass('windowManagerOverlay');
-      bringToFront(element.id);
 
       if (currentResizer.classList.contains('bottom-right')) {
         const width = original_width + (e.pageX - original_mouse_x);
@@ -78,10 +86,12 @@ function makeResizableDiv(div) {
       }
     }
     
-    function stopResize() {
+    function stopResize(currentElement) {
       /* console.log("stop resize"); */
-      hideClass('windowManagerOverlay');
-      window.removeEventListener('mousemove', resize)
+      // Show current overlay again
+      hide(currentElement.getElementsByClassName('windowManagerOverlay')[0].id);
+      window.removeEventListener('mousemove', resize);
+      window.removeEventListener('mouseup', stopResizeIntermediate);
     }
   }
 }
@@ -89,7 +99,6 @@ function makeResizableDiv(div) {
 
 /* DRAG & MOVE WINDOW */
 // see https://stackoverflow.com/a/57438497
-
 let offsetX;
 let offsetY;
 
@@ -99,15 +108,17 @@ onDragStart = function(ev) {
   currentDragId = ev.target.id;
   ev.target.style.opacity = '0.025';  // Hide original during dragging
   // Only bringToFront if window not shortcut on desktop
-  if(!ev.target.classList.contains("shortcut")) {
+  /* if(!ev.target.classList.contains("shortcut")) {
     bringToFront(ev.target.id);
-  }
+  } */
 
   offsetX = ev.clientX - rect.x;
   offsetY = ev.clientY - rect.y;
 };
 
 dropHandler = function(ev) {
+  // Element is being dropped
+  // console.log("dropHandler");
   ev.preventDefault();
   let droppedId = currentDragId;
   let id1 = gebi(droppedId);
@@ -121,13 +132,16 @@ dropHandler = function(ev) {
   let testy = ev.clientY - top - offsetY + 'px'
   id1.style.left = getPositionInPercentage("left", testx)+ "%";
   id1.style.top = getPositionInPercentage("top", testy)+ "%";
-  // id2.appendChild(gebi(droppedId));  // why was this here
+
+  let droppedWindow = id1.getElementsByClassName('windowManagerOverlay')[0];
+  if(droppedWindow) bringToFront(droppedId);
+
   currentDragId = "";
   id1.style.opacity = '1';
-  hideClass('windowManagerOverlay');
 };
 
 dragoverHandler = function(ev) {
+  // Element is being draged
   // console.log("dragover_handler");
   ev.preventDefault();
   ev.dataTransfer.dropEffect = "move";
@@ -136,6 +150,9 @@ dragoverHandler = function(ev) {
 let recentZIndex = 10;
 
 function addWindow(windowName, icon, contentPath, x,y, w,h, hide, zIndex) {
+  // Display overlay in all other windows that youre able to click on them later
+  showClass('windowManagerOverlay');
+
   let id = "window-" + createUniqueId();
   recentZIndex++;
   // Create main div and resize edges
@@ -183,6 +200,9 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, hide, zIndex) {
 
   // windowManagerOverlay
   let windowManagerOverlay = document.createElement("div");
+  let overlayId = id + "-"+createUniqueId(6);
+  windowManagerOverlay.setAttribute("id", overlayId);
+  windowManagerOverlay.setAttribute("onclick", "bringToFront('"+id+"'); hide('"+overlayId+"');");
   windowManagerOverlay.setAttribute("class", "hide windowManagerOverlay");
   windowContainer.appendChild(windowManagerOverlay);
 
@@ -261,22 +281,17 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, hide, zIndex) {
 }
 
 function bringToFront(id) {
-  let el = gebi(id);
-  if(el) {
-    recentZIndex++;
-    el.style.zIndex = recentZIndex;
-    /* el.setAttribute("data-setup-zindex", recentZIndex); */
-  }
-}
-
-async function minimizeWindow(id) {
-  /* console.log("minimizeWindow WTF: "+id); */
   let currentWindow = gebi(id);
-  currentWindow.setAttribute("data-setup-hide", true);
-  currentWindow.classList.add("minimizeWindow");
-  await delay(1000);
-  hide(id);
-  currentWindow.classList.remove("minimizeWindow");
+  if(currentWindow) {
+    recentZIndex++;
+    /* console.log(recentZIndex); */
+    currentWindow.style.zIndex = recentZIndex;
+    // display all windowManagerOverlay
+    showClass('windowManagerOverlay');
+    
+    // hide current windowManagerOverlay
+    hide(currentWindow.getElementsByClassName('windowManagerOverlay')[0].id);
+  }
 }
 
 function getWindowFromTaskbar(id) {
@@ -284,6 +299,17 @@ function getWindowFromTaskbar(id) {
   gebi(id).setAttribute("data-setup-hide", !hide);
   bringToFront(id);
   gebi(id).style.opacity = 1;  // To cover up the drag/drop bug
+}
+
+async function minimizeWindow(id) {
+  /* console.log("minimizeWindow WTF: "+id); */
+  let currentWindow = gebi(id);
+  currentWindow.setAttribute("data-setup-hide", true);
+  currentWindow.classList.add("minimizeWindow");
+  hideFrontMostWindowOverlay(); 
+  await delay(1000);
+  hide(id);
+  currentWindow.classList.remove("minimizeWindow");
 }
 
 function maximizeWindow(id) {
@@ -307,6 +333,40 @@ function maximizeWindow(id) {
   resetMaxButton.setAttribute("onclick", "resetWindowSize('"+id+"')");
 }
 
+function closeWindow(id) {
+  let el = gebi(id);
+  el.remove();
+  // If os==win: remove from taskbar
+  if(os=="windows") {
+    gebi("minimized-"+id).remove();
+    hideFrontMostWindowOverlay(); 
+  }
+}
+
+async function hideFrontMostWindowOverlay() {
+  // Hide the front most window's windowManagerOverlay
+  // .minimizeWindow because animation is ongoing during minimization
+  let overlays = document.querySelectorAll('.window:not(.hide):not(.minimizeWindow)');
+  let maxZIndex = 0;
+  let currentZIndex = 0;
+  let overlayToHide;
+
+  overlays.forEach(e => {
+      currentZIndex = e.style.zIndex;
+      if(currentZIndex > maxZIndex) {
+        maxZIndex = currentZIndex;
+        overlayToHide = e;
+      }
+    })
+
+  if(maxZIndex) {
+    // Somehow, the class windowManagerOverlay is being forced right now.
+    // Thats why ther's a await here. Works on window "close" without though
+    await delay(50);
+    hide(overlayToHide.getElementsByClassName('windowManagerOverlay')[0].id);
+  }
+}
+
 function resetWindowSize(id) {
   let windowContainer = gebi(id);
   windowContainer.style.left = "50px";
@@ -317,15 +377,6 @@ function resetWindowSize(id) {
   // reset reset:
   let resetMaxButton = gebi("maximizeWindow-"+id);
   resetMaxButton.setAttribute("onclick", "maximizeWindow('"+id+"')");
-}
-
-function closeWindow(id) {
-  let el = gebi(id);
-  el.remove();
-  // If os==win: remove from taskbar
-  if(os=="windows") {
-    gebi("minimized-"+id).remove();
-  }
 }
 
 /* SHORTCUTS */
