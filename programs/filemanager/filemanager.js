@@ -170,7 +170,8 @@ function updateFolderContent(path, folderContent) {
             filename = Object.keys(currentFile)[0];
             isFolder = true;
         } else {
-            extension = filename.split(".")[1].toLowerCase();
+            // +"" because if a file does not have an extension (toLowerCase() would fail)
+            extension = (filename.split(".")[1]+"").toLowerCase();
         }
         
         // Create shortcuts
