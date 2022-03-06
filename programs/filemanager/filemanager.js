@@ -107,6 +107,9 @@ function addFileToTree(element, content, rootName, computerName) {
 
         if(content[folderName].length) {
             // This folder has files in it! Make subfolder.
+
+            // Allow for icon to be clicked
+            icon.setAttribute("onclick", "gebi('checkbox-"+id+"').checked = !gebi('checkbox-"+id+"').checked;");
             
             // If in URL folderContent was defined, open this as path:
             if(selectedFolder && selectedFolder === currentFolderpath) {
