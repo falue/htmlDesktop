@@ -1,6 +1,6 @@
 
 .tree {
-    padding: 1em;
+    padding: 1em 0 1em 1em;
 }
 
 .tree input {
@@ -50,7 +50,13 @@
 .tree_label {
     position: relative;
     display: inline-block;
-   /*  background: red; */
+    /* background: red; */
+    padding-left: 3em;
+    left: -3em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
 }
 
 label.tree_label {
@@ -103,7 +109,7 @@ label.tree_label:before {
 .tree_label:after {
     position: absolute;
     top: 0;
-    left: -2em;
+    left: 1em;
     display: block;
     height: 0.5em;
     width: 1.5em;
