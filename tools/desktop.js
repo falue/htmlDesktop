@@ -219,13 +219,13 @@ function keyboardController(event) {
     if(event.target.localName === "body") {
         let key = event.key;
         switch(key) {
-            case "1": addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 5,5, 666,450, false); break;
-            case "2": addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation='+workstation, 5,5, 600,350, false); break;
-            case "3": addWindow('Text editor', 'edit_note', 'texteditor', 5,5, 666,450, false); break;
-            case "4": addWindow('Browser', 'public', 'browser/index.html?env='+workstation, 5,5, 1200,650, false); break;
-            case "5": addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation='+workstation+'&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', 5,5, 666,450, false); break;
-            case "6": addWindow('FTP Client', 'storm', 'ftp', 5,5, 850,590, false); break;
-            case "7": addWindow('FTP Client - Connect', 'storm', 'ftp/connect.html', 55,5, 666,480, false); break;
+            case "1": startDefaultProgram('terminal-6'); break;
+            case "2": startDefaultProgram('fileManager'); break;
+            case "3": startDefaultProgram('textEditor-random'); break;
+            case "4": startDefaultProgram('browser'); break;
+            case "5": startDefaultProgram('imageViewer'); break;
+            case "6": startDefaultProgram('ftp'); break;
+            case "7": startDefaultProgram('ftp-connect'); break;
             case "-": guiZoom(-2); break;
             case "+": guiZoom(2); break;
             case "=": guiZoomInitial(); break;
@@ -233,7 +233,8 @@ function keyboardController(event) {
             case "c": createShortcut(); break;
             case "S": save(false); break;
             case "d": clutterDesktop(4); break;
-            case "Escape": screenSaver(); break;
+            case "w": startDefaultProgram(); break;
+            case "Escape": screensaverHide(); break;
 
             /* case "arrowright": cl("arrow right!"); break;
             case "arrowleft": cl("arrow left!"); break;
@@ -250,6 +251,7 @@ function keyboardController(event) {
             case "shift": cl("shift"); break; */
 
             default:
+                cl("Default: hide blackout 6 screensaver")
                 hide('blackout');
                 screensaverHide();
                 break;

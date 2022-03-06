@@ -513,3 +513,85 @@ function incrementWindowsPosition(axe) {
   if(newWindowPositions[axe] > 50) newWindowPositions = {"x": 11,"y": 3};
   return newWindowPositions[axe];
 }
+
+function startDefaultProgram(program) {
+  // If no variable is set, start random program
+  if(!program) {
+    let programs = ["fileManager", "browser", "ftp", "ftp-connect", "imageViewer", "textEditor-random", "terminal"];
+    program = programs[chooseRandomKey(programs)];
+    cl("Random program: " + program);
+  }
+
+  cl("Program: " + program);
+
+  let terminalContent;
+
+  if(program.startsWith("terminal")) {
+    // If startDefaultProgram("terminal") start with random terminal content
+    terminalContent = randomBetween(0,5);
+    // If startDefaultProgram("terminal-2") start with terminal content 2
+    if(program !== "terminal") {
+      terminalContent = parseInt(program.split("-")[1]);
+      program = "terminal";
+    }
+    cl("terminal content: " + terminalContent);
+  }
+
+  switch(program) {
+    case "fileManager":
+      addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation=_generic&folderContent=Root', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 600,350, false);
+      break;
+    case "browser":
+      addWindow('Browser', 'public', 'browser/index.html?workstation='+workstation, incrementWindowsPosition('x'), incrementWindowsPosition('y'), 1200,650, false);
+      break;
+    case "ftp":
+      addWindow('FTP Client', 'storm', 'ftp', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 850,590, false);
+      break;
+    case "ftp-connect":
+      addWindow('FTP Client - Connect', 'storm', 'ftp/connect.html', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,480, false);
+      break;
+    case "imageViewer":
+      /* TODO: file list from where? */
+      addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation=_generic&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+      break;
+    case "textEditor":
+        addWindow('Text editor', 'edit_note', 'texteditor/index.html', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+      break;
+    case "textEditor-random":
+        addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=random', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+      break;
+    case "terminal":
+      switch(terminalContent) {
+        case 0:  // sqlHack (start froms cratch)
+          /* TODO: This should be a terminal with bash CLI inside */
+          addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          break;
+        case 1:  // apt-get
+          addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          break;
+        case 2:  // lorem_ipsum_binary
+        addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=lorem_ipsum_binary&theme=hybrid&speed=50&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+        break;
+
+        case 3:  // hexdump
+          addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=12&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+        break;
+        case 4:  // sqlHack
+          addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=119&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+        break;
+        case 5:  // randall  python
+          addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+        break;
+        case 6:  // log
+          addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          break;
+        default:
+          cl("Terminal does not exist: " + program +", "+ terminalContent);
+          break;
+      }
+      break;
+      default:
+        cl("App does not exist: " + program);
+        break;
+  }
+}
