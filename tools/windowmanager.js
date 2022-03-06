@@ -369,8 +369,8 @@ async function hideFrontMostWindowOverlay() {
 
 function resetWindowSize(id) {
   let windowContainer = gebi(id);
-  windowContainer.style.left = "50px";
-  windowContainer.style.top = "50px";
+  windowContainer.style.left = "5%";
+  windowContainer.style.top = "5%";
   windowContainer.style.width = "600px";
   windowContainer.style.height = "350px";
 
