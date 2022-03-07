@@ -3,7 +3,7 @@ async function setup() {
     const urlParams = new URLSearchParams(queryString);
     let text = urlParams.get('text');
     let textarea = document.getElementById('textarea');
-    if(text.toLowerCase() === "random") {
+    if(text && text.toLowerCase() === "random") {
         textarea.innerHTML = randomTexts[chooseRandomKey(randomTexts)];
     } else if(text) {
         textarea.innerHTML = text;
