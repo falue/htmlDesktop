@@ -78,6 +78,8 @@ input[type=button]:not(.systemButton) {
     padding: 0.5em;
     margin-bottom: 1em;
     border: thin grey solid;
+    max-height: 24em;
+    overflow-y:  auto;
 }
 
 .dialog code {
