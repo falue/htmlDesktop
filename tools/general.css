@@ -219,6 +219,7 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .inline { display: inline; }
 .inlineBlock { display: inline-block; }
 .block { display: block; }
+.borderBox { box-sizing: border-box; }
 .alignRight { text-align: right; }
 .alignLeft { text-align: left; }
 .alignCenter, .centerText { text-align: center; }

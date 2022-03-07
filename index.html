@@ -322,11 +322,21 @@
               Align shortcuts to grid
             </li>
             <li class="tooltip" data-title="Press 'm' to display">
-              <i class="material-icons blue small">notifications_active</i>
-              Choose system message:
-              <!-- <span onclick="showSystemMessage(['custom title', 'desc', 'view_in_ar', 0, 500, 'action')]">TEST</span> -->
-              <select id="systemMessagesSelect" onchange="this.blur();" class="marginY1 marginX1-50">
-              </select>
+              <span onclick="toggle('systemMessageSettings'); gebi('systemMessageSettingsArrow').classList.toggle('rotate180');">
+                <i class="material-icons blue small">notifications_active</i>
+                Choose system message & delay:
+                <i id="systemMessageSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
+              </span>
+              <div id="systemMessageSettings" class="hide">
+                <!-- <span onclick="showSystemMessage(['custom title', 'desc', 'view_in_ar', 500, 'action')]">TEST</span> -->
+                <select id="systemMessagesSelect" onchange="this.blur();" class="marginY1 maxWidth padding05">
+                </select>
+                <br>
+                Delay duration:
+                <span id="systemMessagesDurationUi">No delay</span>
+                <br>
+                <input type="range" class="maxWidth padding2 borderBox" id="systemMessagesDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
+              </div>
             </li>
             <li onclick="show('overlayWorkstation'); show('closeOverlayWorkstation'); hide('actionMenu');">
               <i class="material-icons blue small">computer</i>

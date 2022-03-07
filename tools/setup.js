@@ -6,6 +6,7 @@ let darkMode;
 let username;
 let password;
 let systemMessages;
+let selectedSystemMessage;
 
 async function setup() {
   // Get Workstation parameter
@@ -44,8 +45,7 @@ async function setup() {
     shortcuts = data.shortcuts;
     systemIcons = data.systemIcons;
     systemMessages = data.systemMessages;
-    selectedSystemMessage = data.selectedSystemMessage;
-    // cl("OS by settings.js or by localStorage is: " + os);
+    /* selectedSystemMessage = data.selectedSystemMessage; */
   }
 
   // Fill the workstation chooser overlay
@@ -209,6 +209,16 @@ async function setupSettings(settings) {
           gebi('BGColor').value = value;
         }
       break;
+      case "systemMessagesDelay":
+        setDelayUi(value);
+      break;
+      case "selectedSystemMessage":
+        selectedSystemMessage = value;
+      break;
+      default:
+        cl("Unknown setting: "+setting);
+      break
+
     }
   };
 }
@@ -282,14 +292,13 @@ function setupSystemIcons(systemIconsShown) {
 
 
 function setupSystemMessages(messages) {
-  cl("selectedSystemMessage: " + selectedSystemMessage);
   let selectionBox = gebi('systemMessagesSelect');
   for (let message in messages) {
     // Add to select box with index as value of option
     let option = document.createElement("option");
     option.value = message;
     option.innerHTML = messages[message][0];
-    option.innerHTML += messages[message][3] > 0 ? " (delay "+(messages[message][3]/1000)+"s)" : "";
+    option.innerHTML += messages[message][3] > 0 ? " (Timeout: "+(messages[message][3]/1000)+"s)" : "";
 
     // select the saved option
     if(message == selectedSystemMessage) option.selected = true;

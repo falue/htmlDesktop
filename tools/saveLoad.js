@@ -51,7 +51,9 @@ function compileSaveFile(saveFileName, download) {
     darkMode: darkMode,
     username: username,
     password: password,
-    workstation: workstation
+    workstation: workstation,
+    selectedSystemMessage: parseInt(gebi('systemMessagesSelect').value),
+    systemMessagesDelay: parseInt(gebi('systemMessagesDurationSlider').value)
   };
   data["systemIconsComment"] = "Only display shown icons (and the defined time)";
   data["systemIcons"] = systemIcons;
@@ -60,7 +62,6 @@ function compileSaveFile(saveFileName, download) {
   data["shortcutsComment"] = "define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so'] ";
   data["shortcuts"] = dataShortcuts;
   data["systemMessages"] = systemMessages;
-  data["selectedSystemMessage"] = parseInt(gebi('systemMessagesSelect').value);
 
   if(download) {
     downloadStringAsFile(JSON.stringify(data), saveFileName);

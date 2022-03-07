@@ -214,13 +214,18 @@ async function showNote(title, text, icon, deathDelay) {
     if(!listOfNotes.innerHTML) hide("autoNote");
 }
 
+function setDelayUi(value) {
+    gebi('systemMessagesDurationSlider').value = value;
+    gebi('systemMessagesDurationUi').innerHTML = value > 0 ? value+'s' : 'No delay';
+}
+
 async function showSystemMessage(messageData) {
     let title = messageData[0];
     let description = messageData[1];
     let icon = messageData[2];
-    let initialDelay = messageData[3];
-    let duration = messageData[4];
-    let action = messageData[5];
+    let duration = messageData[3];
+    let action = messageData[4];
+    let initialDelay = parseInt(gebi('systemMessagesDurationSlider').value)*1000;
     action = action && action !== "action" ? action : "";
     let id = "message-"+createUniqueId(10);  // Only for close via close button
     let container = gebi('systemMessages');
