@@ -62,7 +62,7 @@ header {
     overflow: auto;
     box-sizing: border-box;
     position: relative;
-    padding: 0 .5em 0 1.5em;
+    padding: 0.5em .5em 0 1.5em;
     width: 20%;
     min-width: 12em;
     border-right: solid grey thin;
@@ -70,6 +70,20 @@ header {
     overflow-x: hidden;
     overflow-y: auto;
     float:left;
+}
+
+.logo  {
+    margin-left: -1em;
+    padding-top: 1.5em;
+    padding-bottom: 2em;
+}
+
+.logo img {
+    vertical-align: top;
+    float: left;
+    margin-right: .8em;
+    margin-top: -1.2em;
+    width: 5em;
 }
 
 .content {
@@ -88,7 +102,6 @@ header {
 }
 
 .fileTile {
-    /* background-color: burlywood; */
     margin: 0 1.5em 1em 0;
     box-sizing: border-box;
     display: inline-block;
@@ -113,7 +126,6 @@ header {
     height: 35%;
     font-size: 0.8em;
     box-sizing: border-box;
-    /* display: table-r; */
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -132,12 +144,3 @@ header {
     height: 1em;
     margin-right: 0.25em;
 }
-
-.subfolderLevel1 { margin-left: 1em; }
-.subfolderLevel2 { margin-left: 2em; }
-.subfolderLevel3 { margin-left: 3em; }
-.subfolderLevel4 { margin-left: 4em; }
-.subfolderLevel5 { margin-left: 5em; }
-.subfolderLevel6 { margin-left: 6em; }
-.subfolderLevel7 { margin-left: 7em; }
-.subfolderLevel8 { margin-left: 8em; }

@@ -166,7 +166,7 @@ a:focus { outline: none; }
 
 /* FONT STYLES */
 p { margin-bottom: 1em; }
-hr { border-color: rgba(255,255,255,.3); margin: 1.5em 0; } 
+hr { border-color: rgba(255,255,255,.3); margin: 0; } 
 .xlarge { font-size: 3em; }
 .large { font-size: 2em; }
 .big { font-size: 1.75em; }

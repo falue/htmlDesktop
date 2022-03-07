@@ -46,6 +46,12 @@ async function setupFileManager() {
     for (let file of rootFolders) {
         addFileToTree(list, file, rootName, computerName);
     }
+
+    // Change hardcodedFolders imgs in "Favorites" & "Drives" list to current systemIcons
+    let hardcodedIcons = document.querySelectorAll('.hardcodedFolders img');
+    hardcodedIcons.forEach(e => {
+        e.src = e.src.replace("/windows/", "/"+os+"/");
+    });
 }
 
 // Display all files and folders in treeview

@@ -68,17 +68,104 @@
     </header>
 
     <div class="browser">
-      <!-- STATIC HARDCODED TREEVIEW -->
-      <!-- TODO -->
+      <!-- LOGO -->
+      <div class="logo hardcodedFolders op50 grey radius10 small">
+        <img id="icon-favorites" src="../../os/windows/systemIcons/computer.png" alt="">
+        Desktop v1.1<br>
+        © Weyland-Yutani
+      </div>
 
+      <hr>
+
+      <!-- FAVORITES -->
+      <ul class="tree hardcodedFolders">
+        <li>
+          <img id="icon-favorites" src="../../os/windows/systemIcons/favorites.png" alt="">
+          <input id="checkbox-favorites" type="checkbox">
+          <label for="checkbox-favorites" class="tree_label">Favorites</label>
+          <ul>
+            <li>
+            <span class="tree_label">
+              <img src="../../os/windows/systemIcons/folderFull.png" alt="">
+              Downloads
+              </span>
+            </li>
+            <li>
+              <span class="tree_label">
+                <img src="../../os/windows/systemIcons/folderFull.png" alt="">
+                Pictures
+              </span>
+            </li>
+            <li>
+              <span class="tree_label">
+                <img src="../../os/windows/systemIcons/folderFull.png" alt="">
+                Desktop
+              </span>
+            </li>
+            <li>
+              <span class="tree_label">
+                <img src="../../os/windows/systemIcons/folderFull.png" alt="">
+                Var
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <hr>
+      
       <!-- MAIN TREE VIEW -->
       <ul id="treeView" class="tree">
       </ul>
+
+      <hr>
+
+      <ul class="tree hardcodedFolders">
+        <!-- DRIVES -->
+        <li>
+          <img id="icon-drives" src="../../os/windows/systemIcons/folderFull.png" alt="">
+          <input id="checkbox-drives" type="checkbox" checked>
+          <label for="checkbox-drives" class="tree_label">Drives</label>
+          <ul>
+            <li>
+            <span class="tree_label">
+              <img src="../../os/windows/systemIcons/hdd.png" alt="">
+              C:
+              </span>
+            </li>
+            <li>
+              <span class="tree_label">
+                <img src="../../os/windows/systemIcons/hdd.png" alt="">
+                E:
+              </span>
+            </li>
+            <li>
+              <span class="tree_label">
+                <img src="../../os/windows/systemIcons/DVD.png" alt="">
+                DVD
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      
+      <hr>
+
+      <span class="grey small italics op50">
+        <br>
+        About this system<br>
+        by telefabi 2022
+      </span>
+      <br>
+      <br>
+      <br>
+      <br>
+
     </div>
 
     <!-- FOLDER CONTENTS -->
     <div id="folderContent" class="content"></div>
-    
+
     <!-- FOLDER CONTENT INFOS -->
     <div id="folderInfo" class="grey small padding05">0 files</div>
 
