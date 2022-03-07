@@ -232,7 +232,8 @@ function keyboardController(event) {
             case "=": guiZoomInitial(); break;
             case "b": toggle('blackout'); break;
             case "c": createShortcut(); break;
-            case "S": save(false); break;
+            case "s": save(); break;
+            case "S": saveAs(false); break;
             case "d": clutterDesktop(4); break;
             case "w": startDefaultProgram(); break;
             case "Escape": screensaverHide(); break;

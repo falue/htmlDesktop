@@ -1,5 +1,20 @@
 /* SAVING */
-async function save(download) {
+async function save() {
+  // save to current localStorage
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  
+  if(urlParams.get('loadSaveFile')) {
+    saveFileName = urlParams.get('loadSaveFile');
+    compileSaveFile(saveFileName, false);    
+  } else {
+    // If not url params loadFile, make save as
+    saveAs(false);
+  }
+}
+
+
+async function saveAs(download) {
   let saveFileName = await showDialog("Save as", "Enter filename:", false, true);
   // Satanize input saveFileName
   saveFileName = saveFileName.replace(/[^a-zA-Z0-9\~]/g, "");
