@@ -214,18 +214,13 @@ async function showNote(title, text, icon, deathDelay) {
     if(!listOfNotes.innerHTML) hide("autoNote");
 }
 
-function showCustomSystemMessage(title, description, icon, initialDelay, duration, action) {
-    systemMessages.push([title, description, icon, initialDelay, duration, action]);
-    showSystemMessage(systemMessages.length-1);
-}
-
-async function showSystemMessage(messageIndex) {
-    let title = systemMessages[messageIndex][0];
-    let description = systemMessages[messageIndex][1];
-    let icon = systemMessages[messageIndex][2];
-    let initialDelay = systemMessages[messageIndex][3];
-    let duration = systemMessages[messageIndex][4];
-    let action = systemMessages[messageIndex][5];
+async function showSystemMessage(messageData) {
+    let title = messageData[0];
+    let description = messageData[1];
+    let icon = messageData[2];
+    let initialDelay = messageData[3];
+    let duration = messageData[4];
+    let action = messageData[5];
     action = action && action !== "action" ? action : "";
     let id = "message-"+createUniqueId(10);  // Only for close via close button
     let container = gebi('systemMessages');
@@ -313,7 +308,7 @@ function keyboardController(event) {
             case "S": saveAs(false); break;
             case "d": clutterDesktop(4); break;
             case "w": startDefaultProgram(); break;
-            case "m": showSystemMessage(parseInt(gebi('systemMessagesSelect').value)); break;
+            case "m": showSystemMessage(systemMessages[parseInt(gebi('systemMessagesSelect').value)]); break;
             case "Escape": screensaverHide(); break;
 
             /* case "arrowright": cl("arrow right!"); break;
