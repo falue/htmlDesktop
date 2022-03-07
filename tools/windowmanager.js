@@ -58,7 +58,7 @@ function makeResizableDiv(div) {
         }
         if (width > minimum_size) {
           element.style.width = width + 'px'
-          element.style.left = original_x + (e.pageX - original_mouse_x) + 'px'
+          element.style.left = getPositionInPercentage("left", original_x + (e.pageX - original_mouse_x)) + '%'
         }
       }
       else if (currentResizer.classList.contains('top-right')) {
@@ -69,7 +69,7 @@ function makeResizableDiv(div) {
         }
         if (height > minimum_size) {
           element.style.height = height + 'px'
-          element.style.top = original_y + (e.pageY - original_mouse_y) + 'px'
+          element.style.top = getPositionInPercentage("top", original_y + (e.pageY - original_mouse_y)) + '%'
         }
       }
       else {
@@ -77,11 +77,11 @@ function makeResizableDiv(div) {
         const height = original_height - (e.pageY - original_mouse_y)
         if (width > minimum_size) {
           element.style.width = width + 'px'
-          element.style.left = original_x + (e.pageX - original_mouse_x) + 'px'
+          element.style.left = getPositionInPercentage("left", original_x + (e.pageX - original_mouse_x)) + '%'
         }
         if (height > minimum_size) {
           element.style.height = height + 'px'
-          element.style.top = original_y + (e.pageY - original_mouse_y) + 'px'
+          element.style.top = getPositionInPercentage("top", original_y + (e.pageY - original_mouse_y)) + '%'
         }
       }
     }

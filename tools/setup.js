@@ -1,7 +1,3 @@
-/* let spoofUrls = new Array();
-let unikVersion = 1.1;
- */
-
 // let settings;
 let os;
 let workstation;
