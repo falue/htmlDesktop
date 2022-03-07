@@ -86,12 +86,16 @@ async function uploadLocalSaveFile(files) {
   if (file) {
     let arrayBuffer = await readLocalFileAsync(file);
     let data = arrayBufferToString(arrayBuffer)
-    /* Create filname */
-    let customNameFromFile = file["name"].split(".")[0].replace(/[^a-zA-Z0-9\~]/g, "");
+    // Create filname from current file - is an exported file?
+    let customNameFromFile = file["name"].startsWith("desktopSaveFile-") ? file["name"].split("-")[2] : file["name"]+"asdadasdasd";
+    // Make valid filename
+    customNameFromFile = customNameFromFile.split(".")[0].replace(/[^a-zA-Z0-9\~]/g, "");
+    // Add date and UID
     /* let saveFileName = "desktopSaveFile-" + file["lastModified"] + "-"+ customNameFromFile + "-" + createUniqueId(22)+".json"; */
     let saveFileName = "desktopSaveFile-"+Date.now()+"-"+ customNameFromFile+"-" + createUniqueId(22)+".json";
     // Save to localStorage
     localStorage.setItem(saveFileName, data);
+    // Reload page
     window.location.href = 'index.html?loadSaveFile='+saveFileName;
   }
 }
