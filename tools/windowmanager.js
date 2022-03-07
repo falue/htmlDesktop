@@ -320,6 +320,12 @@ function maximizeWindow(id) {
   let systemBarPosition = systemBar["top"];
 
   let windowContainer = gebi(id);
+  // Save current window position & size
+  let lastX = windowContainer.style.left;
+  let lastY = windowContainer.style.top;
+  let lastW = windowContainer.style.width;
+  let lastH = windowContainer.style.height;
+
   windowContainer.style.left = "0px";
   // Shift beneath the taskbar if taskbar is on top (linux, mac)
   windowContainer.style.top = systemBarPosition === 0 ? systemBarHeight+"px" : 0+"px";
@@ -330,7 +336,7 @@ function maximizeWindow(id) {
   bringToFront(id);
 
   let resetMaxButton = gebi("maximizeWindow-"+id);
-  resetMaxButton.setAttribute("onclick", "resetWindowSize('"+id+"')");
+  resetMaxButton.setAttribute("onclick", "resetWindowSize('"+id+"', '"+lastX+"', '"+lastY+"', '"+lastW+"', '"+lastH+"')");
 }
 
 function closeWindow(id) {
@@ -367,12 +373,12 @@ async function hideFrontMostWindowOverlay() {
   }
 }
 
-function resetWindowSize(id) {
+function resetWindowSize(id, x,y, w,h) {
   let windowContainer = gebi(id);
-  windowContainer.style.left = "5%";
-  windowContainer.style.top = "5%";
-  windowContainer.style.width = "600px";
-  windowContainer.style.height = "350px";
+  windowContainer.style.left = x;
+  windowContainer.style.top = y;
+  windowContainer.style.width = w;
+  windowContainer.style.height = h;
 
   // reset reset:
   let resetMaxButton = gebi("maximizeWindow-"+id);
