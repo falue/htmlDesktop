@@ -27,9 +27,6 @@
     display: block;
 }
 
-/* ————————————————————–
-    Tree rows
-  */
 .tree li {
     line-height: 1.2;
     position: relative;
@@ -37,20 +34,16 @@
 }
 
 .tree ul li {
-    padding: .5em 0 0 1.5em;
+    padding: .25em 0 0 1.5em;
 }
 
 .tree>li:last-child {
     padding-bottom: 0;
 }
 
-/* ————————————————————–
-    Tree labels
-  */
 .tree_label {
     position: relative;
     display: inline-block;
-    /* background: red; */
     padding-left: 3em;
     left: -3em;
     text-overflow: ellipsis;
@@ -59,42 +52,6 @@
     width: 100%;
 }
 
-label.tree_label {
-    /* cursor: pointer; */
-}
-
-label.tree_label:hover {
-    /* color: blue; */
-}
-
-/* ————————————————————–
-    Tree expanded icon
-  */
-
-/* CLOSED FOLDER ICON */
-label.tree_label:before {
-    /* background: #000;
-    color: #fff;
-    position: relative;
-    z-index: 1;
-    float: left;
-    margin: 0 1em 0 -2em;
-    width: 1em;
-    height: 1em;
-    /* border-radius: 1em; *
-    content: '+';
-    text-align: center;
-    line-height: .9em; */
-}
-
-/* OPEN FOLDER ICON */
-.tree :checked~label.tree_label:before {
-    /* content: '-'; */
-}
-
-/* ————————————————————–
-    Tree branches
-  */
 .tree li:before {
     position: absolute;
     top: 0;
@@ -104,6 +61,7 @@ label.tree_label:before {
     width: 0;
     border-left: 1px solid rgba(0,0,0,.15);
     content: "";
+    margin-top: -.25em;
 }
 
 .tree_label:after {
@@ -115,16 +73,12 @@ label.tree_label:before {
     width: 1.5em;
     border-bottom: 1px solid rgba(0,0,0,.15);
     border-left: 1px solid rgba(0,0,0,.15);
-    /* border-radius: 0 0 0 .3em; */
+    border-radius: 0 0 0 .25em;
     content: '';
 }
 
-label.tree_label:after {
-    /* border-bottom: 0; */
-}
-
 :checked~label.tree_label:after {
-    /* border-radius: 0 .3em 0 0; */
+    border-radius: 0 .25em 0 0;
     border-top: 1px solid rgba(0,0,0,.15);
     border-right: 1px solid rgba(0,0,0,.15);
     border-bottom: 0;
@@ -139,13 +93,12 @@ label.tree_label:after {
     bottom: auto;
 }
 
-.tree>li:last-child:before {
+.tree > li:last-child:before {
     display: none;
 }
 
 .tree_custom {
     display: block;
-    /* background: #eee; */
     padding: 1em;
     border-radius: 0.3em;
 }
