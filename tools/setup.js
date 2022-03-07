@@ -298,7 +298,7 @@ function setupSystemMessages(messages) {
     let option = document.createElement("option");
     option.value = message;
     option.innerHTML = messages[message][0];
-    option.innerHTML += messages[message][3] > 0 ? " (Timeout: "+(messages[message][3]/1000)+"s)" : "";
+    option.innerHTML += messages[message][3] !== true ? " (Timeout: "+(messages[message][3]/1000)+"s)" : "";
 
     // select the saved option
     if(message == selectedSystemMessage) option.selected = true;

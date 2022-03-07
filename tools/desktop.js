@@ -223,9 +223,9 @@ async function showSystemMessage(messageData) {
     let title = messageData[0];
     let description = messageData[1];
     let icon = messageData[2];
-    let duration = messageData[3];
-    let action = messageData[4];
-    let initialDelay = parseInt(gebi('systemMessagesDurationSlider').value)*1000;
+    let initialDelay = messageData[3] === true ? parseInt(gebi('systemMessagesDurationSlider').value)*1000 : messageData[3];
+    let duration = messageData[4];
+    let action = messageData[5];
     action = action && action !== "action" ? action : "";
     let id = "message-"+createUniqueId(10);  // Only for close via close button
     let container = gebi('systemMessages');

@@ -12,12 +12,12 @@
         "selectedSystemMessage": 0,
         "systemMessagesDelay": 0
     },
-    "systemMessagesComment": "titel, message, icon, delay, duration, action onClick.",
+    "systemMessagesComment": "titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.",
     "systemMessages": [
-        ["You've got mail (2)", "The following messages have just arrived: (..)", "email", 0, "startDefaultProgram('textEditor')"],
-        ["Zombie wave iminent", "Hack into these brains to gain access to valuable recources (..)", "warning", 0, "startDefaultProgram('terminal')"],
-        ["Some files need your attention", "", "info", 0, "startDefaultProgram('fileManager')"],
-        ["Activate OS now", "Please invest in a robust system and pay us just $14.99 per day to experience the most comfort a meaty fleshbag can enjoy. We will remind you again in one hour.", "shield", 4500, ""]
+        ["You've got mail (2)", "The following messages have just arrived: (..)", "email", true, 0, "startDefaultProgram('textEditor')"],
+        ["Zombie wave iminent", "Hack into these brains to gain access to valuable recources (..)", "warning", true, 0, "startDefaultProgram('terminal')"],
+        ["Some files need your attention", "", "info", 0, 0, "startDefaultProgram('fileManager')"],
+        ["Activate OS now", "Please invest in a robust system and pay us just $14.99 per day to experience the most comfort a meaty fleshbag can enjoy. We will remind you again in one hour.", "shield", true, 4500, ""]
     ],
     "systemIconsComment": "Only display shown icons (and the defined time)",
     "systemIcons": [
