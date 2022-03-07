@@ -110,22 +110,22 @@
           <div class="centerText">FAST ACCESS</div>
           <ul>
             <li class="noLiHover centerText">
-              <button class="valign circle hover" title="Terminal - SQL" onclick="hide('startMenu'); startDefaultProgram('terminal');" >
+              <button class="valign circle hover tooltip" data-title="Terminal - SQL" onclick="hide('startMenu'); startDefaultProgram('terminal');" >
                 <i class="material-icons">code</i>
               </button>
-              <button class="valign circle hover" title="File manager" onclick="hide('startMenu'); startDefaultProgram('fileManager')" >
+              <button class="valign circle hover tooltip" data-title="File manager" onclick="hide('startMenu'); startDefaultProgram('fileManager')" >
                 <i class="material-icons">folder</i>
               </button>
-              <button class="valign circle hover" title="Text editor" onclick="hide('startMenu'); startDefaultProgram('textEditor-random')" >
+              <button class="valign circle hover tooltip" data-title="Text editor" onclick="hide('startMenu'); startDefaultProgram('textEditor-random')" >
                 <i class="material-icons">edit_note</i>
               </button>
-              <button class="valign circle hover" title="Browser" onclick="hide('startMenu'); startDefaultProgram('browser')" >
+              <button class="valign circle hover tooltip" data-title="Browser" onclick="hide('startMenu'); startDefaultProgram('browser')" >
                 <i class="material-icons">public</i>
               </button>
-              <button class="valign circle hover" title="Image viewer" onclick="hide('startMenu'); startDefaultProgram('imageViewer')" >
+              <button class="valign circle hover tooltip" data-title="Image viewer" onclick="hide('startMenu'); startDefaultProgram('imageViewer')" >
                 <i class="material-icons">image</i>
               </button>
-              <button class="valign circle hover" title="FTP Client" onclick="hide('startMenu'); startDefaultProgram('ftp')">
+              <button class="valign circle hover tooltip" data-title="FTP Client" onclick="hide('startMenu'); startDefaultProgram('ftp')">
                 <i class="material-icons">storm</i>
               </button>
             </li>
@@ -142,19 +142,19 @@
               <i class="material-icons whiteTransparent systemColors clearBg right">chevron_right</i>
               <div class="submenu">
                 <ul class="systemColors radius5 shadow">
-                  <li title="File manager" onclick="hide('startMenu'); startDefaultProgram('fileManager')">
+                  <li onclick="hide('startMenu'); startDefaultProgram('fileManager')">
                     <i class="material-icons small systemColors clearBg">folder</i> File manager
                   </li>
 
-                  <li title="Text editor" onclick="hide('startMenu'); startDefaultProgram('textEditor')">
+                  <li onclick="hide('startMenu'); startDefaultProgram('textEditor')">
                     <i class="material-icons small systemColors clearBg">edit_note</i> Text editor
                   </li>
 
-                  <li title="Browser" onclick="hide('startMenu'); startDefaultProgram('browser')">
+                  <li onclick="hide('startMenu'); startDefaultProgram('browser')">
                     <i class="material-icons small systemColors clearBg">public</i> Browser
                   </li>
 
-                  <li title="Image viewer" onclick="hide('startMenu'); startDefaultProgram('imageViewer')">
+                  <li onclick="hide('startMenu'); startDefaultProgram('imageViewer')">
                     <i class="material-icons small systemColors clearBg">image</i> Image viewer
                   </li>
                   
@@ -162,32 +162,32 @@
                     <i class="material-icons small systemColors clearBg">code</i> Terminal
                     <div class="right top relative padding60">
                       <i class="material-icons op50">chevron_right</i>
-                      <button title="Terminal - Apt-get" class="valign tiny" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-1');" >
+                      <button data-title="Apt-get" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-1');" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button title="Terminal - Binary" class="valign tiny" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-2');" >
+                      <button data-title="Binary" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-2');" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button title="Terminal - Hexdump" class="valign tiny" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-3');" >
+                      <button data-title="Hexdump" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-3');" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button title="Terminal - SQL" class="valign tiny" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-4');" >
+                      <button data-title="SQL" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-4');" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button title="Terminal - Python" class="valign tiny" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-5');" >
+                      <button data-title="Python" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-5');" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button title="Terminal - System Logs" class="valign tiny" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-6');" >
+                      <button data-title="Sys.Logs" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-6');" >
                         <i class="material-icons">code</i>
                       </button>
                     </div>
                   </li>
                   
-                  <li title="FTP Client" class="absolute" onclick="hide('startMenu'); startDefaultProgram('ftp')" >
+                  <li class="absolute" onclick="hide('startMenu'); startDefaultProgram('ftp')" >
                     <i class="material-icons small systemColors clearBg">storm</i> FTP Client
                     <div class="right top relative padding60">
                       <i class="material-icons op50">chevron_right</i>
-                      <button title="FTP Client - Connect" class="valign tiny" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('ftp-connect');">
+                      <button data-title="Connect" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('ftp-connect');">
                         <i class="material-icons">storm</i>
                       </button>
                     </div>
@@ -308,10 +308,7 @@
               <!-- <button onclick="clutterDesktop(parseInt(gebi('clutterDesktopCount').value));">Go</button> -->
             </li>
             <li onclick="startDefaultProgram();">
-              <i class="material-icons blue small">widgets</i>
               <i class="material-icons blue small">dynamic_feed</i>
-              <i class="material-icons blue small mirrorY">auto_awesome_motion</i>
-              <i class="material-icons blue small">scatter_plot</i>
               Clutter Screen
             </li>
             <li onclick="tidyUpShortcuts();">
@@ -341,18 +338,18 @@
               <i class="material-icons blue small">edit</i>
               Edit JSON files
             </li> -->
-            <li title="Save these settings, Window & Shortcut arrangement">
-              <span onclick="save(false);">
+            <li>
+              <span class="tooltip" data-title="Save these settings, Window & Shortcut arrangement" onclick="save(false);">
                 <i class="material-icons blue small">save</i>
                 Save to cache
               </span>
-              <span onclick="save(true);" title="Download current settings as .json file">
+              <span class="tooltip" data-title="Download current settings as .json file" onclick="save(true);" >
                 <span class="grey">|</span>
                 <i class="material-icons small blue">file_download</i>
                 Download cache
               </span>
             </li>
-            <li onclick="show('savedFilesDialog'); checkSaveFiles();">
+            <li class="tooltip" data-title="Load locally saved file or import a .json" onclick="show('savedFilesDialog'); checkSaveFiles();">
               <i class="material-icons blue small">rotate_left</i>
               Load save file..
             </li>
@@ -379,21 +376,21 @@
        
       <!-- PROGRAM FAST ACCESS -->
        <div class="buttonGroup">
-        <button title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors">
+        <button data-title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors tooltip">
           <i class="material-icons">bolt</i>
         </button><!-- 
-        --><button title="File manager" onclick="startDefaultProgram('fileManager');" title="File manager" class="valign systemColors">
+        --><button data-title="File manager" onclick="startDefaultProgram('fileManager');" class="valign systemColors tooltip">
           <i class="material-icons">folder</i>
         </button><!-- 
-        --><button title="Browser" onclick="startDefaultProgram('browser');" title="Browser" class="valign systemColors">
+        --><button data-title="Browser" onclick="startDefaultProgram('browser');" class="valign systemColors tooltip">
           <i class="material-icons">public</i>
         </button><!-- 
-      --><button title="Terminal" onclick="startDefaultProgram('terminal-0');" title="Terminal" class="valign systemColors">
+      --><button data-title="Terminal" onclick="startDefaultProgram('terminal-0');" class="valign systemColors tooltip">
           <i class="material-icons">code</i>
         </button><!-- 
-      --><button title="Text editor" onclick="startDefaultProgram('textEditor');" title="Text editor" class="valign systemColors">
+      --><button data-title="Text editor" onclick="startDefaultProgram('textEditor');" class="valign systemColors tooltip">
           <i class="material-icons">edit_note</i><!-- 
-      --><button title="Image viewer" onclick="startDefaultProgram('imageViewer');" title="Imageviewer" class="valign systemColors">
+      --><button data-title="Image viewer" onclick="startDefaultProgram('imageViewer');" class="valign systemColors tooltip">
           <i class="material-icons">image</i>
         </button>
       </div>
@@ -477,7 +474,7 @@
           </div>
           <div class="right relative padding">
             <button class="fileUploadButton systemButton greyBg">
-              <input type="file" id="uploadSaveFileButton" title="Upload .json file" onchange="uploadLocalSaveFile(this.files)" accept="application/JSON">
+              <input type="file" id="uploadSaveFileButton" data-title="Upload .json file" onchange="uploadLocalSaveFile(this.files)" accept="application/JSON">
               <i class="material-icons small">upload</i>
             </button>
             <button class="systemButton" onclick="hide('savedFilesDialog');">Close</button>

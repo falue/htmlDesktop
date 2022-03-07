@@ -223,7 +223,7 @@ function setupWindows(windows) {
     windowIcon.appendChild(document.createTextNode(window["icon"]));
     listElement.appendChild(windowIcon);
     listElement.appendChild(document.createTextNode(" "+window["windowName"]));
-    listElement.setAttribute("title", "Application: "+window["contentPath"]);
+    /* listElement.setAttribute("title", "Application: "+window["contentPath"]); */
     listElement.setAttribute("onclick", 'addWindow(\"'+window["windowName"]+'\", \"'+window["icon"]+'\", \"'+window["contentPath"]+'\", '+window["x"]+', '+window["y"]+', '+window["w"]+', '+window["h"]+', false)');
     listOfWindows.appendChild(listElement);
   }

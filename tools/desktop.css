@@ -236,9 +236,9 @@ header.windowmenu .programButtons:hover {
 .actionMenu li {
     padding: .5em;
     width: 300px;
-    overflow: hidden;
+    /* overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: nowrap; */
 }
 
 .chooseBox li {
