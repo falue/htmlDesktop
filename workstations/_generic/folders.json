@@ -3,8 +3,8 @@
         {"Desktop": []},
         {"Documents": []},
         {"Downloads": [
-            ["0.tiff", "action", "filesize", "1.jpg|2.jpg"],
-            ["1.JPG", "action", "filesize", "1.jpg|2.jpg"],
+            ["0.tiff", "action", "filesize", "1.jpg"],
+            ["1.JPG", "action", "filesize", "1.mp4"],
             ["2.jpeg", "action", "filesize", "1.jpg|2.jpg"],
             ["this is my image.jpg", "action", "filesize", "1.jpg|2.jpg"],
             ["data.txt", "action", "filesize", "HALLELUJA Lorem Ipsum und so! Lorem Ipsum und so! Lorem Ipsum und so! "],

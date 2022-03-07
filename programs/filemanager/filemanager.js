@@ -117,22 +117,24 @@ function addFileToTree(element, content, rootName, computerName) {
                 gebi('fileManagerPath').innerHTML = selectedFolder.replace("Root", rootNameDisplay);
             }
             
-            // Always open Root folder
-            if(computerName) {
-                checkbox.checked = "true"
-                computerName = false;
-            }
-            // Open folders along the way to selectedFolder
-            if(selectedFolder && selectedFolder.startsWith(currentFolderpath)) {
-                checkbox.checked = "true"
-            } 
-            
             // Add new UL to LI
             let subFolderElement = document.createElement("ul");
             checkbox.setAttribute("onchange", "openCloseFolderIcon('"+id+"');");
             li.appendChild(subFolderElement);
 
-            // Go deeper
+            // Always open Root folder & Set computer-icon
+            if(computerName) {
+                checkbox.checked = "true"
+                computerName = false;
+                icon.setAttribute("src", "../../os/"+os+"/systemIcons/computer.png");
+                checkbox.removeAttribute("onchange");  // Do not change computer icon
+            }
+            // Open folders along the way to selectedFolder
+            if(selectedFolder && selectedFolder.startsWith(currentFolderpath)) {
+                checkbox.checked = "true"
+            } 
+
+            // Go deeper into subfolder
             for (let file of content[folderName]) {
                 addFileToTree(subFolderElement, file, currentFolderpath, computerName);
             }
