@@ -1,7 +1,6 @@
 {   
     "comment1": "Browser settings",
     "settings": {
-            "darkMode": true,
             "hideFavorites": false,
             "hideAddons": false,
             "hideHomeButton": false,

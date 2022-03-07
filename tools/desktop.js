@@ -84,11 +84,12 @@ async function login(password) {
 function setSystemColors(newcolor) {
     systemColor = newcolor;  // Update globals
     const systemElements = document.querySelectorAll('.systemColors');
+    let color = isLightColor(newcolor) ? "#000000" : "#FFFFFF";
     
     // Change the text of multiple elements with a loop
     systemElements.forEach(element => {
       element.style.backgroundColor = newcolor;
-      element.style.color = isLightColor(newcolor) ? "#000000" : "#FFFFFF";
+      element.style.color = color;
     });
 }
 

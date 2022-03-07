@@ -25,6 +25,9 @@ async function setup() {
       data = [...data, ...baseData.urls.urls];
     } */
 
+    // Get darkMode from URL
+    data.settings.darkMode = urlParams.get('darkMode') === "true";
+
     // Setup settings
     setupSettings(data.settings);
     
