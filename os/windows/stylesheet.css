@@ -256,9 +256,11 @@
     vertical-align: middle;
     height: 100%;
 }
-.systemIcons div i,
+.systemIcons div i {
+padding-top: .2em;
+}
 .systemIcons div #systemIcons-clock {
-    padding-top: .2em;
+    border-top: .6em transparent solid;
 }
 
 /* STARTMENU */
