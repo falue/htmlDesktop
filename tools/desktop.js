@@ -214,6 +214,11 @@ async function showNote(title, text, icon, deathDelay) {
     if(!listOfNotes.innerHTML) hide("autoNote");
 }
 
+function showCustomSystemMessage(title, description, icon, initialDelay, duration, action) {
+    systemMessages.push([title, description, icon, initialDelay, duration, action]);
+    showSystemMessage(systemMessages.length-1);
+}
+
 async function showSystemMessage(messageIndex) {
     let title = systemMessages[messageIndex][0];
     let description = systemMessages[messageIndex][1];
