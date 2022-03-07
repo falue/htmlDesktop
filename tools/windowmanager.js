@@ -590,7 +590,7 @@ function startDefaultProgram(program) {
 
   switch(program) {
     case "fileManager":
-      addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation=_generic&folderContent=Root', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 600,350, false);
+      addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation=_generic', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 600,350, false);
       break;
     case "browser":
       addWindow('Browser', 'public', 'browser/index.html?workstation='+workstation+'&darkMode='+!isLightColor(systemColor), incrementWindowsPosition('x'), incrementWindowsPosition('y'), 1200,650, false);
