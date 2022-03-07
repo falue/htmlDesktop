@@ -214,6 +214,78 @@ async function showNote(title, text, icon, deathDelay) {
     if(!listOfNotes.innerHTML) hide("autoNote");
 }
 
+async function showSystemMessage(messageIndex) {
+    let title = systemMessages[messageIndex][0];
+    let description = systemMessages[messageIndex][1];
+    let icon = systemMessages[messageIndex][2];
+    let initialDelay = systemMessages[messageIndex][3];
+    let duration = systemMessages[messageIndex][4];
+    let action = systemMessages[messageIndex][5];
+    action = action && action !== "action" ? action : "";
+    let id = "message-"+createUniqueId(10);  // Only for close via close button
+    let container = gebi('systemMessages');
+
+    let message = document.createElement("div");
+    message.classList.add("message", "radius5", "shadow");  // Cannot add systemColors because this is js that does that
+    message.setAttribute("onclick", "closeSystemMessage(this); "+action);
+    message.id = id;
+    
+    // Set icon
+    let i = document.createElement("i");
+    i.classList.add("material-icons", "icon", "valign");
+    i.innerHTML = icon;
+    message.appendChild(i);
+    
+    let textContainer = document.createElement("div");
+    textContainer.classList.add("textContainer");
+    let titleDiv = document.createElement("div");
+    titleDiv.classList.add("title");
+    titleDiv.innerHTML = title;
+    textContainer.appendChild(titleDiv);
+    
+    if(description) {
+        let descDiv = document.createElement("div");
+        descDiv.classList.add("description");
+        descDiv.innerHTML = description;
+        textContainer.appendChild(descDiv);
+    }
+
+    message.appendChild(textContainer);
+
+    let close = document.createElement("div");
+    close.classList.add("close", "shadow");
+    close.innerHTML="&times;";
+    close.setAttribute("onclick", "event.stopPropagation(); closeSystemMessage(gebi('"+id+"'));");
+    message.appendChild(close);
+
+    // Wait for initial delay
+    if(initialDelay) await delay(initialDelay);
+    
+    // Show container
+    show('systemMessages');
+
+    // Show message & add to container
+    container.appendChild(message);    
+    
+    // If self-closing is set > 0, self close
+    if(duration) {
+        await delay(duration);
+        closeSystemMessage(message);
+    }
+}
+
+async function closeSystemMessage(element) {
+    // add fadeout class
+    element.classList.add("fadeOutFast");
+    // await animation
+    await delay(300);
+    // remove fadeoutclass
+    element.classList.remove("fadeOutFast");
+    // if gebi(id) remove this message
+    if(element) element.remove();
+    // Hide container if empty
+    if(!gebi('systemMessages').innerHTML) hide('systemMessages');
+}
 
 function keyboardController(event) {
     // Ignore presses in textfield etc
@@ -236,6 +308,7 @@ function keyboardController(event) {
             case "S": saveAs(false); break;
             case "d": clutterDesktop(4); break;
             case "w": startDefaultProgram(); break;
+            case "m": showSystemMessage(parseInt(gebi('systemMessagesSelect').value)); break;
             case "Escape": screensaverHide(); break;
 
             /* case "arrowright": cl("arrow right!"); break;

@@ -59,10 +59,8 @@ function compileSaveFile(saveFileName, download) {
   data["windows"] = dataWindows;
   data["shortcutsComment"] = "define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so'] ";
   data["shortcuts"] = dataShortcuts;
-
-  /* console.log(data); */
-
-  /* let path = "workstations/"+workstation+"/saves/save.json" */
+  data["systemMessages"] = systemMessages;
+  data["selectedSystemMessage"] = parseInt(gebi('systemMessagesSelect').value);
 
   if(download) {
     downloadStringAsFile(JSON.stringify(data), saveFileName);

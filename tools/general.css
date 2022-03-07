@@ -164,6 +164,22 @@ a:focus { outline: none; }
 .padding2 { padding: 2em; }
 .padding3 { padding: 3em; }
 
+.margin05 { margin: 0.5em; }
+.margin60 { margin: 0.6em; }
+.margin75 { margin: 0.75em; }
+.margin, .margin1 { margin: 1em; }
+.margin2 { margin: 2em; }
+.margin3 { padding: 3em; }
+
+.marginX50 { margin-left: .5em; margin-right: .5em; }
+.marginX1 { margin-left: 1em; margin-right: 1em; }
+.marginX1-50 { margin-left: 1.5em; margin-right: 1.5em; }
+.marginX2 { margin-left: 2em; margin-right: 2em; }
+.marginY50 { margin-top: .5em; margin-bottom: .5em; }
+.marginY1 { margin-top: 1em; margin-bottom: 1em; }
+.marginY1-50 { margin-top: 1.5em; margin-bottom: 1.5em; }
+.marginY2 { margin-top: 2em; margin-bottom: 2em; }
+
 /* FONT STYLES */
 p { margin-bottom: 1em; }
 hr { border-color: rgba(255,255,255,.3); margin: 0; } 
@@ -294,6 +310,8 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 }
 
 /* INPUTS */
+button:focus,
+select:focus,
 textarea:focus,
 input:focus { outline: none; }
 
@@ -346,6 +364,7 @@ textarea {
 .shine { animation: shake 1s ease-in-out infinite; }
 .wiggle, .wiggleX { animation: wiggleX 300ms ease-in-out 1; }
 .fadeOut { animation: fadeOut 1s linear 1 forwards; }
+.fadeOutFast { animation: fadeOut 250ms linear 1 forwards; }
   
 @keyframes spinner { 
     100% { transform:rotate(360deg); } 

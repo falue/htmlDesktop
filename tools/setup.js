@@ -5,6 +5,7 @@ let systemColor = "#000000";
 let darkMode;
 let username;
 let password;
+let systemMessages;
 
 async function setup() {
   // Get Workstation parameter
@@ -42,6 +43,8 @@ async function setup() {
     windows = data.windows;
     shortcuts = data.shortcuts;
     systemIcons = data.systemIcons;
+    systemMessages = data.systemMessages;
+    selectedSystemMessage = data.selectedSystemMessage;
     // cl("OS by settings.js or by localStorage is: " + os);
   }
 
@@ -84,6 +87,9 @@ async function setup() {
   setupSystemIcons(systemIcons);
   // cl("SETUP: systemIcons success, "+systemIcons.length+" icons displayed.");
 
+  // Loop over systemMessages
+  setupSystemMessages(systemMessages);
+
   // Create generic Shortcuts if none are defined
   if(!shortcuts.length) {
     cl("create some default shortcuts if none are defined");
@@ -94,7 +100,6 @@ async function setup() {
   }
 
   // cl("SETUP: Finished!");
-
   return;
 }
 
@@ -272,5 +277,22 @@ function setupSystemIcons(systemIconsShown) {
         gebi('editTaskbarIcon-'+currentIcon).checked = false;
       }
     }
+  }
+}
+
+
+function setupSystemMessages(messages) {
+  cl("selectedSystemMessage: " + selectedSystemMessage);
+  let selectionBox = gebi('systemMessagesSelect');
+  for (let message in messages) {
+    // Add to select box with index as value of option
+    let option = document.createElement("option");
+    option.value = message;
+    option.innerHTML = messages[message][0];
+    option.innerHTML += messages[message][3] > 0 ? " (delay "+(messages[message][3]/1000)+"s)" : "";
+
+    // select the saved option
+    if(message == selectedSystemMessage) option.selected = true;
+    selectionBox.appendChild(option);
   }
 }

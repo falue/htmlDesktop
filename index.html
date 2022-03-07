@@ -321,6 +321,12 @@
               <i class="material-icons blue small">apps</i>
               Align shortcuts to grid
             </li>
+            <li class="tooltip" data-title="Press 'm' to display">
+              <i class="material-icons blue small">notifications_active</i>
+              Choose system message:
+              <select id="systemMessagesSelect" onchange="this.blur();" class="marginY1 marginX1-50">
+              </select>
+            </li>
             <li onclick="show('overlayWorkstation'); show('closeOverlayWorkstation'); hide('actionMenu');">
               <i class="material-icons blue small">computer</i>
               Change workstation
@@ -723,6 +729,7 @@
               <li class="alignLeft"><span class="blueBg keyboardKey">shift</span> + <span class="blueBg keyboardKey">s</span> Save as new file</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">d</span> Clutter desktop with files</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">w</span> Clutter screen with windows</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">m</span> Display selected system message</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">esc</span> ScreenSaver</li> 
             </ul>
           </div>
@@ -737,8 +744,12 @@
     </div>
     
     <!-- AUTO NOTE -->
-    <div id="autoNote" class="autoNote "> <!-- hide -->
+    <div id="autoNote" class="autoNote hide">
     </div>
+
+    <!-- AUTO NOTE -->
+    <!-- important: no space OR comments in this div -->
+    <div id="systemMessages" class="systemMessages hide"></div>
 
     <script src="tools/windowmanager.js"></script>
   </body>

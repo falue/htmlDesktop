@@ -358,3 +358,65 @@ padding-top: .2em;
 .startMenu ul div.submenu ul li {
     padding: .8em;
 }
+
+.systemMessages {
+    position: fixed;
+    bottom: 3em;
+    padding: 0 1em .5em 0;
+    right: 0;
+    z-index: 99999;
+    max-width: 20em;
+}
+
+.systemMessages .message {
+    color: black;
+    padding: .5em 1.2em .5em .5em;
+    margin-top: 1.5em;
+    background-color: wheat;
+    position: relative;
+    display: flex;
+}
+
+.systemMessages .icon {
+    display: block;
+    color: blue;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background-color: white;
+    text-align: center;
+    box-sizing: border-box;
+    padding: .25em;
+}
+.systemMessages .textContainer {
+    padding-left: .5em;
+}
+.systemMessages .title {
+    
+    font-size: 1em;
+}
+.systemMessages .description {
+    font-style: italic;
+    font-size: small;
+}
+.systemMessages .close {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    text-align: center;
+    box-sizing: border-box;
+    opacity: .8;
+    padding: .1em .25em .25em .25em;
+    top:0;
+    right: 0;
+    color: black;
+    transform: translate(.75em, -.75em);
+    font-weight: bolder;
+}
+.systemMessages .close:hover {
+    color: white;
+    background-color: black;
+    opacity: 1;
+}

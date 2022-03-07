@@ -1,7 +1,3 @@
-/* TODO: evtl to make zoomable?? */
-/* i.material-icons {
-    font-size: 2em;
-} */
 body {
     user-select: none;
     overflow: hidden;
@@ -45,16 +41,18 @@ body {
     margin: .25em;
 }
 
-input, button {
+input, button, select {
     border: none;
 }
 
+input,
 input[type=number],
 input[type=password],
 input[type=text] {
     padding:.15em;
 }
 
+input,
 button:not(.systemButton),
 input[type=submit],
 input[type=button]:not(.systemButton) {
