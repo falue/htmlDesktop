@@ -153,98 +153,115 @@
 }
 
 
-/* TASKBAR */
+/* SYSTEMBAR */
 .systemBar {
-    /* color: grey; */
     position: fixed;
+    display: flex;
     box-sizing: border-box;
     width: 100%;
     bottom: 0;
     padding-left: .5em;
-    /* background-color: black; */
+    white-space: nowrap;
     z-index: 1;
-    white-space: nowrap;
 }
-
-.systemBar div {
-    padding: 0.25em 0;
-}
-
-.systemBar div:not(.hide) {
+.systemBar > div {
+    /* border: hotpink solid thin; */
+    box-sizing: border-box;
     display: inline-block;
+    height: inherit;
+    padding: .25em;
 }
 
+/* SPACER */
 .systemBar .spacer {
-    padding: .75em 0;
-    width: 1px;
-    margin: 0;
-    background-color: rgba(255,255,255,0.2);
+    margin: 0 .5em;
+    border: none;
+    padding: 0 .03em;
+    background-color: rgba(125,125,125,.5);
+    /* get color from systemColors, greyscale, invert */
+    /* would be smart but only makes on elements without content */
+    /* background-color: inherit;
+    filter: grayscale(1) invert(1);
+    opacity: 0.25; */
 }
-
-.taskbar {
-    white-space: nowrap;
+/* BUTTONS */
+.systemBar button {
+    /* border: greenyellow solid thin; */
+    border: solid .06em rgba(125,125,125,1);
+    border-radius: .25em;
+    font-size: inherit;
+    height: 2em;
+    width: 2em;
+    padding: 0;
 }
-
+.systemBar button:hover {
+    background-color: rgba(125,125,125,0.2) !important;
+}
 .systemBar .buttonGroup button {
     border-radius: 0;
     border-left: none;
+}
+.systemBar .buttonGroup button i {
+    padding-top: .1em;
+    font-size: 1.5em;
 }
 
 .systemBar .buttonGroup button:first-of-type {
     border-top-left-radius: .25em;
     border-bottom-left-radius: .25em;
-    border-left: solid thin rgba(255,255,255,0.2);
+    border-left: solid .06em rgba(125,125,125,1);
 }
-
 .systemBar .buttonGroup button:last-of-type {
     border-top-right-radius: .25em;
     border-bottom-right-radius: .25em;
 }
 
+/* TASKBAR */
+.systemBar .taskbar {
+    flex: 1;
+    overflow: auto hidden;
+    padding: 0 0 0 .25em;
+}
 .systemBar .taskbar button {
-    max-width: 12em;
+    border-radius: 0;
+    border: none;
+    border-left: solid .06em rgba(125,125,125,1);
+    height: 100%;
+    width: initial;
+    padding: 0 .75em;
+    max-width: 10em;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 0 .5em 0 0;
+}
+.systemBar .taskbar button:last-of-type {
+    border-right: solid .06em rgba(125,125,125,1);
+}
+.systemBar .taskbar button i {
+    margin-right: .25em;
+}
+.systemBar .taskbar::-webkit-scrollbar { 
+    display: none; 
 }
 
-.systemBar button {
-    border: solid thin grey;
-    height: 2em;
-    padding: .2em .5em;
-    border-radius: .25em;
-    /* color: white; */
-    /* background-color: black; */
+/* SYSTEM ICONS */
+.systemIcons {
+    border-left: .06em solid rgba(125,125,125,0.6);
+    padding: 0 .25em !important;
 }
-
-.systemBar button:hover {
-    background-color: rgba(255,255,255,0.2);
-}
-
-.systemBar button i.small {
-    margin-right: 0.25em;
-}
-
-.systemBar button i:not(.small) {
-    transform: translateY(-.1em);
-}
-
-.systemBar .systemIcons {
-    border-left: thin solid rgba(255,255,255,0.3);
-    padding: 0.25em 0.5em 0 1em;
-    /* background-color: black; */
-}
-
-.systemBar .systemIcons div:not(.hide) {
+.systemIcons > div {
+    /* border: blue solid .06em; */
+    box-sizing: border-box;
+    padding: 0;
     display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.systemIcons div i,
+.systemIcons div #systemIcons-clock {
+    padding-top: .2em;
 }
 
-/* .systemBar .systemIcons div.systemClock { */
-.systemClock,
-#systemIcons-clock {
-    padding: 0 .25em .5em .25em !important;
-}
-
+/* STARTMENU */
 .startMenu {
     /* color: white; */
     position: fixed;
