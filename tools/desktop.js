@@ -302,6 +302,7 @@ function keyboardController(event) {
             case "-": guiZoom(-2); break;
             case "+": guiZoom(2); break;
             case "=": guiZoomInitial(); break;
+            case "0": guiZoomInitial(); break;
             case "b": toggle('blackout'); break;
             case "c": createShortcut(); break;
             case "s": save(); break;
