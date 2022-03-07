@@ -20,13 +20,7 @@
 /* TOOLTIPS! */
 /* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
 .tooltip {
-    /* DAAANGEROUS??? */
-    /* but needed for the right position... */
-    /* check side effects */
-
     position: relative;
-
-    /* DAAANGEROUS??? */
 }
 .tooltip::before {
     content: attr(data-title);
