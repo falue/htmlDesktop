@@ -45,14 +45,14 @@ input, button, select {
     border: none;
 }
 
-input,
+input:not([type=color]),
 input[type=number],
 input[type=password],
 input[type=text] {
     padding:.15em;
 }
 
-input,
+input:not([type=color]),
 button:not(.systemButton),
 input[type=submit],
 input[type=button]:not(.systemButton) {
