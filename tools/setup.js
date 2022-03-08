@@ -143,7 +143,7 @@ async function setupWorkstationChooser(path) {
           let i = document.createElement("i");
           i.classList.add("material-icons", "valign");
           i.innerHTML = "computer";
-          button.classList.add("systemButton");
+          button.classList.add("systemButton", "nobr");
           button.prepend(i);
           a.prepend(button);
           workstationList.appendChild(a);

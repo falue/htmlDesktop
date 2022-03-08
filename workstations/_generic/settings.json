@@ -4,7 +4,7 @@
         "systemColor": "#541d1d",
         "desktopColor": "#000000",
         "desktopImg": "workstations/_generic/desktops/1.jpg",
-        "os": "windows",
+        "os": "linux",
         "darkMode": true,
         "username": "Generic User",
         "password": "1234",

@@ -1,4 +1,4 @@
 # Define all available workstations here
 
 workstation=test;mac
-workstation=_generic;windows
+workstation=_generic;linux
