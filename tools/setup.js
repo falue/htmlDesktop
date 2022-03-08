@@ -160,13 +160,13 @@ async function setupWorkstationChooser(path) {
           link += osDisplay;
           a.href = link;
           let button = document.createElement("button");
-          osDisplay = osDisplay ? ", " + osDisplay.toUpperCase() : "";
-          button.innerHTML = " " + workstationDisplay[0].toUpperCase() + workstationDisplay.slice(1) + osDisplay;
+          button.setAttribute("title", osDisplay ? osDisplay.toUpperCase() : "");
+          button.innerHTML = " " + workstationDisplay[0].toUpperCase() + workstationDisplay.slice(1);
           let i = document.createElement("i");
           i.classList.add("material-icons", "valign");
-          i.innerHTML = "computer";
+          i.innerHTML = values[1] === "mac" ? "apple" : values[1] === "linux" ? "dvr" : "grid_view"; // computer for inux
           button.classList.add("systemButton", "nobr");
-          button.prepend(i);
+          button.append(i);
           a.prepend(button);
           workstationList.appendChild(a);
           workstationList.appendChild(document.createElement("br"));
