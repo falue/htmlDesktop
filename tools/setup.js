@@ -45,7 +45,6 @@ async function setup() {
     shortcuts = data.shortcuts;
     systemIcons = data.systemIcons;
     systemMessages = data.systemMessages;
-    /* selectedSystemMessage = data.selectedSystemMessage; */
   }
 
   // Fill the workstation chooser overlay
@@ -228,9 +227,7 @@ function setupWindows(windows) {
   let listOfWindows = gebi('currentWindowActions');
   if(Object.keys(windows).length) listOfWindows.innerHTML = "";
 
-  /* for (let window of windows.windows) { */
   for (let window of windows) {
-    addWindow(window["windowName"], window["icon"], window["contentPath"], window["x"], window["y"], window["w"], window["h"], window["hide"], window["zIndex"] ? window["zIndex"] : false);
     /* Add links to start menu */
     let listElement = document.createElement("li");
     let windowIcon = document.createElement("i");
@@ -238,9 +235,21 @@ function setupWindows(windows) {
     windowIcon.appendChild(document.createTextNode(window["icon"]));
     listElement.appendChild(windowIcon);
     listElement.appendChild(document.createTextNode(" "+window["windowName"]));
-    /* listElement.setAttribute("title", "Application: "+window["contentPath"]); */
     listElement.setAttribute("onclick", 'addWindow(\"'+window["windowName"]+'\", \"'+window["icon"]+'\", \"'+window["contentPath"]+'\", '+window["x"]+', '+window["y"]+', '+window["w"]+', '+window["h"]+', false)');
     listOfWindows.appendChild(listElement);
+
+    // If app is "renderToDom" or "minimized", make addWindow(..)
+    if(window["renderToDom"] || window["minimized"]) {
+      addWindow(window["windowName"], window["icon"], window["contentPath"], window["x"], window["y"], window["w"], window["h"], window["minimized"], window["zIndex"] ? window["zIndex"] : false);
+    }
+
+    // Mark not-to-DOM-rendered windows for saving.
+    // Add data to fetch later (this is normally done by addWIndow())
+    listElement.setAttribute("data-setup-type", "windowInitialState");
+    listElement.setAttribute("data-setup", "['"+[window["windowName"], window["icon"], window["contentPath"], window["x"], window["y"], window["w"], window["h"], window["zIndex"]].join("', '")+"']");
+    listElement.setAttribute("data-setup-minimized", window["minimized"]);
+    listElement.setAttribute("data-setup-render-to-dom", "false");
+    
   }
 }
 

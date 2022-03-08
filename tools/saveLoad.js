@@ -257,10 +257,19 @@ function checkSaveFiles() {
 
 /* SAVING */
 function saveAllWindows() {
-  let windowsFromDom = document.querySelectorAll("[data-setup-type='window']");
+  /* TODO: BEWARE: 
+  Two windows with identical windowName & contentPath, one in DOM and one not,
+  AND different positions do not get saved correctly! */
+  let contentsSaved = new Array();
   let windows = [];
-  for (windowData of windowsFromDom) {
+
+  // Get windows in DOM (minimized or visible)
+  let windowsFromDom = document.querySelectorAll("[data-setup-type='window']");
+  for (let windowData of windowsFromDom) {
     let data = JSON.parse(windowData.dataset.setup.replace(/\'/g, '"'));
+    // Save "windowName-contentPath" for later checking if program is already saved
+    contentsSaved.push(data[0]+"-"+data[2]);
+    // Get original positions and data & add to object
     windows.push({
       windowName: data[0],
       icon: data[1],
@@ -269,9 +278,31 @@ function saveAllWindows() {
       y: parseInt(windowData.style.top),
       w: parseInt(windowData.style.width),
       h: parseInt(windowData.style.height),
-      hide: windowData.dataset.setupHide == "true",
       zIndex: parseInt(windowData.style.zIndex),
+      minimized: windowData.dataset.setupMinimized == "true",
+      renderToDom: true,
     });
+  }
+
+  // Get windows not in dom - get initial values from settings.json
+  let windowsNotInDom = document.querySelectorAll("[data-setup-type='windowInitialState']");
+  for (let windowNotInDom of windowsNotInDom) {
+    let data = JSON.parse(windowNotInDom.dataset.setup.replace(/\'/g, '"'));
+    if(!contentsSaved.includes(data[0]+"-"+data[2])) {
+      // Add to object windows, with x,y,w,h as defined in settings.json
+      windows.push({
+        windowName: data[0],
+        icon: data[1],
+        contentPath: data[2],
+        x: parseInt(data[3]),
+        y: parseInt(data[4]),
+        w: parseInt(data[5]),
+        h: parseInt(data[6]),
+        zIndex: parseInt(data[7]),
+        minimized: false,
+        renderToDom: false,
+      });
+    }
   }
   return windows;
 }

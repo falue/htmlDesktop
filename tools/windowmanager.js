@@ -149,7 +149,7 @@ dragoverHandler = function(ev) {
 
 let recentZIndex = 10;
 
-function addWindow(windowName, icon, contentPath, x,y, w,h, hide, zIndex) {
+function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   // Display overlay in all other windows that youre able to click on them later
   showClass('windowManagerOverlay');
 
@@ -161,9 +161,10 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, hide, zIndex) {
   windowContainer.setAttribute("id", id);
   windowContainer.setAttribute("data-setup-type", "window");
   windowContainer.setAttribute("data-setup", "['"+[windowName, icon, contentPath].join("', '")+"']");
-  windowContainer.setAttribute("data-setup-hide", hide);
+  windowContainer.setAttribute("data-setup-minimized", minimized);
+  windowContainer.setAttribute("data-setup-render-to-dom", "true");
   windowContainer.setAttribute("class", "window resizable shadow");
-  if(hide) {
+  if(minimized) {
     windowContainer.classList.add("hide");
   }
   windowContainer.setAttribute("draggable", "true");
