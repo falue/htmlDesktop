@@ -622,26 +622,26 @@ function startDefaultProgram(program) {
       switch(terminalContent) {
         case 0:  // sqlHack (start froms cratch)
           /* TODO: This should be a terminal with bash CLI inside */
-          addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - SQL', 'code', 'terminal/index.html?byRows=false&startChar=0&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
           break;
         case 1:  // apt-get
-          addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - Update', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
           break;
         case 2:  // lorem_ipsum_binary
-        addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=0&text=lorem_ipsum_binary&theme=hybrid&speed=50&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+        addWindow('Terminal - BIN', 'code', 'terminal/index.html?byRows=false&startChar=0&text=lorem_ipsum_binary&theme=hybrid&speed=50&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
         break;
 
         case 3:  // hexdump
-          addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=12&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - HEX', 'code', 'terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=12&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
         break;
         case 4:  // sqlHack
-          addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=119&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - SQL2', 'code', 'terminal/index.html?byRows=false&startChar=119&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
         break;
         case 5:  // randall  python
-          addWindow('Terminal', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - PYTHON', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
         break;
         case 6:  // log
-          addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - LOG', 'code', 'terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
           break;
         default:
           cl("Terminal does not exist: " + program +", "+ terminalContent);
