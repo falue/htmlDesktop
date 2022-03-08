@@ -187,7 +187,7 @@ async function showNote(title, text, icon, deathDelay) {
     titleElement.classList.add("grey");
     
     let iconElement = document.createElement("i");
-    iconElement.classList.add("material-icons", "blue", "small", "valign");
+    iconElement.classList.add("material-icons", "white", "fancy", "circle", "padding25", "small", "valign");
     iconElement.appendChild(document.createTextNode(icon));
     
     titleElement.appendChild(iconElement);
@@ -206,7 +206,7 @@ async function showNote(title, text, icon, deathDelay) {
     let currentNote = gebi(id);
     if(currentNote) {
         currentNote.classList.add("fadeOut");
-        await delay(500);
+        await delay(1000);
         currentNote.remove();
     }
 
@@ -237,7 +237,7 @@ async function showSystemMessage(messageData) {
     
     // Set icon
     let i = document.createElement("i");
-    i.classList.add("material-icons", "icon", "valign");
+    i.classList.add("material-icons", "icon", "valign", "fancy");
     i.innerHTML = icon;
     message.appendChild(i);
     

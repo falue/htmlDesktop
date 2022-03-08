@@ -157,7 +157,8 @@ a:focus { outline: none; }
 .overflowAutoX, .overflowXAuto { overflow-x: auto; }
 .overflowAutoY, .overflowYAuto { overflow-y: auto; }
 
-.padding05 { padding: 0.5em; }
+.padding25 { padding: 0.25em; }
+.padding05, .padding50 { padding: 0.5em; }
 .padding60 { padding: 0.6em; }
 .padding75 { padding: 0.75em; }
 .padding, .padding1 { padding: 1em; }

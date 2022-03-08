@@ -379,11 +379,10 @@ padding-top: .2em;
 
 .systemMessages .icon {
     display: block;
-    color: blue;
+    color: white;
     width: 1.5em;
     height: 1.5em;
     border-radius: 50%;
-    background-color: white;
     text-align: center;
     box-sizing: border-box;
     padding: .25em;
