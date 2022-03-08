@@ -122,22 +122,20 @@
 .window {
     background: white;
     /* border: 5px solid #4286f4; */
-    border-radius: 5px;
+    border-radius: .25em;
 }
 
 .window .content {
     height: calc(100% - 1.5em);
     top: 1.5em;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: .25em;
+    border-bottom-right-radius: .25em;
 }
 
 .window .windowFrame {  
-    /* background-color: black;
-    color: white; */
     height: 1.5em;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: .25em;
+    border-top-right-radius: .25em;
 }
 
 .window .windowFrame .windowTitle span {
@@ -150,6 +148,10 @@
 
 .window .windowFrame .windowActions {
     padding: 0.25em;
+}
+
+.window .windowFrame .windowActions i {
+    margin-left: .8em;
 }
 
 /* ACTION MENU */
