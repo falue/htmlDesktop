@@ -15,6 +15,13 @@ async function save() {
 
 
 async function saveAs(download) {
+  // Abort if online demo
+  let host = window.location.origin + window.location.pathname;
+  if(host === "https://www.telefabi.ch/index.html" || host === "https://telefabi.ch/index.html") {
+    showDialog("Demo mode", "I'm very sorry, saving or exporting is not available in this demo. To be fully functional as a digital prop, this system needs backend adjustments.<br><br>If you want to use this for your project, i'd suggest you contact me at <a href='mailto:info@fluescher.ch'>info@fluescher.ch</a>.<br><br>Thanks & cheers");
+    return;
+  }
+
   let saveFileName = await showDialog("Save as", "Enter filename:", false, true);
   // Satanize input saveFileName
   saveFileName = saveFileName.replace(/[^a-zA-Z0-9\~]/g, "");

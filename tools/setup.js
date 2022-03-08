@@ -14,6 +14,12 @@ async function setup() {
   const urlParams = new URLSearchParams(queryString);
   workstation = urlParams.get('workstation');
   let data;
+  let host = window.location.origin + window.location.pathname;
+  if(host === "https://www.telefabi.ch/index.html" || host === "https://telefabi.ch/index.html") {
+    for(saveButton of document.getElementsByClassName('saveButtonsTooltips')) {
+      saveButton.setAttribute("data-title", "Save & export NOT AVAILABLE IN DEMO");
+    }
+  }
 
   if(urlParams.get('loadSaveFile')) {
     // User wants to load a file via URL parameters

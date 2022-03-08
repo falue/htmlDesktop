@@ -300,8 +300,6 @@
             <li onclick="clutterDesktop(4);">
               <i class="material-icons blue small">scatter_plot</i>
               Clutter desktop
-              <!-- <input type="number" id="clutterDesktopCount" value="4"> -->
-              <!-- <button onclick="clutterDesktop(parseInt(gebi('clutterDesktopCount').value));">Go</button> -->
             </li>
             <li onclick="startDefaultProgram();">
               <i class="material-icons blue small">dynamic_feed</i>
@@ -350,22 +348,22 @@
               Edit JSON files
             </li> -->
             <li>
-              <span class="tooltip" data-title="Save (overwrite) the current save file" onclick="save(false);">
+              <span class="saveButtonsTooltips tooltip" data-title="Save (overwrite) the current save file" onclick="save(false);">
                 <i class="material-icons blue small">save</i>
                 Save
               </span>
               <span class="grey">|</span>
-              <span class="tooltip" data-title="Save these settings as a new file, Window & Shortcut arrangement" onclick="saveAs(false);">
+              <span class="saveButtonsTooltips tooltip" data-title="Save these settings as a new file, Window & Shortcut arrangement" onclick="saveAs(false);">
                 <i class="material-icons blue small">save</i>
                 Save as..
               </span>
               <span class="grey">|</span>
-              <span class="tooltip" data-title="Export these settings to .json" onclick="saveAs(true);" >
+              <span class="saveButtonsTooltips tooltip" data-title="Export these settings to .json" onclick="saveAs(true);" >
                 <i class="material-icons small blue">file_download</i>
                 Export
               </span>
             </li>
-            <li class="tooltip" data-title="Load locally saved file or import a .json" onclick="show('savedFilesDialog'); checkSaveFiles();">
+            <li class=" tooltip" data-title="Load locally saved file or import a .json" onclick="show('savedFilesDialog'); checkSaveFiles();">
               <i class="material-icons blue small">rotate_left</i>
               Load save file..
             </li>
