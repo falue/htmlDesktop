@@ -7,6 +7,7 @@ let username;
 let password;
 let systemMessages;
 let selectedSystemMessage;
+let hotSwapped;
 
 async function setup() {
   // Get Workstation parameter
@@ -66,7 +67,22 @@ async function setup() {
   // Overwrite OS if defined directly in URL and different from settings.json
   if(urlParams.get('os') && urlParams.get('os') !== os) {
     os = urlParams.get('os');
-    cl("os overwritten by URL is: " + os);
+    /* cl("os overwritten by URL is: " + os); */
+    // BUG: If OS was hotswapped without saving AND the os is the same as standard,
+    //   the colors get overwritten by the setupSettings() function to the initial
+    //   colors from workstation.
+    setDefaultSystemColors(os);
+  }
+
+  // Overwrite OS if it was hotswapped
+  if(urlParams.get('hotSwapOs')) {
+    os = urlParams.get('hotSwapOs')
+    /* cl("os overwritten by hotSwapOs is: " + os); */
+
+    // Set standard colors for hotSwapped system:
+    setDefaultSystemColors(os);
+    // Remove hotSwapOs from URL so colors etc are not overwritten next time around
+    history.pushState({}, null, 'index.html?loadSaveFile='+urlParams.get('loadSaveFile'));
   }
 
   // Add OS specific styles
@@ -167,7 +183,7 @@ async function setupSettings(settings) {
 
     switch (setting) {
       case "systemColor":
-        if (value) {
+        if (value  && !hotSwapped) {
           /* console.log("Hex SystemColor: ", value); */
           systemColor = value;
           setSystemColors(value);
@@ -221,7 +237,8 @@ async function setupSettings(settings) {
         selectedSystemMessage = value;
       break;
       default:
-        cl("Unknown setting: "+setting);
+        // Show error if setting is not parsed and should not be here:
+        if(!["workstation", "os"].includes(setting)) cl("Unknown setting: "+setting);
       break
 
     }

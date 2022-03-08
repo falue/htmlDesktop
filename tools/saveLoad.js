@@ -9,7 +9,7 @@ async function save() {
     compileSaveFile(saveFileName, false);    
   } else {
     // If not url params loadFile, make save as
-    saveAs(false);
+    await saveAs(false);
   }
 }
 

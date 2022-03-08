@@ -50,36 +50,25 @@ function showLockScreen() {
     gebi('lockScreenUserPicture').src = 'workstations/'+workstation+'/userpicture.jpg';
 }
 
-function hotSwapOs(nextOs) {
-    // Set URL and stylesheet
-    addStylesheet('os/'+nextOs+'/stylesheet.css');
-    history.pushState({}, null, 'index.html?workstation='+workstation+'&os='+nextOs);
-
-    // Swap all shortCut icons
-    let shortcuts = document.querySelectorAll("[data-setup-type='shortcut'] img");
-    for (shortcut of shortcuts) {
-        let newSrc = shortcut.src.replace("/"+os+"/", "/"+nextOs+"/");
-        shortcut.setAttribute("src", newSrc);
+async function hotSwapOs(nextOs) {
+    // If the current status is saved, reload URL with new OS styles.
+    //   If there is no "loadSaveFile" in URL (eg, is saved (yea i know)):
+    //   prompt to save or discard
+    const urlParams = new URLSearchParams(window.location.search);
+    if(!urlParams.get('loadSaveFile')) {
+        let answerFromDialog = await showDialog("Not saved", "Without saving, you'll loose your current window arrangements and settings. Continue?", false, false, ["Discard & Continue", "Save now"]);
+        if(answerFromDialog === "Save now") {
+            // No save - make a new one or save current
+            await save();
+            hotSwapOs(nextOs);
+            return;
+        }
+        // Stage is now saved - go to this url
+        window.location.href = "?workstation="+workstation+"&os="+nextOs;
+    } else {
+        // Stage is saved - go to this url 
+        window.location.href ="?hotSwapOs="+nextOs+"&loadSaveFile="+urlParams.get('loadSaveFile');
     }
-
-    // Set global
-    os = nextOs;
-
-    // Set new default system colors
-    let newColor;
-    switch(nextOs) {
-        case "windows":
-            newColor = "#000000";
-            break;
-        case "mac":
-            newColor = "#FCFCFC";
-            break;
-        case "linux":
-            newColor = "#502259";
-            break;
-    }
-    gebi('systemColorPicker').value = newColor;
-    setSystemColors(newColor);
 }
 
 async function login(password) {
@@ -125,6 +114,24 @@ function setSystemColors(newcolor) {
     });
 }
 
+function setDefaultSystemColors(os) {
+    let newSystemColor;
+    switch(os) {
+      case "windows":
+          newSystemColor = "#000000";
+          break;
+      case "mac":
+          newSystemColor = "#FCFCFC";
+          break;
+      case "linux":
+          newSystemColor = "#502259";
+          break;
+    }
+    gebi('systemColorPicker').value = newSystemColor;
+    setSystemColors(newSystemColor);
+    hotSwapped = true;
+}
+
 // Magic from Andreas Wik https://awik.io/determine-color-bright-dark-using-javascript/
 function isLightColor(color) {
     // Variables for red, green, blue values
@@ -162,7 +169,7 @@ function isLightColor(color) {
 
 
 let autoDialogHasClickedOk = false;
-async function showDialog(title, text, selfClosing, input) {
+async function showDialog(title, text, selfClosing, input, feedbackButtons) {
     show("autoDialog");
     gebi("autoDialogTitle").innerHTML = title;
     gebi("autoDialogText").innerHTML = text;
@@ -188,6 +195,21 @@ async function showDialog(title, text, selfClosing, input) {
         while(!autoDialogHasClickedOk) { await delay(125); }
         return autoDialogInput.value.length ? autoDialogInput.value === "~CANCEL" ? "" : autoDialogInput.value : "~EMPTY";
     }
+
+    if(feedbackButtons.length) {
+        show("autoDialogCloseButton");
+        show("autoDialogCancelButton");
+        hide("autoDialogLoading");
+        hide("autoDialogInput");
+        let cancelButton = gebi('autoDialogCancelButtonButton');
+        cancelButton.innerHTML = feedbackButtons[0];
+        cancelButton.setAttribute("onclick", "autoDialogHasClickedOk=true; gebi('autoDialogInput').value='"+feedbackButtons[0]+"'; hide('autoDialog')");
+        button.innerHTML = feedbackButtons[1];
+        button.setAttribute("onclick", "autoDialogHasClickedOk=true; gebi('autoDialogInput').value='"+feedbackButtons[1]+"'; hide('autoDialog')");
+        while(!autoDialogHasClickedOk) { await delay(125); }
+        return autoDialogInput.value;
+    }
+
     if(selfClosing) {
         hide("autoDialogCloseButton");
         show("autoDialogLoading");
