@@ -50,6 +50,38 @@ function showLockScreen() {
     gebi('lockScreenUserPicture').src = 'workstations/'+workstation+'/userpicture.jpg';
 }
 
+function hotSwapOs(nextOs) {
+    // Set URL and stylesheet
+    addStylesheet('os/'+nextOs+'/stylesheet.css');
+    history.pushState({}, null, 'index.html?workstation='+workstation+'&os='+nextOs);
+
+    // Swap all shortCut icons
+    let shortcuts = document.querySelectorAll("[data-setup-type='shortcut'] img");
+    for (shortcut of shortcuts) {
+        let newSrc = shortcut.src.replace("/"+os+"/", "/"+nextOs+"/");
+        shortcut.setAttribute("src", newSrc);
+    }
+
+    // Set global
+    os = nextOs;
+
+    // Set new default system colors
+    let newColor;
+    switch(nextOs) {
+        case "windows":
+            newColor = "#000000";
+            break;
+        case "mac":
+            newColor = "#FCFCFC";
+            break;
+        case "linux":
+            newColor = "#502259";
+            break;
+    }
+    gebi('systemColorPicker').value = newColor;
+    setSystemColors(newColor);
+}
+
 async function login(password) {
     let correctPassword = gebi("passwordCheck").value;
     if(password.includes(correctPassword)) {

@@ -261,7 +261,7 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   gebi('desktop').appendChild(windowContainer);
 
   // If os==win: add to taskbar
-  if(os == "windows") {
+  if(os !== "mac") {
     /* console.log("win"); */
     let miminmizedWindow = document.createElement("button");
     let taskbarIcon = document.createElement("i");
@@ -344,7 +344,7 @@ function closeWindow(id) {
   let el = gebi(id);
   el.remove();
   // If os==win: remove from taskbar
-  if(os=="windows") {
+  if(os !== "mac") {
     gebi("minimized-"+id).remove();
     hideFrontMostWindowOverlay(); 
   }
