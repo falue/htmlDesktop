@@ -68,13 +68,13 @@ async function showImage(index) {
         content.style.backgroundImage = "none";
         show("videoPlayer");
         await setVideoSrcAndPlay(path, 'video/mp4');
-        hide('thumbnails');
+        gebi('thumbnails').classList.add("videplayer");
     } else {
         content.style.backgroundImage = "url("+path+")";
         hide("videoPlayer");
         let player = videojs(document.querySelector('.video-js'));
         if(player) player.pause();
-        show('thumbnails');
+        gebi('thumbnails').classList.remove("videplayer");
     }
 
     // Reset

@@ -6,7 +6,7 @@ header {
     height: 1.5em;
     /* padding: 1em; */
     box-sizing: border-box;
-    border-bottom: solid thin grey;
+    border-bottom: solid 0.06em grey;
     background-color: rgb(242,242,242);
     z-index: 6;
 }
@@ -72,7 +72,7 @@ header {
 
 .thumbnails {
     opacity: 0.75;
-    position: absolute;
+    position: fixed;
     height: 6em;
     width: 100%;
     padding: 1em;
@@ -83,7 +83,8 @@ header {
     box-sizing: border-box;
     text-align: center;
     padding-top: 3em;
-    transition: padding-top 200ms, opacity 350ms;
+    transform: translateY(0em);
+    transition: padding-top 250ms, opacity 350ms, transform 1s;
     z-index: 3;
 }
 .thumbnails:hover {
@@ -92,7 +93,7 @@ header {
 }
 
 .thumbnails .thumbnail {
-    border: thin grey solid;
+    border: 0.06em grey solid;
     height: 100%;
     width: 5.5em;  /* random width*/
     margin: 0 .5em;
@@ -102,9 +103,16 @@ header {
     background-size: cover;
     background-position: center;
 }
+.thumbnails .thumbnail:not(.active):hover {
+    border: 0.06em white solid;
+}
+
+.thumbnails.videplayer {
+    transform: translateY(6em);
+}
 
 .thumbnail.active {
-    border: thin red solid;
+    border: 0.06em red solid;
 }
 
 .videoPlayer {
@@ -114,7 +122,6 @@ header {
     top: 1.5em;
     box-sizing: border-box;
     background-color: black;
-    z-index: 4; /* ! */
 }
 
 #videoJsPlayerWrapper {
@@ -127,6 +134,6 @@ header {
     top: calc(50% - .8em) !important;
 }
 
-.videoJsPlayerWrapper_html5_api:focus {
-    outline: none;
+#videoJsPlayerWrapper_html5_api:focus {
+    outline: none !important;
 }
