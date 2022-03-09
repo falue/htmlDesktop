@@ -33,12 +33,12 @@
             ]
         }
     ],
-    "windowsComment": "BEWARE! Two windows with identical windowName & contentPath but different positions do not get saved! Live, displayed or hidden windows. accessible programs like terminal, browser or filemanager with a specific folder open",
+    "windowsComment": "BEWARE! Two windows with identical windowName & contentPath which are NOT in DOM, AND different positions do not get saved! Live, displayed or hidden windows. accessible programs like terminal, browser or filemanager with a specific folder open",
     "windows": [
         {
             "windowName": "File manager",
             "icon": "folder",
-            "contentPath": "filemanager/index.html?os=windows&workstation=_generic&folderContent=Pictures",
+            "contentPath": "filemanager/index.html?os=linux&workstation=_generic&folderContent=Pictures",
             "x": 11,
             "y": 11,
             "w": 600,
@@ -82,11 +82,11 @@
             "action": ""
         },
         {
-            "name": "Files",
+            "name": "Pictures",
             "icon": "folderFull.png",
             "x": 27,
             "y": 10,
-            "action": "addWindow('File manager dblClick', 'folder', 'filemanager/index.html?workstation=_generic&os=windows&folderContent=Root', 5,5, 600,350, false)"
+            "action": "addWindow('File manager dblClick', 'folder', 'filemanager/index.html?folderContent=Pictures', 5,5, 600,350, false)"
         },
         {
             "name": "Trash",

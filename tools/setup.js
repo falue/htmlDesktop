@@ -114,9 +114,9 @@ async function setup() {
   // Create generic Shortcuts if none are defined
   if(!shortcuts.length) {
     cl("create some default shortcuts if none are defined");
-    placeShortcut("Computer", "hdd.png", 1,0, "");
-    placeShortcut("DVD", "dvd.png", 93,67, "");
-    placeShortcut("Files", "folderFull.png", 2,15, "addWindow('File manager dblClick', 'folder', 'filemanager/index.html?workstation="+workstation+"&os="+os+"&folderContent=folders.json', 5,5, 600,350, false)");
+    placeShortcut("Computer", "hdd.png", 1,0, "startDefaultProgram('fileManager')");
+    placeShortcut("DVD", "dvd.png", 93,67, "startDefaultProgram('fileManager')");
+    placeShortcut("Files", "folderFull.png", 2,15, "startDefaultProgram('fileManager')");
     placeShortcut("Trash", "trashFull.png", 93,80, "");
   }
 

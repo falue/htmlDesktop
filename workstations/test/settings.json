@@ -37,7 +37,7 @@
             "icon": "folderFull.png",
             "x": 27,
             "y": 10,
-            "action": "addWindow('File manager dblClick', 'folder', 'filemanager/index.html?workstation=dude&os=windows&folderContent=folders.json', 5,5, 600,350, false)"
+            "action": "addWindow('File manager dblClick', 'folder', 'filemanager/index.html?folderContent=folders.json', 5,5, 600,350, false)"
         },
         {
             "name": "Trash",

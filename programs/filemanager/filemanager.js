@@ -206,7 +206,7 @@ function updateFolderContent(path, folderContent) {
                 //   Image viewer only opens if real path is defined in data (eg. "1.jpg" or "1.jpg|2.jpg").
                 //   path relative to workstation root.
                 if(data && data !== "data") {
-                    fileTile.setAttribute("ondblclick", "parent.addWindow('Image viewer', 'image', 'imageviewer/index.html?os="+os+"&workstation="+workstation+"&files="+data+"', 5,5, 666,450, false)");
+                    fileTile.setAttribute("ondblclick", "parent.addWindow('Image viewer', 'image', 'imageviewer/index.html?files="+data+"', 5,5, 666,450, false)");
                 }
             } else if(["doc","docx","pyc","py","txt","rtf"].includes(extension)) {
                 // Text file

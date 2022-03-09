@@ -252,10 +252,26 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   windowFrame.appendChild(windowActions);
   windowContainer.appendChild(windowFrame);
 
-  // Content
+  // iFrame Content
   let content = document.createElement("iframe");
   content.setAttribute("class", "content");
-  content.setAttribute("src", "programs/"+contentPath);
+  // Automatically attach current os, workstation & darkMode to iframe URL
+  contentPath = contentPath.split("?");
+  let mainProgram = contentPath.shift();  // Remove first element *AND* return first element
+  let parameters = contentPath.join("");  // get everything after "?" if there is
+  let srcIframe = [
+    "programs/",
+    mainProgram,
+    "?os=",
+    os,
+    "&workstation=",
+    workstation,
+    "&darkMode=",
+    !isLightColor(systemColor),
+    parameters ? "&" : "",
+    parameters
+  ].join("");
+  content.setAttribute("src", srcIframe);
   windowContainer.appendChild(content);
     
   gebi('desktop').appendChild(windowContainer);
@@ -597,10 +613,10 @@ function startDefaultProgram(program) {
 
   switch(program) {
     case "fileManager":
-      addWindow('File manager', 'folder', 'filemanager/index.html?os='+os+'&workstation=_generic', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 600,350, false);
+      addWindow('File manager', 'folder', 'filemanager', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 600,350, false);
       break;
     case "browser":
-      addWindow('Browser', 'public', 'browser/index.html?workstation='+workstation+'&darkMode='+!isLightColor(systemColor), incrementWindowsPosition('x'), incrementWindowsPosition('y'), 1200,650, false);
+      addWindow('Browser', 'public', 'browser', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 1200,650, false);
       break;
     case "ftp":
       addWindow('FTP Client', 'storm', 'ftp', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 850,590, false);
@@ -610,7 +626,7 @@ function startDefaultProgram(program) {
       break;
     case "imageViewer":
       /* TODO: file list from where? */
-      addWindow('Image viewer', 'image', 'imageviewer/index.html?os='+os+'&workstation=_generic&files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+      addWindow('Image viewer', 'image', 'imageviewer/index.html?files=1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
       break;
     case "textEditor":
         addWindow('Text editor', 'edit_note', 'texteditor/index.html', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
