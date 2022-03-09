@@ -1,8 +1,8 @@
 .hideOsWindows { display: block; }
-.hideOsMac { display: none; }
+.hideOsMac { display: none !important; }
 .hideOsLinux { display: block; }
 .hideInlineOsWindows { display: inline-block; }
-.hideInlineOsMac { display: none; }
+.hideInlineOsMac { display: none !important; }
 .hideInlineOsLinux { display: inline-block; }
 
 .desktop {

@@ -1,7 +1,7 @@
-.hideOsWindows { display: none; }
+.hideOsWindows { display: none !important; }
 .hideOsMac { display: block; }
 .hideOsLinux { display: block; }
-.hideInlineOsWindows { display: none; }
+.hideInlineOsWindows { display: none !important; }
 .hideInlineOsMac { display: inline-block; }
 .hideInlineOsLinux { display: inline-block; }
 
@@ -335,7 +335,6 @@
     position: fixed;
     left: 0;
     bottom: 2.9em;
-    background-color: #171717;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
