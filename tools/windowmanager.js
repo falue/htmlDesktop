@@ -599,37 +599,43 @@ function incrementWindowsPosition(axe) {
 
 function startDefaultProgram(program, parameters) {
   // If no variable is set, start random program
+  let x;
+  let y;
   if(!program) {
     let programs = ["fileManager", "browser", "ftp", "ftp-connect", "imageViewer", "textEditor-random", "terminal"];
     program = programs[chooseRandomKey(programs)];
     cl("startDefaultProgram Random: " + program);
+    x = randomBetween(0,50);
+    y = randomBetween(0,50);
   } else {
     cl("startDefaultProgram: " + program);
+    x = incrementWindowsPosition('x');
+    y = incrementWindowsPosition('y');
   }
 
   switch(program) {
     case "fileManager":
-      addWindow('File manager', 'folder', 'filemanager', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 600,350, false);
+      addWindow('File manager', 'folder', 'filemanager', x, y, 600,350, false);
       break;
     case "browser":
-      addWindow('Browser', 'public', 'browser', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 1200,650, false);
+      addWindow('Browser', 'public', 'browser', x, y, 1200,650, false);
       break;
     case "ftp":
-      addWindow('FTP Client', 'storm', 'ftp', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 850,590, false);
+      addWindow('FTP Client', 'storm', 'ftp', x, y, 850,590, false);
       break;
     case "ftp-connect":
-      addWindow('FTP Client - Connect', 'storm', 'ftp/connect.html', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,480, false);
+      addWindow('FTP Client - Connect', 'storm', 'ftp/connect.html', x, y, 666,480, false);
       break;
     case "imageViewer":
       // TODO: Default file list from where?
       parameters = parameters ? parameters.join("|") : "1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg";
-      addWindow('Image viewer', 'image', 'imageviewer/index.html?files='+parameters, incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+      addWindow('Image viewer', 'image', 'imageviewer/index.html?files='+parameters, x, y, 666,450, false);
       break;
     case "textEditor":
-        addWindow('Text editor', 'edit_note', 'texteditor/index.html', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+        addWindow('Text editor', 'edit_note', 'texteditor/index.html', x, y, 666,450, false);
       break;
     case "textEditor-random":
-        addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=random', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+        addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=random', x, y, 666,450, false);
       break;
     case "terminal":
       // If no parameters set, start with random terminal content
@@ -637,25 +643,25 @@ function startDefaultProgram(program, parameters) {
       switch(parameters) {
         case 0:  // sqlHack (start froms cratch)
           /* TODO: This should be a terminal with bash CLI inside */
-          addWindow('Terminal - SQL', 'code', 'terminal/index.html?byRows=false&startChar=0&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - SQL', 'code', 'terminal/index.html?byRows=false&startChar=0&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', x, y, 666,450, false);
           break;
         case 1:  // apt-get
-          addWindow('Terminal - Update', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - Update', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', x, y, 666,450, false);
           break;
         case 2:  // lorem_ipsum_binary
-        addWindow('Terminal - BIN', 'code', 'terminal/index.html?byRows=false&startChar=0&text=lorem_ipsum_binary&theme=hybrid&speed=50&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+        addWindow('Terminal - BIN', 'code', 'terminal/index.html?byRows=false&startChar=0&text=lorem_ipsum_binary&theme=hybrid&speed=50&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', x, y, 666,450, false);
           break;
         case 3:  // hexdump
-          addWindow('Terminal - HEX', 'code', 'terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=12&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - HEX', 'code', 'terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=12&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=10', x, y, 666,450, false);
           break;
         case 4:  // sqlHack
-          addWindow('Terminal - SQL2', 'code', 'terminal/index.html?byRows=false&startChar=119&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - SQL2', 'code', 'terminal/index.html?byRows=false&startChar=119&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', x, y, 666,450, false);
           break;
         case 5:  // randall  python
-          addWindow('Terminal - PYTHON', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - PYTHON', 'code', 'terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', x, y, 666,450, false);
           break;
         case 6:  // log
-          addWindow('Terminal - LOG', 'code', 'terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 666,450, false);
+          addWindow('Terminal - LOG', 'code', 'terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', x, y, 666,450, false);
           break;
         default:
           cl("Terminal does not exist: " + program +", "+ terminalContent);
