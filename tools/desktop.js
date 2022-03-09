@@ -351,9 +351,9 @@ function keyboardController(event) {
     if(event.target.localName === "body") {
         let key = event.key;
         switch(key) {
-            case "1": startDefaultProgram('terminal-6'); break;
+            case "1": epD(event); startDefaultProgram('terminal-6'); break;
             case "2": startDefaultProgram('fileManager'); break;
-            case "3": startDefaultProgram('textEditor-random'); break;
+            case "3": epD(event); startDefaultProgram('textEditor-random'); break;
             case "4": startDefaultProgram('browser'); break;
             case "5": startDefaultProgram('imageViewer'); break;
             case "6": startDefaultProgram('ftp'); break;
@@ -363,27 +363,27 @@ function keyboardController(event) {
             case "=": guiZoomInitial(); break;
             case "0": guiZoomInitial(); break;
             case "b": toggle('blackout'); break;
-            case "c": createShortcut(); break;
+            case "c": epD(event); createShortcut(); break;
             case "s": save(); break;
-            case "S": saveAs(false); break;
+            case "S": epD(event); saveAs(false); break;
             case "d": clutterDesktop(4); break;
             case "w": startDefaultProgram(); break;
             case "m": showSystemMessage(systemMessages[parseInt(gebi('systemMessagesSelect').value)]); break;
             case "Escape": screensaverHide(); break;
 
-            /* case "arrowright": cl("arrow right!"); break;
-            case "arrowleft": cl("arrow left!"); break;
-            case "arrowup": cl("arrow up!"); break;
-            case "arrowdown": cl("arrow down!"); break;
-            case " ": cl("space!"); break;
-            case "backspace": cl("backspace!"); break; 
-            case "enter": cl("enter!"); break;
-            case "delete": cl("delete"); break;
-            case "meta": cl("cmd"); break;
-            case "shift": cl("shift"); break;
-            case "alt": cl("alt"); break;
-            case "control": cl("control"); break;
-            case "shift": cl("shift"); break; */
+            /* case "arrowright": epD(event); cl("arrow right!"); break;
+            case "arrowleft": epD(event); cl("arrow left!"); break;
+            case "arrowup": epD(event); cl("arrow up!"); break;
+            case "arrowdown": epD(event); cl("arrow down!"); break;
+            case " ": epD(event); cl("space!"); break;
+            case "backspace": epD(event); cl("backspace!"); break; 
+            case "enter": epD(event); cl("enter!"); break;
+            case "delete": epD(event); cl("delete"); break;
+            case "meta": epD(event); cl("cmd"); break;
+            case "shift": epD(event); cl("shift"); break;
+            case "alt": epD(event); cl("alt"); break;
+            case "control": epD(event); cl("control"); break;
+            case "shift": epD(event); cl("shift"); break; */
 
             default:
                 cl("Default: hide blackout 6 screensaver")

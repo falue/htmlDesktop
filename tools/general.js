@@ -203,6 +203,11 @@ function createUniqueId(max) {
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4()).substring(0,max);
 }
 
+// Ignore user input
+function epD(event) {
+  event.preventDefault();
+}
+
 function dynamicSort(keyName) {
   let sortByFirstKey = keyName === "firstKey";
   let sortByFirstKeyReversed = keyName === "~firstKey";
