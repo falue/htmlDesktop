@@ -167,7 +167,7 @@ async function setupWorkstationChooser(path) {
           button.innerHTML = " " + workstationDisplay[0].toUpperCase() + workstationDisplay.slice(1);
           let i = document.createElement("i");
           i.classList.add("material-icons", "valign");
-          i.innerHTML = values[1] === "mac" ? "apple" : values[1] === "linux" ? "dvr" : "grid_view"; // computer for inux
+          i.innerHTML = values[1] === "mac" ? "apple" : values[1] === "linux" ? "dvr" : "view_module"; // computer for inux
           button.classList.add("systemButton", "nobr");
           button.append(i);
           a.prepend(button);

@@ -91,24 +91,25 @@
 
     <!-- START MENU -->
     <div id="startMenu" class="hide">
-      <div class="startMenu systemColors shadow radius5">
+      <div class="startMenu systemColors shadow">
         <div class="columns">
-          <h3>
-            <i class="material-icons blue large valign">home</i>
-            Start menu
-            <br>
-            <span class="op75 small italics">Logged in as <span id="usernameStartMenu"></span>
-              &middot;
-              <i class="material-icons small valign">account_circle</i>
-              <i class="material-icons small valign">info</i>
-              <i class="material-icons small valign">cloud_circle</i>
-            </span>
-          </h3>
-          <br>
+          <div class="startMenuHeader hideOsWindows">
+            <h3>
+              <i class="material-icons blue large valign">home</i>
+              Start menu
+              <br>
+              <span class="op75 small italics">Logged in as <span id="usernameStartMenu"></span>
+                &middot;
+                <i class="material-icons small valign">account_circle</i>
+                <i class="material-icons small valign">info</i>
+                <i class="material-icons small valign">cloud_circle</i>
+              </span>
+            </h3>
+          </div>
 
           <!-- FAST ACCESS -->
-          <div class="centerText">FAST ACCESS</div>
-          <ul>
+          <div class="centerText hideOsWindows">FAST ACCESS</div>
+          <ul class="fastAccess">
             <li class="noLiHover centerText">
               <button class="valign circle hover tooltip" data-title="Terminal - SQL" onclick="hide('startMenu'); startDefaultProgram('terminal');" >
                 <i class="material-icons">code</i>
@@ -131,7 +132,7 @@
             </li>
           </ul>
 
-          <ul>
+          <ul class="appList">
             <li onclick="hide('startMenu'); startDefaultProgram('fileManager')">
               <i class="material-icons systemColors clearBg op50">folder</i>
               Filemanager
@@ -141,7 +142,7 @@
               All Apps
               <i class="material-icons whiteTransparent systemColors clearBg right">chevron_right</i>
               <div class="submenu">
-                <ul class="systemColors radius5 shadow">
+                <ul class="systemColors shadow">
                   <li onclick="hide('startMenu'); startDefaultProgram('fileManager')">
                     <i class="material-icons small systemColors clearBg">folder</i> File manager
                   </li>
@@ -200,7 +201,7 @@
               Your Apps
               <i class="material-icons whiteTransparent systemColors clearBg right">chevron_right</i>
               <div class="submenu">
-                <ul id="currentWindowActions" class="systemColors radius5 shadow">
+                <ul id="currentWindowActions" class="systemColors shadow">
                   <li class="grey italics noLiHover">No windows for this workstation</li>
                 </ul>
               </div>
@@ -433,9 +434,16 @@
 
       <!-- START BUTTON -->
       <div>
-        <button onclick="toggle('startMenu'); hide('actionMenu');" class="valign systemColors">
-          <i class="material-icons">house</i>
+        <button onclick="toggle('startMenu'); hide('actionMenu');" class="valign systemColors startButton">
+          <i class="material-icons hideOsLinux">view_module</i>
+          <i class="material-icons hideOsWindows">house</i>
         </button>
+      </div>
+
+      <div class="windowsSearchBar hideOsLinux hideOsMac darkGreyBg grey relative">
+        <i class="material-icons white relative">radio_button_unchecked</i>
+        <span>Ask me anything</span>
+        <i class="material-icons grey relative valign">micro</i>
       </div>
 
       <div class="spacer"></div>

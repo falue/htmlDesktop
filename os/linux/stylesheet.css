@@ -1,9 +1,9 @@
 .hideOsWindows { display: block; }
 .hideOsMac { display: block; }
-.hideOsLinux { display: none; }
+.hideOsLinux { display: none !important; }
 .hideInlineOsWindows { display: inline-block; }
 .hideInlineOsMac { display: inline-block; }
-.hideInlineOsLinux { display: none; }
+.hideInlineOsLinux { display: none !important; }
 
 .desktop {
     position: absolute;
@@ -286,6 +286,7 @@ padding-top: .2em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border-radius: 5px;
 }
 
 .startMenu .columns {
@@ -293,6 +294,10 @@ padding-top: .2em;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+}
+
+.startMenuHeader {
+    margin-bottom:1em;
 }
 
 .startMenu ul,
@@ -356,6 +361,7 @@ padding-top: .2em;
     box-sizing: content-box;
     border: 1em transparent solid;
     border-left: 2.5em transparent solid;
+    border-radius: .3em;
 }
 
 .startMenu li:hover div.submenu {

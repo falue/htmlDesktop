@@ -130,28 +130,43 @@
 .window {
     background: white;
     /* border: 5px solid #4286f4; */
-    border-radius: .25em;
+    /* border-radius: .25em; */
 }
 
 .window .content {
     height: calc(100% - 1.5em);
     top: 1.5em;
-    border-bottom-left-radius: .25em;
-    border-bottom-right-radius: .25em;
+    /* border-bottom-left-radius: .25em;
+    border-bottom-right-radius: .25em; */
 }
 
 .window .windowFrame {  
     height: 1.5em;
-    border-top-left-radius: .25em;
-    border-top-right-radius: .25em;
+    /* border-top-left-radius: .25em;
+    border-top-right-radius: .25em; */
+}
+
+.window .windowFrame .windowTitle span:before {
+    content: "\f1d2";
+    font-family: 'Material Icons';
+    opacity: .6;
+    position: absolute;
+    left:2.75em;
+    transform: rotate(-90deg);
+    top: .5em;
 }
 
 .window .windowFrame .windowTitle span {
     font-size: .75em;
+    padding-left: 1em;
+    margin-left: 2.5em;
+    border-left: grey .06em solid;
 }
 
 .window .windowFrame .windowTitle i  {
     padding: 0.25em .25em 0 .5em;
+    color: rgb(125,125,255);
+    
 }
 
 .window .windowFrame .windowActions {
@@ -159,7 +174,8 @@
 }
 
 .window .windowFrame .windowActions i {
-    margin-left: .8em;
+    margin-left: 2em;
+    font-size: .8em;
 }
 
 /* ACTION MENU */
@@ -183,7 +199,34 @@
     box-sizing: border-box;
     display: inline-block;
     height: inherit;
-    padding: .25em;
+    /* padding: .25em; */
+}
+
+.windowsSearchBar {
+    /* width: 18em; */
+    padding: .25em .25em .25em .5em;
+}
+.windowsSearchBar span {
+    display: inline-block;
+    transform: translate(.25em, -.15em);
+    opacity: .5;
+}
+
+.windowsSearchBar i {
+    width: 1em;
+    position: relative;
+    top: .25em;
+}
+.windowsSearchBar i:last-of-type {
+    /* background-color: red; */
+    padding-left: 1.75em;
+    font-size: 1.35em;
+    transform: translateY(-.35em);
+}
+
+.startButton i {
+    padding-top: .15em;
+    transform: skew(0, -15deg);
 }
 
 /* SPACER */
@@ -191,7 +234,7 @@
     margin: 0 .5em;
     border: none;
     padding: 0 .03em;
-    background-color: rgba(125,125,125,.5);
+    /* background-color: rgba(125,125,125,.5); */
     /* get color from systemColors, greyscale, invert */
     /* would be smart but only makes on elements without content */
     /* background-color: inherit;
@@ -201,26 +244,26 @@
 /* BUTTONS */
 .systemBar button {
     /* border: greenyellow solid thin; */
-    border: solid .06em rgba(125,125,125,1);
-    border-radius: .25em;
+    /* border: solid .06em rgba(125,125,125,1);
+    border-radius: .25em; */
     font-size: inherit;
-    height: 2em;
-    width: 2em;
+    height: 100%;
+    width: 3em;
     padding: 0;
 }
 .systemBar button:hover {
     background-color: rgba(125,125,125,0.2) !important;
 }
-.systemBar .buttonGroup button {
+/* .systemBar .buttonGroup button {
     border-radius: 0;
     border-left: none;
-}
+} */
 .systemBar .buttonGroup button i {
-    padding-top: .1em;
+    padding-top: .2em;
     font-size: 1.5em;
 }
 
-.systemBar .buttonGroup button:first-of-type {
+/* .systemBar .buttonGroup button:first-of-type {
     border-top-left-radius: .25em;
     border-bottom-left-radius: .25em;
     border-left: solid .06em rgba(125,125,125,1);
@@ -228,7 +271,7 @@
 .systemBar .buttonGroup button:last-of-type {
     border-top-right-radius: .25em;
     border-bottom-right-radius: .25em;
-}
+} */
 
 /* TASKBAR */
 .systemBar .taskbar {
@@ -237,19 +280,25 @@
     padding: 0 0 0 .25em;
 }
 .systemBar .taskbar button {
-    border-radius: 0;
+    /* border-radius: 0;
     border: none;
-    border-left: solid .06em rgba(125,125,125,1);
+    border-left: solid .06em rgba(125,125,125,1); */
     height: 100%;
     width: initial;
     padding: 0 .75em;
     max-width: 10em;
     overflow: hidden;
     text-overflow: ellipsis;
+    border-bottom: .3em rgba(125,125,255,0.5) solid;
+    margin-right: .75em;
 }
-.systemBar .taskbar button:last-of-type {
+.systemBar .taskbar button:hover {
+    border-bottom: .3em rgba(125,125,255,0.85) solid;
+}
+
+/* .systemBar .taskbar button:last-of-type {
     border-right: solid .06em rgba(125,125,125,1);
-}
+} */
 .systemBar .taskbar button i {
     margin-right: .25em;
 }
@@ -259,8 +308,8 @@
 
 /* SYSTEM ICONS */
 .systemIcons {
-    border-left: .06em solid rgba(125,125,125,0.6);
-    padding: 0 .25em !important;
+    /* border-left: .06em solid rgba(125,125,125,0.6); */
+    padding: .25em .25em !important;
 }
 .systemIcons > div {
     /* border: blue solid .06em; */
@@ -271,7 +320,8 @@
     height: 100%;
 }
 .systemIcons div i {
-padding-top: .2em;
+    padding-top: .2em;
+    margin-left:.5em;
 }
 .systemIcons div #systemIcons-clock {
     border-top: .6em transparent solid;
@@ -281,17 +331,29 @@ padding-top: .2em;
 .startMenu {
     /* color: white; */
     position: fixed;
-    left: .3em;
-    bottom: 3em;
-    /* background-color: black; */
+    left: 0;
+    bottom: 2.9em;
+    background-color: #171717;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-top: 2.5em;
+    padding-left: .25em;
+}
+
+.startMenu:before {
+    content: "\e5d2";
+    font-family: 'Material Icons';
+    padding: .75em .75em .75em 1.25em;
+    font-size:1.1em;
+    position: absolute;
+    top:.5em;
+
 }
 
 .startMenu .columns {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-basis: 100%;
     flex: 1;
 }
@@ -306,16 +368,31 @@ padding-top: .2em;
 
 .startMenu ul {
     margin-bottom: 1em;
+    align-self: flex-end;
+}
+
+.startMenu ul.appList:before {
+    content: "Suggested";
+    font-size: .8em;
+    padding-left: .5em;
+    position: absolute;
+    transform: translateY(-2em);
 }
 
 .startMenu li {
     position: relative;
     padding: .5em;
-    width: 17em;
+    /* width: 17em; */
+}
+.startMenu ul.fastAccess li i {
+    font-size: 1em;
+    /* background-color: darkslategrey; */
 }
 
-.startMenu li:not(:last-of-type) {
-    border-bottom: solid rgba(255,255,255,0.2) thin;
+.startMenu ul.fastAccess li button {
+    display: block;
+    margin-top: 1em;
+    border-radius: 0 !important;
 }
 
 .startMenu li:not(.noLiHover):hover {
@@ -332,6 +409,15 @@ padding-top: .2em;
     vertical-align: middle;
 }
 
+.startMenu ul.appList li {
+    width: 20em;
+    padding: .25em;
+}
+.startMenu ul.appList li i {
+    margin-right: .75em;
+    font-size: 1em;
+}
+
 /* special two buttons in one row */
 .powerButtons {
     padding:0 !important;
@@ -340,8 +426,11 @@ padding-top: .2em;
 .powerButtons div {
     box-sizing: border-box;
     width: 50%;
-    display: inline-block;
-    padding: .5em;
+    display: block;
+    padding: .25em;
+}
+.powerButtons div:last-of-type {
+    width: auto;
 }
 .powerButtons div:hover {
     background-color: rgba(255,255,255,0.2);
@@ -370,7 +459,19 @@ padding-top: .2em;
 }
 
 .startMenu ul div.submenu ul li {
-    padding: .8em;
+    padding: .28em;
+}
+
+.startMenu ul div.submenu ul li div {
+    transform: translateY(-.32em);
+}
+.startMenu ul div.submenu ul li button {
+    padding: 0;
+    text-align: center;
+}
+.startMenu ul div.submenu ul li button i {
+    padding: .5em;
+    margin:0;
 }
 
 .systemMessages {
