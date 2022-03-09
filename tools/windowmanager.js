@@ -101,17 +101,13 @@ function makeResizableDiv(div) {
 // see https://stackoverflow.com/a/57438497
 let offsetX;
 let offsetY;
+let dropSuccessful = false;
 
 onDragStart = function(ev) {
   showClass('windowManagerOverlay');
   const rect = ev.target.getBoundingClientRect();
   currentDragId = ev.target.id;
   ev.target.style.opacity = '0.025';  // Hide original during dragging
-  // Only bringToFront if window not shortcut on desktop
-  /* if(!ev.target.classList.contains("shortcut")) {
-    bringToFront(ev.target.id);
-  } */
-
   offsetX = ev.clientX - rect.x;
   offsetY = ev.clientY - rect.y;
 };
@@ -121,23 +117,26 @@ dropHandler = function(ev) {
   // console.log("dropHandler");
   ev.preventDefault();
   let droppedId = currentDragId;
-  let id1 = gebi(droppedId);
-  let id2 = gebi('desktop');
+  let dragSource = gebi(droppedId);
+  let dragTarget = gebi('desktop');
 
-  const left = parseInt(document.defaultView.getComputedStyle(id2).left);
-  const top = parseInt(document.defaultView.getComputedStyle(id2).top);
+  // Mark as successful drop action
+  dropSuccessful = true;
 
-  id1.style.position = 'absolute';
+  const left = parseInt(document.defaultView.getComputedStyle(dragTarget).left);
+  const top = parseInt(document.defaultView.getComputedStyle(dragTarget).top);
+
+  dragSource.style.position = 'absolute';
   let testx = ev.clientX - left - offsetX + 'px'
   let testy = ev.clientY - top - offsetY + 'px'
-  id1.style.left = getPositionInPercentage("left", testx)+ "%";
-  id1.style.top = getPositionInPercentage("top", testy)+ "%";
+  dragSource.style.left = getPositionInPercentage("left", testx)+ "%";
+  dragSource.style.top = getPositionInPercentage("top", testy)+ "%";
 
-  let droppedWindow = id1.getElementsByClassName('windowManagerOverlay')[0];
+  let droppedWindow = dragSource.getElementsByClassName('windowManagerOverlay')[0];
   if(droppedWindow) bringToFront(droppedId);
 
   currentDragId = "";
-  id1.style.opacity = '1';
+  dragSource.style.opacity = '1';
 };
 
 dragoverHandler = function(ev) {
@@ -146,6 +145,15 @@ dragoverHandler = function(ev) {
   ev.preventDefault();
   ev.dataTransfer.dropEffect = "move";
 };
+
+onDragEnd = function() {
+  if(!dropSuccessful) {
+    /* cl("dragend failed: "); */
+    gebi(currentDragId).style.opacity="1";
+  }
+  // Reset for next drop
+  dropSuccessful = false;
+}
 
 let recentZIndex = 10;
 
@@ -169,6 +177,7 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   }
   windowContainer.setAttribute("draggable", "true");
   windowContainer.setAttribute("ondragstart", "onDragStart(event)");
+  windowContainer.setAttribute("ondragend", "onDragEnd(event)");
 
   // Set position & size
   windowContainer.style.left = x + "%";
