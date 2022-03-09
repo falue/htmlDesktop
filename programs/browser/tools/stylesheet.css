@@ -162,10 +162,14 @@ body {
 
 .fake-browser-bar.favorites {
     white-space: nowrap;
-    overflow: hidden;
+    overflow: auto;
     height: 20px;
     padding-right: 60px;
-    text-overflow: ellipsis;
+    padding-top: 5px;
+}
+
+.fake-browser-bar.favorites::-webkit-scrollbar { 
+    display: none; 
 }
 
 .fake-browser-bar.favorites span {
@@ -258,12 +262,12 @@ body {
 .favoritesToggle {
     position: absolute;
     right: 0;
-    top: 0;
-    width: 28px;
-    height: 100%;
-    padding-left: 7px;
-    padding-top: 7px;
+    top: 49px;
+    height: 30px;
+    box-sizing: border-box;
+    padding: 3px 5px 0 5px;
     z-index: 900;
+    background-color: #ddd;
 }
 
 .favoritesToggle i {
@@ -474,6 +478,10 @@ button:hover {
 
 .dark .fake-browser-bar .navigationalButtons i:hover {
     color:white;
+}
+
+.dark .favoritesToggle {
+    background-color: rgb(43, 43, 43);
 }
 
 
