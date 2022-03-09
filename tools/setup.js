@@ -111,6 +111,9 @@ async function setup() {
   // Loop over systemMessages
   setupSystemMessages(systemMessages);
 
+  // Show name in actionMenu
+  gebi('workstationHint').innerHTML = workstation;
+
   // Create generic Shortcuts if none are defined
   if(!shortcuts.length) {
     cl("create some default shortcuts if none are defined");
@@ -202,6 +205,7 @@ async function setupSettings(settings) {
           username = value;
           /* console.log("Username is " + value); */
           gebi('usernameStartMenu').innerHTML = value;
+          gebi('userHint').innerHTML = value;
         }
       break;
       case "password":

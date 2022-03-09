@@ -346,6 +346,11 @@ async function closeSystemMessage(element) {
     if(!gebi('systemMessages').innerHTML) hide('systemMessages');
 }
 
+function clearSystemMessages() {
+    gebi('systemMessages').innerHTML = "";
+    hide('systemMessages');
+}
+
 function keyboardController(event) {
     // Ignore presses in textfield etc
     if(event.target.localName === "body") {
@@ -360,7 +365,8 @@ function keyboardController(event) {
             case "7": startDefaultProgram('ftp-connect'); break;
             case "b": toggle('blackout'); break;
             case "c": epD(event); createShortcut(); break;
-            case "s": save(); break;
+            case "C": clearSystemMessages(); break;
+            case "s": epD(event); save(); break;
             case "S": epD(event); saveAs(false); break;
             case "d": clutterDesktop(4); break;
             case "w": startDefaultProgram(); break;

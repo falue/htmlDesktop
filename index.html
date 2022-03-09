@@ -237,132 +237,193 @@
     </div>
 
     <!-- ACTION MENU -->
-    <div id="actionMenu" class="hide">
-      <div class="actionMenu darkGreyBg shadow">
-        <!-- Operator actions & settings -->
-        <div class="columns">
-          <h3 class="grey centerText">
-            <i class="material-icons blue large valign">videocam</i>
-            Operator actions & settings
-            <!-- TODO: where to put -->
-            <div class="small grey centerText italics">For your eyes only!</div>
-            <span class="small grey">User "password" is <span id="passwordHint" class="green"></span></span>
-          </h3>
-
-          <ul>
-            <li onclick="show('keyboardControls');">
-              <i class="material-icons blue small">keyboard</i>
-              See keyboard Controls
-            </li>
-            <li onclick="show('blackout'); hide('actionMenu');">
-              <!-- <i class="material-icons blue small">flare</i> -->
-              <i class="material-icons blue small">stream</i>
-              Blackout
-            </li>
-            <li onclick="screenSaver(); hide('actionMenu');">
-              <i class="material-icons blue small">dark_mode</i>
-              Screensaver
-            </li>
-            <li>
-              <span onclick="cycleBackgroundImage();">
-                <i class="material-icons blue small">desktop_windows</i>
-                Cycle background image
-              </span>
-              <label for="BGColor" class="grey small">| Set Color:</label>
-              <input id="BGColor" type="color" class="valign" oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value;" value="#000000">
-            </li>
-            <li>
-              <i class="material-icons blue small">color_lens</i>
-              <label for="systemColorPicker">
-                Set system color:
-              </label>
-              <input id="systemColorPicker" type="color" class="valign" oninput="setSystemColors(this.value);" value="#000000">
-            </li>
-          </ul>
+    <div id="actionMenu" class="">hide
+      <div class="actionMenu darkGreyBg shadow radius5">
+        <!-- TITEL -->
+        <div class="actionMenuTitle paddingY25 paddingX1 maxWidth fancy">
+          <i class="material-icons whiteBg padding125 valign round red">videocam</i>&nbsp;
+          Operator actions & settings
+          <div class="right top padding1-50 small white centerText italics marginX1">For your eyes only!</div>
         </div>
 
-        <div class="columns">
-          <ul>
-            <li onclick="createShortcut(); hide('actionMenu');">
-              <!-- <i class="material-icons blue small">grid_view</i> -->
-              <i class="material-icons blue small">queue</i>
-              Add desktop shortcut..
-            </li>
-            <li onclick="clutterDesktop(4);">
-              <i class="material-icons blue small">scatter_plot</i>
-              Clutter desktop
-            </li>
-            <li onclick="startDefaultProgram();">
-              <i class="material-icons blue small">dynamic_feed</i>
-              Clutter Screen
-            </li>
-            <li onclick="tidyUpShortcuts();">
-              <i class="material-icons blue small rotate180">signal_cellular_alt</i>
-              Tidy up shortcuts
-            </li>
-            <li onclick="alignShortcutsToGrid();">
-              <i class="material-icons blue small mirrorY">grid_4x4</i>
-              Align shortcuts to grid
-            </li>
-            <li class="tooltip" data-title="Press 'm' to display">
-              <span onclick="toggle('systemMessageSettings'); gebi('systemMessageSettingsArrow').classList.toggle('rotate180');">
-                <i class="material-icons blue small">notifications_active</i>
-                Choose system message & delay:
-                <i id="systemMessageSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
-              </span>
-              <div id="systemMessageSettings" class="hide">
-                <!-- <span onclick="showSystemMessage(['custom title', 'desc', 'view_in_ar', 500, 'action')]">TEST</span> -->
-                <select id="systemMessagesSelect" onchange="this.blur();" class="marginY1 maxWidth padding05">
-                </select>
-                <br>
-                Delay duration:
-                <span id="systemMessagesDurationUi">No delay</span>
-                <br>
-                <input type="range" class="maxWidth padding2 borderBox" id="systemMessagesDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
-              </div>
-            </li>
-            <li onclick="show('overlayWorkstation'); show('closeOverlayWorkstation'); hide('actionMenu');">
-              <i class="material-icons blue small">computer</i>
-              Change workstation
-            </li>
-            <li>
-              <i class="material-icons blue small">apple</i>
-              Swap OS:
-              <span class="hover bold" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
-              &middot;
-              <span class="hover bold" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
-              &middot;
-              <span class="hover bold" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
-            </li>
-            <!-- <li onclick="window.location.href = 'jsoneditor'">
+        <!-- Operator actions & settings -->
+        <div class="columns padding1 nobr">
+          <div class="chooseBoxTitle greyBg">About this workstation</div>
+          <div class="chooseBox radius5">
+            <ul>
+              <li class="relative noLiHover tooltip" data-title="For show @ login-screen">
+                Username is <span id="userHint" class="green"></span>
+                <div class="right top absolute nudge-y-12">
+                  <span class="tooltip" data-title="See userpic.." onclick="hide('actionMenu'); startDefaultProgram('imageViewer', ['../userpicture.jpg'])">
+                    <i class="material-icons blueBg small padding25">portrait</i>
+                  </span>
+                </div>
+              </li>
+              <li class="noLiHover tooltip" data-title="Used for the login-screen - this must be part of the pw">
+                User "password" is <span id="passwordHint" class="green"></span>
+              </li>
+              <li class="relative noLiHover">
+                <div class="tooltip" data-title="A workstation describes a set of appearances">
+                  <i class="material-icons blue small">computer</i>
+                  Workstation is <span id="workstationHint" class="green"></span>
+                </div>
+                <div class="right top absolute nudge-y-12">
+                  <span class="tooltip" data-title="Change workstation.." onclick="show('overlayWorkstation'); show('closeOverlayWorkstation'); hide('actionMenu');">
+                    <i class="material-icons blueBg small padding25">autorenew</i>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="chooseBoxTitle greyBg">State management</div>
+          <div class="chooseBox radius5">
+            <ul>
+              <li class="centerText">
+                <span class="saveButtonsTooltips tooltip" data-title="Save appearence & positions [s]" onclick="save(false);">
+                  <i class="material-icons blue small">save</i>
+                  Save
+                </span>
+                <span class="grey marginX50">|</span>
+                <span class="saveButtonsTooltips tooltip" data-title="Save these settings as a new file [shift]+[S]" onclick="saveAs(false);">
+                  <i class="material-icons blue small">save</i>
+                  Save as..
+                </span>
+                <span class="grey marginX50">|</span>
+                <span class="saveButtonsTooltips tooltip" data-title="Export these settings to .json" onclick="saveAs(true);" >
+                  <i class="material-icons small blue">file_download</i>
+                  Export
+                </span>
+              </li>
+              <li class=" tooltip" data-title="Load locally saved file or import a .json" onclick="show('savedFilesDialog'); checkSaveFiles();">
+                <i class="material-icons blue small">rotate_left</i>
+                Load save file..
+              </li>
+              <li onclick="window.location.href = 'index.html?workstation='+workstation;">
+                <i class="material-icons blue small">sync</i>
+                Reset to initial state
+              </li>
+            </ul>
+          </div>
+
+          <div class="chooseBoxTitle greyBg">Appearance</div>
+          <div class="chooseBox radius5">
+            <ul>
+              <li class="relative noLiHover">
+                <div>
+                  <i class="material-icons blue small">apple</i>
+                  Swap OS
+                </div>
+                <div class="right top absolute nudge-y-12">
+                  <span class="blueBg padding25 bold hideInlineOsWindows" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
+                  <span class="blueBg padding25 bold hideInlineOsMac" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
+                  <span class="blueBg padding25 bold hideInlineOsLinux" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
+                </div>
+              </li>
+              
+              <li>
+                <i class="material-icons blue small">color_lens</i>
+                <label for="systemColorPicker">
+                  Set system color
+                </label>
+                <input id="systemColorPicker" type="color" class="valign" oninput="setSystemColors(this.value);" value="#000000">
+              </li>
+              <li>
+                <span onclick="cycleBackgroundImage();">
+                  <i class="material-icons blue small">desktop_windows</i>
+                  Swap background image
+                </span>
+                <label for="BGColor" class="grey small">| Plain color:</label>
+                <input id="BGColor" type="color" class="valign" oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value;" value="#000000">
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="columns padding1 nobr">
+
+          <!-- Shortcuts -->
+          <div class="chooseBoxTitle greyBg">Content</div>
+          <div class="chooseBox radius5">
+            <ul>
+              <li class="tooltip" data-title="[c]" onclick="createShortcut(); hide('actionMenu');">
+                <i class="material-icons blue small">queue</i>
+                Add desktop shortcut..
+              </li>
+              <li class="relative">
+                <div class="tooltip" data-title="Add 4 random icons to desktop [d]" onclick="clutterDesktop(4);">
+                  <i class="material-icons blue small">scatter_plot</i>
+                  Clutter desktop
+                </div>
+                <div class="right top absolute nudge-y-12">
+                  <span class="tooltip" data-title="Tidy up" onclick="tidyUpShortcuts();">
+                    <i class="material-icons blueBg small padding25 rotate180">signal_cellular_alt</i>
+                  </span>
+                  <span class="tooltip" data-title="Align to grid" onclick="alignShortcutsToGrid();">
+                    <i class="material-icons blueBg small padding25 mirrorY">grid_4x4</i>
+                  </span>
+                </div>
+              </li>
+
+              <li class="tooltip" data-title="Open a random program [w]" onclick="startDefaultProgram();">
+                <i class="material-icons blue small">dynamic_feed</i>
+                Clutter screen
+              </li>
+
+              <!-- System emssages -->
+              <li class="relative">
+                <div class="tooltip" data-title="Click to set - [m] to display" onclick="toggle('systemMessageSettings'); gebi('systemMessageSettingsArrow').classList.toggle('rotate180');">
+                  <i class="material-icons blue small">notifications</i>
+                  Set system messages:
+                  <i id="systemMessageSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
+                </div>
+                <div id="systemMessageSettings" class="hide">
+                  <select id="systemMessagesSelect" onchange="this.blur();" class="marginY1 maxWidth padding05">
+                  </select>
+                  <br>
+                  Delay duration:
+                  <span id="systemMessagesDurationUi">No delay</span>
+                  <br>
+                  <input type="range" class="maxWidth padding2 borderBox" id="systemMessagesDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
+                </div>
+                <div class="right top absolute nudge-y-12">
+                  <span class="tooltip" data-title="Test this message [m]" onclick="showSystemMessage(systemMessages[parseInt(gebi('systemMessagesSelect').value)]);">
+                    <i class="material-icons blueBg small padding25">notifications_active</i>
+                  </span>
+                  <span class="tooltip" data-title="Clear [shift]+[C]" onclick="clearSystemMessages();">
+                    <i class="material-icons blueBg small padding25">notifications_off</i>
+                  </span>
+                </div>
+              </li>
+              <!-- <li onclick="window.location.href = 'jsoneditor'">
               <i class="material-icons blue small">edit</i>
-              Edit JSON files
-            </li> -->
-            <li>
-              <span class="saveButtonsTooltips tooltip" data-title="Save (overwrite) the current save file" onclick="save(false);">
-                <i class="material-icons blue small">save</i>
-                Save
-              </span>
-              <span class="grey">|</span>
-              <span class="saveButtonsTooltips tooltip" data-title="Save these settings as a new file, Window & Shortcut arrangement" onclick="saveAs(false);">
-                <i class="material-icons blue small">save</i>
-                Save as..
-              </span>
-              <span class="grey">|</span>
-              <span class="saveButtonsTooltips tooltip" data-title="Export these settings to .json" onclick="saveAs(true);" >
-                <i class="material-icons small blue">file_download</i>
-                Export
-              </span>
-            </li>
-            <li class=" tooltip" data-title="Load locally saved file or import a .json" onclick="show('savedFilesDialog'); checkSaveFiles();">
-              <i class="material-icons blue small">rotate_left</i>
-              Load save file..
-            </li>
-            <li onclick="window.location.href = 'index.html?workstation='+workstation;">
-              <i class="material-icons blue small">sync</i>
-              Reset to initial state
-            </li>
-          </ul>
+                Edit JSON files
+              </li> -->
+            </ul>
+          </div>
+
+
+          <div class="chooseBoxTitle greyBg">Computer functions</div>
+          <div class="chooseBox radius5 relative">
+            <ul>
+              <li onclick="show('keyboardControls');">
+                <i class="material-icons blue small">keyboard</i>
+                See keyboard Controls
+              </li>
+              <li class="tooltip" data-title="Keyboard: [b]" onclick="show('blackout'); hide('actionMenu');">
+                <!-- <i class="material-icons blue small">flare</i> -->
+                <i class="material-icons blue small">stream</i>
+                Blackout
+              </li>
+              <li onclick="screenSaver(); hide('actionMenu');">
+                <i class="material-icons blue small">dark_mode</i>
+                Screensaver
+              </li>
+            </ul>
+            <div class="marginY1 relative small grey right" onclick="show('startMenu'); hide('actionMenu');">
+              (others see start menu) <i class="material-icons valign blue small">chevron_right</i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -721,7 +782,8 @@
               <li class="alignLeft"><span class="blueBg keyboardKey">d</span> Clutter desktop with files</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">w</span> Clutter screen with windows</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">m</span> Display selected system message</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey">esc</span> ScreenSaver</li> 
+              <li class="alignLeft"><span class="blueBg keyboardKey">shift</span> + <span class="blueBg keyboardKey">C</span> Clear system messages</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">esc</span> Exit screen saver</li> 
             </ul>
           </div>
 

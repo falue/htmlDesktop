@@ -72,10 +72,22 @@ input[type=button]:not(.systemButton) {
     background-color: rgba(255,255,255,0.1);
 }
 
-.dialog .chooseBox {
+.chooseBox {
     padding: 0.5em;
-    margin-bottom: 1em;
     border: thin grey solid;
+}
+
+.chooseBoxTitle {
+    font-size: .8em;
+    padding: .25em 1em .25em .5em;
+    display: inline-block;
+    width: min-content;
+    border-top-left-radius: .3em;
+    border-top-right-radius: .3em;
+}
+
+.dialog .chooseBox {
+    margin-bottom: 1em;
     max-height: 24em;
     overflow-y:  auto;
 }
@@ -209,11 +221,23 @@ header.windowmenu .programButtons:hover {
     flex-wrap: wrap;
 }
 
+.actionMenuTitle {
+    border-top-left-radius: .3em;
+    border-top-right-radius: .3em;
+}
+
+.actionMenu .chooseBox {
+    border-top-left-radius: 0;
+    margin-bottom: 1em;
+    padding: .25em .5em;
+}
+
 .actionMenu .columns {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+    width: 133px;
 }
 
 .actionMenu ul,
@@ -221,15 +245,18 @@ header.windowmenu .programButtons:hover {
 .actionMenu h4,
 .actionMenu h5 {
     /* float: left; */
-    margin: .5em .5em 0 .5em;
+    /* margin: .5em .5em 0 .5em; */
 }
 
 .actionMenu ul {
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
 }
 
-.chooseBox li,
-.actionMenu li {
+.actionMenu .chooseBox li {
+    padding: .25em;
+}
+
+.chooseBox li {
     padding: .5em;
     width: 300px;
 }
