@@ -126,3 +126,7 @@ header {
     left: calc(50% - 1.5em) !important;
     top: calc(50% - .8em) !important;
 }
+
+.videoJsPlayerWrapper_html5_api:focus {
+    outline: none;
+}

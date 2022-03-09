@@ -1,7 +1,8 @@
-let os = "windows";
-let workstation = "_generic";
+let os;
+let workstation;
 let files;
 let imageIndex = 0;
+let isFirstFile;
 
 async function setupImageViewer() {
     const queryString = window.location.search;
@@ -12,6 +13,7 @@ async function setupImageViewer() {
     if(urlParams.get('files')) {
         files = urlParams.get('files').split("|");
         setupThumbnails(files);
+        isFirstFile = true;
         showImage(0);  // Show first image
     } else {
         gebi('content').innerHTML = "No files in URL";
@@ -34,8 +36,6 @@ function setupThumbnails(files) {
             thumbnail.classList.add("thumbnail", "shadow", "radius3");
             if(file.endsWith(".mp4")) {
                 thumbnail.style.backgroundImage = "url(../../os/"+os+"/systemIcons/fileMovie.png)";
-                // Preload to allow for scrubbing when visiting the video
-                setVideoSrc("../../workstations/"+workstation+"/files/"+file, 'video/mp4');
             } else {
                 thumbnail.style.backgroundImage = "url(../../workstations/"+workstation+"/files/"+file+")";
             }
@@ -45,22 +45,11 @@ function setupThumbnails(files) {
     }
 }
 
-function showImage(index) {
+async function showImage(index) {
     imageIndex = index;
     let file = files[index];
     let path = "../../workstations/"+workstation+"/files/"+file;
     let content = gebi('content');
-
-    if(file.endsWith(".mp4")) {
-        show("videoPlayer");
-        setVideoSrc(path, 'video/mp4');
-        content.style.backgroundImage = "none";
-    } else {
-        hide("videoPlayer");
-        let player = videojs(document.querySelector('.video-js'));
-        if(player) player.pause();
-        content.style.backgroundImage = "url("+path+")";
-    }
 
     /* Remove all active classes */
     let elements = document.querySelectorAll(".thumbnail.active");
@@ -74,22 +63,37 @@ function showImage(index) {
         thumbnail.scrollIntoView({inline: "center", block: "nearest", behavior: "smooth"});
         thumbnail.classList.add('active');
     }
+
+    if(file.endsWith(".mp4")) {
+        content.style.backgroundImage = "none";
+        show("videoPlayer");
+        await setVideoSrcAndPlay(path, 'video/mp4');
+        hide('thumbnails');
+    } else {
+        content.style.backgroundImage = "url("+path+")";
+        hide("videoPlayer");
+        let player = videojs(document.querySelector('.video-js'));
+        if(player) player.pause();
+        show('thumbnails');
+    }
+
+    // Reset
+    isFirstFile = false;
 }
 
-async function setVideoSrc(videoSource, type) {
+async function setVideoSrcAndPlay(videoSource, type) {
+    /* cl("setVideoSrcAndPlay.." +videoSource); */
     let player = videojs(document.querySelector('.video-js'));
-    player.src({
-        "src": videoSource,
+    await player.src({
+        "src": videoSource+"#t=.1",  // Set time for poster image
         "type": type
     });
-    // Enable autoplay if more than one file
-    // without prior user interaction, autoplay is forbidden
-    // Fails if video is first of gallery but yeah, just more error logs
-    return await player.ready(function(){
-            if(files.length > 1) {
-                player.play();
-            }
+    // If user has interacted with the page (eg, if video is not first file in gallery), play video
+    if(!isFirstFile) {
+        await player.ready(function(){
+            player.play();
         });
+    }
 }
 
 function navigateGallery(direction) {
