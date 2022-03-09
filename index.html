@@ -158,26 +158,26 @@
                     <i class="material-icons small systemColors clearBg">image</i> Image viewer
                   </li>
                   
-                  <li class="absolute" onclick="hide('startMenu'); startDefaultProgram('terminal-0');">
+                  <li class="absolute" onclick="hide('startMenu'); startDefaultProgram('terminal', 0);">
                     <i class="material-icons small systemColors clearBg">code</i> Terminal
                     <div class="right top relative padding60">
                       <i class="material-icons op50">chevron_right</i>
-                      <button data-title="Apt-get" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-1');" >
+                      <button data-title="Apt-get" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal', 1);" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button data-title="Binary" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-2');" >
+                      <button data-title="Binary" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal', 2);" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button data-title="Hexdump" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-3');" >
+                      <button data-title="Hexdump" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal', 3);" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button data-title="SQL" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-4');" >
+                      <button data-title="SQL" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal', 4);" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button data-title="Python" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-5');" >
+                      <button data-title="Python" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal', 5);" >
                         <i class="material-icons">code</i>
                       </button>
-                      <button data-title="Sys.Logs" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal-6');" >
+                      <button data-title="Sys.Logs" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('terminal', 6);" >
                         <i class="material-icons">code</i>
                       </button>
                     </div>
@@ -213,7 +213,7 @@
               <i class="material-icons systemColors clearBg op50">construction</i>
               Accessoires
             </li>
-            <li onclick="hide('startMenu'); startDefaultProgram('terminal-1');">
+            <li onclick="hide('startMenu'); startDefaultProgram('terminal', 1);">
               <i class="material-icons systemColors clearBg op50">send</i>
               Run..
             </li>
@@ -399,7 +399,7 @@
         --><button data-title="Browser" onclick="startDefaultProgram('browser');" class="valign systemColors tooltip">
           <i class="material-icons">public</i>
         </button><!-- 
-      --><button data-title="Terminal" onclick="startDefaultProgram('terminal-0');" class="valign systemColors tooltip">
+      --><button data-title="Terminal" onclick="startDefaultProgram('terminal', 0);" class="valign systemColors tooltip">
           <i class="material-icons">code</i>
         </button><!-- 
       --><button data-title="Text editor" onclick="startDefaultProgram('textEditor');" class="valign systemColors tooltip">

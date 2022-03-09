@@ -351,7 +351,7 @@ function keyboardController(event) {
     if(event.target.localName === "body") {
         let key = event.key;
         switch(key) {
-            case "1": epD(event); startDefaultProgram('terminal-6'); break;
+            case "1": epD(event); startDefaultProgram('terminal', 6); break;
             case "2": startDefaultProgram('fileManager'); break;
             case "3": epD(event); startDefaultProgram('textEditor-random'); break;
             case "4": startDefaultProgram('browser'); break;
