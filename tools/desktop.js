@@ -358,10 +358,6 @@ function keyboardController(event) {
             case "5": startDefaultProgram('imageViewer'); break;
             case "6": startDefaultProgram('ftp'); break;
             case "7": startDefaultProgram('ftp-connect'); break;
-            case "-": guiZoom(-2); break;
-            case "+": guiZoom(2); break;
-            case "=": guiZoomInitial(); break;
-            case "0": guiZoomInitial(); break;
             case "b": toggle('blackout'); break;
             case "c": epD(event); createShortcut(); break;
             case "s": save(); break;
@@ -405,13 +401,4 @@ function screenSaver() {
 function screensaverHide() {
     let screensaver = gebi('screensaver');
     screensaver.pause(); screensaver.currentTime=0; hide(screensaver.id);
-}
-
-function guiZoom(value) {
-    let currentFontSize = document.defaultView.getComputedStyle(document.getElementsByTagName('body')[0]).fontSize;
-    document.getElementsByTagName('body')[0].style.fontSize = (parseInt(currentFontSize) + value) + 'px';
-}
-
-function guiZoomInitial() {
-    document.getElementsByTagName('body')[0].style.fontSize = '1rem';
 }
