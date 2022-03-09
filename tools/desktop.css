@@ -237,7 +237,7 @@ header.windowmenu .programButtons:hover {
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
-    width: 133px;
+    width: 180px;
 }
 
 .actionMenu ul,
