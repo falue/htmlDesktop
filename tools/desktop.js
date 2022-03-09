@@ -274,6 +274,7 @@ function setDelayUi(value) {
 }
 
 async function showSystemMessage(messageData) {
+    let messageSent = Math.floor(Date.now() / 1000);
     let title = messageData[0];
     let description = messageData[1];
     let icon = messageData[2];
@@ -320,16 +321,18 @@ async function showSystemMessage(messageData) {
     // Wait for initial delay
     if(initialDelay) await delay(initialDelay);
     
-    // Show container
-    show('systemMessages');
+    // Show container if it was not cleared before
+    if(clearedSystemMessages < messageSent) {
+        show('systemMessages');
 
-    // Show message & add to container
-    container.appendChild(message);    
-    
-    // If self-closing is set > 0, self close
-    if(duration) {
-        await delay(duration);
-        closeSystemMessage(message);
+        // Show message & add to container
+        container.appendChild(message);    
+        
+        // If self-closing is set > 0, self close
+        if(duration) {
+            await delay(duration);
+            closeSystemMessage(message);
+        }
     }
 }
 
@@ -346,9 +349,11 @@ async function closeSystemMessage(element) {
     if(!gebi('systemMessages').innerHTML) hide('systemMessages');
 }
 
+let clearedSystemMessages = 0;
 function clearSystemMessages() {
     gebi('systemMessages').innerHTML = "";
     hide('systemMessages');
+    clearedSystemMessages = Math.floor(Date.now() / 1000);
 }
 
 function keyboardController(event) {
