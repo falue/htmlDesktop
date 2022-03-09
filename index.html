@@ -706,7 +706,7 @@
           </div>
           <br>
           <div class="editIcon radius5 alignCenter chooseBox">
-            <ul>
+            <ul id="keyboardControlsList">
               <li class="alignLeft"><span class="blueBg keyboardKey">1</span> Start program: Terminal </li>
               <li class="alignLeft"><span class="blueBg keyboardKey">2</span> Start program: File manager</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">3</span> Start program: Text editor</li>
@@ -723,6 +723,10 @@
               <li class="alignLeft"><span class="blueBg keyboardKey">m</span> Display selected system message</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">esc</span> ScreenSaver</li> 
             </ul>
+          </div>
+
+          <div class="left relative padding">
+            <button class="systemButton greyBg" onclick="printElement('htmlDesktop shortcuts', gebi('keyboardControlsList'));">Print</button>
           </div>
 
           <div class="right relative padding">
