@@ -208,20 +208,19 @@
 }
 .windowsSearchBar span {
     display: inline-block;
-    transform: translate(.25em, -.15em);
+    transform: translate(.25em, -.35em);
     opacity: .5;
 }
-
 .windowsSearchBar i {
     width: 1em;
     position: relative;
-    top: .25em;
+    top: .15em;
 }
 .windowsSearchBar i:last-of-type {
     /* background-color: red; */
     padding-left: 1.75em;
     font-size: 1.35em;
-    transform: translateY(-.35em);
+    transform: translateY(-.45em);
 }
 
 .startButton i {
@@ -309,7 +308,7 @@
 /* SYSTEM ICONS */
 .systemIcons {
     /* border-left: .06em solid rgba(125,125,125,0.6); */
-    padding: .25em .25em !important;
+    padding: .25em .75em !important;
 }
 .systemIcons > div {
     /* border: blue solid .06em; */
@@ -320,11 +319,14 @@
     height: 100%;
 }
 .systemIcons div i {
-    padding-top: .2em;
+    font-size: 1.25em;
+    padding-top: .4em;
     margin-left:.5em;
 }
 .systemIcons div #systemIcons-clock {
-    border-top: .6em transparent solid;
+    border-top: .85em transparent solid;
+    font-size: .75em;
+    margin-left: .5em;
 }
 
 /* STARTMENU */
