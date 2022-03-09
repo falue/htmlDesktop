@@ -330,19 +330,17 @@ function saveAllShortcuts() {
 }
 
 function saveAllSystemIcons() {
-  let iconsFromDom = document.querySelectorAll("[data-setup-system-icons]:not(.hide)"); // ..]
+  let iconsFromDom = document.querySelectorAll("[data-setup-system-icons]:not(.hide)");
   let systemIcons = [];
   for (icon of iconsFromDom) {
     if (icon.style.display != "none") {
       /* console.log("is shown: ", icon.innerHTML); */
-      systemIcons.push(icon.innerHTML);
+      if(icon.id === "systemIcons-clock") {
+        systemIcons.push({ "clock": icon.innerHTML.split(":") });
+      } else {
+        systemIcons.push(icon.innerHTML);
+      }
     }
-  }
-  // Sepcial case for the system clock
-  let clock = gebi("systemIcons-clock");
-  if (clock.style.display == "block") {
-    /* console.log("is shown: clock ", clock.innerHTML.split(":")); */
-    systemIcons.push({ clock: clock.innerHTML.split(":") });
   }
   return systemIcons;
 }
