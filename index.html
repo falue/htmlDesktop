@@ -316,9 +316,9 @@
                   Swap OS
                 </div>
                 <div class="right top absolute nudge-y-12">
-                  <span class="blueBg padding25 bold hideInlineOsWindows" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
-                  <span class="blueBg padding25 bold hideInlineOsMac" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
-                  <span class="blueBg padding25 bold hideInlineOsLinux" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
+                  <span class="blueBg padding25 bold showLinux showMac" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
+                  <span class="blueBg padding25 bold showLinux showWindows" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
+                  <span class="blueBg padding25 bold showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
                 </div>
               </li>
               
@@ -435,12 +435,13 @@
       <!-- START BUTTON -->
       <div>
         <button onclick="toggle('startMenu'); hide('actionMenu');" class="valign systemColors startButton">
-          <i class="material-icons hideOsLinux">view_module</i>
-          <i class="material-icons hideOsWindows">house</i>
+          <i class="material-icons showWindows">view_module</i>
+          <i class="material-icons showLinux">house</i>
+          <span class="showMac">Files</span>
         </button>
       </div>
 
-      <div class="windowsSearchBar hideOsLinux hideOsMac darkGreyBg grey relative">
+      <div class="windowsSearchBar showWindows darkGreyBg grey relative">
         <i class="material-icons white relative">radio_button_unchecked</i>
         <span>Ask me anything</span>
         <i class="material-icons grey relative valign">micro</i>

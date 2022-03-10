@@ -1,10 +1,4 @@
-.hideOsWindows { display: none !important; }
-.hideOsMac { display: block; }
-.hideOsLinux { display: block; }
-.hideInlineOsWindows { display: none !important; }
-.hideInlineOsMac { display: inline-block; }
-.hideInlineOsLinux { display: inline-block; }
-
+.showWindows { display: initial !important; }
 
 .desktop {
     position: absolute;
