@@ -506,7 +506,7 @@ button:hover {
 
 /* MOBILE */
 @media (max-width: 800px) {
-    #addons, #navigationalButtons, #favorites, .hideMobile {
+    #addons, #navigationalButtons, #favorites, .hideMobile, .favoritesToggle {
         display: none;
     }
     .fake-browser-bar .hamburger-menu {

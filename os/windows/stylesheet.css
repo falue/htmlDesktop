@@ -197,6 +197,7 @@
 }
 
 .windowsSearchBar {
+    display: inline-block;
     /* width: 18em; */
     padding: .25em .25em .25em .5em;
 }

@@ -21,17 +21,18 @@
 
 /* TOOLTIPS! */
 /* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
-.tooltip {
+.macDock .tooltip {
     position: relative;
 }
-.tooltip::before {
+.macDock .tooltip::before {
     content: attr(data-title);
     white-space: nowrap;
-    background-color: white;
+    background-color: rgb(33, 33, 33);
     border-radius: .25rem;
-    color: black;
+    border: solid rgba(255,255,255,0.15) .1em;
+    color: grey;
     display: none;
-    padding: .5rem;
+    padding: .25rem .5em;
     position: absolute;
     font-size: .8rem;
     text-align: center;
@@ -48,19 +49,18 @@
 }
 
 /* Arrow */
-.tooltip::after {
-    /* background-color: white; */
+/* .tooltip::after {
     border-left: .5rem solid transparent;
     border-right: .5rem solid transparent;
-    border-top: .5rem solid white;
+    border-top: .5rem solid rgb(33, 33, 33);
     content: ' ';
     display: none;
     position: absolute;
     z-index: 1111;
     top: 0;
     left: 50%;
-    transform: translate(-50%, calc(-100% - .5rem));
-}
+    transform: translate(-50%, calc(-100% - .6rem));
+} */
 
 
 /* SHENANIGANS */
@@ -193,10 +193,10 @@
 
 /* SPACER */
 .systemBar .spacer {
-    margin: 0 .5em;
+    /* margin: 0 .5em;
     border: none;
     padding: 0 .03em;
-    background-color: rgba(125,125,125,.5);
+    background-color: rgba(125,125,125,.5); */
     /* get color from systemColors, greyscale, invert */
     /* would be smart but only makes on elements without content */
     /* background-color: inherit;
@@ -206,15 +206,15 @@
 /* BUTTONS */
 .systemBar button {
     /* border: greenyellow solid thin; */
-    border: solid .06em rgba(125,125,125,1);
-    border-radius: .25em;
+    /* border: solid .06em rgba(125,125,125,1);
+    border-radius: .25em; */
     font-size: inherit;
     height: 2em;
     width: 2em;
     padding: 0;
 }
 .systemBar button:hover {
-    background-color: rgba(125,125,125,0.2) !important;
+    /* background-color: rgba(125,125,125,0.2) !important; */
 }
 .systemBar .buttonGroup button {
     border-radius: 0;
@@ -263,11 +263,19 @@
 .systemBar .taskbar::-webkit-scrollbar { 
     display: none; 
 }
+.systemToolsBarMac {
+    font-size: 1.2em;
+    border-top: .15em solid transparent;
+}
+.systemToolsBarMac span {
+    margin: 0 .75em;
+}
 
 /* SYSTEM ICONS */
 .systemIcons {
-    border-left: .06em solid rgba(125,125,125,0.6);
+    /* border-left: .06em solid rgba(125,125,125,0.6); */
     padding: 0 .25em !important;
+    margin-right: 1em;
 }
 .systemIcons > div {
     /* border: blue solid .06em; */
@@ -276,12 +284,60 @@
     display: inline-block;
     vertical-align: middle;
     height: 100%;
+    font-size: .85em;
 }
 .systemIcons div i {
-padding-top: .2em;
+    padding-top: .3em;
+    margin-left: .35em;
 }
 .systemIcons div #systemIcons-clock {
-    border-top: .6em transparent solid;
+    border-top: .4em transparent solid;
+    margin-left: .5em;
+    font-size: 1.5em;
+}
+
+/* DOCK */
+.macDock {
+    position: fixed;
+    left: 50%;
+    bottom: .75em;
+    padding: .25em .5em !important;
+    margin: 0;
+    background-color: rgb(0,0,0, .25);
+    border: .15em solid rgba(255,255,255,0.3);
+    border-radius: 1.35em;
+    transform: translateX(-50%);
+}
+
+.macDock button {
+    width: auto;
+    height: 4em;
+    background-color: initial !important;
+    border: none !important;
+    margin: 0 .25em;
+}
+.macDock button:hover {
+    background-color: initial !important;
+}
+
+.macDock button img {
+    height: 100%;
+    transform-origin: 50% 85%;
+    transition: height 220ms ease-in-out, transform 220ms ease-in-out;
+    /* transition: transform 220ms ease-in-out; */
+}
+.macDock button:hover img {
+    height: 125%;
+    transform: translateY(-20%);
+    /* transform: scale(1.5); */
+}
+.macDock .spacer {
+    padding: 0 .015em;
+    background-color: rgba(125,125,125,.5);
+    vertical-align: middle;
+    font-size: 2.5em;
+    margin: 0 .5em 0 .25em;
+    /* transform: translateY(.75em); */
 }
 
 /* STARTMENU */

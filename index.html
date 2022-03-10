@@ -437,7 +437,7 @@
         <button onclick="toggle('startMenu'); hide('actionMenu');" class="valign systemColors startButton">
           <i class="material-icons showWindows">view_module</i>
           <i class="material-icons showLinux">house</i>
-          <span class="showMac">Files</span>
+          <i class="material-icons showMac">apple</i>
         </button>
       </div>
 
@@ -447,26 +447,53 @@
         <i class="material-icons grey relative valign">micro</i>
       </div>
 
+
+      <div class="showMac systemToolsBarMac" onclick="toggle('actionMenu');">
+        <span>Finder</span>
+        <span>Ablage</span>
+        <span>Darstellung</span>
+        <span>Gehe zu</span>
+        <span>Fenster</span>
+        <span>Hilfe</span>
+      </div>
+
       <div class="spacer"></div>
        
       <!-- PROGRAM FAST ACCESS -->
-       <div class="buttonGroup">
+       <div class="buttonGroup macDock">
         <button data-title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors tooltip">
-          <i class="material-icons">bolt</i>
+          <i class="material-icons showWindows showLinux">bolt</i>
+          <img class="showMac" src="os/mac/programIcons/action.png" alt=""/>
         </button><!-- 
         --><button data-title="File manager" onclick="startDefaultProgram('fileManager');" class="valign systemColors tooltip">
-          <i class="material-icons">folder</i>
+          <i class="material-icons showWindows showLinux">folder</i>
+          <img class="showMac" src="os/mac/programIcons/finder.png" alt=""/>
         </button><!-- 
         --><button data-title="Browser" onclick="startDefaultProgram('browser');" class="valign systemColors tooltip">
-          <i class="material-icons">public</i>
+          <i class="material-icons showWindows showLinux">public</i>
+          <img class="showMac" src="os/mac/programIcons/browser.png" alt=""/>
         </button><!-- 
       --><button data-title="Terminal" onclick="startDefaultProgram('terminal', 0);" class="valign systemColors tooltip">
-          <i class="material-icons">code</i>
+          <i class="material-icons showWindows showLinux">code</i>
+          <img class="showMac" src="os/mac/programIcons/terminal.png" alt=""/>
         </button><!-- 
       --><button data-title="Text editor" onclick="startDefaultProgram('textEditor');" class="valign systemColors tooltip">
-          <i class="material-icons">edit_note</i><!-- 
+          <i class="material-icons showWindows showLinux">edit_note</i>
+          <img class="showMac" src="os/mac/programIcons/textEditor.png" alt=""/>
+        </button><!-- 
       --><button data-title="Image viewer" onclick="startDefaultProgram('imageViewer');" class="valign systemColors tooltip">
-          <i class="material-icons">image</i>
+          <i class="material-icons showWindows showLinux">image</i>
+          <img class="showMac" src="os/mac/programIcons/vorschau.png" alt=""/>
+        </button><!--
+      --><button data-title="Settings" class="valign systemColors tooltip showMac">
+          <img src="os/mac/programIcons/settings.png" alt=""/>
+        </button><!--
+      --><div class="spacer showMac"></div><!--
+      --><button data-title="Pictures" onclick="startDefaultProgram('fileManager');" class="valign systemColors tooltip showMac">
+          <img src="os/mac/systemIcons/folderFull.png" alt=""/>
+        </button><!--
+      --><button data-title="Trash" class="valign systemColors tooltip showMac">
+          <img src="os/mac/systemIcons/trashFull.png" alt=""/>
         </button>
       </div>
       
