@@ -20,11 +20,52 @@
 }
 
 /* TOOLTIPS! */
-/* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
-.macDock .tooltip {
+.tooltip:not(.tooltipDock) {
     position: relative;
 }
-.macDock .tooltip::before {
+.tooltip:not(.tooltipDock)::before {
+    content: attr(data-title);
+    white-space: nowrap;
+    background-color: white;
+    border-radius: .25rem;
+    color: black;
+    display: none;
+    padding: .5rem;
+    position: absolute;
+    font-size: .8rem;
+    text-align: center;
+    z-index: 1110;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 1rem));
+    box-shadow: rgba(0,0,0,0.5) 3px 5px 7px;
+}
+
+.tooltip:not(.tooltipDock):hover::before,
+.tooltip:not(.tooltipDock):hover::after {
+    display: block;
+}
+
+/* Arrow */
+.tooltip:not(.tooltipDock)::after {
+    /* background-color: white; */
+    border-left: .5rem solid transparent;
+    border-right: .5rem solid transparent;
+    border-top: .5rem solid white;
+    content: ' ';
+    display: none;
+    position: absolute;
+    z-index: 1111;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - .5rem));
+}
+
+/* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
+.macDock .tooltipDock {
+    position: relative;
+}
+.macDock .tooltipDock::before {
     content: attr(data-title);
     white-space: nowrap;
     background-color: rgb(33, 33, 33);
@@ -43,8 +84,8 @@
     box-shadow: rgba(0,0,0,0.5) 3px 5px 7px;
 }
 
-.tooltip:hover::before,
-.tooltip:hover::after {
+.macDock .tooltipDock:hover::before,
+.macDock .tooltipDock:hover::after {
     display: block;
 }
 
