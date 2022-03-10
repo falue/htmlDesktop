@@ -375,6 +375,7 @@ function keyboardController(event) {
             case "S": epD(event); saveAs(false); break;
             case "d": clutterDesktop(4); break;
             case "w": startDefaultProgram(); break;
+            case "a": toggle('actionMenu'); break;
             case "m": showSystemMessage(systemMessages[parseInt(gebi('systemMessagesSelect').value)]); break;
             case "Escape": screensaverHide(); break;
 

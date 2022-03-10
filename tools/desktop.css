@@ -145,7 +145,7 @@ input[type=button]:not(.systemButton) {
     vertical-align: middle;
     box-sizing: border-box;
     margin-right: .25em;
-    padding: 0.05em 0.35em 0.35em 0.35em;
+    padding: 0.05em 0.35em 0.15em 0.35em;
     display: inline-block;
 }
 

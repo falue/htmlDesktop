@@ -233,7 +233,11 @@
         <div class="actionMenuTitle paddingY25 paddingX1 maxWidth fancy" onclick="hide('actionMenu');">
           <i class="material-icons whiteBg padding125 valign round red">videocam</i>&nbsp;
           Operator actions & settings
-          <div class="right top padding1-50 small white centerText italics marginX1">For your eyes only!</div>
+          <div class="right top padding75 small white alignRight marginX1">
+            <span class="italics op75">For your eyes only!</span>
+            <br>
+            Toggle this windows by pressing 'a'
+          </div>
         </div>
 
         <!-- Operator actions & settings -->
@@ -253,7 +257,7 @@
                 User "password" is <span id="passwordHint" class="green"></span>
               </li>
               <li class="relative noLiHover">
-                <div class="tooltip" data-title="A workstation describes a set of appearances">
+                <div class="tooltip" data-title="A workstation describes this set of appearances">
                   <i class="material-icons blue small">computer</i>
                   Workstation is <span id="workstationHint" class="green"></span>
                 </div>
@@ -304,10 +308,10 @@
                   <i class="material-icons blue small">computer</i>
                   Swap OS
                 </div>
-                <div class="right top absolute nudge-y-12">
-                  <span class="blueBg padding25 bold showLinux showMac" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
-                  <span class="blueBg padding25 bold showLinux showWindows" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
-                  <span class="blueBg padding25 bold showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
+                <div class="right top absolute">
+                  <span class="blueBg keyboardKey bold hover valign showLinux showMac" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
+                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
+                  <span class="blueBg keyboardKey bold hover valign showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
                 </div>
               </li>
               
@@ -824,6 +828,7 @@
               <li class="alignLeft"><span class="blueBg keyboardKey">5</span> Start program: Image viewer</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">6</span> Start program: FTP Client</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">7</span> Start program: FTP Client (Connection)</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">a</span> Action menu</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">b</span> Blackout screen</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">c</span> Create new shortcut</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">s</span> Save (overwrite)</li>
