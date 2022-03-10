@@ -314,7 +314,10 @@
                   <span class="blueBg keyboardKey bold hover valign showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
                 </div>
               </li>
-              
+              <li class="showMac" onclick="gebi('macDock').classList.toggle('dockLock')">
+                  <i class="material-icons blue small">call_to_action</i>
+                  Lock dock
+              </li>
               <li>
                 <i class="material-icons blue small">color_lens</i>
                 <label for="systemColorPicker">
@@ -329,10 +332,6 @@
                 </span>
                 <label for="BGColor" class="grey small">| Plain color:</label>
                 <input id="BGColor" type="color" class="valign" oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value;" value="#000000"/>
-              </li>
-              <li class="showMac" onclick="gebi('macDock').classList.toggle('dockLock')">
-                  <i class="material-icons blue small">call_to_action</i>
-                  Lock dock
               </li>
             </ul>
           </div>
