@@ -285,23 +285,32 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
     
   gebi('desktop').appendChild(windowContainer);
 
-  // If os==win: add to taskbar
+  // Add to taskbar or dock
+  let miminmizedWindow = document.createElement("button");
+  let taskbarIcon;
+  miminmizedWindow.type="button";
+  miminmizedWindow.id="minimized-"+id;
+  miminmizedWindow.setAttribute("class", "valign systemColors");
+  miminmizedWindow.setAttribute("onclick", "getWindowFromTaskbar('"+id+"')");
+
   if(os !== "mac") {
-    /* console.log("win"); */
-    let miminmizedWindow = document.createElement("button");
-    let taskbarIcon = document.createElement("i");
+    // Linux & Windows taskbar
+    taskbarIcon = document.createElement("i");
     taskbarIcon.setAttribute("class", "material-icons small valign");
     taskbarIcon.innerHTML=icon;
     miminmizedWindow.appendChild(taskbarIcon);
-    miminmizedWindow.type="button";
     miminmizedWindow.appendChild(document.createTextNode(windowName));
-    miminmizedWindow.id="minimized-"+id;
-    miminmizedWindow.setAttribute("class", "valign systemColors");
-    miminmizedWindow.setAttribute("onclick", "getWindowFromTaskbar('"+id+"')");
     gebi('taskbar').appendChild(miminmizedWindow);
-  /* } else {
-  console.log("not win"); */
-}
+  } else {
+    // Mac dock
+    taskbarIcon = document.createElement("img");
+    /* taskbarIcon.setAttribute("class", "material-icons small valign"); */
+    cl(icon);
+    taskbarIcon.src="os/mac/programIcons/minimized-"+icon+".png";
+    miminmizedWindow.appendChild(taskbarIcon);
+    gebi('taskbarMac').appendChild(miminmizedWindow);
+  }
+
   makeResizableDiv('#'+id);
   setSystemColors(systemColor);
 }
@@ -368,11 +377,9 @@ function maximizeWindow(id) {
 function closeWindow(id) {
   let el = gebi(id);
   el.remove();
-  // If os==win: remove from taskbar
-  if(os !== "mac") {
-    gebi("minimized-"+id).remove();
-    hideFrontMostWindowOverlay(); 
-  }
+  // Remove from taskbar or Dock
+  gebi("minimized-"+id).remove();
+  hideFrontMostWindowOverlay(); 
 }
 
 async function hideFrontMostWindowOverlay() {
