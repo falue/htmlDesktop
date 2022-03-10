@@ -628,7 +628,7 @@ function startDefaultProgram(program, parameters) {
       break;
     case "imageViewer":
       // TODO: Default file list from where?
-      parameters = parameters ? parameters.join("|") : "1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg";
+      parameters = parameters ? typeof(parameters) === "string" ? parameters : parameters.join("|") : "1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg";
       addWindow('Image viewer', 'image', 'imageviewer/index.html?files='+parameters, x, y, 666,450, false);
       break;
     case "textEditor":
