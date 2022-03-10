@@ -250,6 +250,9 @@
 .systemBar .taskbar::-webkit-scrollbar { 
     display: none; 
 }
+.macDockContainer {
+    height: 100%;
+}
 
 /* SYSTEM ICONS */
 .systemIcons {

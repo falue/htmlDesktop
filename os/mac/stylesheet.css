@@ -307,6 +307,7 @@
 .systemToolsBarMac {
     font-size: 1.2em;
     border-top: .15em solid transparent;
+    font-weight: 800;
 }
 .systemToolsBarMac span {
     margin: 0 .75em;
@@ -342,12 +343,27 @@
     position: fixed;
     left: 50%;
     bottom: .75em;
+    transform: translate(-50%, 2em);
+}
+
+.macDock:not(.dockLock) {
+    padding-top: 5em !important;
+    transform: translate(-62.5%, 7em) scale(.8);
+    transform-origin: bottom right;
+    transition: transform 250ms;
+}
+
+.macDock:not(.dockLock):hover {
+    transform: translate(-50%, 2em) scale(1);
+}
+
+.macDockContainer {
+    margin: 2em !important;
     padding: .25em .5em !important;
-    margin: 0;
-    background-color: rgb(0,0,0, .25);
+    margin: 4em 0 0 0;
+    background-color: rgb(0,0,0, .5);
     border: .15em solid rgba(255,255,255,0.3);
     border-radius: 1.35em;
-    transform: translateX(-50%);
 }
 
 .macDock button {
@@ -355,7 +371,7 @@
     height: 4em;
     background-color: initial !important;
     border: none !important;
-    margin: 0 .25em;
+    margin: 0 .1em;
 }
 .macDock button:hover {
     background-color: initial !important;
@@ -383,11 +399,9 @@
 
 /* STARTMENU */
 .startMenu {
-    /* color: white; */
     position: fixed;
-    left: .3em;
-    top: 3em;
-    /* background-color: black; */
+    left: 0;
+    top: 1.5em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

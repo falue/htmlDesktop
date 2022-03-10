@@ -93,7 +93,7 @@
     <div id="startMenu" class="hide">
       <div class="startMenu systemColors shadow">
         <div class="columns">
-          <div class="startMenuHeader hideOsWindows">
+          <div class="startMenuHeader showLinux">
             <h3>
               <i class="material-icons blue large valign">home</i>
               Start menu
@@ -108,7 +108,7 @@
           </div>
 
           <!-- FAST ACCESS -->
-          <div class="centerText hideOsWindows">FAST ACCESS</div>
+          <div class="centerText showLinux">FAST ACCESS</div>
           <ul class="fastAccess">
             <li class="noLiHover centerText">
               <button class="valign circle hover tooltip" data-title="Terminal - SQL" onclick="hide('startMenu'); startDefaultProgram('terminal');" >
@@ -312,7 +312,7 @@
             <ul>
               <li class="relative noLiHover">
                 <div>
-                  <i class="material-icons blue small">apple</i>
+                  <i class="material-icons blue small">computer</i>
                   Swap OS
                 </div>
                 <div class="right top absolute nudge-y-12">
@@ -327,7 +327,7 @@
                 <label for="systemColorPicker">
                   Set system color
                 </label>
-                <input id="systemColorPicker" type="color" class="valign" oninput="setSystemColors(this.value);" value="#000000">
+                <input id="systemColorPicker" type="color" class="valign" oninput="setSystemColors(this.value);" value="#000000"/>
               </li>
               <li>
                 <span onclick="cycleBackgroundImage();">
@@ -335,7 +335,11 @@
                   Swap background image
                 </span>
                 <label for="BGColor" class="grey small">| Plain color:</label>
-                <input id="BGColor" type="color" class="valign" oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value;" value="#000000">
+                <input id="BGColor" type="color" class="valign" oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value;" value="#000000"/>
+              </li>
+              <li class="showMac" onclick="gebi('macDock').classList.toggle('dockLock')">
+                  <i class="material-icons blue small">call_to_action</i>
+                  Lock dock
               </li>
             </ul>
           </div>
@@ -437,7 +441,7 @@
         <button onclick="toggle('startMenu'); hide('actionMenu');" class="valign systemColors startButton">
           <i class="material-icons showWindows">view_module</i>
           <i class="material-icons showLinux">house</i>
-          <i class="material-icons showMac">apple</i>
+          <i class="material-icons showMac grey">menu</i>
         </button>
       </div>
 
@@ -449,7 +453,7 @@
 
 
       <div class="showMac systemToolsBarMac" onclick="toggle('actionMenu');">
-        <span>Finder</span>
+        <span>Programm</span>
         <span>Ablage</span>
         <span>Darstellung</span>
         <span>Gehe zu</span>
@@ -460,39 +464,41 @@
       <div class="spacer"></div>
        
       <!-- PROGRAM FAST ACCESS -->
-       <div class="buttonGroup macDock">
-        <button data-title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors tooltip">
-          <i class="material-icons showWindows showLinux">bolt</i>
-          <img class="showMac" src="os/mac/programIcons/action.png" alt=""/>
-        </button><!-- 
-        --><button data-title="File manager" onclick="startDefaultProgram('fileManager');" class="valign systemColors tooltip">
-          <i class="material-icons showWindows showLinux">folder</i>
-          <img class="showMac" src="os/mac/programIcons/finder.png" alt=""/>
-        </button><!-- 
-        --><button data-title="Browser" onclick="startDefaultProgram('browser');" class="valign systemColors tooltip">
-          <i class="material-icons showWindows showLinux">public</i>
-          <img class="showMac" src="os/mac/programIcons/browser.png" alt=""/>
-        </button><!-- 
-      --><button data-title="Terminal" onclick="startDefaultProgram('terminal', 0);" class="valign systemColors tooltip">
-          <i class="material-icons showWindows showLinux">code</i>
-          <img class="showMac" src="os/mac/programIcons/terminal.png" alt=""/>
-        </button><!-- 
-      --><button data-title="Text editor" onclick="startDefaultProgram('textEditor');" class="valign systemColors tooltip">
-          <i class="material-icons showWindows showLinux">edit_note</i>
-          <img class="showMac" src="os/mac/programIcons/textEditor.png" alt=""/>
-        </button><!-- 
-      --><button data-title="Image viewer" onclick="startDefaultProgram('imageViewer');" class="valign systemColors tooltip">
-          <i class="material-icons showWindows showLinux">image</i>
-          <img class="showMac" src="os/mac/programIcons/vorschau.png" alt=""/>
-        </button><!--
-      --><button data-title="Settings" class="valign systemColors tooltip showMac">
-          <img src="os/mac/programIcons/settings.png" alt=""/>
-        </button><!--
-      --><div class="spacer showMac"></div><!--
-      --><div id="taskbarMac" class="taskbarMac showMac"></div><!--
-      --><button data-title="Trash" class="valign systemColors tooltip showMac">
-          <img src="os/mac/systemIcons/trashFull.png" alt=""/>
-        </button>
+       <div id="macDock" class="buttonGroup macDock">
+         <div class="macDockContainer">
+          <button data-title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors tooltip">
+            <i class="material-icons showWindows showLinux">bolt</i>
+            <img class="showMac" src="os/mac/programIcons/action.png" alt=""/>
+          </button><!-- 
+          --><button data-title="File manager" onclick="startDefaultProgram('fileManager');" class="valign systemColors tooltip">
+            <i class="material-icons showWindows showLinux">folder</i>
+            <img class="showMac" src="os/mac/programIcons/finder.png" alt=""/>
+          </button><!-- 
+          --><button data-title="Browser" onclick="startDefaultProgram('browser');" class="valign systemColors tooltip">
+            <i class="material-icons showWindows showLinux">public</i>
+            <img class="showMac" src="os/mac/programIcons/browser.png" alt=""/>
+          </button><!-- 
+        --><button data-title="Terminal" onclick="startDefaultProgram('terminal', 0);" class="valign systemColors tooltip">
+            <i class="material-icons showWindows showLinux">code</i>
+            <img class="showMac" src="os/mac/programIcons/terminal.png" alt=""/>
+          </button><!-- 
+        --><button data-title="Text editor" onclick="startDefaultProgram('textEditor');" class="valign systemColors tooltip">
+            <i class="material-icons showWindows showLinux">edit_note</i>
+            <img class="showMac" src="os/mac/programIcons/textEditor.png" alt=""/>
+          </button><!-- 
+        --><button data-title="Image viewer" onclick="startDefaultProgram('imageViewer');" class="valign systemColors tooltip">
+            <i class="material-icons showWindows showLinux">image</i>
+            <img class="showMac" src="os/mac/programIcons/vorschau.png" alt=""/>
+          </button><!--
+        --><button data-title="Settings" class="valign systemColors tooltip showMac" onclick="gebi('macDock').classList.toggle('dockLock')">
+            <img src="os/mac/programIcons/settings.png" alt=""/>
+          </button><!--
+        --><div class="spacer showMac"></div><!--
+        --><div id="taskbarMac" class="taskbarMac showMac"></div><!--
+        --><button data-title="Trash" class="valign systemColors tooltip showMac">
+            <img src="os/mac/systemIcons/trashFull.png" alt=""/>
+          </button>
+        </div>
       </div>
       
       <div class="spacer"></div>

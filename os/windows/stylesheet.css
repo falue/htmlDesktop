@@ -248,24 +248,14 @@
 .systemBar button:hover {
     background-color: rgba(125,125,125,0.2) !important;
 }
-/* .systemBar .buttonGroup button {
-    border-radius: 0;
-    border-left: none;
-} */
 .systemBar .buttonGroup button i {
     padding-top: .2em;
     font-size: 1.5em;
 }
 
-/* .systemBar .buttonGroup button:first-of-type {
-    border-top-left-radius: .25em;
-    border-bottom-left-radius: .25em;
-    border-left: solid .06em rgba(125,125,125,1);
+.macDockContainer {
+    height: 100%;
 }
-.systemBar .buttonGroup button:last-of-type {
-    border-top-right-radius: .25em;
-    border-bottom-right-radius: .25em;
-} */
 
 /* TASKBAR */
 .systemBar .taskbar {
