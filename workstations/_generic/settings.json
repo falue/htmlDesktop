@@ -1,7 +1,7 @@
 {
     "settingsComment": "General settings of this workstation. OS and workstation-name MAY be defined in generalSettings.txt! 'selectedSystemMessage' index (starts with 0)",
     "settings": {
-        "systemColor": "#541d1d",
+        "systemColor": "#0B2323",
         "desktopColor": "#000000",
         "desktopImg": "workstations/_generic/desktops/1.jpg",
         "os": "linux",
