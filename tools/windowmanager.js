@@ -338,7 +338,7 @@ function getWindowFromTaskbar(id) {
 async function minimizeWindow(id) {
   /* console.log("minimizeWindow WTF: "+id); */
   let currentWindow = gebi(id);
-  currentWindow.setAttribute("data-setup-hide", true);
+  currentWindow.setAttribute("data-setup-minimized", true);
   currentWindow.classList.add("minimizeWindow");
   hideFrontMostWindowOverlay(); 
   await delay(1000);
