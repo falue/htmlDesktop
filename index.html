@@ -53,25 +53,23 @@
         <div id="lockScreenWindow" class="systemColors whiteBgTransparent padding05 radius10">
           <img id="lockScreenUserPicture" class="shadow radius5" src="workstations/_generic/userpicture.jpg" alt="">
           <div class="black small italics" id="lockScreenUserName">USERNAME</div>
-          <br>
+          <br class="showWindows showLinux">
           <form action="javascript:login(gebi('lockScreenPassword').value);">
             <input id="passwordCheck" type="hidden" placeholder="password">
-            <input id="lockScreenText" autocomplete="off" data-form-type="other" class="padding radius10 clearBorder" type="text" placeholder="user" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
-            <br>
+            <input id="lockScreenText" autocomplete="off" data-form-type="other" class="padding radius10 clearBorder showWindows showLinux" type="text" placeholder="user" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
+            <br class="showWindows showLinux">
             <input id="lockScreenPassword" autocomplete="off" data-form-type="other" class="padding radius10 clearBorder" type="password" placeholder="password" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
-            <br>
-            <div class="relative">
+            <br class="showWindows showLinux">
               <!-- <div id="wrongPassword" class="hide red sine20">
                 WRONG PASSWORD
               </div> -->
-              <button type="submit" class="systemColors radius10">
-                <span id="loginbuttonText">Login</span>
-                <div id="loginLoader" class="hide ">
-                  <i class="material-icons spin valign small systemColors relative">refresh</i>
-                  <span id="loginLoaderBar">0%</span>
-                </div>
-              </button>
-            </div>
+            <button type="submit" class="systemColors radius10">
+              <span id="loginbuttonText">Login</span>
+              <div id="loginLoader" class="hide ">
+                <i class="material-icons spin valign small systemColors relative">refresh</i>
+                <span id="loginLoaderBar">0%</span>
+              </div>
+            </button>
           </form>
         </div>
       </div>

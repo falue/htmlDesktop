@@ -111,6 +111,10 @@
     padding:1.5em 2em;
 }
 
+#lockScreenWindow {
+    background: none !important;
+}
+
 .lockScreen #lockScreenUserPicture {
     width: 5em;
 }
