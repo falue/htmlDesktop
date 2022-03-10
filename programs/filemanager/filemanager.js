@@ -2,6 +2,7 @@ let os = "windows";
 let workstation = "_generic";
 let selectedFolder;
 let rootNameDisplay;
+let darkMode;
 
 
 async function setupFileManager() {
@@ -9,6 +10,9 @@ async function setupFileManager() {
     const urlParams = new URLSearchParams(queryString);
     os = urlParams.get('os');
     workstation = urlParams.get('workstation');
+    darkMode = urlParams.get('darkMode');
+    /* cl("darkMode is " + darkMode);
+    cl("os is " + os); */
     
     let rootFolderPath = "../../workstations/" + workstation + "/folders.json";
     rootFolders = await parseFile(rootFolderPath);
