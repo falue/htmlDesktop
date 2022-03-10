@@ -404,25 +404,6 @@
     font-size: 1em;
 }
 
-/* special two buttons in one row */
-.powerButtons {
-    padding:0 !important;
-    margin:0 !important;
-}
-.powerButtons div {
-    box-sizing: border-box;
-    width: 50%;
-    display: block;
-    padding: .25em;
-}
-.powerButtons div:last-of-type {
-    width: auto;
-}
-.powerButtons div:hover {
-    background-color: rgba(255,255,255,0.2);
-}
-
-
 /* SUBMENU */
 .startMenu ul div.submenu {
     display: none;

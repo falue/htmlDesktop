@@ -109,7 +109,7 @@
 
           <!-- FAST ACCESS -->
           <div class="centerText showLinux">FAST ACCESS</div>
-          <ul class="fastAccess">
+          <ul class="fastAccess showLinux showWindows">
             <li class="noLiHover centerText">
               <button class="valign circle hover tooltip" data-title="Terminal - SQL" onclick="hide('startMenu'); startDefaultProgram('terminal');" >
                 <i class="material-icons">code</i>
@@ -137,6 +137,7 @@
               <i class="material-icons systemColors clearBg op50">folder</i>
               Filemanager
             </li>
+            <li class="showMac spacer"></li>
             <li>
               <i class="material-icons systemColors clearBg op50">apps</i>
               All Apps
@@ -218,19 +219,19 @@
               <i class="material-icons systemColors clearBg op50">send</i>
               Run..
             </li>
+            <li class="showMac spacer"></li>
             <li>
               <i class="material-icons systemColors clearBg op50">settings</i>
               Preferences
             </li>
-            <li class="noLiHover powerButtons">
-              <div>
+            <li class="showMac spacer"></li>
+            <li>
                 <i class="material-icons systemColors clearBg op50">power_settings_new</i>
                 Power
-              </div>
-              <div id="logoutAction" class="hide right relative top" onclick="showLockScreen(); hide('startMenu');">
-                <i class="material-icons systemColors clearBg op50">logout</i>
-                Logout User
-              </div>
+            </li>
+            <li id="logoutAction" class="hide right relative top" onclick="showLockScreen(); hide('startMenu');">
+              <i class="material-icons systemColors clearBg op50">logout</i>
+              Logout User
             </li>
           </ul>
         </div>
@@ -452,7 +453,7 @@
       </div>
 
 
-      <div class="showMac systemToolsBarMac" onclick="toggle('actionMenu');">
+      <div class="showMac systemToolsBarMac" onclick="hide('startMenu'); toggle('actionMenu');">
         <span>Programm</span>
         <span>Ablage</span>
         <span>Darstellung</span>

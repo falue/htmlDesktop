@@ -400,71 +400,45 @@
 /* STARTMENU */
 .startMenu {
     position: fixed;
-    left: 0;
-    top: 1.5em;
+    left: .3em;
+    top: 2.05em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border-radius: .3em;
+    font-size: .9em;
+    border:solid .06em rgba(125,125,125,.5);
 }
-
 .startMenu .columns {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
 }
-
-.startMenu ul,
-.startMenu h3,
-.startMenu h4,
-.startMenu h5 {
-    /* float: left; */
-    margin: .5em .5em 0 .5em;
-}
-
 .startMenu ul {
-    margin-bottom: 1em;
+    margin: .5em;
 }
-
 .startMenu li {
     position: relative;
-    padding: .5em;
+    padding: .15em .5em 0 .5em;
     width: 17em;
+    border-radius: .25em;
 }
-
-.startMenu li:not(:last-of-type) {
-    border-bottom: solid rgba(255,255,255,0.2) thin;
+.startMenu li:hover {
+    background-color: rgba(0,0,0,.1);
 }
-
-.startMenu li:not(.noLiHover):hover {
-    background-color: rgba(255,255,255,0.2);
-}
-
-.startMenu h1,
-.startMenu h3,
-.startMenu h4 {
-    opacity: 0.75;
-}
-
 .startMenu li i {
-    vertical-align: middle;
+    display: none;
 }
-
-/* special two buttons in one row */
-.powerButtons {
-    padding:0 !important;
-    margin:0 !important;
+.startMenu ul li.spacer {
+    border-radius: 0;
+    background-color: rgba(125,125,125,.25);
+    display: list-item !important;
+    /* line-height: 0; */
+    height: .06em;
+    margin: .25em 0;
+    padding: 0;
 }
-.powerButtons div {
-    box-sizing: border-box;
-    width: 50%;
-    display: inline-block;
-    padding: .5em;
-}
-.powerButtons div:hover {
-    background-color: rgba(255,255,255,0.2);
-}
-
 
 /* SUBMENU */
 .startMenu ul div.submenu {
@@ -476,21 +450,29 @@
     border: 1em transparent solid;
     border-left: 2.5em transparent solid;
 }
-
 .startMenu li:hover div.submenu {
     display: block;
 }
-
 .startMenu ul div.submenu ul {
     padding: .5em;
     max-height:17.75em;
     overflow: auto;
+    border-radius: 0.6em;
+    border:solid .06em rgba(125,125,125,.5);
+}
+.startMenu ul div.submenu ul div {
+    padding: 0;
+}
+.startMenu ul div.submenu ul div button {
+    font-size: .5em;
+    background-color: rgba(125,125,125,.5);
+    height: 2.5em;
+}
+.startMenu ul div.submenu ul div button i {
+    display: inline-block;
 }
 
-.startMenu ul div.submenu ul li {
-    padding: .8em;
-}
-
+/* STARTMENU */
 .systemMessages {
     position: fixed;
     bottom: 3em;
