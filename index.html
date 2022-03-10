@@ -131,7 +131,7 @@
           </ul>
 
           <ul class="appList">
-            <li onclick="hide('startMenu'); startDefaultProgram('fileManager')">
+            <li>
               <i class="material-icons systemColors clearBg op50">folder</i>
               Filemanager
             </li>
@@ -203,7 +203,7 @@
               <i class="material-icons systemColors clearBg op50">construction</i>
               Accessoires
             </li>
-            <li onclick="hide('startMenu'); startDefaultProgram('terminal', 1);">
+            <li>
               <i class="material-icons systemColors clearBg op50">send</i>
               Run..
             </li>
@@ -213,13 +213,13 @@
               Preferences
             </li>
             <li class="showMac spacer"></li>
-            <li>
-                <i class="material-icons systemColors clearBg op50">power_settings_new</i>
-                Power
-            </li>
             <li id="logoutActionStartMenu" class="hide right relative top" onclick="showLockScreen(); hide('startMenu');">
               <i class="material-icons systemColors clearBg op50">logout</i>
               Logout User
+            </li>
+            <li onclick="show('blackout'); hide('startMenu');">
+                <i class="material-icons systemColors clearBg op50">power_settings_new</i>
+                Power
             </li>
           </ul>
         </div>
@@ -499,7 +499,7 @@
             <i class="material-icons showWindows showLinux">image</i>
             <img class="showMac" src="os/mac/programIcons/vorschau.png" alt=""/>
           </button><!--
-        --><button data-title="Settings" class="valign systemColors tooltip tooltipDock showMac" onclick="gebi('macDock').classList.toggle('dockLock')">
+        --><button data-title="Settings" class="valign systemColors tooltip tooltipDock showMac">
             <img src="os/mac/programIcons/settings.png" alt=""/>
           </button><!--
         --><div class="spacer showMac"></div><!--
