@@ -313,20 +313,11 @@ header.windowmenu .programButtons:hover {
 }
 
 #savedFilesDialog .chooseBox li i {
-    margin-top: 1em;
     opacity: 0;
 }
 
 #savedFilesDialog .chooseBox li div {
-    padding-top: .5em;
-}
-
-#savedFilesDialog .renameButton {
-    right: 2em;
-}
-
-#savedFilesDialog .deleteButton {
-    right: 4em;
+    padding: 1em .5em 0 0;
 }
 
 .fileUploadButton {

@@ -214,7 +214,6 @@ function checkSaveFiles() {
       listElement.innerHTML = safeFileName + " <span class='grey'>" + saveFile[safeFileKey]["settings"]["workstation"] + "</span>";
       listElement.setAttribute("onclick", "window.location.href='index.html?loadSaveFile="+safeFileKey+"';");
       listElement.setAttribute("class", "relative pointer");
-      listElement.setAttribute("title", "Load this save file");
       
       // Add workstation and infos
       let countWindows = Object.keys(saveFile[safeFileKey]["windows"]).length;
@@ -228,32 +227,41 @@ function checkSaveFiles() {
       info.appendChild(document.createTextNode(infoText.join(", ")));
       listElement.appendChild(info);
 
+      let saveFileActions = document.createElement("div");
+      saveFileActions.setAttribute("class", "right top");
       
       /* Add file rename button */
       let renameButton = document.createElement("i");
-      renameButton.setAttribute("class", "renameButton material-icons small white blueBg circle right top");
-      renameButton.setAttribute("title", "Rename this save file");
+      renameButton.setAttribute("class", "tooltip material-icons small white blueBg circle");
+      renameButton.dataset.title = "Rename";
       renameButton.setAttribute("onclick", "event.stopPropagation(); renameLocalStorageItem('"+safeFileName+"', '"+safeFileKey+"');");
       renameButton.innerHTML="drive_file_rename_outline";
 
       /* Add delete button */
       let deleteButton = document.createElement("i");
-      deleteButton.setAttribute("class", "deleteButton material-icons small white redBg circle right top");
-      deleteButton.setAttribute("title", "Remove this save file");
-      deleteButton.setAttribute("onclick", "event.stopPropagation(); clearLocalStorageItem('"+safeFileKey+"');");
+      if(safeFileKey !== currentLoadSaveFile) {
+        deleteButton.setAttribute("class", "redBg tooltip material-icons small white circle");
+        deleteButton.dataset.title = "Remove";
+        deleteButton.setAttribute("onclick", "event.stopPropagation(); clearLocalStorageItem('"+safeFileKey+"');");
+      } else {
+        deleteButton.setAttribute("class", "greyBg tooltip material-icons small white circle");
+        deleteButton.setAttribute("onclick", "event.stopPropagation()");
+        deleteButton.dataset.title = "Current savefile";
+      }
       deleteButton.innerHTML="delete";
 
       /* Add download button */
       let downloadButton = document.createElement("i");
-      downloadButton.setAttribute("class", "material-icons small white blueBg circle right top");
-      downloadButton.setAttribute("title", "Download this save file");
+      downloadButton.setAttribute("class", "tooltip material-icons small white blueBg circle");
+      downloadButton.dataset.title = "Download";
       downloadButton.setAttribute("onclick", "event.stopPropagation(); downloadSaveFileFromStorage('"+safeFileKey+"', '"+safeFileKey+"');");
       downloadButton.innerHTML="file_download";
 
       /* Cobble the things together */
-      listElement.appendChild(renameButton);
-      listElement.appendChild(deleteButton);
-      listElement.appendChild(downloadButton);
+      saveFileActions.appendChild(renameButton);
+      saveFileActions.appendChild(deleteButton);
+      saveFileActions.appendChild(downloadButton);
+      listElement.appendChild(saveFileActions);
       safedFilesList.appendChild(listElement);
     }
   } else {

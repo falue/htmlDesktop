@@ -24,6 +24,7 @@
     position: relative;
 }
 .tooltip:not(.tooltipDock)::before {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
     content: attr(data-title);
     white-space: nowrap;
     background-color: white;
