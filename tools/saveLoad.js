@@ -30,7 +30,7 @@ async function saveAs(download) {
     showDialog("Abort", "Aborted due to empty file name.");
     console.log("Abort due to empty input.");
   } else if(saveFileName) {
-    saveFileName = "desktopSaveFile-"+Date.now()+"-"+saveFileName+"-"+createUniqueId(22);
+    saveFileName = download ? saveFileName : "desktopSaveFile-"+Date.now()+"-"+saveFileName+"-"+createUniqueId(22);
     /* cl(saveFileName); */
     compileSaveFile(saveFileName, download);
   } else {
@@ -109,7 +109,7 @@ async function uploadLocalSaveFile(files) {
     let arrayBuffer = await readLocalFileAsync(file);
     let data = arrayBufferToString(arrayBuffer)
     // Create filname from current file - is an exported file?
-    let customNameFromFile = file["name"].startsWith("desktopSaveFile-") ? file["name"].split("-")[2] : file["name"]+"asdadasdasd";
+    let customNameFromFile = file["name"].startsWith("desktopSaveFile-") ? file["name"].split("-")[2] : file["name"];
     // Make valid filename
     customNameFromFile = customNameFromFile.split(".")[0].replace(/[^a-zA-Z0-9\~]/g, "");
     // Add date and UID
