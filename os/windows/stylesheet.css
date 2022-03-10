@@ -196,26 +196,26 @@
     /* padding: .25em; */
 }
 
-.windowsSearchBar {
+.cortana {
     display: inline-block;
     color: inherit;
     padding: .25em .25em .25em .5em;
     background-color: rgba(66,66,66,.5);
 }
-.windowsSearchBar span {
+.cortana span {
     display: inline-block;
     transform: translate(.25em, -.35em);
     opacity: .25;
 }
-.windowsSearchBar i {
+.cortana i {
     width: 1em;
     position: relative;
     top: .15em;
 }
-.windowsSearchBar i:first-of-type {
+.cortana i:first-of-type {
     opacity: .65;
 }
-.windowsSearchBar i:last-of-type {
+.cortana i:last-of-type {
     opacity: .4;
     /* background-color: red; */
     padding-left: 1.75em;
