@@ -179,7 +179,8 @@ a:focus { outline: none; }
 .paddingY1-50 { padding-top: 1.5em; padding-bottom: 1.5em; }
 .paddingY2 { padding-top: 2em; padding-bottom: 2em; }
 
-.margin05 { margin: 0.5em; }
+.margin25 { margin: 0.25em; }
+.margin05, .margin50 { margin: 0.5em; }
 .margin60 { margin: 0.6em; }
 .margin75 { margin: 0.75em; }
 .margin, .margin1 { margin: 1em; }

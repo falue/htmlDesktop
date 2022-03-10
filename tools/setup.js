@@ -258,7 +258,7 @@ function setupWindows(windows) {
     /* Add links to start menu */
     let listElement = document.createElement("li");
     let windowIcon = document.createElement("i");
-    windowIcon.setAttribute("class", "material-icons small systemColors clearBg");
+    windowIcon.setAttribute("class", "material-icons small grey");
     windowIcon.appendChild(document.createTextNode(window["icon"]));
     listElement.appendChild(windowIcon);
     listElement.appendChild(document.createTextNode(" "+window["windowName"]));

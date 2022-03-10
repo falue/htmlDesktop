@@ -196,16 +196,6 @@
               </div>
             </li>
             <li>
-              <i class="material-icons systemColors clearBg op50">star</i>
-              Your Apps
-              <i class="material-icons whiteTransparent systemColors clearBg right">chevron_right</i>
-              <div class="submenu">
-                <ul id="currentWindowActions" class="systemColors shadow">
-                  <li class="grey italics noLiHover">No windows for this workstation</li>
-                </ul>
-              </div>
-            </li>
-            <li>
               <i class="material-icons systemColors clearBg op50">support</i>
               Help
             </li>
@@ -350,6 +340,21 @@
           <div class="chooseBoxTitle greyBg">Content</div>
           <div class="chooseBox radius5">
             <ul>
+
+              <li class="relative noLiHover">
+                <div class="tooltip" data-title="These windows are custom-preperad in this save file" onclick="toggle('currentWindowsSettings'); gebi('currentWindowsSettingsArrow').classList.toggle('rotate180');">
+                  <i class="material-icons blue small">lock</i>
+                  Saved & prepared windows
+                </div>
+                <div id="currentWindowsSettings" class="hide maxHeight300 overflowAutoY">
+                  <ul id="currentWindowActions" class="margin05">
+                    <li class="grey italics noLiHover">No windows for this workstation</li>
+                  </ul>
+                </div>
+                <div class="right top absolute nudge-y-12">
+                  <i id="currentWindowsSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
+                </div>
+              </li>
               <li class="tooltip" data-title="Keyboard: [c]" onclick="createShortcut(); hide('actionMenu');">
                 <i class="material-icons blue small">queue</i>
                 Add desktop shortcut..
@@ -375,13 +380,13 @@
               </li>
 
               <!-- System emssages -->
-              <li class="relative">
+              <li class="relative noLiHover">
                 <div class="tooltip" data-title="Click to set - [m] to display" onclick="toggle('systemMessageSettings'); gebi('systemMessageSettingsArrow').classList.toggle('rotate180');">
                   <i class="material-icons blue small">notifications</i>
                   Set system messages:
                   <i id="systemMessageSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
                 </div>
-                <div id="systemMessageSettings" class="hide">
+                <div id="systemMessageSettings" class="hide padding05">
                   <select id="systemMessagesSelect" onchange="this.blur();" class="marginY1 maxWidth padding05">
                   </select>
                   <br>
