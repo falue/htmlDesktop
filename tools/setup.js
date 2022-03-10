@@ -214,7 +214,7 @@ async function setupSettings(settings) {
           /* console.log("the password is " + value); */
           gebi("passwordCheck").value = value;
           gebi("passwordHint").innerHTML = value;
-          show('logoutAction');
+          show('logoutActionStartMenu', 'logoutActionActionMenu');
         }
       break;
       case "desktopImg":

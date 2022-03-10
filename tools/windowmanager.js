@@ -305,7 +305,6 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
     // Mac dock
     taskbarIcon = document.createElement("img");
     /* taskbarIcon.setAttribute("class", "material-icons small valign"); */
-    cl(icon);
     taskbarIcon.src="os/mac/programIcons/minimized-"+icon+".png";
     miminmizedWindow.appendChild(taskbarIcon);
     gebi('taskbarMac').appendChild(miminmizedWindow);

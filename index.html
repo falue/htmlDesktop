@@ -227,7 +227,7 @@
                 <i class="material-icons systemColors clearBg op50">power_settings_new</i>
                 Power
             </li>
-            <li id="logoutAction" class="hide right relative top" onclick="showLockScreen(); hide('startMenu');">
+            <li id="logoutActionStartMenu" class="hide right relative top" onclick="showLockScreen(); hide('startMenu');">
               <i class="material-icons systemColors clearBg op50">logout</i>
               Logout User
             </li>
@@ -413,6 +413,10 @@
               <li onclick="show('keyboardControls');">
                 <i class="material-icons blue small">keyboard</i>
                 See keyboard Controls
+              </li>
+              <li id="logoutActionActionMenu" class="hide" onclick="showLockScreen(); hide('startMenu');">
+                <i class="material-icons blue small">logout</i>
+                Logout User
               </li>
               <li class="tooltip" data-title="Keyboard: [b]" onclick="show('blackout'); hide('actionMenu');">
                 <!-- <i class="material-icons blue small">flare</i> -->
