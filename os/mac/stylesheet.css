@@ -124,22 +124,22 @@
 .window {
     background: white;
     /* border: 5px solid #4286f4; */
-    border-radius: .15em;
+    border-radius: .6em;
 }
 
 .window .content {
     height: calc(100% - 1.5em);
     top: 1.5em;
-    border-bottom-left-radius: .15em;
-    border-bottom-right-radius: .15em;
+    border-bottom-left-radius: .6em;
+    border-bottom-right-radius: .6em;
 }
 
 .window .windowFrame {  
     /* background-color: black;
     color: white; */
     height: 1.5em;
-    border-top-left-radius: .15em;
-    border-top-right-radius: .15em;
+    border-top-left-radius: .6em;
+    border-top-right-radius: .6em;
 }
 
 .window .windowFrame .windowTitle {
