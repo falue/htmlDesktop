@@ -76,9 +76,12 @@ function compileSaveFile(saveFileName, download) {
   } else {
     if (typeof(Storage) !== "undefined") {
       localStorage.setItem(saveFileName, JSON.stringify(data));
-      showNote("Saved", "All your windows & settings are now saved.<br>No manually entered window contents though.", "save", 3500);
-      // Rewrite URL to allow later cmd + r by user
-      history.pushState({}, null, "index.html?loadSaveFile="+saveFileName);
+      // If saved temporarly (in case of hotSwapping OS) do not show user alert
+      if(!saveFileName.startsWith("tempSave-")) {
+        showNote("Saved", "All your windows & settings are now saved.<br>No manually entered window contents though.", "save", 3500);
+        // Rewrite URL to allow later cmd + r by user
+        history.pushState({}, null, "index.html?loadSaveFile="+saveFileName);
+      }
     } else {
       // Sorry! No Web Storage support..
       showDialog("No Local Storage", "This browser does not support localStorage. Try downloading the file.");
@@ -154,6 +157,7 @@ function loadSaveFile(saveFile) {
 
 function clearLocalStorage() {
   localStorage.clear();
+  history.pushState({}, null, "index.html?workstation="+workstation+"&os="+os);
 }
 
 function clearLocalStorageItem(key) {
@@ -190,6 +194,10 @@ function checkSaveFiles() {
       key,
       keys = Object.keys(localStorage),
       i = keys.length;
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  let currentLoadSaveFile = urlParams.get('loadSaveFile');
 
   while(i--) {
     entry = localStorage.getItem(keys[i])
@@ -274,7 +282,7 @@ function checkSaveFiles() {
 function saveAllWindows() {
   /* TODO: BEWARE: 
   Two windows with identical windowName & contentPath, one in DOM and one not,
-  AND different positions do not get saved correctly! */
+  AND different positions do not get saved both! */
   let contentsSaved = new Array();
   let windows = [];
 

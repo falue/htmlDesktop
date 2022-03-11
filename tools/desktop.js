@@ -51,24 +51,29 @@ function showLockScreen() {
 }
 
 async function hotSwapOs(nextOs) {
-    // If the current status is saved, reload URL with new OS styles.
-    //   If there is no "loadSaveFile" in URL (eg, is saved (yea i know)):
-    //   prompt to save or discard
-    const urlParams = new URLSearchParams(window.location.search);
-    if(!urlParams.get('loadSaveFile')) {
-        let answerFromDialog = await showDialog("Not saved", "Without saving, you'll loose your current window arrangements and settings. Continue?", false, false, ["Discard & Continue", "Save now"]);
-        if(answerFromDialog === "Save now") {
-            // No save - make a new one or save current
-            await save();
-            hotSwapOs(nextOs);
-            return;
-        }
-        // Stage is now saved - go to this url
-        window.location.href = "?workstation="+workstation+"&os="+nextOs;
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    
+    // Create temporary save file for loading by setup();
+    let saveFileName = "tempSave-"+createUniqueId();
+    // Set new os for compileSaveFile
+    os = nextOs;
+    compileSaveFile(saveFileName, false);
+    
+    // If save file exists, add to URL for later URL rewriting by setup();
+    if(urlParams.get('loadSaveFile')) {
+        history.pushState({}, null, "index.html?hotSwapOs=true&loadSaveFile="+saveFileName+"&lastSavedFile="+urlParams.get('loadSaveFile'));
     } else {
-        // Stage is saved - go to this url 
-        window.location.href ="?hotSwapOs="+nextOs+"&loadSaveFile="+urlParams.get('loadSaveFile');
+        history.pushState({}, null, "index.html?hotSwapOs=true&loadSaveFile="+saveFileName);
     }
+    
+    // I is smart
+    // Reload setup. in setup, the windwos & shortcuts get removed & reloaded
+    // to trigger new icons
+    await setup();
+
+    // Remove temp save from localStorage
+    clearLocalStorageItem(saveFileName);
 }
 
 async function login(password) {

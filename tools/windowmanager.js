@@ -381,6 +381,21 @@ function closeWindow(id) {
   hideFrontMostWindowOverlay(); 
 }
 
+function closeAllWindows() {
+  let windowsFromDom = document.querySelectorAll("[data-setup-type='window']");
+  for (let windowData of windowsFromDom) {
+    gebi(windowData.id).remove();
+    gebi("minimized-"+windowData.id).remove();
+  }
+}
+
+function removeAllShortcuts() {
+  let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
+  for (shortcut of shortcutsFromDom) {
+    shortcut.remove();
+  }
+}
+
 async function hideFrontMostWindowOverlay() {
   // Hide the front most window's windowManagerOverlay
   // .minimizeWindow because animation is ongoing during minimization

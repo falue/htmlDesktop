@@ -76,13 +76,19 @@ async function setup() {
 
   // Overwrite OS if it was hotswapped
   if(urlParams.get('hotSwapOs')) {
-    os = urlParams.get('hotSwapOs')
-    /* cl("os overwritten by hotSwapOs is: " + os); */
+    // Rewrite url because hard reload sucks
+    if(urlParams.get('lastSavedFile')) {
+      // Revert loadSaveFile to original name
+      history.pushState({}, null, "index.html?loadSaveFile="+urlParams.get('lastSavedFile'));
+    } else {
+      // No current save file, reset to basic url
+      history.pushState({}, null, "index.html?workstation="+workstation+"&os="+os);
+    }
 
-    // Set standard colors for hotSwapped system:
-    setDefaultSystemColors(os);
-    // Remove hotSwapOs from URL so colors etc are not overwritten next time around
-    history.pushState({}, null, 'index.html?loadSaveFile='+urlParams.get('loadSaveFile'));
+    // Clear all windows, because they get re-set with new icons
+    closeAllWindows();
+    // Clear all shortcuts, because they get re-set with new icons
+    removeAllShortcuts();
   }
 
   // Add OS specific styles
