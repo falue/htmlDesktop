@@ -489,7 +489,7 @@ function saveShortcut(id) {
 
 // makes a new shortcut on demand
 function createShortcut() {
-  let id = placeShortcut("name", "file.png", 0,0, "");
+  let id = placeShortcut("name", "file.png", 0,4, "");
   editShortcut(id);
 }
 
@@ -555,7 +555,7 @@ function clutterDesktop(count) {
   for (i = 1; i <= count; i++) {
     /* console.log(i); */
     x = randomBetween(1, 93);
-    y = randomBetween(1, 85);
+    y = randomBetween(4, 85);
     /* console.log(rand, x, y, randomIcon[rand]); */
     name = randomNameParts[chooseRandomKey(randomNameParts)];
     name += randomBetween(0, 100) > 85 ? " " + createUniqueId(5) : "";
@@ -569,6 +569,7 @@ function clutterDesktop(count) {
 function alignShortcutsToGrid() {
   let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
   let generalOffsetX = 0;
+  let generalOffsetY = 4;
   let currentOffsetX  = 0;
   for (shortcut of shortcutsFromDom) {
     currentOffsetX = shortcut.getBoundingClientRect()["width"];
@@ -577,14 +578,14 @@ function alignShortcutsToGrid() {
     //   Divide by 2 and add this to the .stlye.left after clamping. I'm smart!
     currentOffsetX = (14-currentOffsetX)/2-3;
     shortcut.style.left = clamp((Math.floor(parseInt(shortcut.style.left)/7)*7+generalOffsetX), generalOffsetX, 92)+currentOffsetX+"%"; 
-    shortcut.style.top = clamp(Math.floor(parseFloat(shortcut.style.top)/12)*12+1, 1, 85)+"%";
+    shortcut.style.top = clamp(Math.floor(parseFloat(shortcut.style.top)/12)*12+generalOffsetY, generalOffsetY, 85)+"%";
   }
 }
 
 function tidyUpShortcuts() {
   let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
   let xOffset = -2;  // compensate optically space to left screen border
-  let yOffset = 1;
+  let yOffset = 4;
   let currentOffsetX  = 0;
   for (shortcut of shortcutsFromDom) {
     currentOffsetX = shortcut.getBoundingClientRect()["width"];
@@ -600,11 +601,11 @@ function tidyUpShortcuts() {
       yOffset += 12;
     } else if(xOffset > 88) {
       // Start over top left
-      yOffset = 1;
+      yOffset = 4;
       xOffset = -2;
     } else  {
       // Switch to next column
-      yOffset = 1;
+      yOffset = 4;
       xOffset += 7;
     }
   }
