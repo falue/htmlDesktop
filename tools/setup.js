@@ -89,6 +89,8 @@ async function setup() {
     closeAllWindows();
     // Clear all shortcuts, because they get re-set with new icons
     removeAllShortcuts();
+    // clear all osNotifications
+    gebi('osNotificationsSelect').innerHTML="";
   }
 
   // Add OS specific styles
