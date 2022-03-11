@@ -1,4 +1,5 @@
 .showMac { display: initial !important; }
+li.showMac { display: list-item !important; }
 
 .desktop {
     position: absolute;

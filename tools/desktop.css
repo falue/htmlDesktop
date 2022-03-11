@@ -151,9 +151,9 @@ input[type=button]:not(.systemButton) {
 
 input[type="color"] {
 	-webkit-appearance: none;
-	border: solid grey thin;
-	width: 2em;
-	height: 1.25em;
+	border: solid rgb(125,125,125) thin;
+	width: 1.75em;
+	height: 1.75em;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
 	padding: 0;

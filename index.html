@@ -314,24 +314,28 @@
                   <span class="blueBg keyboardKey bold hover valign showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
                 </div>
               </li>
-              <li class="showMac" onclick="gebi('macDock').classList.toggle('dockLock')">
-                  <i class="material-icons blue small">call_to_action</i>
-                  Lock dock
-              </li>
-              <li>
+              <li class="relative">
+                <label for="systemColorPicker" class="block maxWidth">
                 <i class="material-icons blue small">color_lens</i>
-                <label for="systemColorPicker">
                   Set system color
                 </label>
-                <input id="systemColorPicker" type="color" class="valign" oninput="setSystemColors(this.value);" value="#000000"/>
+                <div class="right top absolute nudge-y-12">
+                  <input id="systemColorPicker" type="color" class="valign relative tooltip" data-title="Set color.."  oninput="setSystemColors(this.value);" value="#000000"/>
+                  <span class="tooltip" data-title="Set to default color" onclick="setDefaultSystemColors(os);">
+                    <i class="material-icons blueBg small padding25">home</i>
+                  </span>
+                </div>
               </li>
-              <li>
-                <span onclick="cycleBackgroundImage();">
+              <li class="relative" onclick="cycleBackgroundImage();">
                   <i class="material-icons blue small">desktop_windows</i>
                   Swap background image
-                </span>
-                <label for="BGColor" class="grey small">| Plain color:</label>
-                <input id="BGColor" type="color" class="valign" oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value;" value="#000000"/>
+                <div class="right top absolute nudge-y-12">
+                  <input id="BGColor" type="color" class="valign tooltip" onclick="event.stopPropagation();" data-title="Set plain color.." oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value;" value="#000000"/>
+                </div>
+              </li>
+              <li class="showMac maxWidth" onclick="gebi('macDock').classList.toggle('dockLock')">
+                  <i class="material-icons blue small">call_to_action</i>
+                  Lock dock
               </li>
             </ul>
           </div>
