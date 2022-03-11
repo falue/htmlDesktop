@@ -5,7 +5,7 @@ let systemColor = "#000000";
 let darkMode;
 let username;
 let password;
-let systemMessages;
+let osNotifications;
 let selectedSystemMessage;
 let hotSwapped;
 
@@ -51,7 +51,7 @@ async function setup() {
     windows = data.windows;
     shortcuts = data.shortcuts;
     systemIcons = data.systemIcons;
-    systemMessages = data.systemMessages;
+    osNotifications = data.osNotifications;
   }
 
   // Fill the workstation chooser overlay
@@ -114,8 +114,8 @@ async function setup() {
   setupSystemIcons(systemIcons);
   // cl("SETUP: systemIcons success, "+systemIcons.length+" icons displayed.");
 
-  // Loop over systemMessages
-  setupSystemMessages(systemMessages);
+  // Loop over osNotifications
+  setupSystemMessages(osNotifications);
 
   // Show name in actionMenu
   gebi('workstationHint').innerHTML = workstation;
@@ -240,7 +240,7 @@ async function setupSettings(settings) {
           gebi('BGColor').value = value;
         }
       break;
-      case "systemMessagesDelay":
+      case "osNotificationsDelay":
         setDelayUi(value);
       break;
       case "selectedSystemMessage":
@@ -334,7 +334,7 @@ function setupSystemIcons(systemIconsShown) {
 
 
 function setupSystemMessages(messages) {
-  let selectionBox = gebi('systemMessagesSelect');
+  let selectionBox = gebi('osNotificationsSelect');
   for (let message in messages) {
     // Add to select box with index as value of option
     let option = document.createElement("option");

@@ -361,7 +361,7 @@ padding-top: .2em;
     padding: .8em;
 }
 
-.systemMessages {
+.osNotifications {
     position: fixed;
     bottom: 3em;
     padding: 0 1em .5em 0;
@@ -370,7 +370,7 @@ padding-top: .2em;
     max-width: 20em;
 }
 
-.systemMessages .message {
+.osNotifications .message {
     color: black;
     padding: .5em 1.2em .5em .5em;
     margin-top: 1.5em;
@@ -379,7 +379,7 @@ padding-top: .2em;
     display: flex;
 }
 
-.systemMessages .icon {
+.osNotifications .icon {
     display: block;
     color: white;
     width: 1.5em;
@@ -389,18 +389,18 @@ padding-top: .2em;
     box-sizing: border-box;
     padding: .25em;
 }
-.systemMessages .textContainer {
+.osNotifications .textContainer {
     padding-left: .5em;
 }
-.systemMessages .title {
+.osNotifications .title {
     
     font-size: 1em;
 }
-.systemMessages .description {
+.osNotifications .description {
     font-style: italic;
     font-size: small;
 }
-.systemMessages .close {
+.osNotifications .close {
     width: 1.5em;
     height: 1.5em;
     border-radius: 50%;
@@ -416,7 +416,7 @@ padding-top: .2em;
     transform: translate(.75em, -.75em);
     font-weight: bolder;
 }
-.systemMessages .close:hover {
+.osNotifications .close:hover {
     color: white;
     background-color: black;
     opacity: 1;

@@ -10,10 +10,10 @@
         "password": "1234",
         "workstation": "_generic",
         "selectedSystemMessage": 0,
-        "systemMessagesDelay": 0
+        "osNotificationsDelay": 0
     },
-    "systemMessagesComment": "titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.",
-    "systemMessages": [
+    "osNotificationsComment": "titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.",
+    "osNotifications": [
         ["You've got mail (2)", "The following messages have just arrived: (..)", "email", true, 0, "startDefaultProgram('textEditor')"],
         ["Zombie wave iminent", "Hack into these brains to gain access to valuable recources (..)", "warning", true, 0, "startDefaultProgram('terminal')"],
         ["Some files need your attention", "", "info", true, 3500, "startDefaultProgram('fileManager')"],

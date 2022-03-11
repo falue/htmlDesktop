@@ -274,8 +274,8 @@ async function showNote(title, text, icon, deathDelay) {
 }
 
 function setDelayUi(value) {
-    gebi('systemMessagesDurationSlider').value = value;
-    gebi('systemMessagesDurationUi').innerHTML = value > 0 ? value+'s' : 'No delay';
+    gebi('osNotificationsDurationSlider').value = value;
+    gebi('osNotificationsDurationUi').innerHTML = value > 0 ? value+'s' : 'No delay';
 }
 
 async function showSystemMessage(messageData) {
@@ -283,12 +283,12 @@ async function showSystemMessage(messageData) {
     let title = messageData[0];
     let description = messageData[1];
     let icon = messageData[2];
-    let initialDelay = messageData[3] === true ? parseInt(gebi('systemMessagesDurationSlider').value)*1000 : messageData[3];
+    let initialDelay = messageData[3] === true ? parseInt(gebi('osNotificationsDurationSlider').value)*1000 : messageData[3];
     let duration = messageData[4];
     let action = messageData[5];
     action = action && action !== "action" ? action : "";
     let id = "message-"+createUniqueId(10);  // Only for close via close button
-    let container = gebi('systemMessages');
+    let container = gebi('osNotifications');
 
     let message = document.createElement("div");
     message.classList.add("message", "radius5", "shadow");  // Cannot add systemColors because this is js that does that
@@ -328,7 +328,7 @@ async function showSystemMessage(messageData) {
     
     // Show container if it was not cleared before
     if(clearedSystemMessages < messageSent) {
-        show('systemMessages');
+        show('osNotifications');
 
         // Show message & add to container
         container.appendChild(message);    
@@ -351,13 +351,13 @@ async function closeSystemMessage(element) {
     // if gebi(id) remove this message
     if(element) element.remove();
     // Hide container if empty
-    if(!gebi('systemMessages').innerHTML) hide('systemMessages');
+    if(!gebi('osNotifications').innerHTML) hide('osNotifications');
 }
 
 let clearedSystemMessages = 0;
 function clearSystemMessages() {
-    gebi('systemMessages').innerHTML = "";
-    hide('systemMessages');
+    gebi('osNotifications').innerHTML = "";
+    hide('osNotifications');
     clearedSystemMessages = Math.floor(Date.now() / 1000);
 }
 
@@ -381,7 +381,7 @@ function keyboardController(event) {
             case "d": clutterDesktop(4); break;
             case "w": startDefaultProgram(); break;
             case "a": toggle('actionMenu'); break;
-            case "m": showSystemMessage(systemMessages[parseInt(gebi('systemMessagesSelect').value)]); break;
+            case "m": showSystemMessage(osNotifications[parseInt(gebi('osNotificationsSelect').value)]); break;
             case "Escape": screensaverHide(); break;
 
             /* case "arrowright": epD(event); cl("arrow right!"); break;

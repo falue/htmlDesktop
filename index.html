@@ -388,22 +388,22 @@
 
               <!-- System emssages -->
               <li class="relative noLiHover">
-                <div class="tooltip" data-title="Click to set - [m] to display" onclick="toggle('systemMessageSettings'); gebi('systemMessageSettingsArrow').classList.toggle('rotate180');">
+                <div class="tooltip" data-title="Click to set - [m] to display" onclick="toggle('osNotificationSettings'); gebi('osNotificationSettingsArrow').classList.toggle('rotate180');">
                   <i class="material-icons blue small">notifications</i>
                   Set system messages:
-                  <i id="systemMessageSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
+                  <i id="osNotificationSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
                 </div>
-                <div id="systemMessageSettings" class="hide padding05">
-                  <select id="systemMessagesSelect" onchange="this.blur();" class="marginY1 maxWidth padding05">
+                <div id="osNotificationSettings" class="hide padding05">
+                  <select id="osNotificationsSelect" onchange="this.blur();" class="marginY1 maxWidth padding05">
                   </select>
                   <br>
                   Delay duration:
-                  <span id="systemMessagesDurationUi">No delay</span>
+                  <span id="osNotificationsDurationUi">No delay</span>
                   <br>
-                  <input type="range" class="maxWidth padding2 borderBox" id="systemMessagesDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
+                  <input type="range" class="maxWidth padding2 borderBox" id="osNotificationsDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
                 </div>
                 <div class="right top absolute nudge-y-12">
-                  <span class="tooltip" data-title="Test this message [m]" onclick="showSystemMessage(systemMessages[parseInt(gebi('systemMessagesSelect').value)]);">
+                  <span class="tooltip" data-title="Test this message [m]" onclick="showSystemMessage(osNotifications[parseInt(gebi('osNotificationsSelect').value)]);">
                     <i class="material-icons blueBg small padding25">notifications_active</i>
                   </span>
                   <span class="tooltip" data-title="Clear [shift]+[C]" onclick="clearSystemMessages();">
@@ -864,7 +864,7 @@
 
     <!-- AUTO NOTE -->
     <!-- important: no space OR comments in this div -->
-    <div id="systemMessages" class="systemMessages hide"></div>
+    <div id="osNotifications" class="osNotifications hide"></div>
 
     <script src="tools/windowmanager.js"></script>
   </body>

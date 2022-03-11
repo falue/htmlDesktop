@@ -59,8 +59,8 @@ function compileSaveFile(saveFileName, download) {
     username: username,
     password: password,
     workstation: workstation,
-    selectedSystemMessage: parseInt(gebi('systemMessagesSelect').value),
-    systemMessagesDelay: parseInt(gebi('systemMessagesDurationSlider').value)
+    selectedSystemMessage: parseInt(gebi('osNotificationsSelect').value),
+    osNotificationsDelay: parseInt(gebi('osNotificationsDurationSlider').value)
   };
   data["systemIconsComment"] = "Only display shown icons (and the defined time)";
   data["systemIcons"] = systemIcons;
@@ -68,8 +68,8 @@ function compileSaveFile(saveFileName, download) {
   data["windows"] = dataWindows;
   data["shortcutsComment"] = "define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so'] ";
   data["shortcuts"] = dataShortcuts;
-  data["systemMessagesComment"] = "titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.";
-  data["systemMessages"] = systemMessages;
+  data["osNotificationsComment"] = "titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.";
+  data["osNotifications"] = osNotifications;
 
   if(download) {
     downloadStringAsFile(JSON.stringify(data), saveFileName);
