@@ -1,0 +1,218 @@
+{
+    "settingsComment": "General settings of this workstation. OS and workstation-name MAY be defined in generalSettings.txt! 'selectedSystemMessage' index (starts with 0)",
+    "settings": {
+        "systemColor": "#000000",
+        "desktopColor": "#000000",
+        "desktopImg": "os/_generic/desktops/7.jpg",
+        "os": "windows",
+        "darkMode": true,
+        "username": "Fabian Lüscher",
+        "password": "1234",
+        "workstation": "telefabi",
+        "selectedSystemMessage": 1,
+        "osNotificationsDelay": 0
+    },
+    "systemIconsComment": "Only display shown icons (and the defined time)",
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windowsComment": "Live, displayed or hidden windows. accessible programs like terminal, browser or filemanager with a specific folder open",
+    "windows": [
+        {
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager/index.html?folderContent=Downloads",
+            "x": 56,
+            "y": 4,
+            "w": 598,
+            "h": 444,
+            "zIndex": 11,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser",
+            "x": 18,
+            "y": 9,
+            "w": 840,
+            "h": 620,
+            "zIndex": 16,
+            "minimized": false,
+            "renderToDom": true
+        },{
+            "windowName": "Text editor - An note from the creator.txt",
+            "icon": "edit_note",
+            "contentPath": "texteditor/index.html?text=This is a tool for digital props, used for movies and television.%0A%0AIf you want to use this in production, please get in touch:%0A%0Ainfo@fluescher.ch%0A%0AThanks!",
+            "x": 3,
+            "y": 23,
+            "w": 386,
+            "h": 477,
+            "zIndex": 12,
+            "minimized": false,
+            "renderToDom": true
+        },{
+            "windowName": "Image viewer",
+            "icon": "image",
+            "contentPath": "imageViewer/index.html?files=1.jpg|2.jpg|1.mp4|2.mp4|3.jpg|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg|",
+            "x": 66,
+            "y": 65,
+            "w": 520,
+            "h": 477,
+            "zIndex": 15,
+            "minimized": false,
+            "renderToDom": true
+        },{
+            "windowName": "Text editor - Untitled*",
+            "icon": "edit_note",
+            "contentPath": "texteditor/index.html?text=Check out the options and other workstations by clicking on the flash in the taskbar.%0A%0ASome things are just for show, some things work.%0A%0AFind them.",
+            "x": 81,
+            "y": 27,
+            "w": 250,
+            "h": 450,
+            "zIndex": 13,
+            "minimized": false,
+            "renderToDom": true
+        },{
+            "windowName": "Terminal - LOG",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 17,
+            "y": 17,
+            "w": 666,
+            "h": 450,
+            "zIndex": 14,
+            "minimized": true,
+            "renderToDom": true
+        }
+    ],
+    "shortcutsComment": "define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so'] ",
+    "shortcuts": [
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 93,
+            "y": 67,
+            "action": ""
+        },
+        {
+            "name": "Pictures",
+            "icon": "",
+            "x": 1,
+            "y": 3,
+            "action": "addWindow('File manager dblClick', 'folder', 'filemanager/index.html?folderContent=Pictures', 5,5, 600,350, false)"
+        },
+        {
+            "name": "My little pony script.py",
+            "icon": "",
+            "x": 17,
+            "y": 20,
+            "action": ""
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 93,
+            "y": 80,
+            "action": ""
+        },
+        {
+            "name": "A-433",
+            "icon": "folderFull.png",
+            "x": 60,
+            "y": 23,
+            "action": ""
+        },
+        {
+            "name": "A-433 Copy",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 63,
+            "action": ""
+        },
+        {
+            "name": "Photos 0eff3",
+            "icon": "folderFull.png",
+            "x": 11,
+            "y": 57,
+            "action": ""
+        },
+        {
+            "name": "Links.jpg",
+            "icon": "fileImage.png",
+            "x": 33,
+            "y": 71,
+            "action": ""
+        },
+        {
+            "name": "Home 47045.docx",
+            "icon": "doc.png",
+            "x": 43,
+            "y": 33,
+            "action": ""
+        },
+        {
+            "name": "file.jpg",
+            "icon": "fileImage.png",
+            "x": 21,
+            "y": 28,
+            "action": ""
+        },
+        {
+            "name": "Personal.tiff",
+            "icon": "fileImage.png",
+            "x": 8,
+            "y": 3,
+            "action": ""
+        },
+        {
+            "name": "Document Copy",
+            "icon": "folderFull.png",
+            "x": 57,
+            "y": 45,
+            "action": ""
+        }
+    ],
+    "osNotificationsComment": "titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.",
+    "osNotifications": [
+        [
+            "You've got mail (2)",
+            "The following messages have just arrived: (..)",
+            "email",
+            true,
+            0,
+            "startDefaultProgram('textEditor')"
+        ],
+        [
+            "Zombie wave iminent",
+            "Hack into these brains to gain access to valuable recources (..)",
+            "warning",
+            true,
+            0,
+            "startDefaultProgram('terminal')"
+        ],
+        [
+            "Some files need your attention",
+            "",
+            "info",
+            true,
+            3500,
+            "startDefaultProgram('fileManager')"
+        ],
+        [
+            "Activate OS now",
+            "Please invest in a robust system and pay us just $14.99 per day to experience the most comfort a meaty fleshbag can enjoy. We will remind you again in one hour.",
+            "shield",
+            true,
+            4500,
+            ""
+        ]
+    ]
+}
