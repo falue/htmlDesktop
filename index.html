@@ -706,7 +706,7 @@
             <button class="systemButton redBg" onclick="gebi(gebi('editShortcutId').value).remove(); hide('editShortcut');">Remove</button>
           </div>
           <div class="right relative padding">
-            <button class="systemButton greyBg" onclick="hide('editShortcut');">Cancel</button>
+            <button class="systemButton greyBg" onclick="hide('editShortcut'); if(gebi('editNewShortcut').value === 'true') { gebi(gebi('editShortcutId').value).remove() }">Cancel</button>
             <button id="saveShortcutButton" class="systemButton" onclick="saveShortcut(gebi('editShortcutId').value); hide('editShortcut');">Save</button>
           </div>
             <br>
