@@ -6,7 +6,7 @@
 body {
     background-color: white;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.1em;
+    font-size: .9em;
     hyphens: auto;
 }
 
@@ -42,7 +42,7 @@ a:focus {
 
 article {
     position: absolute;
-    top: 15%;
+    top: 13%;
     width: 100%;
     text-align: center;
 }
@@ -51,8 +51,8 @@ article {
     position: relative;
     display: inline-block;
     width: 100%;
-    max-width: 330px;
-    height: 330px;
+    max-width: 250px;
+    height: 250px;
     background-image: url(imgs/fl.svg);
     background-position: center center;
     background-repeat: no-repeat;
@@ -101,8 +101,7 @@ h1 {
     top: 0;
 }
 
-.footnoteCheck:checked + label,
-.footnote:hover .note {
+.footnoteCheck:checked + label {
     display: block;
     position: absolute;
     width: 400px;

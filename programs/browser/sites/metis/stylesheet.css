@@ -15,6 +15,7 @@ a:hover {
     position: fixed;
     height: 15vw; /* defines height in percent of width */
     z-index: 11;
+    overflow: hidden;
 }
 
 .header img,

@@ -1,0 +1,14 @@
+* {
+    user-select: none;
+}
+
+body, html {
+    color: white;
+    background-color: red;
+    text-align: center;
+}
+body {
+    box-sizing: border-box;
+    padding-top: 25vw;
+    font-style: italic;
+}
