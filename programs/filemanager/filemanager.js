@@ -212,11 +212,15 @@ function updateFolderContent(path, folderContent) {
                 if(data && data !== "data") {
                     fileTile.setAttribute("ondblclick", "parent.addWindow('Image viewer', 'image', 'imageviewer/index.html?files="+data+"', 5,5, 666,450, false)");
                 }
-            } else if(["doc","docx","pyc","py","txt","rtf"].includes(extension)) {
+            } else if(["doc","docx","txt","rtf"].includes(extension)) {
                 // Text file
                 //   If nothing is in data element, open random text
                 let text = data && data !== "data" ? data : "random";
                 fileTile.setAttribute("ondblclick", "parent.addWindow('Text editor', 'edit_note', 'texteditor/index.html?text="+text+"', 5, 5, 666,450, false)");
+            } else if(["pyc","py"].includes(extension)) {
+                // Python
+                fileTile.setAttribute("ondblclick", "parent.startDefaultProgram('terminal')");
+
             } else if(isFolder) {
                 // Open folder directly
                 // Find index of subfolder in current folder
