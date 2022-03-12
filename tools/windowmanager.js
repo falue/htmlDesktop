@@ -534,7 +534,7 @@ function placeShortcut(name, icon, x,y, action) {
   if(icon) {
     fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+icon);
   } else {
-    fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+iconDecider(name));
+    fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+iconDecider(name, name.split(".").length === 1));
   }
   fileIcon.setAttribute("alt", "");
   fileIcon.setAttribute("draggable", "false");
