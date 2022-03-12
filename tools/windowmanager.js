@@ -483,12 +483,12 @@ function saveShortcut(id) {
   let icon = document.querySelector('input[name="editShortcutIcon"]:checked');
   if(icon) {
     icon = icon.value;
-    currentShortcut.getElementsByTagName('img')[0].src = "os/"+os+"/systemIcons/"+icon;
   } else {
-    // If no icon is chosen from the dialog, choose icon absed on filename.
+    // If no icon is chosen from the dialog, choose icon based on filename.
     // If there is no ending, get the folderFull icon.
-    currentShortcut.getElementsByTagName('img')[0].src = "os/"+os+"/systemIcons/"+iconDecider(name, name.split(".").length === 1);
+    icon = iconDecider(name, name.split(".").length === 1);
   }
+  currentShortcut.getElementsByTagName('img')[0].src = "os/"+os+"/systemIcons/"+icon;
   
   currentShortcut.setAttribute("data-setup-name", name);
   currentShortcut.setAttribute("data-setup-icon", icon);

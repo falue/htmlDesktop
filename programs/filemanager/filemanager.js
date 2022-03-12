@@ -74,7 +74,7 @@ function addFileToTree(element, content, rootName, computerName) {
         // Create icon
         let icon = document.createElement("img");
         icon.setAttribute("id", "icon-"+id);
-        icon.setAttribute("src", "../../os/"+os+"/systemIcons"+iconDecider(content[0], false));
+        icon.setAttribute("src", "../../os/"+os+"/systemIcons/"+iconDecider(content[0], false));
         icon.setAttribute("alt", "");
         
         // Add file to list
@@ -88,7 +88,7 @@ function addFileToTree(element, content, rootName, computerName) {
         /* cl("FOLDER: " + folderName + " ("+content[folderName].length+")"); */
         let icon = document.createElement("img");
         icon.setAttribute("id", "icon-"+id);
-        icon.setAttribute("src", "../../os/"+os+"/systemIcons"+iconDecider(folderName, content[folderName].length));
+        icon.setAttribute("src", "../../os/"+os+"/systemIcons/"+iconDecider(folderName, content[folderName].length));
         icon.setAttribute("alt", "");
         li.appendChild(icon);
         let checkbox = document.createElement("input");
@@ -194,7 +194,7 @@ function updateFolderContent(path, folderContent) {
         let fileName = document.createElement("div");
         let fileIcon = document.createElement("img");
         fileIcon.setAttribute("alt", "");
-        fileIcon.setAttribute("src", "../../os/"+os+"/systemIcons"+iconDecider(filename, isFolder));
+        fileIcon.setAttribute("src", "../../os/"+os+"/systemIcons/"+iconDecider(filename, isFolder));
         fileTile.appendChild(fileIcon);
         fileName.appendChild(document.createTextNode(filename));
         fileTile.setAttribute("class", "fileTile");

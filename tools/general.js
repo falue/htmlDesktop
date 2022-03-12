@@ -241,34 +241,33 @@ function dynamicSort(keyName) {
 
 
 function iconDecider(filename, folderContentAmount) {
-  /* let path = "../../os/" + os + "/systemIcons/"; */
-  let path = "/";
-  if(folderContentAmount === 0) return path + "folderEmpty.png";
-  if(folderContentAmount > 0) return path + "folderFull.png";
+  let path;
+  if(folderContentAmount === 0) return "folderEmpty.png";
+  if(folderContentAmount > 0) return "folderFull.png";
 
   let fileEnding = (filename.split(".")[1] + "").toLowerCase();  // yes this ignores a dot in bewtween filenames
 
   switch (fileEnding) {
-      case "jpg": path += "fileImage.png"; break;
-      case "jpeg": path += "fileImage.png"; break;
-      case "png": path += "fileImage.png"; break;
-      case "tiff": path += "fileImage.png"; break;
-      case "psd": path += "fileImage.png"; break;
-      case "doc": path += "doc.png"; break;
-      case "docx": path += "doc.png"; break;
-      case "pyc": path += "python.png"; break;
-      case "py": path += "python.png"; break;
-      case "txt": path += "txt.png"; break;
-      case "rtf": path += "txt.png"; break;
-      case "pdf": path += "pdf.png"; break;
-      case "zip": path += "zip.png"; break;
-      case "mp3": path += "mp3.png"; break;
-      case "mp4": path += "fileMovie.png"; break;
-      case "avi": path += "fileMovie.png"; break;
-      case "mpeg": path += "fileMovie.png"; break;
-      case "mkv": path += "fileMovie.png"; break;
-      case "trash": path += "trashFull.png"; break;
-      default: path += "file.png"
+      case "jpg": path = "fileImage.png"; break;
+      case "jpeg": path = "fileImage.png"; break;
+      case "png": path = "fileImage.png"; break;
+      case "tiff": path = "fileImage.png"; break;
+      case "psd": path = "fileImage.png"; break;
+      case "doc": path = "doc.png"; break;
+      case "docx": path = "doc.png"; break;
+      case "pyc": path = "python.png"; break;
+      case "py": path = "python.png"; break;
+      case "txt": path = "txt.png"; break;
+      case "rtf": path = "txt.png"; break;
+      case "pdf": path = "pdf.png"; break;
+      case "zip": path = "zip.png"; break;
+      case "mp3": path = "mp3.png"; break;
+      case "mp4": path = "fileMovie.png"; break;
+      case "avi": path = "fileMovie.png"; break;
+      case "mpeg": path = "fileMovie.png"; break;
+      case "mkv": path = "fileMovie.png"; break;
+      case "trash": path = "trashFull.png"; break;
+      default: path = "file.png"
   }
 
   return path;
