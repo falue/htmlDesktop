@@ -505,7 +505,7 @@ function saveShortcut(id) {
 // makes a new shortcut on demand
 function createShortcut() {
   gebi('editNewShortcut').value = "true";
-  let id = placeShortcut("", "", 0,4, "");
+  let id = placeShortcut("", "", 3,4, "");
   editShortcut(id);
 }
 
@@ -588,45 +588,54 @@ function clutterDesktop(count) {
 
 function alignShortcutsToGrid() {
   let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
-  let generalOffsetX = 0;
+  let generalOffsetX = -2;
   let generalOffsetY = 4;
   let currentOffsetX  = 0;
+  let columns = 7;
+  let rows = 13;
   for (shortcut of shortcutsFromDom) {
     currentOffsetX = shortcut.getBoundingClientRect()["width"];
     currentOffsetX = getPositionInPercentage("left", currentOffsetX);
     // Magic: get difference between imaginary rectangle (12% width) and the shortcut. 
     //   Divide by 2 and add this to the .stlye.left after clamping. I'm smart!
-    currentOffsetX = (14-currentOffsetX)/2-3;
-    shortcut.style.left = clamp((Math.floor(parseInt(shortcut.style.left)/7)*7+generalOffsetX), generalOffsetX, 92)+currentOffsetX+"%"; 
-    shortcut.style.top = clamp(Math.floor(parseFloat(shortcut.style.top)/12)*12+generalOffsetY, generalOffsetY, 85)+"%";
+    currentOffsetX = (14-currentOffsetX)/2; //-3;
+    let roundedLeft = Math.floor(parseInt(shortcut.style.left)/columns)*columns;
+    let roundedRight = Math.floor(parseFloat(shortcut.style.top)/rows)*rows;
+    shortcut.style.left = clamp(roundedLeft + generalOffsetX, generalOffsetX, 92)+currentOffsetX+"%"; 
+    shortcut.style.top = clamp(roundedRight + generalOffsetY, generalOffsetY, 82)+"%";
   }
 }
 
 function tidyUpShortcuts() {
   let shortcutsFromDom = document.querySelectorAll("[data-setup-type='shortcut']");
-  let xOffset = -2;  // compensate optically space to left screen border
-  let yOffset = 4;
+  let generalOffsetX = -2;
+  let generalOffsetY = 4;
+  let xOffset = generalOffsetX;  // compensate optically space to left screen border
+  let yOffset = generalOffsetY;
+  let columns = 7;
+  let rows = 13;
+
   let currentOffsetX  = 0;
   for (shortcut of shortcutsFromDom) {
     currentOffsetX = shortcut.getBoundingClientRect()["width"];
     currentOffsetX = getPositionInPercentage("left", currentOffsetX);
     // Magic: get difference between imaginary rectangle (12% width) and the shortcut. 
     //   Divide by 2 and add this to the .stlye.left after clamping. I'm smart!
-    currentOffsetX = (12-currentOffsetX)/2;
+    currentOffsetX = (14-currentOffsetX)/2;
     shortcut.style.left = xOffset + currentOffsetX + "%";
     shortcut.style.top = yOffset + "%";
 
-    if(yOffset < 85) {
+    if(yOffset < 82) {
       // Switch to next row
-      yOffset += 12;
-    } else if(xOffset > 88) {
+      yOffset += rows;
+    } else if(xOffset > 92) {
       // Start over top left
-      yOffset = 4;
-      xOffset = -2;
+      yOffset = generalOffsetY;
+      xOffset = generalOffsetX;
     } else  {
       // Switch to next column
-      yOffset = 4;
-      xOffset += 7;
+      yOffset = generalOffsetY;
+      xOffset += columns;
     }
   }
 }
