@@ -76,6 +76,12 @@ input[type=button]:not(.systemButton) {
     background-color: rgba(255,255,255,0.1);
 }
 
+.setDialogDefaultProgram {
+    width: 2em;
+    right: 1em;
+    padding-top: .5em;
+}
+
 .chooseBox {
     padding: 0.5em;
     border: thin grey solid;

@@ -83,10 +83,17 @@
         },
         {
             "name": "Pictures",
-            "icon": "folderFull.png",
+            "icon": "",
             "x": 27,
             "y": 10,
             "action": "addWindow('File manager dblClick', 'folder', 'filemanager/index.html?folderContent=Pictures', 5,5, 600,350, false)"
+        },
+        {
+            "name": "my text is awesome.py",
+            "icon": "",
+            "x": 17,
+            "y": 20,
+            "action": ""
         },
         {
             "name": "Trash",

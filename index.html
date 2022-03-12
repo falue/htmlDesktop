@@ -629,13 +629,14 @@
           </h3>
           <br>
           <input type="hidden" id="editShortcutId">
+          <input type="hidden" id="editNewShortcut" value="false">
           
           <!-- <input type="text" id="editShortcutIcon"> -->
           <div class="editIcon radius5 alignCenter chooseBox">
             <label for="editIconfolderFull">
             <input class="hide" type="radio" id="editIconfolderFull" name="editShortcutIcon" value="folderFull.png"/>
             <img class="radius5" src="os/windows/systemIcons/folderFull.png"></label>
-            
+
             <label for="editIconfolderEmpty">
             <input class="hide" type="radio" id="editIconfolderEmpty" name="editShortcutIcon" value="folderEmpty.png"/>
             <img class="radius5" src="os/windows/systemIcons/folderEmpty.png"></label>
@@ -699,6 +700,11 @@
 
           <input type="text" class="maxWidth radius2" id="editShortcutName" placeholder="Insert displayed filename"
             onkeydown="if(event.key === 'Enter') gebi('saveShortcutButton').click();">
+
+          <div class="setDialogDefaultProgram absolute right" onclick="setDialogDefaultProgram()">
+            <i class="material-icons small tooltip padding05 borderBox grey" data-title="Set standard for this filename extension" >extension</i>
+          </div>
+
           <textarea type="text" class="maxWidth radius2" id="editShortcutAction" placeholder="Javascript command.."></textarea>
           <br>
           

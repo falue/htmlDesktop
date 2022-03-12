@@ -3,7 +3,7 @@
         {"Desktop": []},
         {"Documents": []},
         {"Downloads": [
-            ["0.tiff", "action", "filesize", "1.jpg"],
+            ["0.py", "action", "filesize", ""],
             ["1.JPG", "action", "filesize", "1.mp4"],
             ["2.jpeg", "action", "filesize", "1.jpg|2.jpg"],
             ["this is my image.jpg", "action", "filesize", "1.jpg|2.jpg"],

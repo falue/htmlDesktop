@@ -504,6 +504,7 @@ function saveShortcut(id) {
 
 // makes a new shortcut on demand
 function createShortcut() {
+  gebi('editNewShortcut').value = "true";
   let id = placeShortcut("", "", 0,4, "");
   editShortcut(id);
 }
@@ -526,9 +527,14 @@ function placeShortcut(name, icon, x,y, action) {
   shortcutContainer.setAttribute("style", "left:"+x+"%; top:"+y+"%");
   shortcutContainer.setAttribute("draggable", "true");
   shortcutContainer.setAttribute("ondragstart", "onDragStart(event)");
-  /* shortcutContainer.setAttribute("ondblclick", "addWindow('File manager', 'folder', 'filemanager', 5,5, 600,350, false)"); */
-  if(action) shortcutContainer.setAttribute("ondblclick", action);
-  shortcutContainer.setAttribute("oncontextmenu", "editShortcut('"+id+"'); return false;");
+  // Set dbl click action if there is a defined one, else: Set default app
+  if(action) {
+    shortcutContainer.setAttribute("ondblclick", action);
+  } else if(name) {
+    // Start default action
+    shortcutContainer.setAttribute("ondblclick", chooseDefaultProgram(name));
+  }
+  shortcutContainer.setAttribute("oncontextmenu", "gebi('editNewShortcut').value = 'false'; editShortcut('"+id+"'); return false;");
 
   let fileIcon = document.createElement("img");
   if(icon) {
@@ -631,6 +637,34 @@ function incrementWindowsPosition(axe) {
   // Second go-round overlaps. But then again, if you have this many windows, you're the problem.
   if(newWindowPositions[axe] > 50) newWindowPositions = {"x": 11,"y": 3};
   return newWindowPositions[axe];
+}
+
+function chooseDefaultProgram(fileName) {
+  let programToStart = "fileManager";
+  let extension = fileName.split(".").length ? fileName.split(".")[1] : fileName;
+  if(["jpg","jpeg","png","tiff","psd","pdf","mp4","avi","mpeg","mkv"].includes(extension)) {
+    // Image file
+    programToStart = "imageViewer";
+  } else if(["doc","docx","txt","rtf"].includes(extension)) {
+    // Text file
+    programToStart = 'textEditor-random'
+  } else if(["pyc","py"].includes(extension)) {
+    // Program file
+    programToStart = 'terminal'
+  }
+  // For shortcuts created by setup() from settings.json
+  return "startDefaultProgram('"+programToStart+"');";
+}
+
+function setDialogDefaultProgram() {
+  let programName = gebi('editShortcutName').value;
+  // Fills textarea of Dialog with standard action
+  let dialogActionTextarea = gebi('editShortcutAction');
+  if(programName) {
+    dialogActionTextarea.value = chooseDefaultProgram(programName);
+  } else {
+    showNote("No extension", "Please add a file extension to name<br><span class='small grey'>.jpg, .jpeg, .png, .tiff, .psd, .pdf, .mp4, .avi, .mpeg, .mkv, .doc, .docx, .txt, .rtf, .pyc, .py</span>", "info", 4500);
+  }
 }
 
 function startDefaultProgram(program, parameters) {
