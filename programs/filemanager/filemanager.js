@@ -203,6 +203,7 @@ function updateFolderContent(path, folderContent) {
         fileTile.appendChild(fileIcon);
         fileName.appendChild(document.createTextNode(filename));
         fileTile.setAttribute("class", "fileTile");
+        fileTile.setAttribute("title", filename);
 
         // Set actions ondblclick
         if(action && action !== "action") {
