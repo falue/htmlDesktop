@@ -440,13 +440,21 @@ function editShortcut(id) {
   let currentShortcut = gebi(id);
   gebi('editShortcutId').value = id;
 
+  let fileName = currentShortcut.getElementsByClassName("filename")[0].innerHTML.replace(/&amp;/g, "&");
+
+  // Reset icon chooser if no filename
+  if(!fileName) {
+    let resetIconRadio = gebi('editShortcut').querySelector('input[name="editShortcutIcon"]:checked');
+    if(resetIconRadio) resetIconRadio.checked = false;
+  }
+
   // Set forms
   // Set images to current os & select icon
   let radioLabels = gebi('editShortcut').getElementsByTagName('label');
   for (let label of radioLabels) {
     let labelImg = label.getElementsByTagName('img')[0];
     let radioButton = label.getElementsByTagName('input')[0];
-    if(currentShortcut.getElementsByTagName("img")[0].src.endsWith(radioButton.value)) {
+    if(currentShortcut.getElementsByTagName("img")[0].src.endsWith(radioButton.value) && fileName) {
       radioButton.setAttribute("checked", "true");
     }
     let currentPath = labelImg.src;
@@ -454,7 +462,7 @@ function editShortcut(id) {
     /* radioButton.setAttribute("value", labelImg.src); */
   }
 
-  gebi('editShortcutName').value = currentShortcut.getElementsByClassName("filename")[0].innerHTML.replace(/&amp;/g, "&");
+  gebi('editShortcutName').value = fileName;
   gebi('editShortcutAction').value = currentShortcut.getAttribute('ondblclick') ? currentShortcut.getAttribute('ondblclick') : "";
   gebi('editShortcutName').focus();
 }
@@ -472,8 +480,15 @@ function saveShortcut(id) {
   } else {
     currentShortcut.removeAttribute('ondblclick');
   }
-  let icon = document.querySelector('input[name="editShortcutIcon"]:checked').value;
-  currentShortcut.getElementsByTagName('img')[0].src = "os/"+os+"/systemIcons/"+icon;
+  let icon = document.querySelector('input[name="editShortcutIcon"]:checked');
+  if(icon) {
+    icon = icon.value;
+    currentShortcut.getElementsByTagName('img')[0].src = "os/"+os+"/systemIcons/"+icon;
+  } else {
+    // If no icon is chosen from the dialog, choose icon absed on filename.
+    // If there is no ending, get the folderFull icon.
+    currentShortcut.getElementsByTagName('img')[0].src = "os/"+os+"/systemIcons/"+iconDecider(name, name.split(".").length === 1);
+  }
   
   currentShortcut.setAttribute("data-setup-name", name);
   currentShortcut.setAttribute("data-setup-icon", icon);
@@ -489,7 +504,7 @@ function saveShortcut(id) {
 
 // makes a new shortcut on demand
 function createShortcut() {
-  let id = placeShortcut("name", "file.png", 0,4, "");
+  let id = placeShortcut("", "", 0,4, "");
   editShortcut(id);
 }
 
@@ -497,7 +512,6 @@ function createShortcut() {
 function placeShortcut(name, icon, x,y, action) {
   // place existing shortcut on desktop
   /* console.log(name, icon, x,y, action); */
-
   let id = "shortcut-" + createUniqueId();
 
   let shortcutContainer = document.createElement("div");
@@ -520,7 +534,7 @@ function placeShortcut(name, icon, x,y, action) {
   if(icon) {
     fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+icon);
   } else {
-    fileIcon.setAttribute("src", "os/"+os+"/systemIcons/file.png");
+    fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+iconDecider(name));
   }
   fileIcon.setAttribute("alt", "");
   fileIcon.setAttribute("draggable", "false");
