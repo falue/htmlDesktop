@@ -1,9 +1,8 @@
-let os = "windows";
-let workstation = "_generic";
+let os;
+let workstation;
 let selectedFolder;
 let rootNameDisplay;
 let darkMode;
-
 
 async function setupFileManager() {
     const queryString = window.location.search;
@@ -11,8 +10,8 @@ async function setupFileManager() {
     os = urlParams.get('os');
     workstation = urlParams.get('workstation');
     darkMode = urlParams.get('darkMode');
-    cl("darkMode is " + darkMode);
-    cl("os is " + os);
+    /* cl("darkMode is " + darkMode);
+    cl("os is " + os); */
 
     if(darkMode === "true") {
         addStylesheet("darkMode.css");
