@@ -248,7 +248,7 @@ body {
     right: 10px;
     width: 220px;
     padding: 10px;
-    z-index: 667;
+    z-index: 999;
     background-color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     white-space: initial;
