@@ -1,0 +1,56 @@
+body {
+    color: black;
+    background-color: white;
+}
+
+header {
+    border-bottom: solid thin grey;
+    background-color: rgb(242,242,242);
+}
+
+.fileManagerTools button {
+    border: solid thin lightgrey !important;
+    background-color: rgba(255,255,255,1);
+}
+
+.fileManagerToolsRight {
+    background-color: rgb(242,242,242);
+}
+
+.fileManagerPath #fileManagerPath {
+    border: thin grey solid;
+    background-color: white;
+}
+
+.browser {
+    border-right: solid grey thin;
+}
+
+.fileTile:hover img {
+    background-color: rgba(0,0,0,.15);
+}
+
+.fileTile img {
+    background-color: rgba(0,0,0,.05);
+}
+
+.treeView li {
+    border-bottom: thin solid rgba(0,0,0,.1);
+}
+
+/* FROM treeview.css */
+.tree img {
+    background-color: white;
+}
+.tree li:before {
+    border-left: 1px solid rgba(0,0,0,.15);
+}
+.tree_label:after {
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    border-left: 1px solid rgba(0,0,0,.15);
+}
+
+:checked~label.tree_label:after {
+    border-top: 1px solid rgba(0,0,0,.15);
+    border-right: 1px solid rgba(0,0,0,.15);
+}

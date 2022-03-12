@@ -1,0 +1,73 @@
+body {
+    color: white;
+    background-color: #2B2B2B;
+}
+
+header {
+    border-bottom: solid thin rgba(255,255,255,.125);
+    background-color: #2B2B2B;
+}
+
+header:last-of-type {
+    border-bottom: solid thin rgba(255,255,255,.25);
+}
+
+.programButtons {
+    color: white;
+    background-color: rgba(255,255,255,.125);
+    border-color: rgba(0,0,0,.75) !important;
+    border-bottom: solid rgba(0,0,0,.75) thin !important;
+}
+
+.fileManagerTools button {
+    /* border: solid thin rgba(255,255,255,.125) !important; */
+    border: solid thin rgba(0,0,0,.75) !important;
+    background-color: rgba(255,255,255,.125);
+    color:white;
+}
+
+.fileManagerToolsRight {
+    background-color: #2B2B2B;
+}
+
+.fileManagerPath #fileManagerPath {
+    border: thin rgba(0,0,0,.75) solid;
+    background-color: rgba(255,255,255,.125);
+}
+
+.browser {
+    border-right: solid rgba(255,255,255,.25) thin;
+}
+
+.fileTile:hover img {
+    background-color: rgba(255,255,255,.15);
+}
+
+.fileTile img {
+    background-color: rgba(255,255,255,.05);
+}
+
+.treeView li {
+    border-bottom: thin solid rgba(255,255,255,.125);
+}
+
+hr {
+    border-color: rgba(0,0,0,.25);
+}
+
+/* FROM treeview.css */
+.tree img {
+    background-color: #2B2B2B;
+}
+.tree li:before {
+    border-left: 1px solid rgba(255,255,255,.25);
+}
+.tree_label:after {
+    border-bottom: 1px solid rgba(255,255,255,.25);
+    border-left: 1px solid rgba(255,255,255,.25);
+}
+
+:checked~label.tree_label:after {
+    border-top: 1px solid rgba(255,255,255,.25);
+    border-right: 1px solid rgba(255,255,255,.25);
+}

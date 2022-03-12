@@ -11,8 +11,14 @@ async function setupFileManager() {
     os = urlParams.get('os');
     workstation = urlParams.get('workstation');
     darkMode = urlParams.get('darkMode');
-    /* cl("darkMode is " + darkMode);
-    cl("os is " + os); */
+    cl("darkMode is " + darkMode);
+    cl("os is " + os);
+
+    if(darkMode === "true") {
+        addStylesheet("darkMode.css");
+    } else {
+        addStylesheet("lightMode.css");
+    }
     
     let rootFolderPath = "../../workstations/" + workstation + "/folders.json";
     rootFolders = await parseFile(rootFolderPath);
@@ -248,3 +254,15 @@ function openCloseFolderIcon(id) {
         icon.src = "../../os/"+os+"/systemIcons/folderFull.png"
     }
 }
+
+function addStylesheet(path) {
+    let currentStylesheet = gebi('osStylesheet');
+    if(currentStylesheet) currentStylesheet.remove();
+    let head = document.head;
+    let link = document.createElement("link");
+    link.id = "osStylesheet"
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href = path;
+    head.appendChild(link);
+  }
