@@ -71,23 +71,69 @@
     padding:1.5em 2em;
 }
 
+#lockScreenWindow,
+#lockScreenUserName {
+    background: none !important;
+}
+
+#lockScreenUserName {
+    font-size: 1.25em;
+}
+
 .lockScreen #lockScreenUserPicture {
-    width: 5em;
+    width: 7em;
+    border-radius: 50%;
+    margin-bottom: 1em;
 }
 
 .lockScreen input {
+    width: 20em;
     padding: .5em 1em;
     margin-bottom: 1em;
+    color: white;
+    border: solid rgba(255,255,255,0.25) .12em;
+    background-color: rgba(0,0,0,.25);
+}
+
+
+.lockScreen input:focus {
+    background-color: rgba(255,255,255,.1);
 }
 
 .lockScreen button {
     padding: .5em 1em;
     margin: 2em 0 0.25em 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    box-sizing: border-box;
+    transform: translate(-.12em, -1.75em);
+    background-color: rgba(255,255,255,.1) !important;
+}
+
+.lockScreen button:hover {
+    background-color: rgba(255,255,255,.2) !important;
+}
+
+.lockScreen button span span.initialLoginbuttonText {
+    font-size: 0;
+    line-height: 0;
+    margin: 0 .5rem;
+    overflow: hidden;
+}
+
+.lockScreen button span span.initialLoginbuttonText:before {
+    content: "arrow_forward";
+    font-family: 'Material icons';
+    vertical-align: middle;
+    font-size: 1rem;
+    position: absolute;
+    transform: scale(1.5) translate(-.3em, .325em);
 }
 
 #lockScreenColorOverlay {
-    background: rgba(131,58,180,.35);
-    background: linear-gradient(329deg, rgba(131,58,180,.35) 0%, rgba(253,29,29,.35) 50%, rgba(252,176,69,.35) 100%);
+    background: rgba(131,58,180,.5);
+    background: linear-gradient(329deg, rgba(131,58,180,.5) 0%, rgba(253,29,29,.5) 50%, rgba(252,176,69,.5) 100%);
 }
 
 #lockScreen.loginAnimation #lockScreenColorOverlay {

@@ -124,16 +124,19 @@ li.showMac { display: list-item !important; }
 
 .lockScreen #lockScreenUserPicture {
     width: 5em;
+    border-radius: .25em;
 }
 
 .lockScreen input {
     padding: .5em 1em;
     margin-bottom: 1em;
+    border-radius: .5em;
 }
 
 .lockScreen button {
     padding: .5em 1em;
     margin: 2em 0 0.25em 0;
+    border-radius: .5em;
 }
 
 #lockScreenColorOverlay {
