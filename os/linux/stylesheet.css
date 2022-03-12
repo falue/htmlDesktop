@@ -117,8 +117,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    /* background-color: teal; */
-    /* text-align: left; */
     width: 100%;
     font-size: .75em;
     line-height: 2em;
@@ -127,7 +125,6 @@
 /* WINDOW */
 .window {
     background: white;
-    /* border: 5px solid #4286f4; */
     border-radius: .25em;
 }
 
@@ -284,7 +281,6 @@ padding-top: .2em;
     position: fixed;
     left: .3em;
     bottom: 3em;
-    /* background-color: black; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

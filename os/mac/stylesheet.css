@@ -168,8 +168,6 @@ li.showMac { display: list-item !important; }
     position: absolute;
     top: 0;
     left: 0;
-    /* background-color: teal; */
-    /* text-align: left; */
     width: 100%;
     font-size: .75em;
     line-height: 2em;
@@ -178,7 +176,6 @@ li.showMac { display: list-item !important; }
 /* WINDOW */
 .window {
     background: white;
-    /* border: 5px solid #4286f4; */
     border-radius: .6em;
 }
 
@@ -189,9 +186,7 @@ li.showMac { display: list-item !important; }
     border-bottom-right-radius: .6em;
 }
 
-.window .windowFrame {  
-    /* background-color: black;
-    color: white; */
+.window .windowFrame {
     height: 1.5em;
     border-top-left-radius: .6em;
     border-top-right-radius: .6em;
@@ -219,7 +214,6 @@ li.showMac { display: list-item !important; }
     right: initial;
     padding: 0.35em 0.25em 0.25em 0.5em;
     display: flex;
-    /* flex-direction: row-reverse; */
 }
 
 .window .windowFrame .windowActions i {
@@ -246,7 +240,6 @@ li.showMac { display: list-item !important; }
 }
 
 .window .windowFrame .windowActions:hover i::before {
-    /* content: "\e5cd"; */
     font-family: 'Material Icons';
     color: rgba(0,0,0,.5);
     position: absolute;
@@ -289,28 +282,13 @@ li.showMac { display: list-item !important; }
 
 /* SPACER */
 .systemBar .spacer {
-    /* margin: 0 .5em;
-    border: none;
-    padding: 0 .03em;
-    background-color: rgba(125,125,125,.5); */
-    /* get color from systemColors, greyscale, invert */
-    /* would be smart but only makes on elements without content */
-    /* background-color: inherit;
-    filter: grayscale(1) invert(1);
-    opacity: 0.25; */
 }
 /* BUTTONS */
 .systemBar button {
-    /* border: greenyellow solid thin; */
-    /* border: solid .06em rgba(125,125,125,1);
-    border-radius: .25em; */
     font-size: inherit;
     height: 2em;
     width: 2em;
     padding: 0;
-}
-.systemBar button:hover {
-    /* background-color: rgba(125,125,125,0.2) !important; */
 }
 .systemBar .buttonGroup button {
     border-radius: 0;
@@ -449,7 +427,6 @@ li.showMac { display: list-item !important; }
     vertical-align: middle;
     font-size: 2.5em;
     margin: 0 .5em 0 .25em;
-    /* transform: translateY(.75em); */
 }
 
 /* STARTMENU */

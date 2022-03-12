@@ -170,21 +170,15 @@
 /* WINDOW */
 .window {
     background: white;
-    /* border: 5px solid #4286f4; */
-    /* border-radius: .25em; */
 }
 
 .window .content {
     height: calc(100% - 1.5em);
     top: 1.5em;
-    /* border-bottom-left-radius: .25em;
-    border-bottom-right-radius: .25em; */
 }
 
 .window .windowFrame {  
     height: 1.5em;
-    /* border-top-left-radius: .25em;
-    border-top-right-radius: .25em; */
 }
 
 .window .windowFrame .windowTitle span:before {
@@ -240,7 +234,6 @@
     box-sizing: border-box;
     display: inline-block;
     height: inherit;
-    /* padding: .25em; */
 }
 
 .cortana {
@@ -280,18 +273,9 @@
     margin: 0 .5em;
     border: none;
     padding: 0 .03em;
-    /* background-color: rgba(125,125,125,.5); */
-    /* get color from systemColors, greyscale, invert */
-    /* would be smart but only makes on elements without content */
-    /* background-color: inherit;
-    filter: grayscale(1) invert(1);
-    opacity: 0.25; */
 }
 /* BUTTONS */
 .systemBar button {
-    /* border: greenyellow solid thin; */
-    /* border: solid .06em rgba(125,125,125,1);
-    border-radius: .25em; */
     font-size: inherit;
     height: 100%;
     width: 3em;
@@ -316,9 +300,6 @@
     padding: 0 0 0 .25em;
 }
 .systemBar .taskbar button {
-    /* border-radius: 0;
-    border: none;
-    border-left: solid .06em rgba(125,125,125,1); */
     height: 100%;
     width: initial;
     padding: 0 .75em;
@@ -332,9 +313,6 @@
     border-bottom: .3em rgba(125,125,255,0.85) solid;
 }
 
-/* .systemBar .taskbar button:last-of-type {
-    border-right: solid .06em rgba(125,125,125,1);
-} */
 .systemBar .taskbar button i {
     margin-right: .25em;
 }
@@ -344,7 +322,6 @@
 
 /* SYSTEM ICONS */
 .systemIcons {
-    /* border-left: .06em solid rgba(125,125,125,0.6); */
     padding: .25em .75em !important;
 }
 .systemIcons > div {
