@@ -25,6 +25,14 @@
                 "First entry of this list is also acting as the home page."],
     "urls": [
         {
+            "spoofUrl": "telefabi.ch",
+            "realUrl": "sites/telefabi",
+            "favoritesName": "telefabi.ch",
+            "metaName": false,
+            "materialIcon": "code",
+            "showInFavorites": true,
+            "onclick": false
+        },{
             "spoofUrl": "qsearch.ch",
             "realUrl": "sites/qsearch/index.html",
             "favoritesName": "qsearch.ch",
@@ -41,20 +49,12 @@
             "showInFavorites": true,
             "onclick": false
         },{
-            "spoofUrl": "telefabi.ch",
-            "realUrl": "sites/telefabi",
-            "favoritesName": "telefabi.ch",
-            "metaName": false,
-            "materialIcon": "code",
-            "showInFavorites": true,
-            "onclick": false
-        },{
             "spoofUrl": "metis.ch",
             "realUrl": "sites/metis",
             "favoritesName": "metis.ch",
             "metaName": false,
             "materialIcon": "science",
-            "showInFavorites": false,
+            "showInFavorites": true,
             "onclick": false
         },{
             "spoofUrl": "sapienz.ch",
@@ -65,67 +65,11 @@
             "showInFavorites": false,
             "onclick": false
         },{
-            "spoofUrl": "sapienz.ch/fischer",
-            "realUrl": "sites/sapienz/intranet-fischer.html",
-            "favoritesName": "sapienz.ch f.",
-            "metaName": "sapienz INTRANET FISCHER",
-            "materialIcon": "biotech",
-            "showInFavorites": true,
-            "onclick": false
-        },{
-            "spoofUrl": "sapienz.ch/kemp",
-            "realUrl": "sites/sapienz/intranet-kemp.html",
-            "favoritesName": "sapienz.ch k.",
-            "metaName": "sapienz INTRANET KEMPP",
-            "materialIcon": "biotech",
-            "showInFavorites": false,
-            "onclick": false
-        },{
             "spoofUrl": "sites/runnershigh",
             "realUrl": "sites/runnershigh",
             "favoritesName": "runnershigh.ch",
             "metaName": false,
             "materialIcon": "directions_run",
-            "showInFavorites": true,
-            "onclick": false
-        },{
-            "spoofUrl": "honestjane.com",
-            "realUrl": "https://petiteboule.wixsite.com/honestjane",
-            "favoritesName": "honestjane.com",
-            "metaName": false,
-            "materialIcon": "face",
-            "showInFavorites": false,
-            "onclick": "document.getElementsByTagName('iframe')[0].style.top='-50px'"
-        },{
-            "spoofUrl": "mygps.com/1",
-            "realUrl": "sites/myGps1",
-            "favoritesName": "myGps1",
-            "metaName": false,
-            "materialIcon": "map",
-            "showInFavorites": true,
-            "onclick": false
-        },{
-            "spoofUrl": "mygps.com/2",
-            "realUrl": "sites/myGps2",
-            "favoritesName": "myGps2",
-            "metaName": false,
-            "materialIcon": "map",
-            "showInFavorites": true,
-            "onclick": false
-        },{
-            "spoofUrl": "mygps.com/3",
-            "realUrl": "sites/myGps3",
-            "favoritesName": "myGps3",
-            "metaName": false,
-            "materialIcon": "map",
-            "showInFavorites": true,
-            "onclick": false
-        },{
-            "spoofUrl": "cityflesh.com",
-            "realUrl": "sites/cityflesh",
-            "favoritesName": "the naughties",
-            "metaName": false,
-            "materialIcon": "adjust",
             "showInFavorites": true,
             "onclick": false
         },{
@@ -139,7 +83,7 @@
         },{
             "spoofUrl": "",
             "realUrl": "./",
-            "favoritesName": "theeatguide.com",
+            "favoritesName": "theEatGuide.com",
             "metaName": false,
             "materialIcon": "restaurant",
             "showInFavorites": true,
@@ -174,6 +118,14 @@
             "favoritesName": "Research",
             "metaName": false,
             "materialIcon": "folder_open",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "cityflesh.com",
+            "realUrl": "./",
+            "favoritesName": "the naughties",
+            "metaName": false,
+            "materialIcon": "adjust",
             "showInFavorites": true,
             "onclick": false
         }

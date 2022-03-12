@@ -5,24 +5,27 @@
         "desktopColor": "#000000",
         "desktopImg": "os/mac/desktop.jpg",
         "os": "mac",
-        "darkMode": true,
-        "username": "Generic User",
+        "darkMode": false,
+        "username": "Mr. Business",
         "password": "1234",
         "workstation": "business",
-        "selectedSystemMessage": 0,
+        "selectedSystemMessage": 1,
         "osNotificationsDelay": 0
     },
     "systemIconsComment": "Only display shown icons (and the defined time)",
     "systemIcons": [
-        "expand_less",
-        "account_circle",
         "wifi",
         "usb",
-        "volume_up",
+        "bluetooth",
+        "gpp_maybe",
+        "warning",
+        "mail",
+        "cloud",
+        "volume_mute",
         {
             "clock": [
-                "15",
-                "06"
+                "11",
+                "11"
             ]
         }
     ],
@@ -31,68 +34,222 @@
         {
             "windowName": "File manager",
             "icon": "folder",
-            "contentPath": "filemanager/index.html?folderContent=Pictures",
-            "x": 11,
-            "y": 11,
-            "w": 600,
-            "h": 350,
-            "zIndex": 21,
+            "contentPath": "filemanager/index.html?folderContent=Downloads",
+            "x": 48,
+            "y": 5,
+            "w": 650,
+            "h": 594,
+            "zIndex": 20,
             "minimized": false,
             "renderToDom": true
         },
         {
-            "windowName": "Terminal",
-            "icon": "code",
-            "contentPath": "terminal/index.html?byRows=false&startChar=0&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
-            "x": 19,
-            "y": 15,
-            "w": 666,
-            "h": 450,
-            "zIndex": 20,
-            "minimized": true,
-            "renderToDom": true
-        },
-        {
-            "windowName": "Text editor",
+            "windowName": "Text editor - Untitled*",
             "icon": "edit_note",
-            "contentPath": "texteditor/index.html",
-            "x": 4,
-            "y": 22,
-            "w": 666,
-            "h": 450,
-            "zIndex": 20,
+            "contentPath": "texteditor/index.html?text=random",
+            "x": 14,
+            "y": 12,
+            "w": 649,
+            "h": 474,
+            "zIndex": 24,
             "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager/index.html?folderContent=Documents",
+            "x": 56,
+            "y": 4,
+            "w": 598,
+            "h": 444,
+            "zIndex": 11,
+            "minimized": true,
             "renderToDom": false
         }
     ],
     "shortcutsComment": "define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so'] ",
     "shortcuts": [
         {
-            "name": "DVD",
-            "icon": "dvd.png",
-            "x": 93,
-            "y": 67,
-            "action": ""
-        },
-        {
-            "name": "Pictures",
-            "icon": "",
-            "x": 27,
-            "y": 10,
-            "action": "addWindow('File manager dblClick', 'folder', 'filemanager/index.html?folderContent=Pictures', 5,5, 600,350, false)"
-        },
-        {
-            "name": "my text is awesome.py",
-            "icon": "",
-            "x": 17,
-            "y": 20,
-            "action": ""
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 94,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
         },
         {
             "name": "Trash",
             "icon": "trashFull.png",
-            "x": 93,
-            "y": 80,
+            "x": 94,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "var.docx",
+            "icon": "doc.png",
+            "x": 2,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "var Copy.doc",
+            "icon": "doc.png",
+            "x": 1,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Links",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "var.doc",
+            "icon": "doc.png",
+            "x": 9,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "A-43-c.jpeg",
+            "icon": "fileImage.png",
+            "x": 8,
+            "y": 30,
+            "action": "startDefaultProgram('imageViewer');"
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Photos.psd",
+            "icon": "fileImage.png",
+            "x": 8,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "VAR 886cd",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "VAR 4472b",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "file d2dd8",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "var.jpg",
+            "icon": "fileImage.png",
+            "x": 16,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 94,
+            "y": 69,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Favorites Copy",
+            "icon": "folderFull.png",
+            "x": 14,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "var 22fd2",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Important.mp4",
+            "icon": "fileMovie.png",
+            "x": 14,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 23,
+            "y": 16,
+            "action": ""
+        },
+        {
+            "name": "Photos 2",
+            "icon": "fileImage.png",
+            "x": 23,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 29,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 45,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "A-433.pdf",
+            "icon": "pdf.png",
+            "x": 2,
+            "y": 4,
             "action": ""
         }
     ],

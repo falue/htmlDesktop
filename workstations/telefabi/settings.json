@@ -61,7 +61,7 @@
         },{
             "windowName": "Image viewer",
             "icon": "image",
-            "contentPath": "imageViewer/index.html?files=1.jpg|2.jpg|1.mp4|2.mp4|3.jpg|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg|",
+            "contentPath": "imageViewer/index.html?files=1.jpg|2.jpg|1.mp4|2.mp4|3.jpg|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg",
             "x": 66,
             "y": 65,
             "w": 520,
