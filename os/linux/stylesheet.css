@@ -181,7 +181,6 @@
     margin: 0 .5em;
     border: none;
     padding: 0 .03em;
-    background-color: rgba(125,125,125,.5);
     /* get color from systemColors, greyscale, invert */
     /* would be smart but only makes on elements without content */
     /* background-color: inherit;
