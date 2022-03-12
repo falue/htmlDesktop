@@ -2,7 +2,6 @@ let bgImgCounter = 0;
 let bgImgBasePath = "os/_generic/desktops/";
 
 async function cycleBackgroundImage() {
-    let bgPath;
     // Show generic Desktop of OS
     if(bgImgCounter === 0 && bgImgBasePath == "os/_generic/desktops/") {
         cl("set generic desktop of OS.");
@@ -12,42 +11,49 @@ async function cycleBackgroundImage() {
     } else if(bgImgCounter === 0) {
         bgImgCounter = 1;
     }
-    fetch(bgImgBasePath+bgImgCounter+".jpg", { method: 'HEAD' })
-    .then(res => {
-        if (res.ok) {
-            // Image is found
-            bgPath = bgImgBasePath+bgImgCounter+".jpg"
-            cl('Image exists. :'+bgPath);
-            setDesktopImg(bgPath);
-            bgImgCounter++;  // For further manual clicking
-        } else {
-            // Image is not found. reset counter, swap bgImgBasePath around and click again.
-            cl('Image does not exist. :'+bgImgBasePath+bgImgCounter+".jpg");
-            bgImgCounter = 0;  // TODO: only set to 0 if cycle repeats complete
-            bgImgBasePath = bgImgBasePath === "os/_generic/desktops/" ? "workstations/"+workstation+"/desktops/" : "os/_generic/desktops/";
-            cycleBackgroundImage();
-        }
-    }).catch(err => console.log('Error:', err));
+
+    // Check if file exists, if not, return false from fileExists()
+    let whichFile = await fileExists(bgImgBasePath+bgImgCounter+".jpg", false);
+    if(whichFile) {
+        setDesktopImg(whichFile);
+        bgImgCounter++;  // For further manual clicking
+    } else {
+        bgImgCounter = 0;  // TODO: only set to 0 if cycle repeats complete
+        bgImgBasePath = bgImgBasePath === "os/_generic/desktops/" ? "workstations/"+workstation+"/desktops/" : "os/_generic/desktops/";
+        cycleBackgroundImage();
+    }
 }
 
 // NOT async but maybe super for other things?
 // fileExists("foo.gif", function(){ cl("good"); }, function(){ cl("bad"); } );
-function fileExists(imageSrc, good, bad) {
+/* function fileExists(imageSrc, good, bad) {
     let img = new Image();
     img.src = imageSrc;
     img.onload = good; 
     img.onerror = bad;
+} */
+
+async function fileExists(imageSrc, fallback) {
+    return fetch(imageSrc, { method: 'HEAD' })
+    .then(res => {
+        if (res.ok) {
+            return imageSrc;  // Image is found
+        } else {
+            return fallback;  // Image is not found
+        }
+    }).catch(err => console.log('Error:', err));
 }
 
 function setDesktopImg(path) {
     gebi("desktop").style.backgroundImage = "url("+path+")";
 }
 
-function showLockScreen() {
+async function showLockScreen() {
+    let userImage = await fileExists('workstations/'+workstation+'/userpicture.jpg', 'os/_generic/userpicture.jpg');
+    gebi('lockScreenUserPicture').src = userImage;
+    gebi('lockScreenUserName').innerHTML = username;
     show('lockScreen');
     gebi('lockScreenText').focus();
-    gebi('lockScreenUserName').innerHTML = username;
-    gebi('lockScreenUserPicture').src = 'workstations/'+workstation+'/userpicture.jpg';
 }
 
 async function hotSwapOs(nextOs) {
