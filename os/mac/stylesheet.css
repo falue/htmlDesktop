@@ -92,18 +92,23 @@ li.showMac { display: list-item !important; }
 }
 
 /* Arrow */
-/* .tooltip::after {
-    border-left: .5rem solid transparent;
-    border-right: .5rem solid transparent;
-    border-top: .5rem solid rgb(33, 33, 33);
+.macDock .tooltipDock::after {
+    border: solid rgba(255,255,255,0.15) .1em;
+    background-color: rgb(33, 33, 33);
     content: ' ';
     display: none;
     position: absolute;
     z-index: 1111;
+    width: .9em;
+    height: .9em;
     top: 0;
     left: 50%;
-    transform: translate(-50%, calc(-100% - .6rem));
-} */
+    transform: translate(-50%, calc(-100% - .7rem)) rotate(45deg);
+    overflow: hidden;
+    border-bottom-right-radius: .25rem;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
 
 
 /* SHENANIGANS */
