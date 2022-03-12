@@ -221,16 +221,23 @@ header.windowmenu .programButtons:hover {
     background: linear-gradient(345deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 }
 
+
+/* ACTION MENU */
+#actionMenu:not(.hide) {
+    display: flex !important;
+    justify-content: center;
+    z-index: 111;
+}
+
 .actionMenu {
+    top: 3em;
     color: white;
     position: fixed;
-    left: 3.2em;
-    /* bottom: 3em; */ /* Y-Positions in os/.../stylesheet.css */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    opacity: .25;
     transition: opacity 250ms;
+    opacity: .35;
 }
 
 .actionMenu:hover {

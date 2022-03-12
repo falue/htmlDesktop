@@ -255,11 +255,6 @@ li.showMac { display: list-item !important; }
     content: "\e5cd";
 }
 
-/* ACTION MENU */
-.actionMenu {
-    top: 3em;
-}
-
 /* SYSTEMBAR */
 .systemBar {
     position: fixed;

@@ -213,11 +213,6 @@
     font-size: .8em;
 }
 
-/* ACTION MENU */
-.actionMenu {
-    bottom: 3em;
-}
-
 /* SYSTEMBAR */
 .systemBar {
     position: fixed;
