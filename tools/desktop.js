@@ -88,6 +88,7 @@ async function login(password) {
         /* hide('wrongPassword'); */
         hide('loginbuttonText');
         show('loginLoader');
+        gebi('lockScreenPassword').classList.remove('redBorder');
         /* await delay(3500); */
         await counter("loginLoaderBar", "%", 3000, 92, 0, 100);
         /* cl("start animation"); */
@@ -103,7 +104,6 @@ async function login(password) {
         gebi('lockScreenPassword').value='';
         show('loginbuttonText');
         gebi('lockScreen').classList.remove('loginAnimation');
-        gebi('lockScreenPassword').classList.remove('redBorder');
     } else {
         /* toggle('wrongPassword'); */
         gebi('lockScreenPassword').value='';
