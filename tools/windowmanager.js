@@ -132,14 +132,16 @@ dropHandler = function(ev) {
   dragSource.style.left = getPositionInPercentage("left", testx)+ "%";
   dragSource.style.top = getPositionInPercentage("top", testy)+ "%";
 
-  let droppedWindow = dragSource.getElementsByClassName('windowManagerOverlay')[0];
-  if(droppedWindow) bringToFront(droppedId);
+  let droppedSourceIsWindow = dragSource.getElementsByClassName('windowManagerOverlay')[0];
+  if(droppedSourceIsWindow) {
+    bringToFront(droppedId);
+  } else {
+    // If shortcut, hide front most protective overlay again
+    hideFrontMostWindowOverlay();
+  }
 
   currentDragId = "";
   dragSource.style.opacity = '1';
-
-  // Hide front most protective overlay again
-  hideFrontMostWindowOverlay();
 };
 
 dragoverHandler = function(ev) {
