@@ -419,7 +419,10 @@ function maximizeWindow(id) {
   bringToFront(id);
 
   let resetMaxButton = gebi("maximizeWindow-"+id);
+  // Set click into window action button to reset window position
   resetMaxButton.setAttribute("onclick", "resetWindowSize('"+id+"', '"+lastX+"', '"+lastY+"', '"+lastW+"', '"+lastH+"')");
+  // Set click into window top bar to reset window position
+  windowContainer.getElementsByClassName("windowFrame")[0].setAttribute("ondblclick", "resetWindowSize('"+id+"', '"+lastX+"', '"+lastY+"', '"+lastW+"', '"+lastH+"')");
 }
 
 function closeWindow(id) {
@@ -468,7 +471,10 @@ function resetWindowSize(id, x,y, w,h) {
 
   // reset reset:
   let resetMaxButton = gebi("maximizeWindow-"+id);
+  // Reset click into window action button to maximize window position
   resetMaxButton.setAttribute("onclick", "maximizeWindow('"+id+"')");
+  // Reset click into window top bar to maximize window position
+  windowContainer.getElementsByClassName("windowFrame")[0].setAttribute("ondblclick", "maximizeWindow('"+id+"')");
 }
 
 /* SHORTCUTS */
