@@ -50,7 +50,7 @@
         },{
             "windowName": "Text editor - An note from the creator.txt",
             "icon": "edit_note",
-            "contentPath": "texteditor/index.html?text=This is a tool for digital props, used for movies and television.%0A%0AIf you want to use this in production, please get in touch:%0A%0Ainfo@fluescher.ch%0A%0AThanks!",
+            "contentPath": "texteditor/index.html?text=This is a tool for digital props, used for movies and television.%0A%0AWhat you see here is just the boilerplate for everything special that needs to be done to tell a story.%0ACustomizing needs to be done in the back end before this is ready for production.%0A%0AIf you want to use this in production, please get in touch:%0A%0Ainfo@fluescher.ch%0A%0AThanks!",
             "x": 3,
             "y": 23,
             "w": 386,
@@ -61,7 +61,7 @@
         },{
             "windowName": "Image viewer",
             "icon": "image",
-            "contentPath": "imageViewer/index.html?files=1.jpg|2.jpg|1.mp4|2.mp4|3.jpg|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg",
+            "contentPath": "imageviewer/index.html?files=1.jpg|2.jpg|1.mp4|2.mp4|3.jpg|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg",
             "x": 66,
             "y": 65,
             "w": 520,
