@@ -19,6 +19,7 @@ function show(id) {
 }
 
 function toggle(id) {
+  // TODO: IGNORES CLASS HIDE
   let element = gebi(id);
   let display = window.getComputedStyle(element, null).display;
   if(display == "" || display == "none") {
