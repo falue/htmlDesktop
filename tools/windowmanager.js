@@ -137,6 +137,9 @@ dropHandler = function(ev) {
 
   currentDragId = "";
   dragSource.style.opacity = '1';
+
+  // Hide front most protective overlay again
+  hideFrontMostWindowOverlay();
 };
 
 dragoverHandler = function(ev) {
