@@ -175,8 +175,8 @@ li.showMac { display: list-item !important; }
 
 /* WINDOW */
 .window {
-    background: white;
     border-radius: .6em;
+    border: rgba(127,127,127,.25) solid .06em;
 }
 
 .window .content {
