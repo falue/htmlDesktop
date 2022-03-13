@@ -462,8 +462,6 @@ async function hideFrontMostWindowOverlay() {
     // Thats why ther's a await here. Works on window "close" without though
     await delay(50);
     hide(windows.frontMostWindow.getElementsByClassName('windowManagerOverlay')[0].id);
-  } else {
-    cl("windows.maxZIndex is " + windows.maxZIndex);
   }
 }
 
@@ -492,10 +490,12 @@ function editShortcut(id) {
 
   let fileName = currentShortcut.getElementsByClassName("filename")[0].innerHTML.replace(/&amp;/g, "&");
 
-  // Reset icon chooser if no filename
+  // Reset icon chooser if new shortcut is being made
   if(!fileName) {
     let resetIconRadio = gebi('editShortcut').querySelector('input[name="editShortcutIcon"]:checked');
-    if(resetIconRadio) resetIconRadio.checked = false;
+    if(resetIconRadio) {
+      resetIconRadio.checked = false;
+    }
   }
 
   // Set forms
@@ -505,11 +505,10 @@ function editShortcut(id) {
     let labelImg = label.getElementsByTagName('img')[0];
     let radioButton = label.getElementsByTagName('input')[0];
     if(currentShortcut.getElementsByTagName("img")[0].src.endsWith(radioButton.value) && fileName) {
-      radioButton.setAttribute("checked", "true");
+      radioButton.checked = true;
     }
     let currentPath = labelImg.src;
     labelImg.src = currentPath.replace("os/windows", "os/"+os);
-    /* radioButton.setAttribute("value", labelImg.src); */
   }
 
   gebi('editShortcutName').value = fileName;
