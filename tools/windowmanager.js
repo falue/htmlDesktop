@@ -191,7 +191,7 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   windowContainer.style.height = h + "px";
   if(zIndex) {
     windowContainer.style.zIndex = zIndex;
-    recentZIndex = zIndex;
+    recentZIndex = zIndex > recentZIndex ? zIndex : recentZIndex;
   } else {
     windowContainer.style.zIndex = recentZIndex;
   }
