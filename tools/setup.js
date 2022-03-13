@@ -111,6 +111,9 @@ async function setup() {
   // Loop over windows
   setupWindows(windows);
   // cl("SETUP: windows success, "+windows.length+" windows placed.");
+
+  // Hide overlay on frontMostWindow
+  hideFrontMostWindowOverlay();
   
   // Loop over windows
   setupSystemIcons(systemIcons);

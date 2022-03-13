@@ -314,25 +314,74 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   setSystemColors(systemColor);
 }
 
+function getFrontMostWindow(includingMinimized) {
+  let windows;
+  let maxZIndex = 0;
+  let currentZIndex = 0;
+  let frontMostWindow;
+
+  if(includingMinimized) {
+    windows = document.querySelectorAll('.window');
+  } else {
+    // Class .minimizeWindow because animation is ongoing during minimization
+    windows = document.querySelectorAll('.window:not(.hide):not(.minimizeWindow)');
+  }
+
+  windows.forEach(e => {
+    currentZIndex = parseInt(e.style.zIndex);
+    if(currentZIndex > maxZIndex) {
+      maxZIndex = currentZIndex;
+      frontMostWindow = e;
+    }
+  })
+  return {"frontMostWindow": frontMostWindow, "maxZIndex": maxZIndex};
+}
+
 function bringToFront(id) {
   let currentWindow = gebi(id);
-  if(currentWindow) {
-    recentZIndex++;
-    /* console.log(recentZIndex); */
-    currentWindow.style.zIndex = recentZIndex;
-    // display all windowManagerOverlay
-    showClass('windowManagerOverlay');
-    
-    // hide current windowManagerOverlay
-    hide(currentWindow.getElementsByClassName('windowManagerOverlay')[0].id);
+
+  // Get all windows including ones that are hidden
+  let windows = getFrontMostWindow(true);
+
+  // If window frontMostWindow, do nothing except set recentZIndex to current window.zindex
+  if(windows.frontMostWindow.id === id) {
+    /* cl("this window is the front most - do nothing"); */
+    recentZIndex = windows.maxZIndex;
+  } else {
+    // Current window is not frontmost
+    if(currentWindow) {
+      // If window ZIndex is bigger than saved one, set to bigger ZIndex
+      if(parseInt(currentWindow.style.zIndex) < windows.maxZIndex) {
+        recentZIndex = windows.maxZIndex;
+      }
+      recentZIndex++;
+      currentWindow.style.zIndex = recentZIndex;
+      
+      // display all windowManagerOverlay
+      showClass('windowManagerOverlay');
+    }
   }
+  /* cl("bringToFront>>zIndex new: " + recentZIndex); */
+  // hide current windowManagerOverlay in any case
+  hide(currentWindow.getElementsByClassName('windowManagerOverlay')[0].id);
 }
 
 function getWindowFromTaskbar(id) {
-  let hide = toggle(id);
-  gebi(id).setAttribute("data-setup-hide", !hide);
-  bringToFront(id);
-  gebi(id).style.opacity = 1;  // To cover up the drag/drop bug
+  let currentWindow = gebi(id);
+  let hidden = currentWindow.classList.contains('hide');  
+
+  if(hidden) {
+    /* cl("was hidden - display now!"); */
+    showClass('windowManagerOverlay');
+    currentWindow.setAttribute("data-setup-hide", false);
+    show(id);
+    bringToFront(id);
+    currentWindow.style.opacity = 1;  // To cover up the drag/drop bug
+  } else {
+    /* cl("was displayed - hide now!"); */
+    currentWindow.setAttribute("data-setup-hide", true);
+    minimizeWindow(id);
+  }
 }
 
 async function minimizeWindow(id) {
@@ -341,7 +390,7 @@ async function minimizeWindow(id) {
   currentWindow.setAttribute("data-setup-minimized", true);
   currentWindow.classList.add("minimizeWindow");
   hideFrontMostWindowOverlay(); 
-  await delay(1000);
+  await delay(1000);  // Await CSS animation
   hide(id);
   currentWindow.classList.remove("minimizeWindow");
 }
@@ -378,7 +427,7 @@ function closeWindow(id) {
   el.remove();
   // Remove from taskbar or Dock
   gebi("minimized-"+id).remove();
-  hideFrontMostWindowOverlay(); 
+  hideFrontMostWindowOverlay();
 }
 
 function closeAllWindows() {
@@ -398,25 +447,15 @@ function removeAllShortcuts() {
 
 async function hideFrontMostWindowOverlay() {
   // Hide the front most window's windowManagerOverlay
-  // .minimizeWindow because animation is ongoing during minimization
-  let overlays = document.querySelectorAll('.window:not(.hide):not(.minimizeWindow)');
-  let maxZIndex = 0;
-  let currentZIndex = 0;
-  let overlayToHide;
+  let windows = getFrontMostWindow(false);
 
-  overlays.forEach(e => {
-      currentZIndex = e.style.zIndex;
-      if(currentZIndex > maxZIndex) {
-        maxZIndex = currentZIndex;
-        overlayToHide = e;
-      }
-    })
-
-  if(maxZIndex) {
+  if(windows.maxZIndex) {
     // Somehow, the class windowManagerOverlay is being forced right now.
     // Thats why ther's a await here. Works on window "close" without though
     await delay(50);
-    hide(overlayToHide.getElementsByClassName('windowManagerOverlay')[0].id);
+    hide(windows.frontMostWindow.getElementsByClassName('windowManagerOverlay')[0].id);
+  } else {
+    cl("windows.maxZIndex is " + windows.maxZIndex);
   }
 }
 
