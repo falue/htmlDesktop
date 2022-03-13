@@ -44,7 +44,6 @@ function compileSaveFile(saveFileName, download) {
   let systemIcons = saveAllSystemIcons();
 
   let data = {};
-  data["settingsComment"] = "General settings of this workstation. OS and workstation-name MAY be defined in generalSettings.txt! 'selectedSystemMessage' index (starts with 0)";
   data["settings"] = {
     systemColor: systemColor,
     desktopColor: gebi("BGColor").value,
@@ -62,13 +61,9 @@ function compileSaveFile(saveFileName, download) {
     selectedSystemMessage: parseInt(gebi('osNotificationsSelect').value),
     osNotificationsDelay: parseInt(gebi('osNotificationsDurationSlider').value)
   };
-  data["systemIconsComment"] = "Only display shown icons (and the defined time)";
   data["systemIcons"] = systemIcons;
-  data["windowsComment"] = "Live, displayed or hidden windows. accessible programs like terminal, browser or filemanager with a specific folder open";
   data["windows"] = dataWindows;
-  data["shortcutsComment"] = "define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so'] ";
   data["shortcuts"] = dataShortcuts;
-  data["osNotificationsComment"] = "titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.";
   data["osNotifications"] = osNotifications;
 
   if(download) {

@@ -1,5 +1,4 @@
 {
-    "settingsComment": "General settings of this workstation. OS and workstation-name MAY be defined in generalSettings.txt! 'selectedSystemMessage' index (starts with 0)",
     "settings": {
         "systemColor": "#FCFCFC",
         "desktopColor": "#000000",
@@ -12,7 +11,6 @@
         "selectedSystemMessage": 1,
         "osNotificationsDelay": 0
     },
-    "systemIconsComment": "Only display shown icons (and the defined time)",
     "systemIcons": [
         "wifi",
         "usb",
@@ -29,7 +27,6 @@
             ]
         }
     ],
-    "windowsComment": "Live, displayed or hidden windows. accessible programs like terminal, browser or filemanager with a specific folder open",
     "windows": [
         {
             "windowName": "File manager",
@@ -68,7 +65,6 @@
             "renderToDom": false
         }
     ],
-    "shortcutsComment": "define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so'] ",
     "shortcuts": [
         {
             "name": "HDD",
@@ -253,7 +249,6 @@
             "action": ""
         }
     ],
-    "osNotificationsComment": "titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.",
     "osNotifications": [
         [
             "You've got mail (2)",
