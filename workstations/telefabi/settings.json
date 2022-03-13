@@ -69,7 +69,7 @@
         },{
             "windowName": "Text editor - Untitled*",
             "icon": "edit_note",
-            "contentPath": "texteditor/index.html?text=Check out the options and other workstations by clicking on the flash in the taskbar.%0A%0ASome things are just for show, some things work.%0A%0AFind them.",
+            "contentPath": "texteditor/index.html?text=Check out the options and other workstations by clicking on the flash in the taskbar.%0A%0ASome things are just for show, some things work.%0A%0AFind them.%0A%0AFor more details, visit https://github.com/falue/htmlDesktop",
             "x": 81,
             "y": 27,
             "w": 250,
