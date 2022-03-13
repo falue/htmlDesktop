@@ -312,6 +312,7 @@ header.windowmenu .programButtons:hover {
     color: white;
     min-width: 8em;
     max-width: 20em;
+    margin-top: 1.5em;
 }
 
 .autoNote div {
