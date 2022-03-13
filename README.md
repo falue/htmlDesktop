@@ -19,7 +19,9 @@ See [here](workstations/README.md) for everything about setting up new workstati
 ## States
 Local saving and loading is possible by using the browsers localSorage. Based off the workstations, you can further adjust and set up different variations of any workstation. You load up a workstation, adjust to the scenes needs, save it. 
 
-When filming, the actress or actor can fool around. After the take, you reload the last state to start anew. 
+When filming, the actress or actor can fool around. After the take, you reload the last state to start anew.
+
+These scenes are by design local to the machine that you're using, so changes saved like this are not shared across different computers. They can be exportet, shared and imported though.
 
 ## Display locally & offline
 To display this locally and without an internet connection, there is a [container app](https://github.com/aronsommer/electron-webview) in development for Windows, Mac and Linux (including raspberry pi's).
