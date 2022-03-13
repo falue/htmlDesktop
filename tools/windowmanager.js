@@ -366,9 +366,10 @@ function bringToFront(id) {
       showClass('windowManagerOverlay');
     }
   }
-  /* cl("bringToFront>>zIndex new: " + recentZIndex); */
-  // hide current windowManagerOverlay in any case
-  hide(currentWindow.getElementsByClassName('windowManagerOverlay')[0].id);
+  // Hide current windowManagerOverlay in any case except is was closed
+  if(currentWindow) {
+    hide(currentWindow.getElementsByClassName('windowManagerOverlay')[0].id);
+  }
 }
 
 function getWindowFromTaskbar(id) {
