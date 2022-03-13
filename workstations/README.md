@@ -66,6 +66,18 @@ define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250
 Arrays of strings for different parts of the osNotification.
  titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.
 
+```
+[
+    "You've got mail (2)",
+    "The following messages have just arrived: (..)",
+    "email",
+    true,
+    0,
+    "startDefaultProgram('textEditor')"
+]
+```
+
+
 - `"You've got mail (2)"` *Notification title*
 - `"The following messages have just arrived: (..)"` *Notification text*
 - `"email"` *material-icon name, see [here](https://fonts.google.com/icons)*
@@ -76,6 +88,7 @@ Arrays of strings for different parts of the osNotification.
 
 ## User and desktop images
 Place the **user image** named `userpicture.jpg` into `workstations/../userpicture.jpg`. It is displayed when user ist "logged out".
+If none is defined, this image falls back to `os/_generic/userpicture.jpg`.
 
 Place any **desktop images** into `workstations/../desktops/...jpg`. The filenames have to be consecutive integers, starting with `1`.
 
