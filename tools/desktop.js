@@ -72,6 +72,9 @@ async function hotSwapOs(nextOs) {
     } else {
         history.pushState({}, null, "index.html?hotSwapOs=true&loadSaveFile="+saveFileName);
     }
+
+    // Clear workstationList
+    gebi('workstationList').innerHTML = "";
     
     // I is smart
     // Reload setup. in setup, the windwos & shortcuts get removed & reloaded
