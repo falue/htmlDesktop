@@ -204,13 +204,17 @@
     
 }
 
-.window .windowFrame .windowActions {
-    padding: 0.25em;
+.window .windowFrame .windowActions i {
+    font-size: .8em;
+    padding: 0.43em 1.25em;
 }
 
-.window .windowFrame .windowActions i {
-    margin-left: 2em;
-    font-size: .8em;
+.window .windowFrame .windowActions i:hover {
+    background-color: rgba(127,127,127,.25);
+}
+
+.window .windowFrame .windowActions i:last-of-type:hover {
+    background-color: rgb(242, 69, 21);
 }
 
 /* SYSTEMBAR */
