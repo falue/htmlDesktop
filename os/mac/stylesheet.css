@@ -330,9 +330,6 @@ li.showMac { display: list-item !important; }
     margin-right: .25em;
     font-size: 1.5em;
 }
-.systemBar .taskbar::-webkit-scrollbar { 
-    display: none; 
-}
 .systemToolsBarMac {
     font-size: 1.2em;
     border-top: .15em solid transparent;

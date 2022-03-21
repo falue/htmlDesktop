@@ -91,6 +91,9 @@ a:focus { outline: none; }
 .pointer { cursor: pointer; }
 .noCursor { cursor: none; }
 
+.noScrollbar::-webkit-scrollbar { display: none; }
+.noScrollbar { scrollbar-width: none; }
+
 .hover { opacity: 0.8; }
 .hover:hover { opacity: 1; }
 .noLiHover:hover { background-color: initial !important; }

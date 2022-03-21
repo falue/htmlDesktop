@@ -62,6 +62,9 @@ a:focus {
     /*background-color: grey;*/
 }
 
+.noScrollbar::-webkit-scrollbar { display: none; }
+.noScrollbar { scrollbar-width: none; }
+
 input[type=text]:focus,
 textarea:focus {
   outline: none;

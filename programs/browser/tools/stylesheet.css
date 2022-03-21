@@ -168,9 +168,8 @@ body {
     padding-top: 5px;
 }
 
-.fake-browser-bar.favorites::-webkit-scrollbar { 
-    display: none; 
-}
+.noScrollbar::-webkit-scrollbar { display: none; }
+.noScrollbar { scrollbar-width: none; }
 
 .fake-browser-bar.favorites span {
     cursor: pointer;

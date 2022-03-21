@@ -242,9 +242,6 @@
 .systemBar .taskbar button i {
     margin-right: .25em;
 }
-.systemBar .taskbar::-webkit-scrollbar { 
-    display: none; 
-}
 .macDockContainer {
     height: 100%;
 }
