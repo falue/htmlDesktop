@@ -1,9 +1,12 @@
 # Workstations
 ## Create New workstation
-To create a new workstation, do the following:
+To automatically create a new workstation, run the script `createNewWorkstation` in the folder `workstations`.
+
+
+To setup a new workstation manually, do the following:
 
 1. Copy the folder of an existing workstation to eg. `newNameOfWorkstation`
-2. Edit tools/generalSettings.txt with a new line eg. `workstation=newNameOfWorkstation;mac`. Name of the workstat
+2. Edit tools/generalSettings.txt with a new line eg. `workstation=newNameOfWorkstation;mac`. The name of the workstat cannot contain spaces or special characters.
 3. Edit `workstations/newNameOfWorkstation/settings.json`'s keys:
 
 ```
@@ -11,10 +14,13 @@ To create a new workstation, do the following:
 ```
 See [settings below](#settings) for details.
 
-4. Startup a local server (eg. through vscode)
-5. Move things around, create windows, shortcuts, edit system icons etc
-6. Use the `Export` function, copy the contents of the file to overwrite `workstations/newNameOfWorkstation/settings.json`
-7. Edit this file manually to fit your needs; repeat steps 5-7 until you're happy.
+
+After creation of the new workstation folder (automatically or manually), you can customize it.
+
+1. Startup a local server (eg. through vscode)
+2. Move things around, create windows, shortcuts, edit system icons etc
+3. Use the `Export` function, copy the contents of the file to overwrite `workstations/newNameOfWorkstation/settings.json`
+4. Edit this file manually to fit your needs; repeat steps 5-7 until you're happy.
 
 
 ## Notes to each key

@@ -1,0 +1,58 @@
+#!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${DIR}" || { echo "cd to '${DIR}' failed!"; exit 1; }
+
+echo "Create a new workstation for htmlDesktop"
+echo ""
+# You may need to install a library!
+
+# pwd
+# ls -l
+if [[ -z $1 ]]; then
+    read -p "Name of new workstation: " "newNameOfWorkstation"
+    # echo "$newNameOfWorkstation"
+    if [[ "${newNameOfWorkstation}" =~ [^a-zA-Z0-9] ]]; then
+    echo "----------------------------------------------"
+    echo "Invalid name (no spaces or special characters)"
+    echo "----------------------------------------------"
+    echo ""
+    bash ./createNewWorkstation
+    exit
+    fi
+else
+    newWorkstation=$1
+fi
+
+read -p "OS of workstation (mac/linux/windows): " "os"
+# echo "$os"
+if [[ $os == "mac" || $os == "linux" || $os == "windows" ]]; then
+    # Copy _default folder
+    mkdir ./$newNameOfWorkstation || exit 1
+    cp -r ./_default/* ./$newNameOfWorkstation
+
+    read -p "Fake Username: " "username"
+    read -p "Fake Password: " "password"
+
+    # Add to generalSettings.txt
+    targetFile='../tools/generalSettings.txt'
+    echo "" >> $targetFile
+    echo "workstation=$newNameOfWorkstation;$os" >> $targetFile
+    
+    # Edit newNameOfWorkstation/settings.json
+    workstationSettings="./$newNameOfWorkstation/settings.json"
+    # jq '.key1 = $newVal' --arg newVal '3 " of rain' <<<"$jsonStr"
+    jq -c '.settings.os = "'${os}'"' $workstationSettings > tmp.$$.json && mv tmp.$$.json $workstationSettings
+    jq -c '.settings.username = "'"${username}"'"' $workstationSettings > tmp.$$.json && mv tmp.$$.json $workstationSettings
+    jq -c '.settings.password = "'"${password}"'"' $workstationSettings > tmp.$$.json && mv tmp.$$.json $workstationSettings
+    jq -c '.settings.workstation = "'${newNameOfWorkstation}'"' $workstationSettings > tmp.$$.json && mv tmp.$$.json $workstationSettings
+    
+    echo "Success. Enjoy:"
+    exit
+else
+    echo "---------------------------------"
+    echo "Type either mac, linux or windows"
+    echo "---------------------------------"
+    echo ""
+    bash ./createNewWorkstation $newNameOfWorkstation
+    exit
+fi
