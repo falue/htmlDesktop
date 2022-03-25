@@ -48,12 +48,31 @@ function setDesktopImg(path) {
     gebi("desktop").style.backgroundImage = "url("+path+")";
 }
 
+// AKA logout
 async function showLockScreen() {
     let userImage = await fileExists('workstations/'+workstation+'/userpicture.jpg', 'os/_generic/userpicture.jpg');
     gebi('lockScreenUserPicture').src = userImage;
     gebi('lockScreenUserName').innerHTML = username;
-    show('lockScreen');
     gebi('lockScreenText').focus();
+    show('lockScreen');
+
+    // Reset animations
+    show('loggingOut');
+    hide('lockScreenSystemColorOverlay');
+    hide('lockScreenColorOverlay');
+
+    // Start animations
+    gebi('loggingOut').classList.add("fadeInFast");
+    await delay(1200);
+    gebi('lockScreenSystemColorOverlay').classList.add("fadeInFast");
+    gebi('lockScreenColorOverlay').classList.add("fadeInFast");
+    show('lockScreenSystemColorOverlay');
+    show('lockScreenColorOverlay');
+    await delay(250);
+    hide('loggingOut');
+    gebi('loggingOut').classList.remove("fadeInFast");
+    gebi('lockScreenSystemColorOverlay').classList.remove("fadeInFast");
+    gebi('lockScreenColorOverlay').classList.remove("fadeInFast");
 }
 
 async function hotSwapOs(nextOs) {

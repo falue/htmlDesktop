@@ -47,9 +47,13 @@
     <!-- SHENANIGANS -->
     <!-- lock screen -->
     <div id="lockScreen" class="hide">
-      <div id="lockScreenSystemColorOverlay" class="fixed centerContent systemColors maxWidth maxHeight" style="z-index: 9998;">
+      <div id="loggingOut" class="fixed centerContent white blackDarkBgTransparent maxWidth maxHeight" style="z-index: 9998;">
+        Logging out.. <i class="material-icons spin valign small white relative">refresh</i>
       </div>
-      <div id="lockScreenColorOverlay" class="lockScreen fixed centerContent maxWidth maxHeight alignCenter" style="z-index: 9999;">
+
+      <div id="lockScreenSystemColorOverlay" class="hide fixed centerContent systemColors maxWidth maxHeight" style="z-index: 9998;">
+      </div>
+      <div id="lockScreenColorOverlay" class="hide lockScreen fixed centerContent maxWidth maxHeight alignCenter" style="z-index: 9999;">
         <div id="lockScreenWindow" class="systemColors whiteBgTransparent padding05 radius10">
           <img id="lockScreenUserPicture" class="shadow" src="os/_generic/userpicture.jpg" alt="">
           <div class="small italics" id="lockScreenUserName">USERNAME</div>
