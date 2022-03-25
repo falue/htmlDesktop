@@ -4,10 +4,8 @@ cd "${DIR}" || { echo "cd to '${DIR}' failed!"; exit 1; }
 
 echo "Create a new workstation for htmlDesktop"
 echo ""
-# You may need to install a library!
+# You may need to install the jq library with "brew install jq"
 
-# pwd
-# ls -l
 if [[ -z $1 ]]; then
     read -p "Name of new workstation: " "newNameOfWorkstation"
     # echo "$newNameOfWorkstation"
