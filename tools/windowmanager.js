@@ -349,7 +349,7 @@ function bringToFront(id) {
   let windows = getFrontMostWindow(true);
 
   // If window frontMostWindow, do nothing except set recentZIndex to current window.zindex
-  if(windows.frontMostWindow.id === id) {
+  if(windows?.frontMostWindow?.id === id) {
     /* cl("this window is the front most - do nothing"); */
     recentZIndex = windows.maxZIndex;
   } else {
