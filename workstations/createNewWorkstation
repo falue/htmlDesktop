@@ -22,7 +22,7 @@ else
 fi
 
 read -p "OS of workstation (mac/linux/windows): " "os"
-# echo "$os"
+
 if [[ $os == "mac" || $os == "linux" || $os == "windows" ]]; then
     # Copy _default folder
     mkdir ./$newNameOfWorkstation || exit 1
@@ -44,7 +44,7 @@ if [[ $os == "mac" || $os == "linux" || $os == "windows" ]]; then
     jq -c '.settings.password = "'"${password}"'"' $workstationSettings > tmp.$$.json && mv tmp.$$.json $workstationSettings
     jq -c '.settings.workstation = "'${newNameOfWorkstation}'"' $workstationSettings > tmp.$$.json && mv tmp.$$.json $workstationSettings
     
-    echo "Success. Enjoy:"
+    echo "Success."
     exit
 else
     echo "---------------------------------"
