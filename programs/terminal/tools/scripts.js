@@ -296,17 +296,8 @@ function getNewPosition(event, id) {
             
         case 13:
             console.log("enter");
-            /* to toggle: toggleAutoplay(!autoType); */
-            if(!autoType) {
-                // If enter is pressed, start autoplay
-                toggleAutoplay(true);
-            } else {
-                // If enter pressed again, reload entire site
-                window.location.href = window.location.href
-            }
-
-            // Adding BR does not work because whole text gets replaced again
-            // document.getElementById("terminal").innerHTML += "br";
+            // Toggle autplay on enter
+            toggleAutoplay(!autoType);
             break;
             
         case 27:
