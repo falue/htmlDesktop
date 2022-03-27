@@ -272,6 +272,8 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   // Automatically attach current os, workstation & darkMode to iframe URL
   contentPath = contentPath.split("?");
   let mainProgram = contentPath.shift();  // Remove first element *AND* return first element
+  // If index.html is not specified, add index.html by default
+  mainProgram = mainProgram.endsWith(".html") ? mainProgram : mainProgram+"/index.html";
   let parameters = contentPath.join("");  // get everything after "?" if there is
   let srcIframe = [
     "programs/",
