@@ -229,7 +229,7 @@ async function showDialog(title, text, selfClosing, input, feedbackButtons) {
         return autoDialogInput.value.length ? autoDialogInput.value === "~CANCEL" ? "" : autoDialogInput.value : "~EMPTY";
     }
 
-    if(feedbackButtons.length) {
+    if(feedbackButtons?.length) {
         show("autoDialogCloseButton");
         show("autoDialogCancelButton");
         hide("autoDialogLoading");
@@ -462,4 +462,18 @@ function printElement(title, element) {
     mywindow.print();
     mywindow.close();
     return true;
+}
+
+async function displayLicenses() {
+    let licenses = ["MaterialIcons-LICENSE.txt", "papirus-icon-theme-LICENSE.txt"];
+    let licensesText = "";
+    let licensesHeader = "The following fair-use Licenses are from third party software included in this software:<br><br>";
+    for(let i = 0; i < licenses.length; i++) {
+        let title = licenses[i].replace(".txt", "").replace("LICENSE", "").replaceAll("-", " ");
+        licensesHeader += "- <a href='#"+licenses[i]+"'>"+title+"</a><br>"
+        licensesText += "<section id='"+licenses[i]+"'><h3 class='grey'>"+title+"</h3><br>";
+        licensesText += (await parseFile("tools/licenses/"+licenses[i])).replaceAll("<", "").replaceAll(">", "").replaceAll("\n", "<br>");
+        licensesText += "</section><br><br><hr><br>";
+    }
+    showDialog("EXTERNAL LICENSES", licensesHeader + "<br><br><hr><br>" + licensesText);
 }

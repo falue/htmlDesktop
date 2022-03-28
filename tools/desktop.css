@@ -102,6 +102,11 @@ input[type=button]:not(.systemButton) {
     overflow-y:  auto;
 }
 
+#autoDialogText {
+    max-height: 24em;
+    overflow-y: auto;
+}
+
 .dialog code {
     display: block;
     border-radius: 3px;
