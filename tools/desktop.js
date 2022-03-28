@@ -465,7 +465,7 @@ function printElement(title, element) {
 }
 
 async function displayLicenses() {
-    let licenses = ["MaterialIcons-LICENSE.txt", "papirus-icon-theme-LICENSE.txt"];
+    let licenses = ["Material-icons-LICENSE-apache-2_0.txt", "papirus-icon-theme-LICENSE-gnu-3.txt", "Roboto-font-LICENSE-apache-2_0.txt"];
     let licensesText = "";
     let licensesHeader = "The following fair-use Licenses are from third party software included in this software:<br><br>";
     for(let i = 0; i < licenses.length; i++) {
