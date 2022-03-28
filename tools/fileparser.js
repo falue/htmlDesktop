@@ -18,7 +18,7 @@ async function parseFile(filepath) {
     // Read response stream as text
     let textData = await response.text();
   
-    if(filepath.endsWith(".txt")) {
+    if(filepath.endsWith(".settings")) {
       // Ignore empty rows and rows start with with '#'
       return textData
         .split("\n")

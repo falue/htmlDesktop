@@ -6,7 +6,7 @@ To automatically create a new workstation, run the script `createNewWorkstation`
 To setup a new workstation manually, do the following:
 
 1. Copy the folder of an existing workstation to eg. `newNameOfWorkstation`
-2. Edit tools/generalSettings.txt with a new line eg. `workstation=newNameOfWorkstation;mac`. The name of the workstat cannot contain spaces or special characters.
+2. Edit tools/general.settings with a new line eg. `workstation=newNameOfWorkstation;mac`. The name of the workstat cannot contain spaces or special characters.
 3. Edit `workstations/newNameOfWorkstation/settings.json`'s keys:
 
 ```
@@ -25,7 +25,7 @@ After creation of the new workstation folder (automatically or manually), you ca
 
 ## Notes to each key
 #### **settings**
-Object with all general settings of this workstation. OS and workstation-name are defined in generalSettings.txt aswell!
+Object with all general settings of this workstation. OS and workstation-name are defined in general.settings aswell!
 - `"systemColor": "#000000"` *HEX color code for background of taskbar, window headers etc. Font color is either white or black, depending on the darkness of this color*
 - `"desktopColor": "#000000"` *HEX color code for dekstop background*
 - `"desktopImg": "os/_generic/desktops/7.jpg"` *Path to desktop image, either to `os/_generic/desktops/..` or `workstations/../desktops/1.jpg`, see [below](#user-and-desktop-images)*

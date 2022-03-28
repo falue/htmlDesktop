@@ -31,8 +31,8 @@ if [[ $os == "mac" || $os == "linux" || $os == "windows" ]]; then
     read -p "Fake Username: " "username"
     read -p "Fake Password: " "password"
 
-    # Add to generalSettings.txt
-    targetFile='../tools/generalSettings.txt'
+    # Add to general.settings
+    targetFile='../tools/general.settings'
     echo "" >> $targetFile
     echo "workstation=$newNameOfWorkstation;$os" >> $targetFile
     

@@ -55,7 +55,7 @@ async function setup() {
   }
 
   // Fill the workstation chooser overlay
-  await setupWorkstationChooser("tools/generalSettings.txt");
+  await setupWorkstationChooser("tools/general.settings");
   
   if(!workstation) { 
     // Missing workstation in url
