@@ -1,3 +1,7 @@
+body {
+    font-family: Garuda, Roboto, Arial, Helvetica, sans-serif;
+}
+
 .showMac { display: initial !important; }
 li.showMac { display: list-item !important; }
 

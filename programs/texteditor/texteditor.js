@@ -2,6 +2,7 @@ async function setup() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let text = urlParams.get('text');
+    let os = urlParams.get('os');
     let textarea = document.getElementById('textarea');
     if(text && text.toLowerCase() === "random") {
         textarea.innerHTML = randomTexts[chooseRandomKey(randomTexts)];
@@ -10,6 +11,9 @@ async function setup() {
     }
 
     textarea.focus();
+
+    // Set generic system fonts
+    setSystemFont(os);
 }
 
 let fontSizeIndex = 3;

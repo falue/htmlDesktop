@@ -39,6 +39,9 @@ async function setupFileManager() {
         break;
     }
 
+    // Set generic system fonts
+    setSystemFont(os);
+
     let rootName = "Root";
 
     // Opened folder

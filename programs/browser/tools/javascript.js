@@ -166,3 +166,17 @@ function historyForward() {
   setNewTitle();   */
 }
 
+// Yes yes duplicated code
+function setSystemFontForBrowser(os) {
+  switch(os) {
+    case "mac":
+        document.getElementsByTagName('body')[0].style.fontFamily = "Garuda, Roboto, Arial, Helvetica, sans-serif";
+    break;
+    case "windows":
+        document.getElementsByTagName('body')[0].style.fontFamily = "weblysleek, Roboto, Arial, Helvetica, sans-serif";
+    break;
+    case "linux":
+        document.getElementsByTagName('body')[0].style.fontFamily = "Roboto, Arial, Helvetica, sans-serif";
+    break;
+  }
+}

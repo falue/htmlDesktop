@@ -16,6 +16,7 @@ header {
 }
 
 .fileManagerTools button {
+    font-family: inherit;
     opacity: .6;
     box-sizing: border-box;
     transform: translateY(-.5em);

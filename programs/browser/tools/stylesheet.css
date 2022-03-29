@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+.material-icons {
+    font-size: 24px;
+}
+
 a:link,
 a:visited,
 a:focus {
@@ -142,6 +146,7 @@ body {
 }
 
 .fake-browser-bar .address-bar .address-bar-text-input {
+    font-family: inherit;
     position: absolute;
     border: none;
     color: #bbb;
@@ -437,7 +442,6 @@ button {
     border-radius: 1em;
     color: white;
     background-color: rgba(88,150,255,1);
-    font-family: Roboto, 'Courier New', Courier, monospace;
 }
 
 button:hover {

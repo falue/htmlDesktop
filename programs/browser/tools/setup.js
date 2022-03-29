@@ -9,7 +9,11 @@ async function setup() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const workstation = urlParams.get('workstation');
+  const os = urlParams.get('os');
   let path = "../../workstations/"+ workstation +"/";
+
+  // Set generic system fonts
+  setSystemFontForBrowser(os);
 
   // If env is chosen, read env settings & URLs
   if(workstation) {

@@ -273,3 +273,18 @@ function iconDecider(filename, folderContentAmount) {
 
   return path;
 } 
+
+// Yes this does not belong here but i do not want to include any other JS files in all programs.
+function setSystemFont(os) {
+  switch(os) {
+    case "mac":
+        document.getElementsByTagName('body')[0].style.fontFamily = "Garuda, Roboto, Arial, Helvetica, sans-serif";
+    break;
+    case "windows":
+        document.getElementsByTagName('body')[0].style.fontFamily = "weblysleek, Roboto, Arial, Helvetica, sans-serif";
+    break;
+    case "linux":
+        document.getElementsByTagName('body')[0].style.fontFamily = "Roboto, Arial, Helvetica, sans-serif";
+    break;
+  }
+}

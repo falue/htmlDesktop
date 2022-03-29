@@ -13,6 +13,7 @@ header:last-of-type {
 }
 
 .programButtons {
+    font-family: inherit;
     color: white;
     background-color: rgba(255,255,255,.125);
     border-color: rgba(0,0,0,.75) !important;

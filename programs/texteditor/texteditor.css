@@ -16,6 +16,7 @@ header {
 }
 
 .textEditorToolsBar button {
+    font-family: inherit;
     border: solid thin grey;
     padding: .25em;
 }

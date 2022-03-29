@@ -181,6 +181,7 @@ header.windowmenu {
 }
 
 header.windowmenu .programButtons {
+    font-family: inherit;
     background-color: none;
     border-right: solid thin grey;
     border-left: solid thin white;
@@ -235,6 +236,7 @@ header.windowmenu .programButtons:hover {
 }
 
 .actionMenu {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
     top: 3em;
     color: white;
     position: fixed;

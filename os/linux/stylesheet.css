@@ -1,3 +1,7 @@
+body {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
 .showLinux { display: initial !important; }
 
 .desktop {
