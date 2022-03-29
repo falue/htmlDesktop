@@ -22,6 +22,7 @@ async function setup() {
     // If mobile, redirect to "business card" website
     if (window.matchMedia("(max-width: 900px)").matches) {
       window.location.href = "../programs/browser/sites/telefabi/index.html";
+      return;
     }
     for(saveButton of document.getElementsByClassName('saveButtonsTooltips')) {
       saveButton.setAttribute("data-title", "Save & export NOT AVAILABLE IN DEMO");
