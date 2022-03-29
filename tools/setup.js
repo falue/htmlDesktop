@@ -16,7 +16,13 @@ async function setup() {
   workstation = urlParams.get('workstation');
   let data;
   let host = window.location.origin + window.location.pathname;
+  
+  // If on telefabi.ch in root, use htmlDesktop as website :)
   if(host === "https://www.telefabi.ch/index.html" || host === "https://telefabi.ch/index.html") {
+    // If mobile, redirect to "business card" website
+    if (window.matchMedia("(max-width: 900px)").matches) {
+      window.location.href = "../programs/browser/sites/telefabi/index.html";
+    }
     for(saveButton of document.getElementsByClassName('saveButtonsTooltips')) {
       saveButton.setAttribute("data-title", "Save & export NOT AVAILABLE IN DEMO");
     }
