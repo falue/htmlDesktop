@@ -106,7 +106,6 @@ function navigateGallery(direction) {
 function keyboardControllerImageViewer(event) {
     let KeyID = event.keyCode;
     switch(KeyID) {
-
         case 39:
             cl("arrow right");
             navigateGallery(1);
@@ -131,7 +130,7 @@ function keyboardControllerImageViewer(event) {
             }
             break;
 
-        case 8:
+        /* case 8:
             cl("backspace");
             break; 
             
@@ -145,11 +144,10 @@ function keyboardControllerImageViewer(event) {
 
         case 46:
             cl("delete");
-            break;
+            break; */
 
         default:
-            cl("anything else. KeyID: ");
-            cl(KeyID);
+            parent.keyboardController(event);
             break;
     }
 }

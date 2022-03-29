@@ -42,18 +42,27 @@ function goToUrl(url, spoofUrl = url) {
   setTimeout(function() {
     try {
       setNewTitle();
+      setupKeyboardControl();
     } catch (error) {
       document.title = "UNIK BROWSER " + unikVersion;
     }
   }, 666);
 }
 
-function setNewTitle() {
+function setupKeyboardControl() {
   let iframe = document.getElementsByTagName('iframe')[0];
   let innerDoc = (iframe.contentDocument) ? iframe.contentDocument : iframe.contentWindow.document;
   if(innerDoc) {
-    let iframeTitle = innerDoc.getElementsByTagName('title')[0].innerHTML;
-    document.title = iframeTitle;
+    innerDoc.getElementsByTagName('body')[0].setAttribute("onkeydown", "parent.parent.keyboardController(event);");
+  }
+}
+
+function setNewTitle() {
+    let iframe = document.getElementsByTagName('iframe')[0];
+    let innerDoc = (iframe.contentDocument) ? iframe.contentDocument : iframe.contentWindow.document;
+    if(innerDoc) {
+      let iframeTitle = innerDoc.getElementsByTagName('title')[0].innerHTML;
+      document.title = iframeTitle;
 
     // Set display URL
     let iframeSpoofUrl = innerDoc.getElementById('iframeSpoofUrl');

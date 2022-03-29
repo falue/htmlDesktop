@@ -390,8 +390,8 @@ function clearSystemMessages() {
 }
 
 function keyboardController(event) {
-    // Ignore presses in textfield etc
-    if(event.target.localName === "body") {
+    // Ignore presses in textareas and inputs, but NOT buttons because mostly fake
+    if(event.target.localName !== "textarea" && event.target.localName !== "input") {
         let key = event.key;
         switch(key) {
             case "1": epD(event); startDefaultProgram('terminal', 6); break;
