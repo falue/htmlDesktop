@@ -471,9 +471,9 @@ async function displayLicenses() {
     for(let i = 0; i < licenses.length; i++) {
         let title = licenses[i].replace(".txt", "").replace("LICENSE", "").replaceAll("-", " ");
         licensesHeader += "- <a href='#"+licenses[i]+"'>"+title+"</a><br>"
-        licensesText += "<section id='"+licenses[i]+"'><h3 class='grey'>"+title+"</h3><br>";
-        licensesText += (await parseFile("tools/licenses/"+licenses[i])).replaceAll("<", "").replaceAll(">", "").replaceAll("\n", "<br>");
+        licensesText += "<section id='"+licenses[i]+"'><h2 class='blue'>"+title+"</h2><br>";
+        licensesText += (await parseFile("tools/licenses/"+licenses[i])).replaceAll("<", "").replaceAll(">", "").replaceAll("  ", " &nbsp;").replaceAll("\n", "<br>");
         licensesText += "</section><br><br><hr><br>";
     }
-    showDialog("EXTERNAL LICENSES", licensesHeader + "<br><br><hr><br>" + licensesText);
+    showDialog("EXTERNAL LICENSES", licensesHeader + "<br><hr><br>" + licensesText);
 }
