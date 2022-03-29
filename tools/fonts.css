@@ -25,7 +25,7 @@
     /* The glyphs of this font are weird. adjust! */
     /* Check out https://web.dev/css-size-adjust */
     ascent-override: 100%;
-    /* descent-override: 0%; */
+    descent-override: 0%;
     /* line-gap-override: 50%; */
     src: url('fontface/Garuda.eot'); /* IE9 Compat Modes */
     src: local(''),
