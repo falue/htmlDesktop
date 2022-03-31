@@ -733,7 +733,7 @@ function startDefaultProgram(program, parameters) {
   let x;
   let y;
   if(!program) {
-    let programs = ["fileManager", "browser", "ftp", "ftp-connect", "imageViewer", "textEditor-random", "terminal"];
+    let programs = ["fileManager", "browser", "ftp", "ftp-connect", "imageViewer", "textEditor-random", "terminal", "threejsEditor"];
     program = programs[chooseRandomKey(programs)];
     cl("startDefaultProgram Random: " + program);
     x = randomBetween(0,50);
@@ -767,6 +767,9 @@ function startDefaultProgram(program, parameters) {
       break;
     case "textEditor-random":
         addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=random', x, y, 666,450, false);
+      break;
+    case "threejsEditor":
+        addWindow('Threejs - editor', 'view_in_ar', 'threejs/editor', x, y, 666,450, false);
       break;
     case "terminal":
       // If no parameters set, start with random terminal content

@@ -58,6 +58,18 @@
             "renderToDom": true
         },
         {
+            "windowName": "Threejs - Editor",
+            "icon": "view_in_ar",
+            "contentPath": "threejs/editor",
+            "x": 27,
+            "y": 18,
+            "w": 892,
+            "h": 573,
+            "zIndex": 60,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "windowName": "File manager",
             "icon": "folder",
             "contentPath": "filemanager/index.html?folderContent=Downloads",
