@@ -2,7 +2,7 @@
     "settings": {
         "systemColor": "#000000",
         "desktopColor": "#000000",
-        "desktopImg": "os/_generic/desktops/7.jpg",
+        "desktopImg": "os/windows/desktop.jpg",
         "os": "windows",
         "darkMode": true,
         "username": "Fabian Lüscher",

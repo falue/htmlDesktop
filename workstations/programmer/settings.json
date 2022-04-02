@@ -2,7 +2,7 @@
     "settings": {
         "systemColor": "#502259",
         "desktopColor": "#1d1b1b",
-        "desktopImg": "",
+        "desktopImg": "os/linux/desktop.jpg",
         "os": "linux",
         "darkMode": true,
         "username": "haXX0r",
