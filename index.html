@@ -205,9 +205,15 @@
                       </button>
                     </div>
                   </li>
-
-                  <li onclick="hide('startMenu'); startDefaultProgram('threejsEditor')">
+                  
+                  <li class="absolute" onclick="hide('startMenu'); startDefaultProgram('threejsEditor')" >
                     <i class="material-icons small systemColors clearBg">view_in_ar</i> Threejs - Editor
+                    <div class="right top relative padding60">
+                      <i class="material-icons op50">chevron_right</i>
+                      <button data-title="3d Player" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('threejsPlayer');">
+                        <i class="material-icons">view_in_ar</i>
+                      </button>
+                    </div>
                   </li>
 
                 </ul>

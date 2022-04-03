@@ -769,7 +769,10 @@ function startDefaultProgram(program, parameters) {
         addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=random', x, y, 666,450, false);
       break;
     case "threejsEditor":
-        addWindow('Threejs - editor', 'view_in_ar', 'threejs/editor', x, y, 666,450, false);
+        addWindow('Threejs - Editor', 'view_in_ar', 'threejs/editor', x, y, 666,450, false);
+      break;
+    case "threejsPlayer":
+        addWindow('Threejs - Player', 'view_in_ar', 'threejs/player/index.html?modelPath='+(parameters ? parameters : ''), x, y, 666,450, false);
       break;
     case "terminal":
       // If no parameters set, start with random terminal content

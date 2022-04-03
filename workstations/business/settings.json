@@ -44,8 +44,8 @@
             "windowName": "Text editor - Untitled*",
             "icon": "edit_note",
             "contentPath": "texteditor/index.html?text=random",
-            "x": 14,
-            "y": 12,
+            "x": 8,
+            "y": 15,
             "w": 649,
             "h": 474,
             "zIndex": 24,
@@ -63,6 +63,18 @@
             "zIndex": 11,
             "minimized": true,
             "renderToDom": false
+        },
+        {
+            "windowName": "Threejs - Player",
+            "icon": "view_in_ar",
+            "contentPath": "threejs/player/index.html?modelPath=models/LittlestTokyo.glb",
+            "x": 13,
+            "y": 10,
+            "w": 920,
+            "h": 600,
+            "zIndex": 12,
+            "minimized": false,
+            "renderToDom": true
         }
     ],
     "shortcuts": [
