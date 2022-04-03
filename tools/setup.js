@@ -227,12 +227,13 @@ async function setupSettings(settings) {
         }
       break;
       case "password":
+        password = value;
+        /* console.log("the password is " + value); */
+        /* gebi("passwordCheck").value = value; */
         if (value) {
-          password = value;
-          /* console.log("the password is " + value); */
-          gebi("passwordCheck").value = value;
           gebi("passwordHint").innerHTML = value;
-          show('logoutActionStartMenu', 'logoutActionActionMenu');
+        } else {
+          gebi("passwordHint").innerHTML = "<span class='italics'>none - type whatever</span>";
         }
       break;
       case "desktopImg":

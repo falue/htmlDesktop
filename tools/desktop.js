@@ -104,9 +104,9 @@ async function hotSwapOs(nextOs) {
     clearLocalStorageItem(saveFileName);
 }
 
-async function login(password) {
-    let correctPassword = gebi("passwordCheck").value;
-    if(password.includes(correctPassword)) {
+async function login(typedPassword) {
+    /* let password = gebi("passwordCheck").value; */
+    if(typedPassword.includes(password) || !password) {
         /* hide('wrongPassword'); */
         hide('loginbuttonText');
         show('loginLoader');
