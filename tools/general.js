@@ -272,7 +272,52 @@ function iconDecider(filename, folderContentAmount) {
   }
 
   return path;
-} 
+}
+
+
+function forceType(event, element, text, endAction = function () {}) {
+  let currentText = element.value;
+  let index = currentText.length;
+
+  switch(event.keyCode) {
+      case 39:
+          // Do nothing, allow char
+          // cl("arrow right");
+          break;
+
+      case 37:
+          // Do nothing, allow char
+          // cl("arrow left");
+          break;
+
+      case 8:
+          cl("backspace");
+          event.preventDefault();
+          element.value = text.substring(0,index-1);
+          break; 
+          
+      case 13:
+          // Do nothing, allow char
+          // cl("enter");
+          break;
+
+      case 46:
+          // cl("delete");
+          event.preventDefault();
+          element.value = text.substring(0,index-1);
+          break;
+
+      default:
+          // Magic
+          event.preventDefault();
+          element.value = text.substring(0,index+1);
+          break;
+  }
+
+  if(index === text.length-1) {
+      endAction();
+  }
+}
 
 // Yes this does not belong here but i do not want to include any other JS files in all programs.
 function setSystemFont(os) {
