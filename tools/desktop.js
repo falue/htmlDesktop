@@ -105,7 +105,6 @@ async function hotSwapOs(nextOs) {
 }
 
 async function login(typedPassword) {
-    /* let password = gebi("passwordCheck").value; */
     if(typedPassword.includes(password) || !password) {
         /* hide('wrongPassword'); */
         hide('loginbuttonText');

@@ -59,7 +59,7 @@
           <div class="small italics" id="lockScreenUserName">USERNAME</div>
           <br class="showWindows showLinux">
           <form action="javascript:login(gebi('lockScreenPassword').value);">
-            <input id="lockScreenText" autocomplete="off" onkeydown="forceType(event, this, gebi('lockScreenUserName').innerHTML.replace(/\s+/g, ''), function () { gebi('lockScreenPassword').focus()});" data-form-type="other" class="padding clearBorder showWindows showLinux" type="text" placeholder="user" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
+            <input id="lockScreenText" autocomplete="off" onkeydown="forceType(event, this, username.replace(/\s+/g, ''), function () { gebi('lockScreenPassword').focus()});" data-form-type="other" class="padding clearBorder showWindows showLinux" type="text" placeholder="user" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">
             <br class="showWindows showLinux">
             <div class="relative">
               <input id="lockScreenPassword" autocomplete="off" data-form-type="other" class="padding clearBorder" type="password" placeholder="password" onfocus="gebi('lockScreenPassword').classList.remove('redBorder')">

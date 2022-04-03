@@ -228,8 +228,6 @@ async function setupSettings(settings) {
       break;
       case "password":
         password = value;
-        /* console.log("the password is " + value); */
-        /* gebi("passwordCheck").value = value; */
         if (value) {
           gebi("passwordHint").innerHTML = value;
         } else {
