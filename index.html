@@ -420,8 +420,10 @@
                   <select id="osNotificationsSelect" onchange="this.blur();" class="marginY1 maxWidth padding05">
                   </select>
                   <br>
-                  Delay duration:
-                  <span id="osNotificationsDurationUi">No delay</span>
+                  <span class="small grey tooltip" data-title="Time until the message is shown">
+                    Delay duration:
+                    <span id="osNotificationsDurationUi" class="green">No delay</span>
+                  </span>
                   <br>
                   <input type="range" class="maxWidth padding2 borderBox" id="osNotificationsDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
                 </div>
