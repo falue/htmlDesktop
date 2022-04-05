@@ -274,6 +274,7 @@ function setupWindows(windows) {
   for (let window of windows) {
     /* Add links to start menu */
     let listElement = document.createElement("li");
+    listElement.setAttribute("class", "ellipsis");
     let windowIcon = document.createElement("i");
     windowIcon.setAttribute("class", "material-icons small grey");
     windowIcon.appendChild(document.createTextNode(window["icon"]));

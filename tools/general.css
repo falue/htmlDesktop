@@ -223,6 +223,7 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
     font-style: italic;
 }
 .nobr { white-space: nowrap; }
+.ellipsis { text-overflow: ellipsis; overflow-x: hidden; white-space: nowrap; }
 
 /* POSITION */
 .fixed { position: fixed;}
