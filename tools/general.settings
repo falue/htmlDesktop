@@ -1,6 +1,5 @@
 # Define all available workstations here
 
 workstation=telefabi;windows
-workstation=programmer;linux
-workstation=business;mac
+workstation=sonny;linux
 workstation=pete;linux
