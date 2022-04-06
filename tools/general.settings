@@ -1,5 +1,4 @@
 # Define all available workstations here
 
-workstation=telefabi;windows
 workstation=sonny;linux
 workstation=pete;linux
