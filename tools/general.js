@@ -275,7 +275,7 @@ function iconDecider(filename, folderContentAmount) {
 }
 
 
-function forceType(event, element, text, endAction = function () {}) {
+function forceType(event, element, text, endAction = false) {
   let currentText = element.value;
   let index = currentText.length;
 
@@ -291,31 +291,67 @@ function forceType(event, element, text, endAction = function () {}) {
           break;
 
       case 8:
-          cl("backspace");
+          // cl("backspace");
           event.preventDefault();
           element.value = text.substring(0,index-1);
+          index--;
           break; 
           
+      case 9:
+          // cl("tab");
+          event.preventDefault();
+          element.value = text;
+          index = text.length;
+          break;
+          
       case 13:
-          // Do nothing, allow char
           // cl("enter");
+          event.preventDefault();
+          element.value = text;
+          index = text.length;
           break;
 
       case 46:
           // cl("delete");
           event.preventDefault();
           element.value = text.substring(0,index-1);
+          index--;
           break;
 
       default:
           // Magic
+          // cl(event.keyCode);
           event.preventDefault();
           element.value = text.substring(0,index+1);
           break;
   }
 
-  if(index === text.length-1) {
-      endAction();
+  // If end of text+1 is reached, execute endAction
+  if(index === text.length && endAction) {
+    endAction();
+  } else if (index === text.length) {
+    // execute default action if none defined
+    focusNextElement(true);
+  }
+}
+
+function focusNextElement (loop=true) {
+  // Add all elements we want to include in our selection
+  // a:not([disabled]), 
+  let focussableElements = 'button:not([disabled]), input[type=text]:not([disabled]), input[type=button]:not([disabled]), [tabindex]:not([disabled]):not([tabindex="-1"]), textarea';
+  if (document.activeElement) {  // && document.activeElement.form) {
+      let focussable = Array.prototype.filter.call(document.querySelectorAll(focussableElements),  // .activeElement.form
+      function (element) {
+          // Check for visibility while always include the current activeElement 
+          return element.offsetWidth > 0 || element.offsetHeight > 0 || element === document.activeElement
+      });
+      let index = focussable.indexOf(document.activeElement);
+      if(index > -1) {
+         let nextElement = focussable[index + 1] || focussable[0];
+         if((loop && nextElement) || (nextElement && focussable[index + 1])) {
+           nextElement.focus();
+         }
+      }
   }
 }
 
