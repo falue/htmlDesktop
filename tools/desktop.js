@@ -2,6 +2,20 @@ let bgImgCounter = 0;
 let bgImgBasePath = "os/_generic/desktops/";
 
 async function cycleBackgroundImage() {
+    // Fade out elements slightly to show new bg image better
+    gebi('actionMenu').classList.add('op25');
+    let desktopContent = gebi('desktop').children;
+    for(let i=0; i<desktopContent.length; i++){
+        desktopContent[i].style.opacity="0";
+    }
+    // Show everything again after a delay
+    setTimeout(function() {
+        for(let i=0; i<desktopContent.length; i++){
+            desktopContent[i].style.opacity="1";
+        }
+        gebi('actionMenu').classList.remove('op25');
+    }, 1000);
+
     // Show generic Desktop of OS
     if(bgImgCounter === 0 && bgImgBasePath == "os/_generic/desktops/") {
         cl("set generic desktop of OS.");
