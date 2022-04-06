@@ -25,7 +25,7 @@
     /* The glyphs of this font are weird. adjust! */
     /* Check out https://web.dev/css-size-adjust */
     ascent-override: 100%;
-    descent-override: 0%;
+    descent-override: 25%;
     /* line-gap-override: 50%; */
     src: url('fontface/Garuda.eot'); /* IE9 Compat Modes */
     src: local(''),
@@ -41,6 +41,8 @@
     font-family: 'weblysleek';
     font-style: normal;
     font-weight: 400;
+    ascent-override: 100%;
+    descent-override: initial;
     src: url('fontface/weblysleek.eot'); /* IE9 Compat Modes */
     src: local(''),
         url('fontface/weblysleek.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
