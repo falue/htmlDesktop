@@ -44,6 +44,7 @@
     src: url('fontface/weblysleek.eot'); /* IE9 Compat Modes */
     src: local(''),
         url('fontface/weblysleek.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('fontface/weblysleek.woff2') format('woff2'), /* Super Modern Browsers */
         url('fontface/weblysleek.woff') format('woff'), /* Modern Browsers */
         url('fontface/weblysleek.ttf') format('truetype'), /* Safari, Android, iOS */
         url('fontface/weblysleek.svg#weblysleek') format('svg'); /* Legacy iOS */
