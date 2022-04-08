@@ -243,6 +243,10 @@ header.windowmenu .programButtons:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+#actionMenu,
+#actionMenu.op25 {
     transition: opacity 250ms;
 }
 

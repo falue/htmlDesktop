@@ -733,7 +733,7 @@ function startDefaultProgram(program, parameters) {
   let x;
   let y;
   if(!program) {
-    let programs = ["fileManager", "browser", "ftp", "ftp-connect", "imageViewer", "textEditor-random", "terminal", "threejsEditor"];
+    let programs = ["fileManager", "browser", "ftp", "ftp-connect", "imageViewer", "textEditor-random", "terminal", "threejsEditor", "bash"];
     program = programs[chooseRandomKey(programs)];
     cl("startDefaultProgram Random: " + program);
     x = randomBetween(0,50);
@@ -773,6 +773,9 @@ function startDefaultProgram(program, parameters) {
       break;
     case "threejsPlayer":
         addWindow('Threejs - Player', 'view_in_ar', 'threejs/player/index.html?modelPath='+(parameters ? parameters : ''), x, y, 666,450, false);
+      break;
+    case "bash":
+        addWindow('Bash Console', 'code', 'bash/index.html?script=script', x, y, 666,450, false);
       break;
     case "terminal":
       // If no parameters set, start with random terminal content

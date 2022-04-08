@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    color: white;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: black;
+    box-sizing: border-box;
+}
+
+.hideOutput {
+    color:transparent;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.success {
+    color: lime;
+}
+
+.error {
+    color: red;
+}

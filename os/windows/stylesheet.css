@@ -437,7 +437,7 @@ body {
 .startMenu ul div.submenu {
     display: none;
     position: absolute;
-    top: -2em;
+    bottom: -13.5em;
     left: 90%;
     box-sizing: content-box;
     border: 1em transparent solid;

@@ -276,8 +276,10 @@ function iconDecider(filename, folderContentAmount) {
 
 
 function forceType(event, element, text, endAction = false) {
-  let currentText = element.value;
+  // If its an input or textarea, and possibly empty, .value is a string nontheless
+  let currentText = typeof(element.value) === "string" ? element.value : element.innerHTML ? element.innerHTML : "";
   let index = currentText.length;
+  let newTypedText;
 
   switch(event.keyCode) {
       case 39:
@@ -293,28 +295,32 @@ function forceType(event, element, text, endAction = false) {
       case 8:
           // cl("backspace");
           event.preventDefault();
-          element.value = text.substring(0,index-1);
+          newTypedText = text.substring(0,index-1);
           index--;
           break; 
           
       case 9:
           // cl("tab");
+          // Word completion
           event.preventDefault();
-          element.value = text;
-          index = text.length;
+          let restOfText = text.substring(index, text.length);
+          if(restOfText[0] === " ") currentText += " ";
+          let nextWord = restOfText.split(" ").filter(n => n);
+          newTypedText = currentText + (nextWord.length ? nextWord[0] : "");
+          index = newTypedText.length;
           break;
           
       case 13:
           // cl("enter");
           event.preventDefault();
-          element.value = text;
+          newTypedText = text;
           index = text.length;
           break;
 
       case 46:
           // cl("delete");
           event.preventDefault();
-          element.value = text.substring(0,index-1);
+          newTypedText = text.substring(0,index-1);
           index--;
           break;
 
@@ -322,14 +328,20 @@ function forceType(event, element, text, endAction = false) {
           // Magic
           // cl(event.keyCode);
           event.preventDefault();
-          element.value = text.substring(0,index+1);
+          newTypedText = text.substring(0,index+1);
           break;
   }
 
+  if(typeof(element.value) === "string") {
+    element.value = newTypedText;
+  } else {
+    element.innerHTML = newTypedText;
+  }
+
   // If end of text+1 is reached, execute endAction
-  if(index === text.length && endAction) {
+  if(index >= text.length-1 && endAction) {
     endAction();
-  } else if (index === text.length) {
+  } else if (index >= text.length-1) {
     // execute default action if none defined
     focusNextElement(true);
   }
