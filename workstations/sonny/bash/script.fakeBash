@@ -1,0 +1,33 @@
+# ------- setup
+# bashProfileName - plain text or html
+<span class='green'>jbr</span>@<span class='red'>monalisa2</span>:<span class='grey'>~</span> $ 
+# -------
+# NOTE: If you want to have [ or ] in text, use \[ or \]
+
+# ELCH
+[bashProfile] [forceType, "sudo . mona_lisa-auth.sh"]
+[autoType, "Username: ", 0] [forceType, "jbr"]
+[autoType, "Password #1: ", 0] [pwd]
+[autoType, "Password #2: ", 0] [pwd]
+[autoType, "Password #3: ", 0] [pwd]
+[autoType, "Password #4: ", 0] [pwd]
+[autoType:error, "Sorry, try again.", 333]
+[br]
+[autoType, "Password #4: ", 0] [pwd]
+[autoType:error, "Sorry, try again.", 333]
+[br]
+[autoType, "Password #4: ", 0] [pwd]
+[autoType:success, "Access granted.", 1000]
+[br]
+[autoType, "Run mona_lisa-auth.sh --help for more.", 0]
+[br]
+[bashProfile] [forceType, ". mona_lisa-master-startup.sh now"]
+[autoType:grey, "Startup sequence initiated.", 500]
+[autoType:grey, "Commence graceful shutdown and reboot..", 1500]
+[loader, "\[", "▓", "░", "\]", 30, 2000, 0, 100, "", "%"]
+[autoType:grey, "Rebooting now..", 2500]
+[sleep, 1000]
+[clear] [goto:nobr, 0]
+
+# Use EXIT for stop parsing here
+EXIT
