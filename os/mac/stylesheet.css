@@ -473,7 +473,8 @@ li.showMac { display: list-item !important; }
 .startMenu ul div.submenu {
     display: none;
     position: absolute;
-    top: -2em;
+    top: -4em;
+    bottom: unset;
     left: 90%;
     box-sizing: content-box;
     border: 1em transparent solid;
