@@ -275,7 +275,7 @@ function iconDecider(filename, folderContentAmount) {
 }
 
 
-function forceType(event, element, text, endAction = false) {
+function forceType(event, element, text, endAction = false, waitForEnter = false) {
   // If its an input or textarea, and possibly empty, .value is a string nontheless
   let currentText = typeof(element.value) === "string" ? element.value : element.innerHTML ? element.innerHTML : "";
   let index = currentText.length;
@@ -338,12 +338,15 @@ function forceType(event, element, text, endAction = false) {
     element.innerHTML = newTypedText;
   }
 
-  // If end of text+1 is reached, execute endAction
-  if(index >= text.length-1 && endAction) {
-    endAction();
-  } else if (index >= text.length-1) {
-    // execute default action if none defined
-    focusNextElement(true);
+  // If end of text is reached, execute endAction
+  let endReached = newTypedText.length >= text.length;
+  if(endReached && (!waitForEnter || (waitForEnter && event.keyCode === 13))) {
+      if(endAction) {
+        endAction();
+      } else {
+        // execute default action if none defined
+        focusNextElement(true);
+      }
   }
 }
 

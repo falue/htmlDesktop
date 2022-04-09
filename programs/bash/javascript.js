@@ -101,7 +101,7 @@ function setupForceType(command) {
   // TODO: if enter complete line, if tab next word
   document.getElementsByTagName("body")[0].setAttribute(
     "onkeydown",
-    `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);');})`
+    `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();}, true)`
     // To automatically get to the enxt command after last char typed:
     /* `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();})`   */
   );
