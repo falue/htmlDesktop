@@ -1,8 +1,12 @@
 let bashProfileName;
-let commands = [];
-let commandIndex = -1;
+let commands = {"main": []};
+let currentCommandKey = "main";
+let commandIndex = new Array();
+commandIndex["main"] = -1;
 let blockCommand = false;
 let freeTextCommand = "";
+// Filenames in folder defaultScripts. sudo is seperatly handled
+let availableBasicCommands = ["top", "test", "ls", "ls -l", "ls -l -a"];
 
 async function setup() {
   const queryString = window.location.search;
@@ -12,13 +16,13 @@ async function setup() {
   let darkMode = urlParams.get("darkMode");
   let scriptName = urlParams.get("script");
   let script = [];
-  if(scriptName) {
+  if(scriptName && scriptName != "default") {
     script = await parseFile(
       `../../workstations/${workstation}/bash/${scriptName}.fakeBash`
     );
   } else {
     // make default bashProfile and enable freetext bashing
-    script[0] = `<span class='green'>admin</span>@<span class='red'>localhost</span>:<span class='path grey'>~</span> $ `;
+    script[0] = `<span class='green'>${workstation || "admin"}</span>@<span class='red'>localhost</span>:<span class='path grey'>~</span> $ `;
     script.push(`[bashProfile] [freeText]`);
     script.push(`[goto:nobr,0]`);
     darkMode = "true";
@@ -28,12 +32,11 @@ async function setup() {
     addStylesheet("darkMode.css");
   }
 
-  commands = loadScript(script);
+  commands.main = loadScript(script);
   playCommandAtIndex(); // Play first command
 }
 
 /* GENERAL */
-
 function addStylesheet(path) {
   let currentStylesheet = gebi('osStylesheet');
   if(currentStylesheet) currentStylesheet.remove();
@@ -108,13 +111,23 @@ function keyboardControllerBash(event) {
   if (!blockCommand) playCommandAtIndex();
 }
 
-function playCommandAtIndex(index) {
-  if (index === undefined && commandIndex < commands.length - 1) {
-    commandIndex++;
-    playCommand(commands[commandIndex]);
+async function playCommandAtIndex(index) {
+  if (index === undefined && commandIndex[currentCommandKey] < commands[currentCommandKey].length - 1) {
+    commandIndex[currentCommandKey]++;
+    await playCommand(commands[currentCommandKey][commandIndex[currentCommandKey]]);
   } else if (index >= 0) {
-    playCommand(commands[index]);
-    commandIndex = index;
+    await playCommand(commands[currentCommandKey][index]);
+    commandIndex[currentCommandKey] = index;
+  } else {
+    // End reached - reset if not main commands for further use of same command
+    if(currentCommandKey != "main") {
+      cl("end of subprocess reached");
+      // reset index of last command
+      commandIndex[currentCommandKey] = -1;
+      // Revert to main commands
+      currentCommandKey = "main";
+      playCommandAtIndex();
+    }
   }
 }
 
@@ -135,15 +148,45 @@ function waitForKey(keyCode) {
   return new Promise((resolve) => {
     document.addEventListener("keydown", onKeyHandler);
     function onKeyHandler(e) {
-      if (e.keyCode === keyCode) {
+      if (keyCode.includes(e.keyCode)) {
         document.removeEventListener("keydown", onKeyHandler);
-        resolve();
+        resolve(e.keyCode);
       }
     }
   });
 }
 
 /* SPECIFIC */
+let credentialsTrials = 0;
+async function askCredentials() {
+  // Scroll to bottom of console
+  scrollToBottom();
+  
+  await delay(50); // wait for release of enter from action before!
+  printToConsole("Password:🔒");
+  // enter 13
+  // f=fail = 70
+  // s=succeed = 83
+  let returnKey = await waitForKey([13, 70, 83]);
+  let enterKey;
+  // Ignore enter detection if enter was pressed empty before
+  if(returnKey != 13) enterKey = await waitForKey([13]);
+  if((returnKey === 83 && enterKey === 13) && credentialsTrials < 2) {
+    printToConsole("<br>Access granted.<br>", "success");
+    credentialsTrials = 0;
+    return true;
+  } else {
+    if(credentialsTrials >= 2) {
+      printToConsole("<br>sudo: 3 incorrect password attempts<br>", "error");
+      credentialsTrials = 0;
+      return false;
+    } else {
+      credentialsTrials++;
+      printToConsole("<br>Sorry, try again.<br>", "grey");
+      await askCredentials();
+    }
+  }
+}
 
 function setupForceType(command) {
   let uid = createUniqueId();
@@ -153,7 +196,6 @@ function setupForceType(command) {
   if (command.classes) span.classList.add(command.classes);
   gebi("console").appendChild(span);
   // Swap onkeydown=keyboardControllerBash(event) of body with
-  // TODO: if enter complete line, if tab next word
   document.getElementsByTagName("body")[0].setAttribute(
     "onkeydown",
     `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();}, true)`
@@ -251,7 +293,7 @@ function freeText(keyCode) {
     async function onKeyHandler(e) {
       if (e.keyCode === keyCode) {
         document.removeEventListener("keydown", onKeyHandler);
-        evalCommand(freeTextCommand);
+        await evalCommand(freeTextCommand);
         freeTextCommand = "";
         resolve();
       } else {
@@ -280,46 +322,59 @@ function freeText(keyCode) {
   });
 }
 
+async function loadExternalScript(scriptName) {
+  scriptName = scriptName.replaceAll(" ", "");
+  currentCommandKey = scriptName;
+  commandIndex[currentCommandKey] = -1;
+  let newScripts = await parseFile(`defaultScripts/${scriptName}.fakeBash`);
+  commands[currentCommandKey] = loadScript(newScripts, false);
+  printToConsole("<br>");
+}
+
 async function evalCommand(command) {
-  command = command.replace("sudo ", "").replace("sudo", "");
+  // Preemptively add sudo before actual command
+  if(command.startsWith("sudo")) {
+    /* await loadExternalScript("sudo"); */
+    printToConsole("<br>");
+    let success = await askCredentials();
+    if(success) {
+      command = command.replace("sudo ", "").replace("sudo", "");
+    } else {
+      // Wrong passwor (no "s" typed in pw!)
+      return;
+    }
+    /* cl("end of sudo if"); */
+  }
+
   // For 'cd' to work, initial bashProfileName (path) must include "..~<.." !
-  if(command === "cd") {
-    return;
+  if(availableBasicCommands.includes(command)) {
+    // Load "top" and others
+    await loadExternalScript(command);
+
+  } else if(command === "clear") {
+    gebi("console").innerHTML = "";
+
+  } else if(command === "cd") {
+    return;  // ignore when empty parameter
+
   } else if(command === "cd ~") {
     bashProfileName = `${bashProfileName.replace(/\~(.*?)\</, `~<`)}`;
+
   } else if(command.startsWith("cd ..")) {
     bashProfileName = `${bashProfileName.replace(/\~(.*?)\/[^\/]+\</, `~$1<`)}`;
+
   } else if(command.startsWith("cd .")) {
     return;
+
   } else if(command.startsWith("cd ")) {
     // Replace path with current command parameter
     bashProfileName = `${bashProfileName.replace(/(\~.*?)\</, `$1/${command.replace("cd ", "")}<`)}`;
-  } else if(command === "ls") {
-    printToConsole(`<br>bin   dev  home  lost+found  mnt  proc  run   srv  tmp  var<br>
-  boot  etc  lib   media       opt  root  sbin  sys  usr`, "grey");
-  } else if(command.startsWith("ls -l")) {
-    printToConsole(`<br>total 60<br>
-lrwxrwxrwx   1 root root     7 Jan 11  2021 bin -> usr/bin<br>
-drwxr-xr-x   5 root root  4096 Jan  1  1970 boot<br>
-drwxr-xr-x  18 root root  3820 Feb 24 09:17 dev<br>
-drwxr-xr-x 118 root root  4096 Feb 21  2021 etc<br>
-drwxr-xr-x   3 root root  4096 Jan 11  2021 home<br>
-lrwxrwxrwx   1 root root     7 Jan 11  2021 lib -> usr/lib<br>
-drwx------   2 root root 16384 Jan 11  2021 lost+found<br>
-drwxr-xr-x   2 root root  4096 Jan 11  2021 media<br>
-drwxr-xr-x   3 root root  4096 Jan 27  2021 mnt<br>
-drwxr-xr-x   4 root root  4096 Jan 11  2021 opt<br>
-dr-xr-xr-x 137 root root     0 Jan  1  1970 proc<br>
-drwx------   5 root root  4096 Jan 27  2021 root<br>
-drwxr-xr-x  29 root root   860 Apr  9 15:46 run<br>
-lrwxrwxrwx   1 root root     8 Jan 11  2021 sbin -> usr/sbin<br>
-drwxr-xr-x   2 root root  4096 Jan 11  2021 srv<br>
-dr-xr-xr-x  12 root root     0 Jan  1  1970 sys<br>
-drwxrwxrwt  10 root root  4096 Apr  9 12:53 tmp<br>
-drwxr-xr-x  11 root root  4096 Jan 11  2021 usr<br>
-drwxr-xr-x  11 root root  4096 Jan 11  2021 var`, "grey");    
+
   } else if(command) {
     printToConsole(`<br>-bash: ${command}: command not found`, "grey");
+
+  } else {
+    cl("empty command received");
   }
 }
 
@@ -341,7 +396,11 @@ async function playCommand(command) {
       break;
     case "pwd":
       show("cursor");
-      await waitForKey(13);
+      await waitForKey([13]);
+      break;
+    case "credentials":
+      // TODO: key gets pressed already
+      await askCredentials();
       break;
     case "freeText":
       show("cursor");
@@ -366,9 +425,8 @@ async function playCommand(command) {
   }
   blockCommand = false; // Releases keyboard input block
 
-  // Scroll to bottom
-  let body = document.getElementsByTagName("body")[0];
-  body.scrollTop = body.scrollHeight;
+  // Scroll to bottom of console
+  scrollToBottom();
 
   // If not waiting for the user, play next command automatically
   if (["forceType", "wait", "freeText"].includes(command.function)) {
@@ -378,4 +436,9 @@ async function playCommand(command) {
     hide("cursor");
     if (!["nobr"].includes(command.classes)) playCommandAtIndex();
   }
+}
+
+function scrollToBottom() {
+  let body = document.getElementsByTagName("body")[0];
+  body.scrollTop = body.scrollHeight;
 }

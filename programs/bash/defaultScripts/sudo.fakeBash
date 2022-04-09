@@ -1,0 +1,2 @@
+[autoType, "Password: ", 0] [wait]
+[autoType:success, "Access granted.", 0]
