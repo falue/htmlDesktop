@@ -3,10 +3,6 @@ let commands = [];
 let commandIndex = -1;
 let blockCommand = false;
 
-// FIXME:
-//   only finish forceType command when enter is pressed
-//   light mode css
-
 async function setup() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -14,6 +10,11 @@ async function setup() {
   let workstation = urlParams.get("workstation");
   let darkMode = urlParams.get("darkMode");
   let scriptName = urlParams.get("script") || "script";
+
+  if(darkMode === "true") {
+    addStylesheet("darkMode.css");
+  }
+
   let script = await parseFile(
     `../../workstations/${workstation}/bash/${scriptName}.fakeBash`
   );
@@ -255,4 +256,16 @@ async function playCommand(command) {
     hide("cursor");
     if (!["nobr"].includes(command.classes)) playCommandAtIndex();
   }
+}
+
+function addStylesheet(path) {
+  let currentStylesheet = gebi('osStylesheet');
+  if(currentStylesheet) currentStylesheet.remove();
+  let head = document.head;
+  let link = document.createElement("link");
+  link.id = "osStylesheet"
+  link.type = "text/css";
+  link.rel = "stylesheet";
+  link.href = path;
+  head.appendChild(link);
 }
