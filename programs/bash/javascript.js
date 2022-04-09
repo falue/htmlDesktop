@@ -1,7 +1,12 @@
 let bashProfileName;
-let commands = [];
-let commandIndex = -1;
+let commands = {"main": []};
+let currentCommandKey = "main";
+let commandIndex = new Array();
+commandIndex["main"] = -1;
 let blockCommand = false;
+let freeTextCommand = "";
+// Filenames in folder defaultScripts. sudo is seperatly handled
+let availableBasicCommands = ["top", "test", "ls", "ls -l", "ls -l -a"];
 
 async function setup() {
   const queryString = window.location.search;
@@ -9,33 +14,57 @@ async function setup() {
   let os = urlParams.get("os");
   let workstation = urlParams.get("workstation");
   let darkMode = urlParams.get("darkMode");
-  let scriptName = urlParams.get("script") || "script";
+  let scriptName = urlParams.get("script");
+  let script = [];
+  if(scriptName && scriptName != "default") {
+    script = await parseFile(
+      `../../workstations/${workstation}/bash/${scriptName}.fakeBash`
+    );
+  } else {
+    // make default bashProfile and enable freetext bashing
+    script[0] = `<span class='green'>${workstation || "admin"}</span>@<span class='red'>localhost</span>:<span class='path grey'>~</span> $ `;
+    script.push(`[bashProfile] [freeText]`);
+    script.push(`[goto:nobr,0]`);
+    darkMode = "true";
+  }
 
   if(darkMode === "true") {
     addStylesheet("darkMode.css");
   }
 
-  let script = await parseFile(
-    `../../workstations/${workstation}/bash/${scriptName}.fakeBash`
-  );
-  loadScript(script);
+  commands.main = loadScript(script);
   playCommandAtIndex(); // Play first command
 }
 
-function loadScript(script) {
-  bashProfileName = script.shift(); // Get first element and delete it
+/* GENERAL */
+function addStylesheet(path) {
+  let currentStylesheet = gebi('osStylesheet');
+  if(currentStylesheet) currentStylesheet.remove();
+  let head = document.head;
+  let link = document.createElement("link");
+  link.id = "osStylesheet"
+  link.type = "text/css";
+  link.rel = "stylesheet";
+  link.href = path;
+  head.appendChild(link);
+}
+
+function loadScript(script, getBashProfile = true) {
+  let localCommands = [];
+  if(getBashProfile) bashProfileName = script.shift(); // Get first element and delete it
   for (lines of script) {
     if (lines === "EXIT") break; // Abort parsing file when keyword EXIT is found
-    splitCommandLines(lines);
+    localCommands = [...localCommands, ...splitCommandLines(lines)];
     if (lines != "[br]" && !lines.includes(":nobr")) {
       // Do not add br for "br" "nobr" command
-      commands.push({ function: "br" });
+      localCommands.push({ function: "br" });
     }
   }
-  // cl(commands);
+  return localCommands;
 }
 
 function splitCommandLines(line) {
+  let localCommands = [];
   // Split multiple commands "[command1] [command2]" on one line into multiple functions
   // let reBrackets = /\[(.*?)\]/g;  // finds also [ and ] in quotes
   let reBrackets = /(?<!\\)\[(.*?)(?<!\\)\]/g; // ingores \[ and \]
@@ -56,12 +85,13 @@ function splitCommandLines(line) {
             .replace(/\\\]/g, "]")
         : parseInt(element);
     });
-    commands.push({
+    localCommands.push({
       function: nameOfFunction,
       parameters: keys.length ? [...keys] : "",
       classes,
     });
   }
+  return localCommands;
 }
 
 function printToConsole(text, classes) {
@@ -81,13 +111,80 @@ function keyboardControllerBash(event) {
   if (!blockCommand) playCommandAtIndex();
 }
 
-function playCommandAtIndex(index) {
-  if (index === undefined && commandIndex < commands.length - 1) {
-    commandIndex++;
-    playCommand(commands[commandIndex]);
+async function playCommandAtIndex(index) {
+  if (index === undefined && commandIndex[currentCommandKey] < commands[currentCommandKey].length - 1) {
+    commandIndex[currentCommandKey]++;
+    await playCommand(commands[currentCommandKey][commandIndex[currentCommandKey]]);
   } else if (index >= 0) {
-    playCommand(commands[index]);
-    commandIndex = index;
+    await playCommand(commands[currentCommandKey][index]);
+    commandIndex[currentCommandKey] = index;
+  } else {
+    // End reached - reset if not main commands for further use of same command
+    if(currentCommandKey != "main") {
+      cl("end of subprocess reached");
+      // reset index of last command
+      commandIndex[currentCommandKey] = -1;
+      // Revert to main commands
+      currentCommandKey = "main";
+      playCommandAtIndex();
+    }
+  }
+}
+
+function resetConsole() {
+  gebi("console").innerHTML = "";
+  playCommandAtIndex(0);
+}
+
+function removeLastCommandOutput(className) {
+  // If no class is specified, remove every command
+  let lastCommandOutput = document.querySelectorAll(`#console${className ? ` .${className}` : '>*'}`);
+  if (lastCommandOutput[lastCommandOutput.length-1]) {
+    lastCommandOutput[lastCommandOutput.length-1].remove();
+  }
+}
+
+function waitForKey(keyCode) {
+  return new Promise((resolve) => {
+    document.addEventListener("keydown", onKeyHandler);
+    function onKeyHandler(e) {
+      if (keyCode.includes(e.keyCode)) {
+        document.removeEventListener("keydown", onKeyHandler);
+        resolve(e.keyCode);
+      }
+    }
+  });
+}
+
+/* SPECIFIC */
+let credentialsTrials = 0;
+async function askCredentials() {
+  // Scroll to bottom of console
+  scrollToBottom();
+  
+  await delay(50); // wait for release of enter from action before!
+  printToConsole("Password:🔒");
+  // enter 13
+  // f=fail = 70
+  // s=succeed = 83
+  let returnKey = await waitForKey([13, 70, 83]);
+  let enterKey;
+  // Ignore enter detection if enter was pressed empty before
+  if(returnKey != 13) enterKey = await waitForKey([13]);
+  if((returnKey === 83 && enterKey === 13) && credentialsTrials < 2) {
+    printToConsole("<br>Access granted.<br>", "success");
+    credentialsTrials = 0;
+    return true;
+  } else {
+    if(credentialsTrials >= 2) {
+      printToConsole("<br>sudo: 3 incorrect password attempts<br>", "error");
+      credentialsTrials = 0;
+      return false;
+    } else {
+      credentialsTrials++;
+      printToConsole("<br>Sorry, try again.<br>", "grey");
+      await askCredentials();
+    }
   }
 }
 
@@ -99,7 +196,6 @@ function setupForceType(command) {
   if (command.classes) span.classList.add(command.classes);
   gebi("console").appendChild(span);
   // Swap onkeydown=keyboardControllerBash(event) of body with
-  // TODO: if enter complete line, if tab next word
   document.getElementsByTagName("body")[0].setAttribute(
     "onkeydown",
     `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();}, true)`
@@ -191,22 +287,98 @@ async function counterAscii(
   return;
 }
 
-function resetConsole() {
-  gebi("console").innerHTML = "";
-  playCommandAtIndex(0);
-}
-
-function waitForKey(keyCode) {
+function freeText(keyCode) {
   return new Promise((resolve) => {
     document.addEventListener("keydown", onKeyHandler);
-    function onKeyHandler(e) {
+    async function onKeyHandler(e) {
       if (e.keyCode === keyCode) {
         document.removeEventListener("keydown", onKeyHandler);
+        await evalCommand(freeTextCommand);
+        freeTextCommand = "";
         resolve();
+      } else {
+        // Ignore shift, ctrl, alt, meta, etc.
+        let printCommand = "";
+        if (e.key.length === 1) {
+          printCommand = e.key;
+        } else if (e.keyCode === 8) {
+          removeLastCommandOutput("freeText");
+          freeTextCommand = freeTextCommand.slice(0, -1);
+          return;
+        } else if (e.keyCode === 78) {
+          printCommand = "~";
+        } else if (e.keyCode === 187 && e.shiftKey) {
+          printCommand = "^";
+        } else if (e.keyCode === 187 && !e.shiftKey) {
+          printCommand = "`";
+        } else if (e.keyCode === 221) {
+          printCommand = "¨";
+        }
+
+        freeTextCommand += printCommand;
+        printToConsole(printCommand, "freeText");
       }
     }
   });
 }
+
+async function loadExternalScript(scriptName) {
+  scriptName = scriptName.replaceAll(" ", "");
+  currentCommandKey = scriptName;
+  commandIndex[currentCommandKey] = -1;
+  let newScripts = await parseFile(`defaultScripts/${scriptName}.fakeBash`);
+  commands[currentCommandKey] = loadScript(newScripts, false);
+  printToConsole("<br>");
+}
+
+async function evalCommand(command) {
+  // Preemptively add sudo before actual command
+  if(command.startsWith("sudo")) {
+    /* await loadExternalScript("sudo"); */
+    printToConsole("<br>");
+    let success = await askCredentials();
+    if(success) {
+      command = command.replace("sudo ", "").replace("sudo", "");
+    } else {
+      // Wrong passwor (no "s" typed in pw!)
+      return;
+    }
+    /* cl("end of sudo if"); */
+  }
+
+  // For 'cd' to work, initial bashProfileName (path) must include "..~<.." !
+  if(availableBasicCommands.includes(command)) {
+    // Load "top" and others
+    await loadExternalScript(command);
+
+  } else if(command === "clear") {
+    gebi("console").innerHTML = "";
+
+  } else if(command === "cd") {
+    return;  // ignore when empty parameter
+
+  } else if(command === "cd ~") {
+    bashProfileName = `${bashProfileName.replace(/\~(.*?)\</, `~<`)}`;
+
+  } else if(command.startsWith("cd ..")) {
+    bashProfileName = `${bashProfileName.replace(/\~(.*?)\/[^\/]+\</, `~$1<`)}`;
+
+  } else if(command.startsWith("cd .")) {
+    return;
+
+  } else if(command.startsWith("cd ")) {
+    // Replace path with current command parameter
+    bashProfileName = `${bashProfileName.replace(/(\~.*?)\</, `$1/${command.replace("cd ", "")}<`)}`;
+
+  } else if(command) {
+    printToConsole(`<br>-bash: ${command}: command not found`, "grey");
+
+  } else {
+    cl("empty command received");
+  }
+}
+
+/* PLAY / REPLAY / KEYBOARD INPUT EVALUATION */
 
 async function playCommand(command) {
   // Execute command
@@ -224,7 +396,16 @@ async function playCommand(command) {
       break;
     case "pwd":
       show("cursor");
-      await waitForKey(13);
+      await waitForKey([13]);
+      break;
+    case "credentials":
+      // TODO: key gets pressed already
+      await askCredentials();
+      break;
+    case "freeText":
+      show("cursor");
+      await freeText(13);
+      playCommandAtIndex();
       break;
     case "sleep":
       await delay(command.parameters[0]);
@@ -244,12 +425,11 @@ async function playCommand(command) {
   }
   blockCommand = false; // Releases keyboard input block
 
-  // Scroll to bottom
-  let body = document.getElementsByTagName("body")[0];
-  body.scrollTop = body.scrollHeight;
+  // Scroll to bottom of console
+  scrollToBottom();
 
   // If not waiting for the user, play next command automatically
-  if (["forceType", "wait"].includes(command.function)) {
+  if (["forceType", "wait", "freeText"].includes(command.function)) {
     // Halt for user input
     show("cursor");
   } else {
@@ -258,14 +438,7 @@ async function playCommand(command) {
   }
 }
 
-function addStylesheet(path) {
-  let currentStylesheet = gebi('osStylesheet');
-  if(currentStylesheet) currentStylesheet.remove();
-  let head = document.head;
-  let link = document.createElement("link");
-  link.id = "osStylesheet"
-  link.type = "text/css";
-  link.rel = "stylesheet";
-  link.href = path;
-  head.appendChild(link);
+function scrollToBottom() {
+  let body = document.getElementsByTagName("body")[0];
+  body.scrollTop = body.scrollHeight;
 }

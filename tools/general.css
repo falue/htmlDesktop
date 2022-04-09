@@ -273,6 +273,7 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .red { color: rgba(255,80,80,1) !important; }
 .green { color: rgb(150, 255, 80) !important; }
 .blue { color: rgba(88,150,255,1) !important; }
+.cyan { color: cyan !important; }
 .grey, .gray { color: grey !important; }
 .darkGrey, .darkGray { color: rgb(35, 35, 35) !important; }
 .black { color: #000000 !important; }
