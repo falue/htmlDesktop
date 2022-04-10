@@ -1,10 +1,12 @@
 let bashProfileName;
+let bashProfileNameInitial;
 let commands = {"main": []};
 let currentCommandKey = "main";
 let commandIndex = new Array();
 commandIndex["main"] = -1;
 let blockCommand = false;
 let freeTextCommand = "";
+let lastFreeTextCommand = "";
 // Filenames in folder defaultScripts. sudo is seperatly handled
 let availableBasicCommands = ["top", "test", "ls", "ls -l", "ls -l -a"];
 
@@ -51,7 +53,11 @@ function addStylesheet(path) {
 
 function loadScript(script, getBashProfile = true) {
   let localCommands = [];
-  if(getBashProfile) bashProfileName = script.shift(); // Get first element and delete it
+  // Get first element and delete it
+  if(getBashProfile) {
+    bashProfileName = script.shift();
+    bashProfileNameInitial = bashProfileName;
+  }
   for (lines of script) {
     if (lines === "EXIT") break; // Abort parsing file when keyword EXIT is found
     localCommands = [...localCommands, ...splitCommandLines(lines)];
@@ -133,6 +139,7 @@ async function playCommandAtIndex(index) {
 
 function resetConsole() {
   gebi("console").innerHTML = "";
+  bashProfileName = bashProfileNameInitial;
   playCommandAtIndex(0);
 }
 
@@ -294,6 +301,7 @@ function freeText(keyCode) {
       if (e.keyCode === keyCode) {
         document.removeEventListener("keydown", onKeyHandler);
         await evalCommand(freeTextCommand);
+        if(freeTextCommand) lastFreeTextCommand = freeTextCommand ;
         freeTextCommand = "";
         resolve();
       } else {
@@ -305,6 +313,9 @@ function freeText(keyCode) {
           removeLastCommandOutput("freeText");
           freeTextCommand = freeTextCommand.slice(0, -1);
           return;
+        } else if (e.keyCode === 38) {  // 38 arrow up
+          printCommand = lastFreeTextCommand;
+          lastFreeTextCommand = "";
         } else if (e.keyCode === 78) {
           printCommand = "~";
         } else if (e.keyCode === 187 && e.shiftKey) {
