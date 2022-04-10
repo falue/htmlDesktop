@@ -171,7 +171,7 @@ async function askCredentials() {
   let enterKey;
   // Ignore enter detection if enter was pressed empty before
   if(returnKey != 13) enterKey = await waitForKey([13]);
-  if((returnKey === 83 && enterKey === 13) && credentialsTrials < 2) {
+  if((returnKey === 83 && enterKey === 13) && credentialsTrials < 3) {
     printToConsole("<br>Access granted.<br>", "success");
     credentialsTrials = 0;
     return true;
@@ -183,7 +183,7 @@ async function askCredentials() {
     } else {
       credentialsTrials++;
       printToConsole("<br>Sorry, try again.<br>", "grey");
-      await askCredentials();
+      return await askCredentials();
     }
   }
 }
