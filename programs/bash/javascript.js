@@ -357,7 +357,7 @@ async function loadExternalScript(scriptName) {
 async function evalCommand(command) {
   // Preemptively add sudo before actual command
   if(command.startsWith("sudo")) {
-    /* await loadExternalScript("sudo"); */
+    blockCommand = true;
     printToConsole("<br>");
     let success = await askCredentials();
     if(success) {
@@ -366,7 +366,7 @@ async function evalCommand(command) {
       // Wrong passwor (no "s" typed in pw!)
       return;
     }
-    /* cl("end of sudo if"); */
+    blockCommand = false;
   }
 
   // For 'cd' to work, initial bashProfileName (path) must include "..~<.." !
