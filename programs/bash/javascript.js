@@ -8,7 +8,7 @@ let blockCommand = false;
 let freeTextCommand = "";
 let lastFreeTextCommand = "";
 // Filenames in folder defaultScripts. sudo is seperatly handled
-let availableBasicCommands = ["top", "test", "ls", "ls -l", "ls -l -a"];
+let availableBasicCommands = ["top", "ls", "ls -l", "ls -l -a"];
 
 async function setup() {
   const queryString = window.location.search;
@@ -202,10 +202,20 @@ function setupForceType(command) {
   span.classList.add("forceType");
   if (command.classes) span.classList.add(command.classes);
   gebi("console").appendChild(span);
+  cl(command.parameters[0]);
   // Swap onkeydown=keyboardControllerBash(event) of body with
+  let includesDefaultCommands = ["clear", ...availableBasicCommands].includes(command.parameters[0]) || command.parameters[0].startsWith("cd ") || command.parameters[0].startsWith("sudo ");
   document.getElementsByTagName("body")[0].setAttribute(
     "onkeydown",
-    `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();}, true)`
+    `forceType(event, gebi('${uid}'), '${
+      command.parameters[0]
+    }', async function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); ${
+      includesDefaultCommands
+        // If default command is set to forceType, try to execute command
+        ? `await evalCommand('${command.parameters[0]}'); await playCommandAtIndex();`
+        : "playCommandAtIndex();"
+    }}, true)`
+    /* `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();}, true)` */
     // To automatically get to the enxt command after last char typed:
     /* `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();})`   */
   );
