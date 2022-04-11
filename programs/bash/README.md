@@ -11,6 +11,8 @@ Every command can have a class, indicated with `:className`; eg `[autotype:green
 
 After every line, a `[br]` command is inserted, except if the class of the command is `:nobr`
 
+The `EXIT` command stops parsing the file at this location. Good for testing.
+
 ## All possible commands function names & options
 
 - `[bashProfile]` - prints a the bashProfile, defined in the first line in this document
@@ -18,6 +20,8 @@ After every line, a `[br]` command is inserted, except if the class of the comma
 - `[autotype:green, "text"]` - prints `text` at once but green without a delay
 - `[forceType, "text"]` - user input is forced to type `text`, next command starts when enter is pressed
 - `[credentials]` - prints password verification. If the password contains `s`, it `s`ucceeds and goes on; if it contains `f`, it `f`ails and commands on the same line with credentials are then ignored.
+- `[credentials, true]` - prints password verification - always succeeds on first try
+- `[credentials, false]` - prints password verification - always fails (three times)
 - `[br]` - prints an additional line break
 - `[wait]` - waits for the user to press enter
 - `[sleep, 1000]` - waits 1000ms
