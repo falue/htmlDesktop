@@ -777,6 +777,9 @@ function startDefaultProgram(program, parameters) {
     case "bash":
         addWindow('Bash Console', 'code', 'bash/index.html?script=script', x, y, 666,450, false);
       break;
+    case "webcam":
+        addWindow('Webcam', 'videocam', 'webcam', x, y, 666,450, false);
+      break;
     case "terminal":
       // If no parameters set, start with random terminal content
       if(!parameters) parameters = randomBetween(0,6);
