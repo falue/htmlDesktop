@@ -166,7 +166,8 @@ function waitForKey(keyCode) {
 /* SPECIFIC */
 let credentialsTrials = 0;
 async function askCredentials(outcome) {
-  cl(outcome);
+  /* cl("outcome::");
+  cl(outcome); */
   // Scroll to bottom of console
   scrollToBottom();
   
@@ -204,9 +205,15 @@ function setupForceType(command) {
   span.classList.add("forceType");
   if (command.classes) span.classList.add(command.classes);
   gebi("console").appendChild(span);
-  cl(command.parameters[0]);
-  // Swap onkeydown=keyboardControllerBash(event) of body with
+  // Check if forceTyped command is a default programm
   let includesDefaultCommands = ["clear", ...availableBasicCommands].includes(command.parameters[0]) || command.parameters[0].startsWith("cd ") || command.parameters[0].startsWith("sudo ");
+  // Check sudo outcome parameter
+  let sudoOutcome;
+  if(command.parameters[0].startsWith("sudo ")) {
+    sudoOutcome = command.parameters[1] ? command.parameters[1] === "true" : command.parameters[1] === "false" ? false : undefined;
+    if(sudoOutcome !== undefined) sudoOutcome = `, ${sudoOutcome}`;
+  }
+  // Swap onkeydown=keyboardControllerBash(event) of body with
   document.getElementsByTagName("body")[0].setAttribute(
     "onkeydown",
     `forceType(event, gebi('${uid}'), '${
@@ -214,7 +221,7 @@ function setupForceType(command) {
     }', async function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); ${
       includesDefaultCommands
         // If default command is set to forceType, try to execute command
-        ? `await evalCommand('${command.parameters[0]}'); await playCommandAtIndex();`
+        ? `await evalCommand('${command.parameters[0]}'${sudoOutcome || ""}); await playCommandAtIndex();`
         : "playCommandAtIndex();"
     }}, true)`
     /* `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();}, true)` */
@@ -354,12 +361,12 @@ async function loadExternalScript(scriptName) {
   printToConsole("<br>");
 }
 
-async function evalCommand(command) {
+async function evalCommand(command, sudoOutcome) {
   // Preemptively add sudo before actual command
   if(command.startsWith("sudo")) {
     /* await loadExternalScript("sudo"); */
     printToConsole("<br>");
-    let success = await askCredentials();
+    let success = await askCredentials(sudoOutcome);  // add param real, true or false!!
     if(success) {
       command = command.replace("sudo ", "").replace("sudo", "");
     } else {
@@ -393,8 +400,8 @@ async function evalCommand(command) {
     // Replace path with current command parameter
     bashProfileName = `${bashProfileName.replace(/(\~.*?)\</, `$1/${command.replace("cd ", "")}<`)}`;
 
-  } else if(command) {
-    printToConsole(`<br>-bash: ${command}: command not found`, "grey");
+  // } else if(command) {
+  //   printToConsole(`<br>-bash: ${command}: command not found`, "grey");
 
   } else {
     cl("empty command received");
