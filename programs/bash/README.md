@@ -49,8 +49,9 @@ All the *default scripts* above can be used as well within `forceType`:
 - `[forceType, "cd ~"]`
 - `[forceType, "cd folder"]`
 - `[forceType, "cd .."]`
-- `[forceType, "sudo ls -l -a"]`
-**NOTE**: if you use `sudo` in forcetype, there is no need for an additional `[credentials]` command, as `sudo` already triggers that
+- `[forceType, "sudo ls -l -a", true]`
+**NOTE**: if you use `sudo` in forcetype, there is no need for an additional `[credentials]` command, as `sudo` already triggers that.
+Also, there is a *third* parameter for sudo in forceType: Same functionality as in the `[credentials]` command; true/false or no third parameter.
 
 
 ## Example
