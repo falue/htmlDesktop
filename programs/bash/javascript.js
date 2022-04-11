@@ -165,7 +165,8 @@ function waitForKey(keyCode) {
 
 /* SPECIFIC */
 let credentialsTrials = 0;
-async function askCredentials() {
+async function askCredentials(outcome) {
+  cl(outcome);
   // Scroll to bottom of console
   scrollToBottom();
   
@@ -178,7 +179,8 @@ async function askCredentials() {
   let enterKey;
   // Ignore enter detection if enter was pressed empty before
   if(returnKey != 13) enterKey = await waitForKey([13]);
-  if((returnKey === 83 && enterKey === 13) && credentialsTrials < 3) {
+  // If "s" & enter ist typed, or outcome is true and not false and not "real", then grant access
+  if((((returnKey === 83 && enterKey === 13) && credentialsTrials < 3) || outcome === true) && outcome != false) {
     printToConsole("<br>Access granted.<br>", "success");
     credentialsTrials = 0;
     return true;
@@ -187,10 +189,10 @@ async function askCredentials() {
       printToConsole("<br>sudo: 3 incorrect password attempts<br>", "error");
       credentialsTrials = 0;
       return false;
-    } else {
+    } else if(credentialsTrials < 3 || outcome === false) {
       credentialsTrials++;
       printToConsole("<br>Sorry, try again.<br>", "grey");
-      return await askCredentials();
+      return await askCredentials(outcome);
     }
   }
 }
@@ -415,13 +417,13 @@ async function playCommand(command) {
     case "forceType":
       setupForceType(command);
       break;
-    case "pwd":
+    case "waitForEnter":
       show("cursor");
       await waitForKey([13]);
       break;
     case "credentials":
       // TODO: key gets pressed already
-      await askCredentials();
+      await askCredentials(command.parameters[0] === undefined ? "real" : command.parameters[0] === "true");
       break;
     case "freeText":
       show("cursor");
