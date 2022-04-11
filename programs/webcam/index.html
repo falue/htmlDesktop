@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Program</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <!-- <link rel="stylesheet" href="../../tools/desktop.css" media="all"> -->
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js" defer></script>
+
+  </head>
+  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+    <div class="videoSelector videoSelectorOpener" onclick="show('videoSelector')"></div>
+    <div id="videoSelector" class="videoSelector hide">
+      <label for="videoSource">Video source: </label><select id="videoSource"></select>
+      <i class="material-icons valign hover" onclick="hide('videoSelector')">close</i>
+    </div>
+    
+    <video id="video" class="webcam" playsinline autoplay></video>
+  </body>
+  </html>
