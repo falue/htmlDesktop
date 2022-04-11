@@ -23,7 +23,8 @@ The `EXIT` command stops parsing the file at this location. Good for testing.
 - `[credentials, true]` - prints password verification - always succeeds on first try
 - `[credentials, false]` - prints password verification - always fails (three times)
 - `[br]` - prints an additional line break
-- `[wait]` - waits for the user to press enter
+- `[wait]` - waits for the user to press any key
+- `[waitForEnter]` - waits for the user to press enter
 - `[sleep, 1000]` - waits 1000ms
 - `[clear]` - clears the screen
 - `[goto, 4]` - jump to command index `4`; `0` for begin of script

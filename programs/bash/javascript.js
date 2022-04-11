@@ -417,7 +417,7 @@ async function playCommand(command) {
     case "forceType":
       setupForceType(command);
       break;
-    case "pwd":
+    case "waitForEnter":
       show("cursor");
       await waitForKey([13]);
       break;
