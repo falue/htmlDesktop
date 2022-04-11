@@ -1,12 +1,14 @@
 let bashProfileName;
+let bashProfileNameInitial;
 let commands = {"main": []};
 let currentCommandKey = "main";
 let commandIndex = new Array();
 commandIndex["main"] = -1;
 let blockCommand = false;
 let freeTextCommand = "";
+let lastFreeTextCommand = "";
 // Filenames in folder defaultScripts. sudo is seperatly handled
-let availableBasicCommands = ["top", "test", "ls", "ls -l", "ls -l -a"];
+let availableBasicCommands = ["top", "ls", "ls -l", "ls -l -a"];
 
 async function setup() {
   const queryString = window.location.search;
@@ -51,7 +53,11 @@ function addStylesheet(path) {
 
 function loadScript(script, getBashProfile = true) {
   let localCommands = [];
-  if(getBashProfile) bashProfileName = script.shift(); // Get first element and delete it
+  // Get first element and delete it
+  if(getBashProfile) {
+    bashProfileName = script.shift();
+    bashProfileNameInitial = bashProfileName;
+  }
   for (lines of script) {
     if (lines === "EXIT") break; // Abort parsing file when keyword EXIT is found
     localCommands = [...localCommands, ...splitCommandLines(lines)];
@@ -133,6 +139,7 @@ async function playCommandAtIndex(index) {
 
 function resetConsole() {
   gebi("console").innerHTML = "";
+  bashProfileName = bashProfileNameInitial;
   playCommandAtIndex(0);
 }
 
@@ -171,7 +178,7 @@ async function askCredentials() {
   let enterKey;
   // Ignore enter detection if enter was pressed empty before
   if(returnKey != 13) enterKey = await waitForKey([13]);
-  if((returnKey === 83 && enterKey === 13) && credentialsTrials < 2) {
+  if((returnKey === 83 && enterKey === 13) && credentialsTrials < 3) {
     printToConsole("<br>Access granted.<br>", "success");
     credentialsTrials = 0;
     return true;
@@ -183,7 +190,7 @@ async function askCredentials() {
     } else {
       credentialsTrials++;
       printToConsole("<br>Sorry, try again.<br>", "grey");
-      await askCredentials();
+      return await askCredentials();
     }
   }
 }
@@ -195,10 +202,20 @@ function setupForceType(command) {
   span.classList.add("forceType");
   if (command.classes) span.classList.add(command.classes);
   gebi("console").appendChild(span);
+  cl(command.parameters[0]);
   // Swap onkeydown=keyboardControllerBash(event) of body with
+  let includesDefaultCommands = ["clear", ...availableBasicCommands].includes(command.parameters[0]) || command.parameters[0].startsWith("cd ") || command.parameters[0].startsWith("sudo ");
   document.getElementsByTagName("body")[0].setAttribute(
     "onkeydown",
-    `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();}, true)`
+    `forceType(event, gebi('${uid}'), '${
+      command.parameters[0]
+    }', async function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); ${
+      includesDefaultCommands
+        // If default command is set to forceType, try to execute command
+        ? `await evalCommand('${command.parameters[0]}'); await playCommandAtIndex();`
+        : "playCommandAtIndex();"
+    }}, true)`
+    /* `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();}, true)` */
     // To automatically get to the enxt command after last char typed:
     /* `forceType(event, gebi('${uid}'), '${command.parameters[0]}', function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); playCommandAtIndex();})`   */
   );
@@ -294,6 +311,7 @@ function freeText(keyCode) {
       if (e.keyCode === keyCode) {
         document.removeEventListener("keydown", onKeyHandler);
         await evalCommand(freeTextCommand);
+        if(freeTextCommand) lastFreeTextCommand = freeTextCommand ;
         freeTextCommand = "";
         resolve();
       } else {
@@ -305,6 +323,9 @@ function freeText(keyCode) {
           removeLastCommandOutput("freeText");
           freeTextCommand = freeTextCommand.slice(0, -1);
           return;
+        } else if (e.keyCode === 38) {  // 38 arrow up
+          printCommand = lastFreeTextCommand;
+          lastFreeTextCommand = "";
         } else if (e.keyCode === 78) {
           printCommand = "~";
         } else if (e.keyCode === 187 && e.shiftKey) {

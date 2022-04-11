@@ -2,7 +2,6 @@
 # bashProfileName - plain text or html
 <span class='green'>admin</span>@<span class='red'>localhost</span>:<span class='grey'>~</span> $ 
 # -------
-# NOTE: If you want to have [ or ] in text, use \[ or \]
 
 [bashProfile] [forceType, "sudo rm -rf /"]
 [credentials]
