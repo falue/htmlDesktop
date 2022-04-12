@@ -785,7 +785,7 @@ function startDefaultProgram(program, parameters) {
         addWindow('Threejs - Editor', 'view_in_ar', 'threejs/editor', x, y, 666,450, false);
       break;
     case "threejsPlayer":
-        addWindow('Threejs - Player', 'view_in_ar', 'threejs/player/index.html?modelPath='+(parameters ? parameters : ''), x, y, 666,450, false);
+        addWindow('Threejs - Player', 'view_in_ar', 'threejs/player/index.html?file='+(parameters ? parameters : ''), x, y, 666,450, false);
       break;
     case "bash":
         addWindow('Bash Console', 'code', 'bash/index.html?script=script', x, y, 666,450, false);

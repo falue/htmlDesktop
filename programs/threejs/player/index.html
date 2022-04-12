@@ -30,9 +30,9 @@
       // Get modelPath from URL
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      let modelPath = urlParams.get("path");
-      if (modelPath) {
-        window.location.href = modelPath;
+      let fileName = urlParams.get("file");
+      if (fileName) {
+        window.location.href = fileName;
       }
     </script>
   </head>
@@ -47,7 +47,7 @@
     link directly to the model html file
 
     <script>
-      if (!modelPath) {
+      if (!fileName) {
         // Fill list with available models
         let modelList = document.getElementById("modelList");
         let peekList = document.getElementById("peekList");

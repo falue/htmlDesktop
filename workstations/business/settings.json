@@ -67,7 +67,7 @@
         {
             "windowName": "Threejs - Player",
             "icon": "view_in_ar",
-            "contentPath": "threejs/player/index.html?modelPath=models/LittlestTokyo.glb",
+            "contentPath": "threejs/player/index.html?file=webgl_animation_keyframes.html",
             "x": 13,
             "y": 10,
             "w": 920,
