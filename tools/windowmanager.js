@@ -162,7 +162,7 @@ onDragEnd = function() {
 
 let recentZIndex = 10;
 
-function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
+async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   // Display overlay in all other windows that youre able to click on them later
   showClass('windowManagerOverlay');
 
@@ -289,6 +289,19 @@ function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   ].join("");
   content.setAttribute("src", srcIframe);
   windowContainer.appendChild(content);
+
+  // For some godforsaken reason, i cannot parse .html files OR files with no extension,
+  // This is why i use .splash
+  let splashPath = `programs/${mainProgram.endsWith(".html") ? mainProgram.split("/").slice(0, -1).join("/") : mainProgram}/index.splash`;
+  let splash = await parseFile(splashPath, false);
+  if(splash != 404) {
+    show('splashScreen');
+    gebi('splashScreenWindow').innerHTML = splash;
+    let delayTime = parseInt(splash.match(/\<\!-- ?delay ?= ?(\d*?) ?--\>/)[1]);
+    cl(delayTime);
+    await delay(delayTime);
+    hide('splashScreen');
+  }
     
   gebi('desktop').appendChild(windowContainer);
 

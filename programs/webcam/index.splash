@@ -1,0 +1,12 @@
+<div style="background-color:aquamarine; black; padding:3em 12em 1em 12em;">
+    <!--parsed in windowmanager.js:-->
+    <!--delay= 2200-->
+    <img src="programs/webcam/splash.png" style="height: 12em;"/>
+    <br><br>
+    © WEBCAM, inc.
+    <br>
+    <span class="grey fade">
+        <i class="material-icons spin valign small">refresh</i>
+        loading..
+    </span>
+</div>
