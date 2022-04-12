@@ -297,8 +297,8 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   if(splash != 404) {
     show('splashScreen');
     gebi('splashScreenWindow').innerHTML = splash;
-    let delayTime = parseInt(splash.match(/\<\!-- ?delay ?= ?(\d*?) ?--\>/)[1]);
-    cl(delayTime);
+    let delayTime = splash.match(/\<\!-- ?delay ?= ?(\d*?) ?--\>/);
+    delayTime = delayTime ? parseInt(delayTime[1]) : 2000;
     await delay(delayTime);
     hide('splashScreen');
   }
