@@ -1,9 +1,9 @@
 import * as THREE from 'three';
 
-import { HTMLMesh } from '../../examples/jsm/interactive/HTMLMesh.js';
-import { InteractiveGroup } from '../../examples/jsm/interactive/InteractiveGroup.js';
+import { HTMLMesh } from '../../player/jsm/interactive/HTMLMesh.js';
+import { InteractiveGroup } from '../../player/jsm/interactive/InteractiveGroup.js';
 
-import { XRControllerModelFactory } from '../../examples/jsm/webxr/XRControllerModelFactory.js';
+import { XRControllerModelFactory } from '../../player/jsm/webxr/XRControllerModelFactory.js';
 
 class VR {
 

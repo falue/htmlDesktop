@@ -297,8 +297,8 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   if(splash != 404) {
     show('splashScreen');
     gebi('splashScreenWindow').innerHTML = splash;
-    let delayTime = parseInt(splash.match(/\<\!-- ?delay ?= ?(\d*?) ?--\>/)[1]);
-    cl(delayTime);
+    let delayTime = splash.match(/\<\!-- ?delay ?= ?(\d*?) ?--\>/);
+    delayTime = delayTime ? parseInt(delayTime[1]) : 2000;
     await delay(delayTime);
     hide('splashScreen');
   }
@@ -785,7 +785,7 @@ function startDefaultProgram(program, parameters) {
         addWindow('Threejs - Editor', 'view_in_ar', 'threejs/editor', x, y, 666,450, false);
       break;
     case "threejsPlayer":
-        addWindow('Threejs - Player', 'view_in_ar', 'threejs/player/index.html?modelPath='+(parameters ? parameters : ''), x, y, 666,450, false);
+        addWindow('Threejs - Player', 'view_in_ar', 'threejs/player/index.html?file='+(parameters ? parameters : ''), x, y, 666,450, false);
       break;
     case "bash":
         addWindow('Bash Console', 'code', 'bash/index.html?script=script', x, y, 666,450, false);

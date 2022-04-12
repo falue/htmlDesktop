@@ -1,0 +1,298 @@
+{
+    "settings": {
+        "systemColor": "#FCFCFC",
+        "desktopColor": "#000000",
+        "desktopImg": "os/mac/desktop.jpg",
+        "os": "mac",
+        "darkMode": false,
+        "username": "Mr. Business",
+        "password": "1234",
+        "workstation": "business",
+        "selectedSystemMessage": 1,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "wifi",
+        "usb",
+        "bluetooth",
+        "gpp_maybe",
+        "warning",
+        "mail",
+        "cloud",
+        "volume_mute",
+        {
+            "clock": [
+                "11",
+                "11"
+            ]
+        }
+    ],
+    "windows": [
+        {
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager/index.html?folderContent=Downloads",
+            "x": 48,
+            "y": 5,
+            "w": 650,
+            "h": 594,
+            "zIndex": 20,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Text editor - Untitled*",
+            "icon": "edit_note",
+            "contentPath": "texteditor/index.html?text=random",
+            "x": 8,
+            "y": 15,
+            "w": 649,
+            "h": 474,
+            "zIndex": 24,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager/index.html?folderContent=Documents",
+            "x": 56,
+            "y": 4,
+            "w": 598,
+            "h": 444,
+            "zIndex": 11,
+            "minimized": true,
+            "renderToDom": false
+        },
+        {
+            "windowName": "Threejs - Player",
+            "icon": "view_in_ar",
+            "contentPath": "threejs/player/index.html?file=webgl_animation_keyframes.html",
+            "x": 13,
+            "y": 10,
+            "w": 920,
+            "h": 600,
+            "zIndex": 12,
+            "minimized": false,
+            "renderToDom": true
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 94,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "var.docx",
+            "icon": "doc.png",
+            "x": 2,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "var Copy.doc",
+            "icon": "doc.png",
+            "x": 1,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Links",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "var.doc",
+            "icon": "doc.png",
+            "x": 9,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "A-43-c.jpeg",
+            "icon": "fileImage.png",
+            "x": 8,
+            "y": 30,
+            "action": "startDefaultProgram('imageViewer');"
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Photos.psd",
+            "icon": "fileImage.png",
+            "x": 8,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "VAR 886cd",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "VAR 4472b",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "file d2dd8",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "var.jpg",
+            "icon": "fileImage.png",
+            "x": 16,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 94,
+            "y": 69,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Favorites Copy",
+            "icon": "folderFull.png",
+            "x": 14,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "var 22fd2",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Important.mp4",
+            "icon": "fileMovie.png",
+            "x": 14,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 23,
+            "y": 16,
+            "action": ""
+        },
+        {
+            "name": "Photos 2",
+            "icon": "fileImage.png",
+            "x": 23,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 29,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 45,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "A-433.pdf",
+            "icon": "pdf.png",
+            "x": 2,
+            "y": 4,
+            "action": ""
+        }
+    ],
+    "osNotifications": [
+        [
+            "You've got mail (2)",
+            "The following messages have just arrived: (..)",
+            "email",
+            true,
+            0,
+            "startDefaultProgram('textEditor')"
+        ],
+        [
+            "Zombie wave iminent",
+            "Hack into these brains to gain access to valuable recources (..)",
+            "warning",
+            true,
+            0,
+            "startDefaultProgram('terminal')"
+        ],
+        [
+            "Some files need your attention",
+            "",
+            "info",
+            true,
+            3500,
+            "startDefaultProgram('fileManager')"
+        ],
+        [
+            "Activate OS now",
+            "Please invest in a robust system and pay us just $14.99 per day to experience the most comfort a meaty fleshbag can enjoy. We will remind you again in one hour.",
+            "shield",
+            true,
+            4500,
+            ""
+        ]
+    ]
+}
