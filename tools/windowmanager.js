@@ -780,6 +780,9 @@ function startDefaultProgram(program, parameters) {
     case "webcam":
         addWindow('Webcam', 'videocam', 'webcam', x, y, 666,450, false);
       break;
+    case "colorMarker":
+        addWindow('Program', 'grid_view', 'colorMarker', x, y, 666,450, false);
+      break;
     case "terminal":
       // If no parameters set, start with random terminal content
       if(!parameters) parameters = randomBetween(0,6);
