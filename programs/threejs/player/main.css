@@ -22,19 +22,15 @@ button {
 	text-transform: uppercase;
 }
 
+/* Hide copyright infos */
 #info {
-	position: absolute;
-	top: 0px;
-	width: 100%;
-	padding: 10px;
-	box-sizing: border-box;
-	text-align: center;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	pointer-events: none;
-	z-index: 1; /* TODO Solve this in HTML */
+	display: none;
+}
+
+/* Hide FPS stats */
+body div div canvas[width="160"],
+#container div canvas[width="160"] {
+	display: none !important;
 }
 
 a, button, input, select {
