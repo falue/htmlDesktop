@@ -281,8 +281,6 @@ function forceType(event, element, text, endAction = false, waitForEnter = false
   let index = currentText.length;
   let newTypedText;
 
-  cl(event.keyCode);
-
   switch(event.keyCode) {
     case 39:
       // cl("arrow right");
