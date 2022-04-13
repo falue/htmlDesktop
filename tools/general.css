@@ -295,6 +295,9 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .whiteBgTransparent { background-color: rgba(255,255,255,0.3) !important; }
 
 /* BORDERS */
+.blackBorder { border: thin solid black !important; }
+.whiteBorder { border: thin solid white !important; }
+.greyBorder { border: thin solid grey !important; }
 .redBorder { border: thin solid rgba(255,80,80,1) !important; }
 .clearBorder { border: thin solid rgba(0,0,0,0); }
 

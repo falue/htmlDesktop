@@ -78,15 +78,25 @@ async function showLockScreen() {
     // Start animations
     gebi('loggingOut').classList.add("fadeInFast");
     await delay(1200);
-    gebi('lockScreenSystemColorOverlay').classList.add("fadeInFast");
-    gebi('lockScreenColorOverlay').classList.add("fadeInFast");
+
+    // Show blackout
+    gebi('blackout').classList.add("fadeInFast");
+    show('blackout');
+    await delay(250);
+
+    // Show login underneath
+    /* gebi('lockScreenSystemColorOverlay').classList.add("fadeInFast");
+    gebi('lockScreenColorOverlay').classList.add("fadeInFast"); */
     show('lockScreenSystemColorOverlay');
     show('lockScreenColorOverlay');
-    await delay(250);
+    /* await delay(250); */
+
+    // Reset animation classes for next installment
     hide('loggingOut');
     gebi('loggingOut').classList.remove("fadeInFast");
-    gebi('lockScreenSystemColorOverlay').classList.remove("fadeInFast");
-    gebi('lockScreenColorOverlay').classList.remove("fadeInFast");
+    /* gebi('lockScreenSystemColorOverlay').classList.remove("fadeInFast");
+    gebi('lockScreenColorOverlay').classList.remove("fadeInFast"); */
+    gebi('blackout').classList.remove("fadeInFast");
 }
 
 async function hotSwapOs(nextOs) {

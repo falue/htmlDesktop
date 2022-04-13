@@ -282,54 +282,67 @@ function forceType(event, element, text, endAction = false, waitForEnter = false
   let newTypedText;
 
   switch(event.keyCode) {
-      case 39:
-          // Do nothing, allow char
-          // cl("arrow right");
-          break;
+    case 39:
+      // cl("arrow right");
+      // Do nothing
+      newTypedText = currentText;
+      break;
 
-      case 37:
-          // Do nothing, allow char
-          // cl("arrow left");
-          break;
+    case 37:
+      // cl("arrow left");
+      // Do nothing
+      newTypedText = currentText;
+      break;
+    case 38:
+      // cl("arrow up");
+      // Do nothing
+      newTypedText = currentText;
+      break;
 
-      case 8:
-          // cl("backspace");
-          event.preventDefault();
-          newTypedText = text.substring(0,index-1);
-          index--;
-          break; 
-          
-      case 9:
-          // cl("tab");
-          // Word completion
-          event.preventDefault();
-          let restOfText = text.substring(index, text.length);
-          if(restOfText[0] === " ") currentText += " ";
-          let nextWord = restOfText.split(" ").filter(n => n);
-          newTypedText = currentText + (nextWord.length ? nextWord[0] : "");
-          index = newTypedText.length;
-          break;
-          
-      case 13:
-          // cl("enter");
-          event.preventDefault();
-          newTypedText = text;
-          index = text.length;
-          break;
+    case 40:
+      // cl("arrow down");
+      // Do nothing
+      newTypedText = currentText;
+      break;
 
-      case 46:
-          // cl("delete");
-          event.preventDefault();
-          newTypedText = text.substring(0,index-1);
-          index--;
-          break;
+    case 8:
+      // cl("backspace");
+      event.preventDefault();
+      newTypedText = text.substring(0,index-1);
+      index--;
+      break; 
+        
+    case 9:
+      // cl("tab");
+      // Word completion
+      event.preventDefault();
+      let restOfText = text.substring(index, text.length);
+      if(restOfText[0] === " ") currentText += " ";
+      let nextWord = restOfText.split(" ").filter(n => n);
+      newTypedText = currentText + (nextWord.length ? nextWord[0] : "");
+      index = newTypedText.length;
+      break;
+        
+    case 13:
+      // cl("enter");
+      event.preventDefault();
+      newTypedText = text;
+      index = text.length;
+      break;
 
-      default:
-          // Magic
-          // cl(event.keyCode);
-          event.preventDefault();
-          newTypedText = text.substring(0,index+1);
-          break;
+    case 46:
+      // cl("delete");
+      event.preventDefault();
+      newTypedText = text.substring(0,index-1);
+      index--;
+      break;
+
+    default:
+      // Magic
+      // cl(event.keyCode);
+      event.preventDefault();
+      newTypedText = text.substring(0,index+1);
+      break;
   }
 
   if(typeof(element.value) === "string") {
