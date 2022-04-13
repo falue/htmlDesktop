@@ -12,6 +12,11 @@
             ["Personal.tiff", "action", "filesize", ""],
             {"Document Copy": []}
         ]},
+        {"Devices": [
+            {"E:": [
+                ["nBrugger.dna", "parent.addWindow('Text editor - nBrugger.dna', 'edit_note', 'texteditor/index.html?text=GTCACTACTACA...', 22, 22, 666,450, false);", "filesize", ""]
+            ]}
+        ]},
         {"Documents": [
             {"Al capone Fun Facts": [
                 ["Al Capone Fun Facts.txt", "action", "filesize", "AL CAPONE - A funny summary%0Aby F.Lüscher%0A%0A%0AThere is nothing funny about Al Capone.%0A%0AThe End."]
