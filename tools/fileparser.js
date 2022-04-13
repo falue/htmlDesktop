@@ -4,8 +4,10 @@ async function parseFile(filepath, showError=true) {
       // Always gets a response, unless there is network error
       // Catch error if file is not available:
       if(response.status != 200) {
-        console.error("Missing file:\n❌ " + filepath + "\nResponse status: "+response.status);
-        if(showError) alert("Missing file:\n❌ " + filepath + "\nCreate it and try again.");
+        if(showError) {
+          console.error("Missing file:\n❌ " + filepath + "\nResponse status: "+response.status);
+          alert("Missing file:\n❌ " + filepath + "\nCreate it and try again.");
+        }
       }
       return response;
     }).catch((error) => {
