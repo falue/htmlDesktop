@@ -471,7 +471,13 @@ function keyboardController(event) {
 function blackoutHide() {
     hide('blackout');
     if(!gebi('lockScreen').classList.contains('hide')) {
-        gebi('lockScreenText').focus();
+        // If lock screen is visible, focus login form:
+        // focus() user input (linux, windows) or focus password input (mac) because user input is missing on mac
+        if(window.getComputedStyle(gebi('lockScreenText')).display !== "none") {
+            gebi('lockScreenText').focus();
+        } else {
+            gebi('lockScreenPassword').focus();
+        }
     }
 }
 
