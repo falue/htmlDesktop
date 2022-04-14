@@ -111,9 +111,11 @@ async function hotSwapOs(nextOs) {
     
     // If save file exists, add to URL for later URL rewriting by setup();
     if(urlParams.get('loadSaveFile')) {
-        history.pushState({}, null, "index.html?hotSwapOs=true&loadSaveFile="+saveFileName+"&lastSavedFile="+urlParams.get('loadSaveFile'));
+        // here detect DESKTOP.html
+        history.pushState({}, null, `${rootHtmlFile}?hotSwapOs=true&loadSaveFile=${saveFileName}&lastSavedFile=${urlParams.get('loadSaveFile')}`);
     } else {
-        history.pushState({}, null, "index.html?hotSwapOs=true&loadSaveFile="+saveFileName);
+        // here detect DESKTOP.html
+        history.pushState({}, null, `${rootHtmlFile}?hotSwapOs=true&loadSaveFile=${saveFileName}`);
     }
 
     // Clear workstationList

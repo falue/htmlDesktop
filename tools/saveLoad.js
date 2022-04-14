@@ -17,7 +17,8 @@ async function save() {
 async function saveAs(download) {
   // Abort if online demo
   let host = window.location.origin + window.location.pathname;
-  if(host === "https://www.telefabi.ch/index.html" || host === "https://telefabi.ch/index.html") {
+  // here detect DESKTOP.html
+  if(host === `https://www.telefabi.ch/${rootHtmlFile}` || host === `https://telefabi.ch/${rootHtmlFile}`) {
     showDialog("Demo mode", "I'm very sorry, saving or exporting is not available in this demo. To be fully functional as a digital prop, this system needs backend adjustments.<br><br>If you want to use this for your project, i'd suggest you contact me at <a href='mailto:info@fluescher.ch'>info@fluescher.ch</a>.<br><br>Thanks & cheers");
     return;
   }
@@ -75,7 +76,8 @@ function compileSaveFile(saveFileName, download) {
       if(!saveFileName.startsWith("tempSave-")) {
         showNote("Saved", "All your windows & settings are now saved.<br>No manually entered window contents though.", "save", 3500);
         // Rewrite URL to allow later cmd + r by user
-        history.pushState({}, null, "index.html?loadSaveFile="+saveFileName);
+        // here detect DESKTOP.html
+        history.pushState({}, null, `${rootHtmlFile}?loadSaveFile=${saveFileName}`);
       }
     } else {
       // Sorry! No Web Storage support..
@@ -116,7 +118,8 @@ async function uploadLocalSaveFile(files) {
     // Save to localStorage
     localStorage.setItem(saveFileName, data);
     // Reload page
-    window.location.href = 'index.html?loadSaveFile='+saveFileName;
+    // here detect DESKTOP.html
+    window.location.href = `${rootHtmlFile}?loadSaveFile=${saveFileName}`;
   }
 }
 
@@ -152,7 +155,8 @@ function loadSaveFile(saveFile) {
 
 function clearLocalStorage() {
   localStorage.clear();
-  history.pushState({}, null, "index.html?workstation="+workstation+"&os="+os);
+  // here detect DESKTOP.html
+  history.pushState({}, null, `${rootHtmlFile}?workstation=${workstation}&os=${os}`);
 }
 
 function clearLocalStorageItem(key) {
@@ -215,7 +219,8 @@ function checkSaveFiles() {
       /* Create li element */
       let listElement = document.createElement("li");
       listElement.innerHTML = safeFileName + " <span class='grey'>" + saveFile[safeFileKey]["settings"]["workstation"] + "</span>";
-      listElement.setAttribute("onclick", "window.location.href='index.html?loadSaveFile="+safeFileKey+"';");
+      // here detect DESKTOP.html
+      listElement.setAttribute("onclick", `window.location.href='${rootHtmlFile}?loadSaveFile=${safeFileKey}';`);
       listElement.setAttribute("class", "relative pointer");
       
       // Add workstation and infos
