@@ -417,6 +417,15 @@ function clearSystemMessages() {
 function keyboardController(event) {
     // Ignore presses in textareas and inputs, but NOT buttons because mostly fake
     if(event.target.localName !== "textarea" && event.target.localName !== "input") {
+
+        // If screensaver or blackout is visible, ignore all keypresses and hide both
+        if(!gebi('lockScreen').classList.contains('hide') || !gebi('screensaver').classList.contains('hide')) {
+            epD(event);
+            blackoutHide();
+            screensaverHide();
+            return;
+        }
+
         let key = event.key;
         switch(key) {
             case "1": epD(event); startDefaultProgram('terminal', 6); break;
@@ -452,11 +461,17 @@ function keyboardController(event) {
             case "shift": epD(event); cl("shift"); break; */
 
             default:
-                cl("Default: hide blackout 6 screensaver")
-                hide('blackout');
-                screensaverHide();
+                // Any other keypresses: Do nothing
+                cl("Default Keypress: "+key);
                 break;
         }
+    }
+}
+
+function blackoutHide() {
+    hide('blackout');
+    if(!gebi('lockScreen').classList.contains('hide')) {
+        gebi('lockScreenText').focus();
     }
 }
 
