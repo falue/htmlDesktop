@@ -8,6 +8,7 @@ let password;
 let osNotifications;
 let selectedSystemMessage;
 let hotSwapped;
+let rootHtmlFile = "index.html";
 
 async function setup() {
   // Get Workstation parameter
@@ -16,9 +17,15 @@ async function setup() {
   workstation = urlParams.get('workstation');
   let data;
   let host = window.location.origin + window.location.pathname;
+
+  // get current file name without parameters
+  let rootHtmlFile = window.location.pathname.split("/").pop();
+  if(rootHtmlFile.includes("?")) rootHtmlFile = rootHtmlFile.split("?")[0];
+  cl("Current root file is " + rootHtmlFile);
   
   // If on telefabi.ch in root, use htmlDesktop as website :)
-  if(host === "https://www.telefabi.ch/index.html" || host === "https://telefabi.ch/index.html") {
+  // here detect DESKTOP.html
+  if(host === `https://www.telefabi.ch/${rootHtmlFile}` || host === `https://telefabi.ch/${rootHtmlFile}`) {
     // If mobile, redirect to "business card" website
     if (window.matchMedia("(max-width: 900px)").matches) {
       window.location.href = "../programs/browser/sites/telefabi/index.html";
@@ -86,10 +93,12 @@ async function setup() {
     // Rewrite url because hard reload sucks
     if(urlParams.get('lastSavedFile')) {
       // Revert loadSaveFile to original name
-      history.pushState({}, null, "index.html?loadSaveFile="+urlParams.get('lastSavedFile'));
+      // here detect DESKTOP.html
+      history.pushState({}, null, `${rootHtmlFile}?loadSaveFile=${urlParams.get('lastSavedFile')}`);
     } else {
       // No current save file, reset to basic url
-      history.pushState({}, null, "index.html?workstation="+workstation+"&os="+os);
+      // here detect DESKTOP.html
+      history.pushState({}, null, `${rootHtmlFile}?workstation=${workstation}&os=${os}`);
     }
 
     // Clear all windows, because they get re-set with new icons
