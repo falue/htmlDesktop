@@ -19,7 +19,7 @@ async function setup() {
   let host = window.location.origin + window.location.pathname;
 
   // get current file name without parameters
-  let rootHtmlFile = window.location.pathname.split("/").pop();
+  rootHtmlFile = window.location.pathname.split("/").pop();
   if(rootHtmlFile.includes("?")) rootHtmlFile = rootHtmlFile.split("?")[0];
   cl("Current root file is " + rootHtmlFile);
   
@@ -186,7 +186,7 @@ async function setupWorkstationChooser(path) {
           let workstationList = gebi('workstationList');
 
           let a = document.createElement("a");
-          let link = "index.html?workstation="+workstationDisplay+"&os=";
+          let link = `${rootHtmlFile}?workstation=${workstationDisplay}&os=`;
           link += osDisplay;
           a.href = link;
           let button = document.createElement("button");

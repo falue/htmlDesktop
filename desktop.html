@@ -28,15 +28,7 @@
       <div>
         <h2>Select Workstation</h2>
         <p>&nbsp;</p>
-        <p id="workstationList">
-          <!-- <a href="index.html?workstation=test&os=mac">
-            <button class="systemButton"><i class="material-icons vertCenter">computer</i> Test MAC</button>
-          </a>
-          <br>
-          <a href="index.html?workstation=dude&os=windows">
-            <button class="systemButton"><i class="material-icons vertCenter">computer</i> Dude WIN</button>
-          </a> -->
-        </p>
+        <p id="workstationList"></p>
         <p>&nbsp;</p>
         <button id="closeOverlayWorkstation" class="systemButton greyBg hide" onclick="hide('overlayWorkstation');">
           <i class="material-icons">close</i>
@@ -335,7 +327,7 @@
                 <i class="material-icons blue small">rotate_left</i>
                 Load save file..
               </li>
-              <li onclick="window.location.href = 'index.html?workstation='+workstation;">
+              <li onclick="window.location.href = `${rootHtmlFile}?workstation=${workstation}`;">
                 <i class="material-icons blue small">sync</i>
                 Reset to initial state
               </li>
