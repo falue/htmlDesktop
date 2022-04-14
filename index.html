@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>htmlDESKTOP - digitalProps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="stylesheet" href="indexTools/stylesheet.css">
+    <link rel="stylesheet" href="tools/general.css">
+    <link rel="stylesheet" href="tools/fonts.css">
+
+    <script>
+      let host = window.location.origin + window.location.pathname;
+      if(host === `https://www.telefabi.ch/index.html` || host === `https://telefabi.ch/index.html`) {
+        // If mobile, redirect to "business card" website
+        if (window.matchMedia("(max-width: 900px)").matches) {
+          window.location.href = "programs/browser/sites/telefabi/index.html";
+        } else {
+          window.location.href = "desktop.html?workstation=telefabi";
+        }
+      }
+    </script>
+
+  </head>
+  <body class="fancy">
+    <div class="bg"></div>
+    <article lang="en">
+
+      <!-- PROJECT LOGO -->
+      <p><img src="indexTools/logo.svg" class="logo" alt=""/></p>
+
+      <p>Scene specific</p>
+      <p><a href="indexTools/scenes/1/index.html"><button><span class="tag">#1</span> Scene Title; content</button></a></p>
+      <p><a href="indexTools/scenes/2/index.html"><button><span class="tag">#2</span> Scene Title; content</button></a></p>
+      <p><a href="indexTools/scenes/3/index.html"><button><span class="tag">#3</span> Scene Title; content</button></a></p>
+
+      <p>&nbsp;</p>
+
+      <p>Desktops</p>
+      <p><a href="desktop.html"><button> htmlDesktop</button></a></p>
+
+      <p>&nbsp;</p>
+
+      <p>Generic fullscreen</p>
+      <p>
+        <a href="programs/colorMarker/index.html"><button> colorMarker</button></a>
+
+        <a href="programs/bash/index.html" title="Mode: 'freeText'; try cd, top, sudo, clear"><button> Bash console</button></a>
+
+        <div onmouseover="document.getElementById('terminalSpecials').classList.remove('hide')" onmouseout="document.getElementById('terminalSpecials').classList.add('hide')">
+          <a href="programs/terminal/index.html"><button> Terminal</button></a>
+          <span id="terminalSpecials" class="hide">
+            <a href="programs/terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
+              <button class="greyBg hover">Update</button></a>
+  
+            <a href="programs/terminal/index.html?byRows=true&startChar=0&text=log&theme=hybrid&speed=1&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
+              <button class="greyBg hover">System LOGs</button></a>
+  
+            <a href="programs/terminal/index.html?byRows=false&startChar=0&text=lorem_ipsum_binary&theme=hybrid&speed=50&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=200">
+              <button class="greyBg hover">Lorem Ipsum binary</button></a>
+  
+            <a href="programs/terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=12&language=none&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=0d0d0d&fontColor=339e91&paddingRange=200">
+              <button class="greyBg hover">hexdump</button></a>
+  
+            <a href="programs/terminal/index.html?byRows=false&startChar=119&text=sqlHack&theme=dracula&speed=1&language=sql&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
+              <button class="greyBg hover">Selber tippen - sql "hack"</button></a>
+  
+            <a href="programs/terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
+              <button class="greyBg hover">Selber tippen - python script</button></a>
+          </span>
+        </div>
+      </p>
+
+      <p>&nbsp;</p>
+      
+      <!-- FOOTER -->
+      <footer class="small">
+        <div class="tag whiteBgTransparent padding05" style="line-height: 1rem;">
+          2022 <a href="https://telefabi.ch" target="_blank">Fabian Lüscher @ telefabi.ch</a> f&uuml;r 8horses
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
