@@ -419,7 +419,7 @@ function keyboardController(event) {
     if(event.target.localName !== "textarea" && event.target.localName !== "input") {
 
         // If screensaver or blackout is visible, ignore all keypresses and hide both
-        if(!gebi('lockScreen').classList.contains('hide') || !gebi('screensaver').classList.contains('hide')) {
+        if(!gebi('blackout').classList.contains('hide') || !gebi('screensaver').classList.contains('hide')) {
             epD(event);
             blackoutHide();
             screensaverHide();
