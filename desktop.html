@@ -343,9 +343,10 @@
                   Swap OS
                 </div>
                 <div class="right top absolute">
-                  <span class="blueBg keyboardKey bold hover valign showLinux showMac" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
-                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
-                  <span class="blueBg keyboardKey bold hover valign showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
+                  <span class="blueBg keyboardKey bold hover valign showArch showLinux showMac" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
+                  <span class="blueBg keyboardKey bold hover valign showArch showLinux showWindows" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
+                  <span class="blueBg keyboardKey bold hover valign showArch showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
+                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('arch');">arch</span>
                 </div>
               </li>
               <li class="relative">
@@ -498,6 +499,7 @@
           <i class="material-icons showWindows">view_module</i>
           <i class="material-icons showLinux">house</i>
           <i class="material-icons showMac grey">menu</i>
+          <i class="material-icons showArch">spa</i>
         </button>
       </div>
 
@@ -508,7 +510,7 @@
       </div>
 
 
-      <div class="showMac systemToolsBarMac">
+      <div class="showMac showArch systemToolsBarMac">
         <span>Program</span>
         <span>File</span>
         <span>Edit</span>
@@ -526,33 +528,40 @@
           <button data-title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">bolt</i>
             <img class="showMac" src="os/mac/programIcons/action.png" alt=""/>
+            <img class="showArch" src="os/arch/programIcons/action.png" alt=""/>
           </button><!-- 
           --><button data-title="File manager" onclick="startDefaultProgram('fileManager');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">folder</i>
             <img class="showMac" src="os/mac/programIcons/finder.png" alt=""/>
+            <img class="showArch" src="os/arch/programIcons/finder.png" alt=""/>
           </button><!-- 
           --><button data-title="Browser" onclick="startDefaultProgram('browser');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">public</i>
             <img class="showMac" src="os/mac/programIcons/browser.png" alt=""/>
+            <img class="showArch" src="os/arch/programIcons/browser.png" alt=""/>
           </button><!-- 
         --><button data-title="Terminal" onclick="startDefaultProgram('terminal', 0);" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">code</i>
             <img class="showMac" src="os/mac/programIcons/terminal.png" alt=""/>
+            <img class="showArch" src="os/arch/programIcons/terminal.png" alt=""/>
           </button><!-- 
         --><button data-title="Text editor" onclick="startDefaultProgram('textEditor');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">edit_note</i>
             <img class="showMac" src="os/mac/programIcons/textEditor.png" alt=""/>
+            <img class="showArch" src="os/arch/programIcons/textEditor.png" alt=""/>
           </button><!-- 
         --><button data-title="Image viewer" onclick="startDefaultProgram('imageViewer');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">image</i>
             <img class="showMac" src="os/mac/programIcons/vorschau.png" alt=""/>
+            <img class="showArch" src="os/arch/programIcons/vorschau.png" alt=""/>
           </button><!--
-        --><button data-title="Settings" class="valign systemColors tooltip tooltipDock showMac">
-            <img src="os/mac/programIcons/settings.png" alt=""/>
+        --><button data-title="Settings" class="valign systemColors tooltip tooltipDock">
+            <img class="showMac" src="os/mac/programIcons/settings.png" alt=""/>
+            <img class="showArch" src="os/arch/programIcons/settings.png" alt=""/>
           </button><!--
-        --><div class="spacer showMac"></div><!--
-        --><div id="dockTaskbar" class="showMac"></div><!--
-        --><button data-title="Trash" class="valign systemColors tooltip tooltipDock showMac">
+        --><div class="spacer showMac showArch"></div><!--
+        --><div id="dockTaskbar" class="showMac showArch"></div><!--
+        --><button data-title="Trash" class="valign systemColors tooltip tooltipDock showMac showArch">
             <img src="os/mac/systemIcons/trashFull.png" alt=""/>
           </button>
         </div>

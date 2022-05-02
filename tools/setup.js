@@ -119,9 +119,9 @@ async function setup() {
     case "mac":
       dockAvailable = true;
       break;
-    /* case "linuxArch":
+    case "arch":
       dockAvailable = true;
-      break; */
+      break;
     default:
       dockAvailable = false;
       break;
@@ -216,7 +216,25 @@ async function setupWorkstationChooser(path) {
           button.innerHTML = " " + workstationDisplay[0].toUpperCase() + workstationDisplay.slice(1);
           let i = document.createElement("i");
           i.classList.add("material-icons", "valign");
-          i.innerHTML = values[1] === "mac" ? "apple" : values[1] === "linux" ? "dvr" : "view_module"; // computer for inux
+          let osIcon;
+          switch(values[1]) {
+            case "mac":
+              osIcon = "apple";
+              break;
+            case "linux":
+              osIcon = "dvr";
+              break;
+            case "arch":
+              osIcon = "spa";
+              break;
+            case "windows":
+              osIcon = "view_module";
+              break;
+            default:
+              osIcon = "view_module";
+              break;
+          }
+          i.innerHTML = osIcon;
           button.classList.add("systemButton", "nobr");
           button.append(i);
           a.prepend(button);

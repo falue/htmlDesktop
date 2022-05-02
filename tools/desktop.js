@@ -184,6 +184,9 @@ function setDefaultSystemColors(os) {
       case "linux":
           newSystemColor = "#502259";
           break;
+      case "arch":
+          newSystemColor = "#2f3643";
+          break;
     }
     gebi('systemColorPicker').value = newSystemColor;
     setSystemColors(newSystemColor);
