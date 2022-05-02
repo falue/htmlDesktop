@@ -1,8 +1,8 @@
 body {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
-.showLinux { display: initial !important; }
+.showArch { display: initial !important; }
 
 .desktop {
     position: absolute;
@@ -10,7 +10,7 @@ body {
     left:0px;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: #2f3643;
     z-index: 0;
     background-image: url(desktop.jpg);
     background-size: cover;
@@ -19,16 +19,15 @@ body {
 }
 
 .systemColors {
-    background-color: black;
+    background-color: #2f3643;
     color: white;
 }
 
 /* TOOLTIPS! */
-/* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
-.tooltip {
+.tooltip:not(.tooltipDock) {
     position: relative;
 }
-.tooltip::before {
+.tooltip:not(.tooltipDock)::before {
     font-family: Roboto, Arial, Helvetica, sans-serif;
     content: attr(data-title);
     white-space: nowrap;
@@ -47,13 +46,13 @@ body {
     box-shadow: rgba(0,0,0,0.5) 3px 5px 7px;
 }
 
-.tooltip:hover::before,
-.tooltip:hover::after {
+.tooltip:not(.tooltipDock):hover::before,
+.tooltip:not(.tooltipDock):hover::after {
     display: block;
 }
 
 /* Arrow */
-.tooltip::after {
+.tooltip:not(.tooltipDock)::after {
     /* background-color: white; */
     border-left: .5rem solid transparent;
     border-right: .5rem solid transparent;
@@ -67,12 +66,63 @@ body {
     transform: translate(-50%, calc(-100% - .5rem));
 }
 
+/* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
+.dock .tooltipDock {
+    position: relative;
+}
+.dock .tooltipDock::before {
+    content: attr(data-title);
+    white-space: nowrap;
+    background-color: rgb(33, 33, 33);
+    border-radius: .25rem;
+    border: solid rgba(255,255,255,0.15) .1em;
+    color: grey;
+    display: none;
+    padding: .25rem .5em;
+    position: absolute;
+    font-size: .8rem;
+    text-align: center;
+    z-index: 1110;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 1rem));
+    box-shadow: rgba(0,0,0,0.5) 3px 5px 7px;
+}
+
+.dock .tooltipDock:hover::before,
+.dock .tooltipDock:hover::after {
+    display: block;
+}
+
+/* Arrow */
+.dock .tooltipDock::after {
+    border: solid rgba(255,255,255,0.15) .1em;
+    background-color: rgb(33, 33, 33);
+    content: ' ';
+    display: none;
+    position: absolute;
+    z-index: 1111;
+    width: .9em;
+    height: .9em;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - .7rem)) rotate(45deg);
+    overflow: hidden;
+    border-bottom-right-radius: .25rem;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
 
 /* SHENANIGANS */
 .lockScreen > div {
     font-size: 1.25em;
     line-height: 1.5em;
     padding:1.5em 2em;
+}
+
+#lockScreenWindow {
+    background: none !important;
 }
 
 .lockScreen #lockScreenUserPicture {
@@ -167,10 +217,11 @@ body {
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    bottom: 0;
+    top: 0;
     padding-left: .5em;
     white-space: nowrap;
     z-index: 1;
+    font-size:.7em;  /* different to windows */
 }
 .systemBar > div {
     /* border: hotpink solid thin; */
@@ -182,27 +233,13 @@ body {
 
 /* SPACER */
 .systemBar .spacer {
-    margin: 0 .5em;
-    border: none;
-    padding: 0 .03em;
-    /* get color from systemColors, greyscale, invert */
-    /* would be smart but only makes on elements without content */
-    /* background-color: inherit;
-    filter: grayscale(1) invert(1);
-    opacity: 0.25; */
 }
 /* BUTTONS */
 .systemBar button {
-    /* border: greenyellow solid thin; */
-    border: solid .06em rgba(125,125,125,1);
-    border-radius: .25em;
     font-size: inherit;
     height: 2em;
     width: 2em;
     padding: 0;
-}
-.systemBar button:hover {
-    background-color: rgba(125,125,125,0.2) !important;
 }
 .systemBar .buttonGroup button {
     border-radius: 0;
@@ -239,21 +276,29 @@ body {
     max-width: 10em;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-style: italic;
 }
 .systemBar .taskbar button:last-of-type {
     border-right: solid .06em rgba(125,125,125,1);
 }
 .systemBar .taskbar button i {
     margin-right: .25em;
+    font-size: 1.5em;
 }
-.dockContainer {
-    height: 100%;
+.systemToolsBarMac {
+    font-size: 1.2em;
+    border-top: .15em solid transparent;
+    font-weight: 800;
+}
+.systemToolsBarMac span {
+    margin: 0 .75em;
 }
 
 /* SYSTEM ICONS */
 .systemIcons {
-    border-left: .06em solid rgba(125,125,125,0.6);
+    /* border-left: .06em solid rgba(125,125,125,0.6); */
     padding: 0 .25em !important;
+    margin-right: 1em;
 }
 .systemIcons > div {
     /* border: blue solid .06em; */
@@ -262,103 +307,160 @@ body {
     display: inline-block;
     vertical-align: middle;
     height: 100%;
+    font-size: .85em;
 }
 .systemIcons div i {
-padding-top: .2em;
+    padding-top: .3em;
+    margin-left: .35em;
 }
 .systemIcons div #systemIcons-clock {
-    border-top: .6em transparent solid;
+    border-top: .4em transparent solid;
+    margin-left: .5em;
+    font-size: 1.5em;
+}
+
+/* DOCK */
+.dock {
+    position: fixed;
+    left: 50%;
+    bottom: .75em;
+    transform: translate(-50%, 2em);
+}
+
+.dock:not(.dockLock) {
+    padding-top: 5em !important;
+    transform: translate(-62.5%, 7em) scale(.8);
+    transform-origin: bottom right;
+    transition: transform 250ms;
+}
+
+.dock:not(.dockLock):hover {
+    transform: translate(-50%, 2em) scale(1);
+}
+
+.dockContainer {
+    margin: 2em !important;
+    padding: .25em .5em !important;
+    margin: 4em 0 0 0;
+    background-color: rgb(0,0,0, .5);
+    border: .15em solid rgba(255,255,255,0.3);
+    border-radius: 1.35em;
+}
+
+.dock button {
+    width: auto;
+    height: 4em;
+    background-color: initial !important;
+    border: none !important;
+    margin: 0 .1em;
+}
+.dock button:hover {
+    background-color: initial !important;
+}
+
+.dock button div,
+.dock button img {
+    height: 100%;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    transform-origin: 50% 85%;
+    transition: height 220ms ease-in-out, transform 220ms ease-in-out;
+}
+.dock button:hover div,
+.dock button:hover img {
+    height: 125%;
+    transform: translateY(-20%);
+}
+
+.dock .spacer {
+    padding: 0 .015em;
+    background-color: rgba(125,125,125,.5);
+    vertical-align: middle;
+    font-size: 2.5em;
+    margin: 0 .5em 0 .25em;
 }
 
 /* STARTMENU */
 .startMenu {
-    /* color: white; */
     position: fixed;
     left: .3em;
-    bottom: 3em;
+    top: 2.05em;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    border-radius: 5px;
+    border-radius: .3em;
+    font-size: .9em;
+    border:solid .06em rgba(125,125,125,.5);
 }
-
 .startMenu .columns {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
 }
-
-.startMenuHeader {
-    margin-bottom:1em;
-}
-
-.startMenu ul,
-.startMenu h3,
-.startMenu h4,
-.startMenu h5 {
-    /* float: left; */
-    margin: .5em .5em 0 .5em;
-}
-
 .startMenu ul {
-    margin-bottom: 1em;
+    margin: .5em;
 }
-
 .startMenu li {
     position: relative;
-    padding: .5em;
+    padding: .15em .5em 0 .5em;
     width: 17em;
+    border-radius: .25em;
 }
-
-.startMenu li:not(:last-of-type) {
-    border-bottom: solid rgba(255,255,255,0.2) thin;
+.startMenu li:hover {
+    background-color: rgba(0,0,0,.1);
 }
-
-.startMenu li:not(.noLiHover):hover {
-    background-color: rgba(255,255,255,0.2);
-}
-
-.startMenu h1,
-.startMenu h3,
-.startMenu h4 {
-    opacity: 0.75;
-}
-
 .startMenu li i {
-    vertical-align: middle;
+    display: none;
+}
+.startMenu ul li.spacer {
+    border-radius: 0;
+    background-color: rgba(125,125,125,.25);
+    display: list-item !important;
+    /* line-height: 0; */
+    height: .06em;
+    margin: .25em 0;
+    padding: 0;
 }
 
 /* SUBMENU */
 .startMenu ul div.submenu {
     display: none;
     position: absolute;
-    top: -2em;
+    top: -4em;
+    bottom: unset;
     left: 90%;
     box-sizing: content-box;
     border: 1em transparent solid;
     border-left: 2.5em transparent solid;
-    border-radius: .3em;
 }
-
 .startMenu li:hover div.submenu {
     display: block;
 }
-
 .startMenu ul div.submenu ul {
     padding: .5em;
     max-height:17.75em;
     overflow: auto;
+    border-radius: 0.6em;
+    border:solid .06em rgba(125,125,125,.5);
+}
+.startMenu ul div.submenu ul div {
+    padding: 0;
+}
+.startMenu ul div.submenu ul div button {
+    font-size: .5em;
+    background-color: rgba(125,125,125,.5);
+    height: 2.5em;
+}
+.startMenu ul div.submenu ul div button i {
+    display: inline-block;
 }
 
-.startMenu ul div.submenu ul li {
-    padding: .8em;
-}
-
+/* STARTMENU */
 .osNotifications {
     position: fixed;
-    bottom: 3em;
-    padding: 0 1em .5em 0;
+    top: 2em;
+    padding: .5em 1em 0 0;
     right: 0;
     z-index: 99999;
     max-width: 20em;
@@ -366,14 +468,16 @@ padding-top: .2em;
 
 .osNotifications .message {
     color: black;
-    padding: .5em 1.2em .5em .5em;
-    margin-top: 1.5em;
-    background-color: wheat;
+    padding: .5em 1.2em .5em 1em;
+    margin-bottom: 1.5em;
+    background-color: #FCFCFC;
     position: relative;
     display: flex;
+    border-radius: .4em;
 }
 
 .osNotifications .icon {
+    font-size:1.25em;
     display: block;
     color: white;
     width: 1.5em;
@@ -382,36 +486,39 @@ padding-top: .2em;
     text-align: center;
     box-sizing: border-box;
     padding: .25em;
+    margin-top: .5em;
 }
 .osNotifications .textContainer {
-    padding-left: .5em;
+    padding-left: 1em;
+    vertical-align: middle;
 }
 .osNotifications .title {
-    
     font-size: 1em;
 }
 .osNotifications .description {
-    font-style: italic;
     font-size: small;
 }
 .osNotifications .close {
     width: 1.5em;
     height: 1.5em;
     border-radius: 50%;
-    background-color: white;
     position: absolute;
     text-align: center;
     box-sizing: border-box;
     opacity: .8;
     padding: .1em .25em .25em .25em;
     top:0;
-    right: 0;
-    color: black;
-    transform: translate(.75em, -.75em);
+    left: 0;
+    transform: translate(-.75em, -.75em);
     font-weight: bolder;
+    opacity: 0;
 }
-.osNotifications .close:hover {
-    color: white;
-    background-color: black;
+.osNotifications .message:hover .close {
+    color: black;
+    background-color: white;
     opacity: 1;
+}
+.osNotifications .message:hover .close:hover {
+    color: white;
+    background-color: grey;
 }
