@@ -9,6 +9,7 @@ let osNotifications;
 let selectedSystemMessage;
 let hotSwapped;
 let rootHtmlFile = "index.html";
+let dockAvailable = false;
 
 async function setup() {
   // Get Workstation parameter
@@ -112,6 +113,27 @@ async function setup() {
   // Add OS specific styles
   addStylesheet("os/"+os+"/stylesheet.css");
   //  cl("Final workstation: " + workstation + ", OS: " + os);
+
+  // Define if dock is available for OS
+  switch(os) {
+    case "mac":
+      dockAvailable = true;
+      break;
+    /* case "linuxArch":
+      dockAvailable = true;
+      break; */
+    default:
+      dockAvailable = false;
+      break;
+  }
+
+  if(dockAvailable) {
+    cl("dock available");
+    show('actionMenuDockLock');
+  } else {
+    cl("dock not available");
+    hide('actionMenuDockLock');
+  }
 
   // Workstation is chosen, read workstation settings
   // Setup settings

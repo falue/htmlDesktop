@@ -367,7 +367,7 @@
                   <input id="BGColor" type="color" class="valign tooltip" onclick="event.stopPropagation();" data-title="Set plain color.." oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value; gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
                 </div>
               </li>
-              <li class="showMac maxWidth" onclick="gebi('macDock').classList.toggle('dockLock')">
+              <li id="actionMenuDockLock" class="hide maxWidth" onclick="gebi('macDock').classList.toggle('dockLock')">
                   <i class="material-icons blue small">call_to_action</i>
                   Lock dock
               </li>

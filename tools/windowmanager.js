@@ -313,7 +313,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   miminmizedWindow.setAttribute("class", "valign systemColors");
   miminmizedWindow.setAttribute("onclick", "getWindowFromTaskbar('"+id+"')");
 
-  if(os !== "mac") {
+  if(!dockAvailable) {
     // Linux & Windows taskbar
     taskbarIcon = document.createElement("i");
     taskbarIcon.setAttribute("class", "material-icons small valign");
@@ -322,18 +322,16 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     miminmizedWindow.appendChild(document.createTextNode(windowName));
     gebi('taskbar').appendChild(miminmizedWindow);
   } else {
-    // Mac dock
-
-    // check if icon exists
-    let iconSrc = `os/${os}/programIcons/minimized-${icon}.png`;
-    let imageIcon = await fileExists(iconSrc, false);
-    if(imageIcon) {
+    // Mac or linux Arch dock
+    // Check if icon exists
+    let iconSrc = await fileExists(`os/${os}/programIcons/minimized-${icon}.png`, false);
+    if(iconSrc) {
       taskbarIcon = document.createElement("img");
       /* taskbarIcon.setAttribute("class", "material-icons small valign"); */
       taskbarIcon.src=iconSrc;
     } else {
       taskbarIcon = document.createElement("div");
-      taskbarIcon.setAttribute("class", "material-icons valign large fancy white round padding05");
+      taskbarIcon.setAttribute("class", "material-icons valign large centerContent fancy white round padding05");
       taskbarIcon.innerHTML=icon;
     }
     miminmizedWindow.appendChild(taskbarIcon);
