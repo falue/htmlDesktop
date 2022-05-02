@@ -2,14 +2,14 @@
     "settings": {
         "systemColor": "#000000",
         "desktopColor": "#1d1b1b",
-        "desktopImg": "os/spa/desktop.jpg",
-        "os": "spa",
+        "desktopImg": "os/windows/desktop.jpg",
+        "os": "windows",
         "darkMode": true,
-        "username": "Dr. Jason Brugger",
+        "username": "ramon-NBV01",
         "password": "",
-        "workstation": "sonny",
-        "selectedSystemMessage": 0,
-        "osNotificationsDelay": 1
+        "workstation": "ramon",
+        "selectedSystemMessage": 3,
+        "osNotificationsDelay": 0
     },
     "systemIcons": [
         "expand_less",
@@ -94,14 +94,6 @@
         }
     ],
     "osNotifications": [
-        [
-            "New USB device detected E:/",
-            "Open Folder in File Manager",
-            "usb",
-            true,
-            0,
-            "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Devices/E:', 15, 15, 600,350, false); placeShortcut('USB Device E:', 'hdd.png', 85,8, 'addWindow(\\'File manager\\', \\'folder\\', \\'filemanager/index.html?folderContent=Devices/E:\\', 15, 15, 600,350, false)');"
-        ],
         [
             "You've got mail (2)",
             "The following messages have just arrived: (..)",
