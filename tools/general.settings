@@ -1,4 +1,4 @@
 # Define all available workstations here
 
-workstation=sonny;linux
-workstation=pete;linux
+workstation=sonny;spa
+workstation=pete;windows
