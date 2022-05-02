@@ -246,7 +246,7 @@ body {
 .systemBar .taskbar button i {
     margin-right: .25em;
 }
-.macDockContainer {
+.dockContainer {
     height: 100%;
 }
 

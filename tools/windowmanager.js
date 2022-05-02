@@ -322,12 +322,11 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     miminmizedWindow.appendChild(document.createTextNode(windowName));
     gebi('taskbar').appendChild(miminmizedWindow);
   } else {
-    // Mac or linux Arch dock
+    // Mac styled dock
     // Check if icon exists
     let iconSrc = await fileExists(`os/${os}/programIcons/minimized-${icon}.png`, false);
     if(iconSrc) {
       taskbarIcon = document.createElement("img");
-      /* taskbarIcon.setAttribute("class", "material-icons small valign"); */
       taskbarIcon.src=iconSrc;
     } else {
       taskbarIcon = document.createElement("div");
@@ -335,7 +334,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
       taskbarIcon.innerHTML=icon;
     }
     miminmizedWindow.appendChild(taskbarIcon);
-    gebi('taskbarMac').appendChild(miminmizedWindow);
+    gebi('dockTaskbar').appendChild(miminmizedWindow);
   }
 
   makeResizableDiv('#'+id);

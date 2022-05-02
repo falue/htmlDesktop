@@ -367,7 +367,7 @@
                   <input id="BGColor" type="color" class="valign tooltip" onclick="event.stopPropagation();" data-title="Set plain color.." oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value; gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
                 </div>
               </li>
-              <li id="actionMenuDockLock" class="hide maxWidth" onclick="gebi('macDock').classList.toggle('dockLock')">
+              <li id="actionMenuDockLock" class="hide maxWidth" onclick="gebi('dock').classList.toggle('dockLock')">
                   <i class="material-icons blue small">call_to_action</i>
                   Lock dock
               </li>
@@ -521,8 +521,8 @@
       <div class="spacer"></div>
        
       <!-- PROGRAM FAST ACCESS -->
-       <div id="macDock" class="buttonGroup macDock dockLock">
-         <div class="macDockContainer">
+       <div id="dock" class="buttonGroup dock dockLock">
+         <div class="dockContainer">
           <button data-title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">bolt</i>
             <img class="showMac" src="os/mac/programIcons/action.png" alt=""/>
@@ -551,7 +551,7 @@
             <img src="os/mac/programIcons/settings.png" alt=""/>
           </button><!--
         --><div class="spacer showMac"></div><!--
-        --><div id="taskbarMac" class="taskbarMac showMac"></div><!--
+        --><div id="dockTaskbar" class="showMac"></div><!--
         --><button data-title="Trash" class="valign systemColors tooltip tooltipDock showMac">
             <img src="os/mac/systemIcons/trashFull.png" alt=""/>
           </button>

@@ -68,10 +68,10 @@ li.showMac { display: list-item !important; }
 }
 
 /* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
-.macDock .tooltipDock {
+.dock .tooltipDock {
     position: relative;
 }
-.macDock .tooltipDock::before {
+.dock .tooltipDock::before {
     content: attr(data-title);
     white-space: nowrap;
     background-color: rgb(33, 33, 33);
@@ -90,13 +90,13 @@ li.showMac { display: list-item !important; }
     box-shadow: rgba(0,0,0,0.5) 3px 5px 7px;
 }
 
-.macDock .tooltipDock:hover::before,
-.macDock .tooltipDock:hover::after {
+.dock .tooltipDock:hover::before,
+.dock .tooltipDock:hover::after {
     display: block;
 }
 
 /* Arrow */
-.macDock .tooltipDock::after {
+.dock .tooltipDock::after {
     border: solid rgba(255,255,255,0.15) .1em;
     background-color: rgb(33, 33, 33);
     content: ' ';
@@ -369,25 +369,25 @@ li.showMac { display: list-item !important; }
 }
 
 /* DOCK */
-.macDock {
+.dock {
     position: fixed;
     left: 50%;
     bottom: .75em;
     transform: translate(-50%, 2em);
 }
 
-.macDock:not(.dockLock) {
+.dock:not(.dockLock) {
     padding-top: 5em !important;
     transform: translate(-62.5%, 7em) scale(.8);
     transform-origin: bottom right;
     transition: transform 250ms;
 }
 
-.macDock:not(.dockLock):hover {
+.dock:not(.dockLock):hover {
     transform: translate(-50%, 2em) scale(1);
 }
 
-.macDockContainer {
+.dockContainer {
     margin: 2em !important;
     padding: .25em .5em !important;
     margin: 4em 0 0 0;
@@ -396,32 +396,32 @@ li.showMac { display: list-item !important; }
     border-radius: 1.35em;
 }
 
-.macDock button {
+.dock button {
     width: auto;
     height: 4em;
     background-color: initial !important;
     border: none !important;
     margin: 0 .1em;
 }
-.macDock button:hover {
+.dock button:hover {
     background-color: initial !important;
 }
 
-.macDock button div,
-.macDock button img {
+.dock button div,
+.dock button img {
     height: 100%;
     aspect-ratio: 1;
     box-sizing: border-box;
     transform-origin: 50% 85%;
     transition: height 220ms ease-in-out, transform 220ms ease-in-out;
 }
-.macDock button:hover div,
-.macDock button:hover img {
+.dock button:hover div,
+.dock button:hover img {
     height: 125%;
     transform: translateY(-20%);
 }
 
-.macDock .spacer {
+.dock .spacer {
     padding: 0 .015em;
     background-color: rgba(125,125,125,.5);
     vertical-align: middle;
