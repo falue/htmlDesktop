@@ -343,9 +343,10 @@
                   Swap OS
                 </div>
                 <div class="right top absolute">
-                  <span class="blueBg keyboardKey bold hover valign showLinux showMac" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
-                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
-                  <span class="blueBg keyboardKey bold hover valign showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showMac" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showWindows" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
+                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('spa');">spa</span>
                 </div>
               </li>
               <li class="relative">
@@ -367,7 +368,7 @@
                   <input id="BGColor" type="color" class="valign tooltip" onclick="event.stopPropagation();" data-title="Set plain color.." oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value; gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
                 </div>
               </li>
-              <li class="showMac maxWidth" onclick="gebi('macDock').classList.toggle('dockLock')">
+              <li id="actionMenuDockLock" class="hide maxWidth" onclick="gebi('dock').classList.toggle('dockLock')">
                   <i class="material-icons blue small">call_to_action</i>
                   Lock dock
               </li>
@@ -498,6 +499,7 @@
           <i class="material-icons showWindows">view_module</i>
           <i class="material-icons showLinux">house</i>
           <i class="material-icons showMac grey">menu</i>
+          <i class="material-icons showSpa red">spa</i>
         </button>
       </div>
 
@@ -508,7 +510,7 @@
       </div>
 
 
-      <div class="showMac systemToolsBarMac">
+      <div class="showMac systemToolsBarDock">
         <span>Program</span>
         <span>File</span>
         <span>Edit</span>
@@ -518,42 +520,59 @@
         <span>Help</span>
       </div>
 
+      <div class="showSpa systemToolsBarDock">
+        <span>Applications</span>
+        <span>Files</span>
+        <span>CMD</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>&hellip;</span>
+      </div>
+
       <div class="spacer"></div>
        
       <!-- PROGRAM FAST ACCESS -->
-       <div id="macDock" class="buttonGroup macDock dockLock">
-         <div class="macDockContainer">
+       <div id="dock" class="buttonGroup dock dockLock">
+         <div class="dockContainer">
           <button data-title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">bolt</i>
             <img class="showMac" src="os/mac/programIcons/action.png" alt=""/>
+            <img class="showSpa" src="os/spa/programIcons/action.png" alt=""/>
           </button><!-- 
           --><button data-title="File manager" onclick="startDefaultProgram('fileManager');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">folder</i>
             <img class="showMac" src="os/mac/programIcons/finder.png" alt=""/>
+            <img class="showSpa" src="os/spa/programIcons/finder.png" alt=""/>
           </button><!-- 
           --><button data-title="Browser" onclick="startDefaultProgram('browser');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">public</i>
             <img class="showMac" src="os/mac/programIcons/browser.png" alt=""/>
+            <img class="showSpa" src="os/spa/programIcons/browser.png" alt=""/>
           </button><!-- 
         --><button data-title="Terminal" onclick="startDefaultProgram('terminal', 0);" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">code</i>
             <img class="showMac" src="os/mac/programIcons/terminal.png" alt=""/>
+            <img class="showSpa" src="os/spa/programIcons/terminal.png" alt=""/>
           </button><!-- 
         --><button data-title="Text editor" onclick="startDefaultProgram('textEditor');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">edit_note</i>
             <img class="showMac" src="os/mac/programIcons/textEditor.png" alt=""/>
+            <img class="showSpa" src="os/spa/programIcons/textEditor.png" alt=""/>
           </button><!-- 
         --><button data-title="Image viewer" onclick="startDefaultProgram('imageViewer');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showLinux">image</i>
             <img class="showMac" src="os/mac/programIcons/vorschau.png" alt=""/>
+            <img class="showSpa" src="os/spa/programIcons/vorschau.png" alt=""/>
           </button><!--
-        --><button data-title="Settings" class="valign systemColors tooltip tooltipDock showMac">
-            <img src="os/mac/programIcons/settings.png" alt=""/>
+        --><button data-title="Settings" class="valign systemColors tooltip tooltipDock showMac showSpa">
+            <img class="showMac" src="os/mac/programIcons/settings.png" alt=""/>
+            <img class="showSpa" src="os/spa/programIcons/settings.png" alt=""/>
           </button><!--
-        --><div class="spacer showMac"></div><!--
-        --><div id="taskbarMac" class="taskbarMac showMac"></div><!--
-        --><button data-title="Trash" class="valign systemColors tooltip tooltipDock showMac">
-            <img src="os/mac/systemIcons/trashFull.png" alt=""/>
+        --><div class="spacer showMac showSpa"></div><!--
+        --><div id="dockTaskbar" class="showMac showSpa"></div><!--
+        --><button data-title="Trash" class="valign systemColors tooltip tooltipDock showMac showSpa">
+            <img class="showMac" src="os/mac/systemIcons/trashFull.png" alt=""/>
+            <img class="showSpa" src="os/spa/systemIcons/trashEmpty.png" alt=""/>
           </button>
         </div>
       </div>
@@ -589,7 +608,7 @@
     <div id="autoDialog" class="dialog hide">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white minWidth300 maxWidth600 absolute radius5">
-          <h3 class="grey alignCenter">
+          <h3 class="alignCenter">
             <i class="material-icons blue valign">info</i>
             <span id="autoDialogTitle"></span>
           </h3>
@@ -619,7 +638,7 @@
     <div id="savedFilesDialog" class="dialog hide">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 88888;">
         <div class="darkGreyBg padding shadow white minWidth400 maxWidth500 absolute radius5">
-          <h3 class="grey alignCenter">
+          <h3 class="alignCenter">
             <i class="material-icons blue valign ">storage</i>
             Load save file
           </h3>
@@ -654,7 +673,7 @@
     <div id="editShortcut" class="hide dialog">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white maxWidth300 absolute radius5">
-          <h3 class="grey alignCenter">
+          <h3 class="alignCenter">
             <i class="material-icons blue valign ">edit_location_alt</i>
             Shortcut settings
           </h3>
@@ -756,7 +775,7 @@
     <div id="editTaskbarIcons" class="hide dialog">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white maxWidth300 absolute radius5">
-          <h3 class="grey alignCenter">
+          <h3 class="alignCenter">
             <i class="material-icons blue valign ">call_to_action</i>
             Toggle taskbar icons
           </h3>
@@ -859,7 +878,7 @@
     <div id="keyboardControls" class="hide dialog">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white minWidth300 maxWidth400 absolute radius5">
-          <h3 class="grey alignCenter">
+          <h3 class="alignCenter">
             <i class="material-icons blue valign">keyboard</i>
             Keyboard controls
           </h3>

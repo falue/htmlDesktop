@@ -1,0 +1,129 @@
+{
+    "settings": {
+        "systemColor": "#2f3643",
+        "desktopColor": "#202633",
+        "desktopImg": "os/spa/desktop.jpg",
+        "os": "spa",
+        "darkMode": true,
+        "username": "linux spa",
+        "password": "",
+        "workstation": "linuxSpa",
+        "selectedSystemMessage": 3,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager/index.html?folderContent=Downloads",
+            "x": 56,
+            "y": 4,
+            "w": 598,
+            "h": 444,
+            "zIndex": 11,
+            "minimized": true,
+            "renderToDom": true
+        },
+        {
+            "windowName": "FTP Client",
+            "icon": "storm",
+            "contentPath": "ftp",
+            "x": 40,
+            "y": 1,
+            "w": 850,
+            "h": 590,
+            "zIndex": 49,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "windowName": "Terminal - Update",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=5&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 3,
+            "y": 8,
+            "w": 666,
+            "h": 450,
+            "zIndex": 50,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "windowName": "Terminal - PYTHON",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 17,
+            "y": 16,
+            "w": 892,
+            "h": 573,
+            "zIndex": 51,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 94,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        }
+    ],
+    "osNotifications": [
+        [
+            "You've got mail (2)",
+            "The following messages have just arrived: (..)",
+            "email",
+            true,
+            0,
+            "startDefaultProgram('textEditor')"
+        ],
+        [
+            "Zombie wave iminent",
+            "Hack into these brains to gain access to valuable recources (..)",
+            "warning",
+            true,
+            0,
+            "startDefaultProgram('terminal')"
+        ],
+        [
+            "Some files need your attention",
+            "",
+            "info",
+            true,
+            3500,
+            "startDefaultProgram('fileManager')"
+        ],
+        [
+            "Activate OS now",
+            "Please invest in a robust system and pay us just $14.99 per day to experience the most comfort a meaty fleshbag can enjoy. We will remind you again in one hour.",
+            "shield",
+            true,
+            4500,
+            ""
+        ]
+    ]
+}

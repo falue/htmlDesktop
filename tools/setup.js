@@ -9,6 +9,7 @@ let osNotifications;
 let selectedSystemMessage;
 let hotSwapped;
 let rootHtmlFile = "index.html";
+let dockAvailable = false;
 
 async function setup() {
   // Get Workstation parameter
@@ -113,6 +114,27 @@ async function setup() {
   addStylesheet("os/"+os+"/stylesheet.css");
   //  cl("Final workstation: " + workstation + ", OS: " + os);
 
+  // Define if dock is available for OS
+  switch(os) {
+    case "mac":
+      dockAvailable = true;
+      break;
+    case "spa":
+      dockAvailable = true;
+      break;
+    default:
+      dockAvailable = false;
+      break;
+  }
+
+  if(dockAvailable) {
+    cl("dock available");
+    show('actionMenuDockLock');
+  } else {
+    cl("dock not available");
+    hide('actionMenuDockLock');
+  }
+
   // Workstation is chosen, read workstation settings
   // Setup settings
   setupSettings(settings);
@@ -194,7 +216,25 @@ async function setupWorkstationChooser(path) {
           button.innerHTML = " " + workstationDisplay[0].toUpperCase() + workstationDisplay.slice(1);
           let i = document.createElement("i");
           i.classList.add("material-icons", "valign");
-          i.innerHTML = values[1] === "mac" ? "apple" : values[1] === "linux" ? "dvr" : "view_module"; // computer for inux
+          let osIcon;
+          switch(values[1]) {
+            case "mac":
+              osIcon = "apple";
+              break;
+            case "linux":
+              osIcon = "dvr";
+              break;
+            case "spa":
+              osIcon = "spa";
+              break;
+            case "windows":
+              osIcon = "view_module";
+              break;
+            default:
+              osIcon = "view_module";
+              break;
+          }
+          i.innerHTML = osIcon;
           button.classList.add("systemButton", "nobr");
           button.append(i);
           a.prepend(button);

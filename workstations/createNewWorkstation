@@ -21,9 +21,9 @@ else
     newWorkstation=$1
 fi
 
-read -p "OS of workstation (mac/linux/windows): " "os"
+read -p "OS of workstation (mac/linux/windows/spa): " "os"
 
-if [[ $os == "mac" || $os == "linux" || $os == "windows" ]]; then
+if [[ $os == "mac" || $os == "linux" || $os == "windows" || $os == "spa" ]]; then
     # Copy _default folder
     mkdir ./$newNameOfWorkstation || exit 1
     cp -r ./_default/* ./$newNameOfWorkstation
@@ -48,7 +48,7 @@ if [[ $os == "mac" || $os == "linux" || $os == "windows" ]]; then
     exit
 else
     echo "---------------------------------"
-    echo "Type either mac, linux or windows"
+    echo "Type either mac, linux, windows, spa"
     echo "---------------------------------"
     echo ""
     bash ./createNewWorkstation $newNameOfWorkstation

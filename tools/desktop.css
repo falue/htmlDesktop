@@ -1,6 +1,7 @@
 .showWindows { display: none !important; }
 .showMac { display: none !important; }
 .showLinux { display: none !important; }
+.showSpa { display: none !important; }
 
 body {
     user-select: none;
