@@ -184,7 +184,7 @@ function setDefaultSystemColors(os) {
       case "linux":
           newSystemColor = "#502259";
           break;
-      case "arch":
+      case "spa":
           newSystemColor = "#2f3643";
           break;
     }

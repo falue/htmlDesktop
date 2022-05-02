@@ -119,7 +119,7 @@ async function setup() {
     case "mac":
       dockAvailable = true;
       break;
-    case "arch":
+    case "spa":
       dockAvailable = true;
       break;
     default:
@@ -224,7 +224,7 @@ async function setupWorkstationChooser(path) {
             case "linux":
               osIcon = "dvr";
               break;
-            case "arch":
+            case "spa":
               osIcon = "spa";
               break;
             case "windows":

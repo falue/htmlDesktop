@@ -2,12 +2,12 @@
     "settings": {
         "systemColor": "#2f3643",
         "desktopColor": "#202633",
-        "desktopImg": "os/arch/desktop.jpg",
-        "os": "arch",
+        "desktopImg": "os/spa/desktop.jpg",
+        "os": "spa",
         "darkMode": true,
-        "username": "archer",
+        "username": "linux spa",
         "password": "",
-        "workstation": "arch",
+        "workstation": "linuxSpa",
         "selectedSystemMessage": 3,
         "osNotificationsDelay": 0
     },

@@ -2,7 +2,7 @@ body {
 font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
-.showArch { display: initial !important; }
+.showSpa { display: initial !important; }
 
 .desktop {
     position: absolute;
