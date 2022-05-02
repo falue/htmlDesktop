@@ -285,12 +285,12 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
     margin-right: .25em;
     font-size: 1.5em;
 }
-.systemToolsBarMac {
+.systemToolsBarDock {
     font-size: 1.2em;
     border-top: .15em solid transparent;
     font-weight: 800;
 }
-.systemToolsBarMac span {
+.systemToolsBarDock span {
     margin: 0 .75em;
 }
 
