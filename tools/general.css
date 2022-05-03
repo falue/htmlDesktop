@@ -171,11 +171,13 @@ a:focus { outline: none; }
 .padding2 { padding: 2em; }
 .padding3 { padding: 3em; }
 
+.paddingX0 { padding-left: 0 !important; padding-right: 0 !important; }
 .paddingX25 { padding-left: .25em; padding-right: .25em; }
 .paddingX50 { padding-left: .5em; padding-right: .5em; }
 .paddingX1 { padding-left: 1em; padding-right: 1em; }
 .paddingX1-50 { padding-left: 1.5em; padding-right: 1.5em; }
 .paddingX2 { padding-left: 2em; padding-right: 2em; }
+.paddingY0 { padding-top: 0 !important; padding-bottom: 0 !important; }
 .paddingY50 { padding-top: .5em; padding-bottom: .5em; }
 .paddingY25 { padding-top: .25em; padding-bottom: .25em; }
 .paddingY1 { padding-top: 1em; padding-bottom: 1em; }
@@ -238,6 +240,20 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
     align-items: center;
     justify-content: center;
 }
+.centerContentX {
+    display: flex;
+    justify-content: center;
+}
+.centerContentYRight {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.centerContentY {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
 .inline { display: inline; }
 .inlineBlock { display: inline-block; }
 .block { display: block; }
@@ -278,7 +294,7 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .darkGrey, .darkGray { color: rgb(35, 35, 35) !important; }
 .black { color: #000000 !important; }
 .white { color: white !important; }
-.clear { color: rgba(0,0,0,0) !important; }
+.clear, .transparent { color: rgba(0,0,0,0) !important; }
 .blackTransparent { color: rgba(0,0,0,0.3) !important; }
 .whiteTransparent { color: rgba(255,255,255,0.3) !important; }
 
