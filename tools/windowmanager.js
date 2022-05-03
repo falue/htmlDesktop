@@ -294,7 +294,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   // This is why i use .splash
   let splashPath = `programs/${mainProgram.endsWith(".html") ? mainProgram.split("/").slice(0, -1).join("/") : mainProgram}/index.splash`;
   let splash = await parseFile(splashPath, false);
-  if(splash != 404) {
+  if(splash != 404 && !minimized) {
     show('splashScreen');
     gebi('splashScreenWindow').innerHTML = splash;
     let delayTime = splash.match(/\<\!-- ?delay ?= ?(\d*?) ?--\>/);
