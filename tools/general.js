@@ -173,6 +173,7 @@ async function counter(targetId, append, duration, jitter, start, stop) {
   }
 }
 
+// Get array of random integers
 function randomIntsBetween(count=1, min=0, max=9) {
   // for loop
   let result = [];
@@ -182,17 +183,96 @@ function randomIntsBetween(count=1, min=0, max=9) {
   return result;
 }
 
+// Get random integer
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+// Get random element of array
 function getRandomElement(arrayToChoose) {
   return arrayToChoose[chooseRandomKey(arrayToChoose)];
 }
 
+// Get random index of array
 function chooseRandomKey(arrayToChoose) {
   let max = arrayToChoose.length;
   return randomBetween(0, max-1);
+}
+
+// Get n randomized elements from array
+function chooseRandomKeys(count, elements) {
+  let localColors = elements.slice();
+  let results = [];
+  for (let i = 0; i < count; i++) {
+      let index = chooseRandomKey(localColors);
+      results.push(localColors[index]);
+      localColors.splice(index, 1);
+      if(!localColors.length) localColors = elements.slice();
+  }
+  return results;
+}
+
+// Generate an array of integers, starting at 0
+function arrayOfIndexes(count, prepend="", append="") {
+  let results = [];
+  for (let i = 0; i < count; i++) {
+      results.push(`${prepend}${i}${append}`);
+  }
+  return results;
+}
+
+// Function to return true or false randomly
+function randomBoolean() {
+  return Math.random() >= 0.5;
+}
+
+// Generate array of int that can be tewaked
+function notSoRandomInts(count, min, max, seed, maxDiff, incline, doNotMaxOut = false) {
+  // for loop
+  let result = [];
+  for(i=0; i<count; i++) {
+      let newNumber;
+      if(i === 0) {
+          if(incline > 0) {
+              // start low for inclining graph
+              newNumber = min;
+          } else if (incline < 0) {
+              // start high for declining graph
+              newNumber = max;
+          } else {
+              // start at random number
+              newNumber = Math.floor(random(seed+i) * (max - min + 1) + min);
+          }
+      } else {
+          // based off the last number in array, get new number in between the max and min with maxDiff
+          newNumber = Math.floor(random(seed+i) * ((result[i-1]+maxDiff) - (result[i-1]-maxDiff) + 1) + (result[i-1]-maxDiff));
+      }
+
+      // Add incline to newNumber (can be positive or negative)
+      newNumber = newNumber + newNumber * incline;
+      
+      if(doNotMaxOut) {
+          // do no hard clamp - get new number below max or above min
+          if(newNumber > max) {
+              newNumber = max - (newNumber - max) - maxDiff;
+          }
+          if(newNumber < min) {
+              newNumber = min + (newNumber + min) + maxDiff;
+          }
+      } else {
+          // Hard cap number to max and min
+          newNumber = clamp(newNumber, min, max);
+      }
+      result.push(newNumber);
+  }
+  return result;
+}
+
+// Random with ssed - for same seed, produces same "random" number
+function random(seed) {
+  if(!seed) return Math.random();
+  var x = Math.sin(seed++) * 10000;
+  return x - Math.floor(x);
 }
 
 function clamp(value, min, max) {
