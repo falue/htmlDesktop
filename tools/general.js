@@ -173,8 +173,21 @@ async function counter(targetId, append, duration, jitter, start, stop) {
   }
 }
 
+function randomIntsBetween(count=1, min=0, max=9) {
+  // for loop
+  let result = [];
+  for(i=0; i<count; i++) {
+    result.push(Math.floor(Math.random() * (max - min + 1) + min));
+  }
+  return result;
+}
+
 function randomBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function getRandomElement(arrayToChoose) {
+  return arrayToChoose[chooseRandomKey(arrayToChoose)];
 }
 
 function chooseRandomKey(arrayToChoose) {
