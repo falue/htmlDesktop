@@ -1,0 +1,13 @@
+<div style="background-color:#202633; color: white; padding:5em 6em 3em 6em;">
+    <!--parsed in windowmanager.js:-->
+    <!--delay= 2200-->
+    <img src="programs/servermanager/splash.png" style="height: 3.5em;"/>
+    <br><br>
+    © MNGR, inc.
+    <br>
+    <br>
+    <span class="blue fade">
+        <i class="material-icons spin valign small">refresh</i>
+        loading..
+    </span>
+</div>
