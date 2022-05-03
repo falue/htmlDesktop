@@ -211,6 +211,13 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
     margin-left: .8em;
 }
 
+.window .windowFrame .windowActions i:hover {
+    color: rgba(88,150,255,1);
+}
+.window .windowFrame .windowActions i:last-of-type:hover {
+    color: rgba(255,80,80,1);
+}
+
 /* SYSTEMBAR */
 .systemBar {
     position: fixed;
