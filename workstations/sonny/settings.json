@@ -34,6 +34,18 @@
             "renderToDom": true
         },
         {
+            "windowName": "Server MNGR",
+            "icon": "storm",
+            "contentPath": "servermanager",
+            "x": 9,
+            "y": 4,
+            "w": 1200,
+            "h": 810,
+            "zIndex": 60,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "windowName": "FTP Client",
             "icon": "storm",
             "contentPath": "ftp",
