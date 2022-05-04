@@ -1,0 +1,191 @@
+header {
+    /*  background-color: burlywood; */
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: solid thin grey;
+    background-color: rgba(0,0,0,.05);
+}
+
+.toolBar {
+    top: 1.5em;
+    height: 2.1em;
+    padding: .25em;
+    box-sizing: border-box;
+}
+
+.gridBox button,
+.toolBar button {
+    font-family: inherit;
+    border: solid thin grey;
+    padding: .25em;
+}
+
+.toolBar > button {
+    margin-right: .5em;
+}
+
+.buttonGroup {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.buttonGroup button {
+    border-left: none;
+}
+
+.buttonGroup button:first-of-type {
+    border-top-left-radius: .25em;
+    border-bottom-left-radius: .25em;
+    border-left: solid thin grey;
+}
+
+.buttonGroup button:last-of-type {
+    border-top-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 3.6em);
+    top: 3.6em;
+    box-sizing: border-box;
+}
+
+/* TABS */
+.tabs {
+    background-color: lightgrey;
+}
+
+.tabs div {
+    width: 12em;
+    background-color: white;
+}
+
+/* GRID */
+.gridLayout {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+    /* background-color: rgba(0,0,255,.5); */
+    grid-template-rows: [row] 1.5em [row] 2em [row] 3em [row] 1fr [row] ;
+}
+
+.gridBox {
+    position: relative;
+    box-sizing: border-box;
+    /* background-color: lavender; */
+    /* border: solid rgba(255,0,0,.5) 1px; */
+}
+
+.paperHolder {
+    background-color: rgba(0,0,0,.05);
+	scroll-behavior: smooth;
+}
+.paper {
+    width: 75%;
+    min-height: 100%;
+    background-color: white;
+    margin: auto;
+    padding: 1em 0;
+}
+
+
+/* treeview */
+.treeview {
+    line-height: 1.5em;
+}
+.treeview li {
+    padding-left: 1em;
+    white-space: nowrap;
+}
+
+.treeview li.active {
+    background-color: rgba(255,255,255,.2);
+}
+
+#summeryTitle i {
+    display: none;
+}
+/* .treeview li:hover {
+    background-color: rgba(255,255,255,.125);
+}
+.treeview li:hover ul  {
+    background-color: transparent;
+} */
+.treeview > li {
+    padding-left: 0;
+}
+
+.treeview ul:last-child li:last-of-type {
+    padding-bottom: .5em;
+}
+
+/* FORCETYPE */
+.forceType  {
+    position: relative;
+    width: 100%;
+}
+.forceType textarea {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    bottom: 0;
+    opacity: 0;
+    background-color: darkgrey;
+    z-index: 1;
+    box-sizing: border-box;
+    resize: none;
+}
+.forceType div:not(.out)  {
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: fit-content;
+    min-height: 2.25em;
+    z-index: 0;
+    border-radius:.2em;
+    padding: 0.5em;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+.forceType div.out  {
+    padding-top: 0.25em;
+}
+.out img {
+    max-width: 100%;
+}
+
+label:focus-within {
+    border: green solid thin;
+}
+
+label {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0.5em 1em 0.5em 7em;
+    border: transparent solid thin;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+    border-radius: .2em;
+}
+
+label > div:first-of-type {
+    color: blue;
+    position: absolute;
+    left: 1em;
+    top: .75em;
+    width: 5em;
+}
+
+input[type=text],
+textarea {
+    border-radius: .2em;
+}
