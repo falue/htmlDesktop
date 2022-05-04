@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JUPYTER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js" defer></script>
+
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" id="syntaxTheme" href="../../tools/libraries/highlight/styles/monokai-sublime.css">
+    <script src="../../tools/libraries/highlight/highlight.min.js"></script>
+
+    <!-- Charts -->
+    <script src="../../tools/libraries/chart.js"></script>
+  </head>
+  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+    <div class="gridLayout">
+
+      <!-- ROW 1 -->
+      <header class="gridBox header windowmenu centerContentY" style="grid-column: col / span 6; grid-row: row;">
+        <button class="programButtons valign"><i class="material-icons medium valign">menu</i></button><!-- 
+        --><button class="programButtons">File</button><!-- 
+        --><button class="programButtons">Edit</button><!-- 
+        --><button class="programButtons">View</button><!-- 
+        --><button class="programButtons">Settings</button><!-- 
+        --><button class="programButtons">About</button>
+      </header>
+
+      <header class="gridBox centerContentYRight small" style="grid-column: col 7 / span 2; grid-row: row; text-align: right;">
+        JUPYTER NOTEBOOK <i class="material-icons medium valign grey">settings</i>
+      </header>
+
+      <!-- ROW 2 -->
+      <div class="gridBox centerContentY" style="grid-column: col 2 / span 7; grid-row: row 2;">tabs</div>
+      <div class="gridBox centerContentX" style="grid-column: col 2 / span 7; grid-row: row 3;">plus play/stop</div>
+
+      <!-- ROW 3 -->
+      <div class="gridBox overflowAuto padding05" style="grid-column: col / span 1; grid-row: row 2 / 6;">
+        <ul class="treeview">
+          <li><i class="material-icons small valign grey">folder</i> sonny<i class="material-icons small valign grey">expand_more</i></li>
+          <li>
+            <ul>
+              <li><i class="material-icons small valign grey">folder</i> .android <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .atom <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .byobu <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .cabal <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .cache <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .cca <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .config <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .cordova <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .cups <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .display <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .distlib <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .dropbox <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .elm <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .emacs.d <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .fontconfig <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .fonts <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .gern <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .gfxjs <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .ghc <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .gnupg <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .go <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .gradle <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .heroku <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .ipynb_checkpoints <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .ipython <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .lein <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .local <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .m2 <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .matlab <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .matplotlib <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .mix <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .mplayer <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .node-gyp <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .npm <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .pip <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .plugman <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .rubies <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .rvm <i class="material-icons small valign grey">expand_less</i></li>
+              <li><i class="material-icons small valign grey">folder</i> .slap <i class="material-icons small valign grey">expand_less</i></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- SCENE 1 -->
+      <div class="tab gridBox overflowAuto" style="grid-column: col 2 / span 7; grid-row: row 4;">
+        <h1>5</h1>
+        <!--  <input type="button" onclick="forceType({keyCode: 3, preventDefault: function () {}}, gebi('aaaa'), 'get_ipython().magic(’matplotlib inline’)\nimport matplotlib.pyplot as plt\nfrom numpy.random import normal\ntest\n2\n4\n666'); updateSyntaxHighlighting();" value="inner text test">
+        <span id="aaaa" class="terminal"></span> -->
+        <div class="code padding1">
+          <div class="minWidth75">in[0]</div>
+          <div class="forceType">
+            <textarea onfocus="cursor('terminal1', true)" onblur="cursor('terminal1', false)" onkeydown="forceTypeHighlight(event, this, 'terminal1', 'import matplotlib.pyplot as plt\nfrom numpy.random import normal\nget_ipython().magic(’matplotlib inline’)\ntest\n2\n4\n666');"></textarea>
+            <div id="terminal1" class="terminal python"></div>
+          </div>
+          <br>
+          <div class="minWidth75">in[1]</div>
+          <textarea class="terminal maxWidth greyBorder code padding05 autoHeight" spellcheck="false" onkeydown="forceType(event, this, 'get_ipython().magic(’matplotlib inline’)\nimport matplotlib.pyplot as plt\nfrom numpy.random import normal\ntest\n2\n4\n666');"></textarea>
+          <br>
+          <div class="minWidth75">in[2]</div>
+          <textarea class="terminal maxWidth greyBorder code padding05 autoHeight" spellcheck="false" onkeydown="forceType(event, this, 'geneA, geneB = ingestDnaSquence(’nbrugger.dna’, ‘51’, ‘diploid’)');"></textarea>
+          <br>
+          <div class="minWidth75">out[0]</div>
+          <input type="text" value="" class="terminal maxWidth greyBorder code padding05" spellcheck="false" onkeydown="forceType(event, this, 'foo bar');">
+        </div>
+        <div onclick="clearInputs();">CLEAR</div>
+      </div>
+
+      <!-- SCENE 2 -->
+      <div class="tab gridBox overflowAuto hide" style="grid-column: col 2 / span 7; grid-row: row 4;">
+        <h1>5 - 2</h1>
+      </div>
+
+      <!-- ROW 4 -->
+      <div class="gridBox " style="grid-column: col 2 / span 5; grid-row: row 5;">
+        Current: icon file.ipynb*
+        <button onclick="switchTabs(1)">tab [1]</button>
+        <button onclick="switchTabs(2)">tab [2]</button>
+      </div>
+      <div class="gridBox centerContentYRight" style="grid-column: col 7 / span 2; grid-row: row 5;">warnings / updates</div>
+    </div>
+  </body>
+  </html>

@@ -42,6 +42,18 @@
             "w": 1200,
             "h": 810,
             "zIndex": 60,
+            "minimized": true,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Jupyter Notebook",
+            "icon": "code",
+            "contentPath": "jupyter",
+            "x": 5,
+            "y": 5,
+            "w": 1100,
+            "h": 700,
+            "zIndex": 61,
             "minimized": false,
             "renderToDom": true
         },

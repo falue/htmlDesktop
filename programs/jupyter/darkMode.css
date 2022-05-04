@@ -1,0 +1,30 @@
+body {
+    color: white;
+    background-color: #2B2B2B;
+}
+
+header {
+    border-bottom: solid thin rgba(255,255,255,.125);
+    background-color: #2B2B2B;
+}
+
+header:last-of-type {
+    border-bottom: solid thin rgba(255,255,255,.25);
+}
+
+.programButtons {
+    font-family: inherit;
+    color: white;
+    background-color: rgba(255,255,255,.125);
+    border-color: rgba(0,0,0,.75) !important;
+    border-bottom: solid rgba(0,0,0,.75) thin !important;
+}
+
+hr {
+    border-color: rgba(0,0,0,.25);
+}
+
+input[type=text],
+textarea {
+    filter: invert(1);
+}
