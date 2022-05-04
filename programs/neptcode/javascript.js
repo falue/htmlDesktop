@@ -10,9 +10,12 @@ async function setup() {
     setSystemFont(os);
 
     if(darkMode === "true") {
-        addStylesheet("darkMode.css");
+        addStylesheet("darkMode.css", false);
+        addStylesheet("../../tools/libraries/highlight/styles/monokai-sublime.css", false);
+        /* addStylesheet("../../tools/libraries/highlight/styles/tokio-night-dark.css", false); */
     } else {
-        addStylesheet("lightMode.css");
+        addStylesheet("../../tools/libraries/highlight/styles/docco.css", false);
+        /* addStylesheet("lightMode.css"); */
     }
 
     // select all textareas and set onkeyup to setTextareaHeightToEnteredText
@@ -50,7 +53,7 @@ function updateSyntaxHighlighting() {
 
 function forceTypeHighlight(event, textarea, target, text) {
     cursor(target, false);
-    forceType(event, textarea, text, false, false);
+    forceType(event, textarea, text, false, true);
     gebi(target).innerHTML=textarea.value.replaceAll('\n', '<br>').replaceAll('`', "'").replaceAll('’', "'");
     updateSyntaxHighlighting();
     // Do not show cursor if text is finished
@@ -62,7 +65,7 @@ function cursor(terminalId, display) {
     if(display) {
         let cursor = document.createElement('span');
         cursor.classList.add('cursor', 'blink');
-        cursor.innerHTML = '|';
+        cursor.innerHTML = '│';
         terminal.appendChild(cursor);
     } else {
         let cursor = terminal.querySelector('.cursor');
@@ -93,12 +96,14 @@ function setTextareaHeightToEnteredText() {
     }
 }
 
-function addStylesheet(path) {
-    let currentStylesheet = gebi('osStylesheet');
-    if(currentStylesheet) currentStylesheet.remove();
+function addStylesheet(path, replace=true) {
     let head = document.head;
     let link = document.createElement("link");
-    link.id = "osStylesheet"
+    if(replace) {
+        let currentStylesheet = gebi('osStylesheet');
+        if(currentStylesheet) currentStylesheet.remove();
+        link.id = "osStylesheet"
+    }
     link.type = "text/css";
     link.rel = "stylesheet";
     link.href = path;

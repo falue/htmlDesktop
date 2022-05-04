@@ -46,9 +46,9 @@
             "renderToDom": true
         },
         {
-            "windowName": "Jupyter Notebook",
+            "windowName": "Neptcode Notebook",
             "icon": "code",
-            "contentPath": "jupyter",
+            "contentPath": "neptcode",
             "x": 5,
             "y": 5,
             "w": 1100,

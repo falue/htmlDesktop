@@ -61,6 +61,7 @@ function setup2() {
 }
 
 function createAllCharts() {
+    // TODO: if window is minimized, nothing gets loaded initially
     for (let i = 0; i < data.length; i++) {
         if(!isHidden(gebi(data[i].target))) {
             gebi(data[i].target).replaceChildren();  // clear contents to re-render
@@ -71,7 +72,7 @@ function createAllCharts() {
 
 function highlightNode() {
     // get elementy by css selector
-    let elements = document.querySelectorAll(".nodelist li");
+    let elements = document.querySelectorAll(".treeview li");
     // cycle throuhg elements
     for (let i = 0; i < elements.length; i++) {
         // add event listener to each element

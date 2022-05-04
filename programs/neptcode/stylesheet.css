@@ -14,6 +14,7 @@ header {
     box-sizing: border-box;
 }
 
+.gridBox button,
 .toolBar button {
     font-family: inherit;
     border: solid thin grey;
@@ -52,6 +53,16 @@ header {
     box-sizing: border-box;
 }
 
+/* TABS */
+.tabs {
+    background-color: lightgrey;
+}
+
+.tabs div {
+    width: 12em;
+    background-color: white;
+}
+
 /* GRID */
 .gridLayout {
     position: relative;
@@ -61,14 +72,14 @@ header {
     display: grid;
     grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
     /* background-color: rgba(0,0,255,.5); */
-    grid-template-rows: [row] 1.5em [row] 2em [row] 2em [row] 1fr [row] ;
+    grid-template-rows: [row] 1.5em [row] 2em [row] 3em [row] 1fr [row] ;
 }
 
 .gridBox {
     position: relative;
     box-sizing: border-box;
     /* background-color: lavender; */
-    border: solid rgba(255,0,0,.5) 1px;
+    /* border: solid rgba(255,0,0,.5) 1px; */
 }
 
 
@@ -125,6 +136,36 @@ header {
     top: 0;
     width: 100%;
     height: fit-content;
-    min-height: 2em;
+    min-height: 2.25em;
     z-index: 0;
+    border-radius:.2em;
+    padding: 0.5em;
+}
+
+label:focus-within {
+    border: green solid thin;
+}
+
+label {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0.5em 1em 0.5em 6em;
+    border: transparent solid thin;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+    border-radius: .2em;
+}
+
+label > div:first-of-type {
+    color: blue;
+    position: absolute;
+    left: 1em;
+    top: .75em;
+    width: 4em;
+}
+
+input[type=text],
+textarea {
+    border-radius: .2em;
 }
