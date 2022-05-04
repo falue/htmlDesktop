@@ -124,33 +124,33 @@ button:hover {
     color: #fff;
 }
 
-/* NODELIST */
-.nodelist {
+/* treeview */
+.treeview {
     line-height: 1.5em;
 }
-.nodelist li {
+.treeview li {
     padding-left: 1em;
     white-space: nowrap;
 }
 
-.nodelist li.active {
+.treeview li.active {
     background-color: rgba(255,255,255,.2);
 }
 
 #summeryTitle i {
     display: none;
 }
-/* .nodelist li:hover {
+/* .treeview li:hover {
     background-color: rgba(255,255,255,.125);
 }
-.nodelist li:hover ul  {
+.treeview li:hover ul  {
     background-color: transparent;
 } */
-.nodelist > li {
+.treeview > li {
     padding-left: 0;
 }
 
-.nodelist ul:last-child li:last-of-type {
+.treeview ul:last-child li:last-of-type {
     padding-bottom: .5em;
 }
 
