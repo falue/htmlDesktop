@@ -48,3 +48,19 @@ label > div:first-of-type {
     width: 12em;
     background-color: grey;
 }
+
+
+.paperHolder {
+    background-color: rgba(0,0,0,.25);
+}
+.paper {
+    width: 75%;
+    min-height: 100%;
+    background-color: rgb(50, 50, 50);
+    margin: auto;
+    padding: 1em 0;
+}
+
+.greyBorderLightTop { border-top: thin solid rgb(70, 70, 70) !important; }
+.greyBorderLightRight { border-right: thin solid rgb(70, 70, 70) !important; }
+.greyBorderLightBottom { border-bottom: thin solid rgb(70, 70, 70) !important; }

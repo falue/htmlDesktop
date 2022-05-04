@@ -82,6 +82,18 @@ header {
     /* border: solid rgba(255,0,0,.5) 1px; */
 }
 
+.paperHolder {
+    background-color: rgba(0,0,0,.05);
+	scroll-behavior: smooth;
+}
+.paper {
+    width: 75%;
+    min-height: 100%;
+    background-color: white;
+    margin: auto;
+    padding: 1em 0;
+}
+
 
 /* treeview */
 .treeview {
@@ -130,7 +142,7 @@ header {
     box-sizing: border-box;
     resize: none;
 }
-.forceType div  {
+.forceType div:not(.out)  {
     box-sizing: border-box;
     position: relative;
     top: 0;
@@ -140,6 +152,14 @@ header {
     z-index: 0;
     border-radius:.2em;
     padding: 0.5em;
+    white-space: pre-wrap;
+    overflow-x: auto;
+}
+.forceType div.out  {
+    padding-top: 0.25em;
+}
+.out img {
+    max-width: 100%;
 }
 
 label:focus-within {
@@ -150,7 +170,7 @@ label {
     position: relative;
     display: block;
     width: 100%;
-    padding: 0.5em 1em 0.5em 6em;
+    padding: 0.5em 1em 0.5em 7em;
     border: transparent solid thin;
     box-sizing: border-box;
     margin-bottom: 1em;
@@ -162,7 +182,7 @@ label > div:first-of-type {
     position: absolute;
     left: 1em;
     top: .75em;
-    width: 4em;
+    width: 5em;
 }
 
 input[type=text],

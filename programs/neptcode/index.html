@@ -24,7 +24,7 @@
 
       <!-- ROW 1 -->
       <header class="gridBox header windowmenu centerContentY" style="grid-column: col / span 6; grid-row: row;">
-        <button class="programButtons valign"><i class="material-icons medium valign">menu</i></button><!-- 
+        <button class="programButtons valign"><i class="material-icons medium blue valign">menu</i></button><!-- 
         --><button class="programButtons">File</button><!-- 
         --><button class="programButtons">Edit</button><!-- 
         --><button class="programButtons">View</button><!-- 
@@ -33,26 +33,26 @@
       </header>
 
       <header class="gridBox centerContentYRight small" style="grid-column: col 7 / span 2; grid-row: row; text-align: right;">
-        NEPTCODE NOTEBOOK <i class="material-icons medium valign grey">settings</i>
+        <span class="bold blue marginX50">NEPTCODE NOTEBOOK</span> <i class="material-icons medium valign grey">settings</i>
       </header>
 
       <!-- ROW 2 -->
       <div class="gridBox centerContentY tabs greyBorderLightBottom" style="grid-column: col 2 / span 7; grid-row: row 2;">
         <div class="small greyBorderLightRight maxHeight centerContent op50">.gitconfig</div>
         <div class="small greyBorderLightRight maxHeight centerContent">data.ipynb*</div>
-        <div class="small greyBorderLightRight maxHeight centerContent op50">Settings</div>
+        <div class="small greyBorderLightRight maxHeight centerContent op50">
+          <i class="material-icons medium grey">construction</i> Settings
+        </div>
       </div>
 
-      <div class="gridBox centerText padding05 greyBorderLightBottom" style="grid-column: col 2 / span 7; grid-row: row 3;">
-        <button class="radius3">
+      <div class="gridBox centerText padding05 greyBorderLightBottom shadowLight" style="grid-column: col 2 / span 7; grid-row: row 3;">
+        <button class="radius3" onclick="addNextCodeblock(); updateSyntaxHighlighting();">
           <i class="material-icons medium valign grey">add</i>
         </button>
-
         <div class="buttonGroup"><!-- 
-        --><button class="hover"><i class="material-icons medium valign grey">play_arrow</i></button><!-- 
-        --><button class="hover"><i class="material-icons medium valign grey">stop</i></button><!-- 
+        --><button class="hover" onclick="addNextCodeblock(); updateSyntaxHighlighting();"><i class="material-icons medium valign grey">play_arrow</i></button><!-- 
+        --><button class="hover" onclick="clearInputs()"><i class="material-icons medium valign grey">stop</i></button><!-- 
       --></div>
-
       </div>
 
       <!-- ROW 3 -->
@@ -106,52 +106,33 @@
       </div>
 
       <!-- SCENE 1 -->
-      <div class="tab gridBox overflowAuto padding1" style="grid-column: col 2 / span 7; grid-row: row 4;">
-        <h1>5</h1>
-        <!--  <input type="button" onclick="forceType({keyCode: 3, preventDefault: function () {}}, gebi('aaaa'), 'get_ipython().magic(’matplotlib inline’)\nimport matplotlib.pyplot as plt\nfrom numpy.random import normal\ntest\n2\n4\n666'); updateSyntaxHighlighting();" value="inner text test">
-        <span id="aaaa" class="terminal"></span> -->
-        <div class="code">
-          <label>
-            <div>in[0]:</div>
-            <div class="forceType">
-              <textarea onfocus="cursor('terminal1', true)" onblur="cursor('terminal1', false)" onkeydown="forceTypeHighlight(event, this, 'terminal1', 'import matplotlib.pyplot as plt\nfrom numpy.random import normal\nget_ipython().magic(’matplotlib inline’)\ntest\n2\n4\n666');"></textarea>
-              <div id="terminal1" class="terminal python"></div>
-            </div>
-          </label>
-
-          <label>
-            <div>in[1]:</div>
-            <textarea class="terminal maxWidth code padding05 autoHeight" spellcheck="false" onkeydown="forceType(event, this, 'get_ipython().magic(’matplotlib inline’)\nimport matplotlib.pyplot as plt\nfrom numpy.random import normal\ntest\n2\n4\n666');"></textarea>
-          </label>
-
-          <label>
-            <div>in[2]:</div>
-            <textarea class="terminal maxWidth code padding05 autoHeight" spellcheck="false" onkeydown="forceType(event, this, 'geneA, geneB = ingestDnaSquence(’nbrugger.dna’, ‘51’, ‘diploid’)');"></textarea>
-          </label>
-
-          <label>
-            <div>out[0]:</div>
-            <input type="text" value="" class="terminal maxWidth code padding05" spellcheck="false" onkeydown="forceType(event, this, 'foo bar');">
-          </label>
-
+      <div id="paperHolder" class="paperHolder tab gridBox overflowAuto padding1" style="grid-column: col 2 / span 7; grid-row: row 4;">
+        <div id="paper" class="paper code shadowLight">
         </div>
-        <div onclick="clearInputs();">CLEAR</div>
       </div>
 
       <!-- SCENE 2 -->
-      <div class="tab gridBox overflowAuto hide padding1" style="grid-column: col 2 / span 7; grid-row: row 4;">
-        <h1>5 - 2</h1>
+      <div class="paperHolder tab gridBox overflowAuto padding1" style="grid-column: col 2 / span 7; grid-row: row 4;">
+        <div class="paper code shadowLight">
+          <div class="padding1">
+            <h1>5 - 2</h1>
+          </div>
+        </div>
       </div>
 
       <!-- ROW 4 -->
       <div class="gridBox greyBorderLightTop padding05 small" style="grid-column: col 2 / span 5; grid-row: row 5;">
-        Current: icon file.ipynb*
-        <button onclick="switchTabs(1)">tab [1]</button>
-        <button onclick="switchTabs(2)">tab [2]</button>
-        <button onclick="window.location.href= window.location.href.replace('darkMode=false','darkMode=true');">darkMode</button>
-        <button onclick="window.location.href= window.location.href.replace('darkMode=true','darkMode=false');">lightMode</button>
+        <i class="material-icons small valign">description</i> data.ipynb*
+        <button class="grey" onclick="switchTabs(1)">tab 1</button>
+        <button class="grey" onclick="switchTabs(2)">tab 1</button>
+        <button class="grey" onclick="clearInputs()">clear</button>
+        <button class="grey" onclick="window.location.href= window.location.href.replace('darkMode=false','darkMode=true');">darkMode</button>
+        <button class="grey" onclick="window.location.href= window.location.href.replace('darkMode=true','darkMode=false');">lightMode</button>
       </div>
-      <div class="gridBox centerContentYRight greyBorderLightTop padding05 small" style="grid-column: col 7 / span 2; grid-row: row 5;">warnings / updates</div>
+      <div class="gridBox centerContentYRight greyBorderLightTop padding05 small" style="grid-column: col 7 / span 2; grid-row: row 5;">
+        <span class="red marginX50"><i class="material-icons small valign">warning</i> 1 deprecation</span>
+        <span class="blue"><i class="material-icons medium valign">download</i> 1 update</span>
+      </div>
     </div>
   </body>
   </html>
