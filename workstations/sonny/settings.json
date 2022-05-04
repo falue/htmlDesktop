@@ -48,7 +48,7 @@
         {
             "windowName": "Neptcode Notebook",
             "icon": "code",
-            "contentPath": "neptcode",
+            "contentPath": "neptcode/index.html?data=basic",
             "x": 5,
             "y": 5,
             "w": 1100,
