@@ -1,5 +1,5 @@
  /*!
-  Theme: nnfx dark
+  Theme: nnfx light
   Description: a theme inspired by Netscape Navigator/Firefox
   Author: (c) 2020-2021 Jim Mason <jmason@ibinx.com>
   Maintainer: @RocketMan
@@ -10,27 +10,27 @@
 */
 
 .hljs {
-  background: #333;
-  color: #fff;
+  background: #fff;
+  color: #000;
 }
 
 .language-xml .hljs-meta,
 .language-xml .hljs-meta-string {
   font-weight: bold;
   font-style: italic;
-  color: #69f;
+  color: #48b;
 }
 
 .hljs-comment,
 .hljs-quote {
   font-style: italic;
-  color: #9c6;
+  color: #070;
 }
 
 .hljs-name,
 .hljs-keyword,
 .hljs-built_in {
-  color: #a7a;
+  color: #808;
 }
 
 .hljs-name,
@@ -48,7 +48,7 @@
 .hljs-number,
 .hljs-regexp,
 .hljs-link {
-  color: #bce;
+  color: #00f;
 }
 
 .hljs-title,
@@ -56,14 +56,14 @@
 .hljs-bullet,
 .hljs-variable,
 .hljs-template-variable {
-  color: #d40;
+  color: #f40;
 }
 
 .hljs-title.class_,
 .hljs-class .hljs-title,
 .hljs-type {
   font-weight: bold;
-  color: #96c;
+  color: #639;
 }
 
 .hljs-title.function_,
@@ -71,7 +71,7 @@
 .hljs-attr,
 .hljs-subst,
 .hljs-tag {
-  color: #fff;
+  color: #000;
 }
 
 .hljs-formula {
@@ -80,15 +80,15 @@
 }
 
 .hljs-addition {
-  background-color: #797;
+  background-color: #beb;
 }
 
 .hljs-deletion {
-  background-color: #c99;
+  background-color: #fbb;
 }
 
 .hljs-meta {
-  color: #69f;
+  color: #269;
 }
 
 .hljs-section,
@@ -97,7 +97,7 @@
 .hljs-selector-pseudo,
 .hljs-selector-tag {
   font-weight: bold;
-  color: #69f;
+  color: #48b;
 }
 
 .hljs-selector-pseudo {
