@@ -471,7 +471,7 @@ function swapSyntaxTheme(value) {
     document.getElementById("BGColorText").value = "theme";
 
     /* console.log(value); */
-    document.getElementById("syntaxTheme").href= "tools/highlight/styles/" + value + ".css";
+    document.getElementById("syntaxTheme").href= "../../tools/libraries/highlight/styles/" + value + ".css";
 }
 
 function buildUrlFromCurrentSettings() {
