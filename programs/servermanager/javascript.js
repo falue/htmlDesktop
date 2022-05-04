@@ -47,6 +47,10 @@ async function setup() {
     // Wait for additional js to load until commencing setup process
     script.setAttribute('onload', 'setup2()');
     document.getElementsByTagName('head')[0].appendChild(script);
+
+    // Init syntax highlighting
+    hljs.initHighlightingOnLoad();
+    hljs.configure({useBR: true});
 }
 
 // Commence setup process
@@ -87,7 +91,6 @@ function highlightNode() {
 }
 
 function updateSyntaxHighlighting() {
-    hljs.configure({useBR: true});
     document.querySelectorAll('div.terminal').forEach((block) => {
         hljs.highlightBlock(block);
     });
