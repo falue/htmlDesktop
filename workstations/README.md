@@ -68,6 +68,11 @@ define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250
 - `"y": 67` *Y-Position of shortcut in percent (integer)*
 - `"action": ".."` *javascript action as string like `startDefaultProgram('fileManager')` or `addWindow(..)`*
 
+#### **actions**
+Arrays of strings with javascript in them. The get executed of selected in the actionMenu.
+
+First key describes the title in the actionMenu; second key contains an arbitrary amount of javascript commands (including async/await actions).
+
 #### **osNotifications**
 Arrays of strings for different parts of the osNotification.
  titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.

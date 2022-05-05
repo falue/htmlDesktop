@@ -103,6 +103,10 @@
             "action": "startDefaultProgram('fileManager');"
         }
     ],
+    "actions": [
+        ["Name of action 1", "startDefaultProgram('textEditor'); cl('textEditor HAS STARTED');"],
+        ["Name of action 2", "cl('second action'); await delay(2000); cl('second action has ended');"]
+    ],
     "osNotifications": [
         [
             "You've got mail (2)",

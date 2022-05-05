@@ -349,6 +349,27 @@ function setDelayUi(value) {
     gebi('osNotificationsDurationUi').innerHTML = value > 0 ? value+'s' : 'No delay';
 }
 
+function triggerActionOrMessage(data) {
+    // If selected option has data-type set, its a direct action
+    let osNotificationsSelect = gebi('osNotificationsSelect');
+    if(osNotificationsSelect.options[osNotificationsSelect.selectedIndex].dataset.action) {
+        playAction(data);
+    } else {
+        showSystemMessage(osNotifications[parseInt(data)]);
+    }
+}
+
+async function playAction(action) {
+    let messageSent = Math.floor(Date.now() / 1000);
+    let initialDelay = parseInt(gebi('osNotificationsDurationSlider').value)*1000;
+    await delay(initialDelay);
+    // Show container if it was not cleared before
+    if(clearedSystemMessages < messageSent) {
+        // if action includes await, it needs to be enclosed in async function
+        eval("(async () => {" + action + "})()"); // suck my dick
+    }
+}
+
 async function showSystemMessage(messageData) {
     let messageSent = Math.floor(Date.now() / 1000);
     let title = messageData[0];
@@ -461,7 +482,7 @@ function keyboardController(event) {
             case "d": clutterDesktop(4); break;
             case "w": startDefaultProgram(); break;
             case "a": toggle('actionMenu'); break;
-            case "m": showSystemMessage(osNotifications[parseInt(gebi('osNotificationsSelect').value)]); break;
+            case "m": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
             case "Escape": screensaverHide(); break;
 
             /* case "arrowright": epD(event); cl("arrow right!"); break;

@@ -22,7 +22,7 @@ async function setup() {
   // get current file name without parameters
   rootHtmlFile = window.location.pathname.split("/").pop();
   if(rootHtmlFile.includes("?")) rootHtmlFile = rootHtmlFile.split("?")[0];
-  cl("Current root file is " + rootHtmlFile);
+  /* cl("Current root file is " + rootHtmlFile); */
   
   // If on telefabi.ch in root, use htmlDesktop as website :)
   // here detect DESKTOP.html
@@ -66,6 +66,7 @@ async function setup() {
     windows = data.windows;
     shortcuts = data.shortcuts;
     systemIcons = data.systemIcons;
+    actions = data.actions;
     osNotifications = data.osNotifications;
   }
 
@@ -128,10 +129,8 @@ async function setup() {
   }
 
   if(dockAvailable) {
-    cl("dock available");
     show('actionMenuDockLock');
   } else {
-    cl("dock not available");
     hide('actionMenuDockLock');
   }
 
@@ -156,6 +155,9 @@ async function setup() {
   // Loop over windows
   setupSystemIcons(systemIcons);
   // cl("SETUP: systemIcons success, "+systemIcons.length+" icons displayed.");
+
+  // Loop over actions
+  setupActions(actions);
 
   // Loop over osNotifications
   setupSystemMessages(osNotifications);
@@ -393,18 +395,34 @@ function setupSystemIcons(systemIconsShown) {
   }
 }
 
+function setupActions(actions) {
+  cl("setupActions..");
+  let selectionBox = gebi('osNotificationsSelect');
+  // iterate over array with i++
+    for (let i = 0; i < actions?.length; i++) {
+      // Add to select box with index as value of option
+      let option = document.createElement("option");
+      option.value = actions[i][1];
+      option.setAttribute("data-action", "true");
+      option.innerHTML = `⚡ ${actions[i][0]}`;
+      // select the saved option
+      if(i === selectedSystemMessage) option.selected = true;
+      selectionBox.appendChild(option);
+  }
+}
 
 function setupSystemMessages(messages) {
+  cl("setupSystemMessages..");
   let selectionBox = gebi('osNotificationsSelect');
-  for (let message in messages) {
+  for (let index in messages) {
     // Add to select box with index as value of option
     let option = document.createElement("option");
-    option.value = message;
-    option.innerHTML = messages[message][0];
-    option.innerHTML += messages[message][4] > 0 ? " (Timeout: "+(messages[message][4]/1000)+"s)" : "";
+    option.value = index;
+    option.innerHTML = `🔔 ${messages[index][0]}`;
+    option.innerHTML += messages[index][4] > 0 ? " (Timeout: "+(messages[index][4]/1000)+"s)" : "";
 
     // select the saved option
-    if(message == selectedSystemMessage) option.selected = true;
+    if(parseInt(index)+actions?.length === selectedSystemMessage) option.selected = true;
     selectionBox.appendChild(option);
   }
 }
