@@ -123,11 +123,15 @@
       <!-- ROW 4 -->
       <div class="gridBox greyBorderLightTop padding05 small" style="grid-column: col 2 / span 5; grid-row: row 5;">
         <i class="material-icons small valign">description</i> data.ipynb*
-        <button class="grey" onclick="switchTabs(1)">tab 1</button>
-        <button class="grey" onclick="switchTabs(2)">tab 1</button>
-        <button class="grey" onclick="clearInputs()">clear</button>
-        <button class="grey" onclick="window.location.href= window.location.href.replace('darkMode=false','darkMode=true');">darkMode</button>
-        <button class="grey" onclick="window.location.href= window.location.href.replace('darkMode=true','darkMode=false');">lightMode</button>
+        <div class="buttonGroup marginX1">
+          <button class="grey" onclick="switchTabs(1)">tab 1</button><!-- 
+          --><button class="grey" onclick="switchTabs(2)">tab 1</button>
+        </div>
+            <div class="buttonGroup"><!-- 
+           --><button class="grey" onclick="clearInputs()"><i class="material-icons small valign">backspace</i></button><!-- 
+           --><button class="grey" onclick="window.location.href= window.location.href.replace('darkMode=false','darkMode=true');"><i class="material-icons small valign">bedtime</i></button><!-- 
+           --><button class="grey" onclick="window.location.href= window.location.href.replace('darkMode=true','darkMode=false');"><i class="material-icons small valign">light_mode</i></button>
+        </div>
       </div>
       <div class="gridBox centerContentYRight greyBorderLightTop padding05 small" style="grid-column: col 7 / span 2; grid-row: row 5;">
         <span class="red marginX50"><i class="material-icons small valign">warning</i> 1 deprecation</span>
