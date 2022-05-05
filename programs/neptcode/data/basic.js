@@ -34,3 +34,4 @@ let data = [
         ];
     
     let out = "<img src='data/basic.png'>";
+    let printedOut = 0;

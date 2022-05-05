@@ -63,8 +63,6 @@ function updateSyntaxHighlighting() {
 function forceTypeHighlight(event, textarea, target, text, endAction, waitForEnter) {
     cursor(target, false);
     forceType(event, textarea, text, endAction, waitForEnter);
-    cl(text);
-    cl(textarea.value);
     gebi(target).innerHTML=textarea.value.replaceAll('\n', '<br>').replaceAll('`', "'").replaceAll('’', "'");
     updateSyntaxHighlighting();
     // Do not show cursor if text is finished
@@ -111,6 +109,9 @@ async function addNextCodeblock(last=false) {
         return;
     }
 
+    let textToPrint;
+    if(!last) textToPrint = data[codeIndex].replaceAll('\n' ,'<br>');
+
     let container = gebi("paper");
     let uniqueId = createUniqueId();
     let label = document.createElement("label");
@@ -123,12 +124,24 @@ async function addNextCodeblock(last=false) {
     textarea.setAttribute("onblur", `cursor('terminal-${uniqueId}', false)`);
     if(!last) {
         textarea.setAttribute("onfocus", `cursor('terminal-${uniqueId}', true)`);
-        textarea.setAttribute("onkeydown", `forceTypeHighlight(event, this, 'terminal-${uniqueId}', '${data[codeIndex].replaceAll('\n' ,'<br>')}', function () { addNextCodeblock() }, true);`);
+        if(textToPrint.length > 0) {
+            textarea.setAttribute("onkeydown", `forceTypeHighlight(event, this, 'terminal-${uniqueId}', '${textToPrint}', function () { addNextCodeblock() }, true);`);
+        } else {
+            // Allow freetext if empty string
+            // On enter, go to next code block
+            textarea.setAttribute("onkeyup", `event.keyCode === 13 && this.value.length > 0 ? addNextCodeblock() : gebi('terminal-${uniqueId}').innerHTML=this.value.replaceAll('\\n' ,'<br>'); updateSyntaxHighlighting();`);
+        }
     }
     forcetypeContainer.appendChild(textarea);
     let highlightBox = document.createElement("div");
     highlightBox.setAttribute("id", `terminal-${uniqueId}`);
     highlightBox.setAttribute("class", "terminal python");
+    
+    // Fillout if printedOut is defined
+    if(codeIndex < printedOut) {
+        textarea.value = textToPrint;
+        highlightBox.innerHTML = textToPrint;
+    }
     forcetypeContainer.appendChild(highlightBox);
     label.appendChild(forcetypeContainer);
     container.appendChild(label);
@@ -157,6 +170,10 @@ async function addNextCodeblock(last=false) {
         // focus() this element
         focusNextElement();
         codeIndex++;
+    }
+
+    if(codeIndex < printedOut && !last) {
+        addNextCodeblock(codeIndex === data.length);
     }
 }
 
