@@ -103,6 +103,20 @@
             "action": ""
         },
         {
+            "name": "SERVER MNGR",
+            "icon": "file.png",
+            "x": 1,
+            "y": 16,
+            "action": "addWindow('SERVER MNGR', 'code', 'servermanager', 6, 6, 1500,900, false);"
+        },
+        {
+            "name": "Neptcode Notebook",
+            "icon": "file.png",
+            "x": 1,
+            "y": 28,
+            "action": "addWindow('Neptcode Notebook', 'code', 'neptcode', 15, 5, 1100,700, false);"
+        },
+        {
             "name": "Trash",
             "icon": "trashFull.png",
             "x": 94,
