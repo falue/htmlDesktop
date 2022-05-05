@@ -429,7 +429,7 @@
               <li class="relative noLiHover">
                 <div class="tooltip" data-title="Click to set - [m] to display" onclick="toggle('osNotificationSettings'); gebi('osNotificationSettingsArrow').classList.toggle('rotate180');">
                   <i class="material-icons blue small">notifications</i>
-                  Set system messages:
+                  Action/system message
                   <i id="osNotificationSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
                 </div>
                 <div id="osNotificationSettings" class="hide padding05">
@@ -444,7 +444,7 @@
                   <input type="range" class="maxWidth padding2 borderBox" id="osNotificationsDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
                 </div>
                 <div class="right top absolute nudge-y-12">
-                  <span class="tooltip" data-title="Test this message [m]" onclick="showSystemMessage(osNotifications[parseInt(gebi('osNotificationsSelect').value)]);">
+                  <span class="tooltip" data-title="Test this message [m]" onclick="triggerActionOrMessage(gebi('osNotificationsSelect').value);">
                     <i class="material-icons blueBg small padding25">notifications_active</i>
                   </span>
                   <span class="tooltip" data-title="Clear [shift]+[C]" onclick="clearSystemMessages();">

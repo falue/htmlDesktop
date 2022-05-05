@@ -266,7 +266,7 @@
             </div>
           </td>
           <td class="alignRight">
-            <button class="systemButton cancel" onclick="parent.showSystemMessage(['Disconnected', 'Your connection has been terminated. Click here to start again.', 'stream', 0, 2500, 'startDefaultProgram(\'ftp\');'])">Disconnect</button>
+            <button class="systemButton cancel" onclick="parent.showSystemMessage({'title':'Disconnected', 'description':'Your connection has been terminated. Click here to start again.', 'icon':'stream', 'initialDelay':0, 'timeout':2500, 'action':'startDefaultProgram(\'ftp\');'})">Disconnect</button>
             <button class="systemButton greenBg black" onclick="parent.addWindow('FTP Client - Connect', 'storm', 'ftp/connect.html', 55,5, 666,480, false);">CONNECT</button>
           </td>
         </tr>

@@ -22,7 +22,7 @@ async function setup() {
   // get current file name without parameters
   rootHtmlFile = window.location.pathname.split("/").pop();
   if(rootHtmlFile.includes("?")) rootHtmlFile = rootHtmlFile.split("?")[0];
-  cl("Current root file is " + rootHtmlFile);
+  /* cl("Current root file is " + rootHtmlFile); */
   
   // If on telefabi.ch in root, use htmlDesktop as website :)
   // here detect DESKTOP.html
@@ -66,6 +66,7 @@ async function setup() {
     windows = data.windows;
     shortcuts = data.shortcuts;
     systemIcons = data.systemIcons;
+    actions = data.actions;
     osNotifications = data.osNotifications;
   }
 
@@ -128,10 +129,8 @@ async function setup() {
   }
 
   if(dockAvailable) {
-    cl("dock available");
     show('actionMenuDockLock');
   } else {
-    cl("dock not available");
     hide('actionMenuDockLock');
   }
 
@@ -156,6 +155,9 @@ async function setup() {
   // Loop over windows
   setupSystemIcons(systemIcons);
   // cl("SETUP: systemIcons success, "+systemIcons.length+" icons displayed.");
+
+  // Loop over actions
+  setupActions(actions);
 
   // Loop over osNotifications
   setupSystemMessages(osNotifications);
@@ -329,7 +331,7 @@ function setupWindows(windows) {
     windowIcon.appendChild(document.createTextNode(window["icon"]));
     listElement.appendChild(windowIcon);
     listElement.appendChild(document.createTextNode(" "+window["windowName"]));
-    listElement.setAttribute("onclick", 'addWindow(\"'+window["windowName"]+'\", \"'+window["icon"]+'\", \"'+window["contentPath"]+'\", '+window["x"]+', '+window["y"]+', '+window["w"]+', '+window["h"]+', false)');
+    listElement.setAttribute("onclick", `addWindow('${window["windowName"]}', '${window["icon"]}', '${window["contentPath"]}', ${window["x"]}, ${window["y"]}, ${window["w"]}, ${window["h"]}, false); hide("actionMenu");`);
     listOfWindows.appendChild(listElement);
 
     // If app is "renderToDom" or "minimized", make addWindow(..)
@@ -393,18 +395,36 @@ function setupSystemIcons(systemIconsShown) {
   }
 }
 
+function setupActions(actions) {
+  let selectionBox = gebi('osNotificationsSelect');
+  // iterate over array with i++
+    for (let i = 0; i < actions?.length; i++) {
+      // Add to select box with index as value of option
+      let option = document.createElement("option");
+      option.value = actions[i][1];
+      option.setAttribute("data-action", "true");
+      option.innerHTML = `⚡ ${actions[i][0]}`;
+      // select the saved option
+      if(i === selectedSystemMessage) option.selected = true;
+      selectionBox.appendChild(option);
+  }
+}
 
 function setupSystemMessages(messages) {
   let selectionBox = gebi('osNotificationsSelect');
-  for (let message in messages) {
+  /* for (let message in messages) { */
+    // cycle through object with index
+
+  for (let i = 0; i < messages?.length; i++) {
     // Add to select box with index as value of option
     let option = document.createElement("option");
-    option.value = message;
-    option.innerHTML = messages[message][0];
-    option.innerHTML += messages[message][4] > 0 ? " (Timeout: "+(messages[message][4]/1000)+"s)" : "";
+    option.value = i;
+    option.innerHTML = "🔔 ";
+    option.innerHTML += messages[i].metaTitle.length ? messages[i].metaTitle : messages[i].title;
+    option.innerHTML += messages[i].timeOut > 0 ? " (Timeout: "+(messages[i].timeOut/1000)+"s)" : "";
 
     // select the saved option
-    if(message == selectedSystemMessage) option.selected = true;
+    if(i+actions?.length === selectedSystemMessage) option.selected = true;
     selectionBox.appendChild(option);
   }
 }

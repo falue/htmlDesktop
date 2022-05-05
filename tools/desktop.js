@@ -59,6 +59,21 @@ async function fileExists(imageSrc, fallback) {
 }
 
 function setDesktopImg(path) {
+    if(path === 'random') {
+        path = getRandomElement([
+            "os/"+os+"/desktop.jpg",
+            "os/_generic/desktops/1.jpg",
+            "os/_generic/desktops/2.jpg",
+            "os/_generic/desktops/3.jpg",
+            "os/_generic/desktops/4.jpg",
+            "os/_generic/desktops/5.jpg",
+            "os/_generic/desktops/6.jpg",
+            "os/_generic/desktops/7.jpg",
+            "os/_generic/desktops/8.jpg",
+            "os/_generic/desktops/9.jpg",
+            "os/_generic/desktops/10.jpg"
+        ]);
+    }
     gebi("desktop").style.backgroundImage = "url("+path+")";
 }
 
@@ -334,14 +349,35 @@ function setDelayUi(value) {
     gebi('osNotificationsDurationUi').innerHTML = value > 0 ? value+'s' : 'No delay';
 }
 
+function triggerActionOrMessage(data) {
+    // If selected option has data-type set, its a direct action
+    let osNotificationsSelect = gebi('osNotificationsSelect');
+    if(osNotificationsSelect.options[osNotificationsSelect.selectedIndex].dataset.action) {
+        playAction(data);
+    } else {
+        showSystemMessage(osNotifications[parseInt(data)]);
+    }
+}
+
+async function playAction(action) {
+    let messageSent = Math.floor(Date.now() / 1000);
+    let initialDelay = parseInt(gebi('osNotificationsDurationSlider').value)*1000;
+    await delay(initialDelay);
+    // Show container if it was not cleared before
+    if(clearedSystemMessages < messageSent) {
+        // if action includes await, it needs to be enclosed in async function
+        eval("(async () => {" + action + "})()"); // suck my dick
+    }
+}
+
 async function showSystemMessage(messageData) {
     let messageSent = Math.floor(Date.now() / 1000);
-    let title = messageData[0];
-    let description = messageData[1];
-    let icon = messageData[2];
-    let initialDelay = messageData[3] === true ? parseInt(gebi('osNotificationsDurationSlider').value)*1000 : messageData[3];
-    let duration = messageData[4];
-    let action = messageData[5];
+    let title = messageData.title;
+    let description = messageData.description;
+    let icon = messageData.icon;
+    let initialDelay = messageData.initialDelay === true ? parseInt(gebi('osNotificationsDurationSlider').value)*1000 : messageData.initialDelay;
+    let timeOut = messageData.timeOut;
+    let action = messageData.action;
     action = action && action !== "action" ? action : "";
     let id = "message-"+createUniqueId(10);  // Only for close via close button
     let container = gebi('osNotifications');
@@ -390,8 +426,8 @@ async function showSystemMessage(messageData) {
         container.appendChild(message);    
         
         // If self-closing is set > 0, self close
-        if(duration) {
-            await delay(duration);
+        if(timeOut) {
+            await delay(timeOut);
             closeSystemMessage(message);
         }
     }
@@ -446,7 +482,7 @@ function keyboardController(event) {
             case "d": clutterDesktop(4); break;
             case "w": startDefaultProgram(); break;
             case "a": toggle('actionMenu'); break;
-            case "m": showSystemMessage(osNotifications[parseInt(gebi('osNotificationsSelect').value)]); break;
+            case "m": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
             case "Escape": screensaverHide(); break;
 
             /* case "arrowright": epD(event); cl("arrow right!"); break;

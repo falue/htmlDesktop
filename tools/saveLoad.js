@@ -44,6 +44,8 @@ function compileSaveFile(saveFileName, download) {
   let dataShortcuts = saveAllShortcuts();
   let systemIcons = saveAllSystemIcons();
 
+  let selectedSystemMessage = gebi('osNotificationsSelect').selectedIndex;
+
   let data = {};
   data["settings"] = {
     systemColor: systemColor,
@@ -59,13 +61,14 @@ function compileSaveFile(saveFileName, download) {
     username: username,
     password: password,
     workstation: workstation,
-    selectedSystemMessage: parseInt(gebi('osNotificationsSelect').value),
+    selectedSystemMessage: selectedSystemMessage,
     osNotificationsDelay: parseInt(gebi('osNotificationsDurationSlider').value)
   };
   data["systemIcons"] = systemIcons;
   data["windows"] = dataWindows;
   data["shortcuts"] = dataShortcuts;
   data["osNotifications"] = osNotifications;
+  data["actions"] = actions;
 
   if(download) {
     downloadStringAsFile(JSON.stringify(data), saveFileName);

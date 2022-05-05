@@ -753,7 +753,18 @@ function startDefaultProgram(program, parameters) {
   let x;
   let y;
   if(!program) {
-    let programs = ["fileManager", "browser", "ftp", "ftp-connect", "imageViewer", "textEditor-random", "terminal", "threejsEditor", "bash"];
+    let programs = [
+      "fileManager",
+      "browser",
+      "ftp",
+      "ftp-connect",
+      "imageViewer",
+      "textEditor-random",
+      "terminal",
+      "threejsEditor",
+      "bash",
+      "neptcode"
+  ];
     program = programs[chooseRandomKey(programs)];
     cl("startDefaultProgram Random: " + program);
     x = randomBetween(0,50);
@@ -803,6 +814,9 @@ function startDefaultProgram(program, parameters) {
     case "colorMarker":
         addWindow('Program', 'grid_view', 'colorMarker', x, y, 666,450, false);
       break;
+    case "neptcode":
+        addWindow('Neptcode Notebook', 'code', `neptcode/index.html?data=${parameters || "basic"}`, x, y, 888,850, false);
+      break;neptcode
     case "terminal":
       // If no parameters set, start with random terminal content
       if(!parameters) parameters = randomBetween(0,6);

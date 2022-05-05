@@ -28,7 +28,7 @@ After creation of the new workstation folder (automatically or manually), you ca
 Object with all general settings of this workstation. OS and workstation-name are defined in general.settings aswell!
 - `"systemColor": "#000000"` *HEX color code for background of taskbar, window headers etc. Font color is either white or black, depending on the darkness of this color*
 - `"desktopColor": "#000000"` *HEX color code for dekstop background*
-- `"desktopImg": "os/_generic/desktops/7.jpg"` *Path to desktop image, either to `os/_generic/desktops/..` or `workstations/../desktops/1.jpg`, see [below](#user-and-desktop-images)*
+- `"desktopImg": "os/_generic/desktops/7.jpg"` *Path to desktop image, either to `os/_generic/desktops/..` or `workstations/../desktops/1.jpg`, see [below](#user-and-desktop-images). Can also be `random` to select a different desktop image each time.*
 - `"os": "windows"` *Style of OS, either `windows`, `mac` or `linux`. Must be the same as in `generalSettigns.txt`*
 - `"darkMode": true` *only gets re-set by changing the `systemColor` via the UI*
 - `"username": "Some Name"` *display name of workstation*
@@ -68,28 +68,34 @@ define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250
 - `"y": 67` *Y-Position of shortcut in percent (integer)*
 - `"action": ".."` *javascript action as string like `startDefaultProgram('fileManager')` or `addWindow(..)`*
 
+#### **actions**
+Arrays of strings with javascript in them. The get executed of selected in the actionMenu.
+
+First key describes the title in the actionMenu; second key contains an arbitrary amount of javascript commands (including async/await actions).
+
 #### **osNotifications**
 Arrays of strings for different parts of the osNotification.
  titel, message, icon, delay  (if true==take delay from UI slider, else ms delay), duration, action onClick.
 
 ```
-[
-    "You've got mail (2)",
-    "The following messages have just arrived: (..)",
-    "email",
-    true,
-    0,
-    "startDefaultProgram('textEditor')"
-]
+{
+    "metaTitle": "Scene #1 For your eyes only",
+    "title": "Zombie wave iminent",
+    "description": "Hack into these brains to gain access to valuable recources (..)",
+    "icon": "warning",
+    "initialDelay": true,
+    "timeOut": 0,
+    "action": "startDefaultProgram('terminal')"
+}
 ```
 
-
-- `"You've got mail (2)"` *Notification title*
-- `"The following messages have just arrived: (..)"` *Notification text*
-- `"email"` *material-icon name, see [here](https://fonts.google.com/icons)*
-- `true` *Delay: Boolean `true` or integer. If `true`: take delay from the UI slider in the actionMenu. If integer >=0: Delay time until the message shows up in **ms**. `0` also overwrites the UI slider.*
-- `0` *Duration of how long the message is shown. If `0`, it stays open indefinitely.*
-- `"startDefaultProgram('textEditor')"` *Optional js action that happens onclick of the osNotification. Anyways the message closes oncLick*
+- `metaTitle` *Title in the actionMenu*
+- `title` *Notification title in popup-box*
+- `description` *Notification text*
+- `icon` *material-icon name, see [here](https://fonts.google.com/icons)*
+- `initialDelay` *Delay: Boolean `true` or integer. If `true`: take delay from the UI slider in the actionMenu. If integer >=0: Delay time until the message shows up in **ms**. `0` also overwrites the UI slider.*
+- `timeOut` *Duration of how long the message is shown. If `0`, it stays open indefinitely.*
+- `action` *Optional js action that happens onclick of the osNotification. Anyways the message closes oncLick*
 
 
 ## User and desktop images
