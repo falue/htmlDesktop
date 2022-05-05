@@ -414,15 +414,19 @@ function setupActions(actions) {
 function setupSystemMessages(messages) {
   cl("setupSystemMessages..");
   let selectionBox = gebi('osNotificationsSelect');
-  for (let index in messages) {
+  /* for (let message in messages) { */
+    // cycle through object with index
+
+  for (let i = 0; i < messages?.length; i++) {
     // Add to select box with index as value of option
     let option = document.createElement("option");
-    option.value = index;
-    option.innerHTML = `🔔 ${messages[index][0]}`;
-    option.innerHTML += messages[index][4] > 0 ? " (Timeout: "+(messages[index][4]/1000)+"s)" : "";
+    option.value = i;
+    option.innerHTML = "🔔 ";
+    option.innerHTML += messages[i].metaTitle.length ? messages[i].metaTitle : messages[i].title;
+    option.innerHTML += messages[i].timeOut > 0 ? " (Timeout: "+(messages[i].timeOut/1000)+"s)" : "";
 
     // select the saved option
-    if(parseInt(index)+actions?.length === selectedSystemMessage) option.selected = true;
+    if(i+actions?.length === selectedSystemMessage) option.selected = true;
     selectionBox.appendChild(option);
   }
 }

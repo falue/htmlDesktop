@@ -372,12 +372,12 @@ async function playAction(action) {
 
 async function showSystemMessage(messageData) {
     let messageSent = Math.floor(Date.now() / 1000);
-    let title = messageData[0];
-    let description = messageData[1];
-    let icon = messageData[2];
-    let initialDelay = messageData[3] === true ? parseInt(gebi('osNotificationsDurationSlider').value)*1000 : messageData[3];
-    let duration = messageData[4];
-    let action = messageData[5];
+    let title = messageData.title;
+    let description = messageData.description;
+    let icon = messageData.icon;
+    let initialDelay = messageData.initialDelay === true ? parseInt(gebi('osNotificationsDurationSlider').value)*1000 : messageData.initialDelay;
+    let timeOut = messageData.timeOut;
+    let action = messageData.action;
     action = action && action !== "action" ? action : "";
     let id = "message-"+createUniqueId(10);  // Only for close via close button
     let container = gebi('osNotifications');
@@ -426,8 +426,8 @@ async function showSystemMessage(messageData) {
         container.appendChild(message);    
         
         // If self-closing is set > 0, self close
-        if(duration) {
-            await delay(duration);
+        if(timeOut) {
+            await delay(timeOut);
             closeSystemMessage(message);
         }
     }
