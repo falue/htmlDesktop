@@ -28,7 +28,7 @@ After creation of the new workstation folder (automatically or manually), you ca
 Object with all general settings of this workstation. OS and workstation-name are defined in general.settings aswell!
 - `"systemColor": "#000000"` *HEX color code for background of taskbar, window headers etc. Font color is either white or black, depending on the darkness of this color*
 - `"desktopColor": "#000000"` *HEX color code for dekstop background*
-- `"desktopImg": "os/_generic/desktops/7.jpg"` *Path to desktop image, either to `os/_generic/desktops/..` or `workstations/../desktops/1.jpg`, see [below](#user-and-desktop-images)*
+- `"desktopImg": "os/_generic/desktops/7.jpg"` *Path to desktop image, either to `os/_generic/desktops/..` or `workstations/../desktops/1.jpg`, see [below](#user-and-desktop-images). Can also be `random` to select a different desktop image each time.*
 - `"os": "windows"` *Style of OS, either `windows`, `mac` or `linux`. Must be the same as in `generalSettigns.txt`*
 - `"darkMode": true` *only gets re-set by changing the `systemColor` via the UI*
 - `"username": "Some Name"` *display name of workstation*

@@ -59,6 +59,21 @@ async function fileExists(imageSrc, fallback) {
 }
 
 function setDesktopImg(path) {
+    if(path === 'random') {
+        path = getRandomElement([
+            "os/"+os+"/desktop.jpg",
+            "os/_generic/desktops/1.jpg",
+            "os/_generic/desktops/2.jpg",
+            "os/_generic/desktops/3.jpg",
+            "os/_generic/desktops/4.jpg",
+            "os/_generic/desktops/5.jpg",
+            "os/_generic/desktops/6.jpg",
+            "os/_generic/desktops/7.jpg",
+            "os/_generic/desktops/8.jpg",
+            "os/_generic/desktops/9.jpg",
+            "os/_generic/desktops/10.jpg"
+        ]);
+    }
     gebi("desktop").style.backgroundImage = "url("+path+")";
 }
 
