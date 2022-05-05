@@ -396,7 +396,6 @@ function setupSystemIcons(systemIconsShown) {
 }
 
 function setupActions(actions) {
-  cl("setupActions..");
   let selectionBox = gebi('osNotificationsSelect');
   // iterate over array with i++
     for (let i = 0; i < actions?.length; i++) {
@@ -412,7 +411,6 @@ function setupActions(actions) {
 }
 
 function setupSystemMessages(messages) {
-  cl("setupSystemMessages..");
   let selectionBox = gebi('osNotificationsSelect');
   /* for (let message in messages) { */
     // cycle through object with index
