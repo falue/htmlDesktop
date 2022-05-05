@@ -12,6 +12,11 @@ async function setupImageViewer() {
 
     if(urlParams.get('files')) {
         files = urlParams.get('files').split("|");
+        // If the first image is a PDF, open it directly
+        if(files[0].toLowerCase().endsWith('.pdf')) {
+            window.location.href = "../../workstations/"+workstation+"/files/"+files[0];
+            return;
+        }
         setupThumbnails(files);
         isFirstFile = true;
         showImage(0);  // Show first image

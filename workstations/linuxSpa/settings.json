@@ -67,6 +67,17 @@
             "zIndex": 51,
             "minimized": false,
             "renderToDom": false
+        },{
+            "windowName": "PDF viewer - AAB.pdf",
+            "icon": "description",
+            "contentPath": "imageviewer/index.html?files=1.pdf",
+            "x": 66,
+            "y": 65,
+            "w": 520,
+            "h": 477,
+            "zIndex": 15,
+            "minimized": false,
+            "renderToDom": true
         }
     ],
     "shortcuts": [
