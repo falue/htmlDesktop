@@ -453,7 +453,28 @@ function clearSystemMessages() {
     clearedSystemMessages = Math.floor(Date.now() / 1000);
 }
 
+function setKeyboardLock(state) {
+    // Set new state
+    lockKeyboard = state;
+    
+    // Make GUI to reflect state
+    gebi(`keyboardLockGui-false`).classList.add('whiteBgTransparent')
+    gebi(`keyboardLockGui-false`).classList.remove('blueBg');
+    gebi(`keyboardLockGui-true`).classList.add('whiteBgTransparent')
+    gebi(`keyboardLockGui-true`).classList.remove('blueBg');
+    gebi(`keyboardLockGui-all`).classList.add('whiteBgTransparent')
+    gebi(`keyboardLockGui-all`).classList.remove('blueBg');
+    
+    gebi(`keyboardLockGui-${state}`).classList.remove('whiteBgTransparent');
+    gebi(`keyboardLockGui-${state}`).classList.add('blueBg');
+}
+
 function keyboardController(event) {
+    if(lockKeyboard === "all") {
+        cl('Keyboard is locked.');
+        return;
+    }
+
     // Ignore presses in textareas and inputs, but NOT buttons because mostly fake
     if(event.target.localName !== "textarea" && event.target.localName !== "input") {
 
@@ -467,21 +488,21 @@ function keyboardController(event) {
 
         let key = event.key;
         switch(key) {
-            case "1": epD(event); startDefaultProgram('terminal', 6); break;
-            case "2": startDefaultProgram('fileManager'); break;
-            case "3": epD(event); startDefaultProgram('textEditor-random'); break;
-            case "4": startDefaultProgram('browser'); break;
-            case "5": startDefaultProgram('imageViewer'); break;
-            case "6": startDefaultProgram('ftp'); break;
-            case "7": startDefaultProgram('ftp-connect'); break;
+            case "1": if(!lockKeyboard) { epD(event); startDefaultProgram('terminal', 6); } break;
+            case "2": if(!lockKeyboard) { startDefaultProgram('fileManager'); } break;
+            case "3": if(!lockKeyboard) { epD(event); startDefaultProgram('textEditor-random'); } break;
+            case "4": if(!lockKeyboard) { startDefaultProgram('browser'); } break;
+            case "5": if(!lockKeyboard) { startDefaultProgram('imageViewer'); } break;
+            case "6": if(!lockKeyboard) { startDefaultProgram('ftp'); } break;
+            case "7": if(!lockKeyboard) { startDefaultProgram('ftp-connect'); } break;
             case "b": toggle('blackout'); break;
-            case "c": epD(event); createShortcut(); break;
+            case "c": if(!lockKeyboard) { epD(event); createShortcut(); } break;
             case "C": clearSystemMessages(); break;
-            case "s": epD(event); save(); break;
-            case "S": epD(event); saveAs(false); break;
-            case "d": clutterDesktop(4); break;
-            case "w": startDefaultProgram(); break;
-            case "a": toggle('actionMenu'); break;
+            case "s": if(!lockKeyboard) { epD(event); save(); } break;
+            case "S": if(!lockKeyboard) { epD(event); saveAs(false); } break;
+            case "d": if(!lockKeyboard) { clutterDesktop(4); } break;
+            case "w": if(!lockKeyboard) { startDefaultProgram(); } break;
+            case "a": if(!lockKeyboard) { toggle('actionMenu'); } break;
             case "m": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
             case "Escape": screensaverHide(); break;
 
@@ -501,7 +522,7 @@ function keyboardController(event) {
 
             default:
                 // Any other keypresses: Do nothing
-                cl("Default Keypress: "+key);
+                // cl("Default Keypress: "+key);
                 break;
         }
     }

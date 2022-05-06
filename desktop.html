@@ -417,12 +417,22 @@
                   <span class="tooltip" data-title="Align to grid" onclick="alignShortcutsToGrid();">
                     <i class="material-icons blueBg small padding25 mirrorY">grid_4x4</i>
                   </span>
+                  <span class="tooltip" data-title="Remove all shortcuts" onclick="removeAllShortcuts();">
+                    <i class="material-icons blueBg small padding25">close</i>
+                  </span>
                 </div>
               </li>
 
-              <li class="tooltip" data-title="Open a random program [w]" onclick="startDefaultProgram();">
-                <i class="material-icons blue small">dynamic_feed</i>
-                Clutter screen
+              <li class="relative">
+                <div class="tooltip" data-title="Open a random program [w]" onclick="startDefaultProgram();">
+                  <i class="material-icons blue small">dynamic_feed</i>
+                  Clutter screen
+                </div>
+                <div class="right top absolute nudge-y-12">
+                  <span class="tooltip" data-title="Remove all windows" onclick="closeAllWindows();">
+                    <i class="material-icons blueBg small padding25">close</i>
+                  </span>
+                </div>
               </li>
 
               <!-- System emssages -->
@@ -463,9 +473,22 @@
           <div class="chooseBoxTitle greyBg">Computer functions</div>
           <div class="chooseBox radius5 relative">
             <ul>
-              <li onclick="show('keyboardControls');">
-                <i class="material-icons blue small">keyboard</i>
-                See keyboard Controls
+              <li class="relative">
+                <div onclick="show('keyboardControls');">
+                  <i class="material-icons blue small">keyboard</i>
+                  See keyboard Controls
+                </div>
+                <div class="right top absolute nudge-y-12">
+                  <span class="tooltip" data-title="Allow keyboard control" onclick="setKeyboardLock(false);">
+                    <i id="keyboardLockGui-false" class="material-icons blueBg small padding25">lock_open</i>
+                  </span>
+                  <span class="tooltip" data-title="Block operator meta keys (like 'save', 'load', 'new shortcut' etc)" onclick="setKeyboardLock(true);">
+                    <i id="keyboardLockGui-true" class="material-icons whiteBgTransparent small padding25">lock</i>
+                  </span>
+                  <span class="tooltip" data-title="Block all keyboard controls" onclick="setKeyboardLock('all');">
+                    <i id="keyboardLockGui-all" class="material-icons whiteBgTransparent small red padding25">do_disturb</i>
+                  </span>
+                </div>
               </li>
               <li id="logoutActionActionMenu" onclick="showLockScreen(); hide('actionMenu');">
                 <i class="material-icons blue small">logout</i>
@@ -910,8 +933,8 @@
               <li class="alignLeft"><span class="blueBg keyboardKey">shift</span> + <span class="blueBg keyboardKey">S</span> Save as new file</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">d</span> Clutter desktop with files</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">w</span> Clutter screen with windows</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey">m</span> Display selected system message</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey">shift</span> + <span class="blueBg keyboardKey">C</span> Clear system messages</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">m</span> Display system message or start action</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey">shift</span> + <span class="blueBg keyboardKey">C</span> Clear system messages / action</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">esc</span> Exit screen saver</li> 
             </ul>
           </div>
