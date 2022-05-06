@@ -25,14 +25,6 @@
                 "First entry of this list is also acting as the home page."],
     "urls": [
         {
-            "spoofUrl": "telefabi.ch",
-            "realUrl": "sites/telefabi",
-            "favoritesName": "telefabi.ch",
-            "metaName": false,
-            "materialIcon": "code",
-            "showInFavorites": true,
-            "onclick": false
-        },{
             "spoofUrl": "qsearch.ch",
             "realUrl": "sites/qsearch/index.html",
             "favoritesName": "qsearch.ch",
@@ -41,25 +33,33 @@
             "showInFavorites": true,
             "onclick": false
         },{
-            "spoofUrl": "youtube.com",
+            "spoofUrl": "telefabi.ch",
+            "realUrl": "sites/telefabi",
+            "favoritesName": "telefabi.ch",
+            "metaName": false,
+            "materialIcon": "code",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "vidshare.com",
             "realUrl": "sites/youtube",
-            "favoritesName": "youtube.com",
+            "favoritesName": "vidshare.com",
             "metaName": false,
             "materialIcon": "smart_display",
             "showInFavorites": true,
             "onclick": false
         },{
-            "spoofUrl": "metis.ch",
+            "spoofUrl": "sci-hub.com",
             "realUrl": "sites/metis",
-            "favoritesName": "metis.ch",
+            "favoritesName": "sci-hub.com",
             "metaName": false,
             "materialIcon": "science",
             "showInFavorites": true,
             "onclick": false
         },{
-            "spoofUrl": "sapienz.ch",
+            "spoofUrl": "pharmazon.com",
             "realUrl": "sites/sapienz",
-            "favoritesName": "sapienz.ch",
+            "favoritesName": "pharmazon.com",
             "metaName": false,
             "materialIcon": "biotech",
             "showInFavorites": false,
