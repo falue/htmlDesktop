@@ -423,9 +423,16 @@
                 </div>
               </li>
 
-              <li class="tooltip" data-title="Open a random program [w]" onclick="startDefaultProgram();">
-                <i class="material-icons blue small">dynamic_feed</i>
-                Clutter screen
+              <li class="relative">
+                <div class="tooltip" data-title="Open a random program [w]" onclick="startDefaultProgram();">
+                  <i class="material-icons blue small">dynamic_feed</i>
+                  Clutter screen
+                </div>
+                <div class="right top absolute nudge-y-12">
+                  <span class="tooltip" data-title="Remove all windows" onclick="closeAllWindows();">
+                    <i class="material-icons blueBg small padding25">close</i>
+                  </span>
+                </div>
               </li>
 
               <!-- System emssages -->
