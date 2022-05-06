@@ -36,6 +36,9 @@ async function setupFileManager() {
         case "linux":
             rootNameDisplay = "Linux"
             computerName = "Linux"
+        case "spa":
+            rootNameDisplay = "Spa"
+            computerName = "Spa"
         break;
     }
 
