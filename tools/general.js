@@ -275,6 +275,10 @@ function random(seed) {
   return x - Math.floor(x);
 }
 
+function isHtml(data) {
+  return /<\/?[a-z][\s\S]*>/i.test(data);
+}
+
 function clamp(value, min, max) {
   if(value > max) { return max; } else 
   if(value < min) { return min; }

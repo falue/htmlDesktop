@@ -110,32 +110,43 @@ async function addNextCodeblock(last=false) {
     }
 
     let textToPrint;
-    if(!last) textToPrint = data[codeIndex].replaceAll('\n' ,'<br>');
+    if(!last) textToPrint = data[codeIndex];
+
+    let htmlCodeBlock = isHtml(textToPrint);
+    if(!htmlCodeBlock && !last) textToPrint = textToPrint.replaceAll('\n' ,'<br>');
 
     let container = gebi("paper");
     let uniqueId = createUniqueId();
     let label = document.createElement("label");
     let labelText = document.createElement("div");
-    labelText.appendChild(document.createTextNode(last ? `Out [${codeIndex-1}]:` : `In [${codeIndex}]:`));
+    labelText.appendChild(document.createTextNode(last || htmlCodeBlock ? `Out [${codeIndex-1}]:` : `In [${codeIndex}]:`));
     label.appendChild(labelText);
-    let forcetypeContainer = document.createElement("div");
-    forcetypeContainer.setAttribute("class", "forceType");
-    let textarea = document.createElement("textarea");
-    textarea.setAttribute("onblur", `cursor('terminal-${uniqueId}', false)`);
-    if(!last) {
-        textarea.setAttribute("onfocus", `cursor('terminal-${uniqueId}', true)`);
-        if(textToPrint.length > 0) {
-            textarea.setAttribute("onkeydown", `forceTypeHighlight(event, this, 'terminal-${uniqueId}', '${textToPrint}', function () { addNextCodeblock() }, true);`);
-        } else {
-            // Allow freetext if empty string
-            // On enter, go to next code block
-            textarea.setAttribute("onkeyup", `event.keyCode === 13 && this.value.length > 0 ? addNextCodeblock() : gebi('terminal-${uniqueId}').innerHTML=this.value.replaceAll('\\n' ,'<br>'); updateSyntaxHighlighting();`);
-        }
-    }
-    forcetypeContainer.appendChild(textarea);
     let highlightBox = document.createElement("div");
     highlightBox.setAttribute("id", `terminal-${uniqueId}`);
     highlightBox.setAttribute("class", "terminal python");
+
+    let forcetypeContainer = document.createElement("div");
+    forcetypeContainer.setAttribute("class", "forceType");
+    let textarea = document.createElement("textarea");
+
+    textarea.setAttribute("onblur", `cursor('terminal-${uniqueId}', false)`);
+    if(!last) {
+        textarea.setAttribute("onfocus", `cursor('terminal-${uniqueId}', true)`);
+        if(htmlCodeBlock) {
+            // Its html - print all at once as "out[_]"
+            highlightBox.removeAttribute("class");
+            highlightBox.innerHTML = textToPrint;
+            highlightBox.classList.add('htmlCodeblock');
+            textarea.setAttribute("onkeydown", `event.keyCode === 13 ? addNextCodeblock() : ''; updateSyntaxHighlighting(); scrollToBottom("paperHolder");`);
+        } else if(textToPrint.length > 0) {
+            // Its code - use forceType
+            textarea.setAttribute("onkeydown", `forceTypeHighlight(event, this, 'terminal-${uniqueId}', '${textToPrint}', function () { addNextCodeblock(); scrollToBottom("paperHolder"); }, true);`);
+        } else {
+            // Its freetext if empty string - On enter, go to next code block
+            textarea.setAttribute("onkeyup", `if(event.keyCode === 13 && this.value.length > 0) { addNextCodeblock(); scrollToBottom("paperHolder"); updateSyntaxHighlighting(); } else { gebi('terminal-${uniqueId}').innerHTML=this.value.replaceAll('\\n' ,'<br>'); updateSyntaxHighlighting();}`);
+        }
+    }
+    forcetypeContainer.appendChild(textarea);
     
     // Fillout if printedOut is defined
     if(codeIndex < printedOut) {
@@ -153,7 +164,7 @@ async function addNextCodeblock(last=false) {
         highlightBox.classList.add('op50');
         await delay(1111);
         highlightBox.classList.remove('op50');
-        if(out.match("<")) {
+        if(isHtml(out)) {
             // If its html, remove highlighting and add it as is
             highlightBox.removeAttribute("class");
             highlightBox.innerHTML = out;
@@ -164,20 +175,21 @@ async function addNextCodeblock(last=false) {
             updateSyntaxHighlighting();
         }
         codeIndex = 0;
-        await delay(100);  // wait for image to load so scroll can happen
         scrollToBottom("paperHolder");
     } else {
         // focus() this element
         focusNextElement();
         codeIndex++;
     }
-
+    
     if(codeIndex < printedOut && !last) {
         addNextCodeblock(codeIndex === data.length);
     }
 }
 
-function scrollToBottom(id){
+async function scrollToBottom(id){
+    // wait for image to load so scroll can happen
+    await delay(100);
     let container = document.getElementById(id);
     container.scrollTop = container.scrollHeight - container.clientHeight;
 }

@@ -189,3 +189,7 @@ input[type=text],
 textarea {
     border-radius: .2em;
 }
+
+.htmlCodeblock .cursor {
+    display: none;
+}
