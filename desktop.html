@@ -473,9 +473,22 @@
           <div class="chooseBoxTitle greyBg">Computer functions</div>
           <div class="chooseBox radius5 relative">
             <ul>
-              <li onclick="show('keyboardControls');">
-                <i class="material-icons blue small">keyboard</i>
-                See keyboard Controls
+              <li class="relative">
+                <div onclick="show('keyboardControls');">
+                  <i class="material-icons blue small">keyboard</i>
+                  See keyboard Controls
+                </div>
+                <div class="right top absolute nudge-y-12">
+                  <span class="tooltip" data-title="Allow keyboard control" onclick="setKeyboardLock(false);">
+                    <i id="keyboardLockGui-false" class="material-icons blueBg small padding25">lock_open</i>
+                  </span>
+                  <span class="tooltip" data-title="Block operator meta keys (like 'save', 'load', 'new shortcut' etc)" onclick="setKeyboardLock(true);">
+                    <i id="keyboardLockGui-true" class="material-icons whiteBgTransparent small padding25">lock</i>
+                  </span>
+                  <span class="tooltip" data-title="Block all keyboard controls" onclick="setKeyboardLock('all');">
+                    <i id="keyboardLockGui-all" class="material-icons whiteBgTransparent small red padding25">do_disturb</i>
+                  </span>
+                </div>
               </li>
               <li id="logoutActionActionMenu" onclick="showLockScreen(); hide('actionMenu');">
                 <i class="material-icons blue small">logout</i>
