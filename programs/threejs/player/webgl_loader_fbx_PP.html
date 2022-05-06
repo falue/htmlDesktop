@@ -30,12 +30,15 @@
 
 			import Stats from './jsm/libs/stats.module.js';
 
+			import { GUI } from './jsm/libs/lil-gui.module.min.js';
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { FBXLoader } from './jsm/loaders/FBXLoader.js';
 
 			let camera, scene, renderer, stats;
 
 			const clock = new THREE.Clock();
+			const effectController = {speed :0};
+
 
 			let mixer;
 
@@ -47,19 +50,22 @@
 				const container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.set( 400, 600, 600 );
+				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 10000 );
+				camera.position.set( 500, 2000, 2000 );
+		
 
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0x000000 );
-				scene.fog = new THREE.Fog( 0x000000, 200, 2000 );
+				scene.fog = new THREE.Fog( 0x333333, 100, 5000 );
+
+				// lights
 
 				const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
-				hemiLight.position.set( 0, 200, 0 );
+				hemiLight.position.set( 0, 2000, 0 );
 				scene.add( hemiLight );
 
 				const dirLight = new THREE.DirectionalLight( 0xffffff );
-				dirLight.position.set( 0, 200, 100 );
+				dirLight.position.set( 0, 2000, 1000 );
 				dirLight.castShadow = true;
 				dirLight.shadow.camera.top = 180;
 				dirLight.shadow.camera.bottom = - 100;
@@ -67,59 +73,122 @@
 				dirLight.shadow.camera.right = 120;
 				scene.add( dirLight );
 
-				// scene.add( new THREE.CameraHelper( dirLight.shadow.camera ) );
-
-				// ground
-				const mesh = new THREE.Mesh( new THREE.PlaneGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x222222, depthWrite: false } ) );
-				mesh.rotation.x = - Math.PI / 2;
-				mesh.receiveShadow = true;
-				scene.add( mesh );
-
 
 				// materials
 
-				const material1 = new THREE.MeshPhysicalMaterial( {	color: 0xff0000, metallness: 0, } );
-				
+				const material1 = new THREE.MeshPhysicalMaterial( {	color: 0x4d4732, metallness: 0, wireframe:true } );
+				const charactermaterial = new THREE.MeshPhysicalMaterial( {	color: 0xff6600, metallness: 0, wireframe:true } );
+				const plantsmaterial = new THREE.MeshPhysicalMaterial( {	color: 0x42803e, metallness: 0, wireframe:true } );
+				const firematerial = new THREE.MeshPhysicalMaterial( {color:0xdbfc03, metallness: 0, wireframe:true});
+	
+			
+				// Scenery
 
-				// model
 				const loader = new FBXLoader();
-				loader.load( 'models/fbx/bonesTest3out.fbx', function ( object ) {
-				
-					mixer = new THREE.AnimationMixer( object );
-
-					const action = mixer.clipAction( object.animations[ 0 ] );
-					action.play();
-					
+				loader.load( 'models/fbx/boar_Land.fbx', function ( object ) {
+	
 					object.traverse( function ( child ) {
 
 						if ( child.isMesh ) {
 							child.material = material1;
-							child.castShadow = true;
-							child.receiveShadow = true;
 
 						}
-
 					} );
 					
 					scene.add( object );
-
+					
 				} );
+
+				const loader3 = new FBXLoader();
+				loader3.load( 'models/fbx/boar_Plants.fbx', function ( object3 ) {
+				
+					object3.traverse( function ( child ) {
+
+						if ( child.isMesh ) {
+						child.material = plantsmaterial;
+
+						}
+					} );
+					
+					scene.add( object3 );
+					
+				} );
+
+
+				//Fire
+
+				const firegeometry = new THREE.ConeGeometry( 80, 80, 4, 1 );
+				const fire = new THREE.Mesh( firegeometry, firematerial );
+				scene.add( fire );
+				fire.position.x = 100;
+				fire.position.y = 70;
+
+				//Animation
+
+				const loader2 = new FBXLoader();
+				loader2.load('models/fbx/bonesTest5Out.fbx', function ( object2 ) {
+
+					mixer = new THREE.AnimationMixer( object2 );
+
+					//Animationsgeschwindigkeit am Anfang
+					mixer.timeScale = 0;
+					
+
+					const action = mixer.clipAction( object2.animations[ 0 ] );
+					action.play();
+					
+					object2.traverse( function ( child ) {
+						if ( child.isMesh ) {
+							
+							child.material = charactermaterial;
+							
+						}
+					
+					} );
+					scene.add( object2 );
+
+
+					//Bounding Box (Fire), muss irgendwie upgedated werden um auf animiertes Objekt angewendet zu werden
+					var box3 = new THREE.Box3().setFromObject(fire);
+					scene.add(new THREE.Box3Helper(box3, 0xFF0000));
+
+
+			
+
+
+				});
+
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				container.appendChild( renderer.domElement );
+			
+
+
 
 				const controls = new OrbitControls( camera, renderer.domElement );
-				controls.target.set( 0, 100, 0 );
+				
+				//Mittelpunkt von Kamerasicht
+				controls.target.set( -1200, -400, 0 );
 				controls.update();
+
+				const gui = new GUI( {} );
+				gui.domElement.id = 'gui';
+			
+				gui.add(charactermaterial, 'wireframe' );
+			
+				//Abspielgeschwindigkeit
+				gui.add(effectController, 'speed', -10, 10).onChange( modifyTimeScale );
+
+
 
 				window.addEventListener( 'resize', onWindowResize );
 
 				// stats
-				stats = new Stats();
-				container.appendChild( stats.dom );
+				// stats = new Stats();
+				// container.appendChild( stats.dom );
 
 			}
 
@@ -132,19 +201,31 @@
 
 			}
 
-			//
+
+			// Abspielgeschwindigkeit festlegen
+
+			function modifyTimeScale( speed ) {
+			mixer.timeScale = speed;
+			}
+			
+	
+
 
 			function animate() {
+
 
 				requestAnimationFrame( animate );
 
 				const delta = clock.getDelta();
 
+
 				if ( mixer ) mixer.update( delta );
+			
 
 				renderer.render( scene, camera );
 
-				stats.update();
+
+				// stats.update();
 
 			}
 
