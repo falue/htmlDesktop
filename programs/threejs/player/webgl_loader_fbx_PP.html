@@ -37,7 +37,10 @@
 			let camera, scene, renderer, stats;
 
 			const clock = new THREE.Clock();
-			const effectController = {speed :0};
+			const effectController = {Speed :0};
+
+			// FPS stats true or false
+			const enableStats = false;
 
 
 			let mixer;
@@ -179,16 +182,49 @@
 			
 				gui.add(charactermaterial, 'wireframe' );
 			
-				//Abspielgeschwindigkeit
-				gui.add(effectController, 'speed', -10, 10).onChange( modifyTimeScale );
+				// Checkbox: Play / pause
+				gui.add({"Play / pause": false}, "Play / pause").onChange( modifyTimeScale );
+				
+				// Slider: Scrubbing
+				gui.add(effectController, 'Speed', -10, 10).step(1).onChange( modifyTimeScale );
+				
+				// Slider: Fast-reverse, reverse, pause, play, f-forward
+				gui.add({"Reverse pause play": 0}, 'Reverse pause play', -2, 2).step(1).onChange(
+					function (value) {
+						if(value === -2) value = -10;  // Make -2 go brrr
+						if(value === 2) value = 10;    // Make  2 go brrr
+						modifyTimeScale(value);
+					}
+				);
 
-
+				// Checkbox: Reverse play or pause
+				gui.add({"Reverse": false}, "Reverse").onChange(
+					function (value) {
+						modifyTimeScale(value ? -1 : 0);
+					}
+				);
+				
+				// Checkbox: Fast forward
+				gui.add({"Fast forward": false}, "Fast forward").onChange( 
+					function (value) {
+						modifyTimeScale(value ? 10 : 0);
+					}
+				);
+				
+				// Checkbox: Fast reverse
+				gui.add({"Fast reverse": false}, "Fast reverse").onChange( 
+					function (value) {
+						modifyTimeScale(value ? -10 : 0);
+					}
+				);
 
 				window.addEventListener( 'resize', onWindowResize );
 
 				// stats
-				// stats = new Stats();
-				// container.appendChild( stats.dom );
+				if(enableStats) {
+					stats = new Stats();
+					container.appendChild( stats.dom );
+				}
 
 			}
 
@@ -205,7 +241,7 @@
 			// Abspielgeschwindigkeit festlegen
 
 			function modifyTimeScale( speed ) {
-			mixer.timeScale = speed;
+				mixer.timeScale = speed;
 			}
 			
 	
@@ -225,7 +261,9 @@
 				renderer.render( scene, camera );
 
 
-				// stats.update();
+				if(enableStats) {
+					stats.update();
+				}
 
 			}
 
