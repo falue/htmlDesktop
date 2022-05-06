@@ -120,14 +120,6 @@
             "materialIcon": "folder_open",
             "showInFavorites": true,
             "onclick": false
-        },{
-            "spoofUrl": "cityflesh.com",
-            "realUrl": "./",
-            "favoritesName": "the naughties",
-            "metaName": false,
-            "materialIcon": "adjust",
-            "showInFavorites": true,
-            "onclick": false
         }
     ]
 }
