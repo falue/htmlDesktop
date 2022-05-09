@@ -59,8 +59,9 @@ function createCells(currentMarkerIndex) {
             mark.innerHTML = markers[markerIndex-1];
             mark.classList.add("gridBox", "centerContent");
             cell.appendChild(mark);
-        } else {
-            cell.innerHTML = i+1;
+        /* } else {
+            // Removed because LAGGY even if hidden
+            cell.innerHTML = i+1; */
         }
         container.appendChild(cell);
     }
