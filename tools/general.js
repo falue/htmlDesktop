@@ -167,7 +167,11 @@ async function counter(targetId, append, duration, jitter, start, stop) {
           } else {
             i = i > start ? start : i;  // do not undershoot
           }
-          element.innerHTML = i + append;
+          if(element.hasAttribute("value")) {
+            element.value = i;
+          } else {
+            element.innerHTML = i + append;
+          }
       }
       await delay(waitDuration);
   }
