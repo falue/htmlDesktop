@@ -105,7 +105,9 @@ header {
 .treeview li.active {
     background-color: rgba(255,255,255,.2);
 }
-
+.dnaList {
+    padding-bottom: 12em;
+}
 .dnaList li:nth-child(odd) {
     background-color: rgba(0,0,0,.05);
 }
