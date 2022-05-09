@@ -13,7 +13,6 @@ body {
     display: grid;
     grid-template-columns: repeat(21, 1fr);
     /* background-color: rgba(0,0,255,.5); */
-    /* grid-template-rows: 1fr; */
 }
 
 .gridBox {
@@ -48,29 +47,27 @@ body {
     background-color: black;
 }
 
-/* .column2 .gridBox:nth-child(2n) {
-    grid-column: 2;
-} */
-
-/* .gridLayout.column2 {
-    grid-template-columns: repeat(2, 1fr);
+#settings {
+    line-height: 2em;
 }
-.gridLayout.column3 {
-    grid-template-columns: repeat(3, 1fr);
+
+button, input[type=color] {
+    border: none;
+    font-size: .75em;
+    border-radius: .3em;
 }
-.gridLayout.column4 {
-    grid-template-columns: repeat(4, 1fr);
-} */
-/* .column3 .gridBox {
-    grid-column: span 6;
-} */
 
-/* .column3 .gridBox:nth-child(3n) {
-    grid-column: 1;
-    background-color: darkviolet;
-} */
+button i {
+    font-size: 1em !important;
+}
+button img {
+    width: .8em;
+    height: .8em;
+}
 
-/* .column3 .gridBox:nth-child(2n) {
-    background-color: darkturquoise;
-    grid-column: 3;
-} */
+input[type=color] {
+    height: 2.1em;
+    width: 2.1em;
+    border-radius: .3em;
+    overflow: hidden;
+}
