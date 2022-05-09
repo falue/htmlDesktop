@@ -4,6 +4,20 @@ body {
     color: white;
 }
 
+fieldset {
+    padding:0.5em;
+    border: thin white solid;
+}
+fieldset legend {
+    font-weight: bold;
+    padding: .25em;
+}
+
+h5 {
+    padding-top: .75em;
+    line-height: 1em !important;
+}
+
 /* GRID */
 .gridLayout {
     position: relative;
@@ -18,7 +32,7 @@ body {
 .gridBox {
     box-sizing: border-box;
     color:transparent;
-    overflow: overlay;
+    /* overflow: overlay; */
 }
 .helperLines .gridBox {
     color: white;

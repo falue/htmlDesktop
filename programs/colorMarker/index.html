@@ -18,69 +18,76 @@
     </div>
     <div id="settings" class="radius3 blackBgTransparent shadow white margin1 padding1 fixed top right hide" style="z-index: 666;">
       <!-- bg color -->
-      Background color
-      <br>
-      <div class=" inline" >
-        <input id="colorPickerBg" class="valign" type="color" value="#00ff00" oninput="setBgColor(this.value);">
-      </div>
-      <button class="" onclick="setBgColor('#00ff00');">green</button>
-      <button class="" onclick="setBgColor('#0000ff');">blue</button>
-      <button class="" onclick="setBgColor('#ffffff');">white</button>
-      <button class="" onclick="setBgColor('#7f7f7f');">grey 50%</button>
-      <br>
-      <button class="" onclick="setBgColor('#222222');">darkgrey</button>
-      <button class="" onclick="setBgColor('#000000');">black</button>
-      <button class="" onclick="setBgColor('#ff00ff');">pink</button>
-      <button class="" onclick="toggleChess();">chess</button>
-      <br>
+      <fieldset>
+        <legend>Background color</legend>
+        <div class="inline" >
+          <input id="colorPickerBg" class="valign" type="color" value="#00ff00" oninput="setBgColor(this.value);">
+        </div>
+        <button onclick="setBgColor('#00ff00');">green</button>
+        <button onclick="setBgColor('#0000ff');">blue</button>
+        <button onclick="setBgColor('#ffffff');">white</button>
+        <button onclick="setBgColor('#7f7f7f');">grey 50%</button>
+        <br>
+        <button onclick="setBgColor('#222222');">darkgrey</button>
+        <button onclick="setBgColor('#000000');">black</button>
+        <button onclick="setBgColor('#ff00ff');">pink</button>
+        <button onclick="toggleChess();">chess</button>
+      </fieldset>
+
 
       <!-- which pattern of marker is displayed -->
-      pattern
-      <br>
-      <button class="" onclick="prevPattern();"><i class="material-icons">arrow_left</i></button>
-      <button class="" onclick="nextPattern();"><i class="material-icons">arrow_right</i></button>
-      <br>
-
-      <!-- which marker is used -->
-      Marker icon style<br>
-      <button class="" onclick="prevStyle();"><i class="material-icons">arrow_left</i></button>
-      <button class="" onclick="nextStyle();"><i class="material-icons">arrow_right</i></button>
-      <button class="" onclick="markerIndex = 1; createCells(patternIndex);" class="small"><img src='tools/marker.svg' alt=''></button>
-      <button class="" onclick="markerIndex = 2; createCells(patternIndex);">&#9650;</button>
-      <button class="" onclick="markerIndex = 3; createCells(patternIndex);">&#9709;</button>
-      <button class="" onclick="markerIndex = 4; createCells(patternIndex);">&middot;</button>
-      <button class="" onclick="markerIndex = 5; createCells(patternIndex);">+</button>
-      <button class="" onclick="markerIndex = 6; createCells(patternIndex);">&times;</button>
-      <br>
-
-      <!-- marker size -->
-      Marker size
-      <br>
-      <button class="" onclick="changeFontSize();"><i class="material-icons">add</i></button>
-      <button class="" onclick="changeFontSize(true);">0</button>
-      <br>
-      
-      <!-- marker color -->
-      Marker color
-      <br>
-      <div class=" inline" >
-        <input id="colorPickerMarker" class="valign" type="color" value="#000000" oninput="setMarkerColor(this.value);">
-      </div>
-      <button class="" onclick="setMarkerColor('#00ff00');">green</button>
-      <button class="" onclick="setMarkerColor('#0000ff');">blue</button>
-      <button class="" onclick="setMarkerColor('#ffffff');">white</button>
-      <button class="" onclick="setMarkerColor('#7f7f7f');">grey</button>
-      <br>
-      <button class="" onclick="setMarkerColor('#222222');">darkgrey</button>
-      <button class="" onclick="setMarkerColor('#000000');">black</button>
-      <button class="" onclick="setMarkerColor('#ff00ff');">pink</button>
-
-      <div class="centerContent">
+      <fieldset>
+        <legend>Marker</legend>
+        <div class="inlineBlock minWidth100">
+          <h5>Pattern</h4>
+        </div>
+        <div class="inlineBlock minWidth100">
+          <h5>Icon Size</h4>
+        </div>
         <br>
+        <div class="inlineBlock minWidth100">
+            <button onclick="prevPattern();"><i class="material-icons">arrow_left</i></button>
+            <button onclick="nextPattern();"><i class="material-icons">arrow_right</i></button>
+        </div>
+          
+        <!-- marker size -->
+        <div class="inlineBlock minWidth100">
+          <button onclick="changeFontSize();"><i class="material-icons">add</i></button>
+          <button onclick="changeFontSize(true);">0</button>
+        </div>
+
+        <!-- which marker is used -->
+        <h5>Icon style</h4>
+        <button onclick="prevStyle();"><i class="material-icons">arrow_left</i></button>
+        <button onclick="nextStyle();"><i class="material-icons">arrow_right</i></button>
+        <button onclick="markerIndex = 1; createCells(patternIndex);" class="small"><img src='tools/marker.svg' alt=''></button>
+        <button onclick="markerIndex = 2; createCells(patternIndex);">&#9650;</button>
+        <button onclick="markerIndex = 3; createCells(patternIndex);">&#9709;</button>
+        <button onclick="markerIndex = 4; createCells(patternIndex);">&middot;</button>
+        <button onclick="markerIndex = 5; createCells(patternIndex);">+</button>
+        <button onclick="markerIndex = 6; createCells(patternIndex);">&times;</button>
+        
+        
+        <!-- marker color -->
+        <h5>Color</h4>
+        <div class=" inline" >
+          <input id="colorPickerMarker" class="valign" type="color" value="#000000" oninput="setMarkerColor(this.value);">
+        </div>
+        <button onclick="setMarkerColor('#00ff00');">green</button>
+        <button onclick="setMarkerColor('#0000ff');">blue</button>
+        <button onclick="setMarkerColor('#ffffff');">white</button>
+        <button onclick="setMarkerColor('#7f7f7f');">grey</button>
+        <br>
+        <button onclick="setMarkerColor('#222222');">darkgrey</button>
+        <button onclick="setMarkerColor('#000000');">black</button>
+        <button onclick="setMarkerColor('#ff00ff');">pink</button>
+      </fieldset>
+
+
+      <div class="centerContent padding1">
         <button class="systemButton" onclick="hide('settings');">close</button>
         <button class="systemButton" onclick="window.history.back();">back</button>
       </div>
-
     </div>
 
     <div id="container" class="gridLayout"><!-- helperLines -->
