@@ -14,7 +14,7 @@
         ]},
         {"Devices": [
             {"E:": [
-                ["nBrugger.dna", "parent.addWindow('DNA - Viewer - nBrugger.dna', 'biotech', 'dna', 12, 5, 1000,850, false);", "filesize", ""]
+                ["tBrugger.dna", "parent.addWindow('DNA - Viewer - nBrugger.dna', 'biotech', 'dna', 12, 5, 1000,850, false);", "filesize", ""]
             ]}
         ]},
         {"Documents": [

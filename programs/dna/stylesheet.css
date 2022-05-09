@@ -1,14 +1,13 @@
 body {
     overflow: auto;
-    background-color: #202633;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 header {
     /*  background-color: burlywood; */
     position: fixed;
     width: 100%;
-    height: 1.5em;
     box-sizing: border-box;
     border-bottom: solid thin grey;
     background-color: rgba(0,0,0,.05);
@@ -69,15 +68,14 @@ header {
     display: grid;
     grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
     /* background-color: rgba(0,0,255,.5); */
-    grid-template-rows: [row] 2em [row] 4em [row] 1fr [row] ;
+    grid-template-rows: [row] 2em [row] 3em [row] 1fr [row] ;
 }
 
 .gridBox {
     position: relative;
     box-sizing: border-box;
     /* background-color: lavender; */
-    border: solid rgba(255,0,0,.5) 1px;
-    padding: .5em;
+    /* border: solid rgba(255,0,0,.5) 1px; */
 }
 
 /* CHARTS */
@@ -92,4 +90,33 @@ header {
     padding: 1em;
     background-color: #333;
     color: #fff;
+}
+
+
+/* treeview */
+.treeview {
+    line-height: 1.5em;
+}
+.treeview li {
+    padding-left: 1em;
+    white-space: nowrap;
+}
+
+.treeview li.active {
+    background-color: rgba(255,255,255,.2);
+}
+
+.dnaList li:nth-child(odd) {
+    background-color: rgba(0,0,0,.05);
+}
+.dnaList li {
+    padding-left: .5em;
+}
+
+#loader {
+    width: 50%;
+}
+
+.selector {
+    background-color: lightgrey !important;
 }

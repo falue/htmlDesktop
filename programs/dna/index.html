@@ -18,43 +18,101 @@
   <body onload="setup();" onkeydown="parent.keyboardController(event);">
     <div class="gridLayout">
       <!-- ROW 1 -->
-      <div class="gridBox" style="grid-column: col / span 6; grid-row: row;">1</div>
-      <div class="gridBox" style="grid-column: col 7 / span 2; grid-row: row; text-align: right;">2</div>
+      <header class="gridBox windowmenu" style="grid-column: col / span 6; grid-row: row;">
+          <button class="programButtons">File</button><!-- 
+           --><button class="programButtons">Edit</button><!-- 
+           --><button class="programButtons">View</button><!-- 
+           --><button class="programButtons">Settings</button><!-- 
+           --><button class="programButtons">About</button>
+    </header>
+    <header class="gridBox nobr blue bold italics centerContentYRight" style="grid-column: col 7 / span 2; grid-row: row; text-align: right;">
+      <span class="marginX1 ">
+        <span class="grey small">Account</span>
+        <span class="material-icons valign medium op50">account_circle</span>
+      </span>
+      DNA visualization
+      <i class="material-icons small circle white valign marginX1 circle fancy padding25">biotech</i>
+    </header>
 
       <!-- ROW 2 -->
-      <div class="gridBox centerContentY" style="grid-column: col; grid-row: row 2;">3</div>
-      <div class="gridBox centerContentY" style="grid-column: col 2 / span 3; grid-row: row 2;">
+      <div class="gridBox centerContentY greyBorderLightBottom" style="grid-column: col / span 7; grid-row: row 2;">
         <div class="buttongroup">
-          <button onclick="changeFontSize('dna', -1)">-</button>
-          <button onclick="changeFontSize('dna', 1)">+</button>
-          <button onclick="changeFontSize('dna', 0)">0</button>
+          <button onclick="changeFontSize('dna', -1)">
+            <i class="material-icons small circle grey valign">text_decrease</i>
+          </button>
+          <button onclick="changeFontSize('dna', 1)">
+            <i class="material-icons small circle grey valign">text_increase</i>
+          </button>
+          <button onclick="changeFontSize('dna', 0)">
+            <i class="material-icons small circle grey valign">font_download</i>
+          </button>
         </div>
+
+        <button class="radius3 marginX25 hover">
+          <i class="material-icons small circle grey valign">biotech</i>
+          <i class="material-icons small circle greyBg white valign">expand_more</i>
+        </button>
+        <button class="radius3 marginX25 hover">
+          Set <i class="material-icons small circle greyBg white valign">unfold_more</i>
+        </button>
+  
+        
+        <div class="buttonGroup"><!-- 
+        --><button class="radius3 hover"><i class="material-icons small valign blue">edit_note</i></button><!--
+        --><button class="hover greyBg"><i class="material-icons small white valign">tune</i></button><!-- 
+        --><button class="hover"><i class="material-icons small valign">query_stats</i></button><!-- 
+        --><button class="hover"><i class="material-icons small valign">healing</i></button><!-- 
+        --><button class="hover"><i class="material-icons small valign">blur_on</i></button>
+        </div>
+  
+        <button class="radius3 marginX25 hover">
+          4.2 <i class="material-icons small circle greyBg white valign">unfold_more</i>
+        </button>
+  
+        <button class="radius3 marginX25 hover">
+          <i class="material-icons small valign grey">biotech</i>
+          <i class="material-icons small circle greyBg white valign">expand_more</i>
+        </button>
+
       </div>
-      <div class="gridBox centerContentY" style="grid-column: col 5 / span 3; grid-row: row 2;">4.1</div>
-      <div class="gridBox centerContentY" style="grid-column: col 8 / span 1; grid-row: row 2;">4.2</div>
+      <div class="gridBox centerContentY greyBorderLightBottom" style="grid-column: col 8 / span 1; grid-row: row 2;">
+        <button class="selector radius3 whiteBg hover minWidth150 margin1 relative alignLeft">
+          <span class="valign white italics">Select env..</span>
+          <i class="material-icons small circle black valign right marginX1 padding05 op50 " style="transform: translate(.75em, -.35em);">more_vert</i>
+        </button>
+      </div>
 
       <!-- ROW 3 -->
-      <div class="gridBox overflowAuto" style="grid-column: col / span 1; grid-row: row 3;">3.0
-        more text<br>
-        more text<br>
-        more text<br>
-        more text<br>
-        more text<br>
-        more text<br>
-        more text<br>
+      <div class="gridBox overflowAuto greyBorderLightRight" style="grid-column: col / span 2; grid-row: row 3;">
+        <ul class="treeview">
+          <li><i class="material-icons small valign grey">folder</i> Document: tBrugger.dna<i class="material-icons small valign grey">expand_more</i></li>
+          <li>
+            <ul>
+              <li><i class="material-icons small valign grey">biotech</i> stems</li>
+              <li><i class="material-icons small valign grey">biotech</i> plain text</li>
+              <li><i class="material-icons small valign grey">biotech</i> Document Settings <i class="material-icons small valign grey">settings</i></li>
+            </ul>
+          </li>
+          <li><i class="material-icons small valign grey">face</i> User Settings <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign grey">settings</i> General Settings <i class="material-icons small valign grey">expand_less</i></li>
+        </ul>
+
       </div>
-      <div class="gridBox overflowAuto" style="grid-column: col 2 / span 7; grid-row: row 3;">
-        <h1>5</h1>
-        <div id="dna" class="code"></div>
+      <div class="gridBox overflowAuto greyBorderLightRight padding1" style="grid-column: col 3 / span 6; grid-row: row 3;">
+        <h2>tBrugger.dna*</h2>
+        <div id="dna" class="code paddingY1" onclick="loadDna();"></div>
       </div>
 
       <!-- ROW 4 -->
-      <div class="gridBox" style="grid-column: col / span 6; grid-row: row 4;">
-        6<br>
-        6<br>
-        6<br>
+      <div class="gridBox greyBorderLightTop  padding1 small" style="grid-column: col / span 6; grid-row: row 4;">
+        <span class="grey">Data</span> 360 Mb
+        <br>
+        <span class="grey">Overflow</span> 431-a.rb
       </div>
-      <div class="gridBox" style="grid-column: col 7 / span 2; grid-row: row 4;">7</div>
+      <div class="gridBox greyBorderLightTop centerContentYRight padding1" style="grid-column: col 7 / span 2; grid-row: row 4;">
+        <button class="paddingY0 radius3 small">Support</button>
+        <button class="paddingY0 radius3 small">Licenses</button>
+      </div>
     </div>
 
   </body>
