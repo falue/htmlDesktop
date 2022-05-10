@@ -18,10 +18,11 @@ The `EXIT` command stops parsing the file at this location. Good for testing.
 - `[bashProfile]` - prints a the bashProfile, defined in the first line in this document
 - `[autotype, "text", 500]` - prints `text` at once, after a delay of `500`ms
 - `[autotype:green, "text"]` - prints `text` at once but green without a delay
-- `[forceType, "text"]` - user input is forced to type `text`, next command starts when enter is pressed
+- `[forceType, "text"]` - user input is forced to type `text`, next command starts when enter is pressed. If the `text` starts with `sudo`, a third parameter is allowed for how to deal with the credentials, see below params for `[credentials]`.
 - `[credentials]` - prints password verification. If the password contains `s`, it `s`ucceeds and goes on; if it contains `f`, it `f`ails and commands on the same line with credentials are then ignored.
 - `[credentials, true]` - prints password verification - always succeeds on first try
 - `[credentials, false]` - prints password verification - always fails (three times)
+- `[credentials, 2]` - prints password verification - suceeds on `2`nd try (1-3)
 - `[br]` - prints an additional line break
 - `[wait]` - waits for the user to press any key
 - `[waitForEnter]` - waits for the user to press enter
