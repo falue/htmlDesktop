@@ -92,6 +92,18 @@
             "zIndex": 51,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "windowName": "DNA - Viewer - nBrugger.dna",
+            "icon": "biotech",
+            "contentPath": "dna",
+            "x": 12,
+            "y": 5,
+            "w": 1000,
+            "h": 850,
+            "zIndex": 52,
+            "minimized": true,
+            "renderToDom": false
         }
     ],
     "shortcuts": [
