@@ -2,6 +2,7 @@
 
 workstation=sonny;spa
 workstation=ramon;windows
+workstation=lydia;spa
 workstation=generic;spa
 
 workstation=mri;windows
