@@ -333,6 +333,8 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
       taskbarIcon.setAttribute("class", "material-icons valign large centerContent fancy white round padding05");
       taskbarIcon.innerHTML=icon;
     }
+    miminmizedWindow.classList.add("tooltip", "tooltipDock");
+    miminmizedWindow.dataset.title=windowName;
     miminmizedWindow.appendChild(taskbarIcon);
     gebi('dockTaskbar').appendChild(miminmizedWindow);
   }
