@@ -31,7 +31,7 @@
             "h": 444,
             "zIndex": 11,
             "minimized": true,
-            "renderToDom": true
+            "renderToDom": false
         },
         {
             "windowName": "Server MNGR",
@@ -43,12 +43,24 @@
             "h": 810,
             "zIndex": 60,
             "minimized": true,
-            "renderToDom": true
+            "renderToDom": false
         },
         {
             "windowName": "Neptcode Notebook",
             "icon": "code",
             "contentPath": "neptcode/index.html?data=basic",
+            "x": 5,
+            "y": 5,
+            "w": 1100,
+            "h": 700,
+            "zIndex": 61,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "windowName": "Bash console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=93",
             "x": 5,
             "y": 5,
             "w": 1100,
@@ -78,7 +90,7 @@
             "w": 666,
             "h": 450,
             "zIndex": 50,
-            "minimized": false,
+            "minimized": true,
             "renderToDom": false
         },
         {
@@ -90,7 +102,7 @@
             "w": 892,
             "h": 573,
             "zIndex": 51,
-            "minimized": false,
+            "minimized": true,
             "renderToDom": false
         },
         {
