@@ -30,7 +30,7 @@
             "w": 598,
             "h": 444,
             "zIndex": 11,
-            "minimized": true,
+            "minimized": false,
             "renderToDom": false
         },
         {
@@ -42,7 +42,7 @@
             "w": 1200,
             "h": 810,
             "zIndex": 60,
-            "minimized": true,
+            "minimized": false,
             "renderToDom": false
         },
         {
@@ -90,7 +90,7 @@
             "w": 666,
             "h": 450,
             "zIndex": 50,
-            "minimized": true,
+            "minimized": false,
             "renderToDom": false
         },
         {
@@ -102,7 +102,7 @@
             "w": 892,
             "h": 573,
             "zIndex": 51,
-            "minimized": true,
+            "minimized": false,
             "renderToDom": false
         },
         {
