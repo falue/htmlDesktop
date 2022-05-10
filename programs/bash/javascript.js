@@ -171,11 +171,15 @@ async function askCredentials(outcome) {
   // Scroll to bottom of console
   scrollToBottom();
   await delay(50); // wait for release of enter from action before!
-  printToConsole("Password:🔒");
+  printToConsole("Password:🔒 ");
   // enter 13
   // f=fail = 70
   // s=succeed = 83
-  let returnKey = await waitForKey([13, 70, 83]);
+  let returnKey;
+  // Do not wait for success/fail/enter key if outcome is not a number (eg success is pre-determined)
+  if(!Number.isInteger(outcome)) {  
+    returnKey = await waitForKey([13, 70, 83]);
+  }
   let enterKey;
   // Ignore enter detection if enter was pressed empty before
   if(returnKey != 13) enterKey = await waitForKey([13]);
