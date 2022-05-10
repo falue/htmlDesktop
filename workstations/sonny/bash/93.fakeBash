@@ -5,7 +5,7 @@
 # NOTE: If you want to have [ or ] in text, use \[ or \]
 
 # ELCH
-[bashProfile] [forceType, "sudo . mona_lisa-auth.sh"]
+[bashProfile] [forceType, "sudo . mona_lisa-auth.sh", 3]
 [autoType, "Run mona_lisa-auth.sh --help for more.", 0]
 [br]
 [bashProfile] [forceType, ". mona_lisa-master-startup.sh now"]
