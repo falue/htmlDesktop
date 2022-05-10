@@ -3,3 +3,6 @@
 workstation=sonny;spa
 workstation=ramon;windows
 workstation=generic;spa
+
+workstation=mri;windows
+workstation=spital;windows

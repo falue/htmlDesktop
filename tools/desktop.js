@@ -75,6 +75,22 @@ function setDesktopImg(path) {
         ]);
     }
     gebi("desktop").style.backgroundImage = "url("+path+")";
+
+    /* const img = new Image();
+    let width;
+    img.onload = function() {
+        width = this.width;
+        //cl(this.width + 'x' + this.height);
+        cl(width);
+        cl(window.innerWidth);
+        if(width > window.innerWidth) {
+            gebi("desktop").style.backgroundSize = "cover";
+        } else {
+            gebi("desktop").style.backgroundSize = "initial";
+        }
+    }
+    img.src = path; */
+    
 }
 
 // AKA logout
