@@ -170,7 +170,6 @@ async function askCredentials(outcome) {
   cl(outcome); */
   // Scroll to bottom of console
   scrollToBottom();
-  
   await delay(50); // wait for release of enter from action before!
   printToConsole("Password:🔒");
   // enter 13
@@ -181,7 +180,7 @@ async function askCredentials(outcome) {
   // Ignore enter detection if enter was pressed empty before
   if(returnKey != 13) enterKey = await waitForKey([13]);
   // If "s" & enter ist typed, or outcome is true and not false and not "real", then grant access
-  if((((returnKey === 83 && enterKey === 13) && credentialsTrials < 3) || outcome === true) && outcome != false) {
+  if((((returnKey === 83 && enterKey === 13) && credentialsTrials < 3) || outcome === true || outcome === credentialsTrials+1) && outcome != false) {
     printToConsole("<br>Access granted.<br>", "success");
     credentialsTrials = 0;
     return true;
@@ -211,6 +210,7 @@ function setupForceType(command) {
   let sudoOutcome;
   if(command.parameters[0].startsWith("sudo ")) {
     sudoOutcome = command.parameters[1] ? command.parameters[1] === "true" : command.parameters[1] === "false" ? false : undefined;
+    sudoOutcome = Number.isInteger(command.parameters[1]) ? command.parameters[1] : sudoOutcome;
     if(sudoOutcome !== undefined) sudoOutcome = `, ${sudoOutcome}`;
   }
   // Swap onkeydown=keyboardControllerBash(event) of body with
@@ -430,7 +430,7 @@ async function playCommand(command) {
       break;
     case "credentials":
       // TODO: key gets pressed already
-      await askCredentials(command.parameters[0] === undefined ? "real" : command.parameters[0] === "true");
+      await askCredentials(command.parameters[0] === undefined ? "real" : Number.isInteger(command.parameters[0]) ? command.parameters[0] : command.parameters[0] === "true");
       break;
     case "freeText":
       show("cursor");
