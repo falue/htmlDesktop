@@ -33,11 +33,11 @@ The `EXIT` command stops parsing the file at this location. Good for testing.
 ```
 Loading: [▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░] Progress: 17%
 ```
-- `[freeType]` - With freeType, you can type whatever. fakeBash tries to interpret the typed string. If the command start with the following, *default scripts* get executed: `ls`, `ls -l`, `ls -l -a`, `clear`, `top`, `cd ~`, `cd folderName`, `cd ..`. If the command starts with `sudo`, eg. `sudo ls`, password credentials are asked first, then `ls` gets executed.
+- `[freeText]` - With freeText, you can type whatever. fakeBash tries to interpret the typed string. If the command start with the following, *default scripts* get executed: `ls`, `ls -l`, `ls -l -a`, `clear`, `top`, `cd ~`, `cd folderName`, `cd ..`. If the command starts with `sudo`, eg. `sudo ls`, password credentials are asked first, then `ls` gets executed.
 
 **NOTE**: If you want to have `[` or `]` anywhere in text, use `\[` or `\]`
 
-**NOTE**: User interaction is only available when `freeType`, `forceType`, `credentials` or `wait` is being used.
+**NOTE**: User interaction is only available when `freeText`, `forceType`, `credentials` or `wait` is being used.
 
 ### forceType & *default scripts*
 
