@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - FBX loader</title>
+		<title>BOAR</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -9,8 +9,8 @@
 
 	<body>
 		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - FBXLoaderTestPP<br />
-			MIAUMIAU
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> ELCH Sz 42 Test<br />
+			BOAR
 
 		<!-- Import maps polyfill -->
 		<!-- Remove this when import maps will be widely supported -->
@@ -41,9 +41,9 @@
 
 			// FPS stats true or false
 			const enableStats = false;
+			
+			let mixer, mixer2, mixer3, mixer4, mixer6;
 
-
-			let mixer;
 
 			init();
 			animate();
@@ -53,7 +53,7 @@
 				const container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 10000 );
+				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 15000 );
 				camera.position.set( 500, 2000, 2000 );
 		
 
@@ -76,24 +76,32 @@
 				dirLight.shadow.camera.right = 120;
 				scene.add( dirLight );
 
-
 				// materials
 
 				const material1 = new THREE.MeshPhysicalMaterial( {	color: 0x4d4732, metallness: 0, wireframe:true } );
-				const charactermaterial = new THREE.MeshPhysicalMaterial( {	color: 0xff6600, metallness: 0, wireframe:true } );
+				const charactermaterial = new THREE.MeshPhysicalMaterial( {	color: 0xff6600, metallness: 0, wireframe:false} );
+				const charactermaterial2 = new THREE.MeshPhysicalMaterial( {	color: 0x6666ff, metallness: 0, wireframe:false} );
 				const plantsmaterial = new THREE.MeshPhysicalMaterial( {	color: 0x42803e, metallness: 0, wireframe:true } );
-				const firematerial = new THREE.MeshPhysicalMaterial( {color:0xdbfc03, metallness: 0, wireframe:true});
+				const firematerial = new THREE.MeshPhysicalMaterial( {color:0xdbfc03, wireframe:true});
+				const boundingboxmaterial = new THREE.MeshPhysicalMaterial( {color: 0xffffff, metallness:1, wireframe:true});
 	
 			
 				// Scenery
 
 				const loader = new FBXLoader();
-				loader.load( 'models/fbx/boar_Land.fbx', function ( object ) {
+				loader.load( 'models/fbx/boar_Land2.fbx', function ( object ) {
+					mixer4 = new THREE.AnimationMixer( object );
+
+					mixer4.timeScale = 0;
+
+					const action4 = mixer4.clipAction( object.animations[ 0 ] );
+					action4.play();
 	
 					object.traverse( function ( child ) {
 
 						if ( child.isMesh ) {
 							child.material = material1;
+							child.frustumCulled = false;
 
 						}
 					} );
@@ -102,8 +110,8 @@
 					
 				} );
 
-				const loader3 = new FBXLoader();
-				loader3.load( 'models/fbx/boar_Plants.fbx', function ( object3 ) {
+				const loader1 = new FBXLoader();
+				loader1.load( 'models/fbx/boar_Plants.fbx', function ( object3 ) {
 				
 					object3.traverse( function ( child ) {
 
@@ -126,10 +134,10 @@
 				fire.position.x = 100;
 				fire.position.y = 70;
 
-				//Animation
+				//Animation 1
 
 				const loader2 = new FBXLoader();
-				loader2.load('models/fbx/bonesTest5Out.fbx', function ( object2 ) {
+				loader2.load('models/fbx/bonesTest5Out_1.fbx', function ( object2 ) {
 
 					mixer = new THREE.AnimationMixer( object2 );
 
@@ -144,22 +152,101 @@
 						if ( child.isMesh ) {
 							
 							child.material = charactermaterial;
+							child.frustumCulled = false;
 							
 						}
 					
 					} );
 					scene.add( object2 );
-
-
-					//Bounding Box (Fire), muss irgendwie upgedated werden um auf animiertes Objekt angewendet zu werden
-					var box3 = new THREE.Box3().setFromObject(fire);
-					scene.add(new THREE.Box3Helper(box3, 0xFF0000));
-
-
-			
-
-
 				});
+				
+				//Animation 2
+
+				const loader3 = new FBXLoader();
+				loader3.load('models/fbx/bonesTest5Out_2.fbx', function ( object5 ) {
+
+					mixer2 = new THREE.AnimationMixer( object5 );
+
+					//Animationsgeschwindigkeit am Anfang
+					mixer2.timeScale = 0;
+					
+
+					const action2 = mixer2.clipAction( object5.animations[ 0 ] );
+					action2.play();
+					
+					object5.traverse( function ( child ) {
+						if ( child.isMesh ) {
+							
+							child.material = charactermaterial2;
+							child.frustumCulled = false;
+							
+						}
+					
+					} );
+					scene.add( object5 );
+				});
+
+				//Explosion
+				
+				const loader4 = new FBXLoader();
+				loader4.load('models/fbx/boar_explosion.fbx', function ( object4 ) {
+
+					mixer3 = new THREE.AnimationMixer( object4 );
+
+					//Animationsgeschwindigkeit am Anfang
+					mixer3.timeScale = 0;
+					
+
+					const action3 = mixer3.clipAction( object4.animations[ 0 ] );
+					action3.play();
+					
+					object4.traverse( function ( child ) {
+						if ( child.isMesh ) {
+							
+							child.material = firematerial;
+							child.frustumCulled = false;
+							
+						}
+					
+					} );
+					scene.add( object4 );
+				});
+
+
+				//BoundingBoxes
+
+				const loader6 = new FBXLoader();
+				loader6.load('models/fbx/boar_boundingbox.fbx', function ( object6) {
+
+					mixer6 = new THREE.AnimationMixer( object6 );
+					mixer6.timeScale = 0;
+					
+
+					const action6 = mixer6.clipAction( object6.animations[ 0 ] );
+					action6.play();
+					
+					object6.traverse( function ( child ) {
+						if ( child.isMesh ) {
+							
+							child.material = boundingboxmaterial;
+							child.frustumCulled = false;
+	
+						}
+					
+					} );
+					scene.add( object6 );
+					// Nicht sichtbar am Anfang
+					object6.visible = false;
+				});
+
+		
+				
+
+
+
+				//Bounding Box, muss irgendwie upgedated werden um auf animiertes Objekt angewendet zu werden
+				/*var box3 = new THREE.Box3().setFromObject(object6);
+				scene.add(new THREE.Box3Helper(box3, 0xFF0000));*/
 
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -180,13 +267,15 @@
 				const gui = new GUI( {} );
 				gui.domElement.id = 'gui';
 			
-				gui.add(charactermaterial, 'wireframe' );
+				//Checkbox Boundingbox
+				gui.add({"Boundingbox": false}, "Boundingbox").onChange( showBoundingbox );
+		
 			
 				// Checkbox: Play / pause
 				gui.add({"Play / pause": false}, "Play / pause").onChange( modifyTimeScale );
 				
 				// Slider: Scrubbing
-				gui.add(effectController, 'Speed', -10, 10).step(1).onChange( modifyTimeScale );
+				gui.add(effectController, 'Speed', -10, 10).onChange( modifyTimeScale );
 				
 				// Slider: Fast-reverse, reverse, pause, play, f-forward
 				gui.add({"Reverse pause play": 0}, 'Reverse pause play', -2, 2).step(1).onChange(
@@ -242,8 +331,33 @@
 
 			function modifyTimeScale( speed ) {
 				mixer.timeScale = speed;
+				mixer2.timeScale = speed;
+				mixer3.timeScale = speed;
+				mixer4.timeScale = speed;
+				mixer6.timeScale = speed;
 			}
 			
+			//hier sollte ja irgendwie hinundher getoggelt werden, nicht einfach visible machen. gibt aber kein true/false sondern visibility/false
+
+			function showBoundingbox (visibility) {
+				/*
+					scene.children[0] => hemisphereLight (name='')
+					scene.children[1] => directionalLight (name='')
+					scene.children[2] => feuerstelle (name='')
+					scene.children[3] => irgendwie auch licht (name=land)
+					scene.children[4] => untergrund/bocen & fort (name=Explosions)
+					scene.children[5] => boundingboxes (name=boundingbox)
+					scene.children[6] => bäume (name=plants)
+					scene.children[7] => "sonny" (name=1)
+					scene.children[8] => "das wesen" (name=2)
+				*/
+
+				// Hardcoded - index '5' changes when new objects/meshes/whatever are added
+				// scene.children[5].visible = visibility;
+
+				// Search object scene.children where name is 'boundingbox'
+				scene.children[scene.children.map(function(e) { return e.name; }).indexOf('boundingbox')].visible = visibility;
+			}
 	
 
 
@@ -254,12 +368,16 @@
 
 				const delta = clock.getDelta();
 
+		
+
 
 				if ( mixer ) mixer.update( delta );
-			
+				if ( mixer2 ) mixer2.update( delta );
+				if ( mixer3 ) mixer3.update( delta );
+				if ( mixer4 ) mixer4.update( delta );
+				if ( mixer6 ) mixer6.update( delta );
 
 				renderer.render( scene, camera );
-
 
 				if(enableStats) {
 					stats.update();
