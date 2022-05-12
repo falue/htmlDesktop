@@ -34,6 +34,7 @@
             "renderToDom": true
         },
         {
+            "metaTitle": "#99 - Spital - Suche für Toru",
             "windowName": "Search - Helpdesk",
             "icon": "support_agent",
             "contentPath": "helpdesk/index.html",
@@ -46,6 +47,7 @@
             "renderToDom": true
         },
         {
+            "metaTitle": "#26 & #99 - Spital var",
             "windowName": "Patient - Helpdesk",
             "icon": "sick",
             "contentPath": "helpdesk/index2.html",
@@ -58,6 +60,7 @@
             "renderToDom": true
         },
         {
+            "metaTitle": "#26 & #99 - Spital var",
             "windowName": "Lab Test Requests - Helpdesk",
             "icon": "biotech",
             "contentPath": "helpdesk/index3.html",
@@ -70,6 +73,7 @@
             "renderToDom": true
         },
         {
+            "metaTitle": "#26 & #99 - Spital var",
             "windowName": "Beds - Helpdesk",
             "icon": "local_hotel",
             "contentPath": "helpdesk/index4.html",
@@ -82,6 +86,7 @@
             "renderToDom": true
         },
         {
+            "metaTitle": "#26 & #99 - Spital var",
             "windowName": "Hospitalizations - Helpdesk",
             "icon": "emergency",
             "contentPath": "helpdesk/index5.html",
@@ -94,6 +99,7 @@
             "renderToDom": true
         },
         {
+            "metaTitle": "#26 - Ärztin - Krabbe disease.pdf",
             "windowName": "PDF Viewer - Krabbe disease.pdf",
             "icon": "description",
             "contentPath": "imageViewer/index.html?files=krabbe.pdf",

@@ -46,6 +46,7 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#93 - bash console - Restart mona lisa",
             "windowName": "Bash console",
             "icon": "code",
             "contentPath": "bash/index.html?script=93",
