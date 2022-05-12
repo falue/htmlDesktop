@@ -30,8 +30,8 @@
             "w": 598,
             "h": 444,
             "zIndex": 11,
-            "minimized": false,
-            "renderToDom": false
+            "minimized": true,
+            "renderToDom": true
         },
         {
             "windowName": "Search - Helpdesk",

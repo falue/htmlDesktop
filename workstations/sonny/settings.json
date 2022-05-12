@@ -22,18 +22,6 @@
     ],
     "windows": [
         {
-            "windowName": "File manager",
-            "icon": "folder",
-            "contentPath": "filemanager/index.html?folderContent=Downloads",
-            "x": 56,
-            "y": 4,
-            "w": 598,
-            "h": 444,
-            "zIndex": 11,
-            "minimized": false,
-            "renderToDom": false
-        },
-        {
             "windowName": "Server MNGR",
             "icon": "storm",
             "contentPath": "servermanager",
@@ -68,42 +56,6 @@
             "zIndex": 61,
             "minimized": false,
             "renderToDom": true
-        },
-        {
-            "windowName": "FTP Client",
-            "icon": "storm",
-            "contentPath": "ftp",
-            "x": 40,
-            "y": 1,
-            "w": 850,
-            "h": 590,
-            "zIndex": 49,
-            "minimized": false,
-            "renderToDom": false
-        },
-        {
-            "windowName": "Terminal - Update",
-            "icon": "code",
-            "contentPath": "terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=5&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
-            "x": 3,
-            "y": 8,
-            "w": 666,
-            "h": 450,
-            "zIndex": 50,
-            "minimized": false,
-            "renderToDom": false
-        },
-        {
-            "windowName": "Terminal - PYTHON",
-            "icon": "code",
-            "contentPath": "terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
-            "x": 17,
-            "y": 16,
-            "w": 892,
-            "h": 573,
-            "zIndex": 51,
-            "minimized": false,
-            "renderToDom": false
         },
         {
             "windowName": "DNA - Viewer - nBrugger.dna",
