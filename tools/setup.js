@@ -332,7 +332,7 @@ function setupWindows(windows) {
     windowIcon.appendChild(document.createTextNode(window["icon"]));
     listElement.title = window["contentPath"];
     listElement.appendChild(windowIcon);
-    listElement.appendChild(document.createTextNode(" "+(window["metaTitle"] || window["windowName"])));
+    listElement.innerHTML+=" "+(window["metaTitle"] || window["windowName"]).replaceAll(/#(\d+)/gm, `<span class='green'>#$1</span>`);
     listElement.setAttribute("onclick", `addWindow('${window["windowName"]}', '${window["icon"]}', '${window["contentPath"]}', ${window["x"]}, ${window["y"]}, ${window["w"]}, ${window["h"]}, false); hide("actionMenu");`);
     listOfWindows.appendChild(listElement);
 
