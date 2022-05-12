@@ -24,14 +24,14 @@
         {
             "windowName": "File manager",
             "icon": "folder",
-            "contentPath": "filemanager/index.html?folderContent=Downloads",
+            "contentPath": "filemanager",
             "x": 56,
             "y": 4,
             "w": 598,
             "h": 444,
             "zIndex": 11,
-            "minimized": true,
-            "renderToDom": true
+            "minimized": false,
+            "renderToDom": false
         },
         {
             "windowName": "FTP Client",
@@ -68,6 +68,66 @@
             "zIndex": 51,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "windowName": "Search - Helpdesk",
+            "icon": "support_agent",
+            "contentPath": "helpdesk/index.html",
+            "x": 10,
+            "y": 8,
+            "w": 1111,
+            "h": 640,
+            "zIndex": 52,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Patient - Helpdesk",
+            "icon": "sick",
+            "contentPath": "helpdesk/index2.html",
+            "x": 30,
+            "y": 3,
+            "w": 950,
+            "h": 573,
+            "zIndex": 51,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Lab Test Requests - Helpdesk",
+            "icon": "biotech",
+            "contentPath": "helpdesk/index3.html",
+            "x": 25,
+            "y": 17,
+            "w": 950,
+            "h": 573,
+            "zIndex": 49,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Beds - Helpdesk",
+            "icon": "local_hotel",
+            "contentPath": "helpdesk/index4.html",
+            "x": 25,
+            "y": 18,
+            "w": 950,
+            "h": 400,
+            "zIndex": 48,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Hospitalizations - Helpdesk",
+            "icon": "emergency",
+            "contentPath": "helpdesk/index5.html",
+            "x": 5,
+            "y": 10,
+            "w": 750,
+            "h": 520,
+            "zIndex": 47,
+            "minimized": false,
+            "renderToDom": true
         }
     ],
     "shortcuts": [

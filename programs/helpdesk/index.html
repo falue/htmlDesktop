@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>HELPDESK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- style and script resources -->
+  <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+  <link rel="stylesheet" href="../../tools/general.css" media="all">
+  <link rel="stylesheet" href="stylesheet.css" media="all">
+  <script src="../../tools/general.js"></script>
+  <script src="javascript.js"></script>
+
+</head>
+
+<body onload="gebi('patientFilter').focus()" onclick="gebi('patientFilter').focus()">
+  <!-- PRELOAD -->
+  <div class="preload">
+    <img src="imgs/index.png" alt="" />
+    <img src="imgs/index2.jpg" alt="" />
+  </div>
+
+  <!-- <h1>METIS WEBSITE</h1> -->
+  <div class="website">
+      <img src="imgs/index.png" alt="">
+  </div>
+
+  <div class="website header index">
+      <img src="imgs/index.png" alt="">
+      <input type="text" id="patientFilter" placeholder="Search" onkeydown="forceType(event, this, 'Toru Brugger')" onkeyup="searchToru(event);">
+  </div>
+
+  <div class="website patientsList">
+    <img id="patientsListImg" src="imgs/patients.jpg" alt="">
+    <div id="patientsloading" class="hide padding05">Loading.. <i class="material-icons spin blue small valign">sync</i></div>
+    <div id="patientsNoresults" class="hide padding05 italics grey">No results for "Toru Brugger".</div>
+  </div>
+
+  <div class="website footer index">
+      <img src="imgs/index.png" alt="">
+  </div>
+
+</body>
+</html>
