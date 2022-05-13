@@ -157,6 +157,7 @@ a:focus { outline: none; }
 .minWidth600 {min-width: 600px; }
 .minWidth800 {min-width: 800px; }
 
+.overflowHidden { overflow: hidden; }
 .overflowAuto { overflow: auto; }
 .overflowAutoX, .overflowXAuto { overflow-x: auto; }
 .overflowAutoY, .overflowYAuto { overflow-y: auto; }
