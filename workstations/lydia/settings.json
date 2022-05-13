@@ -23,7 +23,7 @@
     "windows": [
         {
             "windowName": "Supervisor",
-            "icon": "view_in_ar",
+            "icon": "scatter_plot",
             "contentPath": "supervisor/index.html?data=webgl_loader_fbx_PP.html",
             "x": 12,
             "y": 5,
@@ -61,7 +61,7 @@
             "icon": "file.png",
             "x": 2,
             "y": 40,
-            "action": "addWindow('Supervisor', 'view_in_ar', 'supervisor/index.html?data=webgl_loader_fbx_PP.html', 6, 6, 1500,900, false);"
+            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?data=webgl_loader_fbx_PP.html', 6, 6, 1500,900, false);"
         },
         {
             "name": "Trash",

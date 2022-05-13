@@ -1,0 +1,189 @@
+body {
+    overflow: auto;
+    background-color: #2c2033;
+    color: rgb(184, 184, 184);
+}
+
+header.mainWindowmenu button {
+    background-color: transparent !important;
+    padding: 0 !important;
+    font-size: .75em;
+}
+
+
+/* GENERIC BUTTONS */
+button {
+    border: solid thin rgba(0,0,0,.75);
+    background-color: rgba(255,255,255,.125);
+    color: white;
+}
+
+button:hover {
+    background-color: grey;
+}
+
+
+.toolBar {
+    background-color: rgba(0,0,0,.25);
+    border-bottom: solid thin black;
+}
+
+.toolBar button {
+    font-family: inherit;
+    border: solid thin rgba(0,0,0,.75) !important;
+    background-color: rgba(255,255,255,.125);
+    color:white;
+}
+
+.toolBar > button {
+    /* margin-right: .5em; */
+}
+
+.buttonGroup {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.buttonGroup button {
+    border-left: none;
+}
+
+.buttonGroup button:first-of-type {
+    border-top-left-radius: .25em;
+    border-bottom-left-radius: .25em;
+    border-left: solid thin rgba(0,0,0,.75);
+}
+
+.buttonGroup button:last-of-type {
+    border-top-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 3.6em);
+    top: 3.6em;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+
+/* TABS */
+.tabList {
+    /* background-color:rgba(0,0,0,.25); */
+}
+.tabList button {
+    height: 2.5em !important;
+    transform: translateY(.85em);
+    margin-left: .75em !important;
+    border: none !important;
+}
+
+.tabList:not(.notTablist) button {
+    border-top-left-radius:.35em;
+    border-top-right-radius:.35em;
+}
+
+.tabList.notTablist button {
+    transform: translateY(.85em);
+    height: 2em !important;
+}
+
+.tabList button.active {
+    color:#63c6fa;
+    /* background-color: #1f1f1f; */
+    background-color: #353535 !important;
+    /* transform: translateY(1.2em); */
+    border-bottom: #353535 .3em solid !important;
+    box-sizing: content-box;
+}
+.tabList button:not(.active) {
+    background-color: #1f1f1f;
+    color: #595959;
+}
+.tab {
+    /* display: none; */
+}
+.tabList button:hover {
+    color: white !important;
+    background-color: #353535 !important;
+}
+
+.tabListLineBehindTabs {
+    padding-top:.6em;
+}
+
+/* GRID */
+.gridLayout {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+    /* background-color: rgba(0,0,255,.5); */
+    grid-template-rows: [row] 1em [row] 3em [row] 3em [row] 1fr [row];
+}
+
+.gridBox {
+    position: relative;
+    box-sizing: border-box;
+    /* background-color: lavender; */
+    /* border: solid rgba(255,0,0,.5) 1px; */
+}
+.gridBox:not(.noPadding) {
+    padding: .5em;
+}
+
+/* contentContent */
+.contentContent.gridLayout {
+    /* grid-gap: 1em; */
+    grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+    grid-template-rows: [row] 66% [row] 34%;
+}
+
+.contentContent .gridBox {
+    /* padding: 1em; */
+    /* background-color: #333; */
+    /* color: #fff; */
+}
+
+.bgSuperLight {
+    background-color: #353535;
+}
+.bgLight {
+    background-color: #1f1f1f;
+}
+.bgDark {
+background-color:#111111;
+}
+
+/* SUPERVISOR */
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.settingsBar {
+    width: 100%;
+    font-weight: bold;
+    padding:.35em;
+    box-sizing: border-box;
+}
+
+.settingsBar.bottom {
+    position: absolute;
+}
+
+.greyBorderLightTop { border-top: thin solid rgb(70, 70, 70) !important; }
+.greyBorderLightRight { border-right: thin solid rgb(70, 70, 70) !important; }
+.greyBorderLightLeft { border-left: thin solid rgb(70, 70, 70) !important; }
+.greyBorderLightBottom { border-bottom: thin solid rgb(70, 70, 70) !important; }
+
+.blue {
+    color:#63c6fa !important;
+}
+.blueBg {
+    bcakground-color:#63c6fa !important;
+}

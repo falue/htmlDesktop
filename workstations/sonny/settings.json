@@ -67,7 +67,20 @@
             "w": 1000,
             "h": 850,
             "zIndex": 52,
-            "minimized": true,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#42 - Supervisor - Wildschwein",
+            "windowName": "Supervisor",
+            "icon": "scatter_plot",
+            "contentPath": "supervisor/index.html?data=webgl_loader_fbx_PP.html",
+            "x": 12,
+            "y": 5,
+            "w": 1000,
+            "h": 850,
+            "zIndex": 53,
+            "minimized": false,
             "renderToDom": false
         }
     ],
@@ -92,6 +105,13 @@
             "x": 1,
             "y": 28,
             "action": "addWindow('Neptcode Notebook', 'code', 'neptcode', 15, 5, 1100,700, false);"
+        },
+        {
+            "name": "Supervisor",
+            "icon": "file.png",
+            "x": 2,
+            "y": 40,
+            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?data=webgl_loader_fbx_PP.html', 6, 6, 1500,900, false);"
         },
         {
             "name": "Trash",

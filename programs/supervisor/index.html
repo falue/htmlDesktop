@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SUPERVISOR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js"></script>
+
+
+  </head>
+  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+    <div class="gridLayout">
+      <!-- ROW 1 -->
+      <header class="gridBox mainWindowmenu header bgDark centerContentY op75" style="grid-column: col / span 6; grid-row: row;">
+        <button class="marginX50 grey valign"><i class="material-icons small valign">scatter_plot</i></button><!-- 
+        --><button class="marginX50 grey">File</button><!-- 
+        --><button class="marginX50 grey">Edit</button><!-- 
+        --><button class="marginX50 grey">View</button><!-- 
+        --><button class="marginX50 grey">Settings</button><!-- 
+        --><button class="marginX50 grey">About</button>
+      </header>
+
+      <!-- ROW 2 -->
+      <div class="gridBox centerContentY black bgDark op75" style="grid-column: col / span 6; grid-row: row 2;">
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">restore_page</i></button>
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">query_stats</i></button>
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">schema</i></button>
+        |
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">view_in_ar</i></button>
+        <button class="programButtons marginX25"><i class="material-icons blue medium valign grey">3d_rotation</i></button>
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">data_exploration</i></button>
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">mobiledata_off</i></button>
+        |
+        <button class="programButtons marginX25 grey nobr">Select Node.. <i class="material-icons white medium valign grey">expand_more</i></button>
+        |
+        <button class="programButtons marginX25 grey nobr">Select Data.. <i class="material-icons white medium valign grey">expand_more</i></button>
+        <button class="programButtons marginX25 grey nobr">Select Custom.. <i class="material-icons white medium valign grey">expand_more</i></button>
+      </div>
+      
+      <!-- <div class="gridBox centerContentY" style="grid-column: col 2 / span 3; grid-row: row 2;">4</div>
+      <div class="gridBox centerContentY" style="grid-column: col 5 / span 3; grid-row: row 2;">4.1</div> -->
+      <div class="gridBox centerContentYRight bgDark nobr op75 alignRight" style="grid-column: col 7 / span 2; grid-row: row 1 / 3;">
+        <!-- <button class="programButtons marginX25 grey nobr">Generation.. <i class="material-icons white medium valign grey">expand_more</i></button>
+        <button class="programButtons "><i class="material-icons medium valign grey">scatter_plot</i></button> -->
+        <div style="line-height: .75em; padding:.5em">SUPERVISOR<br>
+          <span class="tiny grey italics">© Weyland-Yutani Corp. & Tyrell Corp.</span>
+        </div>
+        <i class="material-icons blueBg medium valign marginX25 white" style="padding:.3em; float:left; border-radius:.5em;">scatter_plot</i>
+      </div>
+
+      <header class="gridBox header windowmenu tabList noPadding bgDark" style="grid-column: col / span 4; grid-row: row 3;">
+        <button class="programButtons">Settings</button><!-- 
+        --><button class="programButtons tabButton" onclick="switchTabs(1);">Overview</button><!-- 
+        --><button class="programButtons tabButton" onclick="switchTabs(2);">Live</button><!--
+        --><button class="programButtons tabButton" onclick="switchTabs(3);">Logs</button>
+        <div class="tabListLineBehindTabs greyBorderLightBottom"></div>
+      </header>
+
+      <header class="gridBox header windowmenu tabList notTablist noPadding bgDark greyBorderLightBottom" style="grid-column: col 5 / span 3; grid-row: row 3;">
+        <button class="programButtons tabButton">Genepool</button><!--
+        --><button class="programButtons tabButton">Setup</button><!--
+        --><button class="programButtons tabButton">Search <i class="material-icons small valign">search</i></button><!--
+        --><button class="programButtons tabButton">...</button>
+      </header>
+
+      <div class="gridBox  windowmenu centerContentYRight noPadding bgDark greyBorderLightBottom" style="grid-column: col 8 / span 1; grid-row: row 3;">
+          <i class="material-icons medium valign marginX25 white">expand_more</i>
+          <i class="material-icons small valign grey">wifi_channel</i>
+          <i class="material-icons small valign grey">rule_folder</i>
+          <i class="material-icons small valign grey">candlestick_chart</i>
+          <i class="material-icons small valign grey">nfc</i>
+          <i class="material-icons small valign grey">settings</i>
+      </div>
+
+      <!-- ROW 3 -->
+      <!-- TAB1 -->
+      <div class="gridBox tab overflowAuto noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
+        <div class="gridLayout contentContent ">
+          <div class="gridBox noPadding" style="grid-column: col / span 8; grid-row: row 1 / 3;">
+            <h2>Overview</h2>
+            CHARTS<br>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2 -->
+      <div class="gridBox tab overflowAuto noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
+        <div class="gridLayout contentContent ">
+          <div class="gridBox noPadding" style="grid-column: col / span 6; grid-row: row 1 / 3;">
+            <h2>LIVE</h2>
+          </div>
+          <div class="gridBox overflowAuto" style="grid-column: col 7 / span 2; grid-row: row 1 / 3;">
+            <h1>6</h1>
+          </div>
+        </div>
+      </div>
+      
+      <!-- TAB 3 -->
+      <div class="gridBox tab overflowHidden noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
+        <div class="gridLayout contentContent">
+          <div class="gridBox noPadding" style="grid-column: col / span 6; grid-row: row 1 / 3;">
+            <iframe data-src=""></iframe>
+          </div>
+          <div class="gridBox noPadding overflowHidden" style="grid-column: col 7 / span 2; grid-row: row 1;">
+            <div class="settingsBar bgDark greyBorderLightBottom"><i class="material-icons valign small white">expand_more</i> Import</div>
+            <div class="settingsBar bgDark greyBorderLightBottom"><i class="material-icons valign small white">expand_more</i> Export</div>
+            <div class="settingsBar bgDark"><i class="material-icons valign small white">expand_less</i> Latest Log</div>
+            <div class="padding05 bgLight">
+              <code class=" nobr small">
+                [05-01-22 00:25:24.385] LOG  : General, 1641338724385> OpenGL version: 2.1 Metal - 71.7.1.<br>
+[00:25:24.387] LOG  : General, 1641338724387> Desktop resolution 1440x900.<br>
+[00:25:24.390] LOG  : General, 1641338724390> Initial resolution 1920x1200 fullScreen=false.<br>
+[00:25:24.392] LOG  : General, 1641338724392> OpenGL 1.5 buffer objects supported.<br>
+[00:25:24.394] LOG  : General, 1641338724394> VSync:<br>
+[00:25:24.424] LOG  : General, 1641338724424> 1641338724424 fmod: Create DSP for capture sound.<br>
+[00:25:26.280] LOG  : General, 1641338726279> AngelCodeFont failed to load page 0 texture /Users/fl/Library/Application Support/Steam/steamapps/common/ProjectZomboid/Project Zomboid.app/Contents/Java/media/mainfont_0.png.<br>
+[00:25:26.330] LOG  : General, 1641338726329> AngelCodeFont failed to load page 0 texture /Users/fl/Library/Application Support/Steam/steamapps/common/ProjectZomboid/Project Zomboid.app/Contents/Java/media/fonts/zomboidDialogue.bmfc_0.png.<br>
+[00:25:26.349] WARN : General, 1641338726349> TextManager.Init> font "DebugConsole" not found in fonts.txt.<br>
+[00:25:26.605] LOG  : General, 1641338726605> Loading networking libraries....<br>
+[00:25:26.607] LOG  : General, 1641338726607> Loading steam_api....<br>
+[00:25:26.610] LOG  : General, 1641338726610> Loading RakNet....<br>
+[00:25:26.620] LOG  : General, 1641338726620> Loading ZNetJNI....<br>
+[00:25:26.630] LOG  : General, 1641338726629> 1641338726629 znet: ZNet loaded.<br>
+[00:25:26.631] LOG  : General, 1641338726631> 1641338726631 znet: Compiled with SERVER_STEAMAPI == 0.<br>
+[00:25:26.632] LOG  : General, 1641338726632> 1641338726632 znet: Starting with bServer == false.<br>
+[00:25:26.650] LOG  : General, 1641338726650> 1641338726650 znet: SteamAPI initialised successfully.<br>
+[00:25:26.651] LOG  : General, 1641338726651> SteamUtils initialised successfully.<br>
+[00:25:26.657] LOG  : General, 1641338726657> 1641338726657 znet: Java_zombie_core_znet_SteamWorkshop_n_1Init.<br>
+              </code>
+            </div>
+            <div class="settingsBar bottom bgDark greyBorderLightTop"><i class="material-icons valign small white">expand_more</i> Console</div>
+          </div>
+          <div class="gridBox noPadding overflowHidden blackBg " style="grid-column: col 7 / span 2; grid-row: row 2;">
+            <iframe data-src="../bash/index.html?workstation=sonny&darkMode=true&script=supervisor"></iframe>
+          </div>
+        </div>
+    </div>
+
+
+
+      <!-- ROW 4 -->
+      <div class="gridBox greyBorderLightTop grey small centerContentY bgDark" style="grid-column: col / span 5; grid-row: row 5;">
+        <span class="op50">Root:</span> C:\monalisa\node1
+      </div>
+      <div class="gridBox greyBorderLightTop small centerContentYRight bgDark" style="grid-column: col 6 / span 3; grid-row: row 5;">
+        <span class="grey marginX50"><i class="material-icons small valign">warning</i> 0 deprecation</span>
+        <span class="grey"><i class="material-icons medium valign">download</i> 0 update</span>
+      </div>
+    </div>
+
+  </body>
+  </html>
