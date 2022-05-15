@@ -265,6 +265,7 @@ async function showDialog(title, text, selfClosing, input, feedbackButtons) {
         hide("autoDialogLoading");
         show("autoDialogInput");
         autoDialogInput.focus();
+        if(input !== true) autoDialogInput.value = input;
         button.innerHTML = "OK";
         button.setAttribute("onclick", "autoDialogHasClickedOk=true; hide('autoDialog')");
         gebi('autoDialogCancelButton').setAttribute("onclick", "autoDialogHasClickedOk=true; gebi('autoDialogInput').value='~CANCEL'; hide('autoDialog')");

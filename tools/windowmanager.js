@@ -237,7 +237,10 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
 
   let windowTitleText = document.createElement("span");
   windowTitleText.appendChild(document.createTextNode(windowName));
+  windowTitleText.setAttribute("id", "title-"+id);
+  windowTitleText.setAttribute("oncontextmenu", `epD(event); setWindowTitle('title-${id}')`);
   windowTitleText.setAttribute("class", "valignText");
+  windowTitleText.style.paddingRight='2em';
   windowTitle.appendChild(windowTitleText);
   windowFrame.appendChild(windowTitle);
 
@@ -453,6 +456,13 @@ function maximizeWindow(id) {
   resetMaxButton.setAttribute("onclick", "resetWindowSize('"+id+"', '"+lastX+"', '"+lastY+"', '"+lastW+"', '"+lastH+"')");
   // Set click into window top bar to reset window position
   windowContainer.getElementsByClassName("windowFrame")[0].setAttribute("ondblclick", "resetWindowSize('"+id+"', '"+lastX+"', '"+lastY+"', '"+lastW+"', '"+lastH+"')");
+}
+
+async function setWindowTitle(id) {
+  let currentWindowTitleElement = gebi(id);
+  let currentTitle = currentWindowTitleElement.innerHTML;
+  let newTitle = await showDialog("Set new window title", "", false, currentTitle);
+  if(newTitle) currentWindowTitleElement.innerHTML = newTitle != "~EMPTY" ? newTitle : '';
 }
 
 function closeWindow(id) {
