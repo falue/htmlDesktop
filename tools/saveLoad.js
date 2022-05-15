@@ -297,7 +297,7 @@ function saveAllWindows() {
     contentsSaved.push(data[0]+"-"+data[2]);
     // Get original positions and data & add to object
     windows.push({
-      windowName: data[0],
+      windowName: gebi('title-' + windowData.id).innerHTML,
       icon: data[1],
       contentPath: data[2],
       x: parseInt(windowData.style.left),
