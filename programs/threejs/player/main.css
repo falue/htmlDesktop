@@ -52,6 +52,16 @@ a, button, input, select {
 	}
 }
 
+#gui {
+    /* position:absolute;
+    background-color:rgb(127, 126, 126);
+    width:50%;
+    top:75%;
+    left:25%; */
+    font-size:13px;
+    /* color:black; */
+}
+
 #overlay {
 	position: absolute;
 	font-size: 16px;

@@ -5,92 +5,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
-
-		<style>
-
-			/* GUI OVERWRIE */
-			.lil-gui input[type=checkbox]:focus {
-				outline: none;
-			}
-			.lil-gui input[type=checkbox] {
-				width: inherit;
-			}
-			.lil-gui input[type=checkbox]:focus {
-				box-shadow: none;
-			}
-			.lil-gui input[type=checkbox]:after {
-				content: "Toggle";
-				color:rgba(255,255,255,.5);
-			}
-			.lil-gui input[type=checkbox]:checked {
-				/* this is shit because it should be radios not checkboxes for only allowing one checked checkbox at a time */
-				/* background-color: red; */
-			}
-			.lil-gui input[type=checkbox]:checked:after {
-				padding: 0;
-			}
-			.lil-gui input[type=checkbox]:checked:before {
-				content:"";
-				display:none;
-			}
-
-			/* LABELS */
-			#c {
-				width: 100vw;
-				height: 100vh;
-				width: 100%;  /* let our container decide our size */
-				height: 100%;
-				display: block;
-			}
-			#container {
-				position: relative;  /* makes this the origin of its children */
-				width: 100vw;
-				height: 100vh;
-				overflow: hidden;
-			}
-			#labels {
-				position: absolute;  /* let us position ourself inside the container */
-				left: 0;             /* make our position the top left of the container */
-				top: 0;
-				color: white;
-				display: none;
-				font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-			}
-			#labels>div {
-				position: absolute;  /* let us position them inside the container */
-				left: 0;             /* make their default position the top left of the container */
-				top: 0;
-				cursor: pointer;     /* change the cursor to a hand when over us */
-				font-size: large;
-				color: rgb(255, 255, 255);
-				background-color:black;
-				user-select: none;   /* don't let the text get selected */
-				padding:2px 6px;
-				border: solid rgb(255, 255, 255) 1px;
-			}
-			#labels>div:before {
-				content: "x";
-				position: absolute;
-				color:transparent;
-				border-top: solid rgb(255, 255, 255) 1px;
-				width:50px;
-				transform: rotate(-45deg);
-				top:41.5px;
-				left:-34px;
-			}
-			#labels>div:hover {
-				color: white;
-			}
-		</style>
 	</head>
 
 	<body>
 		<div id="info">
 			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> ELCH Sz 42 Test<br />
 			BOAR
-		</div>
-
-		<div id="labels"></div>
 
 		<!-- Import maps polyfill -->
 		<!-- Remove this when import maps will be widely supported -->
@@ -117,17 +37,12 @@
 			let camera, scene, renderer, stats;
 
 			const clock = new THREE.Clock();
-			const effectController = {"SlowMo" :0};
+			const effectController = {Speed :0};
 
 			// FPS stats true or false
 			const enableStats = false;
-
 			
 			let mixer, mixer2, mixer3, mixer4, mixer6;
-			
-
-			// Reihenfolge bestimmt welches label wo ist
-			let labels = ["ammo", "ammo", "fire", "agent", "boar", "grenade"];
 
 
 			init();
@@ -298,8 +213,10 @@
 				});
 
 
+				//BoundingBoxes
+
 				const loader6 = new FBXLoader();
-				loader6.load('models/fbx/boar_boundingbox.fbx', async function ( object6) {
+				loader6.load('models/fbx/boar_boundingbox.fbx', function ( object6) {
 
 					mixer6 = new THREE.AnimationMixer( object6 );
 					mixer6.timeScale = 0;
@@ -313,36 +230,33 @@
 							
 							child.material = boundingboxmaterial;
 							child.frustumCulled = false;
+	
 						}
 					
 					} );
 					scene.add( object6 );
 					// Nicht sichtbar am Anfang
 					object6.visible = false;
-					// once loading of bounding boxes is finished, set up labels
-					// createTextLabels('Boar', 7);
-					createBoundBoxesLabels();
-					
 				});
 
-				function createBoundBoxesLabels () {
-					//BoundingBoxes & labels
-					const labelContainerElem = document.querySelector('#labels');
+		
+				
 
-					// Make diov for every label
-					for(let i = 0; i < labels.length; i++) {
-						let elem = document.createElement('div');
-						elem.textContent = labels[i];
-						elem.id = "label-"+i;
-						labelContainerElem.prepend(elem);
-					}
-				}
+
+
+				//Bounding Box, muss irgendwie upgedated werden um auf animiertes Objekt angewendet zu werden
+				/*var box3 = new THREE.Box3().setFromObject(object6);
+				scene.add(new THREE.Box3Helper(box3, 0xFF0000));*/
+
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				container.appendChild( renderer.domElement );
+			
+
+
 
 				const controls = new OrbitControls( camera, renderer.domElement );
 				
@@ -352,26 +266,25 @@
 
 				const gui = new GUI( {} );
 				gui.domElement.id = 'gui';
+			
+				//Checkbox Boundingbox
+				gui.add({"Boundingbox": false}, "Boundingbox").onChange( showBoundingbox );
+		
+			
+				// Checkbox: Play / pause
+				gui.add({"Play / pause": false}, "Play / pause").onChange( modifyTimeScale );
+				
+				// Slider: Scrubbing
+				gui.add(effectController, 'Speed', -10, 10).onChange( modifyTimeScale );
 				
 				// Slider: Fast-reverse, reverse, pause, play, f-forward
-				gui.add({"Scrubbing": 0}, 'Scrubbing', -3, 3).step(1).onChange(
+				gui.add({"Reverse pause play": 0}, 'Reverse pause play', -2, 2).step(1).onChange(
 					function (value) {
-						if(value === -2) value = -5;  // Make -2 go faster
-						if(value === 2) value = 5;    // Make  2 go faster
-						if(value === -3) value = -10;  // Make -3 go brrr
-						if(value === 3) value = 10;    // Make  3 go brrr
+						if(value === -2) value = -10;  // Make -2 go brrr
+						if(value === 2) value = 10;    // Make  2 go brrr
 						modifyTimeScale(value);
 					}
 				);
-
-				// Checkbox: Play / Pause
-				gui.add({"Play / Pause": false}, "Play / Pause").onChange( modifyTimeScale );
-
-				// Checkbox: Pause
-				gui.add({"Pause": false}, "Pause").onChange( function () { modifyTimeScale(false) } );
-				
-				// Slider: Scrubbing
-				gui.add(effectController, 'SlowMo', -1, 1).onChange( modifyTimeScale );
 
 				// Checkbox: Reverse play or pause
 				gui.add({"Reverse": false}, "Reverse").onChange(
@@ -391,14 +304,6 @@
 				gui.add({"Fast reverse": false}, "Fast reverse").onChange( 
 					function (value) {
 						modifyTimeScale(value ? -10 : 0);
-					}
-				);
-
-				//Checkbox Boundingbox
-				gui.add({"Boundingbox": false}, "Boundingbox").onChange(
-					function (value) {
-						showBoundingbox(value);
-						showTextLabels(value);
 					}
 				);
 
@@ -432,6 +337,7 @@
 				mixer6.timeScale = speed;
 			}
 			
+			//hier sollte ja irgendwie hinundher getoggelt werden, nicht einfach visible machen. gibt aber kein true/false sondern visibility/false
 
 			function showBoundingbox (visibility) {
 				/*
@@ -452,14 +358,6 @@
 				// Search object scene.children where name is 'boundingbox'
 				scene.children[scene.children.map(function(e) { return e.name; }).indexOf('boundingbox')].visible = visibility;
 			}
-
-			function showTextLabels(value) {
-				if(value) {
-					document.getElementById('labels').style.display = 'block';
-				} else {
-					document.getElementById('labels').style.display = 'none';
-				}
-			}
 	
 
 
@@ -470,65 +368,21 @@
 
 				const delta = clock.getDelta();
 
+		
+
+
 				if ( mixer ) mixer.update( delta );
 				if ( mixer2 ) mixer2.update( delta );
 				if ( mixer3 ) mixer3.update( delta );
 				if ( mixer4 ) mixer4.update( delta );
 				if ( mixer6 ) mixer6.update( delta );
 
-				renderer.render( scene, camera ) ;
-
-				updateLabels();
+				renderer.render( scene, camera );
 
 				if(enableStats) {
 					stats.update();
 				}
-			}
 
-			document.onkeydown = function (e) {
-				if (e.key === "r") {
-					camera.position.set(300, 600, 600);
-					/*camera.rotation.set(1, 1, 1);*/
-				} else if (e.key === "e") {
-					camera.position.set(400, 800, 800);
-				} else if (e.key === "p") {
-					scene.background = new THREE.Color( 0xff00d0 );
-				}
-			}
-
-
-			function updateLabels() {
-				const tempV = new THREE.Vector3();
-				for(let i = 0; i < labels.length; i++) {					
-					const elem = document.getElementById('label-'+i);
-					
-					// get the position of the center of the cube
-					let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('boundingbox')];
-					if(objectToFollow) {  // Objects may not yet exist
-						objectToFollow.children[i].updateWorldMatrix(true, false);
-						objectToFollow.children[i].getWorldPosition(tempV);
-					
-						// get the normalized screen coordinate of that position
-						// x and y will be in the -1 to +1 range with x = -1 being
-						// on the left and y = -1 being on the bottom
-						tempV.project(camera);
-						
-						// convert the normalized position to CSS coordinates
-						const x = (tempV.x *  .5 + .5) * renderer.domElement.clientWidth;
-						const y = (tempV.y * -.5 + .5) * renderer.domElement.clientHeight;
-
-						if(parseInt(objectToFollow.children[i].position.x) == -1261) {
-							elem.style.display = 'none';
-						} else {
-							elem.style.display = 'block';
-						}
-						
-						// move the elem to that position
-						// elem.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
-						elem.style.transform = `translate(-50%, -50%) translate(${x+70}px,${y-50}px)`;
-					}
-
-				};
 			}
 
 		</script>
