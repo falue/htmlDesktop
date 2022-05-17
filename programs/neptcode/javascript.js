@@ -112,7 +112,7 @@ async function addNextCodeblock(last=false) {
 
     let textToPrint;
     if(!last) textToPrint = data[codeIndex];
-    if(last && !textToPrint) return;
+    if(last && !out.length) return;
 
     let chart = false;
     if(textToPrint?.startsWith("createChart(")) {
