@@ -1,0 +1,335 @@
+let data = {
+    41: [{
+        height:"333px",
+        target: "target1",
+        type: "line",
+        data: {
+          labels: arrayOfIndexes(120),
+          datasets: [{
+            label: "Data",
+            fill: false,
+            backgroundColor: "#638c52",
+            tension: 0,
+            pointRadius: 0,
+            borderColor: "#638c52",
+            data: notSoRandomInts(120, 1, 100, 1212, 5, .0155, false)
+            // function notSoRandomInts(count, min, max, seed, maxDiff, incline, doNotMaxOut = false)
+          }]
+        },
+        options: {
+          responsive: true, 
+          legend: {display: false},
+          plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: 'white',
+                }
+            }
+        },
+          title: {
+            display: true,
+            text: "inclining numbers",
+            fontSize: 16,
+            fontColor: 'white',
+          },
+        },
+      },{
+        height:"333px",
+        target: "target2",
+        type: "line",
+        data: {
+          labels: arrayOfIndexes(25),
+          datasets: [{
+            label: "Data",
+            fill: false,
+            backgroundColor: "#46659d",
+            tension: .4,
+            pointRadius: 0,
+            borderColor: "#46659d",
+            data: notSoRandomInts(25, 1, 100, 1212, 2, .03, true)
+            // function notSoRandomInts(count, min, max, seed, maxDiff, incline, doNotMaxOut = false)
+          },{
+            label: "Data 2",
+            fill: false,
+            backgroundColor: "#c086ef",
+            tension: 0,
+            pointRadius: 3,
+            borderColor: "#c086ef",
+            data: notSoRandomInts(25, 0, 50, 666, 2, .0155, true)
+            // function notSoRandomInts(count, min, max, seed, maxDiff, incline, doNotMaxOut = false)
+          }]
+        },
+        options: {
+          responsive: true, 
+          legend: {display: false},
+          plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: 'white',
+                }
+            }
+            },
+          title: {
+            display: true,
+            text: "inclining numbers",
+            fontSize: 16,
+            fontColor: 'white',
+          },
+        },
+      },{
+        height:"150px",
+        target: "target3",
+        type: "doughnut",
+        data: {
+          labels: chooseRandomKeys(5, techwords),
+          datasets: [
+            {
+            label: "Data 3",
+              backgroundColor: chooseRandomKeys(5, colors),
+              borderWidth: 0,
+              data: randomIntsBetween(5, 1, 100),
+            },
+          ],
+        },
+        options: {
+          cutout: "75%",
+          radius: "77%",
+          responsive: true,
+          circumference:  180,
+          rotation: 270,
+          plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: 'white',
+                }
+            }
+            },
+        },
+      },{
+        height:"150px",
+        target: "target4",
+        type: "doughnut",
+        data: {
+          labels: chooseRandomKeys(5, techwords),
+          datasets: [
+            {
+            label: "Data 3",
+              backgroundColor: chooseRandomKeys(5, colors),
+              borderWidth: 0,
+              data: randomIntsBetween(5, 1, 100),
+            },
+          ],
+        },
+        options: {
+          cutout: "75%",
+          radius: "77%",
+          responsive: true,
+          circumference:  180,
+          rotation: 270,
+          plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: 'white',
+                }
+            }
+            },
+        },
+      },{
+        height:"150px",
+        target: "target5",
+        type: "doughnut",
+        data: {
+          labels: chooseRandomKeys(5, techwords),
+          datasets: [
+            {
+            label: "Data 3",
+              backgroundColor: chooseRandomKeys(5, colors),
+              borderWidth: 0,
+              data: randomIntsBetween(5, 1, 100),
+            },
+          ],
+        },
+        options: {
+          cutout: "75%",
+          radius: "77%",
+          responsive: true,
+          circumference:  180,
+          rotation: 270,
+          plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: 'white',
+                }
+            }
+            },
+        },
+      },{
+        height:"150px",
+        target: "target6",
+        type: "doughnut",
+        data: {
+          labels: chooseRandomKeys(5, techwords),
+          datasets: [
+            {
+            label: "Data 3",
+              backgroundColor: chooseRandomKeys(5, colors),
+              borderWidth: 0,
+              data: randomIntsBetween(5, 1, 100),
+            },
+          ],
+        },
+        options: {
+          cutout: "75%",
+          radius: "77%",
+          responsive: true,
+          circumference:  180,
+          rotation: 270,
+          plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: 'white',
+                }
+            }
+            },
+        },
+      },
+
+      {
+        target: "target8",
+        type: "bar",
+        data: {
+          labels: arrayOfIndexes(15),
+          datasets: [
+            {
+              label: chooseRandomKeys(1, techwords),
+              backgroundColor: chooseRandomKeys(15, colors),
+              data: randomIntsBetween(15, 1, 100),
+              stack: true,
+              barThickness: 25,
+            },
+            {
+              label: chooseRandomKeys(1, techwords),
+              backgroundColor: chooseRandomKeys(15, colors),
+              data: randomIntsBetween(15, 1, 100),
+              stack: true,
+              barThickness: 25,
+            },
+            {
+              label: chooseRandomKeys(1, techwords),
+              backgroundColor: chooseRandomKeys(15, colors),
+              data: randomIntsBetween(15, 1, 100),
+              stack: true,
+              barThickness: 25,
+            },
+            {
+              label: chooseRandomKeys(1, techwords),
+              backgroundColor: chooseRandomKeys(15, colors),
+              data: randomIntsBetween(15, 1, 100),
+              stack: true,
+              barThickness: 25,
+            },
+          ],
+        },
+      },
+
+      {
+        target: "target9",
+        type: "bar",
+        data: {
+          labels: arrayOfIndexes(15),
+          datasets: [
+            {
+                label: chooseRandomKeys(1, techwords),
+                backgroundColor: chooseRandomKeys(15, colors),
+                data: randomIntsBetween(15, 1, 100),
+                barThickness: 3,
+              },
+              {
+                label: chooseRandomKeys(1, techwords),
+                backgroundColor: chooseRandomKeys(15, colors),
+                data: randomIntsBetween(15, 1, 100),
+                barThickness: 3,
+              },
+              {
+                label: chooseRandomKeys(1, techwords),
+                backgroundColor: chooseRandomKeys(15, colors),
+                data: randomIntsBetween(15, 1, 100),
+                barThickness: 3,
+              },
+              {
+                label: chooseRandomKeys(1, techwords),
+                backgroundColor: chooseRandomKeys(15, colors),
+                data: randomIntsBetween(15, 1, 100),
+                barThickness: 3,
+              },
+              {
+                label: chooseRandomKeys(1, techwords),
+                backgroundColor: chooseRandomKeys(15, colors),
+                data: randomIntsBetween(15, 1, 100),
+                barThickness: 3,
+              },
+              {
+                label: chooseRandomKeys(1, techwords),
+                backgroundColor: chooseRandomKeys(15, colors),
+                data: randomIntsBetween(15, 1, 100),
+                barThickness: 3,
+              },
+              {
+                label: chooseRandomKeys(1, techwords),
+                backgroundColor: chooseRandomKeys(15, colors),
+                data: randomIntsBetween(15, 1, 100),
+                barThickness: 3,
+              },
+              {
+                label: chooseRandomKeys(1, techwords),
+                backgroundColor: chooseRandomKeys(15, colors),
+                data: randomIntsBetween(15, 1, 100),
+                barThickness: 3,
+              },
+          ],
+        },
+      },
+
+      {
+        target: "target10",
+        type: "bar",
+        data: {
+          labels: arrayOfIndexes(12),
+          datasets: [
+            {
+              label: chooseRandomKeys(1, techwords),
+              backgroundColor: chooseRandomKeys(15, colors),
+              data: randomIntsBetween(12, 1, 100),
+              stack: true,
+              barThickness: 12,
+            },
+            {
+              label: chooseRandomKeys(1, techwords),
+              backgroundColor: chooseRandomKeys(15, colors),
+              data: randomIntsBetween(12, 1, 100),
+              stack: true,
+              barThickness: 12,
+            },
+            {
+              label: chooseRandomKeys(1, techwords),
+              backgroundColor: chooseRandomKeys(15, colors),
+              data: randomIntsBetween(12, 1, 100),
+              barThickness: 12,
+            },
+            {
+              label: chooseRandomKeys(1, techwords),
+              backgroundColor: chooseRandomKeys(15, colors),
+              data: randomIntsBetween(12, 1, 100),
+              barThickness: 12,
+            },
+          ],
+        },
+      }
+    ]
+}

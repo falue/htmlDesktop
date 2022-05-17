@@ -1,10 +1,10 @@
 let colors = [
-    "#638c52",
-    "#e55845",
-    "#b0752c",
-    "#46659d",
-    "#c086ef",
-    "#a43f4a"
+    "#638c52",  // Green
+    "#e55845",  // Red
+    "#b0752c",  // Orange
+    "#46659d",  // Blue
+    "#c086ef",  // Lilac
+    "#a43f4a"   // darkRed
 ];
 
 let colorsTransparent = [

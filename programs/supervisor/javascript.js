@@ -1,4 +1,4 @@
-let data;
+let threejsData;
 let currentTab = 1;
 
 async function setup() {
@@ -7,13 +7,34 @@ async function setup() {
     let os = urlParams.get('os');
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
+    let scene = urlParams.get('scene');
     
     // Set generic system fonts
     setSystemFont(os);
 
-    data = `../threejs/player/${urlParams.get('data') || "webgl_loader_fbx_PP.html"}`;
+    threejsData = `../threejs/player/${urlParams.get('data') || "webgl_loader_fbx_PP.html"}`;
     
-    switchTabs(1);
+    setupScene(scene);
+}
+
+function setupScene(scene) {
+    switch(scene) {
+        case "41":
+            show(`scene41`);  // scene number
+            switchTabs(2);
+            /* cl(data[scene]); */
+            for (let i = 0; i < data[scene].length; i++) {
+                createChart("100%", data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
+            }
+            break;
+        case "42":
+                cl("42!!");
+                switchTabs(4);
+                break;
+        default:
+            switchTabs(1);
+            break;
+    }
 }
 
 
@@ -47,7 +68,7 @@ function switchTabs(index) {
     // Find all iframes in tabs[index-1] and set src to data-src
     let iframes = tabs[index-1].getElementsByTagName("iframe");
     for (let i = 0; i < iframes.length; i++) {
-        iframes[i].src = iframes[i].dataset.src || data;
+        iframes[i].src = iframes[i].dataset.src || threejsData;
     }
 
     currentTab = index;

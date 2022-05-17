@@ -148,7 +148,17 @@ button:hover {
     /* background-color: #333; */
     /* color: #fff; */
 }
+.overview .contentContent.gridLayout {
+    grid-gap: 1em;
+    grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+    grid-template-rows: [row] auto [row] auto [row] auto [row] auto [row];
+}
 
+.overview .gridBox.contentContent {
+    /* padding: 1em; */
+    background-color: rgba(127, 127, 127, 0.1);
+    /* color: #fff; */
+}
 .bgSuperLight {
     background-color: #353535;
 }

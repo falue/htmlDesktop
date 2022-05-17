@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="../../tools/desktop.css" media="all">
     <link rel="stylesheet" href="stylesheet.css" media="all">
     <script src="../../tools/general.js"></script>
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
+    <script src="data.js" defer></script>
 
-
+    <!-- Charts -->
+    <script src="../../tools/libraries/chart.js"></script>
+    <script src="../../tools/autoCharts.js"></script>
   </head>
   <body onload="setup();" onkeydown="parent.keyboardController(event);">
     <div class="gridLayout">
@@ -55,10 +58,10 @@
       </div>
 
       <header class="gridBox header windowmenu tabList noPadding bgDark" style="grid-column: col / span 4; grid-row: row 3;">
-        <button class="programButtons">Settings</button><!-- 
-        --><button class="programButtons tabButton" onclick="switchTabs(1);">Overview</button><!-- 
-        --><button class="programButtons tabButton" onclick="switchTabs(2);">Live</button><!--
-        --><button class="programButtons tabButton" onclick="switchTabs(3);">Logs</button>
+        <button class="programButtons tabButton" onclick="switchTabs(1);">Settings</button><!-- 
+        --><button class="programButtons tabButton" onclick="switchTabs(2);">Overview</button><!-- 
+        --><button class="programButtons tabButton" onclick="switchTabs(3);">Live</button><!--
+        --><button class="programButtons tabButton" onclick="switchTabs(4);">Logs</button>
         <div class="tabListLineBehindTabs greyBorderLightBottom"></div>
       </header>
 
@@ -81,10 +84,12 @@
       <!-- ROW 3 -->
       <!-- TAB1 -->
       <div class="gridBox tab overflowAuto noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
-        <div class="gridLayout contentContent ">
-          <div class="gridBox noPadding" style="grid-column: col / span 8; grid-row: row 1 / 3;">
-            <h2>Overview</h2>
-            CHARTS<br>
+        <div class="gridLayout contentContent">
+          <div class="gridBox noPadding" style="grid-column: col / span 6; grid-row: row 1 / 3;">
+            <h2>SETTINGS</h2>
+          </div>
+          <div class="gridBox overflowAuto" style="grid-column: col 7 / span 2; grid-row: row 1 / 3;">
+            <h1>default</h1>
           </div>
         </div>
       </div>
@@ -92,6 +97,93 @@
       <!-- TAB 2 -->
       <div class="gridBox tab overflowAuto noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
         <div class="gridLayout contentContent ">
+          <div class="gridBox overview" style="grid-column: col / span 8; grid-row: row 1 / 3;">
+            <div class="centerText">
+              <h2 class="inline">Project Overview: <code class="blackBgTransparent padding125 radius3 marginX1">Electric child<i class="material-icons small valign">more_vert</i></code></h2>
+            </div>
+            <div id="scene41" class="hide marginY1">
+              <div class="gridLayout charts contentContent">
+                <div id="target1" class="gridBox contentContent" style="grid-column: col / span 4; grid-row: row;">
+                  
+                </div>
+                <div id="target2" class="gridBox contentContent" style="grid-column: col 5 / span 4; grid-row: row;">
+                  
+                </div>
+
+                <div id="target3" class="gridBox contentContent" style="grid-column: col / span 2; grid-row: row 2;">
+                  <div class="buttonGroup bottom padding50 " style="box-sizing: border-box; width: 92%;">
+                    <button><i class="material-icons small valign">zoom_out_map</i></button>
+                    <button><i class="material-icons small valign">multiline_chart</i></button>
+                    <button><i class="material-icons small valign">addchart</i></button>
+                    <button><i class="material-icons small valign">content_cut</i></button>
+                    <div class="small right inline alignRight">Report data<br>Export</div>
+                  </div>
+                </div>
+                <div id="target4" class="gridBox contentContent" style="grid-column: col 3 / span 2; grid-row: row 2;">
+                  <div class="buttonGroup bottom padding50 " style="box-sizing: border-box; width: 92%;">
+                    <button><i class="material-icons small valign">zoom_out_map</i></button>
+                    <button><i class="material-icons small valign">multiline_chart</i></button>
+                    <button><i class="material-icons small valign">addchart</i></button>
+                    <button><i class="material-icons small valign">content_cut</i></button>
+                    <div class="small right inline alignRight">Report data<br>Export</div>
+                  </div>
+                </div>
+                <div id="target5" class="gridBox contentContent" style="grid-column: col 5 / span 2; grid-row: row 2;">
+                  <div class="buttonGroup bottom padding50 " style="box-sizing: border-box; width: 92%;">
+                    <button><i class="material-icons small valign">zoom_out_map</i></button>
+                    <button><i class="material-icons small valign">multiline_chart</i></button>
+                    <button><i class="material-icons small valign">addchart</i></button>
+                    <button><i class="material-icons small valign">content_cut</i></button>
+                    <div class="small right inline alignRight">Report data<br>Export</div>
+                  </div>
+                </div>
+                <div id="target6" class="gridBox contentContent " style="grid-column: col 7 / span 2; grid-row: row 2;">
+                  <div class="buttonGroup bottom padding50 " style="box-sizing: border-box; width: 92%;">
+                    <button><i class="material-icons small valign">zoom_out_map</i></button>
+                    <button><i class="material-icons small valign">multiline_chart</i></button>
+                    <button><i class="material-icons small valign">addchart</i></button>
+                    <button><i class="material-icons small valign">content_cut</i></button>
+                    <div class="small right inline alignRight">Report data<br>Export</div>
+                  </div>
+                </div>
+
+                <div id="target7" class="gridBox contentContent centerText" style="grid-column: col / span 8; grid-row: row 3;">
+                  <h2 class="inline">Project Processes</h2>
+                  <br>
+                  <div class="buttonGroup marginY50">
+                    <button><i class="material-icons small valign">data_exploration</i></button>
+                    <button><i class="material-icons small valign">dns</i></button>
+                    <button><i class="material-icons small valign">system_update_alt</i></button>
+                    <button><i class="material-icons small valign">storage</i></button>
+                    <button><i class="material-icons small valign">inventory_2</i></button>
+                    <button><i class="material-icons small valign">kitchen</i></button>
+                    <button><i class="material-icons small valign">data_usage</i></button>
+                    <button><i class="material-icons small valign">post_add</i></button>
+                    |
+                    <button><i class="material-icons small valign red">flag</i></button>
+                    <button><i class="material-icons small valign green">flag</i></button>
+                    <button><i class="material-icons small valign blue">flag</i></button>
+                    |
+                    <button><i class="material-icons small valign ">save</i></button>
+
+                  </div>
+                </div>
+                <div id="target8" class="gridBox contentContent" style="grid-column: col / span 8; grid-row: row 4;"></div>
+                <div id="target9" class="gridBox contentContent" style="grid-column: col / span 8; grid-row: row 5;"></div>
+                <div id="target10" class="gridBox contentContent" style="grid-column: col / span 8; grid-row: row 6;"></div>
+              </div>
+            </div>
+            <div id="sceneXX" class="hide">
+              XX
+              CHARTS<br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3 -->
+      <div class="gridBox tab overflowAuto noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
+        <div class="gridLayout contentContent">
           <div class="gridBox noPadding" style="grid-column: col / span 6; grid-row: row 1 / 3;">
             <h2>LIVE</h2>
           </div>
@@ -101,7 +193,7 @@
         </div>
       </div>
       
-      <!-- TAB 3 -->
+      <!-- TAB 4 -->
       <div class="gridBox tab overflowHidden noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
         <div class="gridLayout contentContent">
           <div class="gridBox noPadding" style="grid-column: col / span 6; grid-row: row 1 / 3;">
