@@ -72,13 +72,6 @@
     ],
     "shortcuts": [
         {
-            "name": "DVD",
-            "icon": "dvd.png",
-            "x": 94,
-            "y": 69,
-            "action": ""
-        },
-        {
             "name": "Trash",
             "icon": "trashFull.png",
             "x": 94,
