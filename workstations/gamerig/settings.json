@@ -1,0 +1,86 @@
+{
+    "settings": {
+        "systemColor": "#403D63",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "os/_generic/desktops/2.jpg",
+        "os": "spa",
+        "darkMode": true,
+        "username": "gamerig",
+        "password": "",
+        "workstation": "gamerig",
+        "selectedSystemMessage": 1,
+        "osNotificationsDelay": 1
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#41 - gamerig - model predict",
+            "windowName": "Neptcode Notebook",
+            "icon": "code",
+            "contentPath": "neptcode/index.html?data=41",
+            "x": 5,
+            "y": 5,
+            "w": 1500,
+            "h": 820,
+            "zIndex": 61,
+            "minimized": false,
+            "renderToDom": true
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": ""
+        }
+    ],
+    "actions": [],
+    "osNotifications": [
+        {
+            "metaTitle": "this meta title - for your eyes only",
+            "title": "You've got mail (2)",
+            "description": "The following messages have just arrived: (..)",
+            "icon": "email",
+            "initialDelay": true,
+            "timeOut": 0,
+            "action": "startDefaultProgram('textEditor')"
+        },
+        {
+            "metaTitle": "",
+            "title": "Zombie wave iminent",
+            "description": "Hack into these brains to gain access to valuable recources (..)",
+            "icon": "warning",
+            "initialDelay": true,
+            "timeOut": 0,
+            "action": "startDefaultProgram('terminal')"
+        },
+        {
+            "metaTitle": "more meta",
+            "title": "Some files need your attention",
+            "description": "",
+            "icon": "info",
+            "initialDelay": true,
+            "timeOut": 3500,
+            "action": "startDefaultProgram('fileManager')"
+        },
+        {
+            "metaTitle": "",
+            "title": "Activate OS now",
+            "description": "Please invest in a robust system and pay us just $14.99 per day to experience the most comfort a meaty fleshbag can enjoy. We will remind you again in one hour.",
+            "icon": "shield",
+            "initialDelay": true,
+            "timeOut": 4500,
+            "action": ""
+        }
+    ]
+}
