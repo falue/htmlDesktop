@@ -109,8 +109,18 @@ async function addNextCodeblock(last=false) {
         return;
     }
 
+
     let textToPrint;
     if(!last) textToPrint = data[codeIndex];
+    if(last && !textToPrint) return;
+
+    let chart = false;
+    if(textToPrint?.startsWith("createChart(")) {
+        // eval(textToPrint);
+        chart = textToPrint;
+        textToPrint = "";
+        //return;
+    }
 
     let htmlCodeBlock = isHtml(textToPrint);
     if(!htmlCodeBlock && !last) textToPrint = textToPrint.replaceAll('\n' ,'<br>');
@@ -119,43 +129,55 @@ async function addNextCodeblock(last=false) {
     let uniqueId = createUniqueId();
     let label = document.createElement("label");
     let labelText = document.createElement("div");
-    labelText.appendChild(document.createTextNode(last || htmlCodeBlock ? `Out [${codeIndex-1}]:` : `In [${codeIndex}]:`));
+    labelText.appendChild(document.createTextNode(last || htmlCodeBlock || chart ? `Out [${codeIndex-1}]:` : `In [${codeIndex}]:`));
     label.appendChild(labelText);
     let highlightBox = document.createElement("div");
     highlightBox.setAttribute("id", `terminal-${uniqueId}`);
-    highlightBox.setAttribute("class", "terminal python");
-
-    let forcetypeContainer = document.createElement("div");
-    forcetypeContainer.setAttribute("class", "forceType");
-    let textarea = document.createElement("textarea");
-
-    textarea.setAttribute("onblur", `cursor('terminal-${uniqueId}', false)`);
-    if(!last) {
-        textarea.setAttribute("onfocus", `cursor('terminal-${uniqueId}', true)`);
-        if(htmlCodeBlock) {
-            // Its html - print all at once as "out[_]"
-            highlightBox.removeAttribute("class");
-            highlightBox.innerHTML = textToPrint;
-            highlightBox.classList.add('htmlCodeblock');
-            textarea.setAttribute("onkeydown", `event.keyCode === 13 ? addNextCodeblock() : ''; updateSyntaxHighlighting(); scrollToBottom("paperHolder");`);
-        } else if(textToPrint.length > 0) {
-            // Its code - use forceType
-            textarea.setAttribute("onkeydown", `forceTypeHighlight(event, this, 'terminal-${uniqueId}', '${textToPrint}', function () { addNextCodeblock(); scrollToBottom("paperHolder"); }, true);`);
-        } else {
-            // Its freetext if empty string - On enter, go to next code block
-            textarea.setAttribute("onkeyup", `if(event.keyCode === 13 && this.value.length > 0) { addNextCodeblock(); scrollToBottom("paperHolder"); updateSyntaxHighlighting(); } else { gebi('terminal-${uniqueId}').innerHTML=this.value.replaceAll('\\n' ,'<br>'); updateSyntaxHighlighting();}`);
-        }
-    }
-    forcetypeContainer.appendChild(textarea);
     
-    // Fillout if printedOut is defined
-    if(codeIndex < printedOut) {
-        textarea.value = textToPrint;
-        highlightBox.innerHTML = textToPrint;
-    }
+    let forcetypeContainer = document.createElement("div");
+    let textarea = document.createElement("textarea");
+    if(!chart) {
+        highlightBox.setAttribute("class", "terminal python");
+        forcetypeContainer.setAttribute("class", "forceType");
+        textarea.setAttribute("onblur", `cursor('terminal-${uniqueId}', false)`);
+        if(!last) {
+            textarea.setAttribute("onfocus", `cursor('terminal-${uniqueId}', true)`);
+            if(htmlCodeBlock) {
+                // Its html - print all at once as "out[_]"
+                highlightBox.removeAttribute("class");
+                highlightBox.innerHTML = textToPrint;
+                highlightBox.classList.add('htmlCodeblock');
+                textarea.setAttribute("onkeydown", `event.keyCode === 13 ? addNextCodeblock() : ''; updateSyntaxHighlighting(); scrollToBottom("paperHolder");`);
+            } else if(textToPrint.length > 0) {
+                // Its code - use forceType
+                textarea.setAttribute("onkeydown", `forceTypeHighlight(event, this, 'terminal-${uniqueId}', '${textToPrint}', function () { addNextCodeblock(); scrollToBottom("paperHolder"); }, true);`);
+            } else {
+                // Its freetext if empty string - On enter, go to next code block
+                textarea.setAttribute("onkeyup", `if(event.keyCode === 13 && this.value.length > 0) { addNextCodeblock(); scrollToBottom("paperHolder"); updateSyntaxHighlighting(); } else { gebi('terminal-${uniqueId}').innerHTML=this.value.replaceAll('\\n' ,'<br>'); updateSyntaxHighlighting();}`);
+            }
+        }
+
+        forcetypeContainer.appendChild(textarea);
+        
+        // Fillout if printedOut is defined
+        if(codeIndex < printedOut) {
+            textarea.value = textToPrint;
+            highlightBox.innerHTML = textToPrint;
+        }
+    }    
+    
     forcetypeContainer.appendChild(highlightBox);
     label.appendChild(forcetypeContainer);
     container.appendChild(label);
+
+    if(chart) {
+        highlightBox.setAttribute("class", "chart");
+        // Chart
+        chart = chart.replaceAll("targetAutoId",`terminal-${uniqueId}`);
+        chart = chart.replaceAll("canvasAutoId",`canvas-terminal-${uniqueId}`);
+        await delay(222);  // sowmehow this is needed. STFU
+        eval(chart);
+    }
     
     if(last) {
         // print out the final message
@@ -182,6 +204,7 @@ async function addNextCodeblock(last=false) {
         codeIndex++;
     }
     
+    // if((codeIndex < printedOut && !last) || chart) {
     if(codeIndex < printedOut && !last) {
         addNextCodeblock(codeIndex === data.length);
     }
