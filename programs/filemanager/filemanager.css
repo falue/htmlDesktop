@@ -121,6 +121,33 @@ header {
     overflow: hidden;
 }
 
+.content.listView .fileTile {
+    display: block;
+    width:100%;
+    height: initial;
+    text-align: left;
+    margin-bottom: 0;
+    padding: .25em;
+    overflow: visible;
+}
+.content.listView .fileTile:hover {
+    background-color: rgba(127,127,127,.2);
+}
+.content.listView .fileTile img {
+    height: 1em;
+    float:left;
+    margin-right:0.5em;
+}
+.content.listView .fileTile:hover img {
+    background-color: initial;
+}
+
+.content.listView .fileTile div {
+    height: 100%;
+    font-size: 1em;
+    overflow: visible;
+}
+
 .treeView li {
     white-space: nowrap;
     padding: .25em .5em;

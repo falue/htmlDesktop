@@ -10,6 +10,7 @@ async function setupFileManager() {
     os = urlParams.get('os');
     workstation = urlParams.get('workstation');
     darkMode = urlParams.get('darkMode');
+    let view = urlParams.get('view');
     /* cl("darkMode is " + darkMode);
     cl("os is " + os); */
 
@@ -67,6 +68,9 @@ async function setupFileManager() {
     hardcodedIcons.forEach(e => {
         e.src = e.src.replace("/windows/", "/"+os+"/");
     });
+
+    // Set list view
+    if(view === "list") gebi('folderContent').classList.add('listView');
 }
 
 // Display all files and folders in treeview
