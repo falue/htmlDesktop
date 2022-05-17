@@ -193,3 +193,10 @@ textarea {
 .htmlCodeblock .cursor {
     display: none;
 }
+
+.chart {
+    padding:.5em;
+    border-radius:.2em;
+    background: rgba(127,127,127,.1);
+    color: #f8f8f2;
+}
