@@ -1,5 +1,5 @@
 // list of files in text
-let textFiles = ["add-emails", "add-emails-start", "apt-get", "hexdump", "log", "sqlHack#sql", "sql#sql", "lorem_ipsum_binary", "apollo_guidance_computer#sql", "randall#python", "shining", "psf#python", "lorem_ipsum", "javascript#javascript", "donut#c", "ascii_schema", "creative-commence-license", "ascii_highvoltage", "test"];
+let textFiles = ["10", "add-emails", "add-emails-start", "apt-get", "hexdump", "log", "sqlHack#sql", "sql#sql", "lorem_ipsum_binary", "apollo_guidance_computer#sql", "randall#python", "shining", "psf#python", "lorem_ipsum", "javascript#javascript", "donut#c", "ascii_schema", "creative-commence-license", "ascii_highvoltage", "test"];
 let texts = new Array();
 
 // readFilesToVariables() is run in main startup() function due to waiting for reading all the files
