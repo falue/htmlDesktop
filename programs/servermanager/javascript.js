@@ -1,25 +1,3 @@
-let colors = [
-    "#638c52",
-    "#e55845",
-    "#b0752c",
-    "#46659d",
-    "#c086ef",
-    "#a43f4a"
-];
-
-let colorsTransparent = [
-    "rgba(99, 140, 82, .5)",
-    "rgba(229, 88, 69, .5)",
-    "rgba(176, 117, 44, .5)",
-    "rgba(70, 101, 157, .5)",
-    "rgba(192, 134, 239, .5)",
-    "rgba(164, 63, 74, .5)"
-]
-
-let techwords = [
-"field", "suppression", "temporal mis-match", "utility", "anomalies", "temporal", "losses", "opaque", "fragmentation", "utility", "adapter", "hard-wired", "fusion", "flux fiber", "external", "alignment", "intermittent", "inductance", "power", "index", "storage", "impedance", "capacity", "refraction", "amplitude"
-]
-
 let textToType = `[05-01-22 00:25:24.424] LOG : General , 1641338724424> 1641338724424 fmod: Create DSP for capture sound.
 [05-01-22 00:25:26.280] LOG : General , 1641338726279> AngelCodeFont failed to load page 0`;
   
@@ -128,16 +106,6 @@ function switchTabs(index) {
     xValues.push(x);
   }
 } */
-
-/* CHARTS! */
-function createChart(width, height, canvasId, targetId, data) {
-    let canvas = document.createElement("canvas");
-    canvas.style.width = width || "100%";
-    canvas.style.height = height || "100%";
-    canvas.id = canvasId;
-    gebi(targetId).appendChild(canvas);
-    new Chart(canvasId, data);
-}
 
 function addStylesheet(path) {
     let currentStylesheet = gebi('osStylesheet');
