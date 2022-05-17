@@ -3,5 +3,6 @@
 workstation=sonny;spa
 workstation=ramon;windows
 workstation=lydia;spa
-workstation=generic;spa
 workstation=spital;windows
+workstation=monalisa;spa
+workstation=generic;spa
