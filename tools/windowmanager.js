@@ -278,6 +278,8 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   // If index.html is not specified, add index.html by default
   mainProgram = mainProgram.endsWith(".html") ? mainProgram : mainProgram+"/index.html";
   let parameters = contentPath.join("");  // get everything after "?" if there is
+  // Do not overwrite hardcoded darkMode parameter
+  parameters += parameters.includes("darkMode") ? "" : "&darkMode="+!isLightColor(systemColor);
   let srcIframe = [
     "programs/",
     mainProgram,
@@ -285,8 +287,6 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     os,
     "&workstation=",
     workstation,
-    "&darkMode=",
-    !isLightColor(systemColor),
     parameters ? "&" : "",
     parameters
   ].join("");
