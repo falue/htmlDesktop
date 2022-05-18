@@ -182,9 +182,16 @@ async function addNextCodeblock(last=false) {
     if(last) {
         // print out the final message
         document.activeElement.blur();
-        highlightBox.innerHTML = "<i class='material-icons small valign blue spin'>sync</i>";
         highlightBox.classList.add('op50');
-        await delay(1111);
+        let loader = document.createElement("div");
+        // Show loader
+        let loaderId = createUniqueId();
+        loader.classList.add("absolute","margin1","top","nudge-y-12");
+        loader.innerHTML = `<progress id='loader-${loaderId}' value='0' max='100' class='blueBg minWidth400'>0%</progress></span><i class='material-icons small valign blue spin marginX1'>sync</i>`;
+        label.appendChild(loader);
+        scrollToBottom("paperHolder");
+        await counter(`loader-${loaderId}`, "%", 3333, 94, 0, 100);
+        loader.remove();
         highlightBox.classList.remove('op50');
         if(isHtml(out)) {
             // If its html, remove highlighting and add it as is
