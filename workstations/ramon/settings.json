@@ -41,8 +41,8 @@
             "contentPath": "servermanager/index.html?scene=67",
             "x": 9,
             "y": 4,
-            "w": 1200,
-            "h": 810,
+            "w": 1500,
+            "h": 900,
             "zIndex": 60,
             "minimized": false,
             "renderToDom": false
@@ -52,10 +52,10 @@
             "windowName": "Supervisor",
             "icon": "scatter_plot",
             "contentPath": "supervisor/index.html?data=ELCH_beach_SZ67.html&scene=67",
-            "x": 12,
-            "y": 5,
-            "w": 1300,
-            "h": 850,
+            "x": 14,
+            "y": 7,
+            "w": 1500,
+            "h": 900,
             "zIndex": 53,
             "minimized": false,
             "renderToDom": false
@@ -81,7 +81,7 @@
             "icon": "servermngr.png",
             "x": 1,
             "y": 16,
-            "action": "addWindow('SERVER MNGR', 'code', 'servermanager/index.html?scene=67', 6, 6, 1500,900, false);"
+            "action": "addWindow('SERVER MNGR', 'code', 'servermanager/index.html?scene=67', 9, 4, 1500,900, false);"
         },
         {
             "name": "Neptcode Notebook",
@@ -95,7 +95,7 @@
             "icon": "supervisor.png",
             "x": 2,
             "y": 40,
-            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?scene=67&data=ELCH_beach_SZ67.html', 6, 6, 1500,900, false);"
+            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?scene=67&data=ELCH_beach_SZ67.html', 14, 7, 1500,900, false);"
         }
     ],
     "actions": [
