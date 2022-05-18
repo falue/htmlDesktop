@@ -81,6 +81,22 @@
 			#labels>div:hover {
 				color: white;
 			}
+			#vitalics {
+				font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+				position: fixed;
+				padding:1em;
+			}
+			#vitalics div {
+				display: inline-block;
+				min-width: 75px;
+			}
+			#vitalics progress {
+				background-color:black;
+			}
+			#vitalics progress::-webkit-progress-value, #vitalics progress.high::-webkit-progress-value { background: rgb(50, 220, 50); }
+			#vitalics progress.normal::-webkit-progress-value { background: rgb(72, 72, 255); }
+			#vitalics progress.medium::-webkit-progress-value { background: rgb(255, 180, 40); }
+			#vitalics progress.low::-webkit-progress-value { background: rgb(255, 63, 33); }
 		</style>
 	</head>
 
@@ -91,6 +107,12 @@
 		</div>
 
 		<div id="labels"></div>
+		<div id="vitalics">
+			<div>Health</div> <progress id="vitalHealth" class="" min='0' max='100' value='95'></progress><br>
+			<div>Stamina</div> <progress id="vitalStamina" class="normal" min='0' max='100' value='77'></progress><br>
+			<div>Thirst</div> <progress id="vitalThirst" class="medium" min='0' max='100' value='50'></progress><br>
+			<div>Exhaustion</div> <progress id="vitalExhaustion" class="medium" min='0' max='100' value='55'></progress>
+		</div>
 
 		<!-- Import maps polyfill -->
 		<!-- Remove this when import maps will be widely supported -->
@@ -128,6 +150,8 @@
 
 			// Reihenfolge bestimmt welches label wo ist
 			let labels = ["ammo", "ammo", "fire", "agent", "boar", "grenade"];
+
+			let explosionStage = 'idle';
 
 
 			init();
@@ -296,7 +320,6 @@
 					} );
 					scene.add( object4 );
 				});
-
 
 				const loader6 = new FBXLoader();
 				loader6.load('models/fbx/boar_boundingbox.fbx', async function ( object6) {
@@ -479,6 +502,7 @@
 				renderer.render( scene, camera ) ;
 
 				updateLabels();
+				updateHealth();
 
 				if(enableStats) {
 					stats.update();
@@ -493,6 +517,34 @@
 					camera.position.set(400, 800, 800);
 				} else if (e.key === "p") {
 					scene.background = new THREE.Color( 0xff00d0 );
+				}
+			}
+
+			function updateHealth() {
+				let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('Explosions')];
+				let explosion = objectToFollow.children[0].scale.x;
+				if((explosion > .25 || explosion == 0) && explosionStage == 'idle') {
+					// is exploding - change stats once
+					document.getElementById('vitalHealth').value=2;
+					document.getElementById('vitalHealth').classList.add('low');
+					document.getElementById('vitalStamina').value=2;
+					document.getElementById('vitalStamina').classList.add('low');
+					document.getElementById('vitalThirst').value=2;
+					document.getElementById('vitalThirst').classList.add('low');
+					document.getElementById('vitalExhaustion').value=2;
+					document.getElementById('vitalExhaustion').classList.add('low');
+					explosionStage = 'exploding';
+				} else if(explosion <= .25 && explosion > 0 && explosionStage === 'exploding') {
+					// is not exploding - reset to initial values once
+					document.getElementById('vitalHealth').value=95;
+					document.getElementById('vitalHealth').classList.remove('low');
+					document.getElementById('vitalStamina').value=77;
+					document.getElementById('vitalStamina').classList.remove('low');
+					document.getElementById('vitalThirst').value=50;
+					document.getElementById('vitalThirst').classList.remove('low');
+					document.getElementById('vitalExhaustion').value=55;
+					document.getElementById('vitalExhaustion').classList.remove('low');
+					explosionStage = 'idle';
 				}
 			}
 
