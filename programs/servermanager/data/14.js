@@ -42,6 +42,14 @@ let data = [
     options: {
       responsive: true, 
       legend: {display: false},
+      plugins: {
+        legend: {
+            display: true,
+            labels: {
+                color: 'white',
+            }
+        }
+      },
       scales: {
         y: {
             ticks: {
@@ -92,6 +100,14 @@ let data = [
       responsive: true,
       circumference:  180,
       rotation: 270,
+      plugins: {
+        legend: {
+            display: true,
+            labels: {
+                color: 'white',
+            }
+        }
+      },
     },
   },
 
@@ -114,6 +130,14 @@ let data = [
       responsive: true,
       circumference:  180,
       rotation: 270,
+      plugins: {
+        legend: {
+            display: true,
+            labels: {
+                color: 'white',
+            }
+        }
+      },
     },
   },
 
@@ -137,6 +161,14 @@ let data = [
       responsive: true,
       circumference:  180,
       rotation: 270,
+      plugins: {
+        legend: {
+            display: true,
+            labels: {
+                color: 'white',
+            }
+        }
+      },
     },
   },
 
@@ -174,9 +206,12 @@ let data = [
       },
       plugins: {
         legend: {
-          display: false,
+          display: true,
+          labels: {
+              color: 'white',
+          }
         }
-      }
+      },
     },
   },
 
@@ -213,6 +248,17 @@ let data = [
           barThickness: 12,
         },
       ],
+    },
+    options: {
+      responsive: true, 
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+              color: 'white',
+          }
+        }
+      },
     },
   }
   

@@ -6,7 +6,7 @@ let data = {
         data: {
           labels: arrayOfIndexes(120),
           datasets: [{
-            label: "Data",
+            label: "Neuron count",
             fill: false,
             backgroundColor: "#638c52",
             tension: 0,
@@ -41,7 +41,7 @@ let data = {
         data: {
           labels: arrayOfIndexes(25),
           datasets: [{
-            label: "Data",
+            label: "Compression rate",
             fill: false,
             backgroundColor: "#46659d",
             tension: .4,
@@ -50,7 +50,7 @@ let data = {
             data: notSoRandomInts(25, 1, 100, 1212, 2, .03, true)
             // function notSoRandomInts(count, min, max, seed, maxDiff, incline, doNotMaxOut = false)
           },{
-            label: "Data 2",
+            label: "Memory expansion rate",
             fill: false,
             backgroundColor: "#c086ef",
             tension: 0,
@@ -70,7 +70,7 @@ let data = {
                     color: 'white',
                 }
             }
-            },
+          },
           title: {
             display: true,
             text: "inclining numbers",
@@ -86,7 +86,7 @@ let data = {
           labels: chooseRandomKeys(5, techwords),
           datasets: [
             {
-            label: "Data 3",
+              label: "Data 3",
               backgroundColor: chooseRandomKeys(5, colors),
               borderWidth: 0,
               data: randomIntsBetween(5, 1, 100),
