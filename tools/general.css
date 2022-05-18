@@ -311,6 +311,12 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .blackDarkBgTransparent { background-color: rgba(0,0,0,0.6) !important; }
 .whiteBgTransparent { background-color: rgba(255,255,255,0.3) !important; }
 
+.tintRed { filter: brightness(0.5) sepia(100%) hue-rotate(310deg) saturate(800%); }
+.tintGreen { filter: brightness(0.5) sepia(100%) hue-rotate(90deg) saturate(330%); }
+.tintBlue { filter: brightness(0.5) sepia(100%) hue-rotate(180deg) saturate(250%); }
+.tintPink { filter: brightness(0.5) sepia(100%) hue-rotate(310deg) saturate(250%); }
+.tintYellow { filter: brightness(0.8) sepia(100%) hue-rotate(0deg) saturate(250%); }
+
 /* BORDERS */
 .blackBorder { border: thin solid black !important; }
 .whiteBorder { border: thin solid white !important; }
