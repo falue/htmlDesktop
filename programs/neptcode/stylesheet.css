@@ -94,6 +94,13 @@ header {
     padding: 1em 0;
 }
 
+/* select page when smaller than 800px */ 
+@media (max-width:1200px) {
+    .paper {
+        width: 100%;
+    }
+}
+
 
 /* treeview */
 .treeview {
