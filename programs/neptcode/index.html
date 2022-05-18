@@ -46,11 +46,11 @@
       </div>
 
       <div class="gridBox centerText padding05 greyBorderLightBottom shadowLight" style="grid-column: col 2 / span 7; grid-row: row 3;">
-        <button class="radius3" onclick="addNextCodeblock(); updateSyntaxHighlighting();">
+        <button class="radius3" onclick="jumpToNextCodeBlockButEmpty();">
           <i class="material-icons medium valign grey">add</i>
         </button>
         <div class="buttonGroup"><!-- 
-        --><button class="hover" onclick="addNextCodeblock(); updateSyntaxHighlighting();"><i class="material-icons medium valign grey">play_arrow</i></button><!-- 
+        --><button class="hover" onclick="jumpToNextCodeBlockButEmpty()"><i class="material-icons medium valign grey">play_arrow</i></button><!-- 
         --><button class="hover" onclick="clearInputs()"><i class="material-icons medium valign grey">stop</i></button><!-- 
       --></div>
       </div>
@@ -125,7 +125,7 @@
         <i class="material-icons small valign">description</i> data.ipynb*
         <div class="buttonGroup marginX1">
           <button class="grey" onclick="switchTabs(1)">tab 1</button><!-- 
-          --><button class="grey" onclick="switchTabs(2)">tab 1</button>
+          --><button class="grey" onclick="switchTabs(2)">tab 2</button>
         </div>
             <div class="buttonGroup"><!-- 
            --><button class="grey" onclick="clearInputs()"><i class="material-icons small valign">backspace</i></button><!-- 
