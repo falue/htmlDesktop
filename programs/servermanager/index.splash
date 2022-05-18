@@ -1,8 +1,8 @@
-<div style="background-color:#202633; color: white; padding:5em 6em 3em 6em;">
+<div style="background-color:#202633; color: white; padding:5em 9em 3em 9em;">
     <!--parsed in windowmanager.js:-->
     <!--delay= 2200-->
-    <img src="programs/servermanager/splash.png" style="height: 3.5em;"/>
-    <br><br>
+    <img src="programs/servermanager/splash.png" style="height: 6em;"/>
+    <br><br><br><br>
     © MNGR, inc.
     <br>
     <br>
