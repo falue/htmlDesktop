@@ -210,6 +210,13 @@ async function addNextCodeblock(last=false) {
     }
 }
 
+async function jumpToNextCodeBlockButEmpty() {
+    addNextCodeblock();
+    updateSyntaxHighlighting();
+    await delay('100');
+    scrollToBottom('paperHolder');
+}
+
 async function scrollToBottom(id){
     // wait for image to load so scroll can happen
     await delay(100);
