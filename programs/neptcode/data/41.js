@@ -40,7 +40,7 @@ return hcore_deriv `,
 'model.predict("tBurgger-copy.dna", monaLisa04)'
 ];
     
-let out = `<div class="terminal python hljs"><span class="cyan">(3,099,734,149/3,099,734,149 lines redacted)</span>
+let out = `<div class="terminal python hljs"><span class="grey">(3,099,734,149/3,099,734,149 lines redacted)</span>
 TTTAAACAAGAGGCAAATGCATTTATTTATAGCTTTGTTCTCCTGAAAAT    GALC  2.30% ▒
 TTTTATTCTCAGTTTTCTCAAACACTCTATGAAAAGTGTCATGGATAGAG    GALC  3.10% ▒
 TTTTTTTAAATCATTGAGTTCATATGCGTCAGTGCCATAAATCGTCACCA    GALC  5.10% ▒
