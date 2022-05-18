@@ -28,7 +28,6 @@ function setupScene(scene) {
             }
             break;
         case "42":
-                cl("42!!");
                 switchTabs(4);
                 break;
         default:

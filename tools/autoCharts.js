@@ -16,8 +16,39 @@ let colorsTransparent = [
     "rgba(164, 63, 74, .5)"
 ]
 
-let techwords = [
+/* let techwords = [
 "field", "suppression", "temporal mis-match", "utility", "anomalies", "temporal", "losses", "opaque", "fragmentation", "utility", "adapter", "hard-wired", "fusion", "flux fiber", "external", "alignment", "intermittent", "inductance", "power", "index", "storage", "impedance", "capacity", "refraction", "amplitude"
+] */
+
+let techwords = ["CPU usage",
+    "Memory usage",
+    "GPU utilization",
+    "GPU memory",
+    "Network send",
+    "Network receive",
+    "Neuron count",
+    "compression rate",
+    "memory expansion rate",
+    "logic amount",
+    "logic complexity",
+    "CPU cores",
+    "GPU memory",
+    "max. GPU memory bandwith",
+    "GPU tensor cores",
+    "memory usage",
+    "CPU usage",
+    "Memory usage",
+    "GPU utilization",
+    "GPU memory",
+    "FPS",
+    "ms",
+    "RHI",
+    "Texture memory 2D",
+    "Vertex buffer memory",
+    "Structured buffer memory",
+    "Ray Tracing Acceleration Structury memory",
+    "Uniform buffer memory",
+    "Pixel buffer memory",
 ]
 
 // createChart(data[i].width, data[i].height, "canvas-"+createUniqueId(), data[i].target, data[i]);

@@ -22,14 +22,15 @@
     ],
     "windows": [
         {
-            "windowName": "Supervisor",
-            "icon": "scatter_plot",
-            "contentPath": "supervisor/index.html?data=webgl_loader_fbx_PP.html",
-            "x": 12,
-            "y": 5,
-            "w": 1000,
-            "h": 850,
-            "zIndex": 53,
+            "metaTitle": "#14 Servermanager - Auslastungskurven",
+            "windowName": "SERVER MNGR",
+            "icon": "storm",
+            "contentPath": "servermanager/index.html?scene=14",
+            "x": 9,
+            "y": 4,
+            "w": 1200,
+            "h": 666,
+            "zIndex": 60,
             "minimized": false,
             "renderToDom": true
         }
@@ -40,7 +41,7 @@
             "icon": "servermngr.png",
             "x": 1,
             "y": 16,
-            "action": "addWindow('SERVER MNGR', 'code', 'servermanager', 6, 6, 1500,900, false);"
+            "action": "addWindow('SERVER MNGR', 'code', 'servermanager/index.html?scene=14', 6, 6, 1500,900, false);"
         },
         {
             "name": "Neptcode Notebook",
@@ -64,7 +65,7 @@
             "action": ""
         },
         {
-            "name": "HDD",
+            "name": "SSD",
             "icon": "hdd.png",
             "x": 3,
             "y": 4,

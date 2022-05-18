@@ -18,17 +18,6 @@ let data = [
       responsive: true,
       circumference:  180,
       rotation: 270,
-      /* title: {
-        display: true,
-        text: chooseRandomKeys(1, techwords).join(" "),
-        fontColor: 'white',
-      }, */
-      /* legend: {
-        labels: {
-            // This more specific font property overrides the global property
-            fontColor: 'white'
-        }
-      } */
     },
   },
   {
@@ -38,24 +27,28 @@ let data = [
       labels: arrayOfIndexes(15),
       datasets: [
         {
+          label: chooseRandomKeys(1, techwords),
           backgroundColor: chooseRandomKeys(15, colors),
           data: randomIntsBetween(15, 1, 100),
           stack: true,
           barThickness: 25,
         },
         {
+          label: chooseRandomKeys(1, techwords),
           backgroundColor: chooseRandomKeys(15, colors),
           data: randomIntsBetween(15, 1, 100),
           stack: true,
           barThickness: 25,
         },
         {
+          label: chooseRandomKeys(1, techwords),
           backgroundColor: chooseRandomKeys(15, colors),
           data: randomIntsBetween(15, 1, 100),
           stack: true,
           barThickness: 25,
         },
         {
+          label: chooseRandomKeys(1, techwords),
           backgroundColor: chooseRandomKeys(15, colors),
           data: randomIntsBetween(15, 1, 100),
           stack: true,
@@ -74,6 +67,7 @@ let data = [
     data: {
       labels: arrayOfIndexes(120),
       datasets: [{
+        label: chooseRandomKeys(1, techwords),
         fill: true,
         backgroundColor: chooseRandomKeys(1, colorsTransparent),
         tension: 0,
@@ -82,6 +76,7 @@ let data = [
         data: notSoRandomInts(120, 1, 100, 1212, 3, .01, true)
       },
       {
+        label: chooseRandomKeys(1, techwords),
         fill: false,
         tension: .2,
         pointRadius: 0,

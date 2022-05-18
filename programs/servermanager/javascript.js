@@ -7,7 +7,7 @@ async function setup() {
     let os = urlParams.get('os');
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
-    let dataPath = urlParams.get('data');
+    let scene = urlParams.get('scene');
 
     /* let data = urlParams.get('data');
     gebi('dataScript').src = `data/${data || "basic"}.js`; */
@@ -19,9 +19,18 @@ async function setup() {
         addStylesheet("darkMode.css");
     }
 
+    // Overwrite generic techwords in autoChart.js for this usecase
+    techwords = ["CPU usage",
+        "Memory usage",
+        "GPU utilization",
+        "GPU memory",
+        "Network send",
+        "Network receive"
+    ];
+
     // Add new script tag with src to head
     let script = document.createElement('script');
-    script.src = `data/${dataPath || "basic"}.js`;
+    script.src = `data/${scene || "basic"}.js`;
     // Wait for additional js to load until commencing setup process
     script.setAttribute('onload', 'setup2()');
     document.getElementsByTagName('head')[0].appendChild(script);
@@ -29,6 +38,18 @@ async function setup() {
     // Init syntax highlighting
     hljs.initHighlightingOnLoad();
     hljs.configure({useBR: true});
+
+    switch(scene) {
+        case "14":
+            gebi('target2').innerHTML = `
+            <img class="maxHeight" src="data/floorplan-14.svg">
+            <div class="fixed code bottom blackBgTransparent left padding1">
+            <i class="material-icons blue small valign">business</i>
+            Mona lisa blocks<br><span class="grey">Node 02-001 (mlve)</span>
+            </div>
+            `
+            break;
+    }
 }
 
 // Commence setup process
@@ -97,6 +118,9 @@ function switchTabs(index) {
 
     // re-render to animate again
     createAllCharts();
+    
+    // Scroll to top
+    tabs[index-1].scrollTop=0;
 }
 
 

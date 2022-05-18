@@ -24,7 +24,7 @@
         {
             "windowName": "Server MNGR",
             "icon": "storm",
-            "contentPath": "servermanager",
+            "contentPath": "servermanager/index.html?scene=14",
             "x": 9,
             "y": 4,
             "w": 1200,
