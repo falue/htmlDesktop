@@ -30,6 +30,10 @@ function setupScene(scene) {
         case "42":
                 switchTabs(4);
                 break;
+
+        case "67":
+            switchTabs(4);
+            break;
         default:
             switchTabs(1);
             break;

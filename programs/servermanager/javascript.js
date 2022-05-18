@@ -49,6 +49,15 @@ async function setup() {
             </div>
             `
             break;
+        case "67":
+            gebi('target2').innerHTML = `
+            <img class="maxHeight" src="data/floorplan-67.svg">
+            <div class="fixed code bottom blackBgTransparent left padding1">
+            <i class="material-icons blue small valign">business</i>
+            Mona lisa blocks<br><span class="grey">Node 02-001 (mlve)</span>
+            </div>
+            `
+            break;
     }
 }
 
