@@ -22,34 +22,10 @@
     ],
     "windows": [
         {
-            "windowName": "Server MNGR",
-            "icon": "storm",
-            "contentPath": "servermanager/index.html?scene=14",
-            "x": 9,
-            "y": 4,
-            "w": 1200,
-            "h": 810,
-            "zIndex": 60,
-            "minimized": false,
-            "renderToDom": false
-        },
-        {
+            "metaTitle": "#?? - Neptcode Notebook - basic",
             "windowName": "Neptcode Notebook",
             "icon": "code",
             "contentPath": "neptcode/index.html?data=basic",
-            "x": 5,
-            "y": 5,
-            "w": 1100,
-            "h": 700,
-            "zIndex": 61,
-            "minimized": false,
-            "renderToDom": false
-        },
-        {
-            "metaTitle": "#93 - bash console - Restart mona lisa",
-            "windowName": "Bash console",
-            "icon": "code",
-            "contentPath": "bash/index.html?script=93",
             "x": 5,
             "y": 5,
             "w": 1100,
