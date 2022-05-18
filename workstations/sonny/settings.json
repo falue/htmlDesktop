@@ -96,19 +96,6 @@
             "zIndex": 53,
             "minimized": false,
             "renderToDom": false
-        },
-        {
-            "metaTitle": "#42 - Supervisor - Wildschwein",
-            "windowName": "Supervisor",
-            "icon": "scatter_plot",
-            "contentPath": "supervisor/index.html?data=webgl_loader_fbx_PP.html&scene=42",
-            "x": 12,
-            "y": 5,
-            "w": 1000,
-            "h": 850,
-            "zIndex": 53,
-            "minimized": false,
-            "renderToDom": false
         }
     ],
     "shortcuts": [

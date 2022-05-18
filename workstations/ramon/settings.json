@@ -3,7 +3,7 @@
         "systemColor": "#2f3643",
         "desktopColor": "#1d1b1b",
         "desktopImg": "os/windows/desktop.jpg",
-        "os": "windows",
+        "os": "spa",
         "darkMode": true,
         "username": "ramon-NBV01",
         "password": "",
@@ -21,6 +21,19 @@
         "volume_mute"
     ],
     "windows": [
+        {
+            "metaTitle": "#42 - Supervisor - Wildschwein",
+            "windowName": "Supervisor",
+            "icon": "scatter_plot",
+            "contentPath": "supervisor/index.html?data=webgl_loader_fbx_PP.html&scene=42",
+            "x": 12,
+            "y": 5,
+            "w": 1300,
+            "h": 850,
+            "zIndex": 53,
+            "minimized": false,
+            "renderToDom": true
+        }
     ],
     "shortcuts": [
         {

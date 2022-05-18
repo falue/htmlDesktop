@@ -377,6 +377,7 @@ function iconDecider(filename, folderContentAmount) {
 
 
 function forceType(event, element, text, endAction = false, waitForEnter = false) {
+  // FIXME: if text to type contains ' it breaks
   // If its an input or textarea, and possibly empty, .value is a string nontheless
   let currentText = typeof(element.value) === "string" ? element.value : element.innerHTML ? element.innerHTML : "";
   let index = currentText.length;

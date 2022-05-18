@@ -73,7 +73,7 @@
       </header>
 
       <div class="gridBox  windowmenu centerContentYRight noPadding bgDark greyBorderLightBottom" style="grid-column: col 8 / span 1; grid-row: row 3;">
-          <i class="material-icons medium valign marginX25 white">expand_more</i>
+          <i class="material-icons medium valign marginX25 blue">expand_more</i>
           <i class="material-icons small valign grey">wifi_channel</i>
           <i class="material-icons small valign grey">rule_folder</i>
           <i class="material-icons small valign grey">candlestick_chart</i>
@@ -200,9 +200,9 @@
             <iframe data-src=""></iframe>
           </div>
           <div class="gridBox noPadding overflowHidden" style="grid-column: col 7 / span 2; grid-row: row 1;">
-            <div class="settingsBar bgDark greyBorderLightBottom"><i class="material-icons valign small white">expand_more</i> Import</div>
-            <div class="settingsBar bgDark greyBorderLightBottom"><i class="material-icons valign small white">expand_more</i> Export</div>
-            <div class="settingsBar bgDark"><i class="material-icons valign small white">expand_less</i> Latest Log</div>
+            <div class="settingsBar bgDark greyBorderLightBottom"><i class="material-icons valign small blue">expand_more</i> Import</div>
+            <div class="settingsBar bgDark greyBorderLightBottom"><i class="material-icons valign small blue">expand_more</i> Export</div>
+            <div class="settingsBar bgDark"><i class="material-icons valign small blue">expand_less</i> Latest Log</div>
             <div class="padding05 bgLight">
               <code class=" nobr small">
                 [05-01-22 00:25:24.385] LOG  : General, 1641338724385> OpenGL version: 2.1 Metal - 71.7.1.<br>
@@ -226,7 +226,20 @@
 [00:25:26.657] LOG  : General, 1641338726657> 1641338726657 znet: Java_zombie_core_znet_SteamWorkshop_n_1Init.<br>
               </code>
             </div>
-            <div class="settingsBar bottom bgDark greyBorderLightTop"><i class="material-icons valign small white">expand_more</i> Console</div>
+            <div class="bottom maxWidth">
+              <div class="settingsBar bgDark greyBorderLightTop" onclick="toggle('islandOpenNewWindow'); swapClasses('expandTheIsland', 'rotate180'); "><i id="expandTheIsland" class="material-icons valign small blue">expand_more</i> Landscape Context</div>
+              <div id="islandOpenNewWindow" class="bgLight greyBorderLightTop hide padding50" onclick="parent.addWindow('Supervisor - Context', 'scatter_plot', 'threejs/player/ELCH_FullIsland_SZ42.html', 5,5,800,550);">
+                <span class="small">Landscape: TheIslandv2.fbx</span><br>
+                <span class="small">Agent(s): 1</span><br>
+                <span class="small">Vertex: 1.2m</span><br>
+                <div class="maxWidth centerContent paddingY50 radius3">
+                  <button>
+                    <i class="material-icons valign small blue">open_in_new</i> Open context
+                  </button>
+                </div>
+              </div>
+              <div class="settingsBar bgDark greyBorderLightTop"><i class="material-icons valign small blue">expand_more</i> Console</div>
+            </div>
           </div>
           <div class="gridBox noPadding overflowHidden blackBg " style="grid-column: col 7 / span 2; grid-row: row 2;">
             <iframe data-src="../bash/index.html?workstation=sonny&darkMode=true&script=supervisor"></iframe>

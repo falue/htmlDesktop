@@ -53,7 +53,7 @@
 				left: 0;             /* make our position the top left of the container */
 				top: 0;
 				color: white;
-				display: none;
+			
 				font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 			}
 			#labels>div {
@@ -102,16 +102,16 @@
 
 	<body>
 		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> ELCH Sz 42 Test<br />
-			BOAR
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> ELCH Sz 34 Test<br />
+			The Island Map
 		</div>
 
 		<div id="labels"></div>
 		<div id="vitalics">
-			<div>Health</div> <progress id="vitalHealth" class="" min='0' max='100' value='95'></progress><br>
-			<div>Stamina</div> <progress id="vitalStamina" class="normal" min='0' max='100' value='77'></progress><br>
-			<div>Thirst</div> <progress id="vitalThirst" class="medium" min='0' max='100' value='50'></progress><br>
-			<div>Exhaustion</div> <progress id="vitalExhaustion" class="medium" min='0' max='100' value='55'></progress>
+			<div>Health</div> <progress id="vitalHealth" class="low" min='0' max='100' value='8'></progress><br>
+			<div>Stamina</div> <progress id="vitalStamina" class="low" min='0' max='100' value='3'></progress><br>
+			<div>Thirst</div> <progress id="vitalThirst" class="medium" min='0' max='100' value='12'></progress><br>
+			<div>Exhaustion</div> <progress id="vitalExhaustion" class="low" min='0' max='100' value='4'></progress>
 		</div>
 
 		<!-- Import maps polyfill -->
@@ -135,23 +135,28 @@
 			import { GUI } from './jsm/libs/lil-gui.module.min.js';
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { FBXLoader } from './jsm/loaders/FBXLoader.js';
+		/*	import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
+			import { RenderPass } from './jsm/postprocessing/RenderPass.js';*/
+
 
 			let camera, scene, renderer, stats;
+
 
 			const clock = new THREE.Clock();
 			const effectController = {"SlowMo" :0};
 
+
+
 			// FPS stats true or false
 			const enableStats = false;
 
+			let mixer;
 			
-			let mixer, mixer2, mixer3, mixer4, mixer6;
+		/*	let mixer, mixer2, mixer3, mixer4, mixer6;*/
 			
 
 			// Reihenfolge bestimmt welches label wo ist
-			let labels = ["ammo", "ammo", "fire", "agent", "boar", "grenade"];
-
-			let explosionStage = 'idle';
+			let labels = ["&times;"];
 
 
 			init();
@@ -162,22 +167,22 @@
 				const container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.01, 15000 );
-				camera.position.set( 500, 2000, 2000 );
-		
+				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 100, 15000 );
+				camera.position.set( 1000,4000,1500 );
+
 
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0x000000 );
-				scene.fog = new THREE.Fog( 0x333333, 100, 5000 );
+				scene.fog = new THREE.Fog( 0x000000, 2000, 11000 );
 
 				// lights
 
-				const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444 );
-				hemiLight.position.set( 0, 2000, 0 );
+				const hemiLight = new THREE.HemisphereLight( 0x1d33ad, 0x1d33ad, 0.8 );
+				hemiLight.position.set( 1000, 2000, 1000 );
 				scene.add( hemiLight );
 
-				const dirLight = new THREE.DirectionalLight( 0xffffff );
-				dirLight.position.set( 0, 2000, 1000 );
+				const dirLight = new THREE.DirectionalLight( 0xffffff, 2 );
+				dirLight.position.set( -1000, 500, -1000 );
 				dirLight.castShadow = true;
 				dirLight.shadow.camera.top = 180;
 				dirLight.shadow.camera.bottom = - 100;
@@ -185,31 +190,38 @@
 				dirLight.shadow.camera.right = 120;
 				scene.add( dirLight );
 
+				//Textures
+
+				const texture = new THREE.TextureLoader().load( 'textures/elch/Plane_Color_0.jpg' );
+				const watertex = new THREE.TextureLoader().load ('textures/elch/waternormals.jpg');
+				watertex.wrapS = THREE.RepeatWrapping;
+				watertex.wrapT = THREE.RepeatWrapping;
+				watertex.repeat.set(12,12);
+
+				const landdisp = new THREE.TextureLoader().load( 'textures/elch/landDiffusion.jpg');
+
+
 				// materials
 
-				const material1 = new THREE.MeshPhysicalMaterial( {	color: 0x4d4732, metallness: 0, wireframe:true } );
-				const charactermaterial = new THREE.MeshPhysicalMaterial( {	color: 0xff6600, metallness: 0, wireframe:false} );
-				const charactermaterial2 = new THREE.MeshPhysicalMaterial( {	color: 0x6666ff, metallness: 0, wireframe:false} );
-				const plantsmaterial = new THREE.MeshPhysicalMaterial( {	color: 0x42803e, metallness: 0, wireframe:true } );
-				const firematerial = new THREE.MeshPhysicalMaterial( {color:0xdbfc03, wireframe:true});
+				const landmaterial = new THREE.MeshPhongMaterial( {	map: texture, shininess: 0, bumpMap:landdisp, bumpScale:10, transparent:false } );
+				const charactermaterial = new THREE.MeshBasicMaterial( {	color: 0xff6600, metallness: 0, wireframe:false} );
+				const charactermaterial2 = new THREE.MeshPhysicalMaterial( { color: 0x6666ff, metallness: 0, wireframe:false} );
+				const watermaterial = new THREE.MeshPhongMaterial( {	color: 0x28559c, map:watertex, normalMap:watertex,  metallness: 0, opacity:0.7, transparent:true } );
+				const groundmaterial = new THREE.MeshPhongMaterial( { color: 0x797d3d, shininess:0, });
 				const boundingboxmaterial = new THREE.MeshPhysicalMaterial( {color: 0xffffff, metallness:1, wireframe:true});
 	
+				watermaterial.normalScale.set(0.1,0.1);
 			
-				// Scenery
+
+				// Land
 
 				const loader = new FBXLoader();
-				loader.load( 'models/fbx/boar_Land2.fbx', function ( object ) {
-					mixer4 = new THREE.AnimationMixer( object );
-
-					mixer4.timeScale = 0;
-
-					const action4 = mixer4.clipAction( object.animations[ 0 ] );
-					action4.play();
-	
+				loader.load( 'models/fbx/Fullisland.fbx', function ( object ) {
+			
 					object.traverse( function ( child ) {
 
 						if ( child.isMesh ) {
-							child.material = material1;
+							child.material = landmaterial;
 							child.frustumCulled = false;
 
 						}
@@ -219,13 +231,34 @@
 					
 				} );
 
+
+				//Water
+
 				const loader1 = new FBXLoader();
-				loader1.load( 'models/fbx/boar_Plants.fbx', function ( object3 ) {
+				loader1.load( 'models/fbx/Fullwater.fbx', function ( object1 ) {
+				
+					object1.traverse( function ( child ) {
+
+						if ( child.isMesh ) {
+						child.material = watermaterial;
+
+						}
+					} );
+					
+					scene.add( object1 );
+					
+				} );
+
+				//Waterground
+
+				
+				const loader3 = new FBXLoader();
+				loader3.load( 'models/fbx/Fullisland_ground.fbx', function ( object3 ) {
 				
 					object3.traverse( function ( child ) {
 
 						if ( child.isMesh ) {
-						child.material = plantsmaterial;
+						child.material = groundmaterial;
 
 						}
 					} );
@@ -235,100 +268,36 @@
 				} );
 
 
-				//Fire
+/*
+				// LINE1
+				const curve = new THREE.CubicBezierCurve3(
+					new THREE.Vector3( -762, 91,1473 ),
+					new THREE.Vector3( -656, 143, 709),
+					new THREE.Vector3( -674, 125, 1046 ),
+					new THREE.Vector3( -225 , 174, 369 ),
+					new THREE.Vector3( 150, 162, 422 ),
+					new THREE.Vector3( 0,0,0)
+				);
 
-				const firegeometry = new THREE.ConeGeometry( 80, 80, 4, 1 );
-				const fire = new THREE.Mesh( firegeometry, firematerial );
-				scene.add( fire );
-				fire.position.x = 100;
-				fire.position.y = 70;
+				const points = curve.getPoints( 50 );
+				const line1geometry = new THREE.BufferGeometry().setFromPoints( points );
 
-				//Animation 1
+				const line1material = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth:1 } );
 
-				const loader2 = new FBXLoader();
-				loader2.load('models/fbx/bonesTest5Out_1.fbx', function ( object2 ) {
+				// Create the final object to add to the scene
+				const curveObject = new THREE.Line( line1geometry, line1material );
+				scene.add(curveObject);
+							
+*/
 
-					mixer = new THREE.AnimationMixer( object2 );
+				const loader6 = new FBXLoader();
+				loader6.load('models/fbx/Fullisland_agent2.fbx', async function ( object6 ) {
 
-					//Animationsgeschwindigkeit am Anfang
+					mixer = new THREE.AnimationMixer( object6 );
 					mixer.timeScale = 0;
 					
 
-					const action = mixer.clipAction( object2.animations[ 0 ] );
-					action.play();
-					
-					object2.traverse( function ( child ) {
-						if ( child.isMesh ) {
-							
-							child.material = charactermaterial;
-							child.frustumCulled = false;
-							
-						}
-					
-					} );
-					scene.add( object2 );
-				});
-				
-				//Animation 2
-
-				const loader3 = new FBXLoader();
-				loader3.load('models/fbx/bonesTest5Out_2.fbx', function ( object5 ) {
-
-					mixer2 = new THREE.AnimationMixer( object5 );
-
-					//Animationsgeschwindigkeit am Anfang
-					mixer2.timeScale = 0;
-					
-
-					const action2 = mixer2.clipAction( object5.animations[ 0 ] );
-					action2.play();
-					
-					object5.traverse( function ( child ) {
-						if ( child.isMesh ) {
-							
-							child.material = charactermaterial2;
-							child.frustumCulled = false;
-							
-						}
-					
-					} );
-					scene.add( object5 );
-				});
-
-				//Explosion
-				
-				const loader4 = new FBXLoader();
-				loader4.load('models/fbx/boar_explosion.fbx', function ( object4 ) {
-
-					mixer3 = new THREE.AnimationMixer( object4 );
-
-					//Animationsgeschwindigkeit am Anfang
-					mixer3.timeScale = 0;
-					
-
-					const action3 = mixer3.clipAction( object4.animations[ 0 ] );
-					action3.play();
-					
-					object4.traverse( function ( child ) {
-						if ( child.isMesh ) {
-							
-							child.material = firematerial;
-							child.frustumCulled = false;
-							
-						}
-					
-					} );
-					scene.add( object4 );
-				});
-
-				const loader6 = new FBXLoader();
-				loader6.load('models/fbx/boar_boundingbox.fbx', async function ( object6) {
-
-					mixer6 = new THREE.AnimationMixer( object6 );
-					mixer6.timeScale = 0;
-					
-
-					const action6 = mixer6.clipAction( object6.animations[ 0 ] );
+					const action6 = mixer.clipAction( object6.animations[ 0 ] );
 					action6.play();
 					
 					object6.traverse( function ( child ) {
@@ -355,7 +324,7 @@
 					// Make diov for every label
 					for(let i = 0; i < labels.length; i++) {
 						let elem = document.createElement('div');
-						elem.textContent = labels[i];
+						elem.innerHTML = labels[i];
 						elem.id = "label-"+i;
 						labelContainerElem.prepend(elem);
 					}
@@ -366,11 +335,12 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				container.appendChild( renderer.domElement );
+				
 
 				const controls = new OrbitControls( camera, renderer.domElement );
 				
 				//Mittelpunkt von Kamerasicht
-				controls.target.set( -1200, -400, 0 );
+				controls.target.set( 0,0,0 );
 				controls.update();
 
 				const gui = new GUI( {} );
@@ -417,13 +387,13 @@
 					}
 				);
 
-				//Checkbox Boundingbox
+				/*//Checkbox Boundingbox
 				gui.add({"Boundingbox": false}, "Boundingbox").onChange(
 					function (value) {
 						showBoundingbox(value);
 						showTextLabels(value);
 					}
-				);
+				);*/
 
 				window.addEventListener( 'resize', onWindowResize );
 
@@ -432,6 +402,8 @@
 					stats = new Stats();
 					container.appendChild( stats.dom );
 				}
+
+				
 
 			}
 
@@ -449,10 +421,10 @@
 
 			function modifyTimeScale( speed ) {
 				mixer.timeScale = speed;
-				mixer2.timeScale = speed;
+			/*	mixer2.timeScale = speed;
 				mixer3.timeScale = speed;
 				mixer4.timeScale = speed;
-				mixer6.timeScale = speed;
+				mixer6.timeScale = speed;*/
 			}
 			
 
@@ -473,7 +445,7 @@
 				// scene.children[5].visible = visibility;
 
 				// Search object scene.children where name is 'boundingbox'
-				scene.children[scene.children.map(function(e) { return e.name; }).indexOf('boundingbox')].visible = visibility;
+				scene.children[scene.children.map(function(e) { return e.name; }).indexOf('agent')].visible = false;
 			}
 
 			function showTextLabels(value) {
@@ -494,15 +466,17 @@
 				const delta = clock.getDelta();
 
 				if ( mixer ) mixer.update( delta );
-				if ( mixer2 ) mixer2.update( delta );
+			/*	if ( mixer2 ) mixer2.update( delta );
 				if ( mixer3 ) mixer3.update( delta );
 				if ( mixer4 ) mixer4.update( delta );
-				if ( mixer6 ) mixer6.update( delta );
+				if ( mixer6 ) mixer6.update( delta );*/
 
-				renderer.render( scene, camera ) ;
+			//Wasser bewegt sich
+			/*	object1.watermaterial.normalMap.offset.x = time*0.002;*/
+
+				renderer.render( scene, camera );
 
 				updateLabels();
-				updateHealth();
 
 				if(enableStats) {
 					stats.update();
@@ -520,31 +494,9 @@
 				}
 			}
 
-			function updateHealth() {
-				let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('Explosions')];
-				let explosion = objectToFollow?.children[0].scale.x;
-				if((explosion > .25 || explosion == 0) && explosionStage == 'idle') {
-					// is exploding - change stats once
-					document.getElementById('vitalHealth').value=2;
-					document.getElementById('vitalHealth').classList.add('low');
-					document.getElementById('vitalStamina').value=2;
-					document.getElementById('vitalStamina').classList.add('low');
-					document.getElementById('vitalThirst').value=2;
-					document.getElementById('vitalThirst').classList.add('low');
-					document.getElementById('vitalExhaustion').value=2;
-					document.getElementById('vitalExhaustion').classList.add('low');
-					explosionStage = 'exploding';
-				} else if(explosion <= .25 && explosion > 0 && explosionStage === 'exploding') {
-					// is not exploding - reset to initial values once
-					document.getElementById('vitalHealth').value=95;
-					document.getElementById('vitalHealth').classList.remove('low');
-					document.getElementById('vitalStamina').value=77;
-					document.getElementById('vitalStamina').classList.remove('low');
-					document.getElementById('vitalThirst').value=50;
-					document.getElementById('vitalThirst').classList.remove('low');
-					document.getElementById('vitalExhaustion').value=55;
-					document.getElementById('vitalExhaustion').classList.remove('low');
-					explosionStage = 'idle';
+			document.onkeyup = function (f) {
+				if (f.key === "p") {
+					scene.background = new THREE.Color( 0x000000 );
 				}
 			}
 
@@ -555,7 +507,7 @@
 					const elem = document.getElementById('label-'+i);
 					
 					// get the position of the center of the cube
-					let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('boundingbox')];
+					let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('agent')];
 					if(objectToFollow) {  // Objects may not yet exist
 						objectToFollow.children[i].updateWorldMatrix(true, false);
 						objectToFollow.children[i].getWorldPosition(tempV);

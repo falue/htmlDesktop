@@ -1,7 +1,7 @@
 # Define all available workstations here
 
 workstation=sonny;spa
-workstation=ramon;windows
+workstation=ramon;spa
 workstation=lydia;spa
 workstation=spital;windows
 workstation=monalisa;spa
