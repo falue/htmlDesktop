@@ -298,7 +298,7 @@ function saveAllWindows() {
     // Get original positions and data & add to object
     windows.push({
       windowName: gebi('title-' + windowData.id).innerHTML,
-      icon: data[1],
+      icon: gebi(windowData.id).getElementsByClassName('windowTitle')[0].getElementsByTagName('i')[0].innerHTML,
       contentPath: data[2],
       x: parseInt(windowData.style.left),
       y: parseInt(windowData.style.top),

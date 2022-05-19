@@ -166,6 +166,9 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   // Display overlay in all other windows that youre able to click on them later
   showClass('windowManagerOverlay');
 
+  // Save for alter - used if URL is starts with http
+  let isDirectUrl = contentPath.includes('://') ? contentPath : false;
+
   let id = "window-" + createUniqueId();
   recentZIndex++;
   // Create main div and resize edges
@@ -233,6 +236,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   let windowIcon = document.createElement("i");
   windowIcon.setAttribute("class", "material-icons small");
   windowIcon.appendChild(document.createTextNode(icon));
+  windowIcon.setAttribute("oncontextmenu", `epD(event); setWindowIcon('${id}')`);
   windowTitle.appendChild(windowIcon);
 
   let windowTitleText = document.createElement("span");
@@ -290,7 +294,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     parameters ? "&" : "",
     parameters
   ].join("");
-  content.setAttribute("src", srcIframe);
+  content.setAttribute("src", isDirectUrl ? isDirectUrl : srcIframe);
   windowContainer.appendChild(content);
 
   // For some godforsaken reason, i cannot parse .html files OR files with no extension,
@@ -462,7 +466,19 @@ async function setWindowTitle(id) {
   let currentWindowTitleElement = gebi(id);
   let currentTitle = currentWindowTitleElement.innerHTML;
   let newTitle = await showDialog("Set new window title", "", false, currentTitle);
-  if(newTitle) currentWindowTitleElement.innerHTML = newTitle != "~EMPTY" ? newTitle : '';
+  if(newTitle) {
+    currentWindowTitleElement.innerHTML = newTitle != "~EMPTY" ? newTitle : '';
+  }
+  return newTitle;
+}
+
+async function setWindowIcon(id) {
+  let currentWindowIcon = gebi(id).getElementsByClassName('windowTitle')[0].getElementsByTagName('i')[0];
+  let newIcon = await parent.showDialog("Set new window icon", "See <a href='https://fonts.google.com/icons?selected=Material+Icons' target='_blank'>here</a> for all icons. Copy the plain text variable.", false, currentWindowIcon.innerHTML);
+  if(newIcon && newIcon != "~EMPTY") {
+    currentWindowIcon.innerHTML = newIcon;
+  } 
+  return newIcon;
 }
 
 function closeWindow(id) {
