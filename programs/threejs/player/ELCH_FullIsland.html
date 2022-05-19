@@ -182,7 +182,7 @@
 				// materials
 
 				const landmaterial = new THREE.MeshPhongMaterial( {	map: texture, shininess: 0, bumpMap:landdisp, bumpScale:10, transparent:false } );
-				const charactermaterial = new THREE.MeshBasicMaterial( {	color: 0xff6600, metallness: 0, wireframe:false} );
+				const charactermaterial = new THREE.MeshBasicMaterial( {	color: 0xff6600, metallness: 0, wireframe:false, fog:false} );
 				const charactermaterial2 = new THREE.MeshPhysicalMaterial( { color: 0x6666ff, metallness: 0, wireframe:false} );
 				const watermaterial = new THREE.MeshPhongMaterial( {	color: 0x28559c, map:watertex, normalMap:watertex,  metallness: 0, opacity:0.7, transparent:true } );
 				const groundmaterial = new THREE.MeshPhongMaterial( { color: 0x797d3d, shininess:0, });
@@ -512,9 +512,7 @@
 					const elem = document.getElementById('label-'+i);
 					
 					// get the position of the center of the cube
-					// 
-					// let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('agent')];
-					let objectToFollow = scene.children[6];
+					let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('agent')];
 					if(objectToFollow) {  // Objects may not yet exist
 						objectToFollow.children[i].updateWorldMatrix(true, false);
 						objectToFollow.children[i].getWorldPosition(tempV);
@@ -527,12 +525,6 @@
 						// convert the normalized position to CSS coordinates
 						const x = (tempV.x *  .5 + .5) * renderer.domElement.clientWidth;
 						const y = (tempV.y * -.5 + .5) * renderer.domElement.clientHeight;
-
-						/* if(parseInt(objectToFollow.children[i].position.x) == -1261) {
-							elem.style.display = 'none';
-						} else {
-							elem.style.display = 'block';
-						} */
 						
 						// move the elem to that position
 						// elem.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
