@@ -41,7 +41,7 @@ function setupScene(scene) {
 
         case "67":
             // TYPING, COAST & CHAMPAGNE
-            threejsData += "ELCH_beach_SZ67.html";
+            threejsData += "ELCH_SZ67.html";
             switchTabs(4);
             break;
 
