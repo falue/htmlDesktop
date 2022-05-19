@@ -25,7 +25,7 @@
             "metaTitle": "#42 - Supervisor - Wildschwein",
             "windowName": "Supervisor",
             "icon": "scatter_plot",
-            "contentPath": "supervisor/index.html?data=webgl_loader_fbx_PP.html&scene=42",
+            "contentPath": "supervisor/index.html?scene=42",
             "x": 12,
             "y": 5,
             "w": 1300,
@@ -51,7 +51,7 @@
             "metaTitle": "#67B - Supervisor - Beach & Champagne",
             "windowName": "Supervisor",
             "icon": "scatter_plot",
-            "contentPath": "supervisor/index.html?data=ELCH_beach_SZ67.html&scene=67",
+            "contentPath": "supervisor/index.html?scene=67",
             "x": 14,
             "y": 7,
             "w": 1500,
@@ -95,7 +95,7 @@
             "icon": "supervisor.png",
             "x": 2,
             "y": 40,
-            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?scene=67&data=ELCH_beach_SZ67.html', 14, 7, 1500,900, false);"
+            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?scene=67', 14, 7, 1500,900, false);"
         }
     ],
     "actions": [

@@ -55,7 +55,7 @@
             "icon": "supervisor.png",
             "x": 2,
             "y": 40,
-            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?data=webgl_loader_fbx_PP.html', 6, 6, 1500,900, false);"
+            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor', 6, 6, 1500,900, false);"
         },
         {
             "name": "Trash",

@@ -94,7 +94,7 @@
             "icon": "supervisor.png",
             "x": 2,
             "y": 40,
-            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?data=webgl_loader_fbx_PP.html&scene=41', 12, 6, 1200,900, false);"
+            "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?scene=41', 12, 6, 1200,900, false);"
         },
         {
             "name": "Trash",

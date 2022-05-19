@@ -1,4 +1,4 @@
-let threejsData;
+let threejsData = `../threejs/player/`;
 let currentTab = 1;
 
 async function setup() {
@@ -11,14 +11,17 @@ async function setup() {
     
     // Set generic system fonts
     setSystemFont(os);
-
-    threejsData = `../threejs/player/${urlParams.get('data') || "webgl_loader_fbx_PP.html"}`;
-    
     setupScene(scene);
 }
 
 function setupScene(scene) {
     switch(scene) {
+        case "34":
+            threejsData = threejsData + "ELCH_FullIsland.html";  // PATH STUFF
+            cl(threejsData);
+            switchTabs(4);
+            break;
+
         case "41":
             show(`scene41`);  // scene number
             switchTabs(2);
@@ -27,14 +30,24 @@ function setupScene(scene) {
                 createChart("100%", data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
             }
             break;
-        case "42":
-                switchTabs(4);
-                break;
 
-        case "67":
+        case "42":
+            // BOAR
+            threejsData += "webgl_loader_fbx_PP.html";
+            // ISLAND DROWNING - opens in seperate window:
+            // threejsData += "ELCH_FullIsland_SZ42.html";
             switchTabs(4);
             break;
+
+        case "67":
+            // TYPING, COAST & CHAMPAGNE
+            threejsData += "ELCH_beach_SZ67.html";
+            switchTabs(4);
+            break;
+
         default:
+            // BOAR DEFAULT
+            threejsData += "webgl_loader_fbx_PP.html";
             switchTabs(1);
             break;
     }
