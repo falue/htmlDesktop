@@ -412,7 +412,7 @@
               <li class="relative">
                 <div class="tooltip" data-title="Add 4 random icons to desktop [d]" onclick="clutterDesktop(4);">
                   <i class="material-icons blue small">scatter_plot</i>
-                  Clutter desktop
+                  Clutter shortcuts
                 </div>
                 <div class="right top absolute nudge-y-12">
                   <span class="tooltip" data-title="Tidy up" onclick="tidyUpShortcuts();">
@@ -430,13 +430,18 @@
               <li class="relative">
                 <div class="tooltip" data-title="Open a random program [w]" onclick="startDefaultProgram();">
                   <i class="material-icons blue small">dynamic_feed</i>
-                  Clutter screen
+                  Clutter windows
                 </div>
                 <div class="right top absolute nudge-y-12">
                   <span class="tooltip" data-title="Remove all windows" onclick="closeAllWindows();">
                     <i class="material-icons blueBg small padding25">close</i>
                   </span>
                 </div>
+              </li>
+
+              <li class="tooltip" data-title="Plain window with absolute (http://&hellip;) or relative URL" onclick="hide('actionMenu'); addWindow('New Window', 'grid_view', 'magic', 12, 6, 1200,900, false);">
+                <i class="material-icons blue small">auto_fix_normal</i>
+                Add custom URL window
               </li>
 
               <!-- System emssages -->
