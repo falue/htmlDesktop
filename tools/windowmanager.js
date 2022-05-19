@@ -167,7 +167,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   showClass('windowManagerOverlay');
 
   // Save for alter - used if URL is starts with http
-  let isDirectUrl = contentPath.includes('://') ? contentPath : false;
+  let isDirectUrl = contentPath.includes('://') || contentPath.includes('localhost:') ? contentPath : false;
 
   let id = "window-" + createUniqueId();
   recentZIndex++;
