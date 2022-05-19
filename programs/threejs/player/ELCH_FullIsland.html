@@ -354,10 +354,10 @@
 				// Slider: Fast-reverse, reverse, pause, play, f-forward
 				gui.add({"Scrubbing": 0}, 'Scrubbing', -3, 3).step(1).onChange(
 					function (value) {
-						if(value === -2) value = -5;  // Make -2 go faster
-						if(value === 2) value = 5;    // Make  2 go faster
-						if(value === -3) value = -10;  // Make -3 go brrr
-						if(value === 3) value = 10;    // Make  3 go brrr
+						if(value === -2) value = -15;  // Make -2 go faster
+						if(value === 2) value = 15;    // Make  2 go faster
+						if(value === -3) value = -50;  // Make -3 go brrr
+						if(value === 3) value = 50;    // Make  3 go brrr
 						modifyTimeScale(value);
 					}
 				);
