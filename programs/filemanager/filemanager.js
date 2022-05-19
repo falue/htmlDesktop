@@ -218,7 +218,7 @@ function updateFolderContent(path, folderContent) {
         // Set actions ondblclick
         if(action && action !== "action") {
             // An action is defined manually in folders.json
-            fileTile.setAttribute("ondblclick", action);
+            fileTile.setAttribute("ondblclick", "(async () => {" + action + "})()");
         } else {
             // On DBLclikc: open programs
             if(["jpg","jpeg","png","tiff","psd","pdf","mp4","avi","mpeg","mkv"].includes(extension)) {
