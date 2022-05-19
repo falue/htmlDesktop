@@ -1,0 +1,40 @@
+# ------- setup
+# bashProfileName - plain text or html
+<span class='green'>rm</span>@<span class='red'>monalisa2</span>:<span class='grey'>~</span> $ 
+# -------
+# NOTE: If you want to have [ or ] in text, use \[ or \]
+
+# ELCH
+[bashProfile] [autoType, "cp mona_lisa-auth.sh mnt/block01/node001/mona_lisa-auth-test.sh"]
+[autoType, "Permission denied."]
+[bashProfile] [forceType, "sudo !!", 2]
+[bashProfile] [forceType, "touch mnt/block01/node001/mona_lisa-auth.sh"]
+[bashProfile] [forceType, "ls -l -a"]
+[bashProfile] [forceType, "cd mnt/block01/node001"]
+[bashProfile] [forceType, "sudo chmod +x .mona_lisa-auth-test.sh", 1]
+[bashProfile] [forceType, "bash .mona_lisa-auth-test.sh"] [sleep, 444]
+[autoType, "Testing.."] [sleep, 444]
+[autoType, "Success."]
+[bashProfile] [forceType, "ls"]
+[bashProfile] [forceType, "python.retractAll.py"] [sleep, 111]
+[bashProfile] [forceType, "top"] [sleep, 666]
+[bashProfile] [forceType, "sudo mona_lisa -u -i -F", 1] [sleep, 1000]
+[autoType, "Fetching 0%   .                  | 1.256", 999]
+[autoType, "Fetching 6%   ..                 | 4.514", 125]
+[autoType, "Fetching 18%  ....               | 4.772", 333]
+[autoType, "Fetching 24%  .....              | 5.03", 250]
+[autoType, "Fetching 30%  ......             | 5.288", 666]
+[autoType, "Fetching 42%  ........           | 5.546", 125]
+[autoType, "Fetching 48%  .........          | 5.804", 250]
+[autoType, "Fetching 54%  ..........         | 6.062", 222]
+[autoType, "Fetching 60%  ...........        | 6.32", 124]
+[autoType, "Fetching 66%  ............       | 6.578", 100]
+[autoType, "Fetching 72%  .............      | 6.836", 125]
+[autoType, "Fetching 84%  ...............    | 7.094", 333]
+[autoType, "Fetching 90%  ................   | 7.352", 222]
+[autoType, "Fetching 96%  .................  | 7.61", 250]
+[autoType, "Fetching 100% .................. | 7.868", 200]
+[goto:nobr, 7]
+
+# Use EXIT for stop parsing here
+EXIT

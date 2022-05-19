@@ -22,23 +22,12 @@
     ],
     "windows": [
         {
-            "windowName": "Server MNGR",
-            "icon": "storm",
-            "contentPath": "servermanager/index.html?scene=14",
-            "x": 9,
-            "y": 4,
-            "w": 1200,
-            "h": 810,
-            "zIndex": 60,
-            "minimized": false,
-            "renderToDom": false
-        },
-        {
-            "windowName": "Neptcode Notebook",
+            "metaTitle": "#73 - Bash console - Ramon tut was",
+            "windowName": "Bash console",
             "icon": "code",
-            "contentPath": "neptcode/index.html?data=basic",
-            "x": 5,
-            "y": 5,
+            "contentPath": "bash/index.html?script=73",
+            "x": 7,
+            "y": 7,
             "w": 1100,
             "h": 700,
             "zIndex": 61,
@@ -46,7 +35,7 @@
             "renderToDom": false
         },
         {
-            "metaTitle": "#93 - bash console - Restart mona lisa",
+            "metaTitle": "#93 - bash console - Sonny restart mona lisa",
             "windowName": "Bash console",
             "icon": "code",
             "contentPath": "bash/index.html?script=93",
@@ -57,31 +46,6 @@
             "zIndex": 61,
             "minimized": true,
             "renderToDom": true
-        },
-        {
-            "windowName": "DNA - Viewer - nBrugger.dna",
-            "icon": "biotech",
-            "contentPath": "dna",
-            "x": 12,
-            "y": 5,
-            "w": 1000,
-            "h": 850,
-            "zIndex": 52,
-            "minimized": false,
-            "renderToDom": false
-        },
-        {
-            "metaTitle": "#42 - Supervisor - Wildschwein",
-            "windowName": "Supervisor",
-            "icon": "scatter_plot",
-            "contentPath": "supervisor/index.html?scene=42",
-            "x": 12,
-            "y": 5,
-            "w": 1000,
-            "h": 850,
-            "zIndex": 53,
-            "minimized": false,
-            "renderToDom": false
         }
     ],
     "shortcuts": [
