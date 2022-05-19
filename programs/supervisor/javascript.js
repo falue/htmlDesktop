@@ -17,13 +17,17 @@ async function setup() {
 function setupScene(scene) {
     switch(scene) {
         case "34":
+            //show(`scene34`);  // scene number
             threejsData = threejsData + "ELCH_FullIsland.html";  // PATH STUFF
             cl(threejsData);
-            switchTabs(4);
+            switchTabs(2);
+            for (let i = 0; i < data[scene].length; i++) {
+                createChart("100%", data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
+            }
             break;
 
         case "41":
-            show(`scene41`);  // scene number
+            //show(`scene41`);  // scene number
             switchTabs(2);
             /* cl(data[scene]); */
             for (let i = 0; i < data[scene].length; i++) {

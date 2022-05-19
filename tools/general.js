@@ -239,10 +239,12 @@ function notSoRandomInts(count, min, max, seed, maxDiff, incline, doNotMaxOut = 
       if(i === 0) {
           if(incline > 0) {
               // start low for inclining graph
-              newNumber = min;
+              // newNumber = min;
+              newNumber = randomBetween(min, (min+max)/2);
           } else if (incline < 0) {
               // start high for declining graph
-              newNumber = max;
+              // newNumber = max;
+              newNumber = randomBetween(max/2, max);
           } else {
               // start at random number
               newNumber = Math.floor(random(seed+i) * (max - min + 1) + min);

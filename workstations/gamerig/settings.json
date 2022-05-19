@@ -22,7 +22,20 @@
     ],
     "windows": [
         {
-            "metaTitle": "#41 - gamerig - model predict",
+            "metaTitle": "#34 - Terminal - apt-get im HG",
+            "windowName": "Terminal",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=50&text=apt-get&theme=an-old-hope&speed=2&language=c&autotype=true&humanTyper=true&cursor=true&truncateText=12000&bgColor=111111&fontColor=FFFFFF&paddingRange=15",
+            "x": 7,
+            "y": 7,
+            "w": 1000,
+            "h": 850,
+            "zIndex": 62,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#41 - Neptcode - model predict",
             "windowName": "Neptcode Notebook",
             "icon": "code",
             "contentPath": "neptcode/index.html?data=41",

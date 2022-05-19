@@ -101,7 +101,7 @@
             <div class="centerText">
               <h2 class="inline">Project Overview: <code class="blackBgTransparent padding125 radius3 marginX1">Electric child<i class="material-icons small valign">more_vert</i></code></h2>
             </div>
-            <div id="scene41" class="hide marginY1">
+            <div class="marginY1">
               <div class="gridLayout charts contentContent">
                 <div id="target1" class="gridBox contentContent" style="grid-column: col / span 4; grid-row: row;">
                   
@@ -173,10 +173,6 @@
                 <div id="target10" class="gridBox contentContent" style="grid-column: col / span 8; grid-row: row 6;"></div>
               </div>
             </div>
-            <div id="sceneXX" class="hide">
-              XX
-              CHARTS<br>
-            </div>
           </div>
         </div>
       </div>
@@ -204,12 +200,12 @@
             <div class="settingsBar bgDark greyBorderLightBottom"><i class="material-icons valign small blue">expand_more</i> Export</div>
             <div class="settingsBar bgDark relative">
               <i class="material-icons valign small blue">expand_less</i> Latest Log
-              <button class="right maxHeight bottom" onclick="parent.addWindow('Neptcode - log.dat', 'code', 'neptcode/index.html?data=67', 8,11, 1200,810, false);">
+              <button class="right maxHeight bottom bgDark" onclick="parent.addWindow('Neptcode - log.dat', 'code', 'neptcode/index.html?data=67', 8,11, 1200,810, false);">
                 <i class="material-icons valign small blue">open_in_new</i> Open log
               </button>
             </div>
-            <div class="padding05 bgLight">
-              <code class=" nobr small" onclick="parent.addWindow('Neptcode - log.dat', 'code', 'neptcode/index.html?data=67', 8,11, 1200,810, false);">
+            <div class="padding05" onclick="parent.addWindow('Neptcode - log.dat', 'code', 'neptcode/index.html?data=67', 8,11, 1200,810, false);">
+              <code class="nobr small">
                 [05-01-22 00:25:24.385] LOG  : General, 1641338724385> OpenGL version: 2.1 Metal - 71.7.1.<br>
 [00:25:24.387] LOG  : General, 1641338724387> Desktop resolution 1440x900.<br>
 [00:25:24.390] LOG  : General, 1641338724390> Initial resolution 1920x1200 fullScreen=false.<br>
@@ -233,7 +229,7 @@
             </div>
             <div class="bottom maxWidth">
               <div class="settingsBar bgDark greyBorderLightTop" onclick="toggle('islandOpenNewWindow'); swapClasses('expandTheIsland', 'rotate180'); "><i id="expandTheIsland" class="material-icons valign small blue">expand_more</i> Landscape Context</div>
-              <div id="islandOpenNewWindow" class="bgLight greyBorderLightTop hide padding50" onclick="parent.addWindow('Supervisor - Context', 'scatter_plot', 'threejs/player/ELCH_FullIsland_SZ42.html', 5,5,800,550);">
+              <div id="islandOpenNewWindow" class="greyBorderLightTop hide padding50" style="background-color:#353535;" onclick="parent.addWindow('Supervisor - Context', 'scatter_plot', 'threejs/player/ELCH_FullIsland_SZ42.html', 5,5,800,550);">
                 <span class="small">Landscape: TheIslandv2.fbx</span><br>
                 <span class="small">Agent(s): 1</span><br>
                 <span class="small">Vertex: 1.2m</span><br>

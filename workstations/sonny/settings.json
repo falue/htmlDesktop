@@ -61,6 +61,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#34 - Supervisor - Kurven & Insel mit Pfaden",
+            "windowName": "Supervisor",
+            "icon": "scatter_plot",
+            "contentPath": "supervisor/index.html?scene=34",
+            "x": 12,
+            "y": 5,
+            "w": 1200,
+            "h": 850,
+            "zIndex": 54,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
             "metaTitle": "#41 - Supervisor - Verlaufskurven",
             "windowName": "Supervisor",
             "icon": "scatter_plot",
