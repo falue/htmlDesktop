@@ -258,6 +258,9 @@
 					scene.add( object2 );
 					object2.rotation.set(Math.PI/2, Math.PI, Math.PI/2);
 					object2.position.set(143,8,316);
+
+					// Autoplay on load
+					modifyTimeScale(1);
 				});
 				
 		
@@ -287,7 +290,6 @@
 					// once loading of bounding boxes is finished, set up labels
 					// createTextLabels('Boar', 7);
 					createBoundBoxesLabels();
-					
 				});
 
 				function createBoundBoxesLabels () {
@@ -319,7 +321,7 @@
 				gui.domElement.id = 'gui';
 				
 				// Slider: Fast-reverse, reverse, pause, play, f-forward
-				gui.add({"Scrubbing": 0}, 'Scrubbing', -3, 3).step(1).onChange(
+				gui.add({"Scrubbing": 1}, 'Scrubbing', -3, 3).step(1).onChange(
 					function (value) {
 						if(value === -2) value = -5;  // Make -2 go faster
 						if(value === 2) value = 5;    // Make  2 go faster
@@ -330,7 +332,7 @@
 				);
 
 				// Checkbox: Play / Pause
-				gui.add({"Play / Pause": false}, "Play / Pause").onChange( modifyTimeScale );
+				gui.add({"Play / Pause": true}, "Play / Pause").onChange( modifyTimeScale );
 
 				// Checkbox: Pause
 				gui.add({"Pause": false}, "Pause").onChange( function () { modifyTimeScale(false) } );
@@ -399,7 +401,7 @@
 				mixer4.timeScale = speed;
 			/*	mixer6.timeScale = speed;*/
 			}
-			
+		
 
 			function showBoundingbox (visibility) {
 				/*
@@ -428,7 +430,6 @@
 					document.getElementById('labels').style.display = 'none';
 				}
 			}
-	
 
 
 			function animate() {
