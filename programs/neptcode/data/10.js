@@ -1,148 +1,416 @@
 let data = [
-    `[event.mouseMove] yaw: 15.15deg   pitch: 16.97deg   roll: 20.09deg  
-[event.mouseMove] yaw: 18.00deg   pitch: 15.50deg   roll: 20.00deg  
-[event.mouseMove] yaw: 16.12deg   pitch: 19.11deg   roll: 16.03deg  
-[event.mouseMove] yaw: 23.18deg   pitch: 17.57deg   roll: 24.08deg  
-[event.mouseMove] yaw: 19.91deg   pitch: 18.65deg   roll: 21.21deg  
-[event.mouseMove] yaw: 23.60deg   pitch: 24.60deg   roll: 24.37deg  
-[event.mouseMove] yaw: 25.13deg   pitch: 25.24deg   roll: 19.60deg  
-[event.mouseMove] yaw: 20.23deg   pitch: 26.39deg   roll: 26.94deg  
-[event.mouseMove] yaw: 29.72deg   pitch: 30.44deg   roll: 22.48deg  
-[event.mouseMove] yaw: 22.30deg   pitch: 24.68deg   roll: 22.90deg  
-[event.mouseMove] yaw: 27.93deg   pitch: 31.08deg   roll: 32.97deg  
-[event.mouseMove] yaw: 30.03deg   pitch: 33.52deg   roll: 31.22deg  
-[event.mouseMove] yaw: 29.98deg   pitch: 25.24deg   roll: 27.62deg  
-[event.mouseMove] yaw: 27.25deg   pitch: 28.56deg   roll: 27.84deg  
-[event.mouseMove] yaw: 34.65deg   pitch: 33.55deg   roll: 29.31deg  
-[event.mouseMove] yaw: 35.59deg   pitch: 36.56deg   roll: 30.91deg  
-[event.mouseMove] yaw: 38.02deg   pitch: 34.24deg   roll: 38.28deg  
-[event.mouseMove] yaw: 33.77deg   pitch: 30.20deg   roll: 37.40deg  
-[event.mouseMove] yaw: 36.34deg   pitch: 35.96deg   roll: 31.90deg  
-[event.mouseMove] yaw: 40.90deg   pitch: 36.46deg   roll: 36.72deg  
-[event.mouseMove] yaw: 39.79deg   pitch: 36.03deg   roll: 42.74deg  
-[event.mouseMove] yaw: 40.25deg   pitch: 43.36deg   roll: 37.22deg  
-[event.mouseMove] yaw: 36.56deg   pitch: 35.27deg   roll: 42.23deg  
-[event.mouseMove] yaw: 45.13deg   pitch: 38.04deg   roll: 44.06deg  
-[event.mouseMove] yaw: 40.25deg   pitch: 46.19deg   roll: 41.66deg  
-[event.mouseMove] yaw: 38.87deg   pitch: 39.81deg   roll: 44.45deg  
-[event.mouseMove] yaw: 39.22deg   pitch: 47.50deg   roll: 44.95deg  
-[event.mouseMove] yaw: 44.86deg   pitch: 48.09deg   roll: 48.71deg  
-[event.mouseMove] yaw: 44.80deg   pitch: 50.24deg   roll: 48.33deg  
-[event.mouseMove] yaw: 51.80deg   pitch: 49.48deg   roll: 43.77deg  
-[event.mouseMove] yaw: 48.56deg   pitch: 50.05deg   roll: 50.59deg  
-[event.mouseMove] yaw: 44.55deg   pitch: 44.36deg   roll: 44.23deg  
-[event.mouseMove] yaw: 51.31deg   pitch: 55.08deg   roll: 52.08deg  
-[event.mouseMove] yaw: 55.29deg   pitch: 47.07deg   roll: 51.50deg  
-[event.mouseMove] yaw: 56.89deg   pitch: 54.72deg   roll: 55.05deg  
-[event.mouseMove] yaw: 57.79deg   pitch: 50.58deg   roll: 53.60deg  
-[event.mouseMove] yaw: 50.21deg   pitch: 50.38deg   roll: 53.61deg  
-[event.mouseMove] yaw: 53.07deg   pitch: 52.96deg   roll: 58.06deg  
-[event.mouseMove] yaw: 52.81deg   pitch: 57.66deg   roll: 52.60deg  
-[event.mouseMove] yaw: 56.41deg   pitch: 53.96deg   roll: 54.85deg  
-[event.mouseMove] yaw: 62.38deg   pitch: 56.63deg   roll: 58.15deg  
-[event.mouseMove] yaw: 61.43deg   pitch: 58.63deg   roll: 59.37deg  
-[event.mouseMove] yaw: 57.97deg   pitch: 56.31deg   roll: 61.60deg  
-[event.mouseMove] yaw: 64.12deg   pitch: 65.92deg   roll: 64.76deg  
-[event.mouseMove] yaw: 57.34deg   pitch: 60.98deg   roll: 61.76deg  
-[event.mouseMove] yaw: 65.57deg   pitch: 58.42deg   roll: 63.51deg  
-[event.mouseMove] yaw: 68.76deg   pitch: 61.87deg   roll: 68.22deg  
-[event.mouseMove] yaw: 63.45deg   pitch: 69.01deg   roll: 62.71deg  
-[event.mouseMove] yaw: 70.45deg   pitch: 63.43deg   roll: 64.35deg  
-[event.mouseMove] yaw: 71.43deg   pitch: 63.86deg   roll: 63.59deg  
-[event.mouseMove] yaw: 66.76deg   pitch: 69.66deg   roll: 66.64deg  
-[event.mouseMove] yaw: 69.68deg   pitch: 67.26deg   roll: 71.42deg  
-[event.mouseMove] yaw: 70.08deg   pitch: 74.69deg   roll: 75.02deg  
-[event.mouseMove] yaw: 72.17deg   pitch: 71.14deg   roll: 66.93deg  
-[event.mouseMove] yaw: 74.21deg   pitch: 74.26deg   roll: 68.84deg  
-[event.mouseMove] yaw: 72.03deg   pitch: 75.49deg   roll: 71.02deg  
-[event.mouseMove] yaw: 70.87deg   pitch: 73.04deg   roll: 74.09deg  
-[event.mouseMove] yaw: 74.05deg   pitch: 72.67deg   roll: 77.65deg  
-[event.mouseMove] yaw: 76.16deg   pitch: 80.69deg   roll: 76.52deg  
-[event.mouseMove] yaw: 72.66deg   pitch: 79.10deg   roll: 72.75deg  
-[event.mouseMove] yaw: 80.26deg   pitch: 73.26deg   roll: 73.32deg  
-[event.mouseMove] yaw: 79.78deg   pitch: 74.30deg   roll: 81.04deg  
-[event.mouseMove] yaw: 82.85deg   pitch: 83.55deg   roll: 76.61deg  
-[event.mouseMove] yaw: 82.01deg   pitch: 83.95deg   roll: 76.54deg  
-[event.mouseMove] yaw: 77.17deg   pitch: 84.77deg   roll: 84.89deg  
-[event.mouseMove] yaw: 81.41deg   pitch: 87.84deg   roll: 86.59deg  
-[event.mouseMove] yaw: 88.83deg   pitch: 80.21deg   roll: 85.01deg  
-[event.mouseMove] yaw: 87.18deg   pitch: 80.47deg   roll: 89.06deg  
-[event.mouseMove] yaw: 84.59deg   pitch: 89.54deg   roll: 81.98deg  
-[event.mouseMove] yaw: 91.37deg   pitch: 88.83deg   roll: 90.83deg  
-[event.mouseMove] yaw: 84.34deg   pitch: 91.41deg   roll: 87.90deg  
-[event.mouseMove] yaw: 92.78deg   pitch: 88.11deg   roll: 92.26deg  
-[event.mouseMove] yaw: 87.28deg   pitch: 89.72deg   roll: 93.06deg  
-[event.mouseMove] yaw: 92.45deg   pitch: 94.99deg   roll: 93.99deg  
-[event.mouseMove] yaw: 93.01deg   pitch: 93.58deg   roll: 89.39deg  
-[event.mouseMove] yaw: 96.79deg   pitch: 93.13deg   roll: 90.38deg  
-[event.mouseMove] yaw: 94.50deg   pitch: 98.85deg   roll: 91.19deg  
-[event.mouseMove] yaw: 99.92deg   pitch: 93.96deg   roll: 94.00deg  
-[event.mouseMove] yaw: 91.97deg   pitch: 98.33deg   roll: 95.10deg  
-[event.mouseMove] yaw: 95.28deg   pitch: 93.20deg   roll: 92.33deg  
-[event.mouseMove] yaw: 101.95deg   pitch: 93.86deg   roll: 101.89deg  
-[event.mouseMove] yaw: 96.24deg   pitch: 96.13deg   roll: 102.80deg  
-[event.mouseMove] yaw: 96.61deg   pitch: 99.66deg   roll: 103.25deg  
-[event.mouseMove] yaw: 103.65deg   pitch: 96.17deg   roll: 102.49deg  
-[event.mouseMove] yaw: 102.12deg   pitch: 104.76deg   roll: 99.79deg  
-[event.mouseMove] yaw: 105.16deg   pitch: 105.30deg   roll: 98.85deg  
-[event.mouseMove] yaw: 99.38deg   pitch: 106.45deg   roll: 99.71deg  
-[event.mouseMove] yaw: 105.87deg   pitch: 102.01deg   roll: 105.08deg  
-[event.mouseMove] yaw: 107.16deg   pitch: 104.88deg   roll: 110.80deg  
-[event.mouseMove] yaw: 107.50deg   pitch: 104.67deg   roll: 106.86deg  
-[event.mouseMove] yaw: 108.90deg   pitch: 107.73deg   roll: 108.87deg  
-[event.mouseMove] yaw: 105.34deg   pitch: 104.57deg   roll: 109.57deg  
-[event.mouseMove] yaw: 106.93deg   pitch: 114.85deg   roll: 111.02deg  
-[event.mouseMove] yaw: 113.85deg   pitch: 107.08deg   roll: 110.83deg  
-[event.mouseMove] yaw: 110.75deg   pitch: 113.01deg   roll: 111.21deg  
-[event.mouseMove] yaw: 112.88deg   pitch: 113.09deg   roll: 117.60deg  
-[event.mouseMove] yaw: 113.71deg   pitch: 111.06deg   roll: 110.97deg  
-[event.mouseMove] yaw: 116.08deg   pitch: 118.05deg   roll: 118.64deg  
-[event.mouseMove] yaw: 116.53deg   pitch: 111.19deg   roll: 114.79deg  
-[event.mouseMove] yaw: 120.36deg   pitch: 120.65deg   roll: 120.41deg  
-[event.mouseMove] yaw: 115.09deg   pitch: 118.91deg   roll: 116.20deg  
-[event.mouseMove] yaw: 123.14deg   pitch: 118.94deg   roll: 116.88deg  
-[event.mouseMove] yaw: 117.42deg   pitch: 120.77deg   roll: 121.55deg  
-[event.mouseMove] yaw: 117.77deg   pitch: 119.29deg   roll: 124.07deg  
-[event.mouseMove] yaw: 121.23deg   pitch: 125.38deg   roll: 124.66deg  
-[event.mouseMove] yaw: 125.49deg   pitch: 125.12deg   roll: 125.14deg  
-[event.mouseMove] yaw: 120.73deg   pitch: 124.75deg   roll: 123.14deg  
-[event.mouseMove] yaw: 127.33deg   pitch: 130.07deg   roll: 125.45deg  
-[event.mouseMove] yaw: 123.52deg   pitch: 126.54deg   roll: 121.76deg  
-[event.mouseMove] yaw: 129.43deg   pitch: 125.06deg   roll: 123.23deg  
-[event.mouseMove] yaw: 125.08deg   pitch: 127.17deg   roll: 123.26deg  
-[event.mouseMove] yaw: 131.53deg   pitch: 127.23deg   roll: 126.83deg  
-[event.mouseMove] yaw: 131.01deg   pitch: 134.28deg   roll: 126.42deg  
-[event.mouseMove] yaw: 127.61deg   pitch: 134.43deg   roll: 126.67deg  
-[event.mouseMove] yaw: 132.26deg   pitch: 135.17deg   roll: 127.89deg  
-[event.mouseMove] yaw: 130.39deg   pitch: 128.20deg   roll: 130.39deg  
-[event.mouseMove] yaw: 133.18deg   pitch: 137.79deg   roll: 137.99deg  
-[event.mouseMove] yaw: 138.62deg   pitch: 131.03deg   roll: 138.54deg  
-[event.mouseMove] yaw: 134.47deg   pitch: 134.71deg   roll: 136.14deg  
-[event.mouseMove] yaw: 140.65deg   pitch: 139.65deg   roll: 139.47deg  
-[event.mouseMove] yaw: 137.60deg   pitch: 135.39deg   roll: 133.55deg  
-[event.mouseMove] yaw: 142.00deg   pitch: 135.64deg   roll: 140.75deg  
-[event.mouseMove] yaw: 143.41deg   pitch: 135.34deg   roll: 136.67deg  
-[event.mouseMove] yaw: 144.71deg   pitch: 146.06deg   roll: 137.33deg  
-[event.mouseMove] yaw: 146.97deg   pitch: 140.52deg   roll: 142.93deg  
-[event.mouseMove] yaw: 142.67deg   pitch: 138.89deg   roll: 145.45deg  
-[event.mouseMove] yaw: 141.36deg   pitch: 141.83deg   roll: 140.73deg  
-[event.mouseMove] yaw: 145.68deg   pitch: 144.60deg   roll: 148.40deg  
-[event.mouseMove] yaw: 147.88deg   pitch: 149.90deg   roll: 142.94deg  
-[event.mouseMove] yaw: 151.24deg   pitch: 142.83deg   roll: 144.40deg  
-[event.mouseMove] yaw: 148.39deg   pitch: 144.71deg   roll: 150.37deg  
-[event.mouseMove] yaw: 146.50deg   pitch: 150.82deg   roll: 144.95deg  
-[event.mouseMove] yaw: 150.53deg   pitch: 154.21deg   roll: 153.53deg  
-[event.mouseMove] yaw: 155.49deg   pitch: 152.13deg   roll: 151.68deg  
-[event.mouseMove] yaw: 157.03deg   pitch: 152.39deg   roll: 153.03deg  
-[event.mouseMove] yaw: 149.13deg   pitch: 153.91deg   roll: 156.66deg  
-[event.mouseMove] yaw: 158.43deg   pitch: 154.65deg   roll: 155.38deg  
-[event.mouseMove] yaw: 153.18deg   pitch: 152.56deg   roll: 158.51deg  
-[event.mouseMove] yaw: 151.93deg   pitch: 158.03deg   roll: 153.55deg  
-[event.mouseMove] yaw: 158.18deg   pitch: 160.83deg   roll: 155.81deg  
-[event.mouseMove] yaw: 159.88deg   pitch: 160.06deg   roll: 156.92deg  
-[event.mouseMove] yaw: 154.97deg   pitch: 160.46deg   roll: 158.83deg  
-[event.mouseMove] yaw: 164.42deg   pitch: 155.70deg   roll: 163.92deg  
-[event.mouseMove] yaw: 161.63deg   pitch: 164.47deg   roll: 163.64deg  
+    `[1715781614.4311] [event.mouseMove] yaw: -1.66° pitch: -3.07° roll: -3.78°
+[1715781614.5254] [event.mouseMove] yaw: -1.63° pitch: -3.51° roll: -4.17°
+[1715781614.6197] [event.mouseMove] yaw: 4.91° pitch: 2.28° roll: -1.12°
+[1715781614.714] [event.mouseMove] yaw: 6.13° pitch: 2.39° roll: -2.37°
+[1715781614.8083] [event.mouseMove] yaw: -0.10° pitch: 1.69° roll: 7.74°
+[1715781614.9026] [event.mouseMove] yaw: 5.94° pitch: 3.88° roll: 1.91°
+[1715781614.9969] [event.mouseMove] yaw: 0.28° pitch: 0.97° roll: 8.89°
+[1715781615.0912] [event.mouseMove] yaw: 5.60° pitch: 8.37° roll: 4.55°
+[1715781615.1855001] [event.mouseMove] yaw: 7.88° pitch: 7.66° roll: 6.08°
+[1715781615.2798002] [event.mouseMove] yaw: 7.21° pitch: 4.25° roll: 10.27°
+[1715781615.3741002] [event.mouseMove] yaw: 5.92° pitch: 8.31° roll: 7.67°
+[1715781615.4684002] [event.mouseMove] yaw: 12.74° pitch: 11.05° roll: 14.40°
+[1715781615.5627003] [event.mouseMove] yaw: 13.29° pitch: 9.58° roll: 15.77°
+[1715781615.6570003] [event.mouseMove] yaw: 14.13° pitch: 13.41° roll: 13.71°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781614.4311] [event.mouseMove] yaw: -1.66° pitch: -3.07° roll: -3.78°
+[1715781614.5254] [event.mouseMove] yaw: -1.63° pitch: -3.51° roll: -4.17°
+[1715781614.6197] [event.mouseMove] yaw: 4.91° pitch: 2.28° roll: -1.12°
+[1715781614.714] [event.mouseMove] yaw: 6.13° pitch: 2.39° roll: -2.37°
+[1715781614.8083] [event.mouseMove] yaw: -0.10° pitch: 1.69° roll: 7.74°
+[1715781614.9026] [event.mouseMove] yaw: 5.94° pitch: 3.88° roll: 1.91°
+[1715781614.9969] [event.mouseMove] yaw: 0.28° pitch: 0.97° roll: 8.89°
+[1715781615.0912] [event.mouseMove] yaw: 5.60° pitch: 8.37° roll: 4.55°
+[1715781615.1855001] [event.mouseMove] yaw: 7.88° pitch: 7.66° roll: 6.08°
+[1715781615.2798002] [event.mouseMove] yaw: 7.21° pitch: 4.25° roll: 10.27°
+[1715781615.3741002] [event.mouseMove] yaw: 5.92° pitch: 8.31° roll: 7.67°
+[1715781615.4684002] [event.mouseMove] yaw: 12.74° pitch: 11.05° roll: 14.40°
+[1715781615.5627003] [event.mouseMove] yaw: 13.29° pitch: 9.58° roll: 15.77°
+[1715781615.6570003] [event.mouseMove] yaw: 14.13° pitch: 13.41° roll: 13.71°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781614.4311] [event.mouseMove] yaw: -1.66° pitch: -3.07° roll: -3.78°
+[1715781614.5254] [event.mouseMove] yaw: -1.63° pitch: -3.51° roll: -4.17°
+[1715781614.6197] [event.mouseMove] yaw: 4.91° pitch: 2.28° roll: -1.12°
+[1715781614.714] [event.mouseMove] yaw: 6.13° pitch: 2.39° roll: -2.37°
+[1715781614.8083] [event.mouseMove] yaw: -0.10° pitch: 1.69° roll: 7.74°
+[1715781614.9026] [event.mouseMove] yaw: 5.94° pitch: 3.88° roll: 1.91°
+[1715781614.9969] [event.mouseMove] yaw: 0.28° pitch: 0.97° roll: 8.89°
+[1715781615.0912] [event.mouseMove] yaw: 5.60° pitch: 8.37° roll: 4.55°
+[1715781615.1855001] [event.mouseMove] yaw: 7.88° pitch: 7.66° roll: 6.08°
+[1715781615.2798002] [event.mouseMove] yaw: 7.21° pitch: 4.25° roll: 10.27°
+[1715781615.3741002] [event.mouseMove] yaw: 5.92° pitch: 8.31° roll: 7.67°
+[1715781615.4684002] [event.mouseMove] yaw: 12.74° pitch: 11.05° roll: 14.40°
+[1715781615.5627003] [event.mouseMove] yaw: 13.29° pitch: 9.58° roll: 15.77°
+[1715781615.6570003] [event.mouseMove] yaw: 14.13° pitch: 13.41° roll: 13.71°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781614.5254] [event.mouseMove] yaw: -1.63° pitch: -3.51° roll: -4.17°
+[1715781614.6197] [event.mouseMove] yaw: 4.91° pitch: 2.28° roll: -1.12°
+[1715781614.714] [event.mouseMove] yaw: 6.13° pitch: 2.39° roll: -2.37°
+[1715781614.8083] [event.mouseMove] yaw: -0.10° pitch: 1.69° roll: 7.74°
+[1715781614.9026] [event.mouseMove] yaw: 5.94° pitch: 3.88° roll: 1.91°
+[1715781614.9969] [event.mouseMove] yaw: 0.28° pitch: 0.97° roll: 8.89°
+[1715781615.0912] [event.mouseMove] yaw: 5.60° pitch: 8.37° roll: 4.55°
+[1715781615.1855001] [event.mouseMove] yaw: 7.88° pitch: 7.66° roll: 6.08°
+[1715781615.2798002] [event.mouseMove] yaw: 7.21° pitch: 4.25° roll: 10.27°
+[1715781615.3741002] [event.mouseMove] yaw: 5.92° pitch: 8.31° roll: 7.67°
+[1715781615.4684002] [event.mouseMove] yaw: 12.74° pitch: 11.05° roll: 14.40°
+[1715781615.5627003] [event.mouseMove] yaw: 13.29° pitch: 9.58° roll: 15.77°
+[1715781615.6570003] [event.mouseMove] yaw: 14.13° pitch: 13.41° roll: 13.71°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781614.4311] [event.mouseMove] yaw: -1.66° pitch: -3.07° roll: -3.78°
+[1715781614.5254] [event.mouseMove] yaw: -1.63° pitch: -3.51° roll: -4.17°
+[1715781614.6197] [event.mouseMove] yaw: 4.91° pitch: 2.28° roll: -1.12°
+[1715781614.714] [event.mouseMove] yaw: 6.13° pitch: 2.39° roll: -2.37°
+[1715781614.8083] [event.mouseMove] yaw: -0.10° pitch: 1.69° roll: 7.74°
+[1715781614.9026] [event.mouseMove] yaw: 5.94° pitch: 3.88° roll: 1.91°
+[1715781614.9969] [event.mouseMove] yaw: 0.28° pitch: 0.97° roll: 8.89°
+[1715781615.0912] [event.mouseMove] yaw: 5.60° pitch: 8.37° roll: 4.55°
+[1715781615.1855001] [event.mouseMove] yaw: 7.88° pitch: 7.66° roll: 6.08°
+[1715781615.2798002] [event.mouseMove] yaw: 7.21° pitch: 4.25° roll: 10.27°
+[1715781615.3741002] [event.mouseMove] yaw: 5.92° pitch: 8.31° roll: 7.67°
+[1715781615.4684002] [event.mouseMove] yaw: 12.74° pitch: 11.05° roll: 14.40°
+[1715781615.5627003] [event.mouseMove] yaw: 13.29° pitch: 9.58° roll: 15.77°
+[1715781615.6570003] [event.mouseMove] yaw: 14.13° pitch: 13.41° roll: 13.71°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781614.4311] [event.mouseMove] yaw: -1.66° pitch: -3.07° roll: -3.78°
+[1715781614.5254] [event.mouseMove] yaw: -1.63° pitch: -3.51° roll: -4.17°
+[1715781614.6197] [event.mouseMove] yaw: 4.91° pitch: 2.28° roll: -1.12°
+[1715781614.714] [event.mouseMove] yaw: 6.13° pitch: 2.39° roll: -2.37°
+[1715781614.8083] [event.mouseMove] yaw: -0.10° pitch: 1.69° roll: 7.74°
+[1715781614.9026] [event.mouseMove] yaw: 5.94° pitch: 3.88° roll: 1.91°
+[1715781614.9969] [event.mouseMove] yaw: 0.28° pitch: 0.97° roll: 8.89°
+[1715781615.0912] [event.mouseMove] yaw: 5.60° pitch: 8.37° roll: 4.55°
+[1715781615.1855001] [event.mouseMove] yaw: 7.88° pitch: 7.66° roll: 6.08°
+[1715781615.2798002] [event.mouseMove] yaw: 7.21° pitch: 4.25° roll: 10.27°
+[1715781615.3741002] [event.mouseMove] yaw: 5.92° pitch: 8.31° roll: 7.67°
+[1715781615.4684002] [event.mouseMove] yaw: 12.74° pitch: 11.05° roll: 14.40°
+[1715781615.5627003] [event.mouseMove] yaw: 13.29° pitch: 9.58° roll: 15.77°
+[1715781615.6570003] [event.mouseMove] yaw: 14.13° pitch: 13.41° roll: 13.71°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°  
+[1715781614.5254] [event.mouseMove] yaw: -1.63° pitch: -3.51° roll: -4.17°
+[1715781614.6197] [event.mouseMove] yaw: 4.91° pitch: 2.28° roll: -1.12°
+[1715781614.714] [event.mouseMove] yaw: 6.13° pitch: 2.39° roll: -2.37°
+[1715781614.8083] [event.mouseMove] yaw: -0.10° pitch: 1.69° roll: 7.74°
+[1715781614.9026] [event.mouseMove] yaw: 5.94° pitch: 3.88° roll: 1.91°
+[1715781614.9969] [event.mouseMove] yaw: 0.28° pitch: 0.97° roll: 8.89°
+[1715781615.0912] [event.mouseMove] yaw: 5.60° pitch: 8.37° roll: 4.55°
+[1715781615.1855001] [event.mouseMove] yaw: 7.88° pitch: 7.66° roll: 6.08°
+[1715781615.2798002] [event.mouseMove] yaw: 7.21° pitch: 4.25° roll: 10.27°
+[1715781615.3741002] [event.mouseMove] yaw: 5.92° pitch: 8.31° roll: 7.67°
+[1715781615.4684002] [event.mouseMove] yaw: 12.74° pitch: 11.05° roll: 14.40°
+[1715781615.5627003] [event.mouseMove] yaw: 13.29° pitch: 9.58° roll: 15.77°
+[1715781615.6570003] [event.mouseMove] yaw: 14.13° pitch: 13.41° roll: 13.71°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781614.4311] [event.mouseMove] yaw: -1.66° pitch: -3.07° roll: -3.78°
+[1715781614.5254] [event.mouseMove] yaw: -1.63° pitch: -3.51° roll: -4.17°
+[1715781614.6197] [event.mouseMove] yaw: 4.91° pitch: 2.28° roll: -1.12°
+[1715781614.714] [event.mouseMove] yaw: 6.13° pitch: 2.39° roll: -2.37°
+[1715781614.8083] [event.mouseMove] yaw: -0.10° pitch: 1.69° roll: 7.74°
+[1715781614.9026] [event.mouseMove] yaw: 5.94° pitch: 3.88° roll: 1.91°
+[1715781614.9969] [event.mouseMove] yaw: 0.28° pitch: 0.97° roll: 8.89°
+[1715781615.0912] [event.mouseMove] yaw: 5.60° pitch: 8.37° roll: 4.55°
+[1715781615.1855001] [event.mouseMove] yaw: 7.88° pitch: 7.66° roll: 6.08°
+[1715781615.2798002] [event.mouseMove] yaw: 7.21° pitch: 4.25° roll: 10.27°
+[1715781615.3741002] [event.mouseMove] yaw: 5.92° pitch: 8.31° roll: 7.67°
+[1715781615.4684002] [event.mouseMove] yaw: 12.74° pitch: 11.05° roll: 14.40°
+[1715781615.5627003] [event.mouseMove] yaw: 13.29° pitch: 9.58° roll: 15.77°
+[1715781615.6570003] [event.mouseMove] yaw: 14.13° pitch: 13.41° roll: 13.71°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°
+[1715781614.4311] [event.mouseMove] yaw: -1.66° pitch: -3.07° roll: -3.78°
+[1715781614.5254] [event.mouseMove] yaw: -1.63° pitch: -3.51° roll: -4.17°
+[1715781614.6197] [event.mouseMove] yaw: 4.91° pitch: 2.28° roll: -1.12°
+[1715781614.714] [event.mouseMove] yaw: 6.13° pitch: 2.39° roll: -2.37°
+[1715781614.8083] [event.mouseMove] yaw: -0.10° pitch: 1.69° roll: 7.74°
+[1715781614.9026] [event.mouseMove] yaw: 5.94° pitch: 3.88° roll: 1.91°
+[1715781614.9969] [event.mouseMove] yaw: 0.28° pitch: 0.97° roll: 8.89°
+[1715781615.0912] [event.mouseMove] yaw: 5.60° pitch: 8.37° roll: 4.55°
+[1715781615.1855001] [event.mouseMove] yaw: 7.88° pitch: 7.66° roll: 6.08°
+[1715781615.2798002] [event.mouseMove] yaw: 7.21° pitch: 4.25° roll: 10.27°
+[1715781615.3741002] [event.mouseMove] yaw: 5.92° pitch: 8.31° roll: 7.67°
+[1715781615.4684002] [event.mouseMove] yaw: 12.74° pitch: 11.05° roll: 14.40°
+[1715781615.5627003] [event.mouseMove] yaw: 13.29° pitch: 9.58° roll: 15.77°
+[1715781615.6570003] [event.mouseMove] yaw: 14.13° pitch: 13.41° roll: 13.71°
+[1715781615.7513003] [event.mouseMove] yaw: 9.39° pitch: 10.69° roll: 11.20°
+[1715781615.8456004] [event.mouseMove] yaw: 11.02° pitch: 18.08° roll: 12.72°
+[1715781615.9399004] [event.mouseMove] yaw: 15.83° pitch: 18.53° roll: 17.70°
+[1715781616.0342004] [event.mouseMove] yaw: 18.69° pitch: 19.80° roll: 14.63°
+[1715781616.1285005] [event.mouseMove] yaw: 14.75° pitch: 15.94° roll: 19.58°
+[1715781616.2228005] [event.mouseMove] yaw: 15.95° pitch: 15.80° roll: 14.92°
+[1715781616.3171005] [event.mouseMove] yaw: 23.55° pitch: 22.94° roll: 16.32°
+[1715781616.4114006] [event.mouseMove] yaw: 17.15° pitch: 21.01° roll: 19.93°
+[1715781616.5057006] [event.mouseMove] yaw: 20.32° pitch: 22.44° roll: 20.69°
+[1715781616.6000006] [event.mouseMove] yaw: 18.16° pitch: 20.48° roll: 24.98°
+[1715781616.6943007] [event.mouseMove] yaw: 27.24° pitch: 20.61° roll: 28.07°
+[1715781616.7886007] [event.mouseMove] yaw: 24.99° pitch: 24.91° roll: 19.43°
+[1715781616.8829007] [event.mouseMove] yaw: 27.66° pitch: 24.03° roll: 21.74°
+[1715781616.9772007] [event.mouseMove] yaw: 22.59° pitch: 25.95° roll: 27.30°
+[1715781617.0715008] [event.mouseMove] yaw: 24.60° pitch: 28.44° roll: 30.77°
+[1715781617.1658008] [event.mouseMove] yaw: 29.53° pitch: 27.17° roll: 23.62°
+[1715781617.2601008] [event.mouseMove] yaw: 27.66° pitch: 28.02° roll: 24.87°
+[1715781617.3544009] [event.mouseMove] yaw: 32.44° pitch: 27.64° roll: 33.40°
+[1715781617.448701] [event.mouseMove] yaw: 32.07° pitch: 29.80° roll: 34.89°
+[1715781617.543001] [event.mouseMove] yaw: 37.02° pitch: 33.12° roll: 30.45°
+[1715781617.637301] [event.mouseMove] yaw: 36.80° pitch: 32.68° roll: 34.96°
+[1715781617.731601] [event.mouseMove] yaw: 37.19° pitch: 30.57° roll: 35.69°
+[1715781617.825901] [event.mouseMove] yaw: 33.41° pitch: 32.81° roll: 38.99°
+[1715781617.920201] [event.mouseMove] yaw: 40.34° pitch: 34.60° roll: 37.08°                
 `,
 ];
 

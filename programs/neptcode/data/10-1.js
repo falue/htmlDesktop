@@ -1,4 +1,5 @@
 let data = [
+    `stats.show(tBrugger.dna)`,
     `createChart("100%", "300px", "canvasAutoId", "targetAutoId", {
         target: "targetAutoId",
         type: "line",
