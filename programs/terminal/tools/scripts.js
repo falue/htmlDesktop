@@ -450,7 +450,7 @@ function toggleSyntaxHighlights(value, language) {
     document.getElementById(idOfRadio).checked = "true";
     if(value) {
         element.className = "";
-        element.classList.add("terminal");
+        element.classList.add("terminal", "noScrollbar");
         element.classList.add(language);
 
         hljs.configure({useBR: true});
@@ -459,7 +459,7 @@ function toggleSyntaxHighlights(value, language) {
         });
     } else {
         element.className = "";
-        element.classList.add("terminal");
+        element.classList.add("terminal", "noScrollbar");
         element.classList.add("nohighlight");
     }
 }
