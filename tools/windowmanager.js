@@ -179,7 +179,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   windowContainer.setAttribute("data-setup", "['"+[windowName, icon, contentPath].join("', '")+"']");
   windowContainer.setAttribute("data-setup-minimized", minimized);
   windowContainer.setAttribute("data-setup-render-to-dom", "true");
-  windowContainer.setAttribute("class", "window resizable shadow");
+  windowContainer.classList.add("window","resizable","shadow");
   if(minimized) {
     windowContainer.classList.add("hide");
   }
@@ -275,7 +275,8 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
 
   // iFrame Content
   let content = document.createElement("iframe");
-  content.setAttribute("class", "content");
+  content.id = `iframe-${id}`;
+  content.classList.add("content", "hide");
   // Automatically attach current os, workstation & darkMode to iframe URL
   contentPath = contentPath.split("?");
   let mainProgram = contentPath.shift();  // Remove first element *AND* return first element
@@ -295,6 +296,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     parameters
   ].join("");
   content.setAttribute("src", isDirectUrl ? isDirectUrl : srcIframe);
+  content.setAttribute("onload", `show('iframe-${id}')`);
   windowContainer.appendChild(content);
 
   // For some godforsaken reason, i cannot parse .html files OR files with no extension,

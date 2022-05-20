@@ -6,7 +6,7 @@
   min-height: 75px;
   top: 100px;
   left: 100px;
-  background-color: white;
+  background-color: grey;
 }
 
 /* PREVENT DRAGGING/RESIZING INTO IFRAME */
