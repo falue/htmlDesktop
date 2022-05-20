@@ -38,7 +38,7 @@
             "metaTitle": "#10 - terminal console - MouseMoves",
             "windowName": "Terminal - log.ncsa",
             "icon": "code",
-            "contentPath": "terminal/index.html?text=10&theme=an-old-hope&speed=1&language=javascript&autotype=false&humanTyper=false&cursor=false&truncateText=0&bgColor=121212&fontColor=FFFFFF&byRows=true&startChar=2103&paddingRange=20&repeatMultipleTexts=repeat",
+            "contentPath": "terminal/index.html?text=10&theme=an-old-hope&speed=6&language=javascript&autotype=true&humanTyper=true&cursor=false&truncateText=0&bgColor=121212&fontColor=FFFFFF&byRows=true&startChar=2103&paddingRange=20&repeatMultipleTexts=repeat",
             "x": 5,
             "y": 5,
             "w": 666,
