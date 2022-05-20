@@ -1,8 +1,8 @@
 {
     "settings": {
         "systemColor": "#2f3643",
-        "desktopColor": "#1d1b1b",
-        "desktopImg": "os/spa/desktop.jpg",
+        "desktopColor": "#242932",
+        "desktopImg": "",
         "os": "spa",
         "darkMode": true,
         "username": "Dr. Jason Brugger",
