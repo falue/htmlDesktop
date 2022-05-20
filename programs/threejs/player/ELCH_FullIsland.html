@@ -53,33 +53,17 @@
 				left: 0;             /* make our position the top left of the container */
 				top: 0;
 				color: white;
-			
-				font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+				text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0 3px 0 #fff;
 			}
 			#labels>div {
 				position: absolute;  /* let us position them inside the container */
 				left: 0;             /* make their default position the top left of the container */
 				top: 0;
 				cursor: pointer;     /* change the cursor to a hand when over us */
-				font-size: large;
-				color: rgb(255, 255, 255);
-				background-color:black;
+				font-size: 35px;
+				color: red;
 				user-select: none;   /* don't let the text get selected */
-				padding:2px 6px;
-				border: solid rgb(255, 255, 255) 1px;
-			}
-			#labels>div:before {
-				content: "x";
-				position: absolute;
-				color:transparent;
-				border-top: solid rgb(255, 255, 255) 1px;
-				width:50px;
-				transform: rotate(-45deg);
-				top:41.5px;
-				left:-34px;
-			}
-			#labels>div:hover {
-				color: white;
+				pointer-events: none;
 			}
 		</style>
 	</head>
@@ -134,7 +118,7 @@
 			
 
 			// Reihenfolge bestimmt welches label wo ist
-			let labels = ["&times;"];
+			let labels = ["▼"];
 
 
 			init();
@@ -528,7 +512,7 @@
 						
 						// move the elem to that position
 						// elem.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
-						elem.style.transform = `translate(-50%, -50%) translate(${x+70}px,${y-50}px)`;
+						elem.style.transform = `translate(-50%, -105%) translate(${x}px,${y}px)`;
 					}
 
 				};

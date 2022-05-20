@@ -7,6 +7,9 @@
 		<link type="text/css" rel="stylesheet" href="main.css">
 
 		<style>
+			body {
+				font-family: 'Courier New', Courier, monospace;
+			}
 
 			/* GUI OVERWRIE */
 			.lil-gui input[type=checkbox]:focus {
@@ -54,41 +57,60 @@
 				top: 0;
 				color: white;
 				display: none;
-				font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 			}
 			#labels>div {
 				position: absolute;  /* let us position them inside the container */
 				left: 0;             /* make their default position the top left of the container */
 				top: 0;
+				min-width:42px;
 				cursor: pointer;     /* change the cursor to a hand when over us */
-				font-size: large;
+				font-size: 10px;
 				color: rgb(255, 255, 255);
 				background-color:black;
 				user-select: none;   /* don't let the text get selected */
-				padding:2px 6px;
-				border: solid rgb(255, 255, 255) 1px;
+				padding:0px 10px;
+				font-weight:bold;
+				pointer-events: none;
 			}
 			#labels>div:before {
 				content: "x";
 				position: absolute;
 				color:transparent;
-				border-top: solid rgb(255, 255, 255) 1px;
+				border-top: solid rgb(255, 255, 255) 2px;
 				width:50px;
 				transform: rotate(-45deg);
-				top:41.5px;
-				left:-34px;
+				top:35px;
+				left:-32px;
 			}
-			#labels>div:hover {
-				color: white;
+			#labels>div.grey { background-color: grey; }
+			#labels>div.green { background-color: rgb(27, 191, 93); }
+			#labels>div.red { background-color: rgb(255, 63, 33); }
+			#labels>div.yellow { background-color: rgb(255, 180, 40); }
+			#labels>div.blue { background-color: rgb(72, 72, 255); }
+
+			#labels>div.grey:before { border-top-color: grey; }
+			#labels>div.green:before { border-top-color: rgb(27, 191, 93); }
+			#labels>div.red:before { border-top-color: rgb(255, 63, 33); }
+			#labels>div.yellow:before { border-top-color: rgb(255, 180, 40); }
+			#labels>div.blue:before { border-top-color: rgb(72, 72, 255); }
+
+			#labels>div.mirror {
+				left: -136px;
+			}
+
+			#labels>div.mirror:before {
+				transform: rotate(45deg);
+				top:35px;
+				left:43px;
 			}
 			#vitalics {
-				font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+				/* font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; */
 				position: fixed;
 				padding:1em;
+				line-height: 15px;
 			}
 			#vitalics div {
 				display: inline-block;
-				min-width: 75px;
 			}
 			#vitalics progress {
 				background-color:black;
@@ -97,6 +119,16 @@
 			#vitalics progress.normal::-webkit-progress-value { background: rgb(72, 72, 255); }
 			#vitalics progress.medium::-webkit-progress-value { background: rgb(255, 180, 40); }
 			#vitalics progress.low::-webkit-progress-value { background: rgb(255, 63, 33); }
+
+			.vitalHealth { width: 70px; line-height: 32px; }
+			.vitalStamina,
+			.vitalThirst,
+			.vitalExhaustion { width: 70px; font-size:10px; text-align: center; }
+
+			#vitalHealth { width: 147px; line-height: 32px; }
+			#vitalStamina,
+			#vitalThirst,
+			#vitalExhaustion { width: 70px; height: 7px; }
 		</style>
 	</head>
 
@@ -108,10 +140,15 @@
 
 		<div id="labels"></div>
 		<div id="vitalics">
-			<div>Health</div> <progress id="vitalHealth" class="" min='0' max='100' value='95'></progress><br>
-			<div>Stamina</div> <progress id="vitalStamina" class="normal" min='0' max='100' value='77'></progress><br>
-			<div>Thirst</div> <progress id="vitalThirst" class="medium" min='0' max='100' value='50'></progress><br>
-			<div>Exhaustion</div> <progress id="vitalExhaustion" class="medium" min='0' max='100' value='55'></progress>
+			<div class="vitalHealth">HEALTH</div> <progress id="vitalHealth" class="" min='0' max='100' value='95'></progress>
+			<br>
+			<progress id="vitalStamina" class="normal" min='0' max='100' value='77'></progress>
+			<progress id="vitalThirst" class="medium" min='0' max='100' value='50'></progress>
+			<progress id="vitalExhaustion" class="medium" min='0' max='100' value='55'></progress>
+			<br>
+			<div class="vitalStamina">STAMINA</div>
+			<div class="vitalThirst">THIRST</div>
+			<div class="vitalExhaustion">EXHAUSTION</div>
 		</div>
 
 		<!-- Import maps polyfill -->
@@ -149,7 +186,9 @@
 			
 
 			// Reihenfolge bestimmt welches label wo ist
-			let labels = ["ammo", "ammo", "fire", "agent", "boar", "grenade"];
+			let labels =      ["AMMO", "AMMO", "FIRE",   "AGENT", "BOAR",   "GRENADE"];
+			let labelColors = ["grey", "grey", "yellow", "blue",  "yellow", "red"];
+			let labelLeft =   [true,   false,  true,     false,   false,    true];
 
 			let explosionStage = 'idle';
 
@@ -357,6 +396,8 @@
 						let elem = document.createElement('div');
 						elem.textContent = labels[i];
 						elem.id = "label-"+i;
+						elem.classList.add(labelColors[i]);
+						if(labelLeft[i]) elem.classList.add("mirror");
 						labelContainerElem.prepend(elem);
 					}
 				}
@@ -577,7 +618,7 @@
 						
 						// move the elem to that position
 						// elem.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
-						elem.style.transform = `translate(-50%, -50%) translate(${x+70}px,${y-50}px)`;
+						elem.style.transform = `translate(-50%, -50%) translate(${x+70}px,${y-46}px)`;
 					}
 
 				};
