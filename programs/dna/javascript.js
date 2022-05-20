@@ -21,8 +21,10 @@ async function loadDna() {
     let dnaContainer = gebi('dna');
     dnaContainer.innerHTML = "<progress id='loader' value='32' max='100'>32%</progress></span><i class='material-icons small valign grey spin marginX1'>sync</i>";
     /* await delay(2222); */
+    /* let formattedData = data.replaceAll('A', '<span class="a">A</span>').replaceAll('\n', '</li><li>'); */
+    let formattedData = data.replace(/([A-Z])/g, `<span class="$1">$1</span>`).replaceAll('\n', '</li><li>');
     await counter('loader', "%", 2000, 94, 0, 100);
-    dnaContainer.innerHTML = "<ul class='dnaList'><li>"+data.replaceAll('\n', '</li><li>')+"</li></ul>";
+    dnaContainer.innerHTML = "<ul class='dnaList'><li>"+formattedData+"</li></ul>";
 }
 
 function changeFontSize(element, increment) {
