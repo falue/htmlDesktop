@@ -178,7 +178,7 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
 
 /* WINDOW */
 .window {
-    background: white;
+    background: grey;
     border-radius: .25em;
 }
 
