@@ -1,6 +1,7 @@
 let data = {
     41: [{
-        height:"333px",
+        width:"100%",
+        height:"250px",
         target: "target1",
         type: "line",
         data: {
@@ -35,7 +36,8 @@ let data = {
           },
         },
       },{
-        height:"333px",
+        height:"250px",
+        width:"100%",
         target: "target2",
         type: "line",
         data: {
@@ -80,6 +82,7 @@ let data = {
         },
       },{
         height:"150px",
+        width:"100%",
         target: "target3",
         type: "doughnut",
         data: {
@@ -110,6 +113,7 @@ let data = {
         },
       },{
         height:"150px",
+        width:"100%",
         target: "target4",
         type: "doughnut",
         data: {
@@ -140,6 +144,7 @@ let data = {
         },
       },{
         height:"150px",
+        width:"100%",
         target: "target5",
         type: "doughnut",
         data: {
@@ -170,6 +175,7 @@ let data = {
         },
       },{
         height:"150px",
+        width:"100%",
         target: "target6",
         type: "doughnut",
         data: {
@@ -201,6 +207,8 @@ let data = {
       },
 
       {
+        width:"100%",
+        height:"100%",
         target: "target8",
         type: "bar",
         data: {
@@ -239,6 +247,8 @@ let data = {
       },
 
       {
+        width:"100%",
+        height:"100%",
         target: "target9",
         type: "bar",
         data: {
@@ -297,6 +307,8 @@ let data = {
       },
 
       {
+        width:"100%",
+        height:"100%",
         target: "target10",
         type: "bar",
         data: {
@@ -333,7 +345,8 @@ let data = {
       }
     ],
     34: [{
-      height:"333px",
+      width:"100%",
+      height:"100px",
       target: "target1",
       type: "line",
       data: {
@@ -388,7 +401,8 @@ let data = {
         },
       },
     },{
-      height:"333px",
+      width:"100%",
+      height:"100px",
       target: "target2",
       type: "line",
       data: {
@@ -431,6 +445,7 @@ let data = {
       },
     },{
       height:"150px",
+      width:"100%",
       target: "target3",
       type: "doughnut",
       data: {
@@ -461,6 +476,7 @@ let data = {
       },
     },{
       height:"150px",
+      width:"100%",
       target: "target4",
       type: "doughnut",
       data: {
@@ -491,6 +507,7 @@ let data = {
       },
     },{
       height:"150px",
+      width:"100%",
       target: "target5",
       type: "doughnut",
       data: {
@@ -521,6 +538,7 @@ let data = {
       },
     },{
       height:"150px",
+      width:"100%",
       target: "target6",
       type: "doughnut",
       data: {
@@ -552,6 +570,8 @@ let data = {
     },
 
     {
+      width:"100%",
+      height:"100%",
       target: "target8",
       type: "bar",
       data: {
@@ -590,6 +610,8 @@ let data = {
     },
 
     {
+      width:"100%",
+      height:"100%",
       target: "target9",
       type: "bar",
       data: {
@@ -648,6 +670,8 @@ let data = {
     },
 
     {
+      width:"100%",
+      height:"100%",
       target: "target10",
       type: "bar",
       data: {

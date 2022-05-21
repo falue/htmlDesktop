@@ -1,17 +1,20 @@
-let data = [
+data = [
   {
     target: "target1",
     type: "line",
+    width: "100%",
+    height: "100%",
     data: {
-      labels: arrayOfIndexes(120),
+      labels: arrayOfIndexes(12),
       datasets: [{
         label: "CPU %",
         fill: false,
         backgroundColor: "rgba(127,255,127,0.2)",
         tension: 0,
         pointRadius: 0,
-        borderColor: "rgba(127,255,127,1)",
-        data: notSoRandomInts(120, 1, 120, 1212, 6, .05, true)
+        borderColor: "#46659d",
+        //data: notSoRandomInts(12, 50, 66, 1212, .5, 0, false)
+        data: randomIntsBetween(12, 50, 62)
       },{
         label: "Memory Usage",
         fill: false,
@@ -19,23 +22,8 @@ let data = [
         tension: 0,
         pointRadius: 0,
         borderColor: "rgba(0,127,127,0.8)",
-        data: notSoRandomInts(120, 60, 98, 666, 16, 0.1, false)
-      },{
-        label: "Temperature",
-        fill: false,
-        backgroundColor: "rgba(127,127,127,0.2)",
-        tension: 0,
-        pointRadius: 0,
-        borderColor: "rgba(255,127,127,0.2)",
-        data: notSoRandomInts(120, 1, 50, 667, 6, 0, false)
-      },{
-        label: chooseRandomKeys(1, techwords),
-        fill: true,
-        backgroundColor: "rgba(127,127,127,0.05)",
-        tension: 0,
-        pointRadius: 0,
-        borderColor: "rgba(127,127,127,0.2)",
-        data: notSoRandomInts(120, 1, 22, 668, 16, 0, false)
+        //data: notSoRandomInts(12, 5, 25, 666, 2, 0, false)
+        data: randomIntsBetween(12, 5, 25)
       }]
     },
     
@@ -59,7 +47,9 @@ let data = [
                     return (Math.floor((value / 100) * 100)) + '%';
                 }
             },
-            grid: {
+            suggestedMin: 0,
+            suggestedMax: 100,
+            /* grid: {
               // Make 100% line red
               drawBorder: true,
               color: function(context) {
@@ -68,7 +58,7 @@ let data = [
                 }
                 return 'rgba(0,0,0,0.2)';
               },
-          }
+          } */
         }
     },
       title: {
@@ -83,6 +73,8 @@ let data = [
   {
     target: "target3",
     type: "doughnut",
+    width: "100%",
+    height: "100%",
     data: {
       labels: chooseRandomKeys(3, techwords),
       datasets: [
@@ -113,6 +105,8 @@ let data = [
   {
     target: "target4",
     type: "doughnut",
+    width: "100%",
+    height: "100%",
     data: {
       labels: chooseRandomKeys(3, techwords),
       datasets: [
@@ -144,6 +138,8 @@ let data = [
   {
     target: "target5",
     type: "doughnut",
+    width: "100%",
+    height: "100%",
     data: {
       labels: chooseRandomKeys(3, techwords),
       datasets: [
@@ -174,8 +170,10 @@ let data = [
   {
     target: "target6",
     type: "line",
+    width: "100%",
+    height: "100%",
     data: {
-      labels: arrayOfIndexes(120),
+      labels: arrayOfIndexes(12),
       datasets: [{
         label: "Neuron count",
         fill: false,
@@ -183,7 +181,7 @@ let data = [
         tension: 0,
         pointRadius: 0,
         borderColor: chooseRandomKeys(1, colors),
-        data: notSoRandomInts(120, 1, 100, 1212, 3, .01, true)
+        data: notSoRandomInts(12, 1, 65, 1212, 1, 0, true)
       },
       {
         label: "Neuron count rel",
@@ -191,12 +189,18 @@ let data = [
         tension: .2,
         pointRadius: 0,
         borderColor: chooseRandomKeys(1, colors),
-        data: notSoRandomInts(120, 10, 50, null, 3, 0, true)
+        data: notSoRandomInts(12, 10, 43, 666, 2, 0, true)
       }]
     },
     options: {
       responsive: true, 
       legend: {display: false},
+      scales: {
+        y: {
+            suggestedMin: 0,
+            suggestedMax: 100
+        }
+      },
       title: {
         display: true,
         text: "inclining numbers",
@@ -217,6 +221,8 @@ let data = [
   {
     target: "target7",
     type: "bar",
+    width: "100%",
+    height: "100%",
     data: {
       labels: arrayOfIndexes(12),
       datasets: [

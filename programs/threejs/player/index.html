@@ -11,9 +11,10 @@
 
     <script>
       let availableFiles = {
-        "Sz34 - im meer": "ELCH_FullIsland.html",
-        "Sz42 - boar explosion": "webgl_loader_fbx_PP.html",
-        "Sz42 - insel pfad": "ELCH_FullIsland_SZ42.html",
+        "SZ42 - Boar": "webgl_loader_fbx_PP.html",
+        "SZ42 - Island drowning thing": "ELCH_FullIsland_SZ42.html",
+        "SZ34 - Island paths": "ELCH_FullIsland.html",
+        "SZ67 - Beach typing": "ELCH_Sz67.html",
       };
 
       let peek = {
@@ -34,17 +35,15 @@
         window.location.href = fileName;
       }
     </script>
+    <style>.hide { display: none; }</style>
   </head>
   <body style="padding: 2em">
     <h1>Available models</h1>
     <ol id="modelList"></ol>
     <br>
-    <h3>Peek list</h3>
-    <ul id="peekList"></ul>
+    <h3 class="hide">Peek list</h3>
+    <ul id="peekList" class="hide"></ul>
     <br>
-    Do not use this in production; 
-    link directly to the model html file
-
     <script>
       if (!fileName) {
         // Fill list with available models
@@ -67,6 +66,9 @@
           a.href = peek[key];
           li.appendChild(a);
           peekList.appendChild(li);
+        }
+        if(peek.length) {
+          peekList.classList.remove('hide');
         }
       }
     </script>

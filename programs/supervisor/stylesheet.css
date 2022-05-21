@@ -151,7 +151,7 @@ button:hover {
 .overview .contentContent.gridLayout {
     grid-gap: 1em;
     grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
-    grid-template-rows: [row] auto [row] auto [row] auto [row] auto [row];
+    grid-template-rows: [row] 20em [row] 18em [row] 5em [row] 12em [row] 12em [row] 12em [row];
 }
 
 .overview .gridBox.contentContent {
@@ -195,5 +195,10 @@ iframe {
     color:#63c6fa !important;
 }
 .blueBg {
-    bcakground-color:#63c6fa !important;
+    background-color:#63c6fa !important;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
 }

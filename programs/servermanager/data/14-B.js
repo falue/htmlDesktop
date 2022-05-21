@@ -2,6 +2,8 @@ data = [
   {
     target: "target1",
     type: "line",
+    width: "100%",
+    height: "100%",
     data: {
       labels: arrayOfIndexes(120),
       datasets: [{
@@ -11,7 +13,7 @@ data = [
         tension: 0,
         pointRadius: 0,
         borderColor: "rgba(127,255,127,1)",
-        data: notSoRandomInts(120, 25, 90, 1111, 2, 0, true)
+        data: notSoRandomInts(120, 1, 120, 1212, 6, .05, true)
       },{
         label: "Memory Usage",
         fill: false,
@@ -19,7 +21,7 @@ data = [
         tension: 0,
         pointRadius: 0,
         borderColor: "rgba(0,127,127,0.8)",
-        data: notSoRandomInts(120, 25, 98, 3333, 2, 0, false)
+        data: notSoRandomInts(120, 60, 98, 666, 16, 0.1, false)
       },{
         label: "Temperature",
         fill: false,
@@ -27,7 +29,7 @@ data = [
         tension: 0,
         pointRadius: 0,
         borderColor: "rgba(255,127,127,0.2)",
-        data: notSoRandomInts(120, 1, 50, 4444, 6, 0, false)
+        data: notSoRandomInts(120, 1, 50, 667, 6, 0, false)
       },{
         label: chooseRandomKeys(1, techwords),
         fill: true,
@@ -35,7 +37,7 @@ data = [
         tension: 0,
         pointRadius: 0,
         borderColor: "rgba(127,127,127,0.2)",
-        data: notSoRandomInts(120, 1, 22, 2222, 16, 0, false)
+        data: notSoRandomInts(120, 1, 22, 668, 16, 0, false)
       }]
     },
     
@@ -59,6 +61,16 @@ data = [
                     return (Math.floor((value / 100) * 100)) + '%';
                 }
             },
+            grid: {
+              // Make 100% line red
+              drawBorder: true,
+              color: function(context) {
+                if (context.tick.value === 100) {
+                  return "red";
+                }
+                return 'rgba(0,0,0,0.2)';
+              },
+          }
         }
     },
       title: {
@@ -73,13 +85,15 @@ data = [
   {
     target: "target3",
     type: "doughnut",
+    width: "100%",
+    height: "100%",
     data: {
       labels: chooseRandomKeys(3, techwords),
       datasets: [
         {
           backgroundColor: chooseRandomKeys(5, colors),
           borderWidth: 0,
-          data: randomIntsBetween(3, 10, 80),
+          data: randomIntsBetween(3, 1, 100),
         },
       ],
     },
@@ -103,13 +117,15 @@ data = [
   {
     target: "target4",
     type: "doughnut",
+    width: "100%",
+    height: "100%",
     data: {
       labels: chooseRandomKeys(3, techwords),
       datasets: [
         {
           backgroundColor: chooseRandomKeys(5, colors),
           borderWidth: 0,
-          data: randomIntsBetween(3, 5, 100),
+          data: randomIntsBetween(3, 1, 100),
         },
       ],
     },
@@ -134,6 +150,8 @@ data = [
   {
     target: "target5",
     type: "doughnut",
+    width: "100%",
+    height: "100%",
     data: {
       labels: chooseRandomKeys(3, techwords),
       datasets: [
@@ -164,24 +182,26 @@ data = [
   {
     target: "target6",
     type: "line",
+    width: "100%",
+    height: "100%",
     data: {
-      labels: arrayOfIndexes(60),
+      labels: arrayOfIndexes(120),
       datasets: [{
         label: "Neuron count",
         fill: false,
-        backgroundColor: colorsTransparent[3],
+        backgroundColor: chooseRandomKeys(1, colorsTransparent),
         tension: 0,
-        pointRadius: 2,
-        borderColor: colors[3],
-        data: notSoRandomInts(60, 88, 115, 1212, 3, .001 , false)
+        pointRadius: 0,
+        borderColor: chooseRandomKeys(1, colors),
+        data: notSoRandomInts(120, 1, 100, 1212, 3, .01, true)
       },
       {
         label: "Neuron count rel",
         fill: false,
         tension: .2,
         pointRadius: 0,
-        borderColor: colors[4],
-        data: notSoRandomInts(60, 10, 50, null, 3, 0, true)
+        borderColor: chooseRandomKeys(1, colors),
+        data: notSoRandomInts(120, 10, 50, null, 3, 0, true)
       }]
     },
     options: {
@@ -193,27 +213,6 @@ data = [
         fontSize: 16,
         fontColor: 'white',
       },
-      scales: {
-        y: {
-            ticks: {
-                // Add % to Y scale
-                stepSize: 20, /* total/4 shows 0, 25%, 50%, 75%, 100% */             
-                callback: function(value, index, values) {
-                    return value + 'b';
-                }
-            },
-            grid: {
-              // Make 100% line red
-              drawBorder: true,
-              color: function(context) {
-                if (context.tick.value === 100) {
-                  return "red";
-                }
-                return 'rgba(0,0,0,0.2)';
-              },
-          }
-        }
-    },
       plugins: {
         legend: {
           display: true,
@@ -228,6 +227,8 @@ data = [
   {
     target: "target7",
     type: "bar",
+    width: "100%",
+    height: "100%",
     data: {
       labels: arrayOfIndexes(12),
       datasets: [

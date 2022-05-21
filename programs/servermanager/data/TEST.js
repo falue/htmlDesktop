@@ -1,4 +1,4 @@
-let data = [
+data = [
   {
     target: "target1",
     type: "doughnut",

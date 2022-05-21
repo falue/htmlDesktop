@@ -22,7 +22,7 @@ function setupScene(scene) {
             cl(threejsData);
             switchTabs(2);
             for (let i = 0; i < data[scene].length; i++) {
-                createChart("100%", data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
+                createChart(data[scene][i].width, data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
             }
             break;
 
@@ -31,7 +31,7 @@ function setupScene(scene) {
             switchTabs(2);
             /* cl(data[scene]); */
             for (let i = 0; i < data[scene].length; i++) {
-                createChart("100%", data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
+                createChart(data[scene][i].width, data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
             }
             break;
 

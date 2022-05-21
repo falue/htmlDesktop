@@ -93,7 +93,7 @@
             "icon": "servermngr.png",
             "x": 1,
             "y": 16,
-            "action": "addWindow('SERVER MNGR', 'code', 'servermanager/index.html?scene=14', 6, 6, 1500,900, false);"
+            "action": "addWindow('SERVER MNGR', 'code', 'servermanager/index.html?scene=14-A', 6, 6, 1500,900, false);"
         },
         {
             "name": "Neptcode Notebook",

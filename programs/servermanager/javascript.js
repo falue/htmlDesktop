@@ -1,3 +1,5 @@
+let scene;
+let data;
 let textToType = `[05-01-22 00:25:24.424] LOG : General , 1641338724424> 1641338724424 fmod: Create DSP for capture sound.
 [05-01-22 00:25:26.280] LOG : General , 1641338726279> AngelCodeFont failed to load page 0`;
   
@@ -7,7 +9,7 @@ async function setup() {
     let os = urlParams.get('os');
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
-    let scene = urlParams.get('scene');
+    scene = urlParams.get('scene');
 
     /* let data = urlParams.get('data');
     gebi('dataScript').src = `data/${data || "basic"}.js`; */
@@ -28,11 +30,24 @@ async function setup() {
         "Network receive"
     ];
 
+    loadScene(scene);
+    updateSyntaxHighlighting();
+    highlightNode();
+}
+
+function loadScene(scene) {
+    // Remove last script if already loaded
+    if(gebi('sceneData')) {
+        gebi('sceneData').remove();
+        firstTimeLoaded = false;
+    }
+    
     // Add new script tag with src to head
     let script = document.createElement('script');
+    script.id = "sceneData";
     script.src = `data/${scene || "basic"}.js`;
     // Wait for additional js to load until commencing setup process
-    script.setAttribute('onload', 'setup2()');
+    script.setAttribute('onload', 'switchTabs(1)');
     document.getElementsByTagName('head')[0].appendChild(script);
 
     // Init syntax highlighting
@@ -40,7 +55,20 @@ async function setup() {
     hljs.configure({useBR: true});
 
     switch(scene) {
-        case "14":
+        case "14-A":
+            gebi('vm').innerHTML = "rando project";
+            gebi('vmManager').innerHTML = "rando guy";
+            gebi('target2').innerHTML = `
+            <img class="maxHeight mirrorX" src="data/floorplan-14.svg" style="transform: rotate(63.528deg)">
+            <div class="fixed code bottom blackBgTransparent left padding1">
+            <i class="material-icons blue small valign">business</i>
+            Mona lisa blocks<br><span class="grey">Node 01-026 (mlve)</span>
+            </div>
+            `
+            break;
+        case "14-B":
+            gebi('vm').innerHTML = "Sonn";
+            gebi('vmManager').innerHTML = "J.Brugger";
             gebi('target2').innerHTML = `
             <img class="maxHeight" src="data/floorplan-14.svg">
             <div class="fixed code bottom blackBgTransparent left padding1">
@@ -61,18 +89,18 @@ async function setup() {
     }
 }
 
-// Commence setup process
-function setup2() {
-    switchTabs(1);
-    updateSyntaxHighlighting();
-    highlightNode();
-}
-
 function createAllCharts() {
     // TODO: if window is minimized, nothing gets loaded initially
     for (let i = 0; i < data.length; i++) {
         if(!isHidden(gebi(data[i].target))) {
             gebi(data[i].target).replaceChildren();  // clear contents to re-render
+            if(scene ==="14-A") {
+                cl("hardcoded overwrite of generic server data!!!!");
+                data[0].data.datasets[0].data = randomIntsBetween(12, 0, randomIntsBetween(1,3,45)[0]);
+                data[0].data.datasets[1].data = randomIntsBetween(12, 5, randomIntsBetween(1,0,33)[0]);
+                data[4].data.datasets[0].data = randomIntsBetween(12, 0, randomIntsBetween(1,3,45)[0]);
+                data[4].data.datasets[1].data = randomIntsBetween(12, 5, randomIntsBetween(1,0,33)[0]);
+            }
             createChart(data[i].width, data[i].height, "canvas-"+createUniqueId(), data[i].target, data[i]);
         }
     }
@@ -93,6 +121,18 @@ function highlightNode() {
             this.classList.add("active");
             // stop propagation
             event.stopPropagation();
+            if(this.innerHTML.indexOf("Block 02") >= 0 || this.innerHTML.indexOf("Node 02") >= 0) {
+                scene = "14-B";
+                loadScene(scene);  // swap to sonnys project
+            } else if(scene === "14-B") {
+                scene = "14-A";
+                loadScene(scene);  // swap to initial
+            }
+
+            /* 
+            if(scene === "14-A") loadScene("14-B");  // swap to sonnys project
+            if(this.innerHTML.indexOf("Block 01") !== -1) loadScene("14-A");  // swap to initial
+             */
             switchTabs(1);  // makes it look like its reloading
             gebi('summeryTitle').innerHTML = this.innerHTML;
         });

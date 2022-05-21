@@ -325,7 +325,7 @@ Vary: Accept-Encoding
 20230510T181633 I 1118279 [OS3] UPLOAD 200 file:SavedNotifications.json part=1/1 dt=0.49
 20230510T181634 I 1118279 [OS3] END uploadFile file:SavedNotifications.json size=1117 status=200 dt=1.23
 20230510T181645 I 1118524 PUT 200 https://f360sc-p-ue1.api.cosv2-p-ue1-dn.Tessier-Ashpool-SA.com/api/v1/sessions/90249063 - workflow:SLM_heartbeat attempt:0 requestId:f360_SLM_heartbeat__1-627a8fed-367539d3fee14504afd8f3e0 dt=0.17
-20230510T181730 I .1116460 Begin:	Opening the Document with translation /Users/fl/Projekte/22-05 Electric Child/design/gpu/gpuv2.step
+20230510T181730 I .1116460 Begin:	Opening the Document with translation ~/Projekte/22-05 Sonn/design/gpu/gpuv2.step
 20230510T181731 D .1116460 PIMLocalService/emit: PIMLocalService:documentCreated message sent ...
 20230510T181731 D 1121589 PIMMgr/sendDocumentCreatedEvent: sendDocumentCreatedEvent response: 
 {}
@@ -337,7 +337,7 @@ Vary: Accept-Encoding
 20230510T181732 I .1116460 [ReadOnlyForMe] Read-Only banner not displayed for Document : Untitled 
 20230510T181732 I 1135625 PushNotification using new pub nub
 20230510T181732 I .1116460 Time Taken:	2.1426719999999997
-20230510T181732 I .1116460 End:	Opening the Document with translation /Users/fl/Projekte/22-05 Electric Child/design/gpu/gpuv2.step
+20230510T181732 I .1116460 End:	Opening the Document with translation ~/Projekte/22-05 Sonn/design/gpu/gpuv2.step
 20230510T181732 I 1135626 PushNotification cant getchannel, no oxygenID or channelName?
 20230510T181732 W 1135626 PushNotificationManager::addSubscriber cant create subscription to channelName: 
 20230510T181732 I 1135626 PushNotification cant getchannel, no oxygenID or channelName?
@@ -363,7 +363,7 @@ Vary: Accept-Encoding
 20230510T181749 D 1121589 PIMMgr/sendDocumentClosedEvent: sendDocumentClosedEvent response: 
 {}
 20230510T181749 D .1116460 Unexpected command type: evergage
-20230510T181801 I .1116460 Begin:	Opening the Document with translation /Users/fl/Projekte/22-05 Electric Child/design/gpu/gpuv2.step
+20230510T181801 I .1116460 Begin:	Opening the Document with translation ~/Projekte/22-05 Sonn/design/gpu/gpuv2.step
 20230510T181801 D .1116460 PIMLocalService/emit: PIMLocalService:documentCreated message sent ...
 20230510T181802 D 1121589 PIMMgr/sendDocumentCreatedEvent: sendDocumentCreatedEvent response: 
 {}
@@ -374,7 +374,7 @@ Vary: Accept-Encoding
 {}
 20230510T181802 I .1116460 [ReadOnlyForMe] Read-Only banner not displayed for Document : Untitled 
 20230510T181802 I .1116460 Time Taken:	1.1514819999999999
-20230510T181802 I .1116460 End:	Opening the Document with translation /Users/fl/Projekte/22-05 Electric Child/design/gpu/gpuv2.step
+20230510T181802 I .1116460 End:	Opening the Document with translation ~/Projekte/22-05 Sonn/design/gpu/gpuv2.step
 20230510T181803 D .1116460 Unexpected command type: evergage
 20230510T181803 D .1116460 Unexpected command type: evergage
 20230510T181808 D .1116460 PIMLocalService/emit: PIMLocalService:preDocumentClose message sent ...
@@ -386,7 +386,7 @@ Vary: Accept-Encoding
 20230510T181808 D 1121589 PIMMgr/sendDocumentClosedEvent: sendDocumentClosedEvent response: 
 {}
 20230510T181808 D .1116460 Unexpected command type: evergage
-20230510T181825 I .1116460 Begin:	Opening the Document with translation /Users/fl/Projekte/22-05 Electric Child/design/gpu/gpuXXX.step
+20230510T181825 I .1116460 Begin:	Opening the Document with translation ~/Projekte/22-05 Sonn/design/gpu/gpuXXX.step
 20230510T181825 D .1116460 PIMLocalService/emit: PIMLocalService:documentCreated message sent ...
 20230510T181825 D 1121589 PIMMgr/sendDocumentCreatedEvent: sendDocumentCreatedEvent response: 
 {}
@@ -397,7 +397,7 @@ Vary: Accept-Encoding
 {}
 20230510T181826 I .1116460 [ReadOnlyForMe] Read-Only banner not displayed for Document : Untitled 
 20230510T181826 I .1116460 Time Taken:	1.329153
-20230510T181826 I .1116460 End:	Opening the Document with translation /Users/fl/Projekte/22-05 Electric Child/design/gpu/gpuXXX.step
+20230510T181826 I .1116460 End:	Opening the Document with translation ~/Projekte/22-05 Sonn/design/gpu/gpuXXX.step
 20230510T181826 D .1116460 Unexpected command type: evergage
 20230510T181826 D .1116460 Unexpected command type: evergage
 20230510T181847 I 1118524 PUT 200 https://f360sc-p-ue1.api.cosv2-p-ue1-dn.Tessier-Ashpool-SA.com/api/v1/sessions/90249063 - workflow:SLM_heartbeat attempt:0 requestId:f360_SLM_heartbeat__1-627a9066-bdb88c2c16c348ffa0be5d84 dt=0.21
