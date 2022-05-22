@@ -94,6 +94,18 @@ header {
     padding: 1em 0;
 }
 
+.paper.max {
+    width: 100%;
+}
+
+.paper progress::-webkit-progress-value {
+    background: rgb(61, 61, 255);
+}
+.paper progress.finished::-webkit-progress-value {
+    background: rgb(78, 169, 78);
+}
+
+
 /* select page when smaller than 800px */ 
 @media (max-width:1200px) {
     .paper {
