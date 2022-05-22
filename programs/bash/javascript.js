@@ -138,9 +138,12 @@ async function playCommandAtIndex(index) {
 }
 
 function resetConsole() {
-  gebi("console").innerHTML = "";
+  /* gebi("console").innerHTML = "";
   bashProfileName = bashProfileNameInitial;
-  playCommandAtIndex(0);
+  playCommandAtIndex(0); */
+  const url = new URL(window.location.href);
+  url.searchParams.set('reloadTime', Date.now().toString());
+  window.location.href = url.toString();
 }
 
 function removeLastCommandOutput(className) {
