@@ -46,7 +46,11 @@ function setupScene(scene) {
         case "67":
             // TYPING, COAST & CHAMPAGNE
             threejsData += "ELCH_SZ67.html";
-            switchTabs(4);
+            switchTabs(2);
+            show('showChartBigTarget2');
+            for (let i = 0; i < data[scene].length; i++) {
+                createChart(data[scene][i].width, data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
+            }
             break;
 
         default:
@@ -92,4 +96,25 @@ function switchTabs(index) {
     }
 
     currentTab = index;
+}
+
+async function showChartBig(scene, chartNo) {
+    let popup = document.createElement('div');
+    popup.classList.add('maxWidth', 'fixed', 'maxHeight', 'centerContent', 'top', 'left', 'blackBgTransparent');
+    popup.id="popup-"+createUniqueId();
+    popup.setAttribute('onclick', `gebi('${popup.id}').remove();`);
+    let window = document.createElement('div');
+    window.style.width = "80%";
+    window.style.height = "66%";
+    window.style.backgroundColor = "#3d3d3d";
+    window.classList.add('shadow', 'padding2');
+    let canvasContainer = document.createElement('div');
+    canvasContainer.style.width = "100%";
+    canvasContainer.style.height = "100%";
+    canvasContainer.id="popupCanvas";
+    window.appendChild(canvasContainer);
+    popup.appendChild(window);
+    document.body.appendChild(popup);
+    await delay(100);
+    createChart("100%", "100%", "canvas-"+createUniqueId(), "popupCanvas", data[scene][chartNo]);
 }

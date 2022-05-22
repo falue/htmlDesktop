@@ -61,20 +61,7 @@
             "renderToDom": false
         },
         {
-            "metaTitle": "#67A - Servermanager - Beach & Champagne",
-            "windowName": "Server MNGR",
-            "icon": "storm",
-            "contentPath": "servermanager/index.html?scene=67",
-            "x": 9,
-            "y": 4,
-            "w": 1500,
-            "h": 900,
-            "zIndex": 60,
-            "minimized": false,
-            "renderToDom": false
-        },
-        {
-            "metaTitle": "#67B - Supervisor - Beach & Champagne",
+            "metaTitle": "#67 - Supervisor - Beach & Champagne",
             "windowName": "Supervisor",
             "icon": "scatter_plot",
             "contentPath": "supervisor/index.html?scene=67",
