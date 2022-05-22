@@ -35,6 +35,32 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#42 - Random - FTP Client",
+            "windowName": "FTP Client",
+            "icon": "storm",
+            "contentPath": "ftp",
+            "x": 48,
+            "y": 11,
+            "w": 850,
+            "h": 590,
+            "zIndex": 18,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#42 - Random - File manager",
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager",
+            "x": 65,
+            "y": 52,
+            "w": 600,
+            "h": 350,
+            "zIndex": 17,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
             "metaTitle": "#67A - Servermanager - Beach & Champagne",
             "windowName": "Server MNGR",
             "icon": "storm",
@@ -66,7 +92,7 @@
             "name": "Trash",
             "icon": "trashFull.png",
             "x": 94,
-            "y": 82,
+            "y": 87,
             "action": ""
         },
         {
@@ -77,25 +103,123 @@
             "action": "startDefaultProgram('fileManager');"
         },
         {
-            "name": "SERVER MNGR",
-            "icon": "servermngr.png",
-            "x": 1,
-            "y": 16,
-            "action": "addWindow('SERVER MNGR', 'code', 'servermanager/index.html?scene=67', 9, 4, 1500,900, false);"
-        },
-        {
             "name": "Neptcode Notebook",
             "icon": "python.png",
             "x": 1,
-            "y": 28,
+            "y": 17,
             "action": "addWindow('Neptcode Notebook', 'code', 'neptcode', 15, 5, 1100,700, false);"
         },
         {
             "name": "Supervisor",
             "icon": "supervisor.png",
             "x": 2,
-            "y": 40,
+            "y": 30,
             "action": "addWindow('Supervisor', 'scatter_plot', 'supervisor/index.html?scene=67', 14, 7, 1500,900, false);"
+        },
+        {
+            "name": "Home Copy",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "VAR",
+            "icon": "folderFull.png",
+            "x": 73,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Personal.mp4",
+            "icon": "fileMovie.png",
+            "x": 23,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "MONALISA-test.PDF",
+            "icon": "pdf.png",
+            "x": 78,
+            "y": 30,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 52,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Links 38dd1 Copy",
+            "icon": "folderFull.png",
+            "x": 15,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Favorites Copy.txt",
+            "icon": "txt.png",
+            "x": 64,
+            "y": 4,
+            "action": "startDefaultProgram('imageViewer');"
+        },
+        {
+            "name": "var Copy.pyc",
+            "icon": "python.png",
+            "x": 2,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Important 37777 Copy",
+            "icon": "folderFull.png",
+            "x": 43,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "var.jpg",
+            "icon": "fileImage.png",
+            "x": 10,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Favorites Copy",
+            "icon": "folderFull.png",
+            "x": 78,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Personal",
+            "icon": "folderFull.png",
+            "x": 58,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Personal",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Important b7d5c",
+            "icon": "folderFull.png",
+            "x": 64,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 58,
+            "y": 69,
+            "action": ""
         }
     ],
     "actions": [
