@@ -7,7 +7,6 @@ async function setup() {
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
     let scene = urlParams.get('scene');
-    let dataPath = urlParams.get('data');
     
     // Set generic system fonts
     setSystemFont(os);
@@ -33,12 +32,16 @@ async function setup() {
     updateSyntaxHighlighting();
 
     // Open the start tab
-    switchTabs(scene || 1);
+    switchTabs(1);
+
+    if(scene === "41") {
+        gebi('paper').classList.add('max');
+    }
 
     // Setup code blocks
     // Add new script tag with src to head
     let script = document.createElement('script');
-    script.src = `data/${dataPath || "basic"}.js`;
+    script.src = `data/${scene || "basic"}.js`;
     // Wait for additional js to load until commencing setup process
     script.setAttribute('onload', 'setupCodeblocks()');
     document.getElementsByTagName('head')[0].appendChild(script);
