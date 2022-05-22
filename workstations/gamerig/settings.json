@@ -72,41 +72,5 @@
     ],
     "actions": [],
     "osNotifications": [
-        {
-            "metaTitle": "this meta title - for your eyes only",
-            "title": "You've got mail (2)",
-            "description": "The following messages have just arrived: (..)",
-            "icon": "email",
-            "initialDelay": true,
-            "timeOut": 0,
-            "action": "startDefaultProgram('textEditor')"
-        },
-        {
-            "metaTitle": "",
-            "title": "Zombie wave iminent",
-            "description": "Hack into these brains to gain access to valuable recources (..)",
-            "icon": "warning",
-            "initialDelay": true,
-            "timeOut": 0,
-            "action": "startDefaultProgram('terminal')"
-        },
-        {
-            "metaTitle": "more meta",
-            "title": "Some files need your attention",
-            "description": "",
-            "icon": "info",
-            "initialDelay": true,
-            "timeOut": 3500,
-            "action": "startDefaultProgram('fileManager')"
-        },
-        {
-            "metaTitle": "",
-            "title": "Activate OS now",
-            "description": "Please invest in a robust system and pay us just $14.99 per day to experience the most comfort a meaty fleshbag can enjoy. We will remind you again in one hour.",
-            "icon": "shield",
-            "initialDelay": true,
-            "timeOut": 4500,
-            "action": ""
-        }
     ]
 }
