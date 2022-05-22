@@ -25,7 +25,7 @@
             "metaTitle": "#10 - Neptcode - random window",
             "windowName": "Neptcode Notebook",
             "icon": "code",
-            "contentPath": "neptcode/index.html?data=basic&darkMode=false",
+            "contentPath": "neptcode/index.html?scene=basic&darkMode=false",
             "x": 40,
             "y": 8,
             "w": 1000,

@@ -38,14 +38,14 @@
             "metaTitle": "#41 - Neptcode - model predict",
             "windowName": "Neptcode Notebook",
             "icon": "code",
-            "contentPath": "neptcode/index.html?data=41",
+            "contentPath": "neptcode/index.html?scene=41",
             "x": 5,
             "y": 5,
             "w": 1500,
             "h": 820,
-            "zIndex": 61,
+            "zIndex": 63,
             "minimized": false,
-            "renderToDom": true
+            "renderToDom": false
         }
     ],
     "shortcuts": [
