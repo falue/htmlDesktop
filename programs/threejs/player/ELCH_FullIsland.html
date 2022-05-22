@@ -65,6 +65,13 @@
 				user-select: none;   /* don't let the text get selected */
 				pointer-events: none;
 			}
+			
+			.time {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				padding:1em;
+			}
 		</style>
 	</head>
 
@@ -74,6 +81,7 @@
 			The Island Map
 		</div>
 
+		<div id="time" class="time">Loading..</div>
 		<div id="labels"></div>
 
 		<!-- Import maps polyfill -->
@@ -464,6 +472,11 @@
 			/*	object1.watermaterial.normalMap.offset.x = time*0.002;*/
 
 				renderer.render( scene, camera );
+				
+				if(mixer) {
+					// document.getElementById('time').innerHTML = `Current time: ${new Date((1715781615 + mixer.time)*1000).toISOString()}`;
+					document.getElementById('time').innerHTML = `Timestamp: ${((1715781615 + mixer.time)*1000).toFixed(6)}ms | Frame: ${mixer.time.toFixed(2)}`;
+				}
 
 				updateLabels();
 

@@ -105,6 +105,12 @@
 				top:35px;
 				left:43px;
 			}
+			.time {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				padding:1em;
+			}
 		</style>
 	</head>
 
@@ -114,6 +120,7 @@
 			LOG
 		</div>
 
+		<div id="time" class="time">Loading..</div>
 		<div id="labels"></div>
 
 		<!-- Import maps polyfill -->
@@ -473,6 +480,11 @@
 					renderer.render( scene, camera );
 					updateLabels();
 					delta = 0;
+
+					if(mixer) {
+						// document.getElementById('time').innerHTML = `Current time: ${new Date((1715781615 + mixer.time)*1000).toISOString()}`;
+						document.getElementById('time').innerHTML = `Timestamp: ${((1715781615 + mixer.time)*1000).toFixed(6)}ms | Frame: ${mixer.time.toFixed(2)}`;
+					}
 					
 					if(enableStats) {
 						stats.update();

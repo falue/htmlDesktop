@@ -95,6 +95,13 @@
 			#vitalStamina,
 			#vitalThirst,
 			#vitalExhaustion { width: 70px; height: 7px; }
+			
+			.time {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				padding:1em;
+			}
 		</style>
 	</head>
 
@@ -104,6 +111,7 @@
 			The Island Map
 		</div>
 
+		<div id="time" class="time">Loading..</div>
 		<div id="labels"></div>
 		<div id="vitalics">
 			<div class="vitalHealth">HEALTH</div> <progress id="vitalHealth" class="low" min='0' max='100' value='8'></progress>
@@ -318,6 +326,8 @@
 					// createTextLabels('Boar', 7);
 					createBoundBoxesLabels();
 					
+					// Autoplay
+					modifyTimeScale(true);					
 				});
 
 				function createBoundBoxesLabels () {
@@ -478,6 +488,11 @@
 			/*	object1.watermaterial.normalMap.offset.x = time*0.002;*/
 
 				renderer.render( scene, camera );
+
+				if(mixer) {
+					// document.getElementById('time').innerHTML = `Current time: ${new Date((1715781615 + mixer.time)*1000).toISOString()}`;
+					document.getElementById('time').innerHTML = `Timestamp: ${((1715781615 + mixer.time)*1000).toFixed(6)}ms | Frame: ${mixer.time.toFixed(2)}`;
+				}
 
 				updateLabels();
 

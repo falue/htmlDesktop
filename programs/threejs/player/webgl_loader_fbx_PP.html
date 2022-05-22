@@ -129,6 +129,13 @@
 			#vitalStamina,
 			#vitalThirst,
 			#vitalExhaustion { width: 70px; height: 7px; }
+
+			.time {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				padding:1em;
+			}
 		</style>
 	</head>
 
@@ -138,6 +145,7 @@
 			BOAR
 		</div>
 
+		<div id="time" class="time">Loading..</div>
 		<div id="labels"></div>
 		<div id="vitalics">
 			<div class="vitalHealth">HEALTH</div> <progress id="vitalHealth" class="" min='0' max='100' value='95'></progress>
@@ -541,6 +549,11 @@
 				if ( mixer6 ) mixer6.update( delta );
 
 				renderer.render( scene, camera ) ;
+
+				if(mixer) {
+					// document.getElementById('time').innerHTML = `Current time: ${new Date((1715781615 + mixer.time)*1000).toISOString()}`;
+					document.getElementById('time').innerHTML = `Timestamp: ${((1715781615 + mixer.time)*1000).toFixed(6)}ms | Frame: ${mixer.time.toFixed(2)}`;
+				}
 
 				updateLabels();
 				updateHealth();
