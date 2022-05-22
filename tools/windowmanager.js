@@ -845,7 +845,7 @@ function startDefaultProgram(program, parameters) {
         addWindow('Program', 'grid_view', 'colorMarker', x, y, 666,450, false);
       break;
     case "neptcode":
-        addWindow('Neptcode Notebook', 'code', `neptcode/index.html?data=${parameters || "basic"}`, x, y, 888,850, false);
+        addWindow('Neptcode Notebook', 'code', `neptcode/index.html?scene=${parameters || "basic"}`, x, y, 888,850, false);
       break;neptcode
     case "terminal":
       // If no parameters set, start with random terminal content
