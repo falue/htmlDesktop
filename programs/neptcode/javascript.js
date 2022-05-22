@@ -168,7 +168,7 @@ async function addNextCodeblock(last=false) {
         // Fillout if printedOut is defined
         if(codeIndex < printedOut) {
             textarea.value = textToPrint;
-            highlightBox.innerHTML = textToPrint;
+            if(textToPrint) highlightBox.innerHTML = textToPrint;
         }
     }    
     
