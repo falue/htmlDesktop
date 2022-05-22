@@ -22,15 +22,28 @@
     ],
     "windows": [
         {
-            "metaTitle": "#34 - Terminal - apt-get im HG",
-            "windowName": "Terminal",
+            "metaTitle": "#34 - Neptcode - Training Network",
+            "windowName": "Neptcode",
             "icon": "code",
-            "contentPath": "terminal/index.html?byRows=true&startChar=50&text=apt-get&theme=an-old-hope&speed=2&language=c&autotype=true&humanTyper=true&cursor=true&truncateText=12000&bgColor=111111&fontColor=FFFFFF&paddingRange=15",
+            "contentPath": "neptcode/index.html?scene=34",
             "x": 7,
             "y": 7,
             "w": 1000,
             "h": 850,
             "zIndex": 62,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#34 - Terminal - apt-get",
+            "windowName": "Terminal",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=50&text=apt-get&theme=an-old-hope&speed=2&language=c&autotype=true&humanTyper=true&cursor=true&truncateText=12000&bgColor=111111&fontColor=FFFFFF&paddingRange=15",
+            "x": 12,
+            "y": 12,
+            "w": 1000,
+            "h": 850,
+            "zIndex": 61,
             "minimized": false,
             "renderToDom": false
         },

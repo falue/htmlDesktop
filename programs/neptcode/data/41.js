@@ -28,23 +28,24 @@ try:
 except KeyboardInterrupt:
     pass
 finally:
-    print(’training complete')
+    print('training complete')
     gc.collect()
     torch.cuda.empty_cache()`,
 
 `Prepping model...
-<span class="minWidth150 inlineBlock">Main loop:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 3,099M/3,099M [8:46:12<00:00, 122.4it/s]
-...
-<span class="minWidth150 inlineBlock">Epoch #14582:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 3,099M/3,099M [1:12:09<00:00, 89.0it/s]
-<span class="minWidth150 inlineBlock">Epoch #14583:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 3,099M/3,099M [0:12:45<00:00, 45.9it/s]
-<span class="minWidth150 inlineBlock">Epoch #14584:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 3,099M/3,099M [0:28:13<00:00, 78.6it/s]
-<span class="minWidth150 inlineBlock">Epoch #14585:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 3,099M/3,099M [1:23:00<00:00, 50.6it/s]
+<span class="grey nobr overflowAuto">----------------------------------------------------------------------------------------</span>
+<span class="nobr overflowAuto"><span class="minWidth150 inlineBlock">Main loop:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 2,045M/3,099M [5:41:05<00:00, 121.4it/s]</span>
+<span class="grey nobr overflowAuto">----------------------------------------------------------------------------------------</span>
+<span class="grey">(14581 rows redacted)</span>
 
-training complete`,
+<span class="nobr overflowAuto"><span class="minWidth150 inlineBlock">Epoch #14582:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 3,099M/3,099M [1:12:09<00:00, 89.0it/s]</span>
+<span class="nobr overflowAuto"><span class="minWidth150 inlineBlock">Epoch #14583:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 3,099M/3,099M [0:12:45<00:00, 45.9it/s]</span>
+<span class="nobr overflowAuto"><span class="minWidth150 inlineBlock">Epoch #14584:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 3,099M/3,099M [0:28:13<00:00, 78.6it/s]</span>
+<span class="nobr overflowAuto"><span class="minWidth150 inlineBlock">Epoch #14585:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 3,099M/3,099M [1:23:00<00:00, 50.6it/s]</span>
+<span class="grey nobr overflowAuto">----------------------------------------------------------------------------------------</span>
 
-/* (3,099,734,149/3,099,734,149bp)
-[<span class="blue">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span>] 100% 
-<span class="bold">Success</span>! Saved output to tBurggerOut-copy.dna */
+training complete
+`,
 
 'model.predict("tBurgger-copy.dna")'
 ];
@@ -97,7 +98,7 @@ window.scrollTo(0, document.getElementById('galc').offsetTop);
 document.getElementById('galc').scrollIntoView();
      */
 
-let out = `<div class="terminal python hljs nobr" onclick="epD(event); document.getElementById('galc').scrollIntoView();" style="z-Index: 666; display:relative;"><span class="grey">(3,099,734,149/3,099,734,149 lines redacted)</span>
+let out = `<div class="terminal python hljs nobr" onclick="epD(event); document.getElementById('galc').scrollIntoView();" style="z-Index: 666;"><span class="grey">(3,099,734,149/3,099,734,149 lines redacted)</span>
 AATTCTTTGATTGATAATTTTTTCTTCTCAGTCTTTTATCTTGTCTCTTC  PAH     0.97%  ▒
 CTTGAACACATTATTTCTGGTGTTGAACATTCCAGACCACTTCTCCAATT  CMT1A   3.40%  ▒
 TTCTTATACTTTTTTCTCCTATTTTTCACCTTTTAGATCTCTTTTTGTTG  PKD1    3.33%  ▒

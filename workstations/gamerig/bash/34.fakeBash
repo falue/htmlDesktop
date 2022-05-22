@@ -1,0 +1,27 @@
+# ------- setup
+# bashProfileName - plain text or html
+<span class='green'>jbr</span>@<span class='red'>monalisa2</span>:<span class='grey'>~</span> $ 
+# -------
+# NOTE: If you want to have [ or ] in text, use \[ or \]
+
+# ELCH
+[autoType, "Device 0 \[Octa X3600\] PCIe Gen 9@64x RX: 0.000 kB/s TX: 1.822 TB/s", 12]
+[autoType, "GPU 1097GHz MEM 2505GHz TEMP 89°C FAN N/A% POW 10kW", 12]
+[autoType, "GPU\[                           0%\] MEM \[||||||         1.1TB/4.2G\]", 12]
+[autoType, "   ┌────────────────────────────────────────────────────────────────────────────────────────────┐", 12]
+[autoType, "100│              ┌─────────┐                                                                   │", 12]
+[autoType, "   │ ┌───┐      ┌─┘         │                                                                   │", 12]
+[autoType, "75%│ │   └──────┘           │                                                                   │", 12]
+[autoType, "   │ │                      │                                                                   │", 12]
+[autoType, "50%│ │                      │                                                                   │", 12]
+[autoType, "   │ │                      │                                                                   │", 12]
+[autoType, "25%│ │                      │                                                                   │", 12]
+[autoType, "   │ │                                                                                          │", 12]
+[autoType, "00%│─┘                                                                                          │", 12]
+[autoType, "   └────────────────────────────────────────────────────────────────────────────────────────────┘", 12]
+[autoType, "PID", 12] [waitForEnter] [clear] [goto:nobr, 0]
+
+EXIT
+┌─┐
+│ │
+└─┘
