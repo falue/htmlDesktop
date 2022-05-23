@@ -346,7 +346,7 @@ let data = {
     ],
     34: [{
       width:"100%",
-      height:"100px",
+      height:"200px",
       target: "target1",
       type: "line",
       data: {
@@ -402,7 +402,7 @@ let data = {
       },
     },{
       width:"100%",
-      height:"100px",
+      height:"200px",
       target: "target2",
       type: "line",
       data: {

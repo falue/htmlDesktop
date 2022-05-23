@@ -29,7 +29,7 @@
             "x": 9,
             "y": 4,
             "w": 1200,
-            "h": 666,
+            "h": 900,
             "zIndex": 60,
             "minimized": false,
             "renderToDom": true

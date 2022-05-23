@@ -68,6 +68,13 @@
             "x": 94,
             "y": 82,
             "action": ""
+        },
+        {
+            "name": "Neptcode Notebook",
+            "icon": "python.png",
+            "x": 1,
+            "y": 6,
+            "action": "addWindow('Neptcode Notebook', 'code', 'neptcode/index.html?scene=34', 15, 5, 1000,850, false);"
         }
     ],
     "actions": [],
