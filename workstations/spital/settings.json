@@ -116,8 +116,8 @@
         {
             "name": "DVD",
             "icon": "dvd.png",
-            "x": 94,
-            "y": 69,
+            "x": 3,
+            "y": 4,
             "action": ""
         },
         {
@@ -130,16 +130,240 @@
         {
             "name": "Krabbe disease.pdf",
             "icon": "pdf.png",
-            "x": 2,
-            "y": 16,
+            "x": 1,
+            "y": 30,
             "action": "startDefaultProgram('imageViewer', 'krabbe.pdf')"
         },
         {
             "name": "HDD",
             "icon": "hdd.png",
             "x": 3,
-            "y": 4,
+            "y": 43,
             "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Links Copy",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "A-433.png",
+            "icon": "fileImage.png",
+            "x": 2,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "File.PDF",
+            "icon": "pdf.png",
+            "x": 3,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Links 1b17a",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Important Copy",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 11,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "File",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 11,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 11,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Home.jpg",
+            "icon": "fileImage.png",
+            "x": 9,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Important ec635",
+            "icon": "folderFull.png",
+            "x": 15,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 17,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Document Copy.zip",
+            "icon": "zip.png",
+            "x": 15,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Document",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 18,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Personal.zip",
+            "icon": "zip.png",
+            "x": 16,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Important 9fdfd",
+            "icon": "folderFull.png",
+            "x": 15,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Photos f0e62",
+            "icon": "folderFull.png",
+            "x": 23,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Personal Copy",
+            "icon": "folderFull.png",
+            "x": 23,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "file Copy",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Photos.psd",
+            "icon": "fileImage.png",
+            "x": 23,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "File",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Important.avi",
+            "icon": "fileMovie.png",
+            "x": 23,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Personal 02b16",
+            "icon": "folderFull.png",
+            "x": 22,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Links Copy",
+            "icon": "folderFull.png",
+            "x": 30,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Important Copy.pyc",
+            "icon": "python.png",
+            "x": 29,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 30,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Personal",
+            "icon": "folderFull.png",
+            "x": 31,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Home 9afb0",
+            "icon": "folderFull.png",
+            "x": 30,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "File",
+            "icon": "folderFull.png",
+            "x": 31,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "var.jpg",
+            "icon": "fileImage.png",
+            "x": 38,
+            "y": 4,
+            "action": ""
         }
     ],
     "actions": [
