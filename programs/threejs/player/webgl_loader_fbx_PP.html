@@ -138,6 +138,26 @@
 				pointer-events: none;
 				user-select: none;
 			}
+
+			.ded {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width:100%;
+				height:100%;
+				pointer-events: none;
+				user-select: none;
+				display: none;
+				align-items: center;
+				justify-content: center;
+			}
+			.ded div {
+				font-size:1.3em;
+				padding:.8em;
+				border:thin solid grey;
+				color:white;
+				background-color:black;
+			}
 		</style>
 	</head>
 
@@ -147,6 +167,7 @@
 			BOAR
 		</div>
 
+		<div id="ded" class="ded"><div>End of life</div></div>
 		<div id="time" class="time">Loading..</div>
 		<div id="labels"></div>
 		<div id="vitalics">
@@ -202,7 +223,7 @@
 			let labelLeft =   [true,     false,   false,    true];
 
 			let explosionStage = 'idle';
-
+			let hideTheWorld = false;
 
 			init();
 			animate();
@@ -614,8 +635,22 @@
 					document.getElementById('vitalExhaustion').value=55;
 					document.getElementById('vitalExhaustion').classList.remove('low');
 					explosionStage = 'idle';
+				}
 
-					
+				// The scale of the explosion is set to 0 only AFTER
+				//   explosion happened; reset on start of animation.
+				if(explosion === 0 && !hideTheWorld) {  
+					console.log("hide");
+					scene.visible=false;
+					hideTheWorld = true;
+					document.getElementById('ded').style.display = "flex";
+				} else if(explosion != 0 && hideTheWorld) {
+					// If not after explosion, make & keep visible
+					hideTheWorld = false;
+					console.log("show");
+					scene.visible=true;
+					// Hide message
+					document.getElementById('ded').style.display = "none";
 				}
 			}
 
