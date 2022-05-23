@@ -2,7 +2,9 @@ let scene;
 let data;
 let textToType = `[05-01-22 00:25:24.424] LOG : General , 1641338724424> 1641338724424 fmod: Create DSP for capture sound.
 [05-01-22 00:25:26.280] LOG : General , 1641338726279> AngelCodeFont failed to load page 0`;
-  
+let firstNames = ["Abi", "Adalie", "Aita", "Albula", "Alyssia", "Amrei", "Andel", "Andrin", "Andrin", "Anica", "Annatina", "Anneli", "Anneli", "Annely", "Annigna", "Annina", "Antonette", "Arale", "Arianita", "Armida", "Armide", "Atreju", "Ayla", "Badin", "Balz", "Barbli", "Beat", "Beat", "Beath", "Beath", "Bendicht", "Bendicht", "Benedikt", "Bengiamin", "Benjas", "Bensehilla", "Bern", "Bernhardin", "Berti", "Bethli", "Bigna", "Binia", "Brandi", "Carissima", "Chasper", "Chatrina", "Chatrina", "Chonz", "Cilgia", "Cla", "Conz", "Corina", "Corinne", "Corsica", "Dani", "Daron", "David", "Divico", "Dorli", "Dumeng", "Dumeni", "Dumeni", "Duri", "Eliane", "Elijan", "Elsa", "Elsi", "Elsy", "Elvezia", "Elvezia", "Emerita", "Emma", "Enie", "Erika", "Erina", "Ernestin", "Fabian", "Fabiola", "Fadri", "Ferdi", "Florin", "Florina", "Flurin", "Flurina", "Franklin", "Franzi", "Fränzi", "Fridolin", "Fridolina", "Friedolin", "Frillix", "Gaudenz", "Gian", "Gianin", "Gianrico", "Gieri", "Gilgian", "Gilgian", "Gillis", "Giuanna", "Giulitta", "Giusep", "Göpf", "Gritli", "Gritli", "Gwer", "Hänggi", "Hanneli", "Hanni", "Hans", "Hans-Rudolf", "Harri", "Heidi", "Heiri", "Helvetia", "Ingenuin", "Inglina", "Innegrit", "Irmalin", "Irmeli", "Irmelin", "Isalie", "Jelsha", "Jilge", "Jo", "Jockel", "Jocki", "Jocky", "Joder", "Jonin", "Jöri", "Jost", "Jovin", "Jovin", "Jürg", "Kaja", "Karin", "Katrin", "Ladina", "Lanessa", "Leon", "Levio", "Lisa", "Lisa-Maria", "Lisa-Katharina", "Lisi", "Loan", "Lorian", "Lorin", "Luc", "Ludewiga", "Lumi", "Lyan", "Madlaina", "Madleina", "Magali", "Marei", "Marilen", "Mark", "Markus", "Marleen", "Maya", "Meinrad", "Melia", "Melinda", "Menga", "Meret", "Midja", "Mylene", "Nando", "Neamy", "Nette", "Niklaus", "Nordin", "Norina", "Pascale", "Paschalis", "Ramona", "Reto", "Reto", "Rita", "Roger", "Rolf", "Rösli", "Ruedi", "Ruedi", "Sana", "Seina", "Selma", "Seraina", "Sereina", "Severin", "Severine", "Simon", "Susi", "Tell", "Töbe", "Ueli", "Urban", "Urs", "Ursina", "Uto", "Vera", "Vreni", "Vroni", "Walo", "Wendelin", "Rösi"]
+let lastNames = ["Müller", "Meier", "Schmid", "Keller", "Weber", "Schneider", "Huber", "Meyer", "Steiner", "Fischer", "Baumann", "Frei", "Brunner", "Gerber", "Widmer", "Zimmermann", "Moser", "Graf", "Wyss", "Roth", "Suter", "Baumgartner", "Bachmann", "Studer", "Bucher", "Berger", "Kaufmann", "Kunz", "Hofer", "Bühler", "Lüthi", "Lehmann", "Marti", "Frey", "Christen", "Koch", "Egli", "Favre", "Arnold", "Pfister", "Schweizer", "Wüthrich", "Fuchs", "Martin", "Stalder", "Gasser", "Peter", "Kohler", "Maurer", "Koller", "Wenger", "Zürcher", "Burri", "Furrer", "Egger", "Hofmann", "Michel", "Hunziker", "Leuenberger", "Bieri", "Ammann", "Vogel", "Hug", "Hess", "Tanner", "Sutter", "Hauser", "Blaser", "Rüegg", "Hartmann", "Schuler", "Rey", "Wagner", "Gisler", "Senn", "Zbinden", "Kälin", "Schär", "Siegenthaler", "Scherrer", "Flückiger", "Lang", "Zaugg", "Fankhauser", "Stucki", "Kuhn", "Imhof", "Vogt", "Bernasconi", "Scheidegger", "Odermatt", "Portmann", "Küng", "Sommer", "Seiler", "Ackermann", "Liechti", "Jost", "Schmidt", "Schumacher", "Schärer", "Schwarz", "Stocker", "Staub", "Giger", "Hasler", "Schenk", "Rochat", "Lüscher", "Weiss", "Gloor", "Herzog", "Hofstetter", "Schwab", "Zehnder", "Stutz", "Pittet", "Rohner", "Weibel", "Schnyder", "Bosshard", "Wittwer", "Eichenberger", "Steiger", "Haas", "Schaller", "Stadelmann", "Rohrer", "Stettler", "Bolliger", "Stöckli", "Tobler", "Sieber", "Siegrist", "Wolf", "Sigrist", "Meister", "Marty", "Ulrich", "Lutz", "Lanz", "Blanc", "Röthlisberger", "Grob", "Kaiser", "Steffen", "Betschart", "Locher", "Beck", "Aeschlimann", "Blum", "Bühlmann", "Probst", "Mathys", "Rossi", "Schmutz", "Kessler", "Kuster", "Häfliger", "Muller", "Steinmann", "Stauffer", "Haller", "Graber", "Krebs", "Walker", "Ziegler", "Nussbaumer", "Benz", "Jenni", "Friedli", "Käser", "Bischof", "Fässler", "Hostettler", "Aebi", "Richard", "Hürlimann", "Zwahlen", "Knecht", "Schaub", "Wehrli", "Eugster", "Mäder", "Walther", "Ott", "Flury", "Brügger", "Rossier", "Willi", "Erni", "Ryser", "Gut", "Wicki", "Reber", "Merz", "Thalmann", "Mettler", "Wirth", "Iten", "Garcia", "Heiniger", "Glauser", "Schütz", "Niederberger", "Bürgi", "Mathis", "Schüpbach", "Forster", "Wirz", "Bigler", "Clerc", "Achermann", "Gross", "Frischknecht", "Zingg", "Etter", "Jäggi", "Bösch", "Braun", "Ferrari", "Balmer", "Walter", "Trachsel", "Allemann", "Schlegel", "Kern", "Jakob", "Walser", "Fehr", "Bianchi", "Schoch", "Von", "Geiser", "Bürki", "Gfeller", "Iseli", "Sidler", "Zeller", "Bader", "Ritter", "Reymond", "Leu", "Amstutz", "Landolt", "Da", "Stadler", "Felder", "Hänni", "Tschanz", "Ernst", "Eberle", "Bärtschi", "Näf", "Germann", "Schönenberger", "Wild", "Birrer", "Monney", "Emmenegger", "Hodel", "Minder", "Affolter", "Eggenberger", "Zemp", "Winkler", "Isler", "Wälti", "Messerli", "Wiederkehr", "Burkhalter", "Sonderegger", "Neuenschwander", "Brand", "Brun", "Herrmann", "Baur", "Hirschi", "Dubois", "Schlatter", "Perrin", "Krähenbühl", "Maillard", "Grossenbacher", "Jenny", "Zuber", "Schneeberger", "Aebischer", "Mosimann", "Linder", "Beyeler", "Fontana", "Perret", "Rieder", "Gehrig", "Stähli", "Hutter", "Buser", "Miller", "Thoma"]
+
 async function setup() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -56,8 +58,8 @@ function loadScene(scene) {
 
     switch(scene) {
         case "14-A":
-            gebi('vm').innerHTML = "rando project";
-            gebi('vmManager').innerHTML = "rando guy";
+            gebi('vm').innerHTML = `proj-${createUniqueId(6)}`;
+            gebi('vmManager').innerHTML = `${getRandomElement(firstNames)[0]}.${getRandomElement(lastNames)}`;
             gebi('target2').innerHTML = `
             <img class="maxHeight mirrorX" src="data/floorplan-14.svg" style="transform: rotate(63.528deg)">
             <div class="fixed code bottom blackBgTransparent left padding1">
@@ -119,6 +121,11 @@ function highlightNode() {
             }
             // add class to clicked element
             this.classList.add("active");
+
+            // Set random names
+            gebi('vm').innerHTML = `proj-${createUniqueId(6)}`;
+            gebi('vmManager').innerHTML = `${getRandomElement(firstNames)[0]}.${getRandomElement(lastNames)}`;
+
             // stop propagation
             event.stopPropagation();
             if(this.innerHTML.indexOf("Block 02") >= 0 || this.innerHTML.indexOf("Node 02") >= 0) {
