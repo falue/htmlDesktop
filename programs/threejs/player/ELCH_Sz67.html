@@ -200,7 +200,7 @@
 				// materials
 
 				const material1 = new THREE.MeshPhysicalMaterial( {	color: 0x5f5e22, metallness: 0, wireframe:true } );
-				const charactermaterial = new THREE.MeshPhysicalMaterial( {	color: 0xff6600, metallness: 0, wireframe:false} );
+				const charactermaterial = new THREE.MeshPhysicalMaterial( {	color: 0xff6600 , wireframe:false, emissive: 0xff6600, emissiveIntensity:1} );
 				const charactermaterial2 = new THREE.MeshPhysicalMaterial( {	color: 0x6666ff, metallness: 0, wireframe:false} );
 				const plantsmaterial = new THREE.MeshPhysicalMaterial( {	color: 0x42803e, metallness: 0, wireframe:true } );
 				const laptopmaterial = new THREE.MeshPhysicalMaterial( {color:0xdbfc03, wireframe:true});
@@ -264,13 +264,13 @@
 				const laptopgeometry = new THREE.BoxGeometry( 40, 6, 20 );
 				const laptop = new THREE.Mesh( laptopgeometry, laptopmaterial );
 				scene.add( laptop );
-				laptop.position.set(132, 20, 358 );
+				laptop.position.set(128, -55, 710 );
 				laptop.rotation.set(THREE.Math.degToRad(-13),THREE.Math.degToRad(-6), 0);
 
 				//Animation 1
 
 				const loader2 = new FBXLoader();
-				loader2.load('models/fbx/boar2_characterUE.fbx', function ( object2 ) {
+				loader2.load('models/fbx/boar2_characterUE2.fbx', function ( object2 ) {
 
 					mixer = new THREE.AnimationMixer( object2 );
 
@@ -292,7 +292,7 @@
 					} );
 					scene.add( object2 );
 					object2.rotation.set(Math.PI/2, Math.PI, Math.PI/2);
-					object2.position.set(143,8,316);
+					object2.position.set(139,-20,671);
 
 					// Autoplay on load
 					modifyTimeScale(1);
@@ -351,7 +351,7 @@
 				const controls = new OrbitControls( camera, renderer.domElement );
 				
 				//Mittelpunkt von Kamerasicht
-				controls.target.set( 150, 0, 300 );
+				controls.target.set( 120, -50, 700 );
 				controls.update();
 
 				const gui = new GUI( {} );

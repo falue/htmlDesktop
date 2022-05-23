@@ -193,12 +193,13 @@
 
 			
 			let mixer, mixer2, mixer3, mixer4, mixer6;
+
 			
 
 			// Reihenfolge bestimmt welches label wo ist
-			let labels =      ["AMMO", "AMMO", "FIRE",   "AGENT", "BOAR",   "GRENADE"];
-			let labelColors = ["grey", "grey", "yellow", "blue",  "yellow", "red"];
-			let labelLeft =   [true,   false,  true,     false,   false,    true];
+			let labels =      ["FIRE",   "AGENT", "BOAR",   "GRENADE"];
+			let labelColors = ["yellow", "yellow",  "blue", "red"];
+			let labelLeft =   [true,     false,   false,    true];
 
 			let explosionStage = 'idle';
 
@@ -236,12 +237,13 @@
 
 				// materials
 
-				const material1 = new THREE.MeshPhysicalMaterial( {	color: 0x4d4732, metallness: 0, wireframe:true } );
-				const charactermaterial = new THREE.MeshPhysicalMaterial( {	color: 0xff6600, metallness: 0, wireframe:false} );
-				const charactermaterial2 = new THREE.MeshPhysicalMaterial( {	color: 0x6666ff, metallness: 0, wireframe:false} );
-				const plantsmaterial = new THREE.MeshPhysicalMaterial( {	color: 0x42803e, metallness: 0, wireframe:true } );
+				const material1 = new THREE.MeshPhysicalMaterial( {	color: 0x4d4732, wireframe:true } );
+				const charactermaterial = new THREE.MeshPhysicalMaterial( {	color: 0x6666ff, wireframe:false, emissive: 0x6655ff, emissiveIntensity:1} );
+				const charactermaterial2 = new THREE.MeshPhysicalMaterial( {	color: 0xff6600 , wireframe:false, emissive: 0xff6600, emissiveIntensity:1} );
+				const plantsmaterial = new THREE.MeshPhysicalMaterial( {	color: 0x42803e, wireframe:true } );
 				const firematerial = new THREE.MeshPhysicalMaterial( {color:0xdbfc03, wireframe:true});
-				const boundingboxmaterial = new THREE.MeshPhysicalMaterial( {color: 0xffffff, metallness:1, wireframe:true});
+				const boundingboxmaterial = new THREE.MeshPhysicalMaterial( {color: 0xffffff, wireframe:true});
+				const explosionmaterial = new THREE.MeshPhysicalMaterial( {color: 0xdbfc03, transparent:true, opacity:1 });
 	
 			
 				// Scenery
@@ -361,7 +363,7 @@
 					object4.traverse( function ( child ) {
 						if ( child.isMesh ) {
 							
-							child.material = firematerial;
+							child.material = explosionmaterial;
 							child.frustumCulled = false;
 							
 						}
@@ -386,7 +388,8 @@
 							child.material = boundingboxmaterial;
 							child.frustumCulled = false;
 						}
-					
+				
+
 					} );
 					scene.add( object6 );
 					// Nicht sichtbar am Anfang
@@ -394,6 +397,8 @@
 					// once loading of bounding boxes is finished, set up labels
 					// createTextLabels('Boar', 7);
 					createBoundBoxesLabels();
+
+
 					
 				});
 
@@ -412,7 +417,7 @@
 					}
 				}
 
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer = new THREE.WebGLRenderer( { antialias: false } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
@@ -483,6 +488,8 @@
 					stats = new Stats();
 					container.appendChild( stats.dom );
 				}
+
+
 
 			}
 
@@ -576,6 +583,12 @@
 				}
 			}
 
+			document.onkeyup = function (f) {
+				if (f.key === "p") {
+					scene.background = new THREE.Color( 0x000000 );
+				}
+			}
+
 			function updateHealth() {
 				let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('Explosions')];
 				let explosion = objectToFollow?.children[0].scale.x;
@@ -601,6 +614,8 @@
 					document.getElementById('vitalExhaustion').value=55;
 					document.getElementById('vitalExhaustion').classList.remove('low');
 					explosionStage = 'idle';
+
+					
 				}
 			}
 
@@ -638,7 +653,6 @@
 
 				};
 			}
-
 		</script>
 
 	</body>

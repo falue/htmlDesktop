@@ -181,12 +181,12 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 100, 15000 );
-				camera.position.set( 1000,4000,1500 );
+				camera.position.set( 3000,4000,4000 );
 
 
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0x000000 );
-				scene.fog = new THREE.Fog( 0x000000, 2000, 11000 );
+				scene.fog = new THREE.Fog( 0x000000, 2000, 12000 );
 
 				// lights
 
@@ -216,12 +216,12 @@
 
 				// materials
 
-				const landmaterial = new THREE.MeshPhongMaterial( {	map: texture, shininess: 0, bumpMap:landdisp, bumpScale:10, transparent:false } );
-				const charactermaterial = new THREE.MeshBasicMaterial( {	color: 0xff6600, metallness: 0, wireframe:false} );
-				const charactermaterial2 = new THREE.MeshPhysicalMaterial( { color: 0x6666ff, metallness: 0, wireframe:false} );
-				const watermaterial = new THREE.MeshPhongMaterial( {	color: 0x28559c, map:watertex, normalMap:watertex,  metallness: 0, opacity:0.7, transparent:true } );
-				const groundmaterial = new THREE.MeshPhongMaterial( { color: 0x797d3d, shininess:0, });
-				const boundingboxmaterial = new THREE.MeshPhysicalMaterial( {color: 0xffffff, metallness:1, wireframe:true});
+				const landmaterial = new THREE.MeshPhongMaterial( {	map: texture, shininess: 0, transparent:false, wireframe: true } );
+				const charactermaterial = new THREE.MeshBasicMaterial( {	color: 0xff6600,  wireframe:false, fog:false} );
+				const charactermaterial2 = new THREE.MeshPhysicalMaterial( { color: 0x6666ff,  wireframe:false} );
+				const watermaterial = new THREE.MeshPhongMaterial( {	color: 0x7aadff, map:watertex, normalMap:watertex, opacity:0.7, transparent:true, wireframe: true } );
+				const groundmaterial = new THREE.MeshPhongMaterial( { color: 0x797d3d, shininess:0, wireframe:true });
+				const boundingboxmaterial = new THREE.MeshPhysicalMaterial( {color: 0xffffff, wireframe:true});
 	
 				watermaterial.normalScale.set(0.1,0.1);
 			
@@ -262,47 +262,8 @@
 					
 				} );
 
-				//Waterground
-
+		
 				
-				const loader3 = new FBXLoader();
-				loader3.load( 'models/fbx/Fullisland_ground.fbx', function ( object3 ) {
-				
-					object3.traverse( function ( child ) {
-
-						if ( child.isMesh ) {
-						child.material = groundmaterial;
-
-						}
-					} );
-					
-					scene.add( object3 );
-					
-				} );
-
-
-/*
-				// LINE1
-				const curve = new THREE.CubicBezierCurve3(
-					new THREE.Vector3( -762, 91,1473 ),
-					new THREE.Vector3( -656, 143, 709),
-					new THREE.Vector3( -674, 125, 1046 ),
-					new THREE.Vector3( -225 , 174, 369 ),
-					new THREE.Vector3( 150, 162, 422 ),
-					new THREE.Vector3( 0,0,0)
-				);
-
-				const points = curve.getPoints( 50 );
-				const line1geometry = new THREE.BufferGeometry().setFromPoints( points );
-
-				const line1material = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth:1 } );
-
-				// Create the final object to add to the scene
-				const curveObject = new THREE.Line( line1geometry, line1material );
-				scene.add(curveObject);
-							
-*/
-
 				const loader6 = new FBXLoader();
 				loader6.load('models/fbx/Fullisland_agent2.fbx', async function ( object6 ) {
 
@@ -355,7 +316,7 @@
 				const controls = new OrbitControls( camera, renderer.domElement );
 				
 				//Mittelpunkt von Kamerasicht
-				controls.target.set( 0,0,0 );
+				controls.target.set( 0,0,-2000 );
 				controls.update();
 
 				const gui = new GUI( {} );
@@ -399,6 +360,14 @@
 				gui.add({"Fast reverse": false}, "Fast reverse").onChange( 
 					function (value) {
 						modifyTimeScale(value ? -10 : 0);
+					}
+				);
+
+						//Insel ein- ausblenden
+
+						gui.add({"Hide island": true}, "Hide island").onChange(
+					function (value) {
+						HideIsland(value);
 					}
 				);
 
@@ -511,6 +480,7 @@
 					camera.position.set(400, 800, 800);
 				} else if (e.key === "p") {
 					scene.background = new THREE.Color( 0xff00d0 );
+					
 				}
 			}
 
@@ -553,6 +523,12 @@
 					}
 
 				};
+			}
+
+			function HideIsland( visibility ){
+				scene.children[2].visible = visibility;
+				scene.children[4].visible = visibility;
+				
 			}
 
 		</script>
