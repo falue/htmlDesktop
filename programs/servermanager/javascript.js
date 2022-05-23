@@ -67,7 +67,7 @@ function loadScene(scene) {
             `
             break;
         case "14-B":
-            gebi('vm').innerHTML = "Sonn";
+            gebi('vm').innerHTML = "Sonn-TTP";
             gebi('vmManager').innerHTML = "J.Brugger";
             gebi('target2').innerHTML = `
             <img class="maxHeight" src="data/floorplan-14.svg">
