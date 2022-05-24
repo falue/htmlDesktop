@@ -45,7 +45,7 @@ function setupScene(scene) {
 
         case "67":
             // TYPING, COAST & CHAMPAGNE
-            threejsData += "ELCH_SZ67.html";
+            threejsData += "ELCH_Sz67.html";
             switchTabs(2);
             show('showChartBigTarget2');
             for (let i = 0; i < data[scene].length; i++) {
