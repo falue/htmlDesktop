@@ -208,6 +208,8 @@
 
 			const clock = new THREE.Clock();
 			const effectController = {"SlowMo" :0};
+			let boundingBox = {"Boundingbox" :false};
+			let boundingBoxesWhereOn = false;
 
 			// FPS stats true or false
 			const enableStats = false;
@@ -495,7 +497,7 @@
 				);
 
 				//Checkbox Boundingbox
-				gui.add({"Boundingbox": false}, "Boundingbox").onChange(
+				gui.add(boundingBox, "Boundingbox").onChange(
 					function (value) {
 						showBoundingbox(value);
 						showTextLabels(value);
@@ -644,6 +646,11 @@
 					scene.visible=false;
 					hideTheWorld = true;
 					document.getElementById('ded').style.display = "flex";
+					document.getElementById('labels').style.display = 'none';
+					// boundingBox["Boundingbox"] = false;
+					boundingBoxesWhereOn = boundingBox["Boundingbox"];
+					showBoundingbox(false);
+					showTextLabels(false);
 				} else if(explosion != 0 && hideTheWorld) {
 					// If not after explosion, make & keep visible
 					hideTheWorld = false;
@@ -651,6 +658,8 @@
 					scene.visible=true;
 					// Hide message
 					document.getElementById('ded').style.display = "none";
+					showBoundingbox(boundingBoxesWhereOn);
+					showTextLabels(boundingBoxesWhereOn);
 				}
 			}
 
