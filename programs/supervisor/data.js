@@ -920,17 +920,18 @@ let data = {
           fill: false,
           backgroundColor: colorsTransparent[3],
           tension: 0,
-          pointRadius: 2,
+          pointRadius: 0,
           borderColor: colors[3],
-          data: notSoRandomInts(60, 88, 115, 1212, 3, .001 , false)
+          // data: notSoRandomInts(60, 88, 115, 1212, 3, .001 , false)
+          data: notSoRandomInts(60, 1, 115, 1111, 4, .0329 , true)
         },
         {
           label: "Neuron count rel",
           fill: false,
           tension: .2,
           pointRadius: 0,
-          borderColor: colors[4],
-          data: notSoRandomInts(60, 10, 50, null, 3, 0, true)
+          borderColor: colors[2],
+          data: notSoRandomInts(60, 10, 35, null, 3, 0.01, true)
         }]
       },
       options: {
@@ -961,7 +962,15 @@ let data = {
                   return 'rgba(0,0,0,0.2)';
                 },
             }
+          },
+        x: {
+          ticks: {
+              callback: function(value, index, values) {
+                // return (Math.floor((value / 100) * 100)) + '%';
+                return 't-' + (56-value).toFixed(1);
+            }
           }
+        },
       },
         plugins: {
           legend: {
