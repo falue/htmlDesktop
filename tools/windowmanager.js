@@ -798,7 +798,7 @@ function startDefaultProgram(program, parameters) {
     program = programs[chooseRandomKey(programs)];
     cl("startDefaultProgram Random: " + program);
     x = randomBetween(0,50);
-    y = randomBetween(0,50);
+    y = randomBetween(3,50);
   } else {
     cl("startDefaultProgram: " + program);
     x = incrementWindowsPosition('x');
