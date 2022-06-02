@@ -12,13 +12,14 @@ async function parseFile(filepath, showError=true) {
       return response;
     }).catch((error) => {
       // Catch error i case server is not working
-      console.log("Cannot load file because server is not working: " + filepath);
+      console.log("Cannot load file because server is not working or file does not exist: " + filepath);
       console.log(error);
+      return 404;
     });
     
     // Do not return content if file is missing (eg. the "404 missing" page)
     if(response?.status != 200) {
-      return response.status;
+      return response?.status;
     }
   
     // Read response stream as text
