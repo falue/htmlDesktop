@@ -499,10 +499,12 @@ function closeAllWindows() {
   }
 }
 
-function hardReloadAllIframes() {
+async function hardReloadAllIframes() {
   let iFrames = document.querySelectorAll("iframe");
   for (let currentIframe of iFrames) {
     let currentSrc = currentIframe.src;
+    currentIframe.src = '';
+    await delay(666);
     // Add random integer to URL for force reloading. does that every time. meh.
     let rand = Math.floor((Math.random()*1000000)+1);
     currentIframe.src = `${currentSrc}${currentSrc.includes('?') ? "&" : "?" }forceReload=${rand}`;
