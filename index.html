@@ -19,6 +19,15 @@
           window.location.href = "desktop.html?workstation=telefabi";
         }
       }
+
+      function editUrlBeforeLoading(url) {
+        let editedUrl = prompt("Enter URL with optional params:", url);
+        if (editedUrl == null || editedUrl == "") {
+          console.log("User cancelled the prompt.");
+        } else {
+          window.location.href = editedUrl;
+        }
+      }
     </script>
 
   </head>
@@ -68,6 +77,57 @@
             <a href="programs/terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
               <button class="greyBg hover">Selber tippen - python script</button></a>
           </span>
+        </div>
+
+        <div onmouseover="document.getElementById('defaultPrograms').classList.remove('hide')" onmouseout="document.getElementById('defaultPrograms').classList.add('hide')">
+          <button> All programs</button>
+          <div id="defaultPrograms" class="hide margin0 paddingX1">
+            <a href="programs/dna"><button class="greyBg hover">dna</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/dna/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/helpdesk"><button class="greyBg hover">helpdesk</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/helpdesk/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/servermanager"><button class="greyBg hover">servermanager</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/servermanager/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/supervisor"><button class="greyBg hover">supervisor</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/supervisor/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/neptcode"><button class="greyBg hover">neptcode</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/neptcode/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/threejs/player"><button class="greyBg hover">threejs/player</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/threejs/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/filemanager"><button class="greyBg hover">filemanager</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/filemanager/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/terminal"><button class="greyBg hover">terminal</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/terminal/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/bash"><button class="greyBg hover">bash</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/bash/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/colorMarker"><button class="greyBg hover">colorMarker</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/colorMarker/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/ftp"><button class="greyBg hover">ftp</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/ftp/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/browser"><button class="greyBg hover">browser</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/browser/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/imageviewer"><button class="greyBg hover">imageviewer</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/imageviewer/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/texteditor"><button class="greyBg hover">texteditor</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/texteditor/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/webcam"><button class="greyBg hover">webcam</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/webcam/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+          </div>
         </div>
       </p>
 
