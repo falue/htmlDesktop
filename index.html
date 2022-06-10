@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="indexTools/stylesheet.css">
     <link rel="stylesheet" href="tools/general.css">
     <link rel="stylesheet" href="tools/fonts.css">
+    <script src="tools/general.js"></script>
+    <script src="tools/desktop.js"></script>
 
     <script>
       let host = window.location.origin + window.location.pathname;
@@ -20,12 +22,10 @@
         }
       }
 
-      function editUrlBeforeLoading(url) {
-        let editedUrl = prompt("Enter URL with optional params:", url);
-        if (editedUrl == null || editedUrl == "") {
-          console.log("User cancelled the prompt.");
-        } else {
-          window.location.href = editedUrl;
+      async function editUrlBeforeLoading(url) {
+        let editedUrl = await showDialog("Edit path to display", "Enter URL with optional params:", false, url);
+        if(editedUrl && editedUrl != "~EMPTY") {
+            window.location.href = editedUrl;
         }
       }
     </script>
@@ -145,5 +145,36 @@
         </div>
       </footer>
     </article>
+
+    <!-- DIALOG COPY PASTE -->
+      <!-- DIALOG: AUTO DIALOG -->
+      <div id="autoDialog" class="fixed dialog hide" style="top:0; z-index: 666;">
+        <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+          <div class="darkGreyBg padding shadow white minWidth300 maxWidth600 absolute radius5">
+            <h3 class="alignCenter">
+              <i class="material-icons blue valign">info</i>
+              <span id="autoDialogTitle"></span>
+            </h3>
+            <br>
+            <div id="autoDialogText"></div>
+  
+            <input type="text" id="autoDialogInput" class="maxWidth radius2 padding" placeholder="Type.."
+              onkeydown="if(event.key === 'Enter') gebi('autoDialogCloseButtonButton').click();"
+            ></input>
+            <br>
+            <div id="autoDialogCancelButton" class="left relative padding">
+              <button id="autoDialogCancelButtonButton" class="systemButton greyBg" onclick="hide('autoDialog');">Cancel</button>
+            </div>
+            <div id="autoDialogCloseButton" class="right relative padding">
+              <button id="autoDialogCloseButtonButton" class="systemButton" onclick="hide('autoDialog');">Close</button>
+            </div>
+            <div id="autoDialogLoading" class="right relative padding grey">
+              <i class="material-icons blue valign spin">refresh</i>
+            </div>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
   </body>
 </html>
