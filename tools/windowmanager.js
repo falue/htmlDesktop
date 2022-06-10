@@ -499,17 +499,14 @@ function closeAllWindows() {
   }
 }
 
-async function hardReloadAllIframes() {
+function hardReloadAllIframes() {
   let iFrames = document.querySelectorAll("iframe");
   for (let currentIframe of iFrames) {
     let currentSrc = currentIframe.src;
-    currentIframe.setAttribute('src', 'about:blank');
-    await delay(666);
-    cl(`Hard reloading: ${currentSrc}`);
-    // Add random integer to URL for force reloading. does that every time. meh.
-    let rand = Math.floor((Math.random()*1000000)+1);
-    currentIframe.setAttribute('src', `${currentSrc}${currentSrc.includes('?') ? "&" : "?" }forceReload=${rand}`);
-  }
+    cl(`Hard reload: ${currentSrc}`);
+    let currDocument = currentIframe.contentWindow.document;
+    currDocument.location.reload();  // Maybe does not remove cache
+ }
 }
 
 function removeAllShortcuts() {
