@@ -174,7 +174,7 @@ async function askCredentials(outcome) {
   // Scroll to bottom of console
   scrollToBottom();
   await delay(50); // wait for release of enter from action before!
-  printToConsole("Password:🔒 ");
+  printToConsole("Password:<i class='material-icons small valign'>lock</i> ");
   // enter 13
   // f=fail = 70
   // s=succeed = 83
