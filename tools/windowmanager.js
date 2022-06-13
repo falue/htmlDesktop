@@ -499,13 +499,45 @@ function closeAllWindows() {
   }
 }
 
-function hardReloadAllIframes() {
+function clearCacheOfFiles(target, type, attributeName) {
+  // Get element and reload file; ignoring cache (maybe..)
+  for (let currentFile of target.querySelectorAll(`${type}[${attributeName}]`)) {
+    if(currentFile.hasAttribute(attributeName)) {
+      cl(`Clear ${attributeName} of ${currentFile[attributeName]}`);
+      // create img with sources; but fetch does the same (?)
+      // https://stackoverflow.com/a/9044701
+      /* let dummyElement =  document.createElement("img");
+      dummyElement.setAttribute("src", currentFile[attributeName]);
+      dummyElement.setAttribute("title", "HARDEST RELOAD");
+      dummyElement.setAttribute("style", "visibility:hidden; width:0; height:0");
+      // target.innerHTML = "ERASED";
+      target.appendChild(dummyElement);
+      cl(dummyElement); */
+      fetch(currentFile[attributeName], {cache: 'reload', mode: 'no-cors'});
+    }
+  }
+}
+
+async function hardReloadAllIframes() {
   let iFrames = document.querySelectorAll("iframe");
   for (let currentIframe of iFrames) {
     let currentSrc = currentIframe.src;
+    let currentId = currentIframe.id;
     cl(`Hard reload: ${currentSrc}`);
     let currDocument = currentIframe.contentWindow.document;
     currDocument.location.reload();  // Maybe does not remove cache
+    await fetch(currentSrc, {cache: 'reload', mode: 'no-cors'});
+    
+    // wait until file is loaded... sketchy!
+    // can't use onload because there is already an onload event..
+    await delay(666);
+
+    // New iframe with refreshed content
+    let currentNewIframe = gebi(currentId).contentWindow.document;
+    clearCacheOfFiles(currentNewIframe, "script", "src");
+    clearCacheOfFiles(currentNewIframe, "style", "href");
+    clearCacheOfFiles(currentNewIframe, "link", "href");
+    clearCacheOfFiles(currentNewIframe, "img", "src");
  }
 }
 
