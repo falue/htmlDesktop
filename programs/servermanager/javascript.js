@@ -61,7 +61,7 @@ function loadScene(scene) {
             gebi('vm').innerHTML = `proj-${createUniqueId(6)}`;
             gebi('vmManager').innerHTML = `${getRandomElement(firstNames)[0]}.${getRandomElement(lastNames)}`;
             gebi('target2').innerHTML = `
-            <img class="maxHeight mirrorX" src="data/floorplan-14.svg" style="transform: rotate(63.528deg)">
+            <img id="fuckfacemap" class="maxHeight mirrorX" src="data/floorplan-14.svg" style="transform: rotate(${360/16*0}deg);">
             <div class="fixed code bottom blackBgTransparent left padding1">
             <i class="material-icons blue small valign">business</i>
             Mona lisa blocks<br><span class="grey">Node 01-026 (mlve)</span>
@@ -72,7 +72,7 @@ function loadScene(scene) {
             gebi('vm').innerHTML = "Sonn-TTP";
             gebi('vmManager').innerHTML = "J.Brugger";
             gebi('target2').innerHTML = `
-            <img class="maxHeight" src="data/floorplan-14.svg">
+            <img class="maxHeight" src="data/floorplan-14.svg" style="transform: rotate(${360/16*1}deg);">
             <div class="fixed code bottom blackBgTransparent left padding1">
             <i class="material-icons blue small valign">business</i>
             Mona lisa blocks<br><span class="grey">Node 02-001 (mlve)</span>
@@ -91,17 +91,54 @@ function loadScene(scene) {
     }
 }
 
-function createAllCharts() {
+function createAllCharts(maxedOutBlock) {
     // TODO: if window is minimized, nothing gets loaded initially
     for (let i = 0; i < data.length; i++) {
         if(!isHidden(gebi(data[i].target))) {
             gebi(data[i].target).replaceChildren();  // clear contents to re-render
-            if(scene ==="14-A") {
-                cl("hardcoded overwrite of generic server data!!!!");
-                data[0].data.datasets[0].data = randomIntsBetween(12, 0, randomIntsBetween(1,3,45)[0]);
-                data[0].data.datasets[1].data = randomIntsBetween(12, 5, randomIntsBetween(1,0,33)[0]);
-                data[4].data.datasets[0].data = randomIntsBetween(12, 0, randomIntsBetween(1,3,45)[0]);
-                data[4].data.datasets[1].data = randomIntsBetween(12, 5, randomIntsBetween(1,0,33)[0]);
+            if (maxedOutBlock) {
+                let countOfPoints = 150;
+                data[0].data.labels = arrayOfIndexes(countOfPoints);
+                data[0].data.datasets[0].data = notSoRandomInts(countOfPoints, 88, 105, 667, 10, .03, false);
+                data[0].data.datasets[1].data = notSoRandomInts(countOfPoints, 33, 87, 668, 10, .03, false);
+                data[0].data.datasets[0].borderColor = colors[1];
+                data[0].data.datasets[1].borderColor = colors[0];
+
+                data[0].options.scales.y.suggestedMin = 0;
+                data[0].options.scales.y.suggestedMax = 120;
+                data[0].options.scales.y.grid.drawBorder = true;
+                data[0].options.scales.y.grid.color = function(context) { if (context.tick.value === 100) { return "red" } return 'rgba(0,0,0,0.2)'; };
+
+                data[4].data.labels = arrayOfIndexes(countOfPoints);
+                data[4].data.datasets[0].data = notSoRandomInts(countOfPoints, randomBetween(0,33), randomBetween(3,100), 669, 10, -.003, false);
+                data[4].data.datasets[1].data = notSoRandomInts(countOfPoints, randomBetween(5,33), randomBetween(0,100), 670, 10, -.3, false);
+                data[4].data.datasets[0].borderColor = chooseRandomKeys(1, colors);
+                data[4].data.datasets[1].borderColor = chooseRandomKeys(1, colors);
+            } else if(scene ==="14-A") {
+                // cl("hardcoded overwrite of generic server data!!!!");
+                let countOfPoints = randomBetween(33,150);
+                /* data[0].data.datasets[0].data = randomIntsBetween(countOfPoints, randomBetween(0,33), randomBetween(3,88));
+                data[0].data.datasets[1].data = randomIntsBetween(countOfPoints, randomBetween(5,33), randomBetween(0,66));
+                data[4].data.datasets[0].data = randomIntsBetween(countOfPoints, randomBetween(0,33), randomBetween(3,66));
+                data[4].data.datasets[1].data = randomIntsBetween(countOfPoints, randomBetween(5,33), randomBetween(0,95)); */
+                data[0].data.labels = arrayOfIndexes(countOfPoints);
+                data[0].data.datasets[0].data = notSoRandomInts(countOfPoints, randomBetween(0,33), randomBetween(3,88), 667, 10, .003, randomBoolean());
+                data[0].data.datasets[1].data = notSoRandomInts(countOfPoints, randomBetween(5,33), randomBetween(0,66), 668, 10, .03, randomBoolean());
+                data[0].data.datasets[0].borderColor = chooseRandomKeys(1, colors);
+                data[0].data.datasets[1].borderColor = chooseRandomKeys(1, colors);
+                data[0].options.scales.y.suggestedMin = 0;
+                data[0].options.scales.y.suggestedMax = 100;
+                data[0].options.scales.y.grid = {"color": function(context) { return 'rgba(0,0,0,0.2)'; }};
+                data[4].data.labels = arrayOfIndexes(countOfPoints);
+                data[4].data.datasets[0].data = notSoRandomInts(countOfPoints, randomBetween(0,33), randomBetween(3,88), 669, 10, -.003, randomBoolean());
+                data[4].data.datasets[1].data = notSoRandomInts(countOfPoints, randomBetween(5,33), randomBetween(0,95), 670, 10, -.3, randomBoolean());
+                data[4].data.datasets[0].borderColor = chooseRandomKeys(1, colors);
+                data[4].data.datasets[1].borderColor = chooseRandomKeys(1, colors);
+
+                /* data[0].data.datasets[0].data = notSoRandomInts(countOfPoints, randomBetween(0,33), randomBetween(3,88), randomBetween(1,666), randomBetween(0,3)/1000, randomBetween(-3,3)/1000, false);
+                data[0].data.datasets[1].data = notSoRandomInts(countOfPoints, randomBetween(5,33), randomBetween(0,66), randomBetween(1,666), randomBetween(0,3)/1000, randomBetween(-3,3)/1000, false);
+                data[4].data.datasets[0].data = notSoRandomInts(countOfPoints, randomBetween(0,33), randomBetween(3,66), randomBetween(1,666), randomBetween(0,3)/1000, randomBetween(-3,3)/1000, false);
+                data[4].data.datasets[1].data = notSoRandomInts(countOfPoints, randomBetween(5,33), randomBetween(0,95), randomBetween(1,666), randomBetween(0,3)/1000, randomBetween(-3,3)/1000, false); */
             }
             createChart(data[i].width, data[i].height, "canvas-"+createUniqueId(), data[i].target, data[i]);
         }
@@ -136,11 +173,17 @@ function highlightNode() {
                 loadScene(scene);  // swap to initial
             }
 
+            // turn map accordingly
+            // style="transform: rotate(${360/16*randomInt(0,16)}deg)"
+            var regex = /\d+/g;
+            var matches = this.innerHTML.match(regex)[0];  // creates array from matches
+            if(gebi('fuckfacemap')) gebi('fuckfacemap').style.transform = `rotate(${360/16*(matches-1)}deg)`;
+
             /* 
             if(scene === "14-A") loadScene("14-B");  // swap to sonnys project
             if(this.innerHTML.indexOf("Block 01") !== -1) loadScene("14-A");  // swap to initial
              */
-            switchTabs(1);  // makes it look like its reloading
+            switchTabs(1, this.innerHTML.indexOf("Block 05") >= 0);  // makes it look like its reloading and if block 05, max out stats
             gebi('summeryTitle').innerHTML = this.innerHTML;
         });
     }
@@ -157,7 +200,7 @@ function isHidden(el) {
     return (el.offsetParent === null);
 }
 
-function switchTabs(index) {
+function switchTabs(index, maxedOutBlock=false) {
     // select current button
     let tabButton = document.getElementsByClassName("tabButton");
     for (let i = 0; i < tabButton.length; i++) {
@@ -173,7 +216,7 @@ function switchTabs(index) {
     tabs[index-1].classList.remove("hide");
 
     // re-render to animate again
-    createAllCharts();
+    createAllCharts(maxedOutBlock);
     
     // Scroll to top
     tabs[index-1].scrollTop=0;

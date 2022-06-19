@@ -49,6 +49,7 @@ function setupScene(scene) {
             switchTabs(2);
             show('showChartBigTarget2');
             for (let i = 0; i < data[scene].length; i++) {
+                cl(data[scene][i]);
                 createChart(data[scene][i].width, data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
             }
             break;

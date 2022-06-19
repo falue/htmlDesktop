@@ -57,6 +57,7 @@
 				top: 0;
 				color: white;
 				display: none;
+				z-index: 99;
 			}
 			#labels>div {
 				position: absolute;  /* let us position them inside the container */
@@ -108,6 +109,7 @@
 				position: fixed;
 				padding:1em;
 				line-height: 15px;
+				z-index: 99;
 			}
 			#vitalics div {
 				display: inline-block;
@@ -119,6 +121,9 @@
 			#vitalics progress.normal::-webkit-progress-value { background: rgb(72, 72, 255); }
 			#vitalics progress.medium::-webkit-progress-value { background: rgb(255, 180, 40); }
 			#vitalics progress.low::-webkit-progress-value { background: rgb(255, 63, 33); }
+
+			/* Animate progress bar changes */
+			#vitalics progress::-webkit-progress-value { transition: width 333ms ease-out, background-color 333ms ease-out; }
 
 			.vitalHealth { width: 70px; line-height: 32px; }
 			.vitalStamina,
@@ -137,6 +142,7 @@
 				padding:1em;
 				pointer-events: none;
 				user-select: none;
+				z-index: 99;
 			}
 
 			.ded {
@@ -148,15 +154,17 @@
 				pointer-events: none;
 				user-select: none;
 				display: none;
-				align-items: center;
+				align-items: end;
 				justify-content: center;
+				z-index: 99;
 			}
 			.ded div {
 				font-size:1.3em;
-				padding:.8em;
-				border:thin solid grey;
+				padding:.4em;
+				margin:.4em;
 				color:white;
-				background-color:black;
+				font-weight:800;
+				background-color:rgb(255, 63, 33);
 			}
 		</style>
 	</head>
@@ -615,7 +623,7 @@
 			function updateHealth() {
 				let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('Explosions')];
 				let explosion = objectToFollow?.children[0].scale.x;
-				if((explosion > .25 || explosion == 0) && explosionStage == 'idle') {
+				if((explosion >= 4 || explosion == 0) && explosionStage == 'idle') {
 					// is exploding - change stats once
 					document.getElementById('vitalHealth').value=2;
 					document.getElementById('vitalHealth').classList.add('low');
@@ -626,7 +634,20 @@
 					document.getElementById('vitalExhaustion').value=2;
 					document.getElementById('vitalExhaustion').classList.add('low');
 					explosionStage = 'exploding';
-				} else if(explosion <= .25 && explosion > 0 && explosionStage === 'exploding') {
+					console.log("hide");
+					
+					// scene.visible=false;
+					modifyTimeScale(false);  // pause animation
+					document.getElementsByTagName('canvas')[0].style.opacity = ".4";
+					
+					document.getElementById('ded').style.display = "flex";
+					document.getElementById('labels').style.display = 'none';
+					// boundingBox["Boundingbox"] = false;
+					boundingBoxesWhereOn = boundingBox["Boundingbox"];
+					showBoundingbox(false);
+					showTextLabels(false);
+
+				} else if(explosion <= 4 && explosion > 0 && explosionStage === 'exploding') {
 					// is not exploding - reset to initial values once
 					document.getElementById('vitalHealth').value=95;
 					document.getElementById('vitalHealth').classList.remove('low');
@@ -641,21 +662,27 @@
 
 				// The scale of the explosion is set to 0 only AFTER
 				//   explosion happened; reset on start of animation.
-				if(explosion === 0 && !hideTheWorld) {  
-					console.log("hide");
-					scene.visible=false;
+				// console.log(explosion);
+				// if(explosion === 0 && !hideTheWorld) {
+				if(explosionStage === "exploding") {
+					hideTheWorld = true;
+					/* console.log("hide");
+					// scene.visible=false;
+					modifyTimeScale(false);  // pause animation
+					document.getElementsByTagName('canvas')[0].style.opacity = ".4";
 					hideTheWorld = true;
 					document.getElementById('ded').style.display = "flex";
 					document.getElementById('labels').style.display = 'none';
 					// boundingBox["Boundingbox"] = false;
 					boundingBoxesWhereOn = boundingBox["Boundingbox"];
 					showBoundingbox(false);
-					showTextLabels(false);
+					showTextLabels(false); */
 				} else if(explosion != 0 && hideTheWorld) {
 					// If not after explosion, make & keep visible
 					hideTheWorld = false;
 					console.log("show");
-					scene.visible=true;
+					/* scene.visible=true; */
+					document.getElementsByTagName('canvas')[0].style.opacity = "1";
 					// Hide message
 					document.getElementById('ded').style.display = "none";
 					showBoundingbox(boundingBoxesWhereOn);

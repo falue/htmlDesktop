@@ -1,4 +1,5 @@
 let codeIndex;
+let initialFontSize;
 
 async function setup() {
     const queryString = window.location.search;
@@ -48,6 +49,11 @@ async function setup() {
     // Wait for additional js to load until commencing setup process
     script.setAttribute('onload', 'setupCodeblocks()');
     document.getElementsByTagName('head')[0].appendChild(script);
+
+
+
+    // Save initial fontsize for resetting font size
+    initialFontSize = getFontSize('paper');
 }
 
 
@@ -277,3 +283,19 @@ function addStylesheet(path, replace=true) {
       }
       createLearningBars();
   }
+
+function changeFontSize(element, increment) {
+    let container = gebi(element);
+    let fontSize = initialFontSize;
+    if(increment != 0) {
+        fontSize = clamp(getFontSize(element) + increment, 5, 50);
+    }
+    container.style.fontSize = fontSize + 'px';
+}
+
+
+function getFontSize(element) {
+    const cssObj = window.getComputedStyle(gebi(element));
+    let fontSize = cssObj.getPropertyValue("font-size");
+    return parseInt(fontSize);
+}

@@ -128,12 +128,25 @@
           <button class="grey" onclick="switchTabs(1)">tab 1</button><!-- 
           --><button class="grey" onclick="switchTabs(2)">tab 2</button>
         </div>
-            <div class="buttonGroup"><!-- 
+          <div class="buttonGroup"><!-- 
            --><button class="grey" onclick="clearInputs()"><i class="material-icons small valign">backspace</i></button><!-- 
            --><button class="grey" onclick="window.location.href= window.location.href.replace('darkMode=false','darkMode=true');"><i class="material-icons small valign">bedtime</i></button><!-- 
            --><button class="grey" onclick="window.location.href= window.location.href.replace('darkMode=true','darkMode=false');"><i class="material-icons small valign">light_mode</i></button>
         </div>
         <button class="grey" onclick="gebi('paper').classList.toggle('max');">MAX</button>
+        
+        <div class="buttonGroup">
+          <button class="grey" onclick="changeFontSize('paper', -1)">
+            <i class="material-icons small circle valign">text_decrease</i>
+          </button><!-- 
+           --><button class="grey" onclick="changeFontSize('paper', 1)">
+            <i class="material-icons small circle valign">text_increase</i>
+          </button><!-- 
+           --><button class="grey" onclick="changeFontSize('paper', 0)">
+            <i class="material-icons small circle valign">font_download</i>
+          </button>
+        </div>
+
       </div>
       <div class="gridBox centerContentYRight greyBorderLightTop padding05 small" style="grid-column: col 7 / span 2; grid-row: row 5;">
         <span class="red marginX50"><i class="material-icons small valign">warning</i> 1 deprecation</span>

@@ -1,5 +1,4 @@
 let data = [
-    `stats.show(tBrugger.dna)`,
     `createChart("100%", "300px", "canvasAutoId", "targetAutoId", {
         target: "targetAutoId",
         type: "line",
@@ -7,20 +6,21 @@ let data = [
           labels: arrayOfIndexes(60),
           datasets: [{
             label: chooseRandomKeys(1, techwords).join(" "),
-            fill: true,
+            fill: false,
             backgroundColor: chooseRandomKeys(1, colorsTransparent),
             tension: 0,
             pointRadius: 0,
-            borderColor: chooseRandomKeys(1, colors),
-            data: notSoRandomInts(60, 1, 100, 666, 3, .01, true)
+            borderColor: colors[1],
+            data: notSoRandomInts(60, 95, 100, 666, .003, .003, false)
           },
           {
             label: chooseRandomKeys(2, techwords).join(" "),
-            fill: false,
+            fill: true,
+            backgroundColor: colorsTransparent[3],
             tension: .2,
             pointRadius: 0,
-            borderColor: chooseRandomKeys(1, colors),
-            data: notSoRandomInts(60, 10, 50, null, 3, 0, true)
+            borderColor:  colors[3],
+            data: notSoRandomInts(60, 80, 82, 666, .03, 0, false)
           }]
         },
         options: {
@@ -30,6 +30,12 @@ let data = [
             text: "inclining numbers",
             fontSize: 16,
             fontColor: 'white',
+          },
+          scales: {
+            y: {
+                suggestedMin: 0,
+                suggestedMax: 110
+            }
           },
         },
       })`,
@@ -45,7 +51,7 @@ let data = [
             tension: 0,
             pointRadius: 0,
             borderColor: chooseRandomKeys(1, colors),
-            data: notSoRandomInts(60, 1, 100, 666, 3, .01, true)
+            data: notSoRandomInts(60, 80, 88, 666, 1, 0.0001, false)
           },
           {
             label: chooseRandomKeys(2, techwords).join(" "),
@@ -53,7 +59,7 @@ let data = [
             tension: .2,
             pointRadius: 0,
             borderColor: chooseRandomKeys(1, colors),
-            data: notSoRandomInts(60, 10, 50, null, 3, 0, true)
+            data: notSoRandomInts(60, 45, 55, 555, 1, 0.0001, false)
           },
           {
             label: chooseRandomKeys(1, techwords).join(" "),
@@ -61,7 +67,7 @@ let data = [
             tension: .2,
             pointRadius: 0,
             borderColor: chooseRandomKeys(1, colors),
-            data: notSoRandomInts(60, 10, 50, null, 3, 0, true)
+            data: notSoRandomInts(60, 79, 90, 888, 0.05, 0.0001, false)
           },
           {
             label: chooseRandomKeys(1, techwords).join(" "),
@@ -69,7 +75,7 @@ let data = [
             tension: .2,
             pointRadius: 0,
             borderColor: chooseRandomKeys(1, colors),
-            data: notSoRandomInts(60, 10, 50, null, 3, 0, true)
+            data: notSoRandomInts(60, 10, 15, 999, 1, 0.0001, false)
           }]
         },
         options: {
@@ -79,6 +85,12 @@ let data = [
             text: "inclining numbers",
             fontSize: 16,
             fontColor: 'white',
+          },
+          scales: {
+            y: {
+                suggestedMin: 0,
+                suggestedMax: 100
+            }
           },
         },
       })`,
@@ -134,7 +146,7 @@ let data = [
             tension: 0,
             pointRadius: 0,
             borderColor: chooseRandomKeys(1, colors),
-            data: notSoRandomInts(10, 1, 100, 666, 3, .01, true)
+            data: notSoRandomInts(10, 50, 55, 9999, 2, -.0001, false)
           }]
         },
         options: {
@@ -144,6 +156,12 @@ let data = [
             text: "inclining numbers",
             fontSize: 16,
             fontColor: 'white',
+          },
+          scales: {
+            y: {
+                suggestedMin: 0,
+                suggestedMax: 100
+            }
           },
         },
       })`,

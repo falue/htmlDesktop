@@ -22,10 +22,62 @@
     ],
     "windows": [
         {
-            "metaTitle": "#73 - Bash console - Ramon tut was",
+            "metaTitle": "#73 - Bash console - Raul tut was",
             "windowName": "Bash console",
             "icon": "code",
             "contentPath": "bash/index.html?script=73",
+            "x": 7,
+            "y": 7,
+            "w": 1100,
+            "h": 700,
+            "zIndex": 61,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#73 - Terminal random 1",
+            "windowName": "Terminal console",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=5&language=javascript&autotype=true&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=20",
+            "x": 25,
+            "y": 6,
+            "w": 900,
+            "h": 700,
+            "zIndex": 60,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#73 - Terminal random 2",
+            "windowName": "Terminal console",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=0&text=log&theme=an-old-hope&speed=1&language=javascript&autotype=true&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=20",
+            "x": 22,
+            "y": 12,
+            "w": 900,
+            "h": 700,
+            "zIndex": 59,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#73 - Terminal random 3",
+            "windowName": "Terminal console",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=0&text=log-1&theme=an-old-hope&speed=2&language=javascript&autotype=true&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=20",
+            "x": 27,
+            "y": 14,
+            "w": 900,
+            "h": 700,
+            "zIndex": 58,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#74 - Bash console - Lydia remove sonny",
+            "windowName": "Bash console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=74",
             "x": 7,
             "y": 7,
             "w": 1100,
@@ -43,9 +95,9 @@
             "y": 5,
             "w": 1100,
             "h": 700,
-            "zIndex": 61,
-            "minimized": true,
-            "renderToDom": true
+            "zIndex": 62,
+            "minimized": false,
+            "renderToDom": false
         }
     ],
     "shortcuts": [

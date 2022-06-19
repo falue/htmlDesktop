@@ -34,7 +34,7 @@ finally:
 
 `Prepping model...
 <span class="grey nobr overflowAuto">----------------------------------------------------------------------------------------</span>
-<span class="nobr overflowAuto"><span class="minWidth150 inlineBlock">Main loop:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 2,045M/3,099M [5:41:05<00:00, 121.4it/s]</span>
+<span class="nobr overflowAuto"><span class="minWidth150 inlineBlock">MAIN:</span> <progress value="100" min="0" max="100" class="greyBg finished minWidth250"></progress> 100% 2,045M/3,099M [8d 12:04:36<00:00, 121.4it/s]</span>
 <span class="grey nobr overflowAuto">----------------------------------------------------------------------------------------</span>
 <span class="grey">(14581 rows redacted)</span>
 

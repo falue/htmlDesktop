@@ -43,7 +43,7 @@
 [autoType, "Fetching 90%  ................   | 7.352", 222]
 [autoType, "Fetching 96%  .................  | 7.61", 250]
 [autoType, "Fetching 100% .................. | 7.868", 200]
-[goto:nobr, 7]
+[goto:nobr, 0]
 
 # Use EXIT for stop parsing here
 EXIT
