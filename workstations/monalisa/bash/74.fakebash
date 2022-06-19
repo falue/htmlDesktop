@@ -1,0 +1,53 @@
+# ------- setup
+# bashProfileName - plain text or html
+<span class='green'>lyd</span>@<span class='red'>monalisa2</span>:<span class='grey'>~</span> $ 
+# -------
+# NOTE: If you want to have [ or ] in text, use \[ or \]
+
+# Terminate all experiments on Mona:
+[bashProfile] [forceType, "./sonn-ttp.sh --disable -u jasonbrugger -D monaLisa"]
+[br]
+[autoType:grey, "┌--------------------------------------------┐", 500]
+[autoType:grey, "|                                            |"]
+[autoType, "<span class='grey'>|</span> All experiments by <span class='redBg bold'>jasonbrugger</span> terminated <span class='grey'>|</span>"]
+[autoType:grey, "|                                            |"]
+[autoType:grey, "└--------------------------------------------┘"]
+[br]
+
+# Account/Login von Sonny blockieren:
+[bashProfile] [forceType, "chage -E0 jasonbrugger"]
+[br]
+[autoType:grey, "┌--------------------------------------------┐", 500]
+[autoType:grey, "|                                            |"]
+[autoType, "<span class='grey'>|</span>   User <span class='redBg bold'>jasonbrugger</span> permanently locked.    <span class='grey'>|</span>"]
+[autoType:grey, "|                                            |"]
+[autoType:grey, "└--------------------------------------------┘"]
+[br]
+
+# Disable shell von Sonny:
+[bashProfile] [forceType, "usermod -s /sbin/nologin jasonbrugger"]
+[br]
+[autoType:grey, "┌--------------------------------------------┐", 222]
+[autoType:grey, "|                                            |"]
+[autoType, "<span class='grey'>|</span>   Disabled shell for user <span class='redBg bold'>jasonbrugger</span>.    <span class='grey'>|</span>"]
+[autoType:grey, "|                                            |"]
+[autoType:grey, "└--------------------------------------------┘"]
+[sleep, 666]
+
+[bashProfile] [forceType, "ls -l -a"]
+[bashProfile] [forceType, "rm -rf mnt/block01/node002/data"]
+[autoType, "Removing data.. "] [loader, "", "░", "&nbsp;", " |", 30, 1000, 0, 100, "", "%"]
+[autoType, "Success."]
+[br]
+[bashProfile] [forceType, "sudo chmod +x .mona_lisa-auth-test.sh", 1]
+[bashProfile] [forceType, "bash .mona_lisa-auth-test.sh -u jasonbrugger"] [sleep, 444]
+[autoType, "Testing user credentials.."] [sleep, 444]
+[autoType, "Access for user jasonbrugger denied."]
+[bashProfile] [forceType, "ls"]
+[bashProfile] [forceType, "python ./retractAll.py"] [sleep, 111]
+[bashProfile] [forceType, "top"] [sleep, 666]
+[clear]
+[goto:nobr, 0]
+
+# Use EXIT for stop parsing here
+EXIT
