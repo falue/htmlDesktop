@@ -118,6 +118,7 @@ function keyboardControllerBash(event) {
 }
 
 async function playCommandAtIndex(index) {
+  cl(commandIndex[currentCommandKey]);
   if (index === undefined && commandIndex[currentCommandKey] < commands[currentCommandKey].length - 1) {
     commandIndex[currentCommandKey]++;
     await playCommand(commands[currentCommandKey][commandIndex[currentCommandKey]]);
@@ -451,7 +452,7 @@ async function playCommand(command) {
       gebi("console").innerHTML = "";
       break;
     case "goto":
-      playCommandAtIndex(command.parameters[0]);
+      await playCommandAtIndex(command.parameters[0]);
       break;
     case "br":
       printToConsole("<br>");
