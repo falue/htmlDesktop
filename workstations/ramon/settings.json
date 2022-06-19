@@ -61,6 +61,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#42 - Random terminal console",
+            "windowName": "Terminal",
+            "icon": "code",
+            "contentPath": "https://telefabi.ch/htmlDesktop/programs/terminal/index.html?text=log&theme=tomorrow-night-bright&speed=19&language=javascript&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=theme&fontColor=FFFFFF&byRows=true&startChar=0&paddingRange=10&repeatMultipleTexts=repeat",
+            "x": 5,
+            "y": 5,
+            "w": 800,
+            "h": 700,
+            "zIndex": 62,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
             "metaTitle": "#67 - Supervisor - Beach & Champagne",
             "windowName": "Supervisor",
             "icon": "scatter_plot",
