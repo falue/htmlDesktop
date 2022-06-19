@@ -745,7 +745,7 @@ let data = {
     },{
       width:"100%",
       height:"100%",
-      target: "target10",
+      target: "target11",
       type: "bar",
       data: {
         labels: arrayOfIndexes(12),
