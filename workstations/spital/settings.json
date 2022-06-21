@@ -110,6 +110,19 @@
             "zIndex": 666,
             "minimized": true,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#26 - Ärztin - Genbefund Toru",
+            "windowName": "PDF Viewer - Genbefund_tBrugger.PDF",
+            "icon": "description",
+            "contentPath": "imageViewer/index.html?files=GenbefundToru.pdf",
+            "x": 5,
+            "y": 10,
+            "w": 750,
+            "h": 520,
+            "zIndex": 667,
+            "minimized": true,
+            "renderToDom": false
         }
     ],
     "shortcuts": [
@@ -133,6 +146,13 @@
             "x": 1,
             "y": 30,
             "action": "startDefaultProgram('imageViewer', 'krabbe.pdf')"
+        },
+        {
+            "name": "tBrugger.PDF",
+            "icon": "pdf.png",
+            "x": 92,
+            "y": 4,
+            "action": "startDefaultProgram('imageViewer', 'GenbefundToru.pdf')"
         },
         {
             "name": "HDD",
