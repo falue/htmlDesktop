@@ -61,7 +61,7 @@ function loadScene(scene) {
             gebi('vm').innerHTML = `proj-${createUniqueId(6)}`;
             gebi('vmManager').innerHTML = `${getRandomElement(firstNames)[0]}.${getRandomElement(lastNames)}`;
             gebi('target2').innerHTML = `
-            <img id="fuckfacemap" class="maxHeight mirrorX" src="data/floorplan-14.svg" style="transform: rotate(${360/16*0}deg);">
+            <img id="fuckfacemap" class="maxHeight mirrorX" src="data/floorplan-14.svg" style="transform: rotate(${360/16*4}deg);">
             <div class="fixed code bottom blackBgTransparent left padding1">
             <i class="material-icons blue small valign">business</i>
             Mona lisa blocks<br><span class="grey">Node 01-026 (mlve)</span>
@@ -69,7 +69,7 @@ function loadScene(scene) {
             `
             break;
         case "14-B":
-            gebi('vm').innerHTML = "Sonn-TTP";
+            gebi('vm').innerHTML = "SONN-HS";
             gebi('vmManager').innerHTML = "J.Brugger";
             gebi('target2').innerHTML = `
             <img class="maxHeight" src="data/floorplan-14.svg" style="transform: rotate(${360/16*1}deg);">
@@ -97,6 +97,7 @@ function createAllCharts(maxedOutBlock) {
         if(!isHidden(gebi(data[i].target))) {
             gebi(data[i].target).replaceChildren();  // clear contents to re-render
             if (maxedOutBlock) {
+                // cl("maxedoutblock is true");
                 let countOfPoints = 150;
                 data[0].data.labels = arrayOfIndexes(countOfPoints);
                 data[0].data.datasets[0].data = notSoRandomInts(countOfPoints, 88, 105, 667, 10, .03, false);
@@ -114,7 +115,13 @@ function createAllCharts(maxedOutBlock) {
                 data[4].data.datasets[1].data = notSoRandomInts(countOfPoints, randomBetween(5,33), randomBetween(0,100), 670, 10, -.3, false);
                 data[4].data.datasets[0].borderColor = chooseRandomKeys(1, colors);
                 data[4].data.datasets[1].borderColor = chooseRandomKeys(1, colors);
+
+                // Block 1 uses this
+                gebi('vmManager').innerHTML = `J.Brugger`;
+                gebi('vm').innerHTML = `SONN-HS`;
+
             } else if(scene ==="14-A") {
+                // cl("maxedoutblock is false");
                 // cl("hardcoded overwrite of generic server data!!!!");
                 let countOfPoints = randomBetween(33,150);
                 /* data[0].data.datasets[0].data = randomIntsBetween(countOfPoints, randomBetween(0,33), randomBetween(3,88));
@@ -165,25 +172,43 @@ function highlightNode() {
 
             // stop propagation
             event.stopPropagation();
-            if(this.innerHTML.indexOf("Block 02") >= 0 || this.innerHTML.indexOf("Node 02") >= 0) {
+            if(this.innerHTML.indexOf("Block 01") >= 0) {
+                // scene = "14-B";
+                // loadScene(scene, true);  // swap to sonnys project
+                //return;
+                // scene = "14-A";
+                // loadScene(scene);  // swap to initial
+                switchTabs(1, true);  // makes it look like its reloading and if block 05, max out stats
+                gebi('target2').innerHTML = `
+                    <img class="maxHeight" src="data/floorplan-14.svg" style="transform: rotate(${360/16*0}deg);">
+                    <div class="fixed code bottom blackBgTransparent left padding1">
+                    <i class="material-icons blue small valign">business</i>
+                    Mona lisa blocks<br><span class="grey">Node 02-001 (mlve)</span>
+                    </div>
+                    `
+            } else if(this.innerHTML.indexOf("Block 02") >= 0 || this.innerHTML.indexOf("Node 02") >= 0) {
                 scene = "14-B";
                 loadScene(scene);  // swap to sonnys project
+                return;
             } else if(scene === "14-B") {
                 scene = "14-A";
                 loadScene(scene);  // swap to initial
+                return;
+            } else {
+                switchTabs(1, false);
             }
 
-            // turn map accordingly
-            // style="transform: rotate(${360/16*randomInt(0,16)}deg)"
             var regex = /\d+/g;
             var matches = this.innerHTML.match(regex)[0];  // creates array from matches
+            // turn map accordingly
+            // style="transform: rotate(${360/16*randomInt(0,16)}deg)"
             if(gebi('fuckfacemap')) gebi('fuckfacemap').style.transform = `rotate(${360/16*(matches-1)}deg)`;
 
             /* 
             if(scene === "14-A") loadScene("14-B");  // swap to sonnys project
             if(this.innerHTML.indexOf("Block 01") !== -1) loadScene("14-A");  // swap to initial
              */
-            switchTabs(1, this.innerHTML.indexOf("Block 05") >= 0);  // makes it look like its reloading and if block 05, max out stats
+            // switchTabs(1, this.innerHTML.indexOf("Block 01") >= 0);  // makes it look like its reloading and if block 05, max out stats
             gebi('summeryTitle').innerHTML = this.innerHTML;
         });
     }
@@ -201,6 +226,7 @@ function isHidden(el) {
 }
 
 function switchTabs(index, maxedOutBlock=false) {
+    cl("switch tabs ..");
     // select current button
     let tabButton = document.getElementsByClassName("tabButton");
     for (let i = 0; i < tabButton.length; i++) {

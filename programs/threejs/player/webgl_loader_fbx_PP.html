@@ -9,6 +9,7 @@
 		<style>
 			body {
 				font-family: 'Courier New', Courier, monospace;
+				background-color: #fffe32;
 			}
 
 			/* GUI OVERWRIE */
@@ -623,7 +624,9 @@
 			function updateHealth() {
 				let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('Explosions')];
 				let explosion = objectToFollow?.children[0].scale.x;
-				if((explosion >= 4 || explosion == 0) && explosionStage == 'idle') {
+				// console.log(explosion);
+				let thresholdPause = 17;  // biggetst & best is 20, but when scrubbing with tempo "3" it will skip
+				if((explosion >= thresholdPause || explosion == 0) && explosionStage == 'idle') {
 					// is exploding - change stats once
 					document.getElementById('vitalHealth').value=2;
 					document.getElementById('vitalHealth').classList.add('low');
@@ -634,11 +637,13 @@
 					document.getElementById('vitalExhaustion').value=2;
 					document.getElementById('vitalExhaustion').classList.add('low');
 					explosionStage = 'exploding';
-					console.log("hide");
+					console.log("hide & pause");
 					
 					// scene.visible=false;
 					modifyTimeScale(false);  // pause animation
-					document.getElementsByTagName('canvas')[0].style.opacity = ".4";
+					document.getElementsByTagName('canvas')[0].style.opacity = "0";
+					document.getElementById('time').style.color = "black";
+					document.getElementById('vitalics').style.color = "black";
 					
 					document.getElementById('ded').style.display = "flex";
 					document.getElementById('labels').style.display = 'none';
@@ -647,7 +652,7 @@
 					showBoundingbox(false);
 					showTextLabels(false);
 
-				} else if(explosion <= 4 && explosion > 0 && explosionStage === 'exploding') {
+				} else if(explosion <= thresholdPause && explosion > 0 && explosionStage === 'exploding') {
 					// is not exploding - reset to initial values once
 					document.getElementById('vitalHealth').value=95;
 					document.getElementById('vitalHealth').classList.remove('low');
@@ -657,6 +662,8 @@
 					document.getElementById('vitalThirst').classList.remove('low');
 					document.getElementById('vitalExhaustion').value=55;
 					document.getElementById('vitalExhaustion').classList.remove('low');
+					document.getElementById('time').style.color = "white";
+					document.getElementById('vitalics').style.color = "white";
 					explosionStage = 'idle';
 				}
 

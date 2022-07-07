@@ -105,22 +105,41 @@ header {
 .treeview li.active {
     background-color: rgba(255,255,255,.2);
 }
+#dna {
+    overflow-x: auto;
+}
+#dna.darkMode:not(.loading) {
+    background-color:rgba(0,0,0,.85);
+}
+
 .dnaList {
     padding-bottom: 12em;
     font-weight: 800;
     font-size:1.2em;
 }
-.dnaList li:nth-child(odd) {
+/* .dnaList li:nth-child(odd) {
     background-color: rgba(0,0,0,.05);
-}
+} */
 .dnaList li {
     padding-left: .5em;
     margin-bottom: .15em;
 }
 
 .dnaList li span {
-    background-color:rgba(0,0,0,.75);
+    /* background-color:rgba(0,0,0,.75); */
     padding: 0 .25em;
+}
+
+#dna:not(.darkMode) li span.G {
+    color: rgb(255, 170, 0);
+}
+
+#dna:not(.darkMode) li span.T {
+    color: rgb(0, 179, 0);
+}
+
+#dna:not(.darkMode) li span.C {
+    color: rgb(0, 188, 188);
 }
 
 #loader {
@@ -132,7 +151,7 @@ header {
 }
 
 .A { color: rgb(255, 0, 0); }
-.G { color: rgb(255, 255, 200); }
+.G { color: rgb(255, 255, 0); }
 .T { color: rgb(0, 255, 0); }
 .C { color: rgb(0, 255, 255); }
 

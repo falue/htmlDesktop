@@ -16,12 +16,20 @@ async function setup() {
 
 function setupScene(scene) {
     switch(scene) {
+        case "10":
+            switchTabs(2);
+            for (let i = 0; i < data[scene].length; i++) {
+                createChart(data[scene][i].width, data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
+            }
+            break;
+
         case "34":
             //show(`scene34`);  // scene number
             threejsData = threejsData + "ELCH_FullIsland.html";  // PATH STUFF
-            cl(threejsData);
+            // cl(threejsData);
             switchTabs(2);
             for (let i = 0; i < data[scene].length; i++) {
+                // cl(data[scene][i].data.datasets[0].data);
                 createChart(data[scene][i].width, data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
             }
             break;
@@ -49,7 +57,8 @@ function setupScene(scene) {
             switchTabs(2);
             show('showChartBigTarget2');
             for (let i = 0; i < data[scene].length; i++) {
-                cl(data[scene][i]);
+                // cl(data[scene][i]);
+                cl(data[scene][i].data.datasets[0].data);
                 createChart(data[scene][i].width, data[scene][i].height, "canvas-"+createUniqueId(), data[scene][i].target, data[scene][i]);
             }
             break;

@@ -59,11 +59,23 @@ data = [
                 stepSize: 20, /* total/4 shows 0, 25%, 50%, 75%, 100% */             
                 callback: function(value, index, values) {
                     return (Math.floor((value / 100) * 100)) + '%';
+                },
+                color: function(context) {
+                  if (context.tick.value === 100) {
+                    return "red";
+                  }
+                  return "grey";
                 }
             },
             grid: {
               // Make 100% line red
               drawBorder: true,
+              lineWidth: function(context) {
+                if (context.tick.value === 100) {
+                  return 3;
+                }
+                return 1
+              },
               color: function(context) {
                 if (context.tick.value === 100) {
                   return "red";
