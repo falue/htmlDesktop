@@ -478,19 +478,19 @@
 				// Checkbox: Play / Pause
 				gui.add({"Play / Pause": false}, "Play / Pause").onChange( modifyTimeScale );
 
-				// Checkbox: Pause
-				gui.add({"Pause": false}, "Pause").onChange( function () { modifyTimeScale(false) } );
-				
-				// Slider: Scrubbing
-				gui.add(effectController, 'SlowMo', -1, 1).onChange( modifyTimeScale );
-
 				// Checkbox: Reverse play or pause
 				gui.add({"Reverse": false}, "Reverse").onChange(
 					function (value) {
 						modifyTimeScale(value ? -1 : 0);
 					}
 				);
+
+				// Checkbox: Pause
+				gui.add({"Pause": false}, "Pause").onChange( function () { modifyTimeScale(false) } );
 				
+				// Slider: Scrubbing
+				gui.add(effectController, 'SlowMo', -.2, .2).onChange( modifyTimeScale );
+
 				// Checkbox: Fast forward
 				gui.add({"Fast forward": false}, "Fast forward").onChange( 
 					function (value) {
