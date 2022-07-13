@@ -168,11 +168,11 @@ async function login(typedPassword) {
         show('loginLoader');
         gebi('lockScreenPassword').classList.remove('redBorder');
         /* await delay(3500); */
-        await counter("loginLoaderBar", "%", 750, 92, 0, 100);
+        await counter("loginLoaderBar", "%", 400, 92, 0, 100);
         /* cl("start animation"); */
         gebi('lockScreen').classList.add('loginAnimation');
         gebi('loginLoaderBar').innerHTML = "Logging in.."
-        await delay(666);  // wait for color animation
+        await delay(2500);  // wait for color animation
         /* cl("finish animation"); */
         hide('lockScreen');
 

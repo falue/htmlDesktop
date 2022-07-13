@@ -98,12 +98,12 @@ body {
 }
 
 #lockScreen.loginAnimation #lockScreenColorOverlay {
-    animation: animateBgColor 375ms ease-in-out 1 forwards;
-    animation: fadeoutLoginWindow 250ms 750ms ease-in-out 1 forwards;
+    animation: animateBgColor 400ms ease-in-out 1 forwards;
+    animation: fadeoutLoginWindow 250ms ease-in-out 1 forwards;
 }
 
 .loginAnimation #lockScreenSystemColorOverlay {
-    animation: fadeoutLoginWindow 375ms 2s ease-in-out 1 forwards;
+    animation: fadeoutLoginWindow 50ms ease-in-out 1 forwards;
 }
 
 @keyframes animateBgColor {
