@@ -625,7 +625,7 @@
 				let objectToFollow = scene.children[scene.children.map(function(e) { return e.name; }).indexOf('Explosions')];
 				let explosion = objectToFollow?.children[0].scale.x;
 				// console.log(explosion);
-				let thresholdPause = 17;  // biggetst & best is 20, but when scrubbing with tempo "3" it will skip
+				let thresholdPause = 16;  // biggetst & best is 20, but when scrubbing with tempo "3" it will skip
 				if((explosion >= thresholdPause || explosion == 0) && explosionStage == 'idle') {
 					// is exploding - change stats once
 					document.getElementById('vitalHealth').value=2;
