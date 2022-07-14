@@ -78,11 +78,4 @@
 2021-11-15 18:43:05.917481+0100 0x16cd75d  Default     0x0                  781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track] Performing next operation for [ trackboxName: Gesendet; priorities - network: 24, reserved network: 0, persistence: 0] on handler: currenttrackboxName=Gesendet
 2021-11-15 18:43:05.917546+0100 0x16cd75d  Default     0x0                  781    14   track: (IMAP) [com.EAWCORP.track:guideyncActivity] [track - Gesendet] Operation { changed since: 97, highest UID: 59} created
 2021-11-15 18:43:05.917726+0100 0x16cd30b  Default     0x0                  781    14   track: (IMAP) [com.EAWCORP.track:IMAPConnection] [goethe.metanet.ch] Wrote: 3151.10759 UID FETCH 1:3564 (FLAGS UID) (CHANGEDSINCE 5461 VANISHED)
-2021-11-15 18:43:05.917771+0100 0x16cd75b  Default     0x0                  781    14   track: (IMAP) [com.EAWCORP.track:IMAPConnection] [goethe.metanet.ch] Read: * OK [CAPABILITY (
-    IMAP4REV1,
-    "SASL-IR",
-    "LOGIN-REFERRALS",
-    ID,
-    ENABLE,
-    IDLE,
-    "LITERAL+",
+2021-11-15 18:43:05.917771+0100 0x16cd75b  Default     0x0                  781    14   track: (IMAP) [com.EAWCORP.track:IMAPConnection] [goethe.metanet.ch] Read: * OK [CAPABILITY]
