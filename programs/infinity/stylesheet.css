@@ -3,5 +3,6 @@ html, body {
     background-image: url("infinity.png");
     background-size: 50%;
     background-position: center;
+    cursor: none;
     background-repeat: no-repeat;
 }   
