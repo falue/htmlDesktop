@@ -15,10 +15,10 @@
         let elem = gebi(id);
         let filter = elem.style.filter;
         if(filter === "invert(1)") {
-          cl(1);
           elem.style.filter = 'invert(0)';
+        } else if(filter === "invert(0)") {
+          elem.style.filter = 'invert(1) brightness(0.5)';
         } else {
-          cl(2);
           elem.style.filter = 'invert(1)';
         }
       }
