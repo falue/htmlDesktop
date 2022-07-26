@@ -172,7 +172,7 @@ async function login(typedPassword) {
         /* cl("start animation"); */
         gebi('lockScreen').classList.add('loginAnimation');
         gebi('loginLoaderBar').innerHTML = "Logging in.."
-        await delay(2500);  // wait for color animation
+        await delay(1500);  // wait for color animation
         /* cl("finish animation"); */
         hide('lockScreen');
 
