@@ -1,16 +1,16 @@
 <!DOCTYPE html>
   <head>
     <meta charset="UTF-8" />
-    <title>Program</title>
+    <title>LOCAL VIDEOPLAYER</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- style and script resources -->
-    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
-    <link rel="stylesheet" href="../../tools/general.css" media="all">
-    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
-    <link rel="stylesheet" href="stylesheet.css" media="all">
-    <script src="../../tools/general.js"></script>
-    <script src="javascript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css?v=20220822" media="all">
+    <link rel="stylesheet" href="../../tools/general.css?v=20220822" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css?v=20220822" media="all">
+    <link rel="stylesheet" href="stylesheet.css?v=20220822" media="all">
+    <script src="../../tools/general.js?v=20220822"></script>
+    <script src="javascript.js?v=20220822"></script>
 
   </head>
   <body onload="setup();" onkeydown="keyboardControllerVideo(event);">
@@ -26,71 +26,92 @@
         <legend>Playback</legend>
         <div class="uploadbutton hover">
           Select mp4 file..
-          <input id="fileinput" class="fileinput" type="file" accept="video/*" onchange="playSelectedFile(event);"/>
+          <input id="fileinput" class="fileinput" type="file" accept="video/*" onchange="playSelectedFile(event); this.blur();"/>
         </div>
         <div id="message"></div>
         <br>
 
-        Fit video:
+        <fieldset>
+          <legend>Direct controls</legend>
+          <button id="playbutton" onclick="toggleClass('menu-content', 'hide'); toggleplay();">PLAY</button>
+          <button id="pausebutton" class="hide" onclick="toggleplay();">PAUSE</button>
+          <button onclick="startAgain();">BEGINNING</button>
+          <button onclick="jumpChapter(-1);">PREV CHAPTER</button>
+          <button onclick="jumpChapter(1);">NEXT CHAPTER</button>
+        </fieldset>
+        <br>
+
+
+        Video fitting:
         <span id="scale" class="keyboardKey scaleButton blueBg" onclick="videoFit('scale')">scale</span><!-- 
          --><span id="letterbox" class="keyboardKey scaleButton" onclick="videoFit('letterbox')">letterbox</span><!-- 
          --><span id="stretch" class="keyboardKey scaleButton" onclick="videoFit('stretch')">stretch</span>
         <br>
+        
+        <span id="letterboxColor" class="hide">
+          <input id="BGColor" class="valign" style="width:1.35em; height:1.35em;" oninput="changeBGColor(this.value)" onchange="this.blur();" type="color" value="#000000">
+          <input id="BGColorText" onchange="changeBGColor(this.value)" type="text" size="8" value="#000000">
+          <label for="BGColor">Letterbox color</label>
+          <br>
+        </span>
 
-        <label>
-          <input type="checkbox" onchange="toggleControls()" style="margin-right:.5em; filter: invert(1);">
+        <!-- <label>
+          <input type="checkbox" onchange="toggleControls(); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
           Show video controls
         </label>
-        <br>
+        <br> -->
 
         <label>
-          <input type="checkbox" onchange="toggleLoop()" style="margin-right:.5em; filter: invert(1);">
+          <input type="checkbox" onchange="toggleLoop(); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
           Loop video indefinitely
         </label>
         <br>
 
         <label>
-          <input type="checkbox" onchange="toggleClickPlay(this)" style="margin-right:.5em; filter: invert(1);">
+          <input type="checkbox" onchange="toggleClickPlay(this); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
           Click on video starts/stops video
         </label>
         <br>
 
         <label>
-          <input type="checkbox" onchange="toggleEnterKey(this)" style="margin-right:.5em; filter: invert(1);">
+          <input type="checkbox" onchange="toggleEnterKey(this); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
           Enter key starts/stops video
         </label>
         <br>
 
         <label>
-          <input type="checkbox" onchange="pauseAfterChapterJump = !pauseAfterChapterJump" style="margin-right:.5em; filter: invert(1);">
+          <input type="checkbox" onchange="pauseAfterChapterJump = !pauseAfterChapterJump; this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
           Pause after chapter jump
         </label>
         <br>
-        
-        
-        <input id="BGColor" class="valign" style="width:1.5em; height:1.5em;" oninput="changeBGColor(this.value)" type="color" value="#000000">
-        <input id="BGColorText" onchange="changeBGColor(this.value)" type="text" size="8" value="#000000">
-        <label for="BGColor">Video background color</label>
+
+        <label>
+          <input type="checkbox" onchange="toggleMute(); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
+          Mute
+        </label>
+        <br>
+
         </fieldset>
         <br>
 
         <fieldset>
-          <legend>Delay</legend>
-          <input id="delayRange" style="width:90%" type="range" class="valign" value="0" min="0" max="120" onchange="setDelay(this.value)" oninput="setDelay(this.value)">
+          <legend>Delay <span class="bold white redBg" id="timer" onclick="abort = true;"></span></legend>
+          <input id="delayRange" style="width:80%" type="range" class="valign" value="0" min="0" max="120" onchange="setDelay(this.value); this.blur();" oninput="setDelay(this.value)">
           <span id="delay">0</span>s
-          <div class="small">Delay after play with click on video (enter or 5 does wait for this delay)</div>
+          <div class="small">Time to run away: Press play, video starts after this delay.</div>
         </fieldset>
         <br>
 
         <fieldset>
           <legend>keyboard controls</legend>
-          <span class="keyboardKey blueBg">1</span>
-          <span id="enterKeyAllowed" class="hide">or <span class="keyboardKey blueBg">enter</span></span>
-          <span id="clickAllowed" class="hide">or <span class="keyboardKey blueBg">click</span></span>
+          <span class="keyboardKey blueBg">0</span>: Go to beginning of video<br>
+          <!-- <span class="keyboardKey blueBg">1</span> or -->
+          <span class="keyboardKey blueBg">4</span> or <span class="keyboardKey blueBg">&larr;</span>: Previous chapter<br>
+          <span class="keyboardKey blueBg">5</span><!-- 
+           --><span id="enterKeyAllowed" class="hide"> or <span class="keyboardKey blueBg">enter</span></span><!-- 
+           --><span id="clickAllowed" class="hide"> or <span class="keyboardKey blueBg">click</span></span>:
           Start/pause video<br>
-          <span class="keyboardKey blueBg">0</span> Go to beginning of video<br>
-          <span class="keyboardKey blueBg">&larr;</span> or <span class="keyboardKey blueBg">4</span> Previous chapter<br>
-          <span class="keyboardKey blueBg">&rarr;</span> or <span class="keyboardKey blueBg">6</span> Next chapter<br>
+          <span class="keyboardKey blueBg">6</span> or <span class="keyboardKey blueBg">&rarr;</span>: Next chapter<br>
             <!-- F11 etc should be allowed! -->
         </fieldset>
           <br>
@@ -104,10 +125,10 @@
           <br>
           Add chapter @
           <span class="keyboardKey blueBg" onclick="addChapter(...getCurrentTimes())">current position</span>
-          <div id="chapterList" class="padding50 greyBorder marginY50" style="max-width:500px">
+          <div id="chapterList" class="padding50 greyBorder marginY50" style="max-width:350px">
             <span class="small grey">No chapters.</span>
           </div>
-          <div class="small">video stops at beginning of every chapter</div>
+          <div class="small">Video stops at beginning of every chapter.</div>
         </fieldset>
         <br>
 
@@ -118,6 +139,7 @@
       </div>
     </div>
 
-    <video id="video" class="video scale noSelect" ontimeupdate="checkChapters();" onplay="toggleplay(false, true)"></video>
+    <!--  onplay="toggleplay(false, true)" -->
+    <video id="video" class="video scale noSelect" ontimeupdate="checkChapters();"></video>
   </body>
   </html>
