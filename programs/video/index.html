@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- style and script resources -->
-    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css?v=20220822" media="all">
-    <link rel="stylesheet" href="../../tools/general.css?v=20220822" media="all">
-    <link rel="stylesheet" href="../../tools/desktop.css?v=20220822" media="all">
-    <link rel="stylesheet" href="stylesheet.css?v=20220822" media="all">
-    <script src="../../tools/general.js?v=20220822"></script>
-    <script src="javascript.js?v=20220822"></script>
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css?v=20220822A" media="all">
+    <link rel="stylesheet" href="../../tools/general.css?v=20220822A" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css?v=20220822A" media="all">
+    <link rel="stylesheet" href="stylesheet.css?v=20220822A" media="all">
+    <script src="../../tools/general.js?v=20220822A"></script>
+    <script src="javascript.js?v=20220822A"></script>
 
   </head>
   <body onload="setup();" onkeydown="keyboardControllerVideo(event);">
@@ -18,14 +18,14 @@
     </div>
 
     <div id="menu-content" class="menu-content">
-      <div class="menu-close" onclick="toggleClass('menu-content', 'hide'); return false">✖</div>
-      <h3>local videoplayer v1.1</h3>
+      <div class="menu-close redBg white hover" onclick="toggleClass('menu-content', 'hide'); return false">✖</div>
+      <h3>local videoplayer v1.2</h3>
       <br>
 
       <fieldset>
         <legend>Playback</legend>
         <div class="uploadbutton hover">
-          Select mp4 file..
+          Select local mp4 file..
           <input id="fileinput" class="fileinput" type="file" accept="video/*" onchange="playSelectedFile(event); this.blur();"/>
         </div>
         <div id="message"></div>
@@ -56,37 +56,43 @@
         </span>
 
         <!-- <label>
-          <input type="checkbox" onchange="toggleControls(); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
+          <input type="checkbox" onchange="toggleControls(); this.blur();">
           Show video controls
         </label>
         <br> -->
 
         <label>
-          <input type="checkbox" onchange="toggleLoop(); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
+          <input type="checkbox" onchange="toggleLoop(); this.blur();">
           Loop video indefinitely
         </label>
         <br>
 
         <label>
-          <input type="checkbox" onchange="toggleClickPlay(this); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
+          <input type="checkbox" onchange="toggleClickPlay(this); this.blur();">
           Click on video starts/stops video
         </label>
         <br>
 
         <label>
-          <input type="checkbox" onchange="toggleEnterKey(this); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
+          <input type="checkbox" onchange="toggleEnterKey(this); this.blur();">
           Enter key starts/stops video
         </label>
         <br>
 
         <label>
-          <input type="checkbox" onchange="pauseAfterChapterJump = !pauseAfterChapterJump; this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
+          <input type="checkbox" onchange="pauseAfterChapterJump = !pauseAfterChapterJump; this.blur();">
           Pause after chapter jump
         </label>
         <br>
 
         <label>
-          <input type="checkbox" onchange="toggleMute(); this.blur();" style="margin-right:.5em; filter: invert(1) hue-rotate(180deg);">
+          <input type="checkbox" onchange="swapClasses('video', 'noCursor', ''); this.blur();" checked>
+          Hide mouse cursor
+        </label>
+        <br>
+
+        <label>
+          <input type="checkbox" onchange="toggleMute(); this.blur();">
           Mute
         </label>
         <br>
@@ -101,20 +107,6 @@
           <div class="small">Time to run away: Press play, video starts after this delay.</div>
         </fieldset>
         <br>
-
-        <fieldset>
-          <legend>keyboard controls</legend>
-          <span class="keyboardKey blueBg">0</span>: Go to beginning of video<br>
-          <!-- <span class="keyboardKey blueBg">1</span> or -->
-          <span class="keyboardKey blueBg">4</span> or <span class="keyboardKey blueBg">&larr;</span>: Previous chapter<br>
-          <span class="keyboardKey blueBg">5</span><!-- 
-           --><span id="enterKeyAllowed" class="hide"> or <span class="keyboardKey blueBg">enter</span></span><!-- 
-           --><span id="clickAllowed" class="hide"> or <span class="keyboardKey blueBg">click</span></span>:
-          Start/pause video<br>
-          <span class="keyboardKey blueBg">6</span> or <span class="keyboardKey blueBg">&rarr;</span>: Next chapter<br>
-            <!-- F11 etc should be allowed! -->
-        </fieldset>
-          <br>
 
         <fieldset>
           <legend>Chapters</legend>
@@ -132,14 +124,28 @@
         </fieldset>
         <br>
 
+        <fieldset>
+          <legend>keyboard controls</legend>
+          <span class="keyboardKey blueBg">0</span>: Go to beginning of video<br>
+          <!-- <span class="keyboardKey blueBg">1</span> or -->
+          <span class="keyboardKey blueBg">4</span> or <span class="keyboardKey blueBg">&larr;</span>: Previous chapter<br>
+          <span class="keyboardKey blueBg">5</span><!-- 
+           --><span id="enterKeyAllowed" class="hide"> or <span class="keyboardKey blueBg">enter</span></span><!-- 
+           --><span id="clickAllowed" class="hide"> or <span class="keyboardKey blueBg">click</span></span>:
+          Start/pause video<br>
+          <span class="keyboardKey blueBg">6</span> or <span class="keyboardKey blueBg">&rarr;</span>: Next chapter<br>
+            <!-- F11 etc should be allowed! -->
+        </fieldset>
+          <br>
+
         
         <a href="../../index.html" class="small">
-          Back
+          Home
         </a>
       </div>
     </div>
 
     <!--  onplay="toggleplay(false, true)" -->
-    <video id="video" class="video scale noSelect" ontimeupdate="checkChapters();"></video>
+    <video id="video" class="video scale noSelect noCursor" ontimeupdate="checkChapters();"></video>
   </body>
   </html>
