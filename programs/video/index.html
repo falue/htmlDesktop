@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Program</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js"></script>
+
+  </head>
+  <body onload="setup();" onkeydown="keyboardControllerVideo(event);">
+    <div class="menu" onclick="toggleClass('menu-content', 'hide');">
+    </div>
+
+    <div id="menu-content" class="menu-content">
+      <div class="menu-close" onclick="toggleClass('menu-content', 'hide'); return false">✖</div>
+      <h3>local videoplayer v1.1</h3>
+      <br>
+
+      <fieldset>
+        <legend>Playback</legend>
+        <div class="uploadbutton hover">
+          Select mp4 file..
+          <input id="fileinput" class="fileinput" type="file" accept="video/*" onchange="playSelectedFile(event);"/>
+        </div>
+        <div id="message"></div>
+        <br>
+
+        Fit video:
+        <span id="scale" class="keyboardKey scaleButton blueBg" onclick="videoFit('scale')">scale</span><!-- 
+         --><span id="letterbox" class="keyboardKey scaleButton" onclick="videoFit('letterbox')">letterbox</span><!-- 
+         --><span id="stretch" class="keyboardKey scaleButton" onclick="videoFit('stretch')">stretch</span>
+        <br>
+
+        <label>
+          <input type="checkbox" onchange="toggleControls()" style="margin-right:.5em; filter: invert(1);">
+          Show video controls
+        </label>
+        <br>
+
+        <label>
+          <input type="checkbox" onchange="toggleLoop()" style="margin-right:.5em; filter: invert(1);">
+          Loop video indefinitely
+        </label>
+        <br>
+
+        <label>
+          <input type="checkbox" onchange="toggleClickPlay(this)" style="margin-right:.5em; filter: invert(1);">
+          Click on video starts/stops video
+        </label>
+        <br>
+
+        <label>
+          <input type="checkbox" onchange="toggleEnterKey(this)" style="margin-right:.5em; filter: invert(1);">
+          Enter key starts/stops video
+        </label>
+        <br>
+
+        <label>
+          <input type="checkbox" onchange="pauseAfterChapterJump = !pauseAfterChapterJump" style="margin-right:.5em; filter: invert(1);">
+          Pause after chapter jump
+        </label>
+        <br>
+        
+        
+        <input id="BGColor" class="valign" style="width:1.5em; height:1.5em;" oninput="changeBGColor(this.value)" type="color" value="#000000">
+        <input id="BGColorText" onchange="changeBGColor(this.value)" type="text" size="8" value="#000000">
+        <label for="BGColor">Video background color</label>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend>Delay</legend>
+          <input id="delayRange" style="width:90%" type="range" class="valign" value="0" min="0" max="120" onchange="setDelay(this.value)" oninput="setDelay(this.value)">
+          <span id="delay">0</span>s
+          <div class="small">Delay after play with click on video (enter or 5 does wait for this delay)</div>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend>keyboard controls</legend>
+          <span class="keyboardKey blueBg">1</span>
+          <span id="enterKeyAllowed" class="hide">or <span class="keyboardKey blueBg">enter</span></span>
+          <span id="clickAllowed" class="hide">or <span class="keyboardKey blueBg">click</span></span>
+          Start/pause video<br>
+          <span class="keyboardKey blueBg">0</span> Go to beginning of video<br>
+          <span class="keyboardKey blueBg">&larr;</span> or <span class="keyboardKey blueBg">4</span> Previous chapter<br>
+          <span class="keyboardKey blueBg">&rarr;</span> or <span class="keyboardKey blueBg">6</span> Next chapter<br>
+            <!-- F11 etc should be allowed! -->
+        </fieldset>
+          <br>
+
+        <fieldset>
+          <legend>Chapters</legend>
+          Add chapter @
+            <input id="newChapterMin" class="maxWidth50" type="number" value="" placeholder="min" onchange="this.value=checkTime(this.value)"><!-- 
+             --><input id="newChapterSec" class="maxWidth50" type="number" value="" placeholder="sec" onchange="this.value=checkTime(this.value)">
+            <span class="keyboardKey blueBg" onclick="addChapter(gebi('newChapterMin').value, gebi('newChapterSec').value)">+</span>
+          <br>
+          Add chapter @
+          <span class="keyboardKey blueBg" onclick="addChapter(...getCurrentTimes())">current position</span>
+          <div id="chapterList" class="padding50 greyBorder marginY50" style="max-width:500px">
+            <span class="small grey">No chapters.</span>
+          </div>
+          <div class="small">video stops at beginning of every chapter</div>
+        </fieldset>
+        <br>
+
+        
+        <a href="../../index.html" class="small">
+          Back
+        </a>
+      </div>
+    </div>
+
+    <video id="video" class="video scale noSelect" ontimeupdate="checkChapters();" onplay="toggleplay(false, true)"></video>
+  </body>
+  </html>
