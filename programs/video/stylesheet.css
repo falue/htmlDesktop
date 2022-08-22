@@ -1,0 +1,141 @@
+/* MENU */
+.menu {
+	font-family:Menlo, "Roboto Mono", monospace;
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-width: 5em;
+    min-height: 5em;
+    padding: 10px;
+    color: white;
+    z-index: 1;
+}
+
+.menu-content {
+    color: white;
+	font-family:Menlo, "Roboto Mono", monospace;
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-width: 320px;
+    padding: 15px;
+    margin: 10px;
+    background-color: black;
+    border: thin solid #333333;
+    z-index: 2;
+    max-height: 90%;
+    overflow: auto;
+}
+
+.menu-close {
+    position: absolute;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.menu-close:hover {
+    font-weight: 900;
+    opacity: 1;
+}
+
+a.small.inlineRight {
+    background-color: #333333;
+    padding: 1em;
+    bottom:0.5em;
+    right: 0.5em;
+    cursor: pointer;
+    text-align: center;
+}
+
+a.small.inlineRight:hover {
+    background-color: #444444;
+}
+
+.uploadbutton {
+    background-color: grey;
+    border-radius: .25em;
+    border: solid white thin;
+    color: black;
+    position: relative;
+    overflow: hidden;
+    padding: .25em;
+}
+
+.fileinput {
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+
+/* VIDEO */
+/* video, input {
+    display: block;
+} */
+/* 
+input {
+    width: 100%;       
+} */
+
+video {
+    position: fixed;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: black;
+}
+.scale {
+    object-fit: cover;  /* proportionally scale up */
+}
+.letterbox {
+    object-fit:contain;  /* letterbox/pillarbox */
+}
+.stretch {
+    object-fit:fill; /* stretch to fit */
+}
+
+.info {
+    background-color: darkgreen;
+    padding: 0.25em;
+}
+
+.error {
+    background-color: red;
+    color: white;
+    padding: 0.25em;
+}
+
+fieldset {
+    padding: .15em .75em .5em .75em;
+    border: thin grey solid;
+}
+
+fieldset legend {
+    font-weight: bold;
+    padding: .25em;
+    color:grey;
+}
+.noSelect {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.noSelect:focus {
+    outline: none !important;
+}

@@ -1,0 +1,262 @@
+let delayTime = 0;
+let enterPlay = false;
+let chapters = [0];
+let currentChapter = 0;
+let pauseAfterChapterJump = false;
+
+async function setup() {
+    /* const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let os = urlParams.get('os');
+    let workstation = urlParams.get('workstation');
+    let darkMode = urlParams.get('darkMode');
+    
+    // Set generic system fonts
+    setSystemFont(os); */
+    
+    buildChapters();
+}
+
+function playSelectedFile(event) {
+  var URL = window.URL || window.webkitURL
+  cl(this);
+  cl(event);
+  cl(event.target.value);
+  var file = event.target.files[0]
+  var type = file.type
+  var videoNode = document.querySelector('video')
+  var canPlay = videoNode.canPlayType(type)
+  if (canPlay === '') canPlay = 'no'
+  var message = 'Can play "'+ file.name +'" of type "' + type + '": ' + canPlay
+  var isError = canPlay === 'no'
+  displayMessage(message, isError)
+
+  if (isError) {
+    return
+  }
+
+  var fileURL = URL.createObjectURL(file)
+  videoNode.src = fileURL
+
+  // reset input to retrigger after same file selected
+  gebi('fileinput').value='';
+}
+
+function displayMessage(message, isError) {
+  var element = document.querySelector('#message')
+  element.innerHTML = message
+  element.className = isError ? 'error' : 'info'
+}
+
+function videoFit(fit) {
+  let videoElement = gebi('video');
+  videoElement.classList.remove('scale');
+  videoElement.classList.remove('letterbox');
+  videoElement.classList.remove('stretch');
+  videoElement.classList.add(fit);
+
+  let scaleButtons = document.getElementsByClassName("scaleButton");
+  for(i=0; i< scaleButtons.length; i++) { 
+		scaleButtons[i].classList.remove('blueBg');
+	}
+  gebi(fit).classList.add('blueBg');
+}
+
+function changeBGColor(value) {
+  gebi('video').style.backgroundColor = value;
+  document.getElementById("BGColor").value = value;
+  document.getElementById("BGColorText").value = value;
+}
+
+function toggleControls() {
+  let videoElement = gebi('video');
+  if (videoElement.hasAttribute("controls")) {
+     videoElement.removeAttribute("controls")   
+  } else {
+     videoElement.setAttribute("controls","controls")   
+  }
+}
+
+function toggleLoop() {
+  let videoElement = gebi('video');
+  if (videoElement.hasAttribute("loop")) {
+     videoElement.removeAttribute("loop")   
+  } else {
+     videoElement.setAttribute("loop","loop")   
+  }
+}
+
+function toggleClickPlay(checkbox) {
+  let videoElement = gebi('video');
+  if(checkbox.checked) {
+    show("clickAllowed");
+    videoElement.onclick=function () { toggleplay(true, false) };
+  } else {
+    hide("clickAllowed");
+    videoElement.onclick=function() {};
+  }
+}
+
+async function toggleplay(waitForDelay, controlClick) {
+  let videoElement = gebi('video');
+  let isPlaying = controlClick ? !videoElement.paused : videoElement.paused;
+  if (isPlaying) {
+    if(delayTime > 0 && waitForDelay) {
+      // FIXME: wait after every play press?
+      await delay(delayTime);
+    }
+    setTimeout(function(){currentChapter = -1;}, 1100);
+    // currentChapter = -1;
+    videoElement.play();
+  } else {
+    videoElement.pause();
+  }
+  // event.preventDefault();
+}
+
+function toggleEnterKey(checkbox) {
+  enterPlay = checkbox.checked;
+  if(enterPlay) {
+    show('enterKeyAllowed')
+  } else {
+    hide('enterKeyAllowed')
+  }
+}
+
+function setDelay(value) {
+  delayTime = value*1000;
+  gebi('delay').innerHTML = value;
+}
+
+function keyboardControllerVideo(event) {
+  cl(event);
+  if(event.target.localName !== "textarea" && event.target.localName !== "input") {
+    let allowedKeys = ["0", "1", "4", "5", "6", "Enter", "F5", "F10", "F11", "ArrowRight", "ArrowLeft"];
+    let allowedKeyCode = ["Numpad0", "Numpad1", "Numpad4", "Numpad5", "Numpad6"];
+    if(allowedKeys.includes(event.key) || allowedKeyCode.includes(event.code)) {
+      cl("allowed key:")
+      switch(event.key) {
+        case "Enter":
+          if(enterPlay) toggleplay(false, false);
+          break;
+        case "0":
+          // go to start of video
+          let videoElement = gebi('video');
+          videoElement.currentTime = 0;
+          videoElement.pause();
+          break;
+        case "1":
+          toggleplay(false, false);
+          break;
+        case "4":
+          jumpChapter(-1);
+          break;
+        case "6":
+          jumpChapter(1);
+          break;
+        case "5":
+          toggleplay(false, false);
+          break;
+        case "ArrowLeft":
+          jumpChapter(-1);
+          break;
+        case "ArrowRight":
+          jumpChapter(1);
+          break;
+      }
+    } else {
+      cl("blocked key:")
+      event.preventDefault();
+    }
+  } else {
+    cl("On input form field: ")
+  }
+  cl(event.key);
+}
+
+function checkTime(value) {
+  if(value >= 60) {
+    return 59
+  }
+  if(value < 0) {
+    return "00"
+  }
+  return zeroPad(value, 2);
+}
+
+function addChapter(min, sec) {
+  min=parseInt(min);
+  sec=parseInt(sec);
+  min = isNaN(min) ? 0 : min;
+  sec = isNaN(sec) ? 0 : sec;
+  cl(min)
+  cl(sec)
+  let totalSeconds = parseInt(min*60)+parseInt(sec);
+  if(!chapters.includes(totalSeconds)) {
+    chapters.push(totalSeconds);
+    cl(chapters);
+    buildChapters();
+  }
+}
+
+function removeChapter(index) {
+  chapters.splice(index, 1);
+  buildChapters();
+}
+
+function buildChapters() {
+  let chapterList = gebi('chapterList');
+  chapterList.innerHTML = '';
+  chapters.sort(function (a, b) {  return a - b;  });
+  for(i=0; i< chapters.length; i++) {
+    chapterList.innerHTML += '<span class="keyboardKey blueBg"><span onclick="seek('+chapters[i]+')">'+zeroPad(Math.floor(chapters[i] / 60), 2)+':'+zeroPad(chapters[i]-Math.floor(chapters[i] / 60)*60, 2)+'</span><span class="red circle whiteBg bold hover" title="Remove chapter" style=" display:inline-block; width:1em; height:1em; margin-left:.25em; padding-left:.15em; box-sizing:border-box;" onclick="removeChapter('+i+')">&times;</span></span>';
+  }
+}
+
+function jumpChapter(direction) {
+  // currentChapter != chapters.indexOf(currentTime)
+  currentChapter += direction;
+  currentChapter = currentChapter < 0 ? 0 : currentChapter;
+  if(currentChapter > chapters.length-1) {
+    cl("LAST CHAP");
+    return;
+  }
+  let videoElement = gebi('video');
+  videoElement.currentTime = chapters[currentChapter];
+  if(pauseAfterChapterJump) {
+    videoElement.pause();
+  } else {
+    videoElement.play();
+  }
+}
+
+function zeroPad(num, places) {
+  var zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
+function seek(time) {
+  let videoElement = gebi('video');
+  videoElement.currentTime = time;
+}
+
+function getCurrentTimes() {
+  let videoElement = gebi('video');
+  var minutes = Math.floor(videoElement.currentTime / 60);   
+  var seconds = Math.floor(videoElement.currentTime - minutes * 60)
+  return [minutes, seconds];
+}
+
+function checkChapters() {
+  let videoElement = gebi('video');
+  let currentTime = parseInt(videoElement.currentTime);
+  cl("currentChapter:");
+  cl(currentChapter);
+  cl("currentTime:");
+  cl(currentTime);
+  // Stop at chapter begin
+  if(chapters.includes(currentTime) && currentChapter != chapters.indexOf(currentTime)) {
+    currentChapter = chapters.indexOf(currentTime);
+    videoElement.pause();
+  }
+}
