@@ -32,11 +32,11 @@
       </fieldset>
       <br>
       <div class="centerText" style="margin-bottom:.5em;">
-        <button class="hover" id="playbutton" onclick="toggleClass('menu-content', 'hide'); toggleplay();">PLAY</button>
-        <button id="pausebutton" class="hide hover" onclick="toggleplay();">PAUSE</button>
-        <button class="hover" onclick="startAgain();">BEGINNING</button>
-        <button class="hover" onclick="jumpChapter(-1);">PREV CHAPTER</button>
-        <button class="hover" onclick="jumpChapter(1);">NEXT CHAPTER</button>
+        <button class="hover pointer" id="playbutton" onclick="toggleClass('menu-content', 'hide'); toggleplay();"><i class="material-icons valign medium">play_arrow</i></button>
+        <button id="pausebutton" class="hide hover pointer" onclick="toggleplay();"><i class="material-icons valign medium">pause</i></button>
+        <button class="hover pointer" onclick="startAgain();" title="go to beginning"><i class="material-icons valign medium" style="border-left:solid black .15em;">fast_rewind</i></button>
+        <button class="hover pointer" onclick="jumpChapter(-1);" title="next chapter"><i class="material-icons valign medium">skip_previous</i></button>
+        <button class="hover pointer" onclick="jumpChapter(1);" title="prev chapter"><i class="material-icons valign medium">skip_next</i></button>
       </div>
 
       <fieldset>
@@ -74,7 +74,7 @@
 
         <label>
           <input type="checkbox" onchange="swapClasses('video', 'noCursor', ''); this.blur();" checked>
-          Hide mouse cursor
+          Hide mouse cursor on video
         </label>
         <br>
 
@@ -110,13 +110,13 @@
 
         <fieldset>
           <legend>Chapters</legend>
-          Add chapter @
+          <span class="keyboardKey blueBg pointer" onclick="addChapter(gebi('newChapterMin').value, gebi('newChapterSec').value)">Add chapter</span> @
             <input id="newChapterMin" class="maxWidth50" type="number" value="" placeholder="min" onchange="this.value=checkTime(this.value)">
             <input id="newChapterSec" class="maxWidth50" type="number" value="" placeholder="sec" onchange="this.value=checkTime(this.value)">
-            <span class="keyboardKey blueBg" onclick="addChapter(gebi('newChapterMin').value, gebi('newChapterSec').value)">+</span>
           <br>
-          Add chapter @
-          <span class="keyboardKey blueBg" onclick="addChapter(...getCurrentTimes())">current position</span>
+          <span class="keyboardKey blueBg pointer" onclick="addChapter(...getCurrentTimes())">
+            Add chapter @ current video position
+          </span>
           <div id="chapterList" class="padding50 greyBorder marginY50" style="max-width:350px">
             <span class="small grey">No chapters.</span>
           </div>
