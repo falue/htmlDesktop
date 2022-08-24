@@ -55,6 +55,7 @@ a.small.inlineRight:hover {
 
 button {
 	font-family:Menlo, "Roboto Mono", monospace;
+    border-radius: 3px;
 }
 
 input[type='checkbox']:checked:before {
