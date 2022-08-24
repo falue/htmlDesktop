@@ -29,12 +29,12 @@
 }
 
 .menu-close {
-    position: absolute;
+    position: fixed;
     font-size: 25px;
     line-height: 30px;
     text-align: center;
-    top: 0;
-    right: 0;
+    top: .5em;
+    right: .5em;
     width: 40px;
     height: 30px;
     cursor: pointer;
@@ -73,11 +73,11 @@ input[type='radio']:before, input[type='checkbox']:before {
 .uploadbutton {
     background-color: grey;
     border-radius: .25em;
-    border: solid white thin;
+    /* border: solid white thin; */
     color: white;
     position: relative;
     overflow: hidden;
-    padding: .25em;
+    padding: .5em .25em;
 }
 
 .fileinput {
