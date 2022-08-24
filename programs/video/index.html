@@ -111,8 +111,8 @@
         <fieldset>
           <legend>Chapters</legend>
           <span class="keyboardKey blueBg pointer" onclick="addChapter(gebi('newChapterMin').value, gebi('newChapterSec').value)">Add chapter</span> @
-            <input id="newChapterMin" class="maxWidth50" type="number" value="" placeholder="min" onchange="this.value=checkTime(this.value)">
-            <input id="newChapterSec" class="maxWidth50" type="number" value="" placeholder="sec" onchange="this.value=checkTime(this.value)">
+            <input id="newChapterMin" class="maxWidth50" type="number" value="" placeholder="min" onchange="this.value=checkTime(this.value);" onkeydown="if(event.key === 'Enter') { addChapter(gebi('newChapterMin').value, gebi('newChapterSec').value) }">
+            <input id="newChapterSec" class="maxWidth50" type="number" value="" placeholder="sec" onchange="this.value=checkTime(this.value);" onkeydown="if(event.key === 'Enter') { addChapter(gebi('newChapterMin').value, gebi('newChapterSec').value) }">
           <br>
           <span class="keyboardKey blueBg pointer" onclick="addChapter(...getCurrentTimes())">
             Add chapter @ current video position
