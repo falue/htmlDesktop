@@ -43,10 +43,12 @@ function playSelectedFile(event) {
 
   // reset input to retrigger after same file selected
   gebi('fileinput').value='';
+  gebi('filename').innerHTML=file.name;
 }
 
 function displayMessage(message, isError) {
   var element = document.querySelector('#message')
+  show('message');
   element.innerHTML = message
   element.className = isError ? 'error small' : 'info small'
 }
@@ -176,10 +178,10 @@ function setDelay(value) {
 function keyboardControllerVideo(event) {
   // cl(event);
   if(event.target.localName !== "textarea" && event.target.localName !== "input") {
-    let allowedKeys = ["0", "1", "4", "5", "6", "7", "Enter", "F5", "F10", "F11", "ArrowRight", "ArrowLeft"];
-    let allowedKeyCode = ["Numpad0", "Numpad1", "Numpad4", "Numpad5", "Numpad6", "Numpad7"];
+    let allowedKeys = ["0", "4", "5", "6", "7", "Enter", "F5", "F10", "F11", "ArrowRight", "ArrowLeft"];
+    let allowedKeyCode = ["Numpad0", "Numpad4", "Numpad5", "Numpad6", "Numpad7"];
     if(allowedKeys.includes(event.key) || allowedKeyCode.includes(event.code)) {
-      cl("allowed key:")
+      // cl("allowed key:")
       switch(event.key) {
         case "Enter":
           if(enterPlay) toggleplay();
@@ -187,9 +189,9 @@ function keyboardControllerVideo(event) {
         case "0":
           startAgain();
           break;
-        case "1":
+        /* case "1":
           toggleplay();
-          break;
+          break; */
         case "4":
           jumpChapter(-1);
           break;

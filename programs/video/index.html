@@ -19,28 +19,25 @@
 
     <div id="menu-content" class="menu-content">
       <div class="menu-close redBg white hover" onclick="toggleClass('menu-content', 'hide'); return false">✖</div>
-      <h3>local videoplayer v1.2</h3>
-      <br>
+      <h4>local videoplayer v1.3</h4>
 
       <fieldset>
         <legend>File</legend>
         <div class="uploadbutton hover">
-          <i class="material-icons valign  marginX25">upload_file</i>Select local mp4 file..
+          <i class="material-icons valign  marginX25">upload_file</i>
+          <span id="filename">Select local mp4 file..</span>
           <input id="fileinput" class="fileinput" type="file" accept="video/*" onchange="playSelectedFile(event); this.blur();"/>
         </div>
-        <div id="message" class="small"></div>
+        <div id="message" class="small" onclick="hide(this.id)"></div>
       </fieldset>
       <br>
-
-      <fieldset>
-        <legend>Direct controls</legend>
-        <button id="playbutton" onclick="toggleClass('menu-content', 'hide'); toggleplay();">PLAY</button>
-        <button id="pausebutton" class="hide" onclick="toggleplay();">PAUSE</button>
-        <button onclick="startAgain();">BEGINNING</button>
-        <button onclick="jumpChapter(-1);">PREV CHAPTER</button>
-        <button onclick="jumpChapter(1);">NEXT CHAPTER</button>
-      </fieldset>
-      <br>
+      <div class="centerText" style="margin-bottom:.5em;">
+        <button class="hover" id="playbutton" onclick="toggleClass('menu-content', 'hide'); toggleplay();">PLAY</button>
+        <button id="pausebutton" class="hide hover" onclick="toggleplay();">PAUSE</button>
+        <button class="hover" onclick="startAgain();">BEGINNING</button>
+        <button class="hover" onclick="jumpChapter(-1);">PREV CHAPTER</button>
+        <button class="hover" onclick="jumpChapter(1);">NEXT CHAPTER</button>
+      </div>
 
       <fieldset>
         <legend>Settings</legend>
@@ -50,7 +47,7 @@
           Show video controls
         </label>
         <br> -->
-
+        <p style="margin-bottom: 0.5em;">
         <label>
           <input type="checkbox" onchange="toggleLoop(); this.blur();">
           Loop video indefinitely
@@ -85,8 +82,7 @@
           <input type="checkbox" onchange="toggleMute(); this.blur();">
           Mute
         </label>
-        <br>
-        <br>
+        </p>
 
         Video fitting:
         <span id="scale" class="keyboardKey scaleButton blueBg" onclick="videoFit('scale')">scale</span><!-- 
@@ -129,7 +125,7 @@
         <br>
 
         <fieldset>
-          <legend>keyboard controls</legend>
+          <legend>Keyboard controls</legend>
           <span class="keyboardKey blueBg">0</span>: Go to beginning of video<br>
           <!-- <span class="keyboardKey blueBg">1</span> or -->
           <span class="keyboardKey blueBg">4</span> or <span class="keyboardKey blueBg">&larr;</span>: Previous chapter<br>
