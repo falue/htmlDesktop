@@ -48,7 +48,7 @@ function playSelectedFile(event) {
 function displayMessage(message, isError) {
   var element = document.querySelector('#message')
   element.innerHTML = message
-  element.className = isError ? 'error' : 'info'
+  element.className = isError ? 'error small' : 'info small'
 }
 
 function videoFit(fit) {
@@ -176,10 +176,10 @@ function setDelay(value) {
 function keyboardControllerVideo(event) {
   // cl(event);
   if(event.target.localName !== "textarea" && event.target.localName !== "input") {
-    let allowedKeys = ["0", "1", "4", "5", "6", "Enter", "F5", "F10", "F11", "ArrowRight", "ArrowLeft"];
-    let allowedKeyCode = ["Numpad0", "Numpad1", "Numpad4", "Numpad5", "Numpad6"];
+    let allowedKeys = ["0", "1", "4", "5", "6", "7", "Enter", "F5", "F10", "F11", "ArrowRight", "ArrowLeft"];
+    let allowedKeyCode = ["Numpad0", "Numpad1", "Numpad4", "Numpad5", "Numpad6", "Numpad7"];
     if(allowedKeys.includes(event.key) || allowedKeyCode.includes(event.code)) {
-      // cl("allowed key:")
+      cl("allowed key:")
       switch(event.key) {
         case "Enter":
           if(enterPlay) toggleplay();
@@ -193,11 +193,14 @@ function keyboardControllerVideo(event) {
         case "4":
           jumpChapter(-1);
           break;
+        case "5":
+          toggleplay();
+          break;
         case "6":
           jumpChapter(1);
           break;
-        case "5":
-          toggleplay();
+        case "7":
+          cl("wake up");
           break;
         case "ArrowLeft":
           jumpChapter(-1);
@@ -207,13 +210,13 @@ function keyboardControllerVideo(event) {
           break;
       }
     } else {
-      // cl("blocked key:")
+      cl("blocked key:")
       event.preventDefault();
     }
   } else {
     cl("On input form field: ")
   }
-  // cl(event.key);
+  cl(event.key);
 }
 
 function checkTime(value) {

@@ -23,37 +23,27 @@
       <br>
 
       <fieldset>
-        <legend>Playback</legend>
+        <legend>File</legend>
         <div class="uploadbutton hover">
-          Select local mp4 file..
+          <i class="material-icons valign  marginX25">upload_file</i>Select local mp4 file..
           <input id="fileinput" class="fileinput" type="file" accept="video/*" onchange="playSelectedFile(event); this.blur();"/>
         </div>
-        <div id="message"></div>
-        <br>
+        <div id="message" class="small"></div>
+      </fieldset>
+      <br>
 
-        <fieldset>
-          <legend>Direct controls</legend>
-          <button id="playbutton" onclick="toggleClass('menu-content', 'hide'); toggleplay();">PLAY</button>
-          <button id="pausebutton" class="hide" onclick="toggleplay();">PAUSE</button>
-          <button onclick="startAgain();">BEGINNING</button>
-          <button onclick="jumpChapter(-1);">PREV CHAPTER</button>
-          <button onclick="jumpChapter(1);">NEXT CHAPTER</button>
-        </fieldset>
-        <br>
+      <fieldset>
+        <legend>Direct controls</legend>
+        <button id="playbutton" onclick="toggleClass('menu-content', 'hide'); toggleplay();">PLAY</button>
+        <button id="pausebutton" class="hide" onclick="toggleplay();">PAUSE</button>
+        <button onclick="startAgain();">BEGINNING</button>
+        <button onclick="jumpChapter(-1);">PREV CHAPTER</button>
+        <button onclick="jumpChapter(1);">NEXT CHAPTER</button>
+      </fieldset>
+      <br>
 
-
-        Video fitting:
-        <span id="scale" class="keyboardKey scaleButton blueBg" onclick="videoFit('scale')">scale</span><!-- 
-         --><span id="letterbox" class="keyboardKey scaleButton" onclick="videoFit('letterbox')">letterbox</span><!-- 
-         --><span id="stretch" class="keyboardKey scaleButton" onclick="videoFit('stretch')">stretch</span>
-        <br>
-        
-        <span id="letterboxColor" class="hide">
-          <input id="BGColor" class="valign" style="width:1.35em; height:1.35em;" oninput="changeBGColor(this.value)" onchange="this.blur();" type="color" value="#000000">
-          <input id="BGColorText" onchange="changeBGColor(this.value)" type="text" size="8" value="#000000">
-          <label for="BGColor">Letterbox color</label>
-          <br>
-        </span>
+      <fieldset>
+        <legend>Settings</legend>
 
         <!-- <label>
           <input type="checkbox" onchange="toggleControls(); this.blur();">
@@ -96,6 +86,20 @@
           Mute
         </label>
         <br>
+        <br>
+
+        Video fitting:
+        <span id="scale" class="keyboardKey scaleButton blueBg" onclick="videoFit('scale')">scale</span><!-- 
+         --><span id="letterbox" class="keyboardKey scaleButton" onclick="videoFit('letterbox')">letterbox</span><!-- 
+         --><span id="stretch" class="keyboardKey scaleButton" onclick="videoFit('stretch')">stretch</span>
+        <br>
+        
+        <span id="letterboxColor" class="hide">
+          <input id="BGColor" class="valign" style="width:1.35em; height:1.35em;" oninput="changeBGColor(this.value)" onchange="this.blur();" type="color" value="#000000">
+          <input id="BGColorText" onchange="changeBGColor(this.value)" type="text" size="8" value="#000000">
+          <label for="BGColor">Letterbox color</label>
+          <br>
+        </span>
 
         </fieldset>
         <br>
@@ -111,8 +115,8 @@
         <fieldset>
           <legend>Chapters</legend>
           Add chapter @
-            <input id="newChapterMin" class="maxWidth50" type="number" value="" placeholder="min" onchange="this.value=checkTime(this.value)"><!-- 
-             --><input id="newChapterSec" class="maxWidth50" type="number" value="" placeholder="sec" onchange="this.value=checkTime(this.value)">
+            <input id="newChapterMin" class="maxWidth50" type="number" value="" placeholder="min" onchange="this.value=checkTime(this.value)">
+            <input id="newChapterSec" class="maxWidth50" type="number" value="" placeholder="sec" onchange="this.value=checkTime(this.value)">
             <span class="keyboardKey blueBg" onclick="addChapter(gebi('newChapterMin').value, gebi('newChapterSec').value)">+</span>
           <br>
           Add chapter @
