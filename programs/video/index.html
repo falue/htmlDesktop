@@ -32,13 +32,19 @@
         <div id="message" class="small" onclick="hide(this.id)"></div>
       </fieldset>
       <br>
-      <div class="centerText" style="margin-bottom:.5em;">
+      <div class="centerText">
         <button class="hover pointer" title="Play immediately" id="playbutton" onclick="toggleClass('menu-content', 'hide'); toggleplay();"><i class="material-icons valign medium">play_arrow</i></button>
         <button id="pausebutton"  class="hide hover pointer" onclick="toggleplay();"><i class="material-icons valign medium">pause</i></button>
         <button class="hover pointer hide" title="Play after delay" id="delayplaybutton" onclick="delayPlay();"><i class="material-icons valign medium">timer</i><i id="delayPlayIcon" class="material-icons valign medium">play_arrow</i></button>
         <button class="hover pointer" onclick="jumpChapter(-1);" title="next chapter"><i class="material-icons valign medium">skip_previous</i></button>
         <button class="hover pointer" onclick="jumpChapter(1);" title="prev chapter"><i class="material-icons valign medium">skip_next</i></button>
         <button class="hover pointer" onclick="startAgain();" title="go to beginning"><i class="material-icons valign medium" style="border-left:solid black .15em;">fast_rewind</i></button>
+      </div>
+      <div class="small grey relative" style="margin-bottom:.5em;">
+        <div class="absolute top right nudge-y--75">
+          <span id="currentTime">00:00</span>/<span id="currentTimeTotal">00:00</span>
+        </div>
+        <input id="currentTimeRange" style="width:97%; cursor:ew-resize" type="range" step="0.1" class="valign" value="0" min="0" max="100" oninput="seek(this.value); this.blur();">
       </div>
 
       <fieldset>
@@ -104,7 +110,7 @@
 
         <fieldset>
           <legend>Delay <span class="bold white redBg" id="timer" onclick="abort = true;"></span></legend>
-          <input id="delayRange" style="width:80%" type="range" class="valign" value="0" min="0" max="360" onchange="setDelay(this.value); this.blur();" oninput="setDelay(this.value)">
+          <input id="delayRange" style="width:80%" type="range" class="valign" value="0" min="0" max="120" onchange="setDelay(this.value); this.blur();" oninput="setDelay(this.value)">
           <span id="delay">0</span>s
           <div class="small">Time to run away: Press play, video starts after this delay.</div>
         </fieldset>
@@ -149,6 +155,6 @@
     </div>
 
     <!--  onplay="toggleplay(false, true)" -->
-    <video id="video" class="video scale noSelect noCursor" ontimeupdate="checkChapters();"></video>
+    <video id="video" class="video scale noSelect noCursor" ontimeupdate="checkChapters(); getCurrentTimes();" onloadeddata="setTotalDuration();"></video>
   </body>
   </html>
