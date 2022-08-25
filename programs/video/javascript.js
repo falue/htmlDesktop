@@ -46,6 +46,16 @@ function playSelectedFile(event) {
   gebi('filename').innerHTML=file.name;
 }
 
+function setTotalDuration() {
+  let videoElement = gebi('video');
+  cl(videoElement.duration);
+  let dur = videoElement.duration;
+  var minutes = Math.floor(dur / 60);   
+  var seconds = Math.floor(dur - minutes * 60)
+  gebi('currentTimeTotal').innerHTML = zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+  gebi('currentTimeRange').setAttribute("max", parseInt(dur)); 
+}
+
 function displayMessage(message, isError) {
   var element = document.querySelector('#message')
   show('message');
@@ -339,6 +349,8 @@ function getCurrentTimes() {
   let videoElement = gebi('video');
   var minutes = Math.floor(videoElement.currentTime / 60);   
   var seconds = Math.floor(videoElement.currentTime - minutes * 60)
+  gebi('currentTimeRange').value = parseInt(videoElement.currentTime);
+  gebi('currentTime').innerHTML = zeroPad(minutes, 2) +":"+ zeroPad(seconds, 2);
   return [minutes, seconds];
 }
 
