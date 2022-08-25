@@ -112,33 +112,62 @@ function toggleClickPlay(checkbox) {
   }
 }
 
+async function delayPlay() {
+  let videoElement = gebi('video');
+  if(delayTime > 0 && videoElement.paused && !isAwaitingDelay) {  // && waitForDelay) {
+    // FIXME: wait after every play press?
+    // cl(delayTime);
+    // videoElement.pause();
+    let timerContainer = gebi('timer');
+    isAwaitingDelay = true;
+    let startTime = (parseFloat(delayTime)/1000.0).toFixed(1);
+    timerContainer.innerHTML = startTime+'s &times;';
+    gebi('delayPlayIcon').innerHTML = "pause";
+
+    for(i=0; i< delayTime/50; i++) {
+      /* timerContainer.innerHTML = (parseFloat(startTime-i)).toFixed(1); */
+      timerContainer.innerHTML = (delayTime/1000-i/20.0).toFixed(1)+'s &times;';
+      await delay(50);
+      if(abort) {
+        //break;
+        abort = false;
+        timerContainer.innerHTML = '';
+        return;
+      }
+    }
+    timerContainer.innerHTML = '';
+    isAwaitingDelay = false;
+    gebi('delayPlayIcon').innerHTML = "play_arrow";
+  } 
+  if(isAwaitingDelay) {
+    abortDelay();
+    return;
+  }
+  toggleplay();
+}
+
+function abortDelay() {
+  cl("abort");
+  abort = true;
+  isAwaitingDelay = false;
+  let timerContainer = gebi('timer');
+  timerContainer.innerHTML = '';
+  gebi('delayPlayIcon').innerHTML = "play_arrow";
+}
+
 async function toggleplay(waitForDelay) {
   if(isAwaitingDelay) {
-    cl("is awaiting delay, ignore play/pause")
+    cl("is awaiting delay, skip delay")
+    abortDelay();
+    await delay(111);  // wait for timer loop to catch the abort = true
+    toggleplay();
     return;
   }
   let videoElement = gebi('video');
   // video element "play button" control already presses play so do it twice..
   // let isPlaying = controlClick ? !videoElement.paused : videoElement.paused;
   if(videoElement.paused) {
-    if(delayTime > 0) {  // && waitForDelay) {
-      // FIXME: wait after every play press?
-      // cl(delayTime);
-      // videoElement.pause();
-      isAwaitingDelay = true;
-      let timerContainer = gebi('timer');
-      let startTime = (parseFloat(delayTime)/1000.0).toFixed(1);
-      timerContainer.innerHTML = startTime+'s &times;';
-
-      for(i=0; i< delayTime/100; i++) {
-        /* timerContainer.innerHTML = (parseFloat(startTime-i)).toFixed(1); */
-        timerContainer.innerHTML = (delayTime/1000-i/10.0).toFixed(1)+'s &times;';
-        await delay(100);
-        if(abort) break;
-      }
-      timerContainer.innerHTML = '';
-
-    }
+    
     // setTimeout(function(){currentChapter = -1;}, 1100);
     // currentChapter = -1;
     // if(!changedDelay) {
@@ -146,7 +175,7 @@ async function toggleplay(waitForDelay) {
         videoElement.play();
         hide('playbutton');
         show('pausebutton');
-      } else {
+      } else if(!isAwaitingDelay) {
         abort = false;
       }
       isAwaitingDelay = false;
@@ -172,14 +201,19 @@ function setDelay(value) {
   // TODO remove promise of old delay
   // changedDelay = true;
   delayTime = value*1000;
-  gebi('delay').innerHTML = value;
+  if(delayTime > 0) {
+    show('delayplaybutton');
+  } else {
+    hide('delayplaybutton');
+  }
+  gebi('delay').innerHTML = delayTime/1000;
 }
 
 function keyboardControllerVideo(event) {
   // cl(event);
   if(event.target.localName !== "textarea" && event.target.localName !== "input") {
-    let allowedKeys = ["0", "4", "5", "6", "7", "Enter", "F5", "F10", "F11", "ArrowRight", "ArrowLeft"];
-    let allowedKeyCode = ["Numpad0", "Numpad4", "Numpad5", "Numpad6", "Numpad7"];
+    let allowedKeys = ["0", "2", "4", "5", "6", "7", "Enter", "F5", "F10", "F11", "ArrowRight", "ArrowLeft"];
+    let allowedKeyCode = ["Numpad0", "Numpad2", "Numpad4", "Numpad5", "Numpad6", "Numpad7"];
     if(allowedKeys.includes(event.key) || allowedKeyCode.includes(event.code)) {
       // cl("allowed key:")
       switch(event.key) {
@@ -189,9 +223,9 @@ function keyboardControllerVideo(event) {
         case "0":
           startAgain();
           break;
-        /* case "1":
-          toggleplay();
-          break; */
+        case "2":
+          delayPlay();
+          break;
         case "4":
           jumpChapter(-1);
           break;
@@ -203,6 +237,8 @@ function keyboardControllerVideo(event) {
           break;
         case "7":
           cl("wake up");
+          show("remoteTest");
+          setTimeout(function(){ hide("remoteTest"); }, 1200);
           break;
         case "ArrowLeft":
           jumpChapter(-1);
