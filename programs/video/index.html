@@ -14,7 +14,7 @@
 
   </head>
   <body id="body" onload="setup();" onkeydown="keyboardControllerVideo(event);">
-    <div class="menu" onclick="toggleClass('menu-content', 'hide');">
+    <div class="menu" onclick="show('menu-content');">
     </div>
 
     <div id="filters" class="menu-content hide">
@@ -95,14 +95,14 @@
       </fieldset>
       <br>
 
-      <button onclick="swap('filters','menu-content'); gebi('checkboxFilters').checked = true" class="right marginX1">
-        Close
+      <button onclick="hide('filters'); show('menu-content'); gebi('checkboxFilters').checked = true" class="right marginX1">
+        Save
       </button>
       <br>
     </div>
 
     <div id="menu-content" class="menu-content">
-      <div class="menu-close redBg white hover" onclick="toggleClass('menu-content', 'hide'); return false">✖</div>
+      <div class="menu-close redBg white hover" onclick="hide('menu-content');">✖</div>
       <h4>local videoplayer v1.3</h4>
       <div id="remoteTest" class="redBg padding50 margin50 hide centerText">REMOTE TEST SUCCESSFUL</div>
 
@@ -180,7 +180,7 @@
           <input id="checkboxFilters" type="checkbox" onchange="toggleFilters(this.checked); this.blur();">
           Video filters..
         </label>
-        <i class="material-icons small keyboardKey blueBg" onclick="swap('menu-content','filters')">edit</i>
+        <i class="material-icons small keyboardKey blueBg" onclick="hide('menu-content'); show('filters')">edit</i>
         </p>
 
         Video fitting:
