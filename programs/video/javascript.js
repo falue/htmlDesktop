@@ -1,3 +1,4 @@
+let videoElement = gebi('video');
 let delayTime = 0;
 let enterPlay = false;
 let chapters = [0];
@@ -6,6 +7,16 @@ let pauseAfterChapterJump = false;
 let inbetweenChapters = true;
 let isAwaitingDelay = false;
 let abort = false;
+
+// Tranformation
+let zoom = 1;
+let rotate = 0;
+let topMargin = 0;
+let leftMargin = 0;
+let rotateLast = rotate;
+let zoomLast = zoom;
+let topMarginLast = topMargin;
+let leftMarginLast = leftMargin;
 
 async function setup() {
     /* const queryString = window.location.search;
@@ -47,7 +58,6 @@ function playSelectedFile(event) {
 }
 
 function setTotalDuration() {
-  let videoElement = gebi('video');
   cl(videoElement.duration);
   let dur = videoElement.duration;
   var minutes = Math.floor(dur / 60);   
@@ -64,7 +74,6 @@ function displayMessage(message, isError) {
 }
 
 function videoFit(fit) {
-  let videoElement = gebi('video');
   videoElement.classList.remove('scale');
   videoElement.classList.remove('letterbox');
   videoElement.classList.remove('stretch');
@@ -82,14 +91,19 @@ function videoFit(fit) {
   }
 }
 
-function changeBGColor(value) {
+function changeLetterboxColor(value) {
   gebi('video').style.backgroundColor = value;
-  document.getElementById("BGColor").value = value;
-  document.getElementById("BGColorText").value = value;
+  document.getElementById("letterboxColor").value = value;
+  document.getElementById("letterboxColorText").value = value;
+}
+
+function changeBgColor(value) {
+  gebi('body').style.backgroundColor = value;
+  document.getElementById("bgColor").value = value;
+  document.getElementById("bgColorText").value = value;
 }
 
 function toggleControls() {
-  let videoElement = gebi('video');
   if (videoElement.hasAttribute("controls")) {
      videoElement.removeAttribute("controls")   
   } else {
@@ -98,7 +112,6 @@ function toggleControls() {
 }
 
 function toggleLoop() {
-  let videoElement = gebi('video');
   if (videoElement.hasAttribute("loop")) {
      videoElement.removeAttribute("loop")   
   } else {
@@ -107,12 +120,10 @@ function toggleLoop() {
 }
 
 function toggleMute() {
-  let videoElement = gebi('video');
   videoElement.muted = !videoElement.muted;
 }
 
 function toggleClickPlay(checkbox) {
-  let videoElement = gebi('video');
   if(checkbox.checked) {
     show("clickAllowed");
     videoElement.onclick=function () { toggleplay(true, false) };
@@ -123,7 +134,6 @@ function toggleClickPlay(checkbox) {
 }
 
 async function delayPlay() {
-  let videoElement = gebi('video');
   if(delayTime > 0 && videoElement.paused && !isAwaitingDelay) {  // && waitForDelay) {
     // FIXME: wait after every play press?
     // cl(delayTime);
@@ -173,7 +183,6 @@ async function toggleplay(waitForDelay) {
     toggleplay();
     return;
   }
-  let videoElement = gebi('video');
   // video element "play button" control already presses play so do it twice..
   // let isPlaying = controlClick ? !videoElement.paused : videoElement.paused;
   if(videoElement.paused) {
@@ -299,7 +308,6 @@ function removeChapter(index) {
 
 function startAgain() {
   // go to start of video
-  let videoElement = gebi('video');
   videoElement.currentTime = 0;
   currentChapter = 0;
   inbetweenChapters = true;
@@ -318,7 +326,6 @@ function buildChapters() {
 }
 
 function jumpChapter(direction) {
-  let videoElement = gebi('video');
   // currentChapter != chapters.indexOf(currentTime)
   currentChapter += direction;
   currentChapter = currentChapter < 0 ? 0 : currentChapter;
@@ -341,12 +348,10 @@ function zeroPad(num, places) {
 }
 
 function seek(time) {
-  let videoElement = gebi('video');
   videoElement.currentTime = time;
 }
 
 function getCurrentTimes() {
-  let videoElement = gebi('video');
   var minutes = Math.floor(videoElement.currentTime / 60);   
   var seconds = Math.floor(videoElement.currentTime - minutes * 60)
   gebi('currentTimeRange').value = parseInt(videoElement.currentTime);
@@ -355,7 +360,6 @@ function getCurrentTimes() {
 }
 
 function checkChapters() {
-  let videoElement = gebi('video');
   let currentTime = parseInt(videoElement.currentTime);
   // Stop at chapter begin
   if(chapters.includes(currentTime) && currentChapter != chapters.indexOf(currentTime) && inbetweenChapters) {
@@ -367,5 +371,117 @@ function checkChapters() {
   } else {
     // currentChapter = -1;
     inbetweenChapters = true;
+  }
+}
+
+function toggleFilters(value) {
+  if(value) {
+    hide('menu-content');
+    show('filters');
+    setColors();  // ??
+    transformVideo("resetLast");
+  } else {
+    gebi("video").style.filter = "";
+    gebi('videoblur').style.backdropFilter = "blur(0px)";
+    transformVideo("reset");
+  }
+}
+
+function resetColors() {
+  cl("disable filters");
+  // gebi('speed').value=10;
+  gebi('blur').value=0;
+  gebi('saturate').value=1;
+  gebi('hue').value=0;
+  gebi('brightness').value=100;
+  gebi('contrast').value=1;
+  gebi('invert').value=0;
+  gebi('sepia').value=0;
+  setColors();
+}
+
+function setColors() {
+  // let speed = gebi("speed").value;
+  let blur = gebi("blur").value;
+  let saturate = gebi("saturate").value;
+  let hue = gebi("hue").value;
+  let brightness = gebi("brightness").value;
+  let contrast = gebi("contrast").value;
+  let invert = gebi("invert").value;
+  let sepia = gebi("sepia").value;
+
+  let filters = "saturate(" + saturate + ") hue-rotate(" + hue + "deg) brightness(" + brightness + "%) contrast(" + contrast + ") invert(" + invert + ") sepia(" + sepia + ")";
+  // gebi("video").style.webkitFilter = filters;
+  videoElement.style.filter = filters;
+  // changeSpeed(speed);
+
+  gebi('videoblur').style.backdropFilter = "blur("+blur+"px)";
+
+  // gebi("speed-val").innerHTML = speed/10;
+  gebi("blur-val").innerHTML = blur;
+  gebi("saturate-val").innerHTML = saturate;
+  gebi("hue-val").innerHTML = hue;
+  gebi("brightness-val").innerHTML = brightness;
+  gebi("contrast-val").innerHTML = contrast;
+  gebi("invert-val").innerHTML = invert;
+  gebi("sepia-val").innerHTML = sepia;
+}
+
+function transformVideo(action) {
+  switch(action) {
+    case "zoomin":
+      zoom += 0.05;
+      break;
+    case "zoomout":
+      zoom -= 0.05;
+      break;
+    case 'left':
+      leftMargin -= 5;
+      break;
+    case 'right':
+      leftMargin += 5;
+      break;
+    case 'up':
+      topMargin -= 5;
+      break;
+    case 'down':
+      topMargin += 5;
+      break;
+    case "rotateleft":
+      rotate += 1;
+      break;
+    case "rotateright":
+      rotate -= 1;
+      break;
+    case "reset":
+      rotate = 0;
+      zoom = 1;
+      topMargin = 0;
+      leftMargin = 0;
+      break;
+    case "hardReset":
+      rotate = 0;
+      zoom = 1;
+      topMargin = 0;
+      leftMargin = 0;
+      break;
+    case "resetLast":
+      rotate = rotateLast;
+      zoom = zoomLast;
+      topMargin = topMarginLast;
+      leftMargin = leftMarginLast;
+      break;
+  }
+  if(action != "reset") {
+    rotateLast = rotate;
+    zoomLast = zoom;
+    topMarginLast = topMargin;
+    leftMarginLast = leftMargin;
+  }
+  videoElement.style.transform ='scale('+zoom+') rotate('+rotate+'deg) translate('+leftMargin+'px,'+topMargin+'px)';
+  if(zoom < 1 || rotate != 0 || leftMargin != 0 || topMargin != 0) {
+    show('bgColor');
+  } else {
+    hide('bgColor');
   }
 }

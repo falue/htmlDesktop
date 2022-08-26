@@ -10,11 +10,95 @@
     <link rel="stylesheet" href="../../tools/desktop.css?v=20220822A" media="all">
     <link rel="stylesheet" href="stylesheet.css?v=20220822A" media="all">
     <script src="../../tools/general.js?v=20220822A"></script>
-    <script src="javascript.js?v=20220822A"></script>
+    <script src="javascript.js?v=20220822A" defer></script>
 
   </head>
-  <body onload="setup();" onkeydown="keyboardControllerVideo(event);">
+  <body id="body" onload="setup();" onkeydown="keyboardControllerVideo(event);">
     <div class="menu" onclick="toggleClass('menu-content', 'hide');">
+    </div>
+
+    <div id="filters" class="menu-content hide">
+      
+      <fieldset style="display: block;">
+        <legend>Filters</legend>
+
+        <div>
+          <label>
+              Blur<code><span id="blur-val">0</span>px</code>
+              <button class="small" onclick="document.getElementById('blur').value=0; setColors(); this.blur();" title="Set to default">reset</button>
+          </label>
+          <input id="blur" type="range" min="0" max="30" step="1" value="0" oninput="setColors(); this.blur();"/>
+        </div>
+        <div>
+            <label>Saturation<code><span id="saturate-val">1</span></code>
+                <button class="small" onclick="document.getElementById('saturate').value=1; setColors(); this.blur();" title="Set to default">reset</button>
+            </label>
+            <input id="saturate" type="range" min="0" max="25" step="0.1" value="1" oninput="setColors(); this.blur();"/>
+        </div>
+        <div>
+            <label>Hue<code><span id="hue-val">0</span>deg</code>
+            <button class="small" onclick="document.getElementById('hue').value=0; setColors(); this.blur();" title="Set to default">reset</button>
+            </label>
+            <input id="hue" type="range" min="0" max="360" step="1" value="0" oninput="setColors(); this.blur();"/>
+        </div>
+        <div>
+            <label>
+                Brightness<code><span id="brightness-val">0</span>%</code>
+            <button class="small" onclick="document.getElementById('brightness').value=100; setColors(); this.blur();" title="Set to default">reset</button>
+            </label>
+            <input id="brightness" type="range" min="0" max="1600" step="10" value="100" oninput="setColors(); this.blur();"/>
+        </div>
+        <div>
+            <label>Contrast<code><span id="contrast-val">0</span></code>
+                <button class="small" onclick="document.getElementById('contrast').value=1; setColors(); this.blur();" title="Set to default">reset</button>
+            </label>
+            <input id="contrast" type="range" min="0" max="15" step="0.05" value="1" oninput="setColors(); this.blur();"/>
+        </div>
+        <div>
+            <label>Invert<code><span id="invert-val">0</span></code>
+                <button class="small" onclick="document.getElementById('invert').value=0; setColors(); this.blur();" title="Set to default">reset</button>
+            </label>
+            <input id="invert" type="range" min="0" max="1" step="0.05" value="0" oninput="setColors(); this.blur();"/>
+        </div>
+        <div>
+            <label>Sepia<code><span id="sepia-val">0</span></code>
+                <button class="small" onclick="document.getElementById('sepia').value=0; setColors(); this.blur();" title="Set to default">reset</button>
+            </label>
+            <input id="sepia" type="range" min="0" max="1" step="0.05" value="0" oninput="setColors(); this.blur();"/>
+        </div>
+
+
+        <button onclick="resetColors();" class="right marginX2">
+          Reset all color filters
+        </button>
+        <br>
+        <br>
+      </fieldset>
+      <br>
+
+      <fieldset style="display: block;">
+        <legend>Transform</legend>
+        <button onclick="transformVideo('zoomin'); this.blur();">+</button>
+        <button onclick="transformVideo('zoomout'); this.blur();">-</button>
+        <button onclick="transformVideo('left'); this.blur();">⇠</button>
+        <button onclick="transformVideo('right'); this.blur();">⇢</button>
+        <button onclick="transformVideo('up'); this.blur();">⇡</button>
+        <button onclick="transformVideo('down'); this.blur();">⇣</button>
+        <button onclick="transformVideo('rotateleft'); this.blur();">&#x21bb;</button>
+        <button onclick="transformVideo('rotateright'); this.blur();">&#x21ba;</button>
+        <button onclick="transformVideo('hardReset'); this.blur();">reset</button>
+        <div id="bgColor" class="hide marginY25">
+          <input id="bgColor" class="valign" style="width:1.35em; height:1.35em;" oninput="changeBgColor(this.value)" onchange="this.blur();" type="color" value="#000000">
+          <input id="bgColorText" onchange="changeBgColor(this.value)" type="text" size="8" value="#000000">
+          Background color
+        </div>
+      </fieldset>
+      <br>
+
+      <button onclick="swap('filters','menu-content'); gebi('checkboxFilters').checked = true" class="right marginX1">
+        Close
+      </button>
+      <br>
     </div>
 
     <div id="menu-content" class="menu-content">
@@ -81,7 +165,7 @@
         <br>
 
         <label>
-          <input type="checkbox" onchange="swapClasses('video', 'noCursor', ''); this.blur();" checked>
+          <input type="checkbox" onchange="swapClasses('video', 'noCursor', 'null'); this.blur();" checked>
           Hide mouse cursor on video
         </label>
         <br>
@@ -90,6 +174,13 @@
           <input type="checkbox" onchange="toggleMute(); this.blur();">
           Mute
         </label>
+        <br>
+
+        <label>
+          <input id="checkboxFilters" type="checkbox" onchange="toggleFilters(this.checked); this.blur();">
+          Video filters..
+        </label>
+        <i class="material-icons small keyboardKey blueBg" onclick="swap('menu-content','filters')">edit</i>
         </p>
 
         Video fitting:
@@ -99,9 +190,9 @@
         <br>
         
         <span id="letterboxColor" class="hide">
-          <input id="BGColor" class="valign" style="width:1.35em; height:1.35em;" oninput="changeBGColor(this.value)" onchange="this.blur();" type="color" value="#000000">
-          <input id="BGColorText" onchange="changeBGColor(this.value)" type="text" size="8" value="#000000">
-          <label for="BGColor">Letterbox color</label>
+          <input id="letterboxColor" class="valign" style="width:1.35em; height:1.35em;" oninput="changeLetterboxColor(this.value)" onchange="this.blur();" type="color" value="#000000">
+          <input id="letterboxColorText" onchange="changeLetterboxColor(this.value)" type="text" size="8" value="#000000">
+          <label for="letterboxColor">Letterbox color</label>
           <br>
         </span>
 
@@ -155,6 +246,7 @@
     </div>
 
     <!--  onplay="toggleplay(false, true)" -->
+    <div id="videoblur" class="videoblur"></div>
     <video id="video" class="video scale noSelect noCursor" ontimeupdate="checkChapters(); getCurrentTimes();" onloadeddata="setTotalDuration();"></video>
   </body>
   </html>
