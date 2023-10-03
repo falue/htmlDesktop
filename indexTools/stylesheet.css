@@ -41,8 +41,7 @@ p {
 
 .logo {
     display: block;
-    height: 4em;
-    min-height: 4em;
+    width: 100%;
     padding-bottom: 2em;
 }
 
