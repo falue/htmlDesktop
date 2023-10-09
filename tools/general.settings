@@ -1,9 +1,5 @@
 # Define all available workstations here
 
-workstation=sonny;spa
-workstation=ramon;spa
-workstation=lydia;spa
-workstation=spital;windows
-workstation=monalisa;spa
-workstation=gamerig;spa
 workstation=generic;spa
+
+workstation=hasenfratz;windows

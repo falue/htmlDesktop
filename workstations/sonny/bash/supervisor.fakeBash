@@ -1,9 +1,0 @@
-# ------- setup
-# bashProfileName - plain text or html
-<span class='green'>jbr</span>@<span class='red'>monalisa2</span>:<span class='grey'>~</span> $ 
-# -------
-# NOTE: If you want to have [ or ] in text, use \[ or \]
-
-# ELCH
-[bashProfile] [freeText]
-[goto:nobr, 0]
