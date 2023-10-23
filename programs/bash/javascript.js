@@ -118,7 +118,6 @@ function keyboardControllerBash(event) {
 }
 
 async function playCommandAtIndex(index) {
-  cl(commandIndex[currentCommandKey]);
   if (index === undefined && commandIndex[currentCommandKey] < commands[currentCommandKey].length - 1) {
     commandIndex[currentCommandKey]++;
     await playCommand(commands[currentCommandKey][commandIndex[currentCommandKey]]);
