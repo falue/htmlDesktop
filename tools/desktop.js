@@ -130,6 +130,137 @@ async function showLockScreen() {
     gebi('blackout').classList.remove("fadeInFast");
 }
 
+async function shutDown() {
+    let userImage = await fileExists('workstations/'+workstation+'/userpicture.jpg', 'os/_generic/userpicture.jpg');
+    gebi('lockScreenUserPicture').src = userImage;
+    gebi('lockScreenUserName').innerHTML = username;
+    gebi('lockScreenText').focus();
+    show('lockScreen');
+
+    // Reset animations
+    hide('loggingOut');
+    show('shuttingDown');
+    hide('lockScreenSystemColorOverlay');
+    hide('lockScreenColorOverlay');
+
+    // Start animations
+    gebi('shuttingDown').classList.add("fadeInFast");
+    await delay(1200);
+
+    // Show startUp
+    gebi('startUp').classList.add("fadeInFast");
+    show('startUp');
+    await delay(250);
+
+    // Show login underneath
+    show('lockScreenSystemColorOverlay');
+    show('lockScreenColorOverlay');
+
+    // Reset animation classes for next installment
+    hide('shuttingDown');
+    gebi('shuttingDown').classList.remove("fadeInFast");
+    gebi('startUp').classList.remove("fadeInFast");
+}
+
+async function startUp() {
+    // user has clicked
+    // user has pressed any key
+    let startUp = gebi('startUp');
+    if(startUp.dataset.isStartingUp == "true") {
+        cl('already startup up, ignore');
+        return;
+    }
+    startUp.dataset.isStartingUp = "true";
+    
+    let startUpCode = gebi('startUp-code');
+    let startUpLoaderBar = gebi('startUp-loader-bar');
+    
+    await writeStartupTexts(startUpCode, 5000);
+    await delay(500);
+    startUpCode.innerHTML = '';
+    await delay(1000);
+    show('startUp-loader');
+    await counter("startUp-loader-bar", "%", 2500, 92, 5, 100);
+    await delay(3000);
+    
+    gebi('startUp').classList.add("fadeOutFast");
+    // Focus login input
+    if(window.getComputedStyle(gebi('lockScreenText')).display !== "none") {
+        gebi('lockScreenText').focus();
+    } else {
+        gebi('lockScreenPassword').focus();
+    }
+    await delay(2500);  // wait for css animation
+    
+    // on end, destroy stuff and reset
+    hide('startUp');
+    hide('startUp-loader');
+    startUpLoaderBar.style.width="0%";
+    startUpLoaderBar.innerHTML="0%";
+    gebi('startUp').classList.remove("fadeOutFast");
+    startUp.dataset.isStartingUp = "false";
+}
+
+async function writeStartupTexts(element, totDuration) {
+    let percentile = totDuration/20;
+    
+    element.innerHTML += "\[  OK  \] Started Show Plymouth Boot Screen.<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "\[  OK  \] Reached target Paths.<br>";
+    element.innerHTML += "\[  OK  \] Reached target Basic System.<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "\[  OK  \] Found device ST9500325AS.<br>";
+    element.innerHTML += "\[  OK  \] Started dracut initqueue hook.<br>";
+    element.innerHTML += "         Starting dracut pre-mount hook...<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "\[  OK  \] Reached target Remote File Systems (Pre)<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "\[  OK  \] Reached target Remote File Systems.<br>";
+    element.innerHTML += "\[  OK  \] Started dracut pre-mount hook.<br>";
+    element.innerHTML += "<div class='grey'>         Starting File System Check on /dev/disk/by-uuid/85e4ae33-c60e-4372-a6ba-9aeb23bf6d86...</div><br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "\[  OK  \] Started File System Check on /dev/disk/by-uuid/85e4ae33-c60e-4372-a6ba-9aeb23bf6d86.<br>";
+    element.innerHTML += "         Mounting /sysroot...<br>";
+    element.innerHTML += "\[  OK  \] Mounted /sysroot.<br>";
+    element.innerHTML += "\[  OK  \] Reached target Initrd Root File System.<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "         Starting Reload Configuration from the Real Root...<br>";
+    element.innerHTML += "\[  OK  \] Started Reload Configuration from the Real Root.<br>";
+    element.innerHTML += "\[  OK  \] Reached target Initrd File Systems.<br>";
+    element.innerHTML += "\[  OK  \] Reached target Initrd Default Target.<br><br>";
+    element.innerHTML += "Welcome to openSUSE 13.2 (Harlequin) (x86_64)!<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "<div class='yellow'> _                 _                          _ <br>| |__   ___   ___ | |_   ___ _   _ ___  __  _/ |<br>| '_ \\ / _ \\ / _ \\| __| / __| | | / __| \\ \\/ / |<br>| |_) | (_) | (_) | |_  \\__ \\ |_| \\__ \\_ >  <| |<br>|_.__/ \\___/ \\___/ \\__| |___/\\__,_|___(_)_/\\_\\_|</div><br>";
+    element.innerHTML += "<br>";
+    element.innerHTML += "<br>";
+    element.innerHTML += "<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "\[  OK  \] Stopped Switch Root.<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "\[  OK  \] Stopped target Switch Root.<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "\[  OK  \] Stopped target Initrd File Systems.<br>";
+    element.innerHTML += "         Stopping File System Check on /dev/disk/by-uuid/85e4ae33-c60e-4372-a6ba-9aeb23bf6d86...<br>";
+    element.innerHTML += "\[  OK  \] Stopped File System Check on /dev/disk/by-uuid/85e4ae33-c60e-4372-a6ba-9aeb23bf6d86.<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "\[  OK  \] Stopped target Initrd Root File System.<br>";
+    await delay(percentile+randomBetween(-150,150));
+    element.innerHTML += "         Starting Collect Read-Ahead Data";
+    element.innerHTML += ".";
+    await delay(100);
+    element.innerHTML += ".";
+    await delay(100);
+    element.innerHTML += ".";
+    await delay(100);
+    element.innerHTML += ".";
+    await delay(100);
+    element.innerHTML += ".";
+    await delay(100);
+    return;
+}
+
 async function hotSwapOs(nextOs) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -502,6 +633,13 @@ function keyboardController(event) {
             screensaverHide();
             return;
         }
+
+        // if is shutting down, start up
+        if(!gebi('startUp').classList.contains('hide')) {
+            startUp();
+            return;
+        }
+
 
         let key = event.key;
         switch(key) {

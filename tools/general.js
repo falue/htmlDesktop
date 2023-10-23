@@ -172,6 +172,10 @@ async function counter(targetId, append, duration, jitter, start, stop) {
           } else {
             element.innerHTML = i + append;
           }
+          // if has data-width
+          if(element.hasAttribute("data-set-width")) {
+            element.style.width=i+"%";
+          }
       }
       await delay(waitDuration);
   }

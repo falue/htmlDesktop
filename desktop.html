@@ -42,6 +42,9 @@
       <div id="loggingOut" class="fixed centerContent white blackDarkBgTransparent maxWidth maxHeight" style="z-index: 9998;">
         Logging out.. <i class="material-icons spin valign small white relative">refresh</i>
       </div>
+      <div id="shuttingDown" class="fixed centerContent white blackDarkBgTransparent maxWidth maxHeight hide" style="z-index: 9998;">
+        Shutting down.. <i class="material-icons spin valign small white relative">refresh</i>
+      </div>
 
       <div id="lockScreenSystemColorOverlay" class="hide fixed centerContent systemColors maxWidth maxHeight" style="z-index: 9998;">
       </div>
@@ -81,6 +84,20 @@
 
     <!-- BLACKOUT -->
     <div id="blackout" onclick="blackoutHide();" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 9999;"></div>
+
+    <!-- STARTUP -->
+    <div id="startUp" data-is-starting-up="false" onclick="startUp();" class="fixed blackBg white maxWidth maxHeight hide noCursor padding1" style="z-index: 9999;">
+      <code id="startUp-code" class="small whiteSpace" style="font-family:'Source Code Pro', Consolas, monospace;"></code>
+      <div id="startUp-loader" class="hide centerContent white maxHeight">
+        <div class="block alignCenter">
+          <div class="italics">Starting up..</div>
+          <br>
+          <div class="radius10 darkGreyBg white minWidth300 greyBorderLight overflowHidden">
+            <div id="startUp-loader-bar" class="fancy alignCenter small bold radius3" data-set-width="true" style="width:0%">0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <!-- SCREENSAVER -->
     <video id="screensaver" onclick="screensaverHide();" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 9999; object-fit: cover;" playsinline loop muted>
@@ -259,9 +276,9 @@
               <i class="material-icons systemColors clearBg op50">logout</i>
               Logout User
             </li>
-            <li onclick="show('blackout'); hide('startMenu');">
+            <li onclick="shutDown(); hide('startMenu');">
                 <i class="material-icons systemColors clearBg op50">power_settings_new</i>
-                Power
+                Shut down
             </li>
           </ul>
         </div>
@@ -511,6 +528,10 @@
                 <!-- <i class="material-icons blue small">flare</i> -->
                 <i class="material-icons blue small">stream</i>
                 Blackout
+              </li>
+              <li class="tooltip" data-title="Keyboard: [-]" onclick="shutDown(); hide('actionMenu');">
+                <i class="material-icons blue small">power_settings_new</i>
+                Shut down
               </li>
               <li onclick="screenSaver(); hide('actionMenu');">
                 <i class="material-icons blue small">dark_mode</i>
