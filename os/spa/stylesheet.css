@@ -441,6 +441,13 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
     border: 1em transparent solid;
     border-left: 2.5em transparent solid;
 }
+.startMenu li {
+    padding: .15em .5em .15em .5em;
+}
+.startMenu .appList li:hover,
+.startMenu li:hover {
+    background-color: rgba(125,125,125,.25);
+}
 .startMenu li:hover div.submenu {
     display: block;
 }

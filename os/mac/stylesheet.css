@@ -453,12 +453,13 @@ li.showMac { display: list-item !important; }
 }
 .startMenu li {
     position: relative;
-    padding: .15em .5em 0 .5em;
+    padding: .15em .5em .15em .5em;
     width: 17em;
     border-radius: .25em;
 }
+.startMenu .appList li:hover,
 .startMenu li:hover {
-    background-color: rgba(0,0,0,.1);
+    background-color: rgba(125,125,125,.25);
 }
 .startMenu li i {
     display: none;
