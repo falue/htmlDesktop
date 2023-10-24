@@ -23,6 +23,27 @@ When filming, the actress or actor can fool around. After the take, you reload t
 
 These scenes are by design local to the machine that you're using, so changes saved like this are not shared across different computers. They can be exportet, shared and imported though.
 
+## Develop
+VSCode with addon "live server" is very slow. Use caddy (same as the container app), even videos work correctly.
+if necessary, run once:
+```
+brew install caddy
+```
+For your development:
+```
+caddy file-server --browse --listen :2015
+```
+The page is now available here: <http://localhost:2015/>
+
+***NOTE: No hot reloading unfortunately 😔***
+
+Did not work:
+`serve` (hot reload, part of npm. Used global without installing for project, some local file paths are not found. images for example, but videos or scripts worked somehow, sometimes? maybe a cache thing?)
+`npm run dev` (could not get it to work when installed npm)
+XAMPP.app (cannot run it where you have your files)
+`python3 -m http.server --cgi 8080` (does not serve big files correctly (eg., video files could not be seeked))
+`php -S localhost:8080` (does not serve big files correctly (eg., video files could not be seeked))
+
 ## Display locally & offline
 To display this locally and without an internet connection, there is a [container app](https://github.com/aronsommer/electron-webview) in development for Windows, Mac and Linux (including raspberry pi's).
 
