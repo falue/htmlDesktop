@@ -330,7 +330,7 @@ function setupWindows(windows) {
     let windowIcon = document.createElement("i");
     windowIcon.setAttribute("class", "material-icons small grey");
     windowIcon.appendChild(document.createTextNode(window["icon"]));
-    listElement.title = window["contentPath"];
+    listElement.title = window["contentPath"] + ' - ' + window["metaTitle"] || window["windowName"];
     listElement.appendChild(windowIcon);
     listElement.innerHTML+=" "+(window["metaTitle"] || window["windowName"]).replaceAll(/#(\d+)/gm, `<span class='green'>#$1</span>`);
     listElement.setAttribute("onclick", `addWindow('${window["windowName"]}', '${window["icon"]}', '${window["contentPath"]}', ${window["x"]}, ${window["y"]}, ${window["w"]}, ${window["h"]}, false); hide("actionMenu");`);
