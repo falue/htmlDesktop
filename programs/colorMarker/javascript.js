@@ -45,6 +45,11 @@ async function setup() {
     setBgColor(color);
     if(chess) toggleChess();
     setMarkerColor(colorMarkers);
+
+    // Hide back to idnex button if in iframe
+    if(window.location !== window.parent.location) {
+        hdie('backToIndex');
+    }
 }
 
 
