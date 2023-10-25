@@ -692,7 +692,7 @@ function placeShortcut(name, icon, x,y, action) {
     // if icon is not set but action, it might be a custom program
     let programName = action.match(/'([^']+)'/g).map(function(match) {
       return match.replace(/'/g, ''); // Remove single quotes
-    })[2];
+    })[2].split("/")[0];
     fileIcon.setAttribute("src", "programs/"+programName+"/icon.png");
   } else {
     fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+iconDecider(name, name.split(".").length === 1));
