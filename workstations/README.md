@@ -63,7 +63,7 @@ Objects of live, displayed or hidden windows. accessible programs like terminal,
 define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so']
 
 - `"name": "DVD"` *displayed filename (do not use `"` or `'`)*
-- `"icon": "dvd.png"` *filename of icon image in `os/../systemIcons/`*
+- `"icon": "dvd.png"` *filename of icon image in `os/../systemIcons/` - or, if empty AND `"action"` starts with 'addWindow', it shows the image in `programs/<programNameDefinedInAction>/icon.png`. If `"action"` is also empty, it shows a default icon for that filename*
 - `"x": 93` *X-Position of shortcut in percent (integer)*
 - `"y": 67` *Y-Position of shortcut in percent (integer)*
 - `"action": ".."` *javascript action as string like `startDefaultProgram('fileManager')` or `addWindow(..)`*

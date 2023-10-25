@@ -688,6 +688,12 @@ function placeShortcut(name, icon, x,y, action) {
   let fileIcon = document.createElement("img");
   if(icon) {
     fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+icon);
+  } else if(action.startsWith('addWindow')) {
+    // if icon is not set but action, it might be a custom program
+    let programName = action.match(/'([^']+)'/g).map(function(match) {
+      return match.replace(/'/g, ''); // Remove single quotes
+    })[2];
+    fileIcon.setAttribute("src", "programs/"+programName+"/icon.png");
   } else {
     fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+iconDecider(name, name.split(".").length === 1));
   }
