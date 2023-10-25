@@ -715,6 +715,7 @@ function placeShortcut(name, icon, x,y, action) {
 function clutterDesktop(count) {
   let randomNameParts = [
     "File", "file", "Document", "Home", "Personal", "var", "VAR", "Favorites", "A-433", "Photos", "Links", "Important",
+    "Document1", "File2", "Data", "Report", "Image", "Note", "Presentation", "Spreadsheet", "Picture", "Memo", "Text", "Project"
   ]
   let randomNameSuffix = [
     "", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "",
