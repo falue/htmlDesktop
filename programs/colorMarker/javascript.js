@@ -48,7 +48,7 @@ async function setup() {
 
     // Hide back to idnex button if in iframe
     if(window.location !== window.parent.location) {
-        hdie('backToIndex');
+        hide('backToIndex');
     }
 }
 
