@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Securiton</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js" defer></script>
+
+  </head>
+  <body onload="setup();">
+    
+    <div class="gridLayout">
+      <!-- ROW 1: LOGO -->
+      <div class="gridBox padding05" onclick="window.location.href = 'index.html?scene='+scene" style="grid-column: col / span 5; grid-row: row;">
+        <!-- <i class="material-icons medium valign fancy round padding25 tintBlue">storm</i> -->
+        <img src="splash.png" alt="" class="round valign padding25" style="height: 2.2em;">
+        <span class="accent">Securiton</span>
+        <span class="small grey italics">v97.1.14-B</span>
+        
+        <span class="transparent">M</span>
+        <button class="selector radius3 whiteBg hover minWidth150 relative alignLeft">
+          <span class="valign grey italics">Search..</span>
+          <i class="material-icons small circle darkGreyBg valign right marginX1 padding05 op50 " style="transform: translate(.75em, -.35em);">search</i>
+        </button>
+      </div>
+      
+      <div class="gridBox padding05 centerContentYRight" style="grid-column: col 6 / span 3; grid-row: row;">
+        MUSEUM CH
+      </div>
+
+      <!-- ROW 2: HEADER -->
+      <header class="gridBox header windowmenu" style="grid-column: col / span 5; grid-row: row 2;">
+        <button class="programButtons valign"><i class="material-icons medium valign">menu</i></button><!-- 
+        --><button class="programButtons">Connections</button><!-- 
+        --><button class="programButtons">Edit</button><!-- 
+        --><button class="programButtons">View</button><!-- 
+        --><button class="programButtons">Import / export</button><!-- 
+        --><button class="programButtons">Settings</button><!-- 
+        --><button class="programButtons">About</button>
+      </header>
+      
+      <div class="gridBox header padding05" style="grid-column: col 6 / span 3; grid-row: row 2; text-align: right;">
+        <button class="paddingY0 radius3 "><i class="material-icons small valign blue">menu_book</i> Documentation</button>
+        <button class="paddingY0 radius3 "><i class="material-icons small valign blue">dns</i> Create CT</button>
+        <button class="paddingY0 radius3 pointer" onclick="window.location.href = 'index.html?scene='+scene"><i class="material-icons small valign green">account_circle</i> Logout <i class="material-icons small op50 valign">expand_more</i></button>
+        <i class="material-icons small valign grey">settings</i>
+      </div>
+
+      <!-- ROW 3: TOOLBAR -->
+      <div class="gridBox centerContentY toolBar padding05" style="grid-column: col; grid-row: row 3;">
+        <button class="selector radius3 whiteBg hover maxWidth relative alignLeft hover">
+          <span class="valign grey ">Global view</span>
+          <i class="material-icons small valign right padding05" style="transform: translate(0, -.35em);">expand_more</i>
+        </button>
+      </div>
+
+      <div class="gridBox centerContentY toolBar" style="grid-column: col 2 / span 4; grid-row: row 3;">
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">restart_alt</i> Reconfigure</button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">power_settings_new</i> Access</button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">code</i> Shell</button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">more_vert</i> Bulk actions</button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">help</i> Help</button>
+      </div>
+      <div class="gridBox centerContentYRight toolBar padding05" style="grid-column: col 6 / span 4; grid-row: row 3;">
+        <div class="buttonGroup"><!-- 
+          --><button id="useGreenscreenNo" onclick="setGreenscreenFlag(false)" class="greyBg white hover pointer">Live mode</button><!-- 
+          --><button id="useGreenscreenYes" onclick="setGreenscreenFlag(true)" class="hover pointer"><i class="material-icons small valign">bolt</i> Mode</button><!-- 
+        --></div>
+        <div class="buttonGroup"><!-- 
+          --><button onclick="setGreenscreenType(1)" class="hover pointer">1</button><!-- 
+          --><button onclick="setGreenscreenType(2)" class="hover pointer">2</button><!-- 
+          --><button onclick="setGreenscreenType(3)" class="hover pointer">3</button><!-- 
+        --></div>
+        <button class="selector radius3 hover">
+          <i class="material-icons small valign">calendar_today</i>
+          <i class="material-icons small circle valign">expand_more</i>
+        </button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">sync</i> Update</button>
+      </div>
+
+      <div class="noScrollbar gridBox overflowAuto asideLeft padding05" style="grid-column: col / span 1; grid-row: row 4 / 6;">
+        <ul class="treeview" style="font-size:0.825em">
+          <li><i class="material-icons small valign accent">settings</i> Settings <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">memory</i> Logs <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">videocam</i> Cameras <i class="material-icons small valign grey">expand_more</i></li>
+          <li><ul>
+            <li><i class="material-icons small valign accent">calendar_today</i> Okt-2021</li>
+            <li><i class="material-icons small valign accent">calendar_today</i> Nov-2021</li>
+            <li><i class="material-icons small valign accent">calendar_today</i> Dez-2021</li>
+            <li><i class="material-icons small valign accent">calendar_today</i> Jan-2022</li>
+            <li><i class="material-icons small valign accent">calendar_today</i> Feb-2022</li>
+            <li><i class="material-icons small valign accent">calendar_today</i> Mar-2022</li>
+          </ul></li>
+          <li><i class="material-icons small valign accent">battery_full</i> Recordings <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">gps_fixed</i> Alerts <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">usb</i> User Management <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">developer_board</i> Updates <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">speaker</i> Plugins <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">map</i> Maps <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">keyboard</i> Archives <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">router</i> Exports <i class="material-icons small valign grey">expand_less</i></li>
+          <li><i class="material-icons small valign accent">touch_app</i> Documentation <i class="material-icons small valign grey">expand_less</i></li>
+        </ul>
+      </div>
+
+
+      <div class="noScrollbar gridBox overflowAuto asideLeft padding05" style="grid-column: col 2 / span 2; grid-row: row 4 / 6;">
+        <ul class="treeview" style="font-size:0.825em">
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220101_1aB2cD3eF4.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220101_K4oJ3pO2bA.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220102_U7bD6cB4A.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220105_2wXvU5TzY.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220114_4iV3uT2wX.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220115_R7tU9vW8zY.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220125_3eF6dC4bA.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220128_KyZ7vW8xU.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220128_Q3sP6qR4wK.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220128_W3kL2oKiRq.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220128_XyZ7tUvW9.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220130_X2wZ8vW5uT.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220130_XyZ5tUvW6.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220204_U5nM4oKiLq.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220206_7jD5cB4aE.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220207_M5nL4oKiPq.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220207_X4cB3aD2bE.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220209_X8vW5tU2zY.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220210_HgFeD6PqR.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220210_Z1sQ0wKlJ.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220211_O4kL3oKiRq.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220212_G9jE8kR7sP.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220213_KlJ9pO8Nn.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220216_5jE4kR3sPq.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220216_RsTpQ7wKl.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220217_2aD7bC5gF.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220217_3iV6uT5wXv.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220217_L9oJ8pO6nM.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220218_F7kL6oKiRq.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220218_P6nMmLoKi.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220223_K6wX2vT1zY.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220225_6gF5jE3kR.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220225_H6iV5kR7tU.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220225_ZxY7vW8vT.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220226_X5TzY4tUv.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220301_9MnOp8JkL.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220301_X0wKlJ8pO.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220308_8wXvU7TzY.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220310_9xU8vW4vTz.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220312_P6jE7kR3qP.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220210_Z1sQ0wKlJ.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220211_O4kL3oKiRq.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220212_G9jE8kR7sP.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220213_KlJ9pO8Nn.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220216_5jE4kR3sPq.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220216_RsTpQ7wKl.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220217_2aD7bC5gF.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220217_3iV6uT5wXv.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220217_L9oJ8pO6nM.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220218_F7kL6oKiRq.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220218_P6nMmLoKi.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220223_K6wX2vT1zY.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220225_6gF5jE3kR.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220225_H6iV5kR7tU.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220225_ZxY7vW8vT.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220226_X5TzY4tUv.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220301_9MnOp8JkL.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220301_X0wKlJ8pO.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220308_8wXvU7TzY.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220310_9xU8vW4vTz.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+          <li onclick="showVideo()" tabindex="0"><i class="material-icons small valign accent">videocam</i> MOV_220312_P6jE7kR3qP.mkv <i class="material-icons small valign grey right paddingX2">delete</i> <i class="material-icons small valign grey right paddingX1">settings</i></li>
+        </ul>
+      </div>
+
+      <div class="noScrollbar centerContent gridBox overflowAuto tab greyBg padding25 small black  " style="grid-column: col 4 / span 5; grid-row: row 4;">
+        <div class="ellipsis">AES-256 Encryption &middot;
+        Set Video Compression &middot;
+        IP Camera Compatibility &middot;
+        NVR Integration &middot;
+        Motion Detection Algorithms &middot;
+        RTSP</div>
+      </div>
+      <div class="noScrollbar  overflowAuto tab relative" style="grid-column: col 4 / span 5; grid-row: row 5;">
+        <!-- <div class="gridLayout">
+          <div class="noScrollbar gridBox overflowAuto tab padding1 redBg" style="grid-column: col / span 1; grid-row: row 1;">1</div>
+          <div class="noScrollbar gridBox overflowAuto tab padding1 blueBg" style="grid-column: col 1 / span 1; grid-row: row 1;">2 asd asd asd asd asd</div>
+          <div class="noScrollbar gridBox overflowAuto tab padding1 greenBg" style="grid-column: col / span 1; grid-row: row 2;">3</div>
+          <div class="noScrollbar gridBox overflowAuto tab padding1 redBg" style="grid-column: col 1 / span 1; grid-row: row 2;">4</div>
+        </div> -->
+          <div id="container1" class="videoContainer greyBorder" onmousewheel="zoom(event, 1)" style="top:0; left:0;">
+            <video id="video1" class="surveillanceVideo" controls onclick="togglePlay(1)"> <!--  poster="data/1.png" -->
+              <source id="video1-src" src="data/default.mp4" type="video/mp4">
+            </video>
+          </div>
+            <div id="container2" class="videoContainer greyBorder" onmousewheel="zoom(event, 2)" style="top:0; left:50%;">
+              <video id="video2" class="surveillanceVideo" controls onclick="togglePlay(2)"> <!--  poster="data/1.png" -->
+                <source id="video2-src" src="data/default.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div id="container3" class="videoContainer greyBorder" onmousewheel="zoom(event, 3)" style="top:50%; left:0;">
+              <video id="video3" class="surveillanceVideo" controls onclick="togglePlay(3)"> <!--  poster="data/1.png" -->
+                <source id="video3-src" src="data/default.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div id="container4" class="videoContainer greyBorder" onmousewheel="zoom(event, 4)" style="top:50%; left:50%;">
+              <video id="video4" class="surveillanceVideo" controls onclick="togglePlay(4)"> <!--  poster="data/1.png" -->
+                <source id="video4-src" src="data/default.mp4" type="video/mp4">
+              </video>
+            </div>
+        </div>
+
+    </div>
+  </body>
+  </html>

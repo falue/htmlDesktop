@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Securiton</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js" defer></script>
+
+  </head>
+  <body class="centerContent" onload="setup(); gebi('user').focus()" style="background-color:#ebe8e8;">
+    <div class="centerText">
+      <img src="../securiton/splash.png" style="height: 12em;"/>
+      <h3 class="accent">Museum CH: Surveillance Service</h3>
+      <br>
+      <form id="loginForm" onsubmit="event.preventDefault(); window.location.href = 'securiton.html?scene='+scene">
+        <p><input type="text" tabindex="0" id="user" placeholder="Username" onkeydown="forceType(event, this, 'Dom.T458')"></p>
+        <p><input type="password" tabindex="1" id="pw" placeholder="Password"></p>
+        <p><input type="submit" class="systemButton fancy" value="SECURE CONNECT"></p>
+      </form>
+      <br>
+      <span class="small italics">Securiton © FLNS-H, inc.</span><br>
+    </div>
+    
+  </body>
+  </html>
