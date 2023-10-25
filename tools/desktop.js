@@ -502,10 +502,12 @@ function setDelayUi(value) {
 function triggerActionOrMessage(data) {
     // If selected option has data-type set, its a direct action
     let osNotificationsSelect = gebi('osNotificationsSelect');
-    if(osNotificationsSelect.options[osNotificationsSelect.selectedIndex].dataset.action) {
+    if(data && osNotificationsSelect.options[osNotificationsSelect.selectedIndex].dataset.action) {
         playAction(data);
-    } else {
+    } else if(data) {
         showSystemMessage(osNotifications[parseInt(data)]);
+    } else {
+        cl("No notifications available");
     }
 }
 
