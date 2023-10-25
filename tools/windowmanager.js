@@ -481,7 +481,38 @@ async function setWindowTitle(id) {
 
 async function setWindowIcon(id) {
   let currentWindowIcon = gebi(id).getElementsByClassName('windowTitle')[0].getElementsByTagName('i')[0];
-  let newIcon = await parent.showDialog("Set new window icon", "See <a href='https://fonts.google.com/icons?selected=Material+Icons' target='_blank'>here</a> for all icons. Copy the plain text variable.", false, currentWindowIcon.innerHTML);
+  let textContent = `<div class="chooseBox editIcon radius5 alignCenter">
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='folder'"><i class="material-icons blue valign ">folder</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='folder_open'"><i class="material-icons blue valign ">folder_open</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='edit_note'"><i class="material-icons blue valign ">edit_note</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='image'"><i class="material-icons blue valign ">image</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='grid_view'"><i class="material-icons blue valign ">grid_view</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='public'"><i class="material-icons blue valign ">public</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='person'"><i class="material-icons blue valign ">person</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='inventory_2'"><i class="material-icons blue valign ">inventory_2</i></div>
+
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='code'"><i class="material-icons blue valign ">code</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='videocam'"><i class="material-icons blue valign ">videocam</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='storm'"><i class="material-icons blue valign ">storm</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='view_in_ar'"><i class="material-icons blue valign ">view_in_ar</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='reorder'"><i class="material-icons blue valign ">reorder</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='location_searching'"><i class="material-icons blue valign ">location_searching</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='map'"><i class="material-icons blue valign ">map</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='fastfood'"><i class="material-icons blue valign ">fastfood</i></div>
+
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='call_to_action'"><i class="material-icons blue valign ">call_to_action</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='local_florist'"><i class="material-icons blue valign ">local_florist</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='trip_origin'"><i class="material-icons blue valign ">trip_origin</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='description'"><i class="material-icons blue valign ">description</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='folder_zip'"><i class="material-icons blue valign ">folder_zip</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='warning'"><i class="material-icons blue valign ">warning</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='feedback'"><i class="material-icons blue valign ">feedback</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value=''"><i class="material-icons blue valign op0">folder</i></div>
+  </div>
+  See
+  <a href='https://fonts.google.com/icons?selected=Material+Icons' target='_blank'>here</a> for all icons.
+  Copy the plain text variable.`
+  let newIcon = await parent.showDialog("Set new window icon", textContent, false, currentWindowIcon.innerHTML);
   if(newIcon && newIcon != "~EMPTY") {
     currentWindowIcon.innerHTML = newIcon;
   } 
