@@ -22,6 +22,7 @@ let markers = [
     "+",
     "&times;",
 ]
+let isFullscreen = false;
 
 async function setup() {
     const queryString = window.location.search;
@@ -29,11 +30,11 @@ async function setup() {
     let os = urlParams.get('os');
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
-    fontSizeIndex = parseInt(urlParams.get('size')) || 0;
-    markerIndex = parseInt(urlParams.get('marker')) || 1;
-    patternIndex = parseInt(urlParams.get('pattern')) || 1;
-    let color = urlParams.get('color') || "00ff00";
-    let colorMarkers = urlParams.get('colorMarkers') || "000000";
+    fontSizeIndex = parseInt(urlParams.get('size')) || 5;
+    markerIndex = parseInt(urlParams.get('marker')) || 5;
+    patternIndex = parseInt(urlParams.get('pattern')) || 2;
+    let color = urlParams.get('color') ? "#"+urlParams.get('color') : "#00ff00";
+    let colorMarkers = urlParams.get('colorMarkers') ? "#"+urlParams.get('colorMarkers') : "rgba(0,0,0,0.33)";
     let chess = urlParams.get('chess') === "true";
     
     // Set generic system fonts
@@ -41,9 +42,9 @@ async function setup() {
 
     createCells(patternIndex);
     changeFontSize();
-    setBgColor("#"+color);
+    setBgColor(color);
     if(chess) toggleChess();
-    setMarkerColor("#"+colorMarkers);
+    setMarkerColor(colorMarkers);
 }
 
 
@@ -119,4 +120,30 @@ function setMarkerColor(color) {
 
 function toggleChess() {
     gebi('container').classList.toggle('chess');
+}
+
+function greenKeyboardController(event) {
+    let key = event.key;
+    cl(key)
+        switch(key) {
+            case "f": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
+            case " ": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
+            default:
+                parent.keyboardController(event);
+                break;
+        }
+}
+
+function enterFullscreen() {
+    isFullscreen = true;
+    document.documentElement.requestFullscreen();
+}
+
+function exitFullscreen() {
+    isFullscreen = false;
+    if(document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if(document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
 }

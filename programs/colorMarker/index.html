@@ -13,7 +13,7 @@
     <script src="javascript.js"></script>
 
   </head>
-  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+  <body id="body" onload="setup();" onkeydown="greenKeyboardController(event);">
     <div onclick="show('settings');" class="padding2 fixed top right" style="z-index: 665;">
     </div>
     <div id="settings" class="radius3 blackBgTransparent shadow white margin1 padding1 fixed top right hide" style="z-index: 666;">
@@ -39,7 +39,7 @@
       <fieldset>
         <legend>Marker</legend>
         <div class="inlineBlock minWidth100">
-          <h5>Pattern</h4>
+          <h5>Pattern Style</h4>
         </div>
         <div class="inlineBlock minWidth100">
           <h5>Icon Size</h4>
@@ -53,7 +53,7 @@
         <!-- marker size -->
         <div class="inlineBlock minWidth100">
           <button onclick="changeFontSize();"><i class="material-icons">add</i></button>
-          <button onclick="changeFontSize(true);">0</button>
+          <button onclick="changeFontSize(true);">reset</button>
         </div>
 
         <!-- which marker is used -->
@@ -73,6 +73,7 @@
         <div class=" inline" >
           <input id="colorPickerMarker" class="valign" type="color" value="#000000" oninput="setMarkerColor(this.value);">
         </div>
+        <button onclick="setMarkerColor('rgba(0,0,0,0.33)');">black 33%</button>
         <button onclick="setMarkerColor('#00ff00');">green</button>
         <button onclick="setMarkerColor('#0000ff');">blue</button>
         <button onclick="setMarkerColor('#ffffff');">white</button>
@@ -82,11 +83,18 @@
         <button onclick="setMarkerColor('#000000');">black</button>
         <button onclick="setMarkerColor('#ff00ff');">pink</button>
       </fieldset>
-
+      
+      <div class="centerContent ">
+        **Press "F" or SPACE to enter Fullscreen**
+      </div>
+      <div class="centerContent">
+        <button class="systemButton" onclick="enterFullscreen(); hide('settings');">FULLSCREEN</button>
+        &emsp;
+        <button class="systemButton" onclick="exitFullscreen(); hide('settings');">EXIT FULLSCREEN</button>
+      </div>
 
       <div class="centerContent padding1">
-        <button class="systemButton" onclick="hide('settings');">close</button>
-        <button class="systemButton" onclick="window.history.back();">back</button>
+        <button class="systemButton redBg" onclick="hide('settings');">CLOSE</button>
       </div>
     </div>
 
