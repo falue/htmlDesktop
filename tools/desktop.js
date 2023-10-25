@@ -496,7 +496,7 @@ async function showNote(title, text, icon, deathDelay) {
 
 function setDelayUi(value) {
     gebi('osNotificationsDurationSlider').value = value;
-    gebi('osNotificationsDurationUi').innerHTML = value > 0 ? value+'s' : 'No delay';
+    gebi('osNotificationsDurationUi').innerHTML = value > 0 ? value+'s delay' : 'No delay';
 }
 
 function triggerActionOrMessage(data) {

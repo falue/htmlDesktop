@@ -163,8 +163,14 @@ async function setup() {
   // Loop over osNotifications
   setupSystemMessages(osNotifications);
 
+  // If neither actions nor notifications are set, hide entry in actionmenu
+  if(actions.length + osNotifications.length == 0) {
+    hide('osNotificationSettingsContainer');
+  }
+    
   // Show name in actionMenu
   gebi('workstationHint').innerHTML = workstation;
+  gebi('workstationHint2').innerHTML = workstation;
 
   // Create generic Shortcuts if none are defined
   if(!shortcuts.length) {

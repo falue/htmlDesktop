@@ -293,7 +293,7 @@
     <div id="actionMenu" class="hide">
       <div class="actionMenu darkGreyBg shadow radius5">
         <!-- TITEL -->
-        <div class="actionMenuTitle paddingY25 paddingX1 maxWidth fancy" onclick="hide('actionMenu');">
+        <div class="actionMenuTitle paddingY50 paddingX1 maxWidth fancy" onclick="hide('actionMenu');">
           <i class="material-icons whiteBg padding125 valign round red">bolt</i>&nbsp;
           Operator actions & settings
           <div class="right top padding75 small white alignRight marginX1">
@@ -308,27 +308,29 @@
           <div class="chooseBoxTitle greyBg">About this workstation</div>
           <div class="chooseBox radius5">
             <ul>
+              <li class="relative noLiHover">
+                <div class="tooltip" data-title="A workstation describes this set of appearances">
+                  <i class="material-icons blue small">computer</i>
+                  Workstation: <span id="workstationHint" class="green"></span>
+                </div>
+                <div class="right top absolute nudge-y-12 pointer">
+                  <span class="tooltip" data-title="Change workstation.." onclick="show('overlayWorkstation'); show('closeOverlayWorkstation'); hide('actionMenu');">
+                    <i class="material-icons blueBg small padding25">autorenew</i>
+                  </span>
+                </div>
+              </li>
               <li class="relative noLiHover tooltip" data-title="For show @ login-screen">
-                Username is <span id="userHint" class="green"></span>
-                <div class="right top absolute nudge-y-12">
+                <i class="material-icons blue small">account_circle</i>
+                Username: <span id="userHint" class="green"></span>
+                <div class="right top absolute nudge-y-12 pointer">
                   <span class="tooltip" data-title="See userpic.." onclick="hide('actionMenu'); startDefaultProgram('imageViewer', '../userpicture.jpg')">
                     <i class="material-icons blueBg small padding25">portrait</i>
                   </span>
                 </div>
               </li>
               <li class="noLiHover tooltip" data-title="Used for the login-screen - this must be part of the pw">
-                User "password" is <span id="passwordHint" class="green"></span>
-              </li>
-              <li class="relative noLiHover">
-                <div class="tooltip" data-title="A workstation describes this set of appearances">
-                  <i class="material-icons blue small">computer</i>
-                  Workstation is <span id="workstationHint" class="green"></span>
-                </div>
-                <div class="right top absolute nudge-y-12">
-                  <span class="tooltip" data-title="Change workstation.." onclick="show('overlayWorkstation'); show('closeOverlayWorkstation'); hide('actionMenu');">
-                    <i class="material-icons blueBg small padding25">autorenew</i>
-                  </span>
-                </div>
+                <i class="material-icons blue small">password</i>
+                User "password": <span id="passwordHint" class="green"></span>
               </li>
             </ul>
           </div>
@@ -337,30 +339,30 @@
           <div class="chooseBox radius5">
             <ul>
               <li class="centerText">
-                <span class="saveButtonsTooltips tooltip" data-title="Save appearence & positions [s]" onclick="save(false);">
+                <span class="saveButtonsTooltips tooltip pointer" data-title="Save appearence & positions [s]" onclick="save(false);">
                   <i class="material-icons blue small">save</i>
                   Save
                 </span>
                 <span class="grey marginX50">|</span>
-                <span class="saveButtonsTooltips tooltip" data-title="Save these settings as a new file [shift]+[S]" onclick="saveAs(false);">
+                <span class="saveButtonsTooltips tooltip pointer" data-title="Save these settings as a new file [shift]+[S]" onclick="saveAs(false);">
                   <i class="material-icons blue small">save</i>
                   Save as..
                 </span>
                 <span class="grey marginX50">|</span>
-                <span class="saveButtonsTooltips tooltip" data-title="Export these settings to .json" onclick="saveAs(true);" >
+                <span class="saveButtonsTooltips tooltip pointer" data-title="Export these settings to .json" onclick="saveAs(true);" >
                   <i class="material-icons small blue">file_upload</i>
                   Export
                 </span>
               </li>
-              <li class=" tooltip" data-title="Load locally saved file or import a .json" onclick="show('savedFilesDialog'); checkSaveFiles();">
+              <li class="tooltip pointer" data-title="Load locally saved file or import a .json" onclick="show('savedFilesDialog'); checkSaveFiles();">
                 <i class="material-icons blue small">rotate_left</i>
                 Load save file..
               </li>
-              <li onclick="window.location.href = `${rootHtmlFile}?workstation=${workstation}`;">
+              <li class="pointer" onclick="window.location.href = `${rootHtmlFile}?workstation=${workstation}`;">
                 <i class="material-icons blue small">sync</i>
                 Reset to initial state
               </li>
-              <li class="tooltip" data-title="Because Eddy-G's “reload“ does not reload iframes" onclick="hide('actionMenu'); hardReloadAllIframes();">
+              <li class="tooltip pointer" data-title="Because Eddy-G's “reload“ does not reload iframes" onclick="hide('actionMenu'); hardReloadAllIframes();">
                 <i class="material-icons blue small">lock_reset</i>
                 Hard reload open windows
               </li>
@@ -373,35 +375,35 @@
               <li class="relative noLiHover">
                 <div>
                   <i class="material-icons blue small">computer</i>
-                  Swap OS
+                  Swap OS:
                 </div>
                 <div class="right top absolute">
-                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showMac" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
-                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showWindows" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
-                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
-                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows showMac" onclick="hide('actionMenu'); hotSwapOs('spa');">spa</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showMac pointer" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showWindows pointer" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
+                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('spa');">spa</span>
                 </div>
               </li>
               <li class="relative">
-                <label for="systemColorPicker" class="block maxWidth">
+                <label for="systemColorPicker" class="block maxWidth pointer">
                 <i class="material-icons blue small">color_lens</i>
                   Set system color
                 </label>
                 <div class="right top absolute nudge-y-12">
-                  <input id="systemColorPicker" type="color" class="valign relative tooltip" data-title="Set color.."  oninput="setSystemColors(this.value); gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
-                  <span class="tooltip" data-title="Set to default color" onclick="setDefaultSystemColors(os);">
+                  <input id="systemColorPicker" type="color" class="valign relative tooltip pointer" data-title="Set color.."  oninput="setSystemColors(this.value); gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
+                  <span class="tooltip pointer" data-title="Set to default color" onclick="setDefaultSystemColors(os);">
                     <i class="material-icons blueBg small padding25">home</i>
                   </span>
                 </div>
               </li>
-              <li class="relative" onclick="cycleBackgroundImage();">
+              <li class="relative pointer" onclick="cycleBackgroundImage();">
                   <i class="material-icons blue small">desktop_windows</i>
                   Swap background image
                 <div class="right top absolute nudge-y-12">
-                  <input id="BGColor" type="color" class="valign tooltip" onclick="event.stopPropagation();" data-title="Set plain color.." oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value; gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
+                  <input id="BGColor" type="color" class="valign tooltip pointer" onclick="event.stopPropagation();" data-title="Set plain color.." oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value; gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
                 </div>
               </li>
-              <li id="actionMenuDockLock" class="hide maxWidth" onclick="gebi('dock').classList.toggle('dockLock')">
+              <li id="actionMenuDockLock" class="hide maxWidth pointer" onclick="gebi('dock').classList.toggle('dockLock')">
                   <i class="material-icons blue small">call_to_action</i>
                   Lock dock
               </li>
@@ -412,66 +414,64 @@
         <div class="columns padding1 nobr">
 
           <!-- Shortcuts -->
-          <div class="chooseBoxTitle greyBg">Content</div>
+          <div class="chooseBoxTitle greyBg">
+            <div class="tooltip" data-title="These windows are custom-preperad for this workstation">
+              Saved & prepared windows for <span id="workstationHint2" class="green"></span>
+            </div>
+          </div>
           <div class="chooseBox radius5">
-            <ul>
+            <div id="currentWindowsSettings" class="maxHeight300 overflowAutoY">
+              <ul id="currentWindowActions" class="pointer">
+                <li class="grey italics noLiHover">No windows for this workstation</li>
+              </ul>
+            </div>
+          </div>
 
-              <li class="relative noLiHover">
-                <div class="tooltip" data-title="These windows are custom-preperad in this save file" onclick="toggle('currentWindowsSettings'); gebi('currentWindowsSettingsArrow').classList.toggle('rotate180');">
-                  <i class="material-icons blue small">lock</i>
-                  Saved & prepared windows
-                </div>
-                <div id="currentWindowsSettings" class="hide maxHeight300 overflowAutoY">
-                  <ul id="currentWindowActions" class="margin05">
-                    <li class="grey italics noLiHover">No windows for this workstation</li>
-                  </ul>
-                </div>
-                <div class="right top absolute nudge-y-12">
-                  <i id="currentWindowsSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
-                </div>
-              </li>
-              <li class="tooltip" data-title="Keyboard: [c]" onclick="createShortcut(); hide('actionMenu');">
+          <div class="chooseBoxTitle greyBg">Desktop & screen</div>
+            <div class="chooseBox radius5">
+            <ul>
+              <li class="tooltip pointer" data-title="Keyboard: [c]" onclick="createShortcut(); hide('actionMenu');">
                 <i class="material-icons blue small">queue</i>
                 Add desktop shortcut..
               </li>
-              <li class="relative">
+              <li class="relative pointer">
                 <div class="tooltip" data-title="Add 4 random icons to desktop [d]" onclick="clutterDesktop(4);">
                   <i class="material-icons blue small">scatter_plot</i>
                   Clutter shortcuts
                 </div>
                 <div class="right top absolute nudge-y-12">
-                  <span class="tooltip" data-title="Tidy up" onclick="tidyUpShortcuts();">
+                  <span class="tooltip pointer" data-title="Tidy up" onclick="tidyUpShortcuts();">
                     <i class="material-icons blueBg small padding25 rotate180">signal_cellular_alt</i>
                   </span>
-                  <span class="tooltip" data-title="Align to grid" onclick="alignShortcutsToGrid();">
+                  <span class="tooltip pointer" data-title="Align to grid" onclick="alignShortcutsToGrid();">
                     <i class="material-icons blueBg small padding25 mirrorY">grid_4x4</i>
                   </span>
-                  <span class="tooltip" data-title="Remove all shortcuts" onclick="removeAllShortcuts();">
+                  <span class="tooltip pointer" data-title="Remove all shortcuts" onclick="removeAllShortcuts();">
                     <i class="material-icons blueBg small padding25">close</i>
                   </span>
                 </div>
               </li>
 
-              <li class="relative">
+              <li class="relative pointer">
                 <div class="tooltip" data-title="Open a random program [w]" onclick="startDefaultProgram();">
                   <i class="material-icons blue small">dynamic_feed</i>
                   Clutter windows
                 </div>
                 <div class="right top absolute nudge-y-12">
-                  <span class="tooltip" data-title="Remove all windows" onclick="closeAllWindows();">
+                  <span class="tooltip pointer" data-title="Remove all windows" onclick="closeAllWindows();">
                     <i class="material-icons blueBg small padding25">close</i>
                   </span>
                 </div>
               </li>
 
-              <li class="tooltip" data-title="Plain window with absolute (http://&hellip;) or relative URL" onclick="hide('actionMenu'); addWindow('New Window', 'grid_view', 'magic', 12, 6, 1200,900, false);">
+              <li class="tooltip pointer" data-title="Plain window with absolute (http://&hellip;) or relative URL" onclick="hide('actionMenu'); addWindow('New Window', 'grid_view', 'magic', 12, 6, 1200,900, false);">
                 <i class="material-icons blue small">auto_fix_normal</i>
                 Add custom URL window
               </li>
 
-              <!-- System emssages -->
-              <li class="relative noLiHover">
-                <div class="tooltip" data-title="Click to set - [m] to display" onclick="toggle('osNotificationSettings'); gebi('osNotificationSettingsArrow').classList.toggle('rotate180');">
+              <!-- System messages -->
+              <li id="osNotificationSettingsContainer" class="relative noLiHover">
+                <div class="tooltip pointer" data-title="Click to set - [m] to display" onclick="toggle('osNotificationSettings'); gebi('osNotificationSettingsArrow').classList.toggle('rotate180');">
                   <i class="material-icons blue small">notifications</i>
                   Action/system message
                   <i id="osNotificationSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
@@ -481,17 +481,17 @@
                   </select>
                   <br>
                   <span class="small grey tooltip" data-title="Time until the message is shown">
-                    Delay duration:
                     <span id="osNotificationsDurationUi" class="green">No delay</span>
+                    before pressing [m] to show message
                   </span>
                   <br>
                   <input type="range" class="maxWidth padding2 borderBox" id="osNotificationsDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
                 </div>
                 <div class="right top absolute nudge-y-12">
-                  <span class="tooltip" data-title="Test this message [m]" onclick="triggerActionOrMessage(gebi('osNotificationsSelect').value);">
+                  <span class="tooltip pointer" data-title="Test this message [m]" onclick="triggerActionOrMessage(gebi('osNotificationsSelect').value);">
                     <i class="material-icons blueBg small padding25">notifications_active</i>
                   </span>
-                  <span class="tooltip" data-title="Clear [shift]+[C]" onclick="clearSystemMessages();">
+                  <span class="tooltip pointer" data-title="Clear [shift]+[C]" onclick="clearSystemMessages();">
                     <i class="material-icons blueBg small padding25">notifications_off</i>
                   </span>
                 </div>
@@ -507,45 +507,49 @@
           <div class="chooseBoxTitle greyBg">Computer functions</div>
           <div class="chooseBox radius5 relative">
             <ul>
-              <li class="relative">
+              <li class="relative pointer">
                 <div onclick="show('keyboardControls');">
                   <i class="material-icons blue small">keyboard</i>
-                  See keyboard Controls
+                  See keyboard Controls..
                 </div>
                 <div class="right top absolute nudge-y-12">
-                  <span class="tooltip" data-title="Allow keyboard control" onclick="setKeyboardLock(false);">
+                  <span class="tooltip pointer" data-title="Allow keyboard control" onclick="setKeyboardLock(false);">
                     <i id="keyboardLockGui-false" class="material-icons whiteBgTransparent small padding25">lock_open</i>
                   </span>
-                  <span class="tooltip" data-title="Block operator meta keys (like 'save', 'load', 'new shortcut' etc) - allow blackout, notification etc" onclick="setKeyboardLock(true);">
+                  <span class="tooltip pointer" data-title="Block operator meta keys (like 'save', 'load', 'new shortcut' etc) - allow blackout, notification etc" onclick="setKeyboardLock(true);">
                     <i id="keyboardLockGui-true" class="material-icons blueBg small padding25">lock</i>
                   </span>
-                  <span class="tooltip" data-title="Block all keyboard controls" onclick="setKeyboardLock('all');">
+                  <span class="tooltip pointer" data-title="Block all keyboard controls" onclick="setKeyboardLock('all');">
                     <i id="keyboardLockGui-all" class="material-icons whiteBgTransparent small red padding25">do_disturb</i>
                   </span>
                 </div>
               </li>
-              <li id="logoutActionActionMenu" onclick="showLockScreen(); hide('actionMenu');">
+              <li class="pointer" id="logoutActionActionMenu" onclick="showLockScreen(); hide('actionMenu');">
                 <i class="material-icons blue small">logout</i>
                 Logout User
               </li>
-              <li class="tooltip" data-title="Keyboard: [b]" onclick="show('blackout'); hide('actionMenu');">
+              <li class="tooltip pointer" data-title="Keyboard: [b]" onclick="show('blackout'); hide('actionMenu');">
                 <!-- <i class="material-icons blue small">flare</i> -->
                 <i class="material-icons blue small">stream</i>
                 Blackout
               </li>
-              <li class="tooltip" data-title="Keyboard: [-]" onclick="shutDown(); hide('actionMenu');">
+              <li class="tooltip pointer" data-title="Keyboard: [-]" onclick="shutDown(); hide('actionMenu');">
                 <i class="material-icons blue small">power_settings_new</i>
                 Shut down
               </li>
-              <li onclick="screenSaver(); hide('actionMenu');">
+              <li class="pointer" onclick="screenSaver(); hide('actionMenu');">
                 <i class="material-icons blue small">dark_mode</i>
                 Screensaver
+              </li>
+              <li class="tooltip pointer" data-title="Leave desktop!" onclick="window.location.href = 'programs/colorMarker/index.html'">
+                <i class="material-icons blue small">palette</i>
+                Fullscreen-Greenscreen
               </li>
             </ul>
           </div>
           <div class="small left bottom grey margin1">
             <!-- (others see start menu) <i class="material-icons valign blue small">chevron_right</i> -->
-            Made by <a href="https://fluescher.ch" target="_blank">F. Lüscher</a> 2022
+            Made by <a href="https://fluescher.ch" target="_blank">F. Lüscher</a> 2023
             <span class="grey">&middot;</span>
            <a href="javascript:displayLicenses();"> External licenses</a>
           </div>
