@@ -130,7 +130,7 @@ async function showLockScreen() {
     gebi('blackout').classList.remove("fadeInFast");
 }
 
-async function shutDown() {
+async function shutDown(currentScreen) {
     let userImage = await fileExists('workstations/'+workstation+'/userpicture.jpg', 'os/_generic/userpicture.jpg');
     gebi('lockScreenUserPicture').src = userImage;
     gebi('lockScreenUserName').innerHTML = username;
@@ -138,10 +138,12 @@ async function shutDown() {
     show('lockScreen');
 
     // Reset animations
-    hide('loggingOut');
     show('shuttingDown');
-    hide('lockScreenSystemColorOverlay');
-    hide('lockScreenColorOverlay');
+    if(currentScreen != 'fromLoginScreen') {
+        hide('loggingOut');
+        hide('lockScreenSystemColorOverlay');
+        hide('lockScreenColorOverlay');
+    }
 
     // Start animations
     gebi('shuttingDown').classList.add("fadeInFast");
