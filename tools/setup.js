@@ -10,7 +10,7 @@ let selectedSystemMessage;
 let hotSwapped;
 let rootHtmlFile = "index.html";
 let dockAvailable = false;
-let lockKeyboard = false;
+let lockKeyboard = true;
 
 async function setup() {
   // Get Workstation parameter
