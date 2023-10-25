@@ -1,21 +1,14 @@
 # Define all available workstations here
 
 workstation=generic;spa
-
-workstation=hasenfratz;windows
-
 workstation=Agotha;windows
-
-workstation=Milan;windows
-
-workstation=Leo;spa
-
-workstation=Carlos;windows
-
-workstation=Dominic;spa
-
 workstation=Athletics;windows
-
-workstation=Doro;mac
-
+workstation=Carlos;windows
 workstation=Charles;spa
+workstation=Dominic;spa
+workstation=Doro;mac
+workstation=hasenfratz;windows
+workstation=Leo;spa
+workstation=Milan;windows
+workstation=MinervaRezeption;windows
+
