@@ -305,11 +305,11 @@
 
         <!-- Operator actions & settings -->
         <div class="columns padding1 nobr">
-          <div class="chooseBoxTitle greyBg">About this workstation</div>
+          <div class="chooseBoxTitle black greyBg">About this workstation</div>
           <div class="chooseBox radius5">
             <ul>
               <li class="relative noLiHover">
-                <div class="tooltip" data-title="A workstation describes this set of appearances">
+                <div class="tooltip" data-title="A workstation contains your settings - desktop images, OS, windows, colors, etc">
                   <i class="material-icons blue small">computer</i>
                   Workstation: <span id="workstationHint" class="green"></span>
                 </div>
@@ -335,21 +335,25 @@
             </ul>
           </div>
 
-          <div class="chooseBoxTitle greyBg">State management</div>
+          <div class="chooseBoxTitle black greyBg">State management</div>
           <div class="chooseBox radius5">
+            <p class="small">
+              Temporary save and reload all the windows and colors as you<br>
+              have them now.
+            </p>
             <ul>
               <li class="centerText">
-                <span class="saveButtonsTooltips tooltip pointer" data-title="Save appearence & positions [s]" onclick="save(false);">
+                <span class="saveButtonsTooltips tooltip pointer" data-title="Temporary save appearence & positions [s]" onclick="save(false);">
                   <i class="material-icons blue small">save</i>
                   Save
                 </span>
                 <span class="grey marginX50">|</span>
-                <span class="saveButtonsTooltips tooltip pointer" data-title="Save these settings as a new file [shift]+[S]" onclick="saveAs(false);">
+                <span class="saveButtonsTooltips tooltip pointer" data-title="Temporary save these settings as a new file [shift]+[S]" onclick="saveAs(false);">
                   <i class="material-icons blue small">save</i>
                   Save as..
                 </span>
                 <span class="grey marginX50">|</span>
-                <span class="saveButtonsTooltips tooltip pointer" data-title="Export these settings to .json" onclick="saveAs(true);" >
+                <span class="saveButtonsTooltips tooltip pointer" data-title="Export these settings as .json" onclick="saveAs(true);" >
                   <i class="material-icons small blue">file_upload</i>
                   Export
                 </span>
@@ -358,18 +362,18 @@
                 <i class="material-icons blue small">rotate_left</i>
                 Load save file..
               </li>
-              <li class="pointer" onclick="window.location.href = `${rootHtmlFile}?workstation=${workstation}`;">
+              <li class="tooltip pointer" data-title="Ignore all made changes and reload initial settings of workstation" onclick="window.location.href = `${rootHtmlFile}?workstation=${workstation}`;">
                 <i class="material-icons blue small">sync</i>
-                Reset to initial state
+                Reset to initial state of workstation
               </li>
-              <li class="tooltip pointer" data-title="Because Eddy-G's “reload“ does not reload iframes" onclick="hide('actionMenu'); hardReloadAllIframes();">
+              <li class="tooltip pointer" data-title="Because “regular reload“ does not reload the open windwos" onclick="hide('actionMenu'); hardReloadAllIframes();">
                 <i class="material-icons blue small">lock_reset</i>
                 Hard reload open windows
               </li>
             </ul>
           </div>
 
-          <div class="chooseBoxTitle greyBg">Appearance</div>
+          <div class="chooseBoxTitle black greyBg">Appearance</div>
           <div class="chooseBox radius5">
             <ul>
               <li class="relative noLiHover">
@@ -414,7 +418,7 @@
         <div class="columns padding1 nobr">
 
           <!-- Shortcuts -->
-          <div class="chooseBoxTitle greyBg">
+          <div class="chooseBoxTitle black greyBg">
             <div class="tooltip" data-title="These windows are custom-preperad for this workstation">
               Saved & prepared windows for <span id="workstationHint2" class="green"></span>
             </div>
@@ -427,7 +431,7 @@
             </div>
           </div>
 
-          <div class="chooseBoxTitle greyBg">Desktop & screen</div>
+          <div class="chooseBoxTitle black greyBg">Desktop & screen</div>
             <div class="chooseBox radius5">
             <ul>
               <li class="tooltip pointer" data-title="Keyboard: [c]" onclick="createShortcut(); hide('actionMenu');">
@@ -504,7 +508,7 @@
           </div>
 
 
-          <div class="chooseBoxTitle greyBg">Computer functions</div>
+          <div class="chooseBoxTitle black greyBg">Computer functions</div>
           <div class="chooseBox radius5 relative">
             <ul>
               <li class="relative pointer">
