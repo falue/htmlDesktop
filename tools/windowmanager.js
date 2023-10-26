@@ -611,6 +611,38 @@ function resetWindowSize(id, x,y, w,h) {
   windowContainer.getElementsByClassName("windowFrame")[0].setAttribute("ondblclick", "maximizeWindow('"+id+"')");
 }
 
+async function grabWindowFromWorkstation() {
+  let list = '';
+  let countWorkstations = 0;
+  let countWindows = 0;
+  let settingsData = await parseFile("tools/general.settings");
+  for (let e of settingsData) {
+    let workstationWindowList = ''; // Initialize an empty string
+    let settings = e.split("=");
+    let workstationName = settings[1].split(";")[0];
+    let savedWindows = await parseFile(`workstations/${workstationName}/settings.json`);
+
+    if (savedWindows.windows.length > 0) {
+      countWorkstations++;
+      workstationWindowList += `<li class="noHover"><span class="green">${workstationName}</span><ul>`;
+      for (let window of savedWindows.windows) {
+        countWindows++;
+        workstationWindowList += `<li onclick="addWindow('${window.windowName}', '${window.icon}', '${window.contentPath}', ${window.x},${window.y}, ${window.w},${window.h}, ${window.minimized}, ${window.zIndex});">`;
+        workstationWindowList += `<i class="material-icons grey small">${window.icon}</i>`;
+        workstationWindowList += (window.metaTitle || window.windowName).replaceAll(/#(\d\w+)/gm, `<span class='green'>#$1</span>`);
+        workstationWindowList += `</li>`;
+      }
+      workstationWindowList += `</ul></li>`;
+      list += workstationWindowList;
+    }
+  }
+  let textContent = `Availbasble windows: ${countWindows} from ${countWorkstations} workstations<br>
+    <p class="small">Attention: Some videos or images may be strictly bound to the workstation and may not work on any workstation. Test before use!</p><br>
+    <div class="chooseBox radius3"><ul>${list}</ul></div>`;
+  showDialog('Grab window from another workstation', textContent);
+}
+
+
 /* SHORTCUTS */
 // Displays the edit shortcut dialog window
 function editShortcut(id) {
