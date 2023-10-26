@@ -51,7 +51,7 @@
             "metaTitle": "#129 Spy Stream - Agotha",
             "windowName": "Live Player - IP31.164.15.268",
             "icon": "videocam",
-            "contentPath": "imageviewer/index.html?files=129.mp4&disableVideoControls=true&allowZoom=true",
+            "contentPath": "imageviewer/index.html?files=../../Milan/files/129.mp4&disableVideoControls=true&allowZoom=true",
             "x": 4,
             "y": 2,
             "w": 1000,
