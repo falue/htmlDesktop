@@ -72,11 +72,6 @@
           --><button id="useGreenscreenNo" onclick="setGreenscreenFlag(false)" class="greyBg white hover pointer">Live mode</button><!-- 
           --><button id="useGreenscreenYes" onclick="setGreenscreenFlag(true)" class="hover pointer"><i class="material-icons small valign">bolt</i> Mode</button><!-- 
         --></div>
-        <div class="buttonGroup"><!-- 
-          --><button onclick="setGreenscreenType(1)" class="hover pointer">1</button><!-- 
-          --><button onclick="setGreenscreenType(2)" class="hover pointer">2</button><!-- 
-          --><button onclick="setGreenscreenType(3)" class="hover pointer">3</button><!-- 
-        --></div>
         <button class="selector radius3 hover">
           <i class="material-icons small valign">calendar_today</i>
           <i class="material-icons small circle valign">expand_more</i>
@@ -195,21 +190,25 @@
             <video id="video1" class="surveillanceVideo" controls onclick="togglePlay(1)"> <!--  poster="data/1.png" -->
               <source id="video1-src" src="data/default.mp4" type="video/mp4">
             </video>
+            <iframe id="greenscreen1" src="../colorMarker" class="maxWidth maxHeight hide"></iframe>
           </div>
             <div id="container2" class="videoContainer greyBorder" onmousewheel="zoom(event, 2)" style="top:0; left:50%;">
               <video id="video2" class="surveillanceVideo" controls onclick="togglePlay(2)"> <!--  poster="data/1.png" -->
                 <source id="video2-src" src="data/default.mp4" type="video/mp4">
               </video>
+              <iframe id="greenscreen2" src="../colorMarker" class="maxWidth maxHeight hide"></iframe>
             </div>
             <div id="container3" class="videoContainer greyBorder" onmousewheel="zoom(event, 3)" style="top:50%; left:0;">
               <video id="video3" class="surveillanceVideo" controls onclick="togglePlay(3)"> <!--  poster="data/1.png" -->
                 <source id="video3-src" src="data/default.mp4" type="video/mp4">
               </video>
+              <iframe id="greenscreen3" src="../colorMarker" class="maxWidth maxHeight hide"></iframe>
             </div>
             <div id="container4" class="videoContainer greyBorder" onmousewheel="zoom(event, 4)" style="top:50%; left:50%;">
               <video id="video4" class="surveillanceVideo" controls onclick="togglePlay(4)"> <!--  poster="data/1.png" -->
                 <source id="video4-src" src="data/default.mp4" type="video/mp4">
               </video>
+              <iframe id="greenscreen4" src="../colorMarker" class="maxWidth maxHeight hide"></iframe>
             </div>
         </div>
 

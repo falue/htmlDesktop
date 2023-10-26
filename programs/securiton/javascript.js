@@ -9,6 +9,7 @@ async function setup() {
         cl(scene);
         // video switcheroo based on scene?
     }
+    setGreenscreenFlag(localStorage.getItem('securiton-greenscreen') == "true");
 
     /* let form = gebi('loginForm');
     if(form) {
@@ -42,13 +43,20 @@ let greenscreenType = 1;
 
 function setGreenscreenFlag(mode) {
     useGreenscreen = mode;
-    gebi('useGreenscreenNo').classList.toggle('greyBg');
-    gebi('useGreenscreenYes').classList.toggle('greyBg');
+    if(mode) {
+        gebi('useGreenscreenNo').classList.remove('greyBg');
+        gebi('useGreenscreenYes').classList.add('greyBg');
+    } else {
+        gebi('useGreenscreenNo').classList.add('greyBg');
+        gebi('useGreenscreenYes').classList.remove('greyBg');
+    }
+    localStorage.setItem('securiton-greenscreen', mode);
+    toggleGreenscreen(mode);
 }
 
-function setGreenscreenType(index) {
+/* function setGreenscreenType(index) {
     greenscreenType = index;
-}
+} */
 
 function showVideo() {
     if(videoIndex > totalVideos) {
@@ -75,19 +83,48 @@ function showVideo() {
         videoElem3.style.transform = 'scale(1)';
         videoElem3.style.transformOrigin = '0px 0px';
         zoomStage = [1,1,1,1]
+        if(useGreenscreen) toggleGreenscreen(useGreenscreen);
         return;
     }
 
-    let videoName = useGreenscreen ? 'data/greenscreen'+greenscreenType+'.mp4' : 'data/'+videoIndex+'.mp4';
+    // let videoName = useGreenscreen ? 'data/greenscreen'+greenscreenType+'.mp4' : 'data/'+videoIndex+'.mp4';
+    let videoName = 'data/'+videoIndex+'.mp4';
+    toggleGreenscreen(useGreenscreen)
 
     gebi('video'+videoIndex).setAttribute('src', videoName);
     gebi('video1').pause();
     gebi('video2').pause();
     gebi('video3').pause();
     gebi('video4').pause();
-    gebi('video'+videoIndex).play();
+    if(!useGreenscreen) gebi('video'+videoIndex).play();
 
     videoIndex++;  
+}
+
+function toggleGreenscreen(mode) {
+    if(mode) {
+        hide('video1');
+        hide('video2');
+        hide('video3');
+        hide('video4');
+        show('greenscreen1');
+        show('greenscreen2');
+        show('greenscreen3');
+        show('greenscreen4');
+        gebi('video1').pause();
+        gebi('video2').pause();
+        gebi('video3').pause();
+        gebi('video4').pause();
+    } else {
+        show('video1');
+        show('video2');
+        show('video3');
+        show('video4');
+        hide('greenscreen1');
+        hide('greenscreen2');
+        hide('greenscreen3');
+        hide('greenscreen4');
+    }
 }
 
 let zoomStage = [1,1,1,1];
