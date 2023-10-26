@@ -17,6 +17,13 @@
     <div onclick="show('settings');" class="padding2 fixed top right" style="z-index: 665;">
     </div>
     <div id="settings" class="radius3 blackBgTransparent shadow white margin1 fixed top right hide" style="z-index: 666;">
+      <fieldset class="radius3">
+        <legend>Sync</legend>
+        <div class="centerContent">
+          <button class="systemButton margin1" onclick="window.location.href='index.html'">SYNC FROM LAST CHANGE</button>
+        </div>
+      </fieldset>
+
       <!-- bg color -->
       <fieldset class="radius3">
         <legend>Background color</legend>
@@ -36,22 +43,13 @@
       <!-- which pattern of marker is displayed -->
       <fieldset class="radius3">
         <legend>Marker</legend>
-        <div class="inlineBlock minWidth150">
-          <h5>Pattern Style: <span id="patternStyle"></span></h4>
-        </div>
-        <div class="inlineBlock minWidth150">
-          <h5>Icon Size: <span id="fontSize"></span></h4>
-        </div>
-        <br>
-        <div class="inlineBlock minWidth150">
-            <button onclick="prevPattern();" class="middleGreyBg white moderate padding25 pointer"><i class="material-icons">arrow_left</i></button>
-            <button onclick="nextPattern();" class="middleGreyBg white moderate padding25 pointer"><i class="material-icons">arrow_right</i></button>
-        </div>
+        <h5>Pattern Style: <span id="patternStyle"></span></h4>
+        <button onclick="prevPattern();" class="middleGreyBg white moderate padding25 pointer"><i class="material-icons">arrow_left</i></button>
+        <button onclick="nextPattern();" class="middleGreyBg white moderate padding25 pointer"><i class="material-icons">arrow_right</i></button>
           
         <!-- marker size -->
-        <div class="inlineBlock minWidth150">
-          <input type="range" class="maxWidth padding2 borderBox" id="fontSizeSlider" value="1" min=".1" max="14" step=".1" oninput="setFontSize(this.value);"/>
-        </div>
+        <h5>Icon Size: <span id="fontSize"></span></h4>
+        <input type="range" class="maxWidth padding2 borderBox" id="fontSizeSlider" value="1" min=".1" max="14" step=".1" oninput="setFontSize(this.value);"/>
 
         <!-- which marker is used -->
         <h5>Icon style</h4>

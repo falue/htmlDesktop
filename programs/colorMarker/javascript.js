@@ -187,7 +187,6 @@ function exitFullscreen() {
 }
 
 function saveToLocalStorage() {
-    cl("saved!");
     let data = `{
         "markerIndex": `+markerIndex+`,
         "patternIndex": `+patternIndex+`,
