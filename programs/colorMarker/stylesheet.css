@@ -5,12 +5,19 @@ body {
 }
 
 fieldset {
-    padding:0.5em;
-    border: thin white solid;
+    padding:0.25em .5em;
+    margin-bottom: 1em;
+    border: thin rgba(255,255,255,.5) solid;
 }
 fieldset legend {
+    color:rgba(255,255,255,.5);
     font-weight: bold;
-    padding: .25em;
+    padding: .125em;
+}
+
+input[type='checkbox']:not(:checked):before,
+input[type='checkbox']:checked:before {
+    content: "";
 }
 
 h5 {
@@ -57,12 +64,11 @@ h5 {
     height: 1.8em;
 }
 
-.chess .gridBox:nth-child(odd) {
-    background-color: black;
-}
-
 #settings {
-    line-height: 2em;
+    line-height: 1em;
+    padding: .5em 1em;
+    overflow-y: auto;
+    max-height: 90%;
 }
 
 button, input[type=color] {
@@ -81,7 +87,14 @@ button img {
 
 input[type=color] {
     height: 2.1em;
-    width: 2.1em;
+    width: 6.1em;
     border-radius: .3em;
     overflow: hidden;
+    margin-right:1em;
+}
+input[type=color]:before {
+    content: "Select..";
+    color: white;
+    position:absolute;
+    margin:.35em .5em;
 }

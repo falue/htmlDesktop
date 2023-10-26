@@ -1,18 +1,22 @@
 let markerIndex;
 let patternIndex;
-let fontSizeIndex;
+let fontSize;
+let color;
+let colorMarkers;
+let disabledKeys;
+let opacity;
 let pattern = [
     [23, 41, 191, 209],
     [23, 41, 116, 191, 209],
     [23, 41, 32, 191, 200, 209],
     [23, 41, 32, 112, 120, 191, 200, 209],
-    [45, 61, 171, 187],
     [45, 61, 116, 171, 187],
+    [45, 61, 171, 187],
     [48, 58, 174, 184],
     [116],
+    [],
     [1, 11, 21, 211, 221, 231],
     [1, 11, 21, 111, 121, 211, 221, 231],
-    [],
 ];
 let markers = [
     "<img src='tools/marker.svg' alt=''>",
@@ -20,6 +24,7 @@ let markers = [
     "&#9709;",
     "&middot;",
     "+",
+    "✚",
     "&times;",
 ]
 let isFullscreen = false;
@@ -30,25 +35,45 @@ async function setup() {
     let os = urlParams.get('os');
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
-    fontSizeIndex = parseInt(urlParams.get('size')) || 5;
+    fontSize = parseInt(urlParams.get('size')) || 4;
     markerIndex = parseInt(urlParams.get('marker')) || 5;
-    patternIndex = parseInt(urlParams.get('pattern')) || 2;
-    let color = urlParams.get('color') ? "#"+urlParams.get('color') : "#00ff00";
-    let colorMarkers = urlParams.get('colorMarkers') ? "#"+urlParams.get('colorMarkers') : "rgba(0,0,0,0.33)";
-    let chess = urlParams.get('chess') === "true";
+    patternIndex = parseInt(urlParams.get('pattern')) || 1;
+    opacity = parseInt(urlParams.get('opacity')) || 33;
+    color = urlParams.get('color') ? "#"+urlParams.get('color') : "#00ff00";
+    disabledKeys = urlParams.get('disabledKeys') ? urlParams.get('disabledKeys') : false;
+    colorMarkers = urlParams.get('colorMarkers') ? "#"+urlParams.get('colorMarkers') : "#000000";
+
+    /// read locaStorage
+    let data = JSON.parse(localStorage.getItem('colorMarker'));
+    if(data) {
+        cl("loaded");
+        fontSize = data.fontSize;
+        markerIndex = data.markerIndex;
+        opacity = data.opacity;
+        patternIndex = data.patternIndex;
+        color = data.color;
+        colorMarkers = data.colorMarkers;
+        disabledKeys = data.disabledKeys;
+    }
+
     
     // Set generic system fonts
     setSystemFont(os);
 
     createCells(patternIndex);
-    changeFontSize();
+    setOpacity(opacity);
+    gebi('opacitySlider').value = opacity;
+    setFontSize(fontSize);
+    gebi('fontSizeSlider').value=fontSize;
     setBgColor(color);
-    if(chess) toggleChess();
     setMarkerColor(colorMarkers);
+    gebi('disabledKeys').checked = disabledKeys;
 
-    // Hide back to idnex button if in iframe
+    // Hide back to index button if in iframe
     if(window.location !== window.parent.location) {
         hide('backToIndex');
+    } else {
+        hide('fullscreenSettings');
     }
 }
 
@@ -72,7 +97,14 @@ function createCells(currentMarkerIndex) {
         container.appendChild(cell);
     }
     patternIndex = currentMarkerIndex;
-    setMarkerColor(gebi('colorPickerMarker').value);
+    setMarkerColor(colorMarkers);
+    if(patternIndex == 9) {
+        gebi('patternStyle').innerHTML = "9 (empty)";
+    } else {
+        gebi('patternStyle').innerHTML = patternIndex;
+    }
+
+    saveToLocalStorage();
 }
 
 function nextPattern() {
@@ -90,46 +122,41 @@ function prevPattern() {
     }
 }
 
-function nextStyle() {
-    markerIndex = markerIndex+1 > markers.length ? 1 : markerIndex+1;
-    createCells(patternIndex);
-}
-function prevStyle() {
-    markerIndex = markerIndex-1 < 1 ? markers.length : markerIndex-1;
-    createCells(patternIndex);
+function setFontSize(newFontSize) {
+    gebi('container').style.fontSize = newFontSize + "em";
+    gebi('fontSize').innerHTML = newFontSize + "em";
+    fontSize = newFontSize;
+    saveToLocalStorage();
 }
 
-function changeFontSize(reset=false) {
-    if(reset) fontSizeIndex = 0;
-    let fontSizes = [1, 1.5, 1.8, 2.5, 3.2, 5];
-    gebi('container').style.fontSize = fontSizes[fontSizeIndex] + "em";
-    if(fontSizeIndex < fontSizes.length-1) {
-        fontSizeIndex++
-    } else {
-        fontSizeIndex = 0;
-    }
+function setOpacity(newOpacity) {
+    gebi('container').style.opacity = newOpacity / 100;
+    gebi('opacity').innerHTML = newOpacity + "%";
+    opacity = newOpacity;
+    saveToLocalStorage();
 }
 
-function setBgColor(color) {
-    document.getElementsByTagName('body')[0].style.backgroundColor=color;
-    gebi('colorPickerBg').value=color;
+function setBgColor(newColor) {
+    document.getElementsByTagName('body')[0].style.backgroundColor=newColor;
+    gebi('colorPickerBg').value=newColor;
+    color=newColor;
+    saveToLocalStorage();
 }
 
-function setMarkerColor(color) {
+function setMarkerColor(newColor) {
     let currentMarkers = document.getElementsByClassName('mark');
     for(let i=0; i<currentMarkers.length; i++) {
-        currentMarkers[i].getElementsByTagName('div')[0].style.color=color;
+        currentMarkers[i].getElementsByTagName('div')[0].style.color=newColor;
     }
-    gebi('colorPickerMarker').value=color;
-}
-
-function toggleChess() {
-    gebi('container').classList.toggle('chess');
+    gebi('colorPickerMarker').value=newColor;
+    colorMarkers=newColor;
+    saveToLocalStorage();
 }
 
 function greenKeyboardController(event) {
     let key = event.key;
     cl(key)
+    if(!disabledKeys) {
         switch(key) {
             case "f": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
             case " ": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
@@ -137,6 +164,12 @@ function greenKeyboardController(event) {
                 parent.keyboardController(event);
                 break;
         }
+    }
+}
+
+function changeDisablingKeys(checked) {
+    disabledKeys = checked;
+    saveToLocalStorage();
 }
 
 function enterFullscreen() {
@@ -151,4 +184,18 @@ function exitFullscreen() {
     } else if(document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
     }
+}
+
+function saveToLocalStorage() {
+    cl("saved!");
+    let data = `{
+        "markerIndex": `+markerIndex+`,
+        "patternIndex": `+patternIndex+`,
+        "fontSize": `+fontSize+`,
+        "opacity": `+opacity+`,
+        "color": "`+color+`",
+        "colorMarkers": "`+colorMarkers+`",
+        "disabledKeys": `+disabledKeys+`
+    }`
+    localStorage.setItem('colorMarker', data);
 }

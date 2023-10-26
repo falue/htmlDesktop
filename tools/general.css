@@ -293,6 +293,7 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .blue { color: rgba(88,150,255,1) !important; }
 .cyan { color: cyan !important; }
 .grey, .gray { color: grey !important; }
+.middleGrey, .darkGray { color: rgb(70, 70, 70) !important; }
 .darkGrey, .darkGray { color: rgb(35, 35, 35) !important; }
 .black { color: #000000 !important; }
 .white { color: white !important; }
@@ -305,6 +306,7 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .greenBg { background-color: rgb(150, 255, 80) !important; }
 .blueBg { background-color: rgba(88,150,255,1) !important; }
 .greyBg, .grayBg { background-color: grey !important; }
+.middleGreyBg, .middleGrayBg { background-color: rgb(70, 70, 70) !important; }
 .darkGreyBg, .darkGrayBg { background-color: rgb(35, 35, 35) !important; }
 .blackBg { background-color: black !important; }
 .whiteBg { background-color: white !important; }
