@@ -4,11 +4,6 @@ async function setup() {
     const urlParams = new URLSearchParams(queryString);
     scene = urlParams.get('scene');
 
-    // SWAP VIDEOS BASED ON SCENES
-    if(scene == "131") {
-        cl(scene);
-        // video switcheroo based on scene?
-    }
     setGreenscreenFlag(localStorage.getItem('securiton-greenscreen') == "true");
 
     /* let form = gebi('loginForm');
@@ -88,7 +83,7 @@ function showVideo() {
     }
 
     // let videoName = useGreenscreen ? 'data/greenscreen'+greenscreenType+'.mp4' : 'data/'+videoIndex+'.mp4';
-    let videoName = 'data/'+videoIndex+'.mp4';
+    let videoName = `data/${scene}-${videoIndex}.mp4`;
     toggleGreenscreen(useGreenscreen)
 
     gebi('video'+videoIndex).setAttribute('src', videoName);
