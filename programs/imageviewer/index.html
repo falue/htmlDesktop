@@ -11,23 +11,43 @@
     <link rel="stylesheet" href="../../tools/desktop.css" media="all">
     <script src="../../tools/general.js"></script>
     <script src="imageviewer.js"></script>
-
+    
     <!-- VIDE JS -->
     <!-- TODO maybe add only if files contains .mp4 -->
     <link href="../../tools/libraries/video-js.css" rel="stylesheet" />
 
   </head>
   <body onload="setupImageViewer();" onkeydown="keyboardControllerImageViewer(event);">
-    <header class="windowmenu">
+    <header id="windowmenu" class="windowmenu">
       <button class="programButtons">File</button><!-- 
       --><button class="programButtons">Edit</button><!-- 
       --><button class="programButtons">Go to</button><!-- 
       --><button class="programButtons">Camera</button><!-- 
       --><button class="programButtons">Share</button><!-- 
       --><button class="programButtons">Presentation</button><!-- 
-      --><button class="programButtons">View</button><!-- 
+      --><button class="programButtons" onclick="toggle('settings')"><i class="material-icons blue valign small">bolt</i> View</button><!-- 
        --><button class="programButtons">About</button>
     </header>
+
+
+    <div id="settings" class="hide radius3 fixed top right margin2 padding1 whiteBg shadow" style="z-index:9999">
+      <p class="grey">Settings</p>
+      <fieldset class="radius3">
+        <legend>Videos</legend>
+        <input id="disableVideoControls" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="disableVideoControls = this.checked; setVideoControls()">
+        <label for="disableVideoControls">Video: Hide Controls</label><br>
+        <input id="allowZoom" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="zoom(100); allowZoom = this.checked;">
+        <label for="allowZoom">Video: Allow zoom in</label>
+      </fieldset>
+      <fieldset class="radius3">
+        <legend>Keyboard</legend>
+        [left arrow]: prev image / start video from beginning<br>
+        [right arrow]: next image<br>
+        [space]: Video play/pause<br>
+        [f] fullscreen image gallery
+      </fieldset>
+      <button class="systemButton" onclick="hide('settings');">CLOSE SETTINGS</button>
+     </div>
 
     <div id="content" class="content" onclick="navigateGallery(1);">
       <div class="imageNavigation left" onclick="navigateGallery(-1); event.stopPropagation()"></div>
@@ -35,7 +55,7 @@
     </div>
 
     <!-- TODO maybe add only if files contains .mp4 -->
-    <div id="videoPlayer" class="videoPlayer hide">
+    <div id="videoPlayer" class="videoPlayer hide overflowHidden" onclick="playWithDisabledControls()" onmousewheel="zoom(event)">
       <video
           id="videoJsPlayerWrapper"
           class="video-js vjs-default-skin"

@@ -3,12 +3,18 @@ let workstation;
 let files;
 let imageIndex = 0;
 let isFirstFile;
+let disableVideoControls;
+let allowZoom = true;
 
 async function setupImageViewer() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     os = urlParams.get('os');
     workstation = urlParams.get('workstation');
+    disableVideoControls = urlParams.get('disableVideoControls') == "true";
+    allowZoom = urlParams.get('allowZoom') == "true";
+    gebi('disableVideoControls').checked = disableVideoControls;
+    gebi('allowZoom').checked = allowZoom;
 
     if(urlParams.get('files')) {
         files = urlParams.get('files').split("|");
@@ -70,6 +76,8 @@ async function showImage(index) {
     }
 
     if(file.endsWith(".mp4")) {
+        setVideoControls();
+
         content.style.backgroundImage = "none";
         show("videoPlayer");
         await setVideoSrcAndPlay(path, 'video/mp4');
@@ -101,10 +109,92 @@ async function setVideoSrcAndPlay(videoSource, type) {
     }
 }
 
+function setVideoControls() {
+    let player = videojs(document.querySelector('.video-js'));
+    player.controls(!disableVideoControls) // hides/shows control based on URL params
+}
+
+function playWithDisabledControls() {
+    if(disableVideoControls || zoomStage != 1) {
+        togglePlay();
+    }
+}
+
+function togglePlay() {
+    let player = gebi('videoJsPlayerWrapper_html5_api');
+    if(player) {
+        if (player.paused) {
+            player.play(); 
+        } else {
+            player.pause();
+        }
+    }
+}
+
 function navigateGallery(direction) {
     imageIndex += direction;
     imageIndex = wrapAround(imageIndex, 0, files.length-1);
+    zoom(100)  // reset zoom scale
     showImage(imageIndex);
+}
+
+let zoomStage = 1;
+let tempVideoControls;
+
+function zoom(event) {
+    if(!allowZoom) return;
+
+    let scrollingEvent = {};
+    if(typeof event !== 'object') {
+        // if zoom was triggered by key presses, reset zoom
+        scrollingEvent = {
+            "wheelDeltaY": event,
+            "offsetX": 0,
+            "offsetY": 0,
+            "zoomReset": true
+        }
+    } else {
+        scrollingEvent = event;
+    }
+
+    /* console.log(scrollingEvent.offsetX, scrollingEvent.offsetY); */
+    /* console.log(scrollingEvent.wheelDelta, scrollingEvent.wheelDeltaX, scrollingEvent.wheelDeltaY); */
+    if(scrollingEvent.wheelDeltaY>1 || scrollingEvent.wheelDeltaY<-1) {
+        let videoElem = gebi('videoJsPlayerWrapper_html5_api');
+        // reset controls
+        tempVideoControls = disableVideoControls;
+        disableVideoControls = true;
+        setVideoControls()
+        // zoom in / zoom out
+        zoomStage = scrollingEvent.zoomReset ? 1 : clamp(zoomStage-scrollingEvent.wheelDeltaY/100, 1,8);
+        // cl(zoomStage);
+        // cl(elementNumber);
+        videoElem.style.transform = 'scale('+zoomStage+')';
+        videoElem.style.transformOrigin = scrollingEvent.offsetX+'px '+scrollingEvent.offsetY+'px';
+        
+        // if zoom is maxed out, reset controls
+        disableVideoControls = tempVideoControls;
+        if(zoomStage == 1) {
+            setVideoControls()
+        }
+    }
+}
+let isFullscreen = false;
+
+function enterFullscreen() {
+    isFullscreen = true;
+    document.documentElement.requestFullscreen();
+    hide('windowmenu');
+}
+
+function exitFullscreen() {
+    isFullscreen = false;
+    if(document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if(document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+    show('windowmenu');
 }
 
 
@@ -124,16 +214,14 @@ function keyboardControllerImageViewer(event) {
         case 32:
             cl("space..");
             if(files[imageIndex].endsWith(".mp4")) {
-                let player = gebi('videoJsPlayerWrapper_html5_api');
-                if(player) {
-                    if (player.paused) {
-                        player.play(); 
-                    } else {
-                        player.pause();
-                    }
-                }
+                togglePlay();
             }
             break;
+
+        case 70:
+            cl("f");
+            if(isFullscreen) { exitFullscreen() } else { enterFullscreen() };
+            break; 
 
         /* case 8:
             cl("backspace");

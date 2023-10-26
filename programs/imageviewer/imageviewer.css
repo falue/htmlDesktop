@@ -137,3 +137,18 @@ header {
 #videoJsPlayerWrapper_html5_api:focus {
     outline: none !important;
 }
+
+.videoPlayer .videoJsPlayerWrapper-dimensions.vjs-fluid {
+    padding-top: 0 !important;
+}
+
+fieldset {
+    padding:0.25em .5em;
+    margin-bottom: 1em;
+    border: thin rgba(0,0,0,.5) solid;
+}
+fieldset legend {
+    color:rgba(0,0,0,.5);
+    font-weight: bold;
+    padding: .125em;
+}
