@@ -616,6 +616,7 @@ async function grabWindowFromWorkstation() {
   let countWorkstations = 0;
   let countWindows = 0;
   let settingsData = await parseFile("tools/general.settings");
+  let alreadySavedWindows = [];
   for (let e of settingsData) {
     let workstationWindowList = ''; // Initialize an empty string
     let settings = e.split("=");
@@ -624,20 +625,24 @@ async function grabWindowFromWorkstation() {
 
     if (savedWindows.windows.length > 0) {
       countWorkstations++;
-      workstationWindowList += `<li class="noHover"><span class="green">${workstationName}</span><ul>`;
       for (let window of savedWindows.windows) {
-        countWindows++;
-        workstationWindowList += `<li onclick="addWindow('${window.windowName}', '${window.icon}', '${window.contentPath}', ${window.x},${window.y}, ${window.w},${window.h}, ${window.minimized}, ${window.zIndex});">`;
-        workstationWindowList += `<i class="material-icons grey small">${window.icon}</i>`;
-        workstationWindowList += (window.metaTitle || window.windowName).replaceAll(/#(\d\w+)/gm, `<span class='green'>#$1</span>`);
-        workstationWindowList += `</li>`;
+        if(!alreadySavedWindows.includes(window.metaTitle+window.windowName+window.contentPath)) {
+          workstationWindowList += `<li onclick="addWindow('${window.windowName}', '${window.icon}', '${window.contentPath}', ${window.x},${window.y}, ${window.w},${window.h}, ${window.minimized}, ${window.zIndex});">`;
+          workstationWindowList += `<i class="material-icons grey small">${window.icon}</i>`;
+          workstationWindowList += (window.metaTitle || window.windowName).replaceAll(/#(\d\w+)/gm, `<span class='green'>#$1</span>`);
+          workstationWindowList += `</li>`;
+          alreadySavedWindows.push(window.metaTitle+window.windowName+window.contentPath);
+          countWindows++;
+        }
       }
-      workstationWindowList += `</ul></li>`;
+      if(workstationWindowList.length > 0) {
+        workstationWindowList = `<li><span class="green">${workstationName}</span><ul>`+workstationWindowList;
+        workstationWindowList += `</ul></li>`;
+      }
       list += workstationWindowList;
     }
   }
-  let textContent = `Availbasble windows: ${countWindows} from ${countWorkstations} workstations<br>
-    <p class="small">Attention: Some videos or images may be strictly bound to the workstation and may not work on any workstation. Test before use!</p><br>
+  let textContent = `Available windows: ${countWindows} from ${countWorkstations} workstations<br>
     <div class="chooseBox radius3"><ul>${list}</ul></div>`;
   showDialog('Grab window from another workstation', textContent);
 }
