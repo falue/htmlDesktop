@@ -1,6 +1,6 @@
 # ------- setup
 # bashProfileName - plain text or html
-<span class='green'>admin</span>@<span class='red'>localhost</span>:<span class='grey'>~</span> $ 
+<span class='green'>dom</span>@<span class='red'>localhost</span>:<span class='grey'>~</span> $ 
 # -------
 
 [bashProfile] [forceType, "sudo rm -rf /"]
