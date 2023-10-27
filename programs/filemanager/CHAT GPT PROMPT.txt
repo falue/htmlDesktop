@@ -1,0 +1,44 @@
+Imagine a list of total 33 folders and files as they can be on a computer. Result is in json format.
+
+Main folders can be: 
+Desktop
+Documents
+Downloads
+Music
+Pictures
+Videos
+Network
+Homegroup
+Var
+Websites
+Favorites
+etc pp
+
+
+The structure is as follows:
+Foldernames are keynames of an object which contains an array of objects. Each folder can contain further folders and documents. Do not go too deep into the subfolder structure.
+
+for example:
+[
+    {"Root": [
+        {"Foldername": [
+            ["Filename 1 ", "action", "filesize", "data"],
+            ["Filename 2", "action", "filesize", "data"],
+            {"Subfoldername": [
+                ["Filename 3", "action", "filesize", "data"],
+                ["Filename 4", "action", "filesize", "data"],
+                {"empty sub-subfolder": []}
+                ]
+            }
+        ]}
+    ]}
+]
+
+Explanation for replacements:
+- The single topmost object key is always "Root"
+- Foldernames and Subfoldernames: can be anything loosely related to the folder above
+- Filenames: can be anything loosely related to the folder above and are with extension and can be .jpg, .jpeg, .png, .tiff, .psd, .pdf, .mp4, .avi, .mpeg, .mkv, .doc, .docx, .txt, .rtf, .pyc, .py
+- action: is as follows: always use this javascript function with the current filename in it: chooseDefaultProgram('filename')
+- filesize: is in kb or mb or gb, eg. 127kb, 278mb or 1.1gb etc
+- data: If the filename ends in ".txt", the last value of the file-array is a short text matching the filenames title. Use "%0A" instead of line breaks.
+- Restrain yourself from using double quotes, except in "data": If you use double quotes in between the quotes there, do escape them with a preceding backslash, eg.: \"
