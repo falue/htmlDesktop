@@ -602,6 +602,7 @@ let clearedSystemMessages = 0;
 function clearSystemMessages() {
     gebi('osNotifications').innerHTML = "";
     hide('osNotifications');
+    cl('Cleared system messages');
     clearedSystemMessages = Math.floor(Date.now() / 1000);
 }
 
@@ -647,23 +648,28 @@ function keyboardController(event) {
 
         let key = event.key;
         switch(key) {
-            case "1": if(!lockKeyboard) { epD(event); startDefaultProgram('terminal', 6); } break;
-            case "2": if(!lockKeyboard) { startDefaultProgram('fileManager'); } break;
-            case "3": if(!lockKeyboard) { epD(event); startDefaultProgram('textEditor-random'); } break;
-            case "4": if(!lockKeyboard) { startDefaultProgram('browser'); } break;
-            case "5": if(!lockKeyboard) { startDefaultProgram('imageViewer'); } break;
-            case "6": if(!lockKeyboard) { startDefaultProgram('ftp'); } break;
-            case "7": if(!lockKeyboard) { startDefaultProgram('ftp-connect'); } break;
-            case "b": toggle('blackout'); break;
+            case "b": case "1": toggle('blackout'); break;
+            case "l": case "2": showLockScreen(); break;
+            case "q": case "3": shutDown(); break;
+            case "x": case "4": screenSaver();
+            case "m": case "5": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
+            case "C": case "6": clearSystemMessages(); break;
+            // case "Escape": case "0": screensaverHide(); break;
+
             case "c": if(!lockKeyboard) { epD(event); createShortcut(); } break;
-            case "C": clearSystemMessages(); break;
             case "s": if(!lockKeyboard) { epD(event); save(); } break;
             case "S": if(!lockKeyboard) { epD(event); saveAs(false); } break;
             case "d": if(!lockKeyboard) { clutterDesktop(4); } break;
             case "w": if(!lockKeyboard) { startDefaultProgram(); } break;
             case "a": if(!lockKeyboard) { toggle('actionMenu'); } break;
-            case "m": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
-            case "Escape": screensaverHide(); break;
+
+            /* case "1": if(!lockKeyboard) { epD(event); startDefaultProgram('terminal', 6); } break;
+            case "2": if(!lockKeyboard) { startDefaultProgram('fileManager'); } break;
+            case "3": if(!lockKeyboard) { epD(event); startDefaultProgram('textEditor-random'); } break;
+            case "4": if(!lockKeyboard) { startDefaultProgram('browser'); } break;
+            case "5": if(!lockKeyboard) { startDefaultProgram('imageViewer'); } break;
+            case "6": if(!lockKeyboard) { startDefaultProgram('ftp'); } break;
+            case "7": if(!lockKeyboard) { startDefaultProgram('ftp-connect'); } break; */
 
             /* case "arrowright": epD(event); cl("arrow right!"); break;
             case "arrowleft": epD(event); cl("arrow left!"); break;
@@ -715,12 +721,21 @@ function screensaverHide() {
 
 function printElement(title, element) {
     let mywindow = window.open('', 'PRINT', 'height=400,width=600');
+    let fontFace = `@font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: url('tools/fontface/MaterialIcons-Regular.eot');
+        src: url('tools/fontface/MaterialIcons-Regular.woff2') format('woff2'), 
+             url('tools/fontface/MaterialIcons-Regular.woff') format('woff'), 
+             url('tools/fontface/MaterialIcons-Regular.ttf') format('truetype');
+      }`;
     mywindow.document.write('<html><head><title>' + title  + '</title>');
-    mywindow.document.write("<style>body { font-family: Verdana, Geneva, Tahoma, sans-serif; } li { list-style-type:none; line-height:2.2em; } .keyboardKey { border:solid black thin; padding:.25em .5em; border-radius:.3em; } </style>");
+    mywindow.document.write(`<style>${fontFace}body { font-family: Verdana, Geneva, Tahoma, sans-serif; } li { list-style-type:none; line-height:2.2em; } .keyboardKey { border:solid black thin; padding:.25em .5em; border-radius:.3em; } i { font-family: 'Material Icons'; font-style: normal; } </style>`);
     mywindow.document.write('</head><body >');
     mywindow.document.write('<h1>' + title  + '</h1>');
     mywindow.document.write(element.innerHTML);
-    mywindow.document.write('<br><br><br><span style="font-size:.8em">www.telefabi.ch</span>');
+    mywindow.document.write('<br><br><br><span style="font-size:.8em">www.telefabi.ch/htmlDesktop/howto</span>');
     mywindow.document.write('</body></html>');
     mywindow.document.close(); // necessary for IE >= 10
     mywindow.focus(); // necessary for IE >= 10*/
