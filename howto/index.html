@@ -26,6 +26,28 @@
       }
       img, video {
         display:block;
+        border-radius: 3px;
+      }
+      .howToImg {
+        margin: 1.5em 0 0.5em 0;
+        border: solid thin rgba(255,255,255,0.22);
+      }
+      ol {
+        margin: .5em 0;
+      }
+      li {
+        margin-left: 1em;
+      }
+      h2 {
+        margin-top:3.5em;
+        margin-bottom: 1em;
+      }
+      .imgText:before {
+        content: "^ ";
+        color: rgba(255,255,255,0.33);
+      }
+      .imgText {
+        color: rgba(255,255,255,0.55);
       }
     </style>
 
@@ -35,282 +57,124 @@
     <article lang="en">
 
       <!-- PROJECT LOGO -->
-      DIGITAL PROPS:<br>
-      <img src="../indexTools/logo.svg" class="logo" alt=""/>
+      DIGITAL PROPS FÜR<br>
+      <br>
+      <img src="../indexTools/logo.png" class="logo" alt=""/>
+      <br>
+      <img class="blackBg block maxWidth marginY1" src="media/how-0.png">
       <br>
       <br>
       <br>
-      <br>
-      Hint: Be sure to open only one "desktop" at once, these are somewhat recource-heavy.
-      <br>
-      <br>
-      <a href="#Sz7"><span class="tag">Sz7</span> Hospital</a><br>
-      <a href="#Sz10"><span class="tag">Sz10</span> Sonny: give it a bang</a><br>
-      <a href="#Sz14"><span class="tag">Sz14</span> Lydia: Curves</a><br>
-      <a href="#Sz21"><span class="tag">Sz21</span> Sonny: Game</a><br>
-      <a href="#Sz26"><span class="tag">Sz26</span> Hospital: KrabbePDF</a><br>
-      <a href="#Sz30"><span class="tag">Sz30</span> Sonny: DNA</a><br>
-      <a href="#Sz34"><span class="tag">Sz34</span> Sonny: VR</a><br>
-      <a href="#Sz35"><span class="tag">Sz35</span> Sonny: game multiplayer</a><br>
-      <a href="#Sz41"><span class="tag">Sz41</span> Sonny @ Gaming-rig: Curves & DNA training complete</a><br>
-      <a href="#Sz42"><span class="tag">Sz42</span> Ramon: Boar</a><br>
-      <a href="#Sz52"><span class="tag">Sz52</span> Sonny: Hand map & placing Laptop</a><br>
-      <a href="#Sz67"><span class="tag">Sz67</span> Ramon: Beach typing</a><br>
-      <a href="#Sz73"><span class="tag">Sz73</span> Ramon: Random terminal</a><br>
-      <a href="#Sz93"><span class="tag">Sz93</span> Sonny: restart monalisa</a><br>
-      <a href="#Sz99"><span class="tag">Sz99</span> Hospital: Helpdesk</a><br>
+      <h2 class="white tag fancy">GENERAL HANDLING OF htmlDESKTOP</h2>
+      <!-- <ol>
+        <li><a href="../desktop.html?workstation=spital&os=windows" target="_blank">Open Workstation: Hospital</a></li>
+        <li>No interaction</li>
+      </ol> -->
+      The "Action menu" contains all the options that a props person on set would want. Changes in the looks, you add windows, etc.
+      Keep in mind that all the settings here do not get permamently saved!
+      You can save the current look and window positions etc, though its not really reliable after restarting the computer.
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-3.png">
+      <span class="imgText">The action menu.</span>
       <br>
       <br>
+      The bolt (<i class="material-icons white small">bolt</i>) is the hidden indicator for functions for the props person on set.
+      You get this main action menu from it like this.
+      <img class="blackBg inlineBlock howToImg maxWidth maxWidth400" src="media/how-1.png">
+      &emsp;
+      <img class="blackBg inlineBlock howToImg maxWidth maxWidth400" src="media/how-2.png">
       <br>
-      <h2 id="Sz7" class="white tag fancy">Sz7 Hospital</h2>
-      1. <a href="../desktop.html?workstation=spital&os=windows" target="_blank">Open Workstation: Hospital</a>
-      2. No interaction
-      <img class="blackBg block maxWidth marginY1 maxWidth800" src="media/7.png">
-
-      <hr class="marginY2">
-      <h2 id="Sz10" class="white tag fancy">Sz10 Sonny: give it a bang</h2>
-      1. <a href="../desktop.html?workstation=sonny&os=spa" target="_blank">Open Workstation: Sonny</a><br>
-      2. click the desktop, press "m" on your keyboard<br>
-      3. double-click the desktop icon bottom right<br>
-      4. open any file in the list<br>
-      5. look around the two opening windows<br>
-     <!--  <fieldset>
-        <legend>Tools</legend>
-        <div class="paddingX50">
-          text bla bla
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>How to</legend>
-        <div class="paddingX50">
-          click on the 
-        </div>
-      </fieldset> -->
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/10_give_it_a_bang.mp4" type="video/mp4">
-      </video>
-
-      <hr class="marginY2">
-      <h2 id="Sz14" class="white tag fancy">Sz14 Lydia: Curves</h2>
-      1. <a href="../desktop.html?workstation=lydia&os=spa" target="_blank">Open Workstation: Lydia</a><br>
-      2. click network<br>
-      3. click "Block 02"<br>
-      4. show or hide var. lines in the top left line diagram<br>
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/14_lydia.mp4" type="video/mp4">
-      </video>
-
-      <hr class="marginY2">
-      <h2 id="Sz21" class="white tag fancy">Sz21 Sonny: Game</h2>
-      No interactive online-preview.
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/21_Gameplay_V2.mp4" type="video/mp4">
-      </video>
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/21_gameplay2.mp4" type="video/mp4">
-      </video>
-      <img class="blackBg block maxWidth marginY1 maxWidth800" src="media/21_capture1.JPG">
-      <img class="blackBg block maxWidth marginY1 maxWidth800" src="media/21_Capture2.JPG">
-      <img class="blackBg block maxWidth marginY1 maxWidth800" src="media/21_Capture3.JPG">
-      <img class="blackBg block maxWidth marginY1 maxWidth800" src="media/21_Capture4.JPG">
-      <img class="blackBg block maxWidth marginY1 maxWidth800" src="media/21_Capture5.JPG">
-
-
-      <hr class="marginY2">
-      <h2 id="Sz26" class="white tag fancy">Sz26 Hospital: KrabbePDF</h2>
-      1. <a href="../desktop.html?workstation=spital&os=windows" target="_blank">Open Workstation: Hospital</a><br>
-      2. open desktop file "Krabbe disease.PDF"
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/26_krabbePDF.mp4" type="video/mp4">
-      </video>
-
-      <hr class="marginY2">
-      <h2 id="Sz30" class="white tag fancy">Sz30 Sonny: DNA</h2>
-      1. <a href="../desktop.html?workstation=sonny&os=spa" target="_blank">Open Workstation: Sonny</a><br>
-      2. to "set the stage" for this scene, you have to set it up:<br>
-      &nbsp;&nbsp;&nbsp;A) click the yellow program on the bottom<br>
-      &nbsp;&nbsp;&nbsp;B) select the second entry in the dropdown<br>
-      &nbsp;&nbsp;&nbsp;C) close the window<br>
-      <img class="blackBg block maxWidth marginY1 maxWidth600" src="media/30.png">
-      3. Press "m" on your keyboard<br>
-      4. Open the USB drive icon on the bottom left<br>
-      5. Open the File tBrugger.dna<br>
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/30_dna.mp4" type="video/mp4">
-      </video>
-
-      <hr class="marginY2">
-      <h2 id="Sz34" class="white tag fancy">Sz34 Sonny: VR</h2>
-      (No interaction on the gaming rig)
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/34_gamerig_training.mp4" type="video/mp4">
-      </video>
-      1. <a href="../desktop.html?workstation=sonny&os=spa" target="_blank">Open Workstation: Sonny</a><br>
-      2. to "set the stage" for this scene, you have to set it up:<br>
-      &nbsp;&nbsp;&nbsp;A) click the yellow program on the bottom<br>
-      &nbsp;&nbsp;&nbsp;B) select the scene entry #34 in the dropdown<br>
-      <img id="openWindow" class="blackBg block maxWidth marginY1 maxWidth600" src="media/34.png">
-      3. switch to tab "Log"<br>
-      4. control the 3d viewer:<br>
-      <fieldset id="control3d">
-        <legend class="green">How to control 3d window</legend>
-        <div class="paddingX50">
-          <span class="red">Please a mouse as input device (not a trackpad)</span>
-          <ul>
-            <li>Scrollwheel: zoom in & out</li>
-            <li>click & drag: rotate around center of landscape</li>
-            <li>cmd & click & drag: move camera left/right, or</li>
-            <li>right click & drag: move camera left/right</li>
-          </ul>
-        </div>
-      </fieldset>
+      <span class="imgText">"Mac" style on the left, "Windows/Linux" style on the right.</span>
       <br>
-      <fieldset id="controlthreejs">
-        <legend class="green">Actions in 3d window</legend>
-        <div class="paddingX50">
-          <ul>  
-            <li>Scrubbing:<li>
-            <li>Move the slider left & right to control the playback:</li>
-            <li>&nbsp;&nbsp;-3 Really Fast backward</li>
-            <li>&nbsp;&nbsp;-2 Fast backward</li>
-            <li>&nbsp;&nbsp;-1 Play backward</li>
-            <li>&nbsp;&nbsp;0 Pause</li>
-            <li>&nbsp;&nbsp;1 Play</li>
-            <li>&nbsp;&nbsp;2 Fast forward</li>
-            <li>&nbsp;&nbsp;3 Really fast forward</li>
-            <li></li>
-            <li>Play/pause:</li>
-            <li>&nbsp;&nbsp;Toggles between play and pause</li>
-            <li></li>
-            <li>Pause:</li>
-            <li>&nbsp;&nbsp;Always pauses no matter the current state</li>
-            <li></li>
-            <li>SlowMo:</li>
-            <li>&nbsp;&nbsp;Playback forawrd/backwards in slow motion</li>
-            <li></li>
-            <li>Reverse</li>
-            <li>&nbsp;&nbsp;Play in reverse</li>
-          </ul>
-        </div>
-      </fieldset><br>
-      5. click play, toggle the island, scrubb.
+      <br>
+      <br>
 
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/34_sonny_pfade.mp4" type="video/mp4">
-      </video>
+      Or you find some obscure buttons with that bolt: click it and find out what it does.
+      <br>
+      <img class="blackBg inlineBlock howToImg maxWidth maxWidth400" src="media/how-12.png">
+      &emsp;
+      <img class="blackBg inlineBlock howToImg maxWidth maxWidth400" src="media/how-22.png">
+      <br>
+      <span class="imgText">Example 1: Here, "<i class="material-icons white small">bolt</i> display" actually changes the list view to a grid view.</span>
+      <br>
+      <span class="imgText">Example 2:  "<i class="material-icons white small">bolt</i> Mode" changes the videos to a greenscreen, etc.</span>
 
-      <hr class="marginY2">
-      <h2 id="Sz35" class="white tag fancy">Sz35 Sonny: game multiplayer</h2>
-      No interactive online-preview.
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/35_MultiplayerMenu.mp4" type="video/mp4">
-      </video>
 
-      <hr class="marginY2">
-      <h2 id="Sz41" class="white tag fancy">Sz41 Sonny @ Gaming-rig: Curves & DNA training complete</h2>
-      1. <a href="../desktop.html?workstation=gamerig&os=spa" target="_blank">Open Workstation: Gamerig</a><br>
-      2. to "set the stage" for this scene, you have to open window #41 <a href="#openWindow">as described here</a><br>
-      3. scroll to the bottom<br>
-      4. click the "plus" button on top<br>
-      5. click in the dark textbox<br>
-      6. type anything (like asdfasdf), at the end of the line, hit enter<br>
-      7. wait<br>
-      8 scroll to find the red line, or click the text to go there directly
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/41_gamerig_DNA_training_complete.mp4" type="video/mp4">
-      </video>
+      <h2 class="white tag fancy">THE ACTION MENU IN DETAIL</h2>
 
-      1. <a href="../desktop.html?workstation=sonny&os=spa" target="_blank">Open Workstation: Sonny</a><br>
-      2. to "set the stage" for this scene, you have to open window #41 <a href="#openWindow">as described here</a><br>
-      3. logout by clicking red icon in top -> logout<br>
-      4. click the black screen<br>
-      5. type anything as the password, hit enter<br>
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/41_sonny_verlaufskurven.mp4" type="video/mp4">
-      </video>
+      "Workstations" are what I call a dives of a character.
+      Agotha has a workstation, Charles etc.
+      Each workstation has a look defined by me.
+      You can temporary change the appearance of each workstation here.
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-4.png">
+      <span class="imgText">Switch to another Workstation, the user + password for the fake Loginscreen cannot be changed.</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-5.png">
+      <span class="imgText">
+        You can save the current state of all your windows.
+        If you have a scene that requieres rearranging windows or changing colors, save it, and after the take reload it.
+        This is maybe not correctly working when restarting the machine. Be careful.
+      </span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-6.png">
+      <span class="imgText">Changes to the look of the Operating system, colors and type of MAC/WIndows/Linux/"Spa".</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-7.png">
+      <span class="imgText">
+        If I pre programmed windows to use for a specific scene, you'll see them here.
+        Those windows are special and are linked to the workstation.
+        However, you can "grab" a window from abother workstation if you must
+      </span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-8.png">
+      <span class="imgText">
+        Add, organize, remove shortcuts on the desktop.
+        Add new random windows.
+        If you need a news Look for this workstation, jsut press "w" and "d" a couple of times and your desktop will look like your moms.
+      </span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-9.png">
+      <span class="imgText">
+        Some functions can be controlled by keyboard.
+        There are 3 options with which to block those commands, so an actor or actress cannot mistakingly press one.<br>
+        - <i class="material-icons white small">lock</i> Every shortcut is allowed.<br>
+        - <i class="material-icons white small">lock_open</i> Only shortcuts that are user functions are allowed (like blackout, screensaver, etc).<br>
+        - <i class="material-icons white small">do_disturb</i> No shortcuts are allowed.<br>
+        <a href="htmlDesktop_shortcuts.pdf" target="_blank">List of Keyboard commands as PDF here</a>
+        <br>
+        Super easy is to use the delivered remote keypad. all the numerical functions are available with it, so you can control the desktop from afar.
+      </span>
 
-      <hr class="marginY2">
-      <h2 id="Sz42" class="white tag fancy">Sz42 Ramon: Boar</h2>
-      1. <a href="../desktop.html?workstation=ramon&os=spa" target="_blank">Open Workstation: Ramon</a><br>
-      2. to "set the stage" for this scene, you have to open window "#42 supervisor - wildschwein" <a href="#openWindow">as described here</a><br>
-      3. navigate the 3d scene <a href="#control3d">as described here</a><br>
-      4. play back the footage, after the explosion, scroll back in time, toggle the "bounding boxes" under the "controls" window, play again<br>
-      5. click "landscape context" to the right<br>
-      6. click "open context"<br>
-      7. navigate the 3d scene to find the marker <a href="#control3d">as described here</a>
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/42_ramon_boar.mp4" type="video/mp4">
-      </video>
+      <h2 class="white tag fancy">CUSTOMIZING WINDOWS + SHORTCUTS</h2>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-10.png">
+      <span class="imgText">As an example, this is the fileManager.</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-11.png">
+      <span class="imgText">Right click on the icon top left to change it, right click on the name of the window to change it.</span>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-13.png">
+      <span class="imgText">Choose a matching icon on every window</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-14.png">
+      <span class="imgText">Set a name for your window</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-15.png">
+      <span class="imgText">Right click on a dekstop icon to change the name and the icon</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-16.png">
+      
+      <h2 class="white tag fancy">UNPLANNED WINDOWS AND BASIC COMPUTER ANIMATIONS</h2>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-18.png">18
+      <span class="imgText"></span>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-19.png">19
+      <span class="imgText"></span>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-20.png">20
+      <span class="imgText"></span>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-21.png">21
+      <span class="imgText"></span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-17.png">17
+      <span class="imgText"></span>
 
-      <hr class="marginY2">
-      <h2 id="Sz52" class="white tag fancy">Sz52 Sonny: Hand map & placing Laptop</h2>
-      No interactive online-preview.<br>
-      Navigate Unreal Editor as shown.
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/52_hand_v4.mp4" type="video/mp4">
-      </video>
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/52_v3.mp4" type="video/mp4">
-      </video>
 
-      1. <a href="../desktop.html?workstation=ramon&os=spa" target="_blank">Open Workstation: Ramon</a><br>
-      2. logout by clicking red icon in top -> logout<br>
-      4. click the black screen<br>
-      5. type anything as the password, hit enter<br>
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/52_ramon_logout_login.mp4" type="video/mp4">
-      </video>
-
-      <hr class="marginY2">
-      <h2 id="Sz67" class="white tag fancy">Sz67 Ramon: Beach typing</h2>
-      1. <a href="../desktop.html?workstation=ramon&os=spa" target="_blank">Open Workstation: Ramon</a><br>
-      2. to "set the stage" for this scene, you have to open window "#67 supervisor" <a href="#openWindow">as described here</a><br>
-      3. click the tab "Log"<br>
-      4. navigate the 3d scene <a href="#control3d">as described here</a><br>
-      5. click the button "open log" to the right<br>
-      6. go back to tab "overview"
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/67_champagne_beach.mp4" type="video/mp4">
-      </video>
-
-      <hr class="marginY2">
-      <h2 id="Sz73" class="white tag fancy">Sz73 Ramon: Random terminal</h2>
-      1. <a href="../desktop.html?workstation=monalisa&os=spa" target="_blank">Open Workstation: MonaLisa</a><br>
-      2. to "set the stage" for this scene, you have to open window "#73 Bash console" <a href="#openWindow">as described here</a><br>
-      3. use any key to type. Use tab to type the next word automatically.<br>
-      4. at the end of each line, use enter to execute the command<br>
-      5. password: type anything, hit enter. yes, the password does not show up at all.<br>
-      6. this program repeats after a short while.      
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/73_ramon_monalisa_terminal.mp4" type="video/mp4">
-      </video>
-
-      <hr class="marginY2">
-      <h2 id="Sz93" class="white tag fancy">Sz93 Sonny: restart monalisa</h2>
-      1. <a href="../desktop.html?workstation=monalisa&os=spa" target="_blank">Open Workstation: MonaLisa</a><br>
-      2. to "set the stage" for this scene, you have to open window "#93 Bash console" <a href="#openWindow">as described here</a><br>
-      3. use any key to type. Use tab to type the next word automatically.<br>
-      4. at the end of each line, use enter to execute the command<br>
-      5. password: type anything, hit enter. yes, the password does not show up at all.<br>
-      6. this program repeats after pressing enter at the end.   
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/93_monalisa_startup.mp4" type="video/mp4">
-      </video>
-
-      <hr class="marginY2">
-      <h2 id="Sz99" class="white tag fancy">Sz99 Hospital: Helpdesk</h2>
-      1. <a href="../desktop.html?workstation=spital&os=windows" target="_blank">Open Workstation: Hospital</a><br>
-      2. in the frontmost window, click "search"<br>
-      3. type anything and hit enter<br>
-      4 hit enter again to start again
-      <video class="blackBg maxWidth marginY1 maxWidth800" controls loop muted>
-        <source src="media/99_toruBruggerSuche.mp4" type="video/mp4">
-      </video>
+      <h2 class="white tag fancy">GREENSCREEN</h2>
+      Top right is a hidden button.
+      When the green is active, press "F" for fullscreen.
+      "Sync from last change" is useful when you have multiple green windows open. It will take the last changes you made.
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-23.png">
     
       <!-- FOOTER -->
       <footer class="small">
         <div class="tag white whiteBgTransparent padding05" style="line-height: 1rem;">
-          <a href="index.html" class="tag"> &larr; back to index</a>
+          <a href="../index.html" class="tag"> &larr; BACK TO INDEX</a>
         </div>
       </footer>
     </article>
