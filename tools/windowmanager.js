@@ -875,6 +875,7 @@ function incrementWindowsPosition(axe) {
 function chooseDefaultProgram(fileName) {
   let programToStart = "fileManager";
   let extension = fileName.split(".").length ? fileName.split(".")[1] : fileName;
+  extension = extension?.length ? extension.toLowerCase() : extension;
   if(["jpg","jpeg","png","tiff","psd","pdf","mp4","avi","mpeg","mkv"].includes(extension)) {
     // Image file
     programToStart = "imageViewer";
