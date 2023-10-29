@@ -13,7 +13,7 @@
     <script src="javascript.js"></script>
 
   </head>
-  <body id="body" onload="setup();" onkeydown="greenKeyboardController(event);">
+  <body id="body" onload="setup();" onkeydown="greenKeyboardController(event);" ondblclick="dblClickFullscreen();">
     <div onclick="show('settings');" class="padding2 fixed top right" style="z-index: 665;">
     </div>
     <div id="settings" class="radius3 blackBgTransparent shadow white margin1 fixed top right hide" style="z-index: 666;">
@@ -92,7 +92,10 @@
         </div>
         <div class="small marginY1">
           <p>Press "F" or SPACE to enter Fullscreen.</p>
+          <p>If you're looking at the fullscreen-greenscreen now, press [Escape] or [g] or [5] to hide it again.</p>
           <input id="disabledKeys" type="checkbox" class="large" style="margin-right:.5em" onchange="changeDisablingKeys(this.checked)"><label for="disabledKeys">Disable Keyboard input for slashing on the keyboard everywhere</label>
+          <br>
+          <input id="dblClickAllowed" type="checkbox" class="large" style="margin-right:.5em" onchange="dblClickAllowed = this.checked; saveToLocalStorage()"><label for="dblClickAllowed">Double-Clicking the green makes fullscreen</label>
         </div>
       </fieldset>
       

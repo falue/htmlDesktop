@@ -5,6 +5,7 @@ let color;
 let colorMarkers;
 let disabledKeys;
 let opacity;
+let dblClickAllowed;
 let pattern = [
     [23, 41, 191, 209],
     [23, 41, 116, 191, 209],
@@ -40,7 +41,9 @@ async function setup() {
     patternIndex = parseInt(urlParams.get('pattern')) || 1;
     opacity = parseInt(urlParams.get('opacity')) || 33;
     color = urlParams.get('color') ? "#"+urlParams.get('color') : "#00ff00";
-    disabledKeys = urlParams.get('disabledKeys') ? urlParams.get('disabledKeys') : false;
+    dblClickAllowed = urlParams.get('dblClickAllowed') ? urlParams.get('dblClickAllowed') == "true" : false;
+    disabledKeys = urlParams.get('disabledKeys') ? urlParams.get('disabledKeys') == "true" : false;
+    let enforceDisablingKeyFromUrl = disabledKeys ? true : false;
     colorMarkers = urlParams.get('colorMarkers') ? "#"+urlParams.get('colorMarkers') : "#000000";
 
     /// read locaStorage
@@ -51,9 +54,11 @@ async function setup() {
         markerIndex = data.markerIndex;
         opacity = data.opacity;
         patternIndex = data.patternIndex;
+        dblClickAllowed = data.dblClickAllowed;
         color = data.color;
         colorMarkers = data.colorMarkers;
-        disabledKeys = data.disabledKeys;
+        // Overwrite saved value if it is part of the url
+        disabledKeys = enforceDisablingKeyFromUrl ? true : data.disabledKeys;
     }
 
     
@@ -68,6 +73,7 @@ async function setup() {
     setBgColor(color);
     setMarkerColor(colorMarkers);
     gebi('disabledKeys').checked = disabledKeys;
+    gebi('dblClickAllowed').checked = dblClickAllowed;
 
     // Hide back to index button if in iframe
     if(window.location !== window.parent.location) {
@@ -172,6 +178,20 @@ function changeDisablingKeys(checked) {
     saveToLocalStorage();
 }
 
+function dblClickFullscreen() {
+    if(dblClickAllowed) {
+        toggleFullscreen();
+    }
+}
+
+function toggleFullscreen() {
+    if(isFullscreen) {
+        exitFullscreen();
+    } else {
+        enterFullscreen();
+    }
+}
+
 function enterFullscreen() {
     isFullscreen = true;
     document.documentElement.requestFullscreen();
@@ -192,9 +212,10 @@ function saveToLocalStorage() {
         "patternIndex": `+patternIndex+`,
         "fontSize": `+fontSize+`,
         "opacity": `+opacity+`,
+        "dblClickAllowed": `+dblClickAllowed+`,
         "color": "`+color+`",
         "colorMarkers": "`+colorMarkers+`",
-        "disabledKeys": `+disabledKeys+`
+        "disabledKeys": `+disabledKeys+`  
     }`
     localStorage.setItem('colorMarker', data);
 }
