@@ -11,6 +11,7 @@ let hotSwapped;
 let rootHtmlFile = "index.html";
 let dockAvailable = false;
 let lockKeyboard = true;
+let localStorageSettings;
 
 async function setup() {
   // Get Workstation parameter
@@ -47,6 +48,11 @@ async function setup() {
     // Use default, git-synchronized settings 
     data = await parseFile("workstations/" + workstation + "/settings.json");
   }
+
+  // get seom data from localstorage
+  localStorageSettings = JSON.parse(localStorage.getItem('htmlDesktop-settings')) ||  {};
+  if(localStorageSettings.hasOwnProperty('lockKeyboard')) setKeyboardLock(localStorageSettings.lockKeyboard)
+
 
   // If loadSaveFile OR workstation defined in URL:
   // Load & define all the settings

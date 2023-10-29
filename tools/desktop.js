@@ -609,6 +609,8 @@ function clearSystemMessages() {
 function setKeyboardLock(state) {
     // Set new state
     lockKeyboard = state;
+    localStorageSettings.lockKeyboard = state;
+    localStorage.setItem('htmlDesktop-settings', JSON.stringify(localStorageSettings));
     
     // Make GUI to reflect state
     gebi(`keyboardLockGui-false`).classList.add('whiteBgTransparent')
