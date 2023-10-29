@@ -719,7 +719,7 @@ function screensaverHide() {
     screensaver.pause(); screensaver.currentTime=0; hide(screensaver.id);
 }
 
-function printElement(title, element) {
+async function printElement(title, element) {
     let mywindow = window.open('', 'PRINT', 'height=400,width=600');
     let fontFace = `@font-face {
         font-family: 'Material Icons';
@@ -731,12 +731,13 @@ function printElement(title, element) {
              url('tools/fontface/MaterialIcons-Regular.ttf') format('truetype');
       }`;
     mywindow.document.write('<html><head><title>' + title  + '</title>');
-    mywindow.document.write(`<style>${fontFace}body { font-family: Verdana, Geneva, Tahoma, sans-serif; } li { list-style-type:none; line-height:2.2em; } .keyboardKey { border:solid black thin; padding:.25em .5em; border-radius:.3em; } i { font-family: 'Material Icons'; font-style: normal; } </style>`);
+    mywindow.document.write(`<style>${fontFace} body { font-family: Verdana, Geneva, Tahoma, sans-serif; } li { list-style-type:none; line-height:2.2em; } .keyboardKey { border:solid black thin; padding:.25em .5em; border-radius:.3em; } i { font-family: 'Material Icons'; font-style: normal; } </style>`);
     mywindow.document.write('</head><body >');
     mywindow.document.write('<h1>' + title  + '</h1>');
     mywindow.document.write(element.innerHTML);
     mywindow.document.write('<br><br><br><span style="font-size:.8em">www.telefabi.ch/htmlDesktop/howto</span>');
     mywindow.document.write('</body></html>');
+    await delay(250); // wait for font to render
     mywindow.document.close(); // necessary for IE >= 10
     mywindow.focus(); // necessary for IE >= 10*/
     mywindow.print();
