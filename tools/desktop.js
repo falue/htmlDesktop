@@ -650,6 +650,7 @@ function keyboardController(event) {
 
         let key = event.key;
         switch(key) {
+            case "*": showSystemMessage({title: "Remote Control works!", description: "You can use every button now.", icon:"podcasts", timeOut: 1500}); break;
             case "b": case "1": toggle('blackout'); break;
             case "l": case "2": showLockScreen(); break;
             case "q": case "3": shutDown(); break;
