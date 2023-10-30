@@ -161,7 +161,6 @@ function setMarkerColor(newColor) {
 
 function greenKeyboardController(event) {
     let key = event.key;
-    cl(key)
     if(!disabledKeys) {
         switch(key) {
             case "f": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
@@ -170,6 +169,10 @@ function greenKeyboardController(event) {
                 parent.keyboardController(event);
                 break;
         }
+    } else if(key == "Escape" || key == "5") {
+        parent.fullscreenGreenscreen();
+    } else if( key == "1") {
+        parent.keyboardController(event);
     }
 }
 

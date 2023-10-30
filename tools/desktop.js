@@ -632,11 +632,29 @@ function keyboardController(event) {
 
     // Ignore presses in textareas and inputs, but NOT buttons because mostly fake
     if(event.target.localName !== "textarea" && event.target.localName !== "input") {
+        let key = event.key;
 
-        // If screensaver or blackout is visible, ignore all keypresses and hide both
-        if(!gebi('blackout').classList.contains('hide') || !gebi('screensaver').classList.contains('hide')) {
+        // Forbid ervery key when green screen is shown
+        if(!gebi('greenscreen').classList.contains('hide') && key !== "Escape" && key !== "1" && key !== "5") {
+            cl("captured by greenscreen")
+            return;
+        }
+
+        // "Any key" wakes up from blackout. only "5" makes greenscreen
+        if(!gebi('blackout').classList.contains('hide')) {
             epD(event);
-            blackoutHide();
+            if(key === "5") {
+                setOverlayColor("GREEN");
+            } else {
+                setOverlayColor("BLACK");
+            }
+            return;
+        }
+        
+        // Wake up from screensaver
+        if(!gebi('screensaver').classList.contains('hide')) {
+            cl('captured screensaver!!')
+            epD(event);
             screensaverHide();
             return;
         }
@@ -647,17 +665,16 @@ function keyboardController(event) {
             return;
         }
 
-
-        let key = event.key;
         switch(key) {
             case "*": showSystemMessage({title: "Remote Control works!", description: "You can use every button now.", icon:"podcasts", timeOut: 1500}); break;
-            case "b": case "1": toggle('blackout'); break;
+            case "b": case "1": setOverlayColor('BLACK'); break;
             case "l": case "2": showLockScreen(); break;
             case "q": case "3": shutDown(); break;
-            case "x": case "4": screenSaver();
-            case "m": case "5": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
-            case "C": case "6": clearSystemMessages(); break;
-            // case "Escape": case "0": screensaverHide(); break;
+            case "x": case "4": screenSaver(); break;
+            case "g": case "5": setOverlayColor('GREEN'); break;
+            case "m": case "6": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
+            case "C": case "7": clearSystemMessages(); break;
+            case "Escape": case "0": setOverlayColor('NONE'); break;
 
             case "c": if(!lockKeyboard) { epD(event); createShortcut(); } break;
             case "s": if(!lockKeyboard) { epD(event); save(); } break;
@@ -696,6 +713,32 @@ function keyboardController(event) {
     }
 }
 
+let overlayColor = 'NONE';
+
+// This forgets the previous color, but also does kinda what I want.
+function setOverlayColor(buttonColor) {
+  if (overlayColor === buttonColor) {
+    overlayColor = 'NONE';
+  } else {
+    overlayColor = buttonColor;
+  }
+  // Perform actions based on the new state
+  switch (overlayColor) {
+    case 'BLACK':
+      hide('greenscreen');
+      show('blackout');
+      break;
+    case 'GREEN':
+      show('greenscreen');
+      blackoutHide();
+      break;
+    case 'NONE':
+      hide('greenscreen');
+      blackoutHide();
+      break;
+  }
+}
+
 function blackoutHide() {
     hide('blackout');
     if(!gebi('lockScreen').classList.contains('hide')) {
@@ -709,6 +752,17 @@ function blackoutHide() {
     }
 }
 
+function fullscreenGreenscreen() {
+    hide('actionMenu');
+    if(!gebi('greenscreen').classList.contains('hide') && !gebi('blackout').classList.contains('hide')) {
+        blackoutHide();
+    } else if(!gebi('greenscreen').classList.contains('hide')) {
+        hide('greenscreen');
+    } else {
+        show('greenscreen');
+        gebi('greenscreen-iframe').focus();
+    }
+}
 
 function screenSaver() {
     gebi('screensaverSrc').setAttribute('src', 'os/'+os+'/screensaver.mp4');

@@ -86,8 +86,13 @@
       </div>
     </div>
 
+    <!-- GREENSCREEN -->
+    <div id="greenscreen" class="fixed blackBg maxWidth maxHeight hide" style="z-index: 9999;">
+      <iframe id="greenscreen-iframe" src="programs/colorMarker/index.html?disabledKeys=true" class="fixed maxHeight maxWidth"></iframe>
+    </div>
+
     <!-- BLACKOUT -->
-    <div id="blackout" onclick="blackoutHide();" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 9999;"></div>
+    <div id="blackout" onclick="setOverlayColor('BLACK');" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 11111;"></div>
 
     <!-- STARTUP -->
     <div id="startUp" data-is-starting-up="false" onclick="startUp();" class="fixed blackBg white maxWidth maxHeight hide noCursor padding1" style="z-index: 9999;">
@@ -496,10 +501,10 @@
                   <input type="range" class="maxWidth padding2 borderBox" id="osNotificationsDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
                 </div>
                 <div class="right top absolute nudge-y-12">
-                  <span class="tooltip pointer" data-title="Test this message [m]" onclick="triggerActionOrMessage(gebi('osNotificationsSelect').value);">
+                  <span class="tooltip pointer" data-title="Test this message [m] or [6]" onclick="triggerActionOrMessage(gebi('osNotificationsSelect').value);">
                     <i class="material-icons blueBg small padding25">notifications_active</i>
                   </span>
-                  <span class="tooltip pointer" data-title="Clear [shift]+[C]" onclick="clearSystemMessages();">
+                  <span class="tooltip pointer" data-title="Clear [shift]+[C] or [7]" onclick="clearSystemMessages();">
                     <i class="material-icons blueBg small padding25">notifications_off</i>
                   </span>
                 </div>
@@ -532,24 +537,24 @@
                   </span>
                 </div>
               </li>
-              <li class="pointer" id="logoutActionActionMenu" onclick="showLockScreen(); hide('actionMenu');">
-                <i class="material-icons blue small">logout</i>
-                Logout User
-              </li>
-              <li class="tooltip pointer" data-title="Keyboard: [b]" onclick="show('blackout'); hide('actionMenu');">
+              <li class="tooltip pointer" data-title="Keyboard: [b] or [1]" onclick="show('blackout'); hide('actionMenu');">
                 <!-- <i class="material-icons blue small">flare</i> -->
                 <i class="material-icons blue small">stream</i>
                 Blackout
               </li>
-              <li class="tooltip pointer" data-title="Keyboard: [-]" onclick="shutDown(); hide('actionMenu');">
+              <li class="tooltip pointer" data-title="Keyboard: [l] or [2]" id="logoutActionActionMenu" onclick="showLockScreen(); hide('actionMenu');">
+                <i class="material-icons blue small">logout</i>
+                Logout User
+              </li>
+              <li class="tooltip pointer" data-title="Keyboard: [q] or [3]" onclick="shutDown(); hide('actionMenu');">
                 <i class="material-icons blue small">power_settings_new</i>
                 Shut down
               </li>
-              <li class="pointer" onclick="screenSaver(); hide('actionMenu');">
+              <li class="tooltip pointer" data-title="Keyboard: [x] or [4]" onclick="screenSaver(); hide('actionMenu');">
                 <i class="material-icons blue small">dark_mode</i>
                 Screensaver
               </li>
-              <li class="tooltip pointer" data-title="Leave desktop!" onclick="window.location.href = 'programs/colorMarker/index.html'">
+              <li class="tooltip pointer" data-title="Keyboard: [g] or [5]" onclick="fullscreenGreenscreen();">
                 <i class="material-icons blue small">palette</i>
                 Fullscreen-Greenscreen
               </li>
@@ -977,8 +982,9 @@
               <li class="alignLeft"><span class="blueBg keyboardKey code">2</span> or <span class="blueBg keyboardKey code">l</span> Logout animation</li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">3</span> or <span class="blueBg keyboardKey code">q</span> Shut down animation</li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">4</span> or <span class="blueBg keyboardKey code">x</span> Screensaver</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">5</span> or <span class="blueBg keyboardKey code">m</span> Display notification or start action</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">6</span> or <span class="blueBg keyboardKey code">shift</span>+<span class="blueBg keyboardKey code">C</span> Clear notification / action</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">5</span> or <span class="blueBg keyboardKey code">g</span> Fullscreen-Greenscreen</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">6</span> or <span class="blueBg keyboardKey code">m</span> Display notification or start action</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">7</span> or <span class="blueBg keyboardKey code">shift</span>+<span class="blueBg keyboardKey code">C</span> Clear notification / action</li>
 
               <li style="margin-top:2em"><h3 class="blue">META KEYS</h3>Available only if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i></li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">a</span> Action menu</li>
