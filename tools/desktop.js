@@ -130,6 +130,41 @@ async function showLockScreen() {
     gebi('blackout').classList.remove("fadeInFast");
 }
 
+// FIXME: DOES NOT LOAD
+/* function calcBootSpeed(speed) {
+    let step;
+    switch(speed) {
+        case 3: step = 1; break;
+        case 6: step = 2; break;
+        case 15: step = 3; break;
+        case 22: step = 4; break;
+        case 33: step = 5; break;
+        case 42: step = 6; break;
+        case 55: step = 7; break;
+        default: step = 3; break;
+    }
+    setBootSpeed(step)
+} */
+
+function setBootSpeed(step) {
+    let indicator = gebi('bootSpeedIndicator');
+    gebi('bootSpeedSlider').value = step;
+    let text = ""
+    switch(parseInt(step)) {
+        case 1: bootSpeed = 3; text = 'ludicrous [~4s]'; break;
+        case 2: bootSpeed = 6; text = 'superfast [~7s]'; break;
+        case 3: bootSpeed = 15; text = 'fast-ish [~12s]'; break;
+        case 4: bootSpeed = 22; text = 'normal [~16s]'; break;
+        case 5: bootSpeed = 33; text = 'sluggish [~22s]'; break;
+        case 6: bootSpeed = 42; text = 'slow [~28s]'; break;
+        case 7: bootSpeed = 55; text = 'almost broken [~35s]'; break;
+        default: bootSpeed = 15; text = 'fast-ish [~12s]'; break;
+    }
+    gebi('bootSpeedSlider').setAttribute('data-speed', bootSpeed);
+    indicator.innerHTML = text;
+    // TODO: save step to.. everythibng
+}
+
 async function shutDown(currentScreen) {
     let userImage = await fileExists('workstations/'+workstation+'/userpicture.jpg', 'os/_generic/userpicture.jpg');
     gebi('lockScreenUserPicture').src = userImage;
@@ -165,6 +200,7 @@ async function shutDown(currentScreen) {
 }
 
 async function startUp() {
+    let speed = bootSpeed;
     // user has clicked
     // user has pressed any key
     let startUp = gebi('startUp');
@@ -177,13 +213,13 @@ async function startUp() {
     let startUpCode = gebi('startUp-code');
     let startUpLoaderBar = gebi('startUp-loader-bar');
     
-    await writeStartupTexts(startUpCode, 5000);
-    await delay(500);
+    await writeStartupTexts(startUpCode, 400*speed);
+    await delay(42*speed);
     startUpCode.innerHTML = '';
-    await delay(1000);
+    await delay(500);
     show('startUp-loader');
-    await counter("startUp-loader-bar", "%", 2500, 92, 5, 100);
-    await delay(3000);
+    await counter("startUp-loader-bar", "%", 250*speed, 92, 5, 100);
+    await delay(1000);
     
     gebi('startUp').classList.add("fadeOutFast");
     // Focus login input
@@ -192,6 +228,7 @@ async function startUp() {
     } else {
         gebi('lockScreenPassword').focus();
     }
+    // DELAY LOCKED to 2500 because css
     await delay(2500);  // wait for css animation
     
     // on end, destroy stuff and reset
@@ -204,7 +241,7 @@ async function startUp() {
 }
 
 async function writeStartupTexts(element, totDuration) {
-    let percentile = totDuration/20;
+    let percentile = totDuration/17;
     
     element.innerHTML += "\[  OK  \] Started Show Plymouth Boot Screen.<br>";
     await delay(percentile+randomBetween(-150,150));

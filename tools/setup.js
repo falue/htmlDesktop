@@ -11,6 +11,7 @@ let hotSwapped;
 let rootHtmlFile = "index.html";
 let dockAvailable = false;
 let lockKeyboard = true;
+let bootSpeed = 3;
 let localStorageSettings;
 
 async function setup() {
@@ -69,7 +70,6 @@ async function setup() {
     darkMode = settings.darkMode;
     username = settings.username;
     password = settings.password;
-
     windows = data.windows;
     shortcuts = data.shortcuts;
     systemIcons = data.systemIcons;

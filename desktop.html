@@ -546,9 +546,13 @@
                 <i class="material-icons blue small">logout</i>
                 Logout User
               </li>
-              <li class="tooltip pointer" data-title="Keyboard: [q] or [3]" onclick="shutDown(); hide('actionMenu');">
-                <i class="material-icons blue small">power_settings_new</i>
-                Shut down
+              <li class="tooltip pointer" data-title="Keyboard: [q] or [3] (Hint: does not get saved)">
+                <div onclick="shutDown(); hide('actionMenu');">
+                  <i class="material-icons blue small">power_settings_new</i>
+                  Shut down
+                </div>
+                <div id="bootSpeedIndicator" class="small grey right top padding50">fast-ish [~12s]</div>
+                <input type="range" class="maxWidth padding2 borderBox" id="bootSpeedSlider" value="3" min="1" max="7" oninput="setBootSpeed(this.value);"/>
               </li>
               <li class="tooltip pointer" data-title="Keyboard: [x] or [4]" onclick="screenSaver(); hide('actionMenu');">
                 <i class="material-icons blue small">dark_mode</i>
