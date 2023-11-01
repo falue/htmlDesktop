@@ -643,7 +643,7 @@ async function grabWindowFromWorkstation() {
     }
   }
   let textContent = `Available windows: ${countWindows} from ${countWorkstations} workstations<br>
-    <div class="chooseBox radius3"><ul>${list}</ul></div>`;
+    <div class="chooseBox radius3 maxHeight noScrollbar"><ul>${list}</ul></div>`;
   showDialog('Grab window from another workstation', textContent);
 }
 
