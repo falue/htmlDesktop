@@ -669,11 +669,17 @@ function keyboardController(event) {
 
     // Ignore presses in textareas and inputs, but NOT buttons because mostly fake
     if(event.target.localName !== "textarea" && event.target.localName !== "input") {
-        let key = event.key;
+        // Need .code not .key because i need to check for .altKey - which makes "å" out of "a" depending on the keyboard layout.
+        let key = event.code;
+        // 
+        key = key.replace("Numpad", "");  // For numerals on keypad
+        key = key.replace("Digit", "");   // For numerals on top of keyboard
+        if(event.shiftKey) key = "shift-"+key;
+        if(key==="Multiply") key = "*";   // For star on keypad
+        if(event.key==="*") key = "*";    // For shift + 3
 
         // Forbid ervery key when green screen is shown
         if(!gebi('greenscreen').classList.contains('hide') && key !== "Escape" && key !== "1" && key !== "5") {
-            cl("captured by greenscreen")
             return;
         }
 
@@ -690,7 +696,6 @@ function keyboardController(event) {
         
         // Wake up from screensaver
         if(!gebi('screensaver').classList.contains('hide')) {
-            cl('captured screensaver!!')
             epD(event);
             screensaverHide();
             return;
@@ -702,23 +707,32 @@ function keyboardController(event) {
             return;
         }
 
+
+        // For main keyboard, all hotkeys need ctrl to work!
+        //   This is down here because hotkeys above here should work without alt,
+        //   like leaving the screensaver, a blackout or the greenscreen
+        // ATTENTION: alt+m is used by eddy-g to toggle menu bar; alt+h is "go to home"!
+        if(!event.altKey && !["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "Escape"].includes(key)) {
+            return;
+        }
+
         switch(key) {
             case "*": showSystemMessage({title: "Remote Control works!", description: "You can use every button now.", icon:"podcasts", timeOut: 1500}); break;
-            case "b": case "1": setOverlayColor('BLACK'); break;
-            case "l": case "2": showLockScreen(); break;
-            case "q": case "3": shutDown(); break;
-            case "x": case "4": screenSaver(); break;
-            case "g": case "5": setOverlayColor('GREEN'); break;
-            case "m": case "6": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
-            case "C": case "7": clearSystemMessages(); break;
+            case "KeyB": case "1": setOverlayColor('BLACK'); break;
+            case "KeyL": case "2": showLockScreen(); break;
+            case "KeyQ": case "3": shutDown(); break;
+            case "KeyX": case "4": screenSaver(); break;
+            case "KeyG": case "5": setOverlayColor('GREEN'); break;
+            case "KeyN": case "6": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
+            case "shift-KeyC": case "7": clearSystemMessages(); break;  //
             case "Escape": case "0": setOverlayColor('NONE'); break;
 
-            case "c": if(!lockKeyboard) { epD(event); createShortcut(); } break;
-            case "s": if(!lockKeyboard) { epD(event); save(); } break;
-            case "S": if(!lockKeyboard) { epD(event); saveAs(false); } break;
-            case "d": if(!lockKeyboard) { clutterDesktop(4); } break;
-            case "w": if(!lockKeyboard) { startDefaultProgram(); } break;
-            case "a": if(!lockKeyboard) { toggle('actionMenu'); } break;
+            case "KeyC": if(!lockKeyboard) { epD(event); createShortcut(); } break;
+            case "KeyS": if(!lockKeyboard) { epD(event); save(); } break;
+            case "shift-KeyS": if(!lockKeyboard) { epD(event); saveAs(false); } break;
+            case "KeyD": if(!lockKeyboard) { clutterDesktop(4); } break;
+            case "KeyW": if(!lockKeyboard) { startDefaultProgram(); } break;
+            case "KeyA": if(!lockKeyboard) { toggle('actionMenu'); } break;
 
             /* case "1": if(!lockKeyboard) { epD(event); startDefaultProgram('terminal', 6); } break;
             case "2": if(!lockKeyboard) { startDefaultProgram('fileManager'); } break;

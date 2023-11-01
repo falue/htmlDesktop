@@ -308,7 +308,7 @@
           <div class="right top padding75 small white alignRight marginX1">
             <span class="italics op75">For your eyes only!</span>
             <br>
-            Toggle this windows by pressing 'a'
+            Toggle this windows by pressing [alt]+[a]
           </div>
         </div>
 
@@ -352,12 +352,12 @@
             </p>
             <ul>
               <li class="centerText">
-                <span class="saveButtonsTooltips tooltip pointer" data-title="Temporary save appearence & positions [s]" onclick="save(false);">
+                <span class="saveButtonsTooltips tooltip pointer" data-title="Temporary save appearence & positions [alt]+[s]" onclick="save(false);">
                   <i class="material-icons blue small">save</i>
                   Save
                 </span>
                 <span class="grey marginX50">|</span>
-                <span class="saveButtonsTooltips tooltip pointer" data-title="Temporary save these settings as a new file [shift]+[S]" onclick="saveAs(false);">
+                <span class="saveButtonsTooltips tooltip pointer" data-title="Temporary save these settings as a new file [alt]+[shift]+[S]" onclick="saveAs(false);">
                   <i class="material-icons blue small">save</i>
                   Save as..
                 </span>
@@ -447,12 +447,12 @@
           <div class="chooseBoxTitle black greyBg">Desktop & screen</div>
             <div class="chooseBox radius5">
             <ul>
-              <li class="tooltip pointer" data-title="Keyboard: [c]" onclick="createShortcut(); hide('actionMenu');">
+              <li class="tooltip pointer" data-title="Keyboard: [alt]+[c]" onclick="createShortcut(); hide('actionMenu');">
                 <i class="material-icons blue small">queue</i>
                 Add desktop shortcut..
               </li>
               <li class="relative pointer">
-                <div class="tooltip" data-title="Add 4 random icons to desktop [d]" onclick="clutterDesktop(4);">
+                <div class="tooltip" data-title="Add 4 random icons to desktop: [alt]+[d]" onclick="clutterDesktop(4);">
                   <i class="material-icons blue small">scatter_plot</i>
                   Clutter shortcuts
                 </div>
@@ -470,7 +470,7 @@
               </li>
 
               <li class="relative pointer">
-                <div class="tooltip" data-title="Open a random program [w]" onclick="startDefaultProgram();">
+                <div class="tooltip" data-title="Open a random program [alt]+[w]" onclick="startDefaultProgram();">
                   <i class="material-icons blue small">dynamic_feed</i>
                   Clutter windows
                 </div>
@@ -488,9 +488,9 @@
 
               <!-- System messages -->
               <li id="osNotificationSettingsContainer" class="relative noLiHover">
-                <div class="tooltip pointer" data-title="Click to set - [m] to display" onclick="toggle('osNotificationSettings'); gebi('osNotificationSettingsArrow').classList.toggle('rotate180');">
+                <div class="tooltip pointer" data-title="Click to set - [alt]+[n] to display" onclick="toggle('osNotificationSettings'); gebi('osNotificationSettingsArrow').classList.toggle('rotate180');">
                   <i class="material-icons blue small">notifications</i>
-                  Action/system message
+                  Action/system notification
                   <i id="osNotificationSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
                 </div>
                 <div id="osNotificationSettings" class="hide padding05">
@@ -499,16 +499,16 @@
                   <br>
                   <span class="small grey tooltip" data-title="Time until the message is shown">
                     <span id="osNotificationsDurationUi" class="green">No delay</span>
-                    before pressing [m] to show message
+                    before pressing [alt]+[n] to show message
                   </span>
                   <br>
                   <input type="range" class="maxWidth padding2 borderBox" id="osNotificationsDurationSlider" value="0" min="0" max="60" oninput="setDelayUi(this.value);"/>
                 </div>
                 <div class="right top absolute nudge-y-12">
-                  <span class="tooltip pointer" data-title="Test this message [m] or [6]" onclick="triggerActionOrMessage(gebi('osNotificationsSelect').value);">
+                  <span class="tooltip pointer" data-title="Test this message [alt]+[n] or [6]" onclick="triggerActionOrMessage(gebi('osNotificationsSelect').value);">
                     <i class="material-icons blueBg small padding25">notifications_active</i>
                   </span>
-                  <span class="tooltip pointer" data-title="Clear [shift]+[C] or [7]" onclick="clearSystemMessages();">
+                  <span class="tooltip pointer" data-title="Clear [alt]+[shift]+[C] or [7]" onclick="clearSystemMessages();">
                     <i class="material-icons blueBg small padding25">notifications_off</i>
                   </span>
                 </div>
@@ -541,16 +541,16 @@
                   </span>
                 </div>
               </li>
-              <li class="tooltip pointer" data-title="Keyboard: [b] or [1]" onclick="show('blackout'); hide('actionMenu');">
+              <li class="tooltip pointer" data-title="Keyboard: [alt]+[b] or [1]" onclick="show('blackout'); hide('actionMenu');">
                 <!-- <i class="material-icons blue small">flare</i> -->
                 <i class="material-icons blue small">stream</i>
                 Blackout
               </li>
-              <li class="tooltip pointer" data-title="Keyboard: [l] or [2]" id="logoutActionActionMenu" onclick="showLockScreen(); hide('actionMenu');">
+              <li class="tooltip pointer" data-title="Keyboard: [alt]+[l] or [2]" id="logoutActionActionMenu" onclick="showLockScreen(); hide('actionMenu');">
                 <i class="material-icons blue small">logout</i>
                 Logout User
               </li>
-              <li class="tooltip pointer" data-title="Keyboard: [q] or [3] (Hint: does not get saved)">
+              <li class="tooltip pointer" data-title="Keyboard: [alt]+[q] or [3] (Hint: does not get saved)">
                 <div onclick="shutDown(); hide('actionMenu');">
                   <i class="material-icons blue small">power_settings_new</i>
                   Shut down
@@ -558,11 +558,11 @@
                 <div id="bootSpeedIndicator" class="small grey right top padding50">fast-ish [~12s]</div>
                 <input type="range" class="maxWidth padding2 borderBox" id="bootSpeedSlider" value="3" min="1" max="7" oninput="setBootSpeed(this.value);"/>
               </li>
-              <li class="tooltip pointer" data-title="Keyboard: [x] or [4]" onclick="screenSaver(); hide('actionMenu');">
+              <li class="tooltip pointer" data-title="Keyboard: [alt]+[x] or [4]" onclick="screenSaver(); hide('actionMenu');">
                 <i class="material-icons blue small">dark_mode</i>
                 Screensaver
               </li>
-              <li class="tooltip pointer" data-title="Keyboard: [g] or [5]" onclick="fullscreenGreenscreen();">
+              <li class="tooltip pointer" data-title="Keyboard: [alt]+[g] or [5]" onclick="fullscreenGreenscreen();">
                 <i class="material-icons blue small">palette</i>
                 Fullscreen-Greenscreen
               </li>
@@ -986,21 +986,21 @@
           <div class="editIcon radius5 alignCenter chooseBox">
             <ul id="keyboardControlsList">
               <li><h3 class="blue">USER KEYS</h3>Available if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i> or <i class="material-icons white blueBg small padding25 radius3">lock</i>:</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">1</span> or <span class="blueBg keyboardKey code">b</span> Blackout screen</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">2</span> or <span class="blueBg keyboardKey code">l</span> Logout animation</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">3</span> or <span class="blueBg keyboardKey code">q</span> Shut down animation</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">4</span> or <span class="blueBg keyboardKey code">x</span> Screensaver</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">5</span> or <span class="blueBg keyboardKey code">g</span> Fullscreen-Greenscreen</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">6</span> or <span class="blueBg keyboardKey code">m</span> Display notification or start action</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">7</span> or <span class="blueBg keyboardKey code">shift</span>+<span class="blueBg keyboardKey code">C</span> Clear notification / action</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">1</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">b</span> Blackout screen</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">2</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">l</span> Logout animation</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">3</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">q</span> Shut down animation</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">4</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">x</span> Screensaver</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">5</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">g</span> Fullscreen-Greenscreen</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">6</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">n</span> Display notification or start action</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">7</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">shift</span>+<span class="blueBg keyboardKey code">C</span> Clear notification / action</li>
 
-              <li style="margin-top:2em"><h3 class="blue">META KEYS</h3>Available only if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i></li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">a</span> Action menu</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">c</span> Create new shortcut</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">s</span> Save (overwrite)</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">shift</span>+<span class="blueBg keyboardKey code">S</span> Save as new file</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">d</span> Clutter desktop with files</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">w</span> Clutter screen with windows</li>
+              <li style="margin-top:2em"><h3 class="blue">OPERATOR KEYS</h3>Available only if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i></li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">a</span> Action menu</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">c</span> Create new shortcut</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">s</span> Save (overwrite)</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">shift</span>+<span class="blueBg keyboardKey code">S</span> Save as new file</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">d</span> Clutter desktop with files</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">w</span> Clutter screen with windows</li>
               
               <li class="red italics" style="margin-top:1em">If lock is <i class="material-icons blueBg small red padding25 radius3">do_disturb</i> no keypress is doing anything!</li>
 
