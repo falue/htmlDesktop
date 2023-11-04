@@ -166,13 +166,13 @@ function greenKeyboardController(event) {
             case "f": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
             case " ": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
             default:
-                parent.keyboardController(event);
+                if(window.location !== window.parent.location) parent.keyboardController(event);
                 break;
         }
     } else if(key == "Escape" || key == "5") {
-        parent.fullscreenGreenscreen();
+        if(window.location !== window.parent.location) parent.fullscreenGreenscreen();
     } else if( key == "1") {
-        parent.keyboardController(event);
+        if(window.location !== window.parent.location) parent.keyboardController(event);
     }
 }
 
@@ -188,6 +188,7 @@ function dblClickFullscreen() {
 }
 
 function toggleFullscreen() {
+    if(window.location === window.parent.location) return;
     if(isFullscreen) {
         exitFullscreen();
     } else {
@@ -196,6 +197,7 @@ function toggleFullscreen() {
 }
 
 function enterFullscreen() {
+    if(window.location === window.parent.location) return;
     isFullscreen = true;
     document.documentElement.requestFullscreen();
 }
