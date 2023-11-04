@@ -163,14 +163,12 @@ function setMarkerColor(newColor) {
 function greenKeyboardController(event) {
     let key = event.key;
     let alt = event.altKey;
-    cl("pusehd")
-    cl(key)
     if(!disabledKeys) {
         switch(key) {
             case "1": if(window.location === window.parent.location) { toggle('body'); }; break;
             // case "b": if(alt && window.location === window.parent.location) { cl("make black") }; break;
             case "f": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
-            case "/": cl('We will push! We will push the button, we will push!'); if(isFullscreen) { exitFullscreen() } else { enterFullscreen(true) }; break;
+            case "/": if(isFullscreen) { exitFullscreen() } else { enterFullscreen(true) }; break;
             case " ": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
             default:
                 if(window.location !== window.parent.location) parent.keyboardController(event);
