@@ -163,6 +163,8 @@ function setMarkerColor(newColor) {
 function greenKeyboardController(event) {
     let key = event.key;
     let alt = event.altKey;
+    cl("pusehd")
+    cl(key)
     if(!disabledKeys) {
         switch(key) {
             case "1": if(window.location === window.parent.location) { toggle('body'); }; break;
