@@ -79,6 +79,7 @@ async function setup() {
     if(window.location !== window.parent.location) {
         hide('backToIndex');
     } else {
+        show('blackoutHint');
         hide('fullscreenSettings');
     }
 }
@@ -161,8 +162,11 @@ function setMarkerColor(newColor) {
 
 function greenKeyboardController(event) {
     let key = event.key;
+    let alt = event.altKey;
     if(!disabledKeys) {
         switch(key) {
+            case "1": if(window.location === window.parent.location) { toggle('body'); }; break;
+            // case "b": if(alt && window.location === window.parent.location) { cl("make black") }; break;
             case "f": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
             case " ": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
             default:

@@ -1,3 +1,7 @@
+html {
+    background-color: black;
+}
+
 body {
     overflow: auto;
     background-color: rgb(0,255,0);

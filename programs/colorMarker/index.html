@@ -84,6 +84,13 @@
         </div>
       </fieldset>
 
+      <fieldset id="blackoutHint" class="radius3 hide">
+        <legend>Blackout</legend>
+        <div class="small marginY1">
+          <p>Press [1] to toggle entire screen to black.</p>
+        </div>
+      </fieldset>
+
       <fieldset id="fullscreenSettings" class="radius3">
         <legend>Fullscreen</legend>
         <div class="centerContent">
@@ -91,7 +98,7 @@
           <button class="systemButton marginX1" onclick="exitFullscreen(); hide('settings');">EXIT FULLSCREEN</button>
         </div>
         <div class="small marginY1">
-          <p>Press "F" or SPACE to enter Fullscreen.</p>
+          <p>Press [F] or [SPACE] to enter Fullscreen.</p>
           <p>If you're looking at the fullscreen-greenscreen now, press [Escape] [5] to hide it again.</p>
           <input id="disabledKeys" type="checkbox" class="large" style="margin-right:.5em" onchange="changeDisablingKeys(this.checked)"><label for="disabledKeys">Disable Keyboard input for slashing on the keyboard everywhere</label>
           <br>
