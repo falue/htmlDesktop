@@ -3,381 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>PLAYBACK</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body,
-        html {
-            padding: 0;
-            margin: 0;
-            background-color: black;
-            height: 100%;
-            color: white;
-            font: 13px "Helvetica", sans-serif;
-        }
-
-        body {
-            display: flex;
-            box-orient: horizontal;
-            background: black;
-            color: white;
-        }
-
-        aside {
-            width: 420px;
-            background: #444;
-            overflow-y: auto;
-        }
-
-        aside div {
-            padding: 5px 20px;
-            /* width: 420px; */
-            border-bottom: 1px solid #222;
-            border-top: 1px solid #888;
-            transition: background 0.3s ease;
-        }
-
-        aside div:first-child {
-            padding-top: 20px;
-        }
-
-        aside div:last-child {
-            border-radius: 0 0 4px 0;
-        }
-
-        aside div:not(.hotkeys):hover {
-            background: #666;
-        }
-
-        label {
-            display: block;
-            font: 13px "Helvetica", sans-serif;
-            color: white;
-        }
-
-        strong {
-            font-weight: bold;
-            padding: 0 3px;
-            user-select: none;
-        }
-
-        code {
-            display: inline-block;
-            font: 12px "Courier new";
-            float: right;
-        }
-
-        video,
-        select,
-        button:focus, button:active,
-        input:focus, input:active {
-            outline: none;
-        }
-
-        select, input, button {
-            background: #777;
-            width: 100%;
-            height: 20px;
-            border: none;
-            color: white;
-            border-radius: 3px;
-        }
-
-        input, button {
-            appearance: none !important;
-        }
-
-        select:hover, input:hover, button:hover {
-            background: #999;
-            cursor: pointer;
-        }
-
-        input[type="range"]:hover {
-            cursor: col-resize;
-        }
-
-        .hide {
-            display: none !important;
-        }
-
-        button.small {
-            width: auto;
-        }
-
-        button.medium {
-            width: auto;
-            min-width: 50px;
-            margin: 0.5em 0;
-        }
-
-        input::-webkit-slider-thumb {
-            appearance: none !important;
-            width: 32px;
-            height: 20px;
-            background: #111;
-            border-radius: 3px;
-        }
-
-        .noScrollbar::-webkit-scrollbar { display: none; }
-        .noScrollbar { scrollbar-width: none; }
-
-        section {
-            box-flex: 1;
-            padding: 0;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        video {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: black;
-            z-index: 2;
-        }
-
-        video.noControls {
-            cursor: none;
-        }
-
-        .menu-hidden {
-            position: fixed;
-            top:0;
-            left: 0;
-            width: 40px;
-            height: 40px;
-            z-index: 3;
-        }
-
-        .hotkeys span {
-            border: solid grey thin;
-            border-radius: 3px;
-            padding: 0 .25em;
-        }
-
-        .small {
-        font-size: 0.75em;
-        }
-
-        /* hide controls in fullscreen*/
-        .noControls .custom-video-controls {
-            z-index: 2147483647;
-        }
-
-        video.noControls::-webkit-media-controls-enclosure {
-            display: none !important;
-        }
-
-        video.noControls::-webkit-media-controls {
-            display: none !important;
-        }
-
-        .noControls::-webkit-media-controls {
-            display: none !important;
-        }
-    </style>
-
-    <script>
-        let timeout;
-        let timeoutSpeedChange;
-        let video;
-        let duration;
-        function setup() {
-            video = document.getElementById("video");
-            duration = video.duration;
-            document.getElementById('duration').innerHTML = duration;
-        }
-
-        // Feel free to fork and improve on this if you'd like
-        function setColors() {
-            let speed = document.getElementById("speed").value;
-            let blur = document.getElementById("blur").value;
-            let saturate = document.getElementById("saturate").value;
-            let hue = document.getElementById("hue").value;
-            let brightness = document.getElementById("brightness").value;
-            let contrast = document.getElementById("contrast").value;
-            let invert = document.getElementById("invert").value;
-            let sepia = document.getElementById("sepia").value;
-
-            let filters = "blur(" + blur + "px) saturate(" + saturate + ") hue-rotate(" + hue + "deg) brightness(" + brightness + "%) contrast(" + contrast + ") invert(" + invert + ") sepia(" + sepia + ")";
-            video.style.webkitFilter = filters;
-            video.style.filter = filters;
-            changeSpeed(speed);
-
-            document.getElementById("speed-val").innerHTML = speed/10;
-            document.getElementById("blur-val").innerHTML = blur;
-            document.getElementById("saturate-val").innerHTML = saturate;
-            document.getElementById("hue-val").innerHTML = hue;
-            document.getElementById("brightness-val").innerHTML = brightness;
-            document.getElementById("contrast-val").innerHTML = contrast;
-            document.getElementById("invert-val").innerHTML = invert;
-            document.getElementById("sepia-val").innerHTML = sepia;
-        }
-
-        function toggleClass(id, className) {
-            let element = document.getElementById(id);
-            element.classList.toggle(className);
-        }
-
-        function changeSpeed(value) {
-            value /= 10;
-            document.getElementById("speed-val").innerHTML = value;
-
-            //console.log(timeout, timeoutSpeedChange);
-
-            if(value <= 16) {
-                // use standard browser playback speed mode
-                //console.log("clear timeouts");
-                clearTimeout(timeout);
-                timeout = "";
-                clearTimeout(timeoutSpeedChange);
-                timeoutSpeedChange = "";
-
-                video.playbackRate = value;
-                if(video.paused) video.play();
-            } else {
-                // horsin' around
-                if(!timeoutSpeedChange) {
-                    timeoutSpeedChange = setTimeout(function() {
-                        console.log("timeoutSpeedChange NOW!");
-                        video.playbackRate = 1;
-                        video.pause();
-                        clearTimeout(timeout);
-                        timeout = "";
-                        clearTimeout(timeoutSpeedChange);
-                        timeoutSpeedChange = "";
-                        fasterPussycat(value);
-                    }, 250);
-                }
-            }
-        }
-
-        function fasterPussycat(value) {
-            let currentTime = video.currentTime;
-            timeout = setTimeout(function() {
-                let jump = currentTime + value/100;
-                if(jump > video.duration) jump = value/100;
-                //console.log(value, jump);
-                video.currentTime = jump;
-                fasterPussycat(value);
-            }, 40);  // 40 für 25fps
-        }
-
-        function loadVideoFile(videoFile) {
-            var file = videoFile.files[0];
-            var type = file.type;
-            var videoNode = document.querySelector('video');
-            var canPlay = videoNode.canPlayType(type);
-            var fileURL = URL.createObjectURL(file);
-            videoNode.src = fileURL;
-        }
-        
-
-        function changeSource(source) {
-            video.src = source;
-        }
-
-        function togglePlayPause() {
-            video.paused ? video.play() : video.pause();
-        }
-
-        let i = 0;
-        let o = 0;
-
-        function keyboardController(event) {
-            // Ignore presses in textareas and inputs, but NOT buttons because mostly fake
-            //if(event.target.localName !== "textarea" && event.target.localName !== "input") {
-            let key = event.key;
-            switch(key) {
-                case "0": case "m": toggleMute(); break;
-                case "1": case "i": setI(); event.preventDefault(); break;
-                case "2": case "c": toggleControls();  event.preventDefault(); break;
-                case "3": case "o": setO();  event.preventDefault(); break;
-                case "4": case "ArrowLeft": skipForeward(); event.preventDefault(); break;
-                case "5": case " ": case "p": togglePlayPause(); event.preventDefault(); break;
-                case "6": case "ArrowRight": skipBackward(); event.preventDefault(); break;
-                case "7": case "r": clear();  event.preventDefault(); break;
-                case "8": case "t": toggleMenu(); break;
-                case "9": case "u": console.log("to start or 'i' and pause()"); video.currentTime = i; video.pause(); event.preventDefault(); break;
-                // default: console.log(key); break;
-            }
-        }
-
-        function skipForeward() {
-            console.log("skip -5s");
-            if(video.currentTime - 5 <= 0) {
-                video.currentTime = 0;
-            } else {
-                video.currentTime -= 5;
-            }
-        }
-
-        function skipBackward() {
-            console.log("skip +5s");
-            if(video.currentTime + 5 > duration) {
-                video.currentTime = duration;
-            } else {
-                video.currentTime += 5;
-            }
-        }
-
-        function setI() {
-            console.log("set start");
-            i = video.currentTime;
-            if(i < o) o = 0;
-            document.getElementById("inPoint").innerHTML = i;
-            document.getElementById("outPoint").innerHTML = o;
-        }
-        
-        function setO() {
-            console.log("set end");
-            o = video.currentTime;
-            if(i > o) i = 0;
-            video.currentTime = i;
-            
-            document.getElementById("inPoint").innerHTML = i;
-            document.getElementById("outPoint").innerHTML = o;
-        }
-        
-        function clear() {
-            console.log("clear");
-            i = 0;
-            o = 0;
-            document.getElementById("inPoint").innerHTML = i;
-            document.getElementById("outPoint").innerHTML = o;
-        }
-        
-        function checkForO(time) {
-            // console.log(time);
-            document.getElementById("currentTime").innerHTML = time;
-            if(o > 0) {
-                // leeway if(o < time +.25 && time-0.25 > o) {
-                if(time > o) {
-                    video.currentTime = i;
-                }
-            }
-        }
-
-        function toggleControls() {
-            console.log("toggle video controls");
-            document.getElementById('video').hasAttribute('controls') ? [document.getElementById('video').removeAttribute('controls'), document.getElementById('video').classList.add('noControls')] : [document.getElementById('video').setAttribute('controls', ''),  document.getElementById('video').classList.remove('noControls')];
-        }
-
-        function toggleMenu() {
-            console.log("toggle menu");
-            toggleClass('menu', 'hide');
-            toggleClass('menu-hidden', 'hide');
-        }
-        
-        function toggleMute() {
-            console.log("toggle mute");
-            document.getElementById('video').hasAttribute('muted') ? document.getElementById('video').removeAttribute('muted') : document.getElementById('video').setAttribute('muted', '');
-        }
-    </script>
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="javascript.js"></script>
 </head>
+
 <body class="noScrollbar" onload="setup()" onkeydown="keyboardController(event)">
 
 <div id="menu-hidden" class="hide menu-hidden" onclick="toggleClass('menu', 'hide'); toggleClass('menu-hidden', 'hide')">&nbsp;</div>
@@ -397,7 +26,7 @@
 
     </div>
     <div class="hotkeys">
-        Hotkeys:<br>
+        Hotkeys <a href="videplayer_hotkeys.pdf" target="_blank">[download PDF]</a><br>
         <div><span>0</span> / <span>m</span>: toggle Mute</div>
         <div><span>1</span> / <span>i</span>: Set in point</div>
         <div><span>2</span> / <span>c</span>: Toggle Controls</div>
@@ -421,49 +50,16 @@
         <label>
             <strong>Sources</strong>
         </label>
-        <select onChange="changeSource(this.value)">
-            <option value="video.mp4" selected>video.mp4</option>
-
-            <option value="" disabled="disabled">----------</option>
-
-            <option value="Mathematikerin Büro/Beamer Zahlen.mp4">Mathematikerin B&uuml;ro/Beamer Zahlen</option>
-            <option value="Mathematikerin Büro/graph_rot.mp4">Mathematikerin B&uuml;ro/graph rot</option>
-            <option value="Mathematikerin Büro/homebrew_ffmpeg_6x.mp4">Mathematikerin B&uuml;ro/homebrew_ffmpeg_6x</option>
-
-            <option value="" disabled="disabled">----------</option>
-
-            <option value="Mathematikerin ZLS/netzwerk.mp4">Mathematikerin ZLS/netzwerk</option>
-            <option value="Mathematikerin ZLS/netzwerk2.mp4">Mathematikerin ZLS/netzwerk2</option>
-            <option value="Mathematikerin ZLS/graph_gruen.mp4">Mathematikerin ZLS/graph gr&uuml;n</option>
-
-            <option value="" disabled="disabled">----------</option>
-
-            <option value="TwingTec Ingenieur/Fusion Flange shaft.mp4">TwingTec/Flange</option>
-            <option value="TwingTec Ingenieur/Fusion Flange shaft negate.mp4">TwingTec/Flange negate</option>
-            <option value="TwingTec Ingenieur/Fusion Flange shaft negate speed_025.mp4">TwingTec/Flange negate fast</option>
-            <option value="TwingTec Ingenieur/Fusion Flange shaft negate speed_01.mp4">TwingTec/Flange negate ultra fast</option>
-            <option value="TwingTec Ingenieur/Fusion Flange shaft windowed.mp4">TwingTec/Flange windowed</option>
-            <option value="TwingTec Ingenieur/Fusion Flange shaft windowed negate.mp4">TwingTec/Flange windowed negate</option>
-
-            <option value="TwingTec Ingenieur/Fusion stratos.mp4">TwingTec/stratos</option>
-            <option value="TwingTec Ingenieur/Fusion stratos negate.mp4">TwingTec/stratos negate</option>
-            <option value="TwingTec Ingenieur/Fusion stratos negate speed_01.mp4">TwingTec/stratos negate fast</option>
-            <option value="TwingTec Ingenieur/Fusion stratos negate speed_025.mp4">TwingTec/stratos negate ultra fast</option>
-            <option value="TwingTec Ingenieur/Fusion stratos windowed.mp4">TwingTec/stratos windowed</option>
-            <option value="TwingTec Ingenieur/Fusion stratos windowed negate.mp4">TwingTec/stratos windowed negate</option>
-
-            <option value="" disabled="disabled">----------</option>
-
-            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2009 mogliche Projektion 1.mp4">TwingTec/Archiv/Einstein 2009</option>
-            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2009 mogliche Projektion 2.mp4">TwingTec/Archiv/Einstein 2009 2</option>
-            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2009 max Ausspielung.mp4">TwingTec/Archiv/Einstein 2009 max</option>
-            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2013 mogliche Projektion 1.mp4">TwingTec/Archiv/Einstein 2013</option>
-            <option value="TwingTec Ingenieur/Archivaufnahmen/TwingTec Einstein 2013 max Ausspielung.mp4">TwingTec/Archiv/Einstein 2013 max</option>
+        <select onchange="changeSource(this.value)">
+            <option value="media/Karaoke_Scharlachrot.mp4">Karaoke_Scharlachrot.mp4</option>
+            <!-- <option value="" disabled="disabled">----------</option> -->
+            <option value="media/Karaoke_Scharlachrot_5_Sek_Counter.mp4">Karaoke_Scharlachrot_5_Sek_Counter.mp4</option>
+            <option value="media/Karaoke_Im_Wagen_Vor_Mir.mp4">Karaoke_Im_Wagen_Vor_Mir.mp4</option>
+            <option value="media/Karaoke_Im_Wagen_Vor_Mir_5_Sek_Counter.mp4">Karaoke_Im_Wagen_Vor_Mir_5_Sek_Counter.mp4</option>
         </select>
 
         <hr>
-        <input id="movieSelector" type="file" accept="video/*" onChange="loadVideoFile(this)">
-        <!--            <option value="Externe_D_19-144608-2_Schweizer_Filmwochens_FARO.mxf">mxf - 2 Schweizer Filmwochens FARO</option>-->
+        <input id="movieSelector" type="file" accept="video/*" onchange="loadVideoFile(this)">
 
     </div>
     <div>
@@ -546,12 +142,12 @@
         loop
         autoplay="true"
         class="noControls"
+        oncanplay="setup()"
         ontimeupdate="checkForO(this.currentTime)"
         ondblclick="this.webkitRequestFullscreen()"
     >
-
     <!--onpause="clearTimeout(timeout)"-->
-        <source src="video.mp4" type="video/mp4"/>
+        <source src="media/Karaoke_Scharlachrot.mp4" type="video/mp4"/>
         Your not cool and I won't let you watch this awesome video of cats.
     </video>
 </section>
