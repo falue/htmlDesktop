@@ -2,6 +2,7 @@ let timeout;
 let timeoutSpeedChange;
 let video;
 let duration;
+let isFullscreen = false;
 
 function setup() {
     video = document.getElementById("video");
@@ -120,6 +121,7 @@ function keyboardController(event) {
         case "7": case "r": clear();  event.preventDefault(); break;
         case "8": case "t": toggleMenu(); break;
         case "9": case "u": console.log("to start or 'i' and pause()"); video.currentTime = i; video.pause(); event.preventDefault(); break;
+        case "/": case "f": toggleFullscreen(); break;
         // default: console.log(key); break;
     }
 }
@@ -193,4 +195,27 @@ function toggleMenu() {
 function toggleMute() {
     console.log("toggle mute");
     video.hasAttribute('muted') ? video.muted= '' : video.muted = 'true';
+}
+
+
+function toggleFullscreen() {
+    if(isFullscreen) {
+        exitFullscreen();
+    } else {
+        enterFullscreen();
+    }
+}
+
+function enterFullscreen(force) {
+    isFullscreen = true;
+    document.documentElement.requestFullscreen();
+}
+
+function exitFullscreen() {
+    isFullscreen = false;
+    if(document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if(document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
 }

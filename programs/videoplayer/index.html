@@ -12,17 +12,17 @@
 <div id="menu-hidden" class="hide menu-hidden" onclick="toggleClass('menu', 'hide'); toggleClass('menu-hidden', 'hide')">&nbsp;</div>
 <aside id="menu" class="noScrollbar">
     <div>
-        <label><strong>REPLAY</strong></label><code><a href="../../index.html"><button>Home</button></a></code>
+        <label><strong>REPLAY</strong></label>
+        <button class="medium" style="position: absolute; top: .25em; right:.5em; background-color:rgba(255,80,80,1);" onclick="window.location.href = '../../index.html'">&larr; Home</button>
+        <button class="medium" onclick="toggleMenu()">Toggle Menu</button>
         <button class="medium"
                 onclick="toggleControls()">
-            Toggle Controls
+            Toggle Video Controls
         </button>
         <button class="medium" onclick="togglePlayPause()">Play / Pause</button>
         <button class="medium" onclick="toggleMute()">Toggle Mute</button>
-
-        <button class="medium" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">Open in Pop Up</button>
-
-        <button class="medium" onclick="toggleMenu()">Toggle Menu</button>
+        <button class="medium" onclick="toggleFullscreen()">Toggle Fullscreen</button>
+        <!-- <button class="medium" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">Open in Pop Up</button> -->
 
     </div>
     <div class="hotkeys">
@@ -37,6 +37,7 @@
         <div><span>7</span> / <span>r</span>: Reset in/out points</div>
         <div><span>8</span> / <span>t</span>: toggle Menu</div>
         <div><span>9</span> / <span>u</span>: Seek start or 'i' and pause</div>
+        <div><span>/</span> / <span>f</span>: Fullscreen</div>
         <br>
         Tot. duration: <span id="duration">0.0</span>
         <br>
