@@ -168,6 +168,7 @@ function greenKeyboardController(event) {
             case "1": if(window.location === window.parent.location) { toggle('body'); }; break;
             // case "b": if(alt && window.location === window.parent.location) { cl("make black") }; break;
             case "f": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
+            case "=": if(isFullscreen) { exitFullscreen() } else { enterFullscreen(true) }; break;
             case " ": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
             default:
                 if(window.location !== window.parent.location) parent.keyboardController(event);
@@ -200,8 +201,8 @@ function toggleFullscreen() {
     }
 }
 
-function enterFullscreen() {
-    if(window.location === window.parent.location) return;
+function enterFullscreen(force) {
+    if(window.location === window.parent.location && !force) return;
     isFullscreen = true;
     document.documentElement.requestFullscreen();
 }
