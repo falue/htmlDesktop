@@ -122,6 +122,7 @@ function keyboardController(event) {
         case "8": case "t": toggleMenu(); break;
         case "9": case "u": console.log("to start or 'i' and pause()"); video.currentTime = i; video.pause(); event.preventDefault(); break;
         case "/": case "f": toggleFullscreen(); break;
+        case "=": case "l": toggleLoop(); break;
         // default: console.log(key); break;
     }
 }
@@ -194,7 +195,13 @@ function toggleMenu() {
 
 function toggleMute() {
     console.log("toggle mute");
-    video.hasAttribute('muted') ? video.muted= '' : video.muted = 'true';
+    video.muted = !video.muted;
+}
+
+function toggleLoop() {
+    console.log("toggle loop");
+    video.loop = !video.loop;
+    document.getElementById("looping").innerHTML = video.loop ? 'Yes' : 'No';
 }
 
 

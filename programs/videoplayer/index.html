@@ -21,6 +21,7 @@
         </button>
         <button class="medium" onclick="togglePlayPause()">Play / Pause</button>
         <button class="medium" onclick="toggleMute()">Toggle Mute</button>
+        <button class="medium" onclick="toggleLoop()">Toggle Loop</button>
         <button class="medium" onclick="toggleFullscreen()">Toggle Fullscreen</button>
         <!-- <button class="medium" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">Open in Pop Up</button> -->
 
@@ -38,8 +39,11 @@
         <div><span>8</span> / <span>t</span>: toggle Menu</div>
         <div><span>9</span> / <span>u</span>: Seek start or 'i' and pause</div>
         <div><span>/</span> / <span>f</span>: Fullscreen</div>
+        <div><span>=</span> / <span>l</span>: Loop</div>
         <br>
         Tot. duration: <span id="duration">0.0</span>
+        <br>
+        Looping: <span id="looping">Yes</span>
         <br>
         Current Time: <span id="currentTime">0.0</span>
         <br>

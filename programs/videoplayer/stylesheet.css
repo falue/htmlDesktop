@@ -22,6 +22,7 @@ body {
 aside {
     position: fixed;
     width: 420px;
+    height: 100%;
     background: #444;
     overflow-y: auto;
     z-index: 666;
