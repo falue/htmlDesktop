@@ -46,9 +46,49 @@
             "zIndex": 2,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#141 - Videofile (Green)",
+            "windowName": "CAM-2634-B.mp4",
+            "icon": "videocam",
+            "contentPath": "colorMarker",
+            "x": 6,
+            "y": 4,
+            "w": 1250,
+            "h": 800,
+            "zIndex": 3,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#141 - Securiton (Green)",
+            "windowName": "Securiton",
+            "icon": "security",
+            "contentPath": "securiton/index.html?scene=131",
+            "x": 6,
+            "y": 4,
+            "w": 1250,
+            "h": 800,
+            "zIndex": 4,
+            "minimized": false,
+            "renderToDom": false
         }
     ],
     "shortcuts": [
+        {
+            "name": "Securiton",
+            "icon": "",
+            "x": 2,
+            "y": 38,
+            "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=131', 4, 2, 1250,800, false);"
+        },
+        {
+            "name": "CAM-2634-B.mp4",
+            "icon": "fileMovie.png",
+            "x": 1,
+            "y": 24,
+            "action": "addWindow('CAM-2634-B.mp4', 'videocam', 'colorMarker', 4, 2, 1250,800, false);"
+        },
         {
             "name": "Trash",
             "icon": "trashFull.png",
@@ -271,13 +311,6 @@
             "icon": "folderFull.png",
             "x": 72,
             "y": 17,
-            "action": ""
-        },
-        {
-            "name": "Personal.txt",
-            "icon": "txt.png",
-            "x": 2,
-            "y": 30,
             "action": ""
         },
         {
