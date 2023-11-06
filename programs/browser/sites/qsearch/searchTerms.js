@@ -1,5 +1,5 @@
 let searchTerms = {
-  "kunstmuseum basel": [
+  "kunstmuseum": [
     [
       "",
       "artreviews.net/basel",
