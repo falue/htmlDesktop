@@ -130,20 +130,22 @@ function togglePlay() {
         }
     }
 }
+function getCurrentContentWrapper() {
+    return gebi('videoPlayer').classList.contains('show') ? 'videoJsPlayerWrapper_html5_api' : 'content' ;
+}
 
 function navigateGallery(direction) {
     imageIndex += direction;
     imageIndex = wrapAround(imageIndex, 0, files.length-1);
-    zoom(100)  // reset zoom scale
+    zoom(100, getCurrentContentWrapper())  // reset zoom scale
     showImage(imageIndex);
 }
 
 let zoomStage = 1;
 let tempVideoControls;
 
-function zoom(event) {
+function zoom(event, id) {
     if(!allowZoom) return;
-
     let scrollingEvent = {};
     if(typeof event !== 'object') {
         // if zoom was triggered by key presses, reset zoom
@@ -160,21 +162,23 @@ function zoom(event) {
     /* console.log(scrollingEvent.offsetX, scrollingEvent.offsetY); */
     /* console.log(scrollingEvent.wheelDelta, scrollingEvent.wheelDeltaX, scrollingEvent.wheelDeltaY); */
     if(scrollingEvent.wheelDeltaY>1 || scrollingEvent.wheelDeltaY<-1) {
-        let videoElem = gebi('videoJsPlayerWrapper_html5_api');
-        // reset controls
-        tempVideoControls = disableVideoControls;
-        disableVideoControls = true;
-        setVideoControls()
+        let element = gebi(id);
+        if(element.tagName === "VIDEO") {
+            // reset controls
+            tempVideoControls = disableVideoControls;
+            disableVideoControls = true;
+            setVideoControls()
+        }
         // zoom in / zoom out
         zoomStage = scrollingEvent.zoomReset ? 1 : clamp(zoomStage-scrollingEvent.wheelDeltaY/100, 1,8);
         // cl(zoomStage);
         // cl(elementNumber);
-        videoElem.style.transform = 'scale('+zoomStage+')';
-        videoElem.style.transformOrigin = scrollingEvent.offsetX+'px '+scrollingEvent.offsetY+'px';
+        element.style.transform = 'scale('+zoomStage+')';
+        element.style.transformOrigin = scrollingEvent.offsetX+'px '+scrollingEvent.offsetY+'px';
         
         // if zoom is maxed out, reset controls
         disableVideoControls = tempVideoControls;
-        if(zoomStage == 1) {
+        if(zoomStage == 1 && element.tagName === "VIDEO") {
             setVideoControls()
         }
     }

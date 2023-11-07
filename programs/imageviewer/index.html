@@ -26,18 +26,19 @@
       --><button class="programButtons">Share</button><!-- 
       --><button class="programButtons">Presentation</button><!-- 
       --><button class="programButtons" onclick="toggle('settings')"><i class="material-icons blue valign small">bolt</i> View</button><!-- 
-       --><button class="programButtons">About</button>
+      --><button class="programButtons">About</button><!-- 
+      --><button class="programButtons" onclick="zoom({wheelDeltaY: -10, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_in</i></button><!-- 
+      --><button class="programButtons" onclick="zoom({wheelDeltaY: 20, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_out</i></button>
     </header>
-
 
     <div id="settings" class="hide radius3 fixed top right margin2 padding1 whiteBg shadow" style="z-index:9999">
       <p class="grey">Settings</p>
       <fieldset class="radius3">
-        <legend>Videos</legend>
+        <legend>Content</legend>
         <input id="disableVideoControls" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="disableVideoControls = this.checked; setVideoControls()">
         <label for="disableVideoControls">Video: Hide Controls</label><br>
         <input id="allowZoom" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="zoom(100); allowZoom = this.checked;">
-        <label for="allowZoom">Video: Allow zoom in</label>
+        <label for="allowZoom">Allow zoom</label>
       </fieldset>
       <fieldset class="radius3">
         <legend>Keyboard</legend>
@@ -49,13 +50,14 @@
       <button class="systemButton" onclick="hide('settings');">CLOSE SETTINGS</button>
      </div>
 
-    <div id="content" class="content" onclick="navigateGallery(1);">
-      <div class="imageNavigation left" onclick="navigateGallery(-1); event.stopPropagation()"></div>
-      <div class="imageNavigation right" onclick="navigateGallery(1); event.stopPropagation()"></div>
+     <div class="imageNavigation right" onclick="navigateGallery(1); event.stopPropagation()"></div>
+     <div class="imageNavigation left" onclick="navigateGallery(-1); event.stopPropagation()"></div>
+
+    <div id="content" class="content" onclick="navigateGallery(1);" onmousewheel="zoom(event, 'content')">
     </div>
 
     <!-- TODO maybe add only if files contains .mp4 -->
-    <div id="videoPlayer" class="videoPlayer hide overflowHidden" onclick="playWithDisabledControls()" onmousewheel="zoom(event)">
+    <div id="videoPlayer" class="videoPlayer hide overflowHidden" onclick="playWithDisabledControls()" onmousewheel="zoom(event, 'videoJsPlayerWrapper_html5_api')">
       <video
           id="videoJsPlayerWrapper"
           class="video-js vjs-default-skin"
