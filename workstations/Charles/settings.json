@@ -1,14 +1,14 @@
 {
     "settings": {
-        "systemColor": "#000000",
-        "desktopColor": "#1d1b1b",
-        "desktopImg": "os/windows/desktop.jpg",
+        "systemColor": "#d4d4d4",
+        "desktopColor": "#1c1c2c",
+        "desktopImg": "",
         "os": "spa",
         "darkMode": true,
         "username": "charles",
         "password": "",
         "workstation": "Charles",
-        "selectedSystemMessage": 3,
+        "selectedSystemMessage": 0,
         "osNotificationsDelay": 0
     },
     "systemIcons": [
@@ -37,29 +37,106 @@
     ],
     "shortcuts": [
         {
-            "name": "DVD",
-            "icon": "dvd.png",
-            "x": 94,
-            "y": 69,
-            "action": ""
-        },
-        {
             "name": "Trash",
             "icon": "trashFull.png",
-            "x": 94,
-            "y": 82,
+            "x": 19,
+            "y": 19,
             "action": ""
         },
         {
             "name": "HDD",
             "icon": "hdd.png",
             "x": 3,
-            "y": 4,
+            "y": 17,
             "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Project f4eac Copy",
+            "icon": "folderFull.png",
+            "x": 1,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Image",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Personal.mp3",
+            "icon": "mp3.png",
+            "x": 1,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Personal 90932.PDF",
+            "icon": "pdf.png",
+            "x": 1,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Image Copy",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "file Copy.mp3",
+            "icon": "mp3.png",
+            "x": 8,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Presentation",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "A-433 8d2bc",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Text",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 3,
+            "action": ""
         }
     ],
+    "osNotifications": [],
     "actions": [
-    ],
-    "osNotifications": [
+        ["#640: Receive files", "showSystemMessage({'title': 'Receiving files..', 'description': 'From: Charles-mobile', 'icon': 'cloud_sync', 'initialDelay': 0, 'timeOut': 2500, 'action': ''}); await delay(1500); addWindow('Received Files from Charles-mobile', 'cloud_sync', 'imageviewer/index.html?files=1.jpg|2.jpg|3.jpg|4.jpg|5.jpg|6.mp4&allowZoom=true', 6, 6, 900,700, false);"]
     ]
 }
