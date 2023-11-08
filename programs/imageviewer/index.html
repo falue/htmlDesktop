@@ -27,9 +27,9 @@
       --><button class="programButtons">Presentation</button><!-- 
       --><button class="programButtons" onclick="toggle('settings')"><i class="material-icons blue valign small">bolt</i> View</button><!-- 
       --><button class="programButtons">About</button><!-- 
-      --><button class="programButtons" onclick="zoom({wheelDeltaY: -25, wheelDeltaX: 0, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_in</i></button><!-- 
-      --><button class="programButtons" onclick="zoom({wheelDeltaY: 40, wheelDeltaX: 0, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_out</i></button><!--
-      --><button class="programButtons" onclick="zoom(100, getCurrentContentWrapper())"><i class="material-icons blue valign">search_off</i></button>
+      --><button id="zoomIn" class="programButtons" onclick="zoom({wheelDeltaY: -25, wheelDeltaX: 0, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_in</i></button><!-- 
+      --><button id="zoomOut" class="programButtons" onclick="zoom({wheelDeltaY: 40, wheelDeltaX: 0, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_out</i></button><!--
+      --><button id="zoomReset" class="programButtons" onclick="zoom(100, getCurrentContentWrapper())"><i class="material-icons blue valign">search_off</i></button>
     </header>
 
     <div id="settings" class="hide radius3 fixed top right margin2 padding1 whiteBg shadow" style="z-index:9999">
@@ -38,7 +38,7 @@
         <legend>Content</legend>
         <input id="disableVideoControls" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="disableVideoControls = this.checked; setVideoControls()">
         <label for="disableVideoControls">Video: Hide Controls</label><br>
-        <input id="allowZoom" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="zoom(100); allowZoom = this.checked;">
+        <input id="allowZoom" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="toggleZoom(this.checked)">
         <label for="allowZoom">Allow zoom</label>
       </fieldset>
       <fieldset class="radius3">

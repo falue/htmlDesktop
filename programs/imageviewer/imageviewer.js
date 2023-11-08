@@ -29,6 +29,27 @@ async function setupImageViewer() {
     } else {
         gebi('content').innerHTML = "No files in URL";
     }
+
+    if(!allowZoom) {
+        hide('zoomIn');
+        hide('zoomOut');
+        hide('zoomReset');
+    }
+}
+
+function toggleZoom(value) {
+    zoom(100, getCurrentContentWrapper());
+    allowZoom = value;
+    if(allowZoom) {
+        show('zoomIn');
+        show('zoomOut');
+        show('zoomReset');
+    } else {
+        hide('zoomIn');
+        hide('zoomOut');
+        hide('zoomReset');
+    }
+
 }
 
 function setupThumbnails(files) {
