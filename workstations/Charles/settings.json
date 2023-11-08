@@ -137,6 +137,6 @@
     ],
     "osNotifications": [],
     "actions": [
-        ["#640: Receive files", "showSystemMessage({'title': 'Receiving files..', 'description': 'From: Charles-mobile', 'icon': 'cloud_sync', 'initialDelay': 0, 'timeOut': 2500, 'action': ''}); await delay(1500); addWindow('Received Files from Charles-mobile', 'cloud_sync', 'imageviewer/index.html?files=1.png|2.png|3.png|4.png|5.png|6.mp4&allowZoom=true', 6, 6, 900,700, false);"]
+        ["#640: Receive files", "showSystemMessage({'title': 'Receiving files.. <i class=\\'material-icons spin valign small blue marginX50 relative\\'>refresh</i>', 'description': 'From: Charles-mobile', 'icon': 'cloud_sync', 'initialDelay': 0, 'timeOut': 2500, 'action': ''}); await delay(1500); addWindow('Received Files from Charles-mobile', 'cloud_sync', 'imageviewer/index.html?files=1.png|2.png|3.png|4.png|5.png|6.mp4&allowZoom=true', 6, 6, 900,700, false);"]
     ]
 }
