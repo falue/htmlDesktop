@@ -582,13 +582,59 @@ function getAllElemenentsWithBackgroundImg(doc) {
 }
 
 async function hardReloadAllIframes(doc) {
+  cl("======================================================")
+  cl("Start reloading files and windows...")
+  cl("------------------------------------------------------")
+  let updatedFiles = await hardReloadMetaSources();
+  showSystemMessage({title: `Reloaded ${updatedFiles[0]} meta data files from ${updatedFiles[1]}`, description: ".css, .js, .txt, .json, .fakeBash, .splash", icon:"refresh", timeOut: 12000});
+  await hardReloadIframe(doc);
+  showSystemMessage({title: `Reloaded all windows`, description: "Reloaded Imgs, scripts and some css. Good to go!", icon:"refresh", timeOut: 3500});
+}
+
+async function hardReloadMetaSources() {
+  return await fetchFilePathsAndReload('../tools/collectedPaths.txt');
+}
+
+async function fetchFilePathsAndReload(fileListUrl) {
+  try {
+    // Fetch the file list
+    const response = await fetch(fileListUrl);
+    const text = await response.text();
+    // Assume each line in the file is a path to a file
+    const filePathsArray = text.split('\n');
+    // Filter out empty lines or any other processing you might need
+    const validPaths = filePathsArray.filter(path => path.trim() !== '');
+    // Reload files
+    return await reloadFiles(validPaths);
+  } catch (error) {
+    console.error('There was an error fetching the file list', error);
+  }
+}
+
+async function reloadFiles(filePaths) {
+  let date = filePaths.shift();
+  for (const pathToFile of filePaths) {
+    // console.log(`Reloading: ${pathToFile}`);
+    try {
+      await fetch(pathToFile, {cache: 'reload', mode: 'no-cors'});
+    } catch (error) {
+      console.error(`Failed to reload: ${pathToFile}`, error);
+    }
+  }
+  console.log(`${filePaths.length} meta files have been reloaded.`);
+  cl("------------------------------------------------------");
+  return [filePaths.length, date];
+}
+
+
+async function hardReloadIframe(doc) {
   // await doc loaded
   let iFrames = doc.querySelectorAll("iframe");
   for (let currentIframe of iFrames) {
     let currentSrc = currentIframe.src;
     let currentId = currentIframe.id;
     let currDocument = currentIframe.contentWindow.document;
-    await hardReloadAllIframes(currentIframe.contentWindow.document);  // recursively find iframes within
+    await hardReloadIframe(currentIframe.contentWindow.document);  // recursively find iframes within
     
     cl(`Hard reload '${currentIframe.contentWindow.document.title}': ${currentSrc}`);
     currDocument.location.reload();  // Maybe does not remove cache

@@ -48,3 +48,9 @@ XAMPP.app (cannot run it where you have your files)
 To display this locally and without an internet connection, there is a [container app](https://github.com/aronsommer/electron-webview) in development for Windows, Mac and Linux (including raspberry pi's).
 
 To use this app, you need to clone this repo and use your own version of it to have your own workstations loaded into the app.
+
+## Make the brute force Hard reload open windows & metadata work
+
+In order to make the brute force attack on the local cache work (click in the action menu on "Hard reload open windows & metadata"), we need to hard reload all source files.
+
+cd into `tools/` and execute `bash collectPaths.sh`. This saves all the current .css, .js, .txt, .json, .fakeBash, .splash paths in a document called `collectedPAths.txt`, which is used to hard reload all meta data files from within javascript.
