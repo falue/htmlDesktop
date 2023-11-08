@@ -537,9 +537,19 @@ function closeAllWindows() {
 
 function clearCacheOfFiles(target, type, attributeName) {
   // Get element and reload file; ignoring cache (maybe..)
-  for (let currentFile of target.querySelectorAll(`${type}[${attributeName}]`)) {
+  // Get all bg images
+  if(type === 'backgroundImgs') {
+    let bgImgs = getAllElemenentsWithBackgroundImg(target);
+    for(let index in bgImgs) {
+      cl(`Clear <*element/> with css-background image of ${bgImgs[index]}`);
+      fetch(bgImgs[index], {cache: 'reload', mode: 'no-cors'});
+    }
+    return;
+  }
+  let selection = target.querySelectorAll(`${type}[${attributeName}]`);
+  for (let currentFile of selection) {
     if(currentFile.hasAttribute(attributeName)) {
-      cl(`Clear ${attributeName} of ${currentFile[attributeName]}`);
+      cl(`Clear <${type}/> with ${attributeName} of ${currentFile[attributeName]}`);
       // create img with sources; but fetch does the same (?)
       // https://stackoverflow.com/a/9044701
       /* let dummyElement =  document.createElement("img");
@@ -554,13 +564,33 @@ function clearCacheOfFiles(target, type, attributeName) {
   }
 }
 
-async function hardReloadAllIframes() {
-  let iFrames = document.querySelectorAll("iframe");
+function getAllElemenentsWithBackgroundImg(doc) {
+  const srcChecker = /url\(\s*?['"]?\s*?(\S+?)\s*?["']?\s*?\)/i
+  return Array.from(
+    Array.from(doc.querySelectorAll('*'))
+      .reduce((collection, node) => {
+        let prop = window.getComputedStyle(node, null)
+          .getPropertyValue('background-image')
+        // match `url(...)`
+        let match = srcChecker.exec(prop)
+        if (match) {
+          collection.add(match[1])
+        }
+        return collection
+      }, new Set())
+  )
+}
+
+async function hardReloadAllIframes(doc) {
+  // await doc loaded
+  let iFrames = doc.querySelectorAll("iframe");
   for (let currentIframe of iFrames) {
     let currentSrc = currentIframe.src;
     let currentId = currentIframe.id;
-    cl(`Hard reload: ${currentSrc}`);
     let currDocument = currentIframe.contentWindow.document;
+    await hardReloadAllIframes(currentIframe.contentWindow.document);  // recursively find iframes within
+    
+    cl(`Hard reload '${currentIframe.contentWindow.document.title}': ${currentSrc}`);
     currDocument.location.reload();  // Maybe does not remove cache
     await fetch(currentSrc, {cache: 'reload', mode: 'no-cors'});
     
@@ -569,11 +599,13 @@ async function hardReloadAllIframes() {
     await delay(666);
 
     // New iframe with refreshed content
-    let currentNewIframe = gebi(currentId).contentWindow.document;
+    let currentNewIframe = doc.getElementById(currentId).contentWindow.document;  // do not use gebi()! because it uses main 'document'
     clearCacheOfFiles(currentNewIframe, "script", "src");
     clearCacheOfFiles(currentNewIframe, "style", "href");
     clearCacheOfFiles(currentNewIframe, "link", "href");
     clearCacheOfFiles(currentNewIframe, "img", "src");
+    clearCacheOfFiles(currentNewIframe, "backgroundImgs", "src");
+    cl("------------------------------------------------------")
  }
 }
 
