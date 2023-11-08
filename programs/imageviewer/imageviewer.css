@@ -15,15 +15,17 @@ header {
 
 
 .content {
-    /* padding: 1em; */
+    position: fixed;
+    width: 100%;
     height: calc(100% - 1.5em);
-    top: 0;
+    top: 1.5em;
     box-sizing: border-box;
     background-color: black;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     z-index: 1;
+    transition: all .25s;
 }
 
 .onlyOneImage .imageNavigation {

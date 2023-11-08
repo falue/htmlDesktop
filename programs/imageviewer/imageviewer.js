@@ -151,6 +151,7 @@ function zoom(event, id) {
         // if zoom was triggered by key presses, reset zoom
         scrollingEvent = {
             "wheelDeltaY": event,
+            "wheelDeltaX": 0,
             "offsetX": 0,
             "offsetY": 0,
             "zoomReset": true
@@ -158,11 +159,16 @@ function zoom(event, id) {
     } else {
         scrollingEvent = event;
     }
+    
+    if(typeof event.preventDefault === 'function') event.preventDefault();
+    /* cl(scrollingEvent.wheelDeltaX); */
 
     /* console.log(scrollingEvent.offsetX, scrollingEvent.offsetY); */
     /* console.log(scrollingEvent.wheelDelta, scrollingEvent.wheelDeltaX, scrollingEvent.wheelDeltaY); */
-    if(scrollingEvent.wheelDeltaY>1 || scrollingEvent.wheelDeltaY<-1) {
-        let element = gebi(id);
+    let element = gebi(id);
+    let currentPos = element.style.transformOrigin.split("px ");
+
+    if((scrollingEvent.wheelDeltaY>1 || scrollingEvent.wheelDeltaY<-1) && (scrollingEvent.wheelDeltaX>=-1 && scrollingEvent.wheelDeltaX<=1)) {
         if(element.tagName === "VIDEO") {
             // reset controls
             tempVideoControls = disableVideoControls;
@@ -171,8 +177,6 @@ function zoom(event, id) {
         }
         // zoom in / zoom out
         zoomStage = scrollingEvent.zoomReset ? 1 : clamp(zoomStage-scrollingEvent.wheelDeltaY/100, 1,8);
-        // cl(zoomStage);
-        // cl(elementNumber);
         element.style.transform = 'scale('+zoomStage+')';
         element.style.transformOrigin = scrollingEvent.offsetX+'px '+scrollingEvent.offsetY+'px';
         
@@ -181,6 +185,10 @@ function zoom(event, id) {
         if(zoomStage == 1 && element.tagName === "VIDEO") {
             setVideoControls()
         }
+    } else if(scrollingEvent.wheelDeltaX>1 || scrollingEvent.wheelDeltaX<-1) {
+        let newX = currentPos[0] - scrollingEvent.wheelDeltaX;
+        newX = clamp(newX, 0, window.innerWidth);
+        element.style.transformOrigin = newX +'px '+ currentPos[1];
     }
 }
 let isFullscreen = false;
