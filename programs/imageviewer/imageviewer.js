@@ -161,10 +161,6 @@ function zoom(event, id) {
     }
     
     if(typeof event.preventDefault === 'function') event.preventDefault();
-    /* cl(scrollingEvent.wheelDeltaX); */
-
-    /* console.log(scrollingEvent.offsetX, scrollingEvent.offsetY); */
-    /* console.log(scrollingEvent.wheelDelta, scrollingEvent.wheelDeltaX, scrollingEvent.wheelDeltaY); */
     let element = gebi(id);
     let currentPos = element.style.transformOrigin.split("px ");
 
