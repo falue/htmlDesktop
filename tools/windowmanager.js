@@ -236,13 +236,13 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   let windowIcon = document.createElement("i");
   windowIcon.setAttribute("class", "material-icons small");
   windowIcon.appendChild(document.createTextNode(icon));
-  windowIcon.setAttribute("oncontextmenu", `epD(event); setWindowIcon('${id}')`);
+  windowIcon.setAttribute("oncontextmenu", `epD(event); if(lockKeyboard === false) { setWindowIcon('${id}') }`);
   windowTitle.appendChild(windowIcon);
 
   let windowTitleText = document.createElement("span");
   windowTitleText.appendChild(document.createTextNode(windowName));
   windowTitleText.setAttribute("id", "title-"+id);
-  windowTitleText.setAttribute("oncontextmenu", `epD(event); setWindowTitle('title-${id}')`);
+  windowTitleText.setAttribute("oncontextmenu", `epD(event); if(lockKeyboard === false) { setWindowTitle('title-${id}') }`);
   windowTitleText.setAttribute("class", "valignText");
   windowTitleText.style.paddingRight='2em';
   windowTitle.appendChild(windowTitleText);
@@ -829,7 +829,7 @@ function placeShortcut(name, icon, x,y, action) {
     // Start default action
     shortcutContainer.setAttribute("ondblclick", chooseDefaultProgram(name));
   }
-  shortcutContainer.setAttribute("oncontextmenu", "gebi('editNewShortcut').value = 'false'; editShortcut('"+id+"'); return false;");
+  shortcutContainer.setAttribute("oncontextmenu", "epD(event); if(lockKeyboard === false) { gebi('editNewShortcut').value = 'false'; editShortcut('"+id+"'); return false; }");
 
   let fileIcon = document.createElement("img");
   if(icon) {
