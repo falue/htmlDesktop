@@ -662,7 +662,7 @@ function setKeyboardLock(state) {
 }
 
 function keyboardController(event) {
-    if(lockKeyboard === "all") {
+    if(lockKeyboard === "all" && gebi('blackout').classList.contains('hide') && gebi('screensaver').classList.contains('hide') && gebi('startUp').classList.contains('hide')) {
         cl('Keyboard is locked.');
         return;
     }
