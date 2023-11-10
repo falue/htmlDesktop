@@ -541,25 +541,22 @@ function clearCacheOfFiles(target, type, attributeName) {
   if(type === 'backgroundImgs') {
     let bgImgs = getAllElemenentsWithBackgroundImg(target);
     for(let index in bgImgs) {
-      cl(`Clear <*element/> with css-background image of ${bgImgs[index]}`);
-      fetch(bgImgs[index], {cache: 'reload', mode: 'no-cors'});
+        cl(`Clear <*element/> with css-background image of ${bgImgs[index]}`);
+        fetch(bgImgs[index], {cache: 'reload', mode: 'no-cors'});
     }
     return;
   }
   let selection = target.querySelectorAll(`${type}[${attributeName}]`);
+  let loadedSources = [];
   for (let currentFile of selection) {
     if(currentFile.hasAttribute(attributeName)) {
-      cl(`Clear <${type}/> with ${attributeName} of ${currentFile[attributeName]}`);
-      // create img with sources; but fetch does the same (?)
-      // https://stackoverflow.com/a/9044701
-      /* let dummyElement =  document.createElement("img");
-      dummyElement.setAttribute("src", currentFile[attributeName]);
-      dummyElement.setAttribute("title", "HARDEST RELOAD");
-      dummyElement.setAttribute("style", "visibility:hidden; width:0; height:0");
-      // target.innerHTML = "ERASED";
-      target.appendChild(dummyElement);
-      cl(dummyElement); */
-      fetch(currentFile[attributeName], {cache: 'reload', mode: 'no-cors'});
+      if(!loadedSources.includes(currentFile[attributeName])) {
+        cl(`Clear <${type}/> with ${attributeName} of ${currentFile[attributeName]}`);
+        fetch(currentFile[attributeName], {cache: 'reload', mode: 'no-cors'});
+        loadedSources.push(currentFile[attributeName]);
+      /* } else {
+        cl(`Already fetched ${currentFile[attributeName]}`); */
+      }
     }
   }
 }
@@ -650,7 +647,7 @@ async function hardReloadIframe(doc) {
     clearCacheOfFiles(currentNewIframe, "style", "href");
     clearCacheOfFiles(currentNewIframe, "link", "href");
     clearCacheOfFiles(currentNewIframe, "img", "src");
-    clearCacheOfFiles(currentNewIframe, "backgroundImgs", "src");
+    clearCacheOfFiles(currentNewIframe, "backgroundImgs");
     cl("------------------------------------------------------")
  }
 }
