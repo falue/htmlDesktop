@@ -37,6 +37,11 @@ ul {
     list-style: none;
 }
 
+ul.list {
+    list-style: initial;
+    padding-left: 1em;
+}
+
 .preload {
     position: fixed;
     width: 50px;

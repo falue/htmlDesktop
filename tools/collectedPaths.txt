@@ -1,4 +1,4 @@
-11.09.2023 00:42
+11.10.2023 16:41
 os/spa/stylesheet.css
 os/mac/stylesheet.css
 os/linux/stylesheet.css
@@ -12,7 +12,6 @@ workstations/Dominic/browser.json
 workstations/Carlos/settings.json
 workstations/Carlos/folders.json
 workstations/Carlos/browser.json
-workstations/Carlos/folders copy.json
 workstations/Doro/settings.json
 workstations/Doro/folders.json
 workstations/Doro/browser.json
@@ -297,6 +296,7 @@ tools/desktop.js
 tools/general.js
 tools/saveLoad.js
 tools/setup.js
+tools/collectedPaths.txt
 tools/licenses/Material-icons-LICENSE-apache-2_0.txt
 tools/licenses/la-capitaine-icons-LICENSE-gnu-3.txt
 tools/licenses/Mojave-CT-LICENSE-gnu_3.txt

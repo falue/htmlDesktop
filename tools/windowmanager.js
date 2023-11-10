@@ -611,12 +611,21 @@ async function fetchFilePathsAndReload(fileListUrl) {
 
 async function reloadFiles(filePaths) {
   let date = filePaths.shift();
+  let errors = {};
   for (const pathToFile of filePaths) {
-    // console.log(`Reloading: ${pathToFile}`);
     try {
-      await fetch(pathToFile, {cache: 'reload', mode: 'no-cors'});
+      const response = await fetch(pathToFile, {cache: 'reload', mode: 'no-cors'});
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
     } catch (error) {
       console.error(`Failed to reload: ${pathToFile}`, error);
+      errors[error] = errors[error] ? errors[error]+"<li>"+pathToFile+"</li>" : "<li>"+pathToFile+"</li>";
+    }
+  }
+  if(Object.keys(errors).length) {
+    for (const currError of Object.keys(errors)) {
+      showSystemMessage({title: currError, description: `While getting static meta data, this file(s) errored out:<br><ul class="list">${errors[currError]}</ul>`, icon:"sync_problem", timeOut: 0});
     }
   }
   console.log(`${filePaths.length} meta files have been reloaded.`);
