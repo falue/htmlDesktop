@@ -1,4 +1,4 @@
-11.10.2023 16:41
+10.11.2023 17:06
 os/spa/stylesheet.css
 os/mac/stylesheet.css
 os/linux/stylesheet.css

@@ -16,8 +16,8 @@ output_file="collectedPaths.txt"
 # Empty the output file
 > "$output_file"
 
-# Get current date and time in "MM.DD.YYYY hh:mm" format
-current_datetime=$(date +"%m.%d.%Y %H:%M")
+# Get current date and time in "DD.MM.YYYY hh:mm" format
+current_datetime=$(date +"%d.%m.%Y %H:%M")
 
 # Write the current date and time to the output file
 echo "$current_datetime" > "$output_file"
