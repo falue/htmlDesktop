@@ -311,6 +311,10 @@ function createUniqueId(max) {
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4()).substring(0,max);
 }
 
+function plural(number, singular, plural) {
+  return number === 1 ? singular : plural ? plural : singular+"s";
+}
+
 // Ignore user input
 function epD(event) {
   event.preventDefault();

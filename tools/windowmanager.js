@@ -582,11 +582,12 @@ async function hardReloadAllIframes(doc) {
   cl("======================================================")
   cl("Start reloading files and windows...")
   cl("------------------------------------------------------")
-  await fetch('tools/collectedPaths.txt', {cache: 'reload', mode: 'no-cors'});
+  showSystemMessage({title: `Fetching meta data files..`, description: "", icon:"hourglass_empty", timeOut: 1500});
+  await fetch('tools/collectedPaths.txt', {cache: 'reload', mode: 'no-cors'});  // Reload the reload file first
   let updatedFiles = await hardReloadMetaSources();
-  showSystemMessage({title: `Reloaded ${updatedFiles[0]} meta data files from ${updatedFiles[1]}`, description: ".css, .js, .txt, .json, .fakeBash, .splash", icon:"refresh", timeOut: 12000});
-  await hardReloadIframe(doc);
-  showSystemMessage({title: `Reloaded all windows`, description: "Reloaded Imgs, scripts and some css. Good to go!", icon:"refresh", timeOut: 3500});
+  showSystemMessage({title: `Reloaded ${updatedFiles[0]} meta data files from ${updatedFiles[1]}`, description: ".css, .js, .txt, .json, .fakeBash, .splash", icon:"rotate_left", timeOut: 12000});
+  let updatesIframes = await hardReloadIframe(doc);
+  showSystemMessage({title: `Reloaded ${updatesIframes[0]} ${plural(updatesIframes[0], "window")}`, description: `Reloaded Imgs, scripts and some css:<br><ul class="list"><li>${updatesIframes[1]}</li><br>Good to go!`, icon:"rotate_left", timeOut: 3500});
 }
 
 async function hardReloadMetaSources() {
@@ -637,11 +638,13 @@ async function reloadFiles(filePaths) {
 async function hardReloadIframe(doc) {
   // await doc loaded
   let iFrames = doc.querySelectorAll("iframe");
+  let windowTitles = [];
   for (let currentIframe of iFrames) {
     let currentSrc = currentIframe.src;
     let currentId = currentIframe.id;
     let currDocument = currentIframe.contentWindow.document;
     await hardReloadIframe(currentIframe.contentWindow.document);  // recursively find iframes within
+    windowTitles.push(currentIframe.contentWindow.document.title);
     
     cl(`Hard reload '${currentIframe.contentWindow.document.title}': ${currentSrc}`);
     currDocument.location.reload();  // Maybe does not remove cache
@@ -660,6 +663,7 @@ async function hardReloadIframe(doc) {
     clearCacheOfFiles(currentNewIframe, "backgroundImgs");
     cl("------------------------------------------------------")
  }
+ return [iFrames.length, windowTitles.join("</li><li>")];
 }
 
 function removeAllShortcuts() {
