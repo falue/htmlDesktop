@@ -5,7 +5,7 @@
 include_folders=( "../os" "../workstations" "../programs" "../tools" )
 
 # Array of folders to exclude from the search
-exclude_folders=( "_archive" "threejs" "collectedPaths.txt" )
+exclude_folders=( "_archive" "threejs" )
 
 # Array of file endings to search for
 file_endings=( ".css" ".js" ".txt" ".json" ".fakeBash" ".splash" )

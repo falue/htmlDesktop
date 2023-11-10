@@ -582,6 +582,7 @@ async function hardReloadAllIframes(doc) {
   cl("======================================================")
   cl("Start reloading files and windows...")
   cl("------------------------------------------------------")
+  await fetch('tools/collectedPaths.txt', {cache: 'reload', mode: 'no-cors'});
   let updatedFiles = await hardReloadMetaSources();
   showSystemMessage({title: `Reloaded ${updatedFiles[0]} meta data files from ${updatedFiles[1]}`, description: ".css, .js, .txt, .json, .fakeBash, .splash", icon:"refresh", timeOut: 12000});
   await hardReloadIframe(doc);
