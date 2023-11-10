@@ -589,7 +589,7 @@ async function hardReloadAllIframes(doc) {
 }
 
 async function hardReloadMetaSources() {
-  return await fetchFilePathsAndReload('../tools/collectedPaths.txt');
+  return await fetchFilePathsAndReload('tools/collectedPaths.txt');
 }
 
 async function fetchFilePathsAndReload(fileListUrl) {
