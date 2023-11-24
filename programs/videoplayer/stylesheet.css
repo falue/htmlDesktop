@@ -66,6 +66,16 @@ code {
     float: right;
 }
 
+#gallery {
+    position: absolute;
+    height:100%;
+    width:100%;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
 video,
 select,
 button:focus, button:active,
@@ -84,6 +94,11 @@ select, input, button {
 
 input, button {
     appearance: none !important;
+}
+
+input[type=file] {
+    padding:1em 0;
+    box-sizing: content-box;
 }
 
 select:hover, input:hover, button:hover {

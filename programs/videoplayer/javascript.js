@@ -1,49 +1,73 @@
 let timeout;
 let timeoutSpeedChange;
 let video;
+let gallery;
 let duration;
 let isFullscreen = false;
+let isVideoplayer = true;
+let imageGallery = [];
+let imageGalleryIndex = 0;
 
 function setup() {
-    video = document.getElementById("video");
-    duration = video.duration;
-    document.getElementById('duration').innerHTML = duration;
+    video = gebi("video");
+    gallery = gebi("gallery");
+
+    // READ IMAGES FROM TO LOCALSTORAGE
+    let data = JSON.parse(localStorage.getItem('videoplayer'));
+    if(data.gallery) {
+        console.log("some data in gallery!");
+        imageGallery = data.gallery;
+        isVideoplayer = false;
+        video.pause();
+        hideClass('video');
+        showClass('gallery');
+        displayImage(0);
+        gebi('galleryList').innerHTML = `${imageGallery.length} image(s) from memory`;
+    }
+}
+
+function setupVideo() {
+    duration = gebi('video').duration;
+    gebi('duration').innerHTML = duration;
 }
 
 // Feel free to fork and improve on this if you'd like
 function setColors() {
-    let speed = document.getElementById("speed").value;
-    let blur = document.getElementById("blur").value;
-    let saturate = document.getElementById("saturate").value;
-    let hue = document.getElementById("hue").value;
-    let brightness = document.getElementById("brightness").value;
-    let contrast = document.getElementById("contrast").value;
-    let invert = document.getElementById("invert").value;
-    let sepia = document.getElementById("sepia").value;
+    let speed = gebi("speed").value;
+    let blur = gebi("blur").value;
+    let saturate = gebi("saturate").value;
+    let hue = gebi("hue").value;
+    let brightness = gebi("brightness").value;
+    let contrast = gebi("contrast").value;
+    let invert = gebi("invert").value;
+    let sepia = gebi("sepia").value;
 
     let filters = "blur(" + blur + "px) saturate(" + saturate + ") hue-rotate(" + hue + "deg) brightness(" + brightness + "%) contrast(" + contrast + ") invert(" + invert + ") sepia(" + sepia + ")";
     video.style.webkitFilter = filters;
     video.style.filter = filters;
+    gallery.style.webkitFilter = filters;
+    gallery.style.filter = filters;
+
     changeSpeed(speed);
 
-    document.getElementById("speed-val").innerHTML = speed/10;
-    document.getElementById("blur-val").innerHTML = blur;
-    document.getElementById("saturate-val").innerHTML = saturate;
-    document.getElementById("hue-val").innerHTML = hue;
-    document.getElementById("brightness-val").innerHTML = brightness;
-    document.getElementById("contrast-val").innerHTML = contrast;
-    document.getElementById("invert-val").innerHTML = invert;
-    document.getElementById("sepia-val").innerHTML = sepia;
+    gebi("speed-val").innerHTML = speed/10;
+    gebi("blur-val").innerHTML = blur;
+    gebi("saturate-val").innerHTML = saturate;
+    gebi("hue-val").innerHTML = hue;
+    gebi("brightness-val").innerHTML = brightness;
+    gebi("contrast-val").innerHTML = contrast;
+    gebi("invert-val").innerHTML = invert;
+    gebi("sepia-val").innerHTML = sepia;
 }
 
 function toggleClass(id, className) {
-    let element = document.getElementById(id);
+    let element = gebi(id);
     element.classList.toggle(className);
 }
 
 function changeSpeed(value) {
     value /= 10;
-    document.getElementById("speed-val").innerHTML = value;
+    gebi("speed-val").innerHTML = value;
 
     //console.log(timeout, timeoutSpeedChange);
 
@@ -85,6 +109,57 @@ function fasterPussycat(value) {
     }, 40);  // 40 für 25fps
 }
 
+function uploadFile(data) {
+    var file = data.files[0];
+    var type = file.type;
+    console.log(type);
+    imageGallery = [];
+    if(type.includes('image')) {
+        isVideoplayer = false;
+        // Hide videoplayer
+        video.pause();
+        hideClass('video');
+        showClass('gallery');
+        // Hide video controls
+        makeImageGallery(data)
+    } else if (type.includes('video')) {
+        isVideoplayer = true;
+        localStorage.removeItem('videoplayer');
+        // Show videoplayer
+        // Show video controls
+        loadVideoFile(data);
+        showClass('video');
+        hideClass('gallery');
+    }
+}
+
+async function makeImageGallery(data) {
+    gebi('galleryList').innerHTML = '';
+    for (let index = 0; index < data.files.length; index++) {
+        imageGallery.push(await convertBase64(data.files[index]));
+        gebi('galleryList').innerHTML += `${index+1}. ${data.files[index].name}<br>`;
+    }
+    // SAVE TO LOCALSTORAGE
+    try {
+        localStorage.setItem('videoplayer', JSON.stringify({'gallery': imageGallery}));
+    } catch(e) {
+        if (e instanceof DOMException && e.name === "QuotaExceededError") {
+            alert('Images are too big to save for next time. It works but they do not get saved.\n\nYou have to manually select these images again next time you start this.\n\nMake images smaller to solve this.');
+        } else {
+            alert('An error occurred while saving data.');
+        }
+    }
+    gebi('movieSelector').value = '';
+    displayImage(0);
+}
+
+function displayImage(index) {
+    if(index < 0) index = imageGallery.length-1;
+    if(index > imageGallery.length-1) index = 0;
+    imageGalleryIndex = index;
+    gebi('gallery').style.backgroundImage = `url(${imageGallery[imageGalleryIndex]})`;
+}
+
 function loadVideoFile(videoFile) {
     var file = videoFile.files[0];
     var type = file.type;
@@ -94,6 +169,20 @@ function loadVideoFile(videoFile) {
     videoNode.src = fileURL;
 }
 
+const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+    });
+};
 
 function changeSource(source) {
     video.src = source;
@@ -107,23 +196,103 @@ let i = 0;
 let o = 0;
 
 function keyboardController(event) {
-    // Ignore presses in textareas and inputs, but NOT buttons because mostly fake
-    //if(event.target.localName !== "textarea" && event.target.localName !== "input") {
-    let key = event.key;
-    switch(key) {
-        case "0": case "m": toggleMute(); break;
-        case "1": case "i": setI(); event.preventDefault(); break;
-        case "2": case "c": toggleControls();  event.preventDefault(); break;
-        case "3": case "o": setO();  event.preventDefault(); break;
-        case "4": case "ArrowLeft": skipForeward(); event.preventDefault(); break;
-        case "5": case " ": case "p": togglePlayPause(); event.preventDefault(); break;
-        case "6": case "ArrowRight": skipBackward(); event.preventDefault(); break;
-        case "7": case "r": clear();  event.preventDefault(); break;
-        case "8": case "t": toggleMenu(); break;
-        case "9": case "u": console.log("to start or 'i' and pause()"); video.currentTime = i; video.pause(); event.preventDefault(); break;
-        case "/": case "f": toggleFullscreen(); break;
-        case "=": case "l": toggleLoop(); break;
-        // default: console.log(key); break;
+    // TODO: make shortcuts with OPTION key
+    if(event.target.localName !== "textarea" && event.target.localName !== "input") {
+        // Ignore presses in textareas and inputs, but NOT buttons because mostly fake
+        //if(event.target.localName !== "textarea" && event.target.localName !== "input") {
+        let key = event.keyCode;
+        let keyTable = {
+            48: "0",
+            49: "1",
+            50: "2",
+            51: "3",
+            52: "4",
+            53: "5",
+            54: "6",
+            55: "7",
+            56: "8",
+            57: "9",
+
+            96: "0",
+            97: "1",
+            98: "2",
+            99: "3",
+            100: "4",
+            101: "5",
+            102: "6",
+            103: "7",
+            104: "8",
+            105: "9",
+
+            111: "/",
+            61: "=",
+            187: "=",
+            37: "ArrowLeft",
+            38: "ArrowUp",
+            39: "ArrowRight",
+            40: "ArrowDown",
+            32: " ",
+
+            65: "a",
+            66: "b",
+            67: "c",
+            68: "d",
+            69: "e",
+            70: "f",
+            71: "g",
+            72: "h",
+            73: "i",
+            74: "j",
+            75: "k",
+            76: "l",
+            77: "m",
+            78: "n",
+            79: "o",
+            80: "p",
+            81: "q",
+            82: "r",
+            83: "s",
+            84: "t",
+            85: "u",
+            86: "v",
+            87: "w",
+            88: "x",
+            89: "y",
+            90: "z",
+
+            13: "enter",
+            8: "backspace",
+            27: "escape",
+            46: "delete"
+        };
+        key = keyTable[key];
+
+        if(event.altKey || ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(key) || /^[0-9]+$/.test(key)) {
+            if(isVideoplayer) {
+                switch(key) {
+                    case "0": case "m": toggleMute(); break;
+                    case "1": case "i": setI(); event.preventDefault(); break;
+                    case "2": case "c": toggleControls();  event.preventDefault(); break;
+                    case "3": case "o": setO();  event.preventDefault(); break;
+                    case "4": case "ArrowLeft": skipForeward(); event.preventDefault(); break;
+                    case "5": case " ": case "p": togglePlayPause(); event.preventDefault(); break;
+                    case "6": case "ArrowRight": skipBackward(); event.preventDefault(); break;
+                    case "7": case "r": clear();  event.preventDefault(); break;
+                    case "8": case "t": toggleMenu(); break;
+                    case "9": case "u": console.log("to start or 'i' and pause()"); video.currentTime = i; video.pause(); event.preventDefault(); break;
+                    case "/": case "f": toggleFullscreen(); break;
+                    case "=": case "l": toggleLoop(); break;
+                    // default: console.log(key); break;
+                }
+            } else {
+                switch(key) {
+                    case "4": case "ArrowLeft": imageGalleryIndex -= 1; displayImage(imageGalleryIndex); event.preventDefault(); break;
+                    case "6": case "ArrowRight": imageGalleryIndex += 1; displayImage(imageGalleryIndex); event.preventDefault(); break;
+                    case "8": case "t": toggleMenu(); break;
+                    case "/": case "f": toggleFullscreen(); break;
+                }
+            }
+        }
     }
 }
 
@@ -149,8 +318,8 @@ function setI() {
     console.log("set start");
     i = video.currentTime;
     if(i < o) o = 0;
-    document.getElementById("inPoint").innerHTML = i;
-    document.getElementById("outPoint").innerHTML = o;
+    gebi("inPoint").innerHTML = i;
+    gebi("outPoint").innerHTML = o;
 }
 
 function setO() {
@@ -159,21 +328,21 @@ function setO() {
     if(i > o) i = 0;
     video.currentTime = i;
     
-    document.getElementById("inPoint").innerHTML = i;
-    document.getElementById("outPoint").innerHTML = o;
+    gebi("inPoint").innerHTML = i;
+    gebi("outPoint").innerHTML = o;
 }
 
 function clear() {
     console.log("clear");
     i = 0;
     o = 0;
-    document.getElementById("inPoint").innerHTML = i;
-    document.getElementById("outPoint").innerHTML = o;
+    gebi("inPoint").innerHTML = i;
+    gebi("outPoint").innerHTML = o;
 }
 
 function checkForO(time) {
     // console.log(time);
-    document.getElementById("currentTime").innerHTML = time;
+    gebi("currentTime").innerHTML = time;
     if(o > 0) {
         // leeway if(o < time +.25 && time-0.25 > o) {
         if(time > o) {
@@ -201,7 +370,7 @@ function toggleMute() {
 function toggleLoop() {
     console.log("toggle loop");
     video.loop = !video.loop;
-    document.getElementById("looping").innerHTML = video.loop ? 'Yes' : 'No';
+    gebi("looping").innerHTML = video.loop ? 'Yes' : 'No';
 }
 
 
@@ -226,3 +395,48 @@ function exitFullscreen() {
         document.webkitExitFullscreen();
     }
 }
+
+
+function gebi(id) {
+    return document.getElementById(id);
+}
+
+function hide(id) {
+    for(i=0; i< arguments.length; i++) { 
+        gebi(arguments[i]).classList.add('hide');
+    }
+}
+
+function show(id) {
+    for(i=0; i< arguments.length; i++) { 
+        gebi(arguments[i]).classList.remove('hide');
+    }
+}
+
+function toggle(id) {
+    // TODO: IGNORES CLASS HIDE
+    let element = gebi(id);
+    let display = window.getComputedStyle(element, null).display;
+    if(display == "" || display == "none") {
+        show(id);
+        return 1;
+    } else {
+        hide(id);
+        return 0;
+    }
+}
+
+
+function showClass(className) {
+    let elements = document.getElementsByClassName(className);
+    for(i=0; i< elements.length; i++) {
+          elements[i].classList.remove('hide');
+      }
+  }
+  
+  function hideClass(className) {
+    let elements = document.getElementsByClassName(className);
+    for(i=0; i< elements.length; i++) { 
+          elements[i].classList.add('hide');
+      }
+  }

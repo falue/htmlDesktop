@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PLAYBACK</title>
+    <title>MEDIAPLAYER</title>
     <link rel="stylesheet" href="stylesheet.css" media="all">
     <script src="javascript.js"></script>
 </head>
@@ -12,35 +12,52 @@
 <div id="menu-hidden" class="hide menu-hidden" onclick="toggleClass('menu', 'hide'); toggleClass('menu-hidden', 'hide')">&nbsp;</div>
 <aside id="menu" class="noScrollbar">
     <div>
-        <label><strong>REPLAY</strong></label>
-        <button class="medium" style="position: absolute; top: .25em; right:.5em; background-color:rgba(255,80,80,1);" onclick="window.location.href = '../../index.html'">&larr; Home</button>
+        <label><strong>MEDIAPLAYER</strong></label>
+        <button class="medium" style="position: absolute; top: .25em; right:.5em; background-color:rgba(255,80,80,1);" onclick="window.location.href = '../../index.html'">&larr; Index</button>
         <button class="medium" onclick="toggleMenu()">Toggle Menu</button>
-        <button class="medium"
+        <button class="medium video"
                 onclick="toggleControls()">
             Toggle Video Controls
         </button>
-        <button class="medium" onclick="togglePlayPause()">Play / Pause</button>
-        <button class="medium" onclick="toggleMute()">Toggle Mute</button>
-        <button class="medium" onclick="toggleLoop()">Toggle Loop</button>
+        <button class="medium video" onclick="togglePlayPause()">Play / Pause</button>
+        <button class="medium video" onclick="toggleMute()">Toggle Mute</button>
+        <button class="medium video" onclick="toggleLoop()">Toggle Loop</button>
         <button class="medium" onclick="toggleFullscreen()">Toggle Fullscreen</button>
         <!-- <button class="medium" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">Open in Pop Up</button> -->
 
     </div>
-    <div class="hotkeys">
-        Hotkeys <a href="videplayer_hotkeys.pdf" target="_blank">[download PDF]</a><br>
-        <div><span>0</span> / <span>m</span>: toggle Mute</div>
-        <div><span>1</span> / <span>i</span>: Set in point</div>
-        <div><span>2</span> / <span>c</span>: Toggle Controls</div>
-        <div><span>3</span> / <span>o</span>: Set out point</div>
-        <div><span>4</span> / <span>ArrowLeft</span>: skip -5s</div>
-        <div><span>5</span> / <span>space</span> / <span>p</span>: Toggle Play/Pause</div>
-        <div><span>6</span> / <span>ArrowRight</span>: skip +5s</div>
-        <div><span>7</span> / <span>r</span>: Reset in/out points</div>
-        <div><span>8</span> / <span>t</span>: toggle Menu</div>
-        <div><span>9</span> / <span>u</span>: Seek start or 'i' and pause</div>
-        <div><span>/</span> / <span>f</span>: Fullscreen</div>
-        <div><span>=</span> / <span>l</span>: Loop</div>
+    <div class="hotkeys gallery hide">
+        Hotkeys Images 
+        <button class="small" onclick="toggle('hotkeysImages')">Show</button>
         <br>
+        <nav id="hotkeysImages" class="hide">
+            <div><span>4</span> or <span>ArrowLeft</span>: prev image</div>
+            <div><span>6</span> or <span>ArrowRight</span>: next image</div>
+            <div><span>8</span> or <span>alt + t</span>: Toggle Menu</div>
+            <div><span>/</span> or <span>alt + f</span>: Fullscreen</div>
+        </nav>
+    </div>
+    <div class="hotkeys video">
+        Hotkeys Videos 
+        <code><a href="videplayer_hotkeys.pdf" target="_blank">[download PDF]</a></code>
+        <button class="small" onclick="toggle('hotkeysVideos')">Show</button>
+        <br>
+        <nav id="hotkeysVideos" class="hide">
+            <div><span>0</span> or <span>alt + m</span>: toggle Mute</div>
+            <div><span>1</span> or <span>alt + i</span>: Set in point</div>
+            <div><span>2</span> or <span>alt + c</span>: Toggle Controls</div>
+            <div><span>3</span> or <span>alt + o</span>: Set out point</div>
+            <div><span>4</span> or <span>ArrowLeft</span>: skip -5s</div>
+            <div><span>5</span> or <span>space</span> or <span>alt + p</span>: Toggle Play/Pause</div>
+            <div><span>6</span> or <span>ArrowRight</span>: skip +5s</div>
+            <div><span>7</span> or <span>alt + r</span>: Reset in/out points</div>
+            <div><span>8</span> or <span>alt + t</span>: Toggle Menu</div>
+            <div><span>9</span> or <span>alt + u</span>: Seek start or 'i' and pause</div>
+            <div><span>/</span> or <span>alt + f</span>: Fullscreen</div>
+            <div><span>=</span> or <span>alt + l</span>: Loop</div>
+        </nav>
+    </div>
+    <div class="video">
         Tot. duration: <span id="duration">0.0</span>
         <br>
         Looping: <span id="looping">Yes</span>
@@ -53,9 +70,9 @@
     </div>
     <div>
         <label>
-            <strong>Sources</strong>
+            <strong>Sources (Video or image files)</strong>
         </label>
-        <select onchange="changeSource(this.value)">
+        <select onchange="changeSource(this.value)" class="video">
             <option value="media/Karaoke_Scharlachrot_small.mp4">Karaoke_Scharlachrot.mp4</option>
             <!-- <option value="" disabled="disabled">----------</option> -->
             <option value="media/Karaoke_Scharlachrot_5_Sek_Counter_small.mp4">Karaoke_Scharlachrot_5_Sek_Counter.mp4</option>
@@ -63,14 +80,27 @@
             <option value="media/Karaoke_Im_Wagen_Vor_Mir_5_Sek_Counter_small.mp4">Karaoke_Im_Wagen_Vor_Mir_5_Sek_Counter.mp4</option>
         </select>
 
-        <hr>
-        <input id="movieSelector" type="file" accept="video/*" onchange="loadVideoFile(this)">
+        <hr class="video">
+        <input id="movieSelector" type="file" onchange="uploadFile(this)" multiple>
+        <div id="galleryList" class="gallery"></div>
 
     </div>
-    <div>
+    <div class="gallery hide">
         <label>
-            <strong>Speed</strong><code><span id="speed-val">1</span>x</code>
-            <button class="small" onClick="document.getElementById('speed').value=10; setColors()" title="Set to default">default</button>
+            <strong>Image fitting</strong>
+        </label>
+        <button class="" onclick="gallery.style.backgroundSize = 'contain'" title="Set to default">Contain (letterboxed)</button>
+        <br>
+        <br>
+        <button class="" onclick="gallery.style.backgroundSize = 'cover'" title="Set to default">Cover (fill screen)</button>
+    </div>
+    <div class="video">
+        <label>
+            <strong>Speed</strong>
+            <code>
+                <input style="width:8em" placeholder="Type speed + enter" onchange="changeSpeed(parseFloat(this.value*10))">
+                <span id="speed-val">1</span>x</code>
+            <button class="small" onclick="gebi('speed').value=10; setColors()" title="Set to default">default</button>
             
         </label>
         <input id="speed" type="range" value="10" min="1" max="160" onchange="changeSpeed(this.value)" oninput="changeSpeed(this.value)">
@@ -79,75 +109,64 @@
     <div>
         <label>
             <strong>Blur</strong><code><span id="blur-val">0</span>px</code>
-            <button class="small" onClick="document.getElementById('blur').value=0; setColors()" title="Set to default">default</button>
+            <button class="small" onclick="gebi('blur').value=0; setColors()" title="Set to default">default</button>
         </label>
         <input id="blur" type="range" min="0" max="30" step="1" value="0" oninput="setColors()"/>
     </div>
     <div>
         <label><strong>Saturation</strong><code><span id="saturate-val">1</span></code>
-            <button class="small" onClick="document.getElementById('saturate').value=1; setColors()" title="Set to default">default</button>
+            <button class="small" onclick="gebi('saturate').value=1; setColors()" title="Set to default">default</button>
         </label>
         <input id="saturate" type="range" min="0" max="25" step="0.1" value="1" oninput="setColors()"/>
     </div>
     <div>
         <label><strong>Hue</strong><code><span id="hue-val">0</span>deg</code>
-        <button class="small" onClick="document.getElementById('hue').value=0; setColors()" title="Set to default">default</button>
+        <button class="small" onclick="gebi('hue').value=0; setColors()" title="Set to default">default</button>
         </label>
         <input id="hue" type="range" min="0" max="360" step="1" value="0" oninput="setColors()"/>
     </div>
     <div>
         <label>
             <strong>Brightness</strong><code><span id="brightness-val">0</span>%</code>
-        <button class="small" onClick="document.getElementById('brightness').value=100; setColors()" title="Set to default">default</button>
+        <button class="small" onclick="gebi('brightness').value=100; setColors()" title="Set to default">default</button>
         </label>
         <input id="brightness" type="range" min="0" max="1600" step="10" value="100" oninput="setColors()"/>
     </div>
     <div>
         <label><strong>Contrast</strong><code><span id="contrast-val">0</span></code>
-            <button class="small" onClick="document.getElementById('contrast').value=1; setColors()" title="Set to default">default</button>
+            <button class="small" onclick="gebi('contrast').value=1; setColors()" title="Set to default">default</button>
         </label>
         <input id="contrast" type="range" min="0" max="15" step="0.05" value="1" oninput="setColors()"/>
     </div>
     <div>
         <label><strong>Invert</strong><code><span id="invert-val">0</span></code>
-            <button class="small" onClick="document.getElementById('invert').value=0; setColors()" title="Set to default">default</button>
+            <button class="small" onclick="gebi('invert').value=0; setColors()" title="Set to default">default</button>
         </label>
         <input id="invert" type="range" min="0" max="1" step="0.05" value="0" oninput="setColors()"/>
     </div>
     <div>
         <label><strong>Sepia</strong><code><span id="sepia-val">0</span></code>
-            <button class="small" onClick="document.getElementById('sepia').value=0; setColors()" title="Set to default">default</button>
+            <button class="small" onclick="gebi('sepia').value=0; setColors()" title="Set to default">default</button>
         </label>
         <input id="sepia" type="range" min="0" max="1" step="0.05" value="0" oninput="setColors()"/>
     </div>
     <div>
-        <button onClick="document.getElementById('speed').value=10; document.getElementById('blur').value=0; document.getElementById('saturate').value=1; document.getElementById('hue').value=0; document.getElementById('brightness').value=100; document.getElementById('contrast').value=1; document.getElementById('invert').value=0; document.getElementById('sepia').value=0; setColors()">
+        <button onclick="gebi('speed').value=10; gebi('blur').value=0; gebi('saturate').value=1; gebi('hue').value=0; gebi('brightness').value=100; gebi('contrast').value=1; gebi('invert').value=0; gebi('sepia').value=0; setColors()">
             default all
         </button>
-        <span class="small">
-            <br>
-            <br>
-            <a href="index.html" target="popup" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">
-                <input type="button" value="Open in popUp">
-            </a> (Best in Desktop Safari)
-            <br>
-            Get borderless browser: 
-            <a href="https://apps.apple.com/ch/app/frameless-a-full-screen-web-browser/id933580264?l=en" target="_blank">IOS</a>
-            |
-            <a href="https://play.google.com/store/apps/details?id=com.isolator.fullscreenbrowser2" target="_blank">Android</a>
-        </span>
-        <br>
     </div>
     
 </aside>
 
 
 <section>
-    <video id="video" width="640" height="480"
+    <div id="gallery" class="gallery hide"></div>
+
+    <video id="video" class="video" width="640" height="480"
         loop
         autoplay="true"
         class="noControls"
-        oncanplay="setup()"
+        oncanplay="setupVideo()"
         ontimeupdate="checkForO(this.currentTime)"
         ondblclick="this.webkitRequestFullscreen()"
     >
