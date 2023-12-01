@@ -616,6 +616,7 @@ async function reloadFiles(filePaths) {
   for (const pathToFile of filePaths) {
     try {
       const response = await fetch(pathToFile, {cache: 'reload', mode: 'no-cors'});
+      if(pathToFile.endsWith('.jpg')) console.log(pathToFile);
       if (!response.ok) {
         throw new Error(`${response.status} ${response.statusText}`);
       }

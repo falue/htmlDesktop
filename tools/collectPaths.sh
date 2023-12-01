@@ -8,7 +8,7 @@ include_folders=( "../os" "../workstations" "../programs" "../tools" )
 exclude_folders=( "_archive" "threejs" )
 
 # Array of file endings to search for
-file_endings=( ".css" ".js" ".txt" ".json" ".fakeBash" ".splash" )
+file_endings=( ".css" ".js" ".txt" ".json" ".fakeBash" ".splash", "desktop.jpg" )
 
 # Output file
 output_file="collectedPaths.txt"
