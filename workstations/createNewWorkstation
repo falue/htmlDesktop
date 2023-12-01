@@ -45,6 +45,8 @@ if [[ $os == "mac" || $os == "linux" || $os == "windows" || $os == "spa" ]]; the
     jq -c '.settings.workstation = "'${newNameOfWorkstation}'"' $workstationSettings > tmp.$$.json && mv tmp.$$.json $workstationSettings
     
     echo "Success."
+    echo ""
+    echo "ATTENTION: You should run now the tools/collectPaths.sh for hard reloading."
     exit
 else
     echo "---------------------------------"
