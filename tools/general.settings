@@ -1,6 +1,7 @@
 # Define all available workstations here
 
 workstation=generic;spa
+workstation=Polizei;windows
 workstation=Agotha;windows
 workstation=Athletics;windows
 workstation=Carlos;windows
@@ -11,4 +12,3 @@ workstation=hasenfratz;windows
 workstation=Leo;spa
 workstation=Milan;windows
 workstation=MinervaRezeption;windows
-

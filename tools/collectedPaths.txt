@@ -1,8 +1,15 @@
-10.11.2023 17:06
+01.12.2023 16:25
 os/spa/stylesheet.css
 os/mac/stylesheet.css
 os/linux/stylesheet.css
 os/windows/stylesheet.css
+os/spa/desktop.jpg
+os/mac/desktop.jpg
+os/linux/desktop.jpg
+os/windows/desktop.jpg
+workstations/Polizei/settings.json
+workstations/Polizei/folders.json
+workstations/Polizei/browser.json
 workstations/Milan/settings.json
 workstations/Milan/folders.json
 workstations/Milan/browser.json
@@ -12,6 +19,7 @@ workstations/Dominic/browser.json
 workstations/Carlos/settings.json
 workstations/Carlos/folders.json
 workstations/Carlos/browser.json
+workstations/Carlos/folders copy 2.json
 workstations/Doro/settings.json
 workstations/Doro/folders.json
 workstations/Doro/browser.json
@@ -40,6 +48,7 @@ workstations/Agotha/browser.json
 workstations/hasenfratz/settings.json
 workstations/hasenfratz/folders.json
 workstations/hasenfratz/browser.json
+workstations/Polizei/bash/script.fakeBash
 workstations/Milan/bash/script.fakeBash
 workstations/Dominic/bash/random.fakeBash
 workstations/Dominic/bash/script.fakeBash
@@ -53,6 +62,7 @@ workstations/MinervaRezeption/bash/script.fakeBash
 workstations/generic/bash/script.fakeBash
 workstations/Agotha/bash/script.fakeBash
 workstations/hasenfratz/bash/script.fakeBash
+workstations/Polizei/desktops/desktop.jpg
 programs/ftp/stylesheet.css
 programs/video/stylesheet.css
 programs/securiton/stylesheet.css
@@ -165,10 +175,6 @@ programs/bash/defaultScripts/ls-l.fakeBash
 programs/bash/defaultScripts/top.fakeBash
 programs/bash/defaultScripts/ls-l-a.fakeBash
 programs/bash/defaultScripts/sudo.fakeBash
-programs/securiton/index.splash
-programs/servermanager/index.splash
-programs/dna/index.splash
-programs/webcam/index.splash
 tools/windowmanager.css
 tools/desktop.css
 tools/libraries/video-js.css
