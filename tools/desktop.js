@@ -38,6 +38,32 @@ async function cycleBackgroundImage() {
     }
 }
 
+async function uploadDesktopImage(data) {
+    var file = data.files[0];
+    var type = file.type;
+    console.log(type);
+    if(type.includes('image')) {
+        console.log(data)
+        setDesktopImg(await convertBase64(data.files[0]));
+    }
+}
+
+const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+    });
+};
+
+
 // NOT async but maybe super for other things?
 // fileExists("foo.gif", function(){ cl("good"); }, function(){ cl("bad"); } );
 /* function fileExists(imageSrc, good, bad) {

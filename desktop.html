@@ -416,6 +416,11 @@
                   <input id="BGColor" type="color" class="valign tooltip pointer" onclick="event.stopPropagation();" data-title="Set plain color.." oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value; gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
                 </div>
               </li>
+              <li class="relative pointer">
+                  <i class="material-icons blue small">desktop_windows</i>
+                  Upload background image
+                  <input id="movieSelector" type="file" onchange="uploadDesktopImage(this)">
+              </li>
               <li id="actionMenuDockLock" class="hide maxWidth pointer" onclick="gebi('dock').classList.toggle('dockLock')">
                   <i class="material-icons blue small">call_to_action</i>
                   Lock dock
