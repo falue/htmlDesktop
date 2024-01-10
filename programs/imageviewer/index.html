@@ -35,11 +35,17 @@
     <div id="settings" class="hide radius3 fixed top right margin2 padding1 whiteBg shadow" style="z-index:9999">
       <p class="grey">Settings</p>
       <fieldset class="radius3">
+        <legend>Upload images</legend>
+        <input id="fileinput" class="" type="file" accept="image/png, image/gif, image/jpeg" onchange="uploadImages(this)" multiple>
+      </fieldset>
+      <fieldset class="radius3">
         <legend>Content</legend>
         <input id="disableVideoControls" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="disableVideoControls = this.checked; setVideoControls()">
         <label for="disableVideoControls">Video: Hide Controls</label><br>
         <input id="allowZoom" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="toggleZoom(this.checked)">
-        <label for="allowZoom">Allow zoom</label>
+        <label for="allowZoom">Allow zoom</label><br>
+        <input id="letterbox" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="toggleLetterbox(this.checked)" checked>
+        <label for="letterbox">Images: Letterboxed</label>
       </fieldset>
       <fieldset class="radius3">
         <legend>Keyboard</legend>

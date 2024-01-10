@@ -27,7 +27,14 @@ async function setupImageViewer() {
         isFirstFile = true;
         showImage(0);  // Show first image
     } else {
-        gebi('content').innerHTML = "No files in URL";
+        files = JSON.parse(localStorage.getItem('imageViewer'));
+        if(files) {
+            setupThumbnails(files);
+            isFirstFile = true;
+            showImage(0);  // Show first image
+        } else {
+            gebi('content').innerHTML = "No files in URL or local storage";
+        }
     }
 
     if(!allowZoom) {
@@ -49,7 +56,14 @@ function toggleZoom(value) {
         hide('zoomOut');
         hide('zoomReset');
     }
+}
 
+function toggleLetterbox(value) {
+    if(value) {
+        gebi('content').style.backgroundSize = 'contain';
+    } else {
+        gebi('content').style.backgroundSize = 'cover';
+    }
 }
 
 function setupThumbnails(files) {
@@ -60,14 +74,19 @@ function setupThumbnails(files) {
         content.classList.add('onlyOneImage');
         hide('thumbnails');
     } else {
+        content.classList.remove('onlyOneImage');
+        show('thumbnails');
         // Setup thumbnail gallery
         for (const [i, file] of files.entries()) {
             let thumbnail = document.createElement("div");
-            thumbnail.setAttribute("title", file);
-            thumbnail.setAttribute("id", "thumbnail-"+file);
+            let filename = file.length < 100 ? file : Math.floor(Math.random() * Date.now());
+            thumbnail.setAttribute("title", filename);
+            thumbnail.setAttribute("id", "thumbnail-"+filename);
             thumbnail.classList.add("thumbnail", "shadow", "radius3");
             if(file.endsWith(".mp4")) {
                 thumbnail.style.backgroundImage = "url(../../os/"+os+"/systemIcons/fileMovie.png)";
+            } else if(file.startsWith('data:image')) {
+                thumbnail.style.backgroundImage = "url("+file+")";
             } else {
                 thumbnail.style.backgroundImage = "url(../../workstations/"+workstation+"/files/"+file+")";
             }
@@ -103,6 +122,12 @@ async function showImage(index) {
         show("videoPlayer");
         await setVideoSrcAndPlay(path, 'video/mp4');
         gebi('thumbnails').classList.add("videplayer");
+    } else if(file.startsWith('data:image')) {
+        content.style.backgroundImage = "url("+file+")";
+        hide("videoPlayer");
+        let player = videojs(document.querySelector('.video-js'));
+        if(player) player.pause();
+        gebi('thumbnails').classList.remove("videplayer");
     } else {
         content.style.backgroundImage = "url("+path+")";
         hide("videoPlayer");
@@ -226,6 +251,37 @@ function exitFullscreen() {
     show('windowmenu');
 }
 
+async function uploadImages(data) {
+    var selectedImages = data.files;
+    // Reset thumbs & current
+    files = [];
+    gebi('content').innerHTML = '';
+    gebi('thumbnails').innerHTML = '';
+    for(i=0; i< selectedImages.length; i++) {
+        // if(files[i].type.includes('image'))
+        files.push(await convertBase64(selectedImages[i]));
+    }
+    localStorage.setItem('imageViewer', JSON.stringify(files));
+    setupThumbnails(files);
+    isFirstFile = true;
+    showImage(0);  // Show first image
+    hide('settings');
+}
+
+const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+    });
+};
 
 function keyboardControllerImageViewer(event) {
     let KeyID = event.keyCode;
