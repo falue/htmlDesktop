@@ -261,7 +261,12 @@ async function uploadImages(data) {
         // if(files[i].type.includes('image'))
         files.push(await convertBase64(selectedImages[i]));
     }
-    localStorage.setItem('imageViewer', JSON.stringify(files));
+    try {
+        localStorage.setItem('imageViewer', JSON.stringify(files));
+    } catch (err) {
+        cl(err);
+        alert("This / these images are too big. make them smaller pretty please");
+    }
     setupThumbnails(files);
     isFirstFile = true;
     showImage(0);  // Show first image
