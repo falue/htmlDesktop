@@ -356,6 +356,10 @@ function iconDecider(filename, folderContentAmount) {
   let path;
   if(folderContentAmount === 0) return "folderEmpty.png";
   if(folderContentAmount > 0) return "folderFull.png";
+  if(filename === 'USB') return "usb.png";
+  if(filename === 'DVD') return "dvd.png";
+  if(filename === 'Trash') return "trashFull.png";
+  if(filename.endsWith(":")) return "hdd.png";
 
   let fileEnding = (filename.split(".")[1] + "").toLowerCase();  // yes this ignores a dot in bewtween filenames
 
