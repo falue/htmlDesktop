@@ -130,8 +130,9 @@ header {
     padding: .25em;
     overflow: visible;
 }
-.content.listView .fileTile:hover {
+.content.listView .fileTile:hover, .content.listView .fileTile:focus {
     background-color: rgba(127,127,127,.2);
+    outline: none;
 }
 .content.listView .fileTile img {
     height: 1em;
@@ -159,4 +160,13 @@ header {
 .treeView img {
     height: 1em;
     margin-right: 0.25em;
+}
+
+.editFileName {
+    margin: 0;
+    padding: 0 !important;
+    border:0 !important;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
 }
