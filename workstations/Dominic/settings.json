@@ -104,30 +104,44 @@
         {
             "name": "Securiton",
             "icon": "",
-            "x": 6,
+            "x": 9,
             "y": 4,
             "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=131', 6, 6, 1250,800, false);"
+        },
+        {
+            "name": "X_IDE",
+            "icon": "",
+            "x": 2,
+            "y": 30,
+            "action": "addWindow('X_IDE', 'code', 'x_ide', 6, 6, 1250,800, false);"
         },
         {
             "name": "Server",
             "icon": "computer.png",
             "x": 2,
-            "y": 15,
+            "y": 17,
             "action": "startDefaultProgram('fileManager');"
         },
         {
             "name": "Trash",
             "icon": "trashFull.png",
-            "x": 94,
+            "x": 93,
             "y": 82,
             "action": ""
         },
         {
             "name": "HDD",
             "icon": "hdd.png",
-            "x": 2,
+            "x": 3,
             "y": 4,
             "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Terminal",
+            "icon": "txt.png",
+            "x": 1,
+            "y": 43,
+            "action": "addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=xt256&speed=8&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 45,12, 666,666, false);"
         }
     ],
     "osNotifications": [],
