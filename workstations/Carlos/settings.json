@@ -8,7 +8,7 @@
         "username": "carlos",
         "password": "",
         "workstation": "Carlos",
-        "selectedSystemMessage": 3,
+        "selectedSystemMessage": -1,
         "osNotificationsDelay": 0
     },
     "systemIcons": [
@@ -22,7 +22,18 @@
     ],
     "windows": [
         {
-            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager/index.html?folderContent=Drives/USB",
+            "x": 8,
+            "y": 8,
+            "w": 1024,
+            "h": 706,
+            "zIndex": 11,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "windowName": "Window",
             "icon": "grid_view",
             "contentPath": "colorMarker",
@@ -37,16 +48,9 @@
     ],
     "shortcuts": [
         {
-            "name": "DVD",
-            "icon": "dvd.png",
-            "x": 94,
-            "y": 69,
-            "action": ""
-        },
-        {
             "name": "Trash",
             "icon": "trashFull.png",
-            "x": 94,
+            "x": 93,
             "y": 82,
             "action": ""
         },
@@ -54,12 +58,206 @@
             "name": "HDD",
             "icon": "hdd.png",
             "x": 3,
-            "y": 4,
+            "y": 30,
             "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "A-433",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Document1",
+            "icon": "folderFull.png",
+            "x": 1,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Presentation Copy",
+            "icon": "folderFull.png",
+            "x": 13,
+            "y": 3,
+            "action": ""
+        },
+        {
+            "name": "Memo Copy",
+            "icon": "folderFull.png",
+            "x": 7,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "File.jpeg",
+            "icon": "fileImage.png",
+            "x": 9,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Document1.txt",
+            "icon": "txt.png",
+            "x": 7,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet Copy",
+            "icon": "folderFull.png",
+            "x": 0,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "var.jpeg",
+            "icon": "fileImage.png",
+            "x": 9,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Presentation Copy",
+            "icon": "folderFull.png",
+            "x": 0,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet Copy.mp4",
+            "icon": "fileMovie.png",
+            "x": 6,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Photos Copy.py",
+            "icon": "python.png",
+            "x": 14,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 17,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Home Copy.docx",
+            "icon": "doc.png",
+            "x": 6,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet Copy",
+            "icon": "folderFull.png",
+            "x": 6,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Links.tiff",
+            "icon": "fileImage.png",
+            "x": 16,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Home Copy.mp4",
+            "icon": "fileMovie.png",
+            "x": 6,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Document",
+            "icon": "folderFull.png",
+            "x": 22,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Data.png",
+            "icon": "fileImage.png",
+            "x": 22,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Favorites Copy",
+            "icon": "folderFull.png",
+            "x": 21,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Presentation Copy",
+            "icon": "folderFull.png",
+            "x": 13,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Important.zip",
+            "icon": "zip.png",
+            "x": 21,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "USB",
+            "icon": "hdd.png",
+            "x": 94,
+            "y": 4,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Drives/USB', 8,8, 1024,706, false)"
+        },
+        {
+            "name": "Photos.mkv",
+            "icon": "fileMovie.png",
+            "x": 22,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "VAR",
+            "icon": "folderFull.png",
+            "x": 31,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Document1",
+            "icon": "folderFull.png",
+            "x": 29,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "A-433.jpg",
+            "icon": "fileImage.png",
+            "x": 29,
+            "y": 30,
+            "action": ""
         }
     ],
-    "actions": [
-    ],
-    "osNotifications": [
-    ]
+    "osNotifications": [],
+    "actions": []
 }
