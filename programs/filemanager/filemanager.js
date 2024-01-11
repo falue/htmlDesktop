@@ -233,8 +233,8 @@ function updateFolderContent(path, folderContent) {
                 // Image: filename can be named anything.
                 //   Image viewer only opens if real path is defined in data (eg. "1.jpg" or "1.jpg|2.jpg").
                 //   path relative to workstation root.
-                if(data && data !== "data") {
-                    fileTile.setAttribute("ondblclick", "parent.addWindow('Image viewer', 'image', 'imageviewer/index.html?files="+data+"', 5,5, 666,450, false)");
+                if(data) {
+                    fileTile.setAttribute("ondblclick", "parent.addWindow('Image viewer', 'image', 'imageviewer/index.html?"+(data !== 'data' ? 'files='+data : '')+"', 5,5, 666,450, false)");
                 }
             } else if(["doc","docx","txt","rtf"].includes(extension)) {
                 // Text file
