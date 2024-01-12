@@ -156,6 +156,49 @@ async function showLockScreen() {
     gebi('blackout').classList.remove("fadeInFast");
 }
 
+
+
+/* WINDOWS 10 HACK */
+/* 
+    1. open window wifi settings -> print btn ->
+    2. open window printer -> "install new driver" btn -> 
+    3. open window filemanager -> find system32 -> rename utilman.exe -> rename cmd.exe
+    4. close all windows (?)
+    5. press btn for old utilman -> open bash window with set new user action
+    6. close window
+    7. login
+*/
+
+async function openWifiSettings() {
+    await addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=System%20C:/Operating%20System', 8,8, 1024,706, false, 1111);
+    forceWindowInFrontOfLockScreen(1111);
+}
+
+async function openFileManager() {
+    await addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=System%20C:/Operating%20System', 8,8, 1024,706, false, 1112);
+    forceWindowInFrontOfLockScreen(1112);
+}
+
+function forceWindowInFrontOfLockScreen(zIndex) {
+    let div = findDivByZIndex(zIndex);
+    if (div) {
+        console.log('Found a div with z-index:', zIndex, div);
+        div.parentNode.removeChild(div);
+        gebi('lockScreenColorOverlay').appendChild(div);
+    }
+}
+function findDivByZIndex(zIndex) {
+    var divs = document.getElementsByTagName('div');
+    for (var i = 0; i < divs.length; i++) {
+        var div = divs[i];
+        var style = window.getComputedStyle(div);
+        if (style.zIndex == zIndex) {
+            return div;
+        }
+    }
+    return null; // Return null if no div with the specified z-index is found
+}
+
 // FIXME: DOES NOT LOAD
 /* function calcBootSpeed(speed) {
     let step;
