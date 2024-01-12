@@ -1,4 +1,4 @@
-11.01.2024 18:01
+12.01.2024 14:04
 os/spa/stylesheet.css
 os/mac/stylesheet.css
 os/linux/stylesheet.css
@@ -39,6 +39,7 @@ workstations/Leo/browser.json
 workstations/MinervaRezeption/settings.json
 workstations/MinervaRezeption/folders.json
 workstations/MinervaRezeption/browser.json
+workstations/MinervaRezeption/files/calendar.png
 workstations/generic/settings.json
 workstations/generic/folders.json
 workstations/generic/browser.json
