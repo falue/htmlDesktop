@@ -238,6 +238,11 @@ function setBrightness(value) {
     gebi('brightnessOverlay').style.opacity = 1-(value/100);
     gebi('brightnessIndicator').innerHTML = value;
     localStorage.setItem('htmlDesktop-brightness', value);
+
+    // FIXME: cool idea, but it does not propagate to iframes; and also other cursors are not affected (n-resize etc)
+    // Set svg of pointer to make it darker
+    // let rgb = parseInt(value*2.55);
+    // document.getElementsByTagName('body')[0].style.cursor = `url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22pointer_cursor%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%0A%09%20y%3D%220px%22%20width%3D%2228px%22%20height%3D%2228px%22%20viewBox%3D%220%200%2028%2028%22%20style%3D%22enable-background%3Anew%200%200%2028%2028%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpolygon%20fill%3D%22rgb(${rgb}%2C${rgb}%2C${rgb})%22%20points%3D%2211.6%2C11.6%200%2C0%200%2C16%203.2%2C12.8%205.5%2C18.2%209.1%2C16.7%207%2C11.6%20%22%2F%3E%0A%3Cpolygon%20points%3D%229.2%2C10.6%201%2C2.4%201%2C13.6%203.6%2C11.1%205.9%2C16.8%207.8%2C16%205.5%2C10.6%20%22%2F%3E%0A%3C%2Fsvg%3E"), auto`;
 }
 
 async function shutDown(currentScreen) {

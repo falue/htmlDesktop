@@ -578,12 +578,15 @@
                 Fullscreen-Greenscreen
               </li>
 
-              <li>
+              <li class="tooltip pointer" data-title="Pointer+DragDrop stays sometimes bright - use physical buttons on your monitor!">
                 <div>
                   <i class="material-icons blue small">light_mode</i>
                   Brightness <span id="brightnessIndicator">100</span>%
                 </div>
-                <input type="range" class="maxWidth padding2 borderBox" id="brightnessSlider" value="100" min="1" max="100" oninput="setBrightness(this.value)"/>
+                <div id="bootSpeedIndicator" class="small grey right top padding50">
+                  <i class="material-icons yellow small marginX50">warning</i>Cursor+DragDrop stays bright!
+                </div>
+                <input type="range" class="maxWidth padding2 borderBox" id="brightnessSlider" value="100" min="10" max="100" oninput="setBrightness(this.value)"/>
               </li>
             </ul>
           </div>
