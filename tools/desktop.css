@@ -244,6 +244,7 @@ header.windowmenu .programButtons:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    z-index: 20000;
 }
 
 #actionMenu,

@@ -234,6 +234,12 @@ function setBootSpeed(step) {
     // TODO: save step to.. everythibng
 }
 
+function setBrightness(value) {
+    gebi('brightnessOverlay').style.opacity = 1-(value/100);
+    gebi('brightnessIndicator').innerHTML = value;
+    localStorage.setItem('htmlDesktop-brightness', value);
+}
+
 async function shutDown(currentScreen) {
     let userImage = await fileExists('workstations/'+workstation+'/userpicture.jpg', 'os/_generic/userpicture.jpg');
     gebi('lockScreenUserPicture').src = userImage;

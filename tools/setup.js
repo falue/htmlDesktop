@@ -50,10 +50,16 @@ async function setup() {
     data = await parseFile("workstations/" + workstation + "/settings.json");
   }
 
-  // get seom data from localstorage
+  // get some data from localstorage
   localStorageSettings = JSON.parse(localStorage.getItem('htmlDesktop-settings')) ||  {};
   if(localStorageSettings.hasOwnProperty('lockKeyboard')) setKeyboardLock(localStorageSettings.lockKeyboard)
 
+  let brightness = localStorage.getItem('htmlDesktop-brightness');
+  if(brightness && gebi('actionMenu')) {
+    setBrightness(brightness);
+    gebi('brightnessIndicator').innerHTML = brightness;
+    gebi('brightnessSlider').value = brightness;
+  }
 
   // If loadSaveFile OR workstation defined in URL:
   // Load & define all the settings

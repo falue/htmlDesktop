@@ -40,6 +40,10 @@
       </div>
     </div>
 
+    <!-- BRIGHTNESS -->
+    <div id="brightnessOverlay" class="blackBg fixed top left maxWidth maxHeight op0" style="pointer-events: none; z-index: 15000;">
+    </div>
+
     <!-- SHENANIGANS -->
     <!-- lock screen -->
     <div id="lockScreen" class="hide">
@@ -572,6 +576,14 @@
               <li class="tooltip pointer" data-title="Keyboard: [alt]+[g] or [5]" onclick="fullscreenGreenscreen();">
                 <i class="material-icons blue small">palette</i>
                 Fullscreen-Greenscreen
+              </li>
+
+              <li>
+                <div>
+                  <i class="material-icons blue small">light_mode</i>
+                  Brightness <span id="brightnessIndicator">100</span>%
+                </div>
+                <input type="range" class="maxWidth padding2 borderBox" id="brightnessSlider" value="100" min="1" max="100" oninput="setBrightness(this.value)"/>
               </li>
             </ul>
           </div>
