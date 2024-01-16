@@ -226,7 +226,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
 
   // Window Title
   let windowFrame = document.createElement("div");
-  windowFrame.setAttribute("class", "windowFrame systemColors");
+  windowFrame.setAttribute("class", "windowFrame systemColors alignLeft");
   windowFrame.setAttribute("onclick", "bringToFront('"+id+"')");
   windowFrame.setAttribute("ondblclick", "maximizeWindow('"+id+"')");
 
