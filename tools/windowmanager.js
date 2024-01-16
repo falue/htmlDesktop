@@ -355,6 +355,8 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
 
   makeResizableDiv('#'+id);
   setSystemColors(systemColor);
+
+  return id;
 }
 
 function getFrontMostWindow(includingMinimized) {

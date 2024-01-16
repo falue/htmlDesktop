@@ -326,6 +326,30 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .tintPink { filter: brightness(0.5) sepia(100%) hue-rotate(310deg) saturate(250%); }
 .tintYellow { filter: brightness(0.8) sepia(100%) hue-rotate(0deg) saturate(250%); }
 
+.text-shadow--black { 
+    text-shadow:
+     -1px -1px 1px #000,  
+      1px -1px 1px #000,
+      -1px 1px 1px #000,
+       1px 1px 1px #000;
+  }
+  
+  .text-shadow--grey50 { 
+    text-shadow:
+     -1px -1px 1px rgba(125,125,125,.50),  
+      1px -1px 1px rgba(125,125,125,.50),
+      -1px 1px 1px rgba(125,125,125,.50),
+       1px 1px 1px rgba(125,125,125,.50);
+  }
+  
+  .text-shadow--white { 
+    text-shadow:
+     -1px -1px 1px #fff,  
+      1px -1px 1px #fff,
+      -1px 1px 1px #fff,
+       1px 1px 1px #fff;
+  }
+
 .invert {
     filter: invert(1);
 }
