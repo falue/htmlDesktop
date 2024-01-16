@@ -1,0 +1,75 @@
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    overflow-y: auto;
+}
+
+ul { margin: 1em;}
+li {
+    padding: 1em 1em 4em 1em;
+    background-color: rgba(125,125,125, 0.125);
+    border-radius: .25em;
+    margin-bottom: 1em;
+    position: relative;
+}
+li:hover {
+    background-color: rgba(125,125,125, 0.25);
+}
+
+button {
+    border-radius: 1em;
+    margin-left: 1em;
+}
+button:hover {
+    background-color: rgba(88,150,255,1);
+    color:white;
+}
+
+/* header {
+    position: fixed;
+    width: 100%;
+    height: 1.5em;
+    box-sizing: border-box;
+    border-bottom: solid thin grey;
+    background-color: rgba(0,0,0,.05);
+}
+
+.toolBar {
+    top: 1.5em;
+    height: 2.1em;
+    padding: .25em;
+    box-sizing: border-box;
+}
+
+.toolBar button {
+    font-family: inherit;
+    border: solid thin grey;
+    padding: .25em;
+}
+
+.toolBar > button {
+    margin-right: .5em;
+}
+
+.buttonGroup {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.buttonGroup button {
+    border-left: none;
+}
+
+.buttonGroup button:first-of-type {
+    border-top-left-radius: .25em;
+    border-bottom-left-radius: .25em;
+    border-left: solid thin grey;
+}
+
+.buttonGroup button:last-of-type {
+    border-top-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+} */
