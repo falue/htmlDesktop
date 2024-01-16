@@ -8,7 +8,7 @@ include_folders=( "../os" "../workstations" "../programs" "../tools" )
 exclude_folders=( "_archive" "threejs" )
 
 # Array of file endings to search for
-file_endings=( ".css" ".js" ".txt" ".json" ".fakeBash" ".splash", "desktop.jpg" )
+file_endings=( ".png" ".jpg" ".svg" ".css" ".js" ".txt" ".json" ".fakeBash" ".splash", "desktop.jpg" )
 
 # Output file
 output_file="collectedPaths.txt"
@@ -23,7 +23,7 @@ current_datetime=$(date +"%d.%m.%Y %H:%M")
 echo "$current_datetime" > "$output_file"
 
 echo "Looking for these files:"
-echo "  .css, .js, .txt, .json, .fakeBash, .splash"
+echo "  .css, .js, .txt, .json, .fakeBash, .splash, and more"
 echo ""
 
 # Loop over the include folders
