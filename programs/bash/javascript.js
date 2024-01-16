@@ -168,13 +168,17 @@ function waitForKey(keyCode) {
 
 /* SPECIFIC */
 let credentialsTrials = 0;
-async function askCredentials(outcome) {
+async function askCredentials(outcome, prompt=false, success=false, error=false) {
   /* cl("outcome::");
   cl(outcome); */
   // Scroll to bottom of console
   scrollToBottom();
   await delay(50); // wait for release of enter from action before!
-  printToConsole("Password:<i class='material-icons small valign'>lock</i> ");
+  if(prompt!==false) {
+    printToConsole(prompt+"<i class='material-icons small valign'>lock</i> ");
+  } else {
+    printToConsole("Password:<i class='material-icons small valign'>lock</i> ");
+  }
   // enter 13
   // f=fail = 70
   // s=succeed = 83
@@ -188,7 +192,11 @@ async function askCredentials(outcome) {
   if(returnKey != 13) enterKey = await waitForKey([13]);
   // If "s" & enter ist typed, or outcome is true and not false and not "real", then grant access
   if((((returnKey === 83 && enterKey === 13) && credentialsTrials < 3) || outcome === true || outcome === credentialsTrials+1) && outcome != false) {
-    printToConsole("<br>Access granted.<br>", "success");
+    if(success) {
+      printToConsole(success, "success");
+    } else if (success === false) {
+      printToConsole("<br>Access granted.<br>", "success");
+    }
     credentialsTrials = 0;
     return true;
   } else {
@@ -437,7 +445,8 @@ async function playCommand(command) {
       break;
     case "credentials":
       // TODO: key gets pressed already
-      await askCredentials(command.parameters[0] === undefined ? "real" : Number.isInteger(command.parameters[0]) ? command.parameters[0] : command.parameters[0] === "true");
+      cl(command.parameters);
+      await askCredentials(command.parameters[0] === undefined ? "real" : Number.isInteger(command.parameters[0]) ? command.parameters[0] : command.parameters[0] === "true", command.parameters[1] ? command.parameters[1] : false, command.parameters[2] ? command.parameters[2] : false);
       break;
     case "freeText":
       show("cursor");
