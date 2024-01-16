@@ -1,14 +1,14 @@
 {
     "settings": {
-        "systemColor": "#000000",
+        "systemColor": "#ffffff",
         "desktopColor": "#1d1b1b",
-        "desktopImg": "os/windows/desktop.jpg",
+        "desktopImg": "workstations/athletics/desktops/1.jpg",
         "os": "windows",
         "darkMode": true,
         "username": "athlAdm_01",
         "password": "",
         "workstation": "Athletics",
-        "selectedSystemMessage": 3,
+        "selectedSystemMessage": -1,
         "osNotificationsDelay": 0
     },
     "systemIcons": [
@@ -37,16 +37,9 @@
     ],
     "shortcuts": [
         {
-            "name": "DVD",
-            "icon": "dvd.png",
-            "x": 94,
-            "y": 69,
-            "action": ""
-        },
-        {
             "name": "Trash",
             "icon": "trashFull.png",
-            "x": 94,
+            "x": 9,
             "y": 82,
             "action": ""
         },
@@ -56,10 +49,64 @@
             "x": 3,
             "y": 4,
             "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Athletics Spot.avi",
+            "icon": "fileMovie.png",
+            "x": 57,
+            "y": 17,
+            "action": "startDefaultProgram('imageViewer');"
+        },
+        {
+            "name": "Lager 2-B",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 43,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Lager",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 30,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Bestellungen",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 17,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Report",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Personal",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Project.jpeg",
+            "icon": "fileImage.png",
+            "x": 58,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Präsentation",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 56,
+            "action": "startDefaultProgram('fileManager');"
         }
     ],
-    "actions": [
-    ],
-    "osNotifications": [
-    ]
+    "osNotifications": [],
+    "actions": []
 }
