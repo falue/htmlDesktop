@@ -1,4 +1,4 @@
-16.01.2024 11:42
+16.01.2024 16:11
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
 os/spa/programIcons/minimized-view_in_ar.png
@@ -219,6 +219,7 @@ workstations/Dominic/bash/random.fakeBash
 workstations/Dominic/bash/script.fakeBash
 workstations/Carlos/bash/script.fakeBash
 workstations/Doro/bash/script.fakeBash
+workstations/Athletics/bash/changePassword.fakeBash
 workstations/Athletics/bash/script.fakeBash
 workstations/_default/bash/script.fakeBash
 workstations/Charles/bash/script.fakeBash
@@ -307,6 +308,7 @@ programs/browser/sites/myGps1/imgs/map-245-1_5500.svg
 programs/browser/sites/myGps1/imgs/map.svg
 programs/browser/sites/telefabi/tools/imgs/fl.svg
 programs/browser/sites/telefabi/tools/imgs/fl_1.svg
+programs/wifi/stylesheet.css
 programs/ftp/stylesheet.css
 programs/video/stylesheet.css
 programs/securiton/stylesheet.css
@@ -317,6 +319,7 @@ programs/videoplayer/stylesheet.css
 programs/colorMarker/stylesheet.css
 programs/terminal/tools/style.css
 programs/terminal/tools/menu.css
+programs/print/stylesheet.css
 programs/texteditor/texteditor.css
 programs/neptcode/stylesheet.css
 programs/neptcode/darkMode.css
@@ -346,6 +349,7 @@ programs/webcam/stylesheet.css
 programs/infinity/stylesheet.css
 programs/helpdesk/stylesheet.css
 programs/supervisor/stylesheet.css
+programs/wifi/javascript.js
 programs/ftp/javascript.js
 programs/video/javascript.js
 programs/securiton/javascript.js
@@ -360,6 +364,7 @@ programs/colorMarker/javascript.js
 programs/terminal/tools/readTexts.js
 programs/terminal/tools/scripts.js
 programs/terminal/tools/urlShorting.js
+programs/print/javascript.js
 programs/texteditor/texteditor.js
 programs/neptcode/javascript.js
 programs/neptcode/data/10-1.js
