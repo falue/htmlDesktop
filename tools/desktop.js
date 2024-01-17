@@ -177,7 +177,7 @@ async function openWifiSettings() {
 async function openPrinter() {
     let diagnostics = "<h2>WiFi Network Diagnostic Report</h2><ul><li>Network Adapter: Intel(R) Wireless-AC 9260 160MHz</li><li>Date: 2024-01-16</li><li>Time: 15:42 GMT</li></ul><h3>1. ATHLETICS_intern_5G</h2><ul><li>Status: Connected</li><li>Signal Quality: Good</li><li>Signal Strength: -45 dBm</li><li>Security Type: WPA2-Personal</li><li>IPv4 Address: 192.168.1.5</li><li>IPv6 Address: fe80::2c4d:54ff:feaa:3d2b</li><li>Subnet Mask: 255.255.255.0</li><li>Default Gateway: 192.168.1.1</li><li>DHCP Server: 192.168.1.1</li><li>DNS Servers: 192.168.1.1, 8.8.8.8</li><li>Lease Obtained: 2024-01-16 14:42 G</li></ul><li>Notes: Stable connection established. Bandwidth tests indicate nominal data speeds. No network disruptions detected.</li><h2>2. ATHLETICS_guest_free</h2><ul><li>Status: No Internet Access</li><li>Signal Quality: Moderate</li><li>Signal Strength: -60 dBm</li><li>Security Type: Open</li><li>IPv4 Address: 169.254.9.101</li></ul>";
     diagnostics = encodeURI(diagnostics);
-    let id = await addWindow('Print Document "WiFi Network Diagnostic Report"', 'print', `print/index.html?printText=${diagnostics}&pages=2`, 15,13, 800,555, false, 1112);
+    let id = await addWindow('Print Document "WiFi Network Diagnostic Report"', 'print', `print/index.html?printText=${diagnostics}&pages=2`, 22,13, 800,555, false, 1112);
     moveWindowToNewParent(id, 'lockScreenColorOverlay');
 }
 
