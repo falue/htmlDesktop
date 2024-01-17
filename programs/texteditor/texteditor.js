@@ -10,10 +10,11 @@ async function setup() {
         textarea.innerHTML = text;
     }
 
-    textarea.focus();
-
     // Set generic system fonts
     setSystemFont(os);
+
+    await delay(100);  // Wait because addWindow() is setting focus() to the body first
+    textarea.focus();
 }
 
 let fontSizeIndex = 3;

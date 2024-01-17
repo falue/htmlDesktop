@@ -356,6 +356,8 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   makeResizableDiv('#'+id);
   setSystemColors(systemColor);
 
+  // Set focus to iframe content
+  content.contentWindow.focus();
   return id;
 }
 

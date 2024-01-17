@@ -195,6 +195,7 @@ function moveWindowToNewParent(id, target) {
     let windowToMove = gebi(id);
     windowToMove.parentNode.removeChild(windowToMove);
     gebi(target).appendChild(windowToMove);
+    windowToMove.querySelector('iframe').contentWindow.focus();
 }
 
 // FIXME: DOES NOT LOAD

@@ -68,6 +68,10 @@ async function startup() {
         type("", terminal);  // Trigger typing to enter text
         speed = initSpeed;  // reset speed so fast speed = faster typing
     }
+    setTimeout(() => {
+        // Wait because addWindow() is setting focus() to the body first
+        document.getElementById('terminal').focus();
+      }, 100);
 }
 
 
