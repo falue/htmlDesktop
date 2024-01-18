@@ -87,10 +87,11 @@
             Sign-in options
           </div>
           <div class="fixed right bottom padding1 small">
-            <i onclick="shutDown('fromLoginScreen')" class="material-icons paddingX25 valign white text-shadow--grey50 clearBg hover">power_settings_new</i>
-            <i onclick="openWifiSettings()" class="material-icons paddingX25 valign white text-shadow--grey50 clearBg hover">wifi</i>
-            <i onclick="openTerminal()" class="material-icons paddingX25 valign white text-shadow--grey50 clearBg hover">settings_accessibility</i>
-            <i onclick="show('blackout')" class="material-icons paddingX25 valign white text-shadow--grey50 clearBg hover">bedtime</i>
+            <span class="tooltip" data-title="Shut down"><i onclick="shutDown('fromLoginScreen')" class="material-icons paddingX25 valign white text-shadow--grey50 clearBg hover">power_settings_new</i></span>
+            <span class="tooltip" data-title="Reboot"><i onclick="reboot()" class="material-icons paddingX25 valign white text-shadow--grey50 clearBg hover">replay</i></span>
+            <span class="tooltip" data-title="Wifi connections"><i onclick="openWifiSettings()" class="material-icons paddingX25 valign white text-shadow--grey50 clearBg hover">wifi</i></span>
+            <span class="tooltip" data-title="Accessibility"><i onclick="openTerminal()" class="material-icons paddingX25 valign white text-shadow--grey50 clearBg hover">settings_accessibility</i></span>
+            <span class="tooltip" data-title="Suspend"><i onclick="show('blackout')" class="material-icons paddingX25 valign white text-shadow--grey50 clearBg hover">bedtime</i></span>
           </div>
         </div>
       </div>

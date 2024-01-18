@@ -278,6 +278,12 @@ async function shutDown(currentScreen) {
     gebi('startUp').classList.remove("fadeInFast");
 }
 
+async function reboot() {
+    shutDown('fromLoginScreen');
+    await delay(3500);
+    startUp();
+}
+
 async function startUp() {
     let speed = bootSpeed;
     // user has clicked
