@@ -106,7 +106,7 @@
             "icon": "",
             "x": 9,
             "y": 4,
-            "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=131', 6, 6, 1250,800, false);"
+            "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=131v2', 6, 6, 1250,800, false);"
         },
         {
             "name": "X_IDE",
