@@ -424,8 +424,18 @@
               </li>
               <li class="relative pointer">
                   <i class="material-icons blue small">desktop_windows</i>
-                  Upload image from computer (temporary)
+                  Background image from computer (temp.)
                   <input class="op0 absolute top left maxHeight maxWidth" type="file" onchange="uploadDesktopImage(this)">
+              </li>
+              <li class="tooltip pointer" data-title="Pointer+DragDrop stays sometimes bright - use physical buttons on your monitor!">
+                <div>
+                  <i class="material-icons blue small">light_mode</i>
+                  Brightness <span id="brightnessIndicator">100</span>%
+                </div>
+                <div class="small grey right top padding50">
+                  <i class="material-icons yellow small marginX50">warning</i>Cursor+DragDrop stays bright!
+                </div>
+                <input type="range" class="maxWidth padding2 borderBox" id="brightnessSlider" value="100" min="10" max="100" oninput="setBrightness(this.value)"/>
               </li>
               <li id="actionMenuDockLock" class="hide maxWidth pointer" onclick="gebi('dock').classList.toggle('dockLock')">
                   <i class="material-icons blue small">call_to_action</i>
@@ -566,7 +576,7 @@
                   <i class="material-icons blue small">power_settings_new</i>
                   Shut down
                 </div>
-                <div id="bootSpeedIndicator" class="small grey right top padding50">fast-ish [~12s]</div>
+                <div  class="small grey right top padding50">Boot speed: <span id="bootSpeedIndicator">fast-ish [~12s]</span></div>
                 <input type="range" class="maxWidth padding2 borderBox" id="bootSpeedSlider" value="3" min="1" max="7" oninput="setBootSpeed(this.value);"/>
               </li>
               <li class="tooltip pointer" data-title="Keyboard: [alt]+[x] or [4]" onclick="screenSaver(); hide('actionMenu');">
@@ -577,16 +587,9 @@
                 <i class="material-icons blue small">palette</i>
                 Fullscreen-Greenscreen
               </li>
-
-              <li class="tooltip pointer" data-title="Pointer+DragDrop stays sometimes bright - use physical buttons on your monitor!">
-                <div>
-                  <i class="material-icons blue small">light_mode</i>
-                  Brightness <span id="brightnessIndicator">100</span>%
-                </div>
-                <div id="bootSpeedIndicator" class="small grey right top padding50">
-                  <i class="material-icons yellow small marginX50">warning</i>Cursor+DragDrop stays bright!
-                </div>
-                <input type="range" class="maxWidth padding2 borderBox" id="brightnessSlider" value="100" min="10" max="100" oninput="setBrightness(this.value)"/>
+              <li class="tooltip pointer" data-title="Keyboard: NONE YET" onclick="window.location = 'programs/bluescreen/index.html'">
+                <i class="material-icons blue small">dangerous</i>
+                Blue screen of death (system error page)
               </li>
             </ul>
           </div>
