@@ -6,6 +6,16 @@ async function setup() {
 
     setGreenscreenFlag(localStorage.getItem('securiton-greenscreen') == "true");
 
+    // Load all four videos
+    if(scene) {
+        showVideo();
+        showVideo();
+        showVideo();
+        showVideo();
+        gebi('video4').pause();
+        videoIndex = 1;
+    }
+        
     /* let form = gebi('loginForm');
     if(form) {
         form.action = 'securiton.html?scene='+scene;
@@ -84,9 +94,11 @@ function showVideo() {
 
     // let videoName = useGreenscreen ? 'data/greenscreen'+greenscreenType+'.mp4' : 'data/'+videoIndex+'.mp4';
     let videoName = `data/${scene}-${videoIndex}.mp4`;
-    toggleGreenscreen(useGreenscreen)
+    let posterName = `data/${scene}-${videoIndex}.jpg`;
+    toggleGreenscreen(useGreenscreen);
 
     gebi('video'+videoIndex).setAttribute('src', videoName);
+    gebi('video'+videoIndex).setAttribute('poster', posterName);
     gebi('video1').pause();
     gebi('video2').pause();
     gebi('video3').pause();
@@ -129,8 +141,15 @@ function zoom(event, elementNumber) {
     /* console.log(event.wheelDeltaY); */
     /* console.log(event.wheelDelta, event.wheelDeltaX, event.wheelDeltaY); */
 
+    // check if video is fullscreen - if so, do not zoom and return
+    let videoElem = gebi('video'+elementNumber);
+    if(document.fullscreenElement && document.fullscreenElement.id === 'video'+elementNumber) {
+        cl("This video is in fullscreen, ingore zoom");
+        return;
+    }
+
+
     if(event.wheelDeltaY>1 || event.wheelDeltaY<-1) {
-        let videoElem = gebi('video'+elementNumber);
         // reset controls
         videoElem.removeAttribute('controls');
         // zoom in / zoom out
