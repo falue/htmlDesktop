@@ -43,7 +43,7 @@
       <br>
       <br>
       <br>
-      <h1 class="fillWidth centerContent code large">- Index -</h1>
+      <h1 class="fillWidth centerContent code large">index</h1>
       <br>
 
         <!-- <a href="programs/video/index.html"><button> Philippines</button></a><br>
@@ -51,10 +51,11 @@
       <div class="fillWidth centerText">
         <a href="desktop.html"><button class="margin25" style="font-size:1.4em"> START DESKTOP</button></a>
         <a href="programs/colorMarker/index.html" title="greenscreen"><button class="margin25" style="font-size:1.4em"> GREENSCREEN [key: 5]</button></a>
-        <a href="programs/videoplayer/index.html"><button class="margin25" style="font-size:1.4em"> MediaPlayer [key: 0]</button></a>
+        <a href="programs/videoplayer/index.html"><button class="margin25" style="font-size:1.4em"> MEDIA PLAYER [key: 0]</button></a>
         <a href="programs/bluescreen/index.html" title="bluescreen"><button class="margin25" style="font-size:1.4em"> SYSTEM ERROR PAGE</button></a>
         <br>
-        <a href="howto/index.html"> Desktop: How To</button></a><br>
+        <br>
+        <a href="howto/index.html"><button class="margin25" style="font-size:1.4em"> Desktop: How To</button></a>
         <br>
         <br>
         <br>
@@ -66,7 +67,7 @@
             <a href="programs/infinity/index.html"><button> infinity</button></a><br> -->
             
             
-            <!--  <div onmouseover="document.getElementById('bashSpecials').classList.remove('hide')" onmouseout="document.getElementById('bashSpecials').classList.add('hide')">
+            <!--  <div onclick="document.getElementById('bashSpecials').classList.remove('hide')" onmouseout="document.getElementById('bashSpecials').classList.add('hide')">
               <a href="programs/bash/index.html" title="Mode: 'freeText'; try cd, top, sudo, clear"><button> Bash console</button></a>
               <span id="bashSpecials" class="hide">
                 <a href="programs/bash/index.html?script=34&workstation=gamerig&darkMode=true"><button class="greyBg hover" title="Gamerig training (NV top sketch)">(#34)</button></a>
@@ -76,9 +77,10 @@
               </span>
             </div> -->
             
-        <div onmouseover="document.getElementById('terminalSpecials').classList.remove('hide')" onmouseout="document.getElementById('terminalSpecials').classList.add('hide')">
-          <a href="programs/terminal/index.html"><button class="greyBg"> Terminal</button></a>
+        <div onclick="document.getElementById('terminalSpecials').classList.remove('hide')">
+          <button class="greyBg"> Terminals..</button>
           <span id="terminalSpecials" class="hide">
+          <a href="programs/terminal/index.html"><button class="greyBg"> BasicTerminal</button></a>
             <a href="programs/terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
               <button class="greyBg hover">Update</button></a>
   
@@ -96,11 +98,13 @@
   
             <a href="programs/terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
               <button class="greyBg hover">Selber tippen - python script</button></a>
+            <br>
+            <br>
           </span>
         </div>
 
-        <div onmouseover="document.getElementById('defaultPrograms').classList.remove('hide')" onmouseout="document.getElementById('defaultPrograms').classList.add('hide')">
-          <button class="greyBg"> All programs</button>
+        <div onclick="document.getElementById('defaultPrograms').classList.remove('hide')">
+          <button class="greyBg"> Some programs..</button>
           <div id="defaultPrograms" class="hide margin0 paddingX1">
             <a href="programs/dna"><button class="greyBg hover">dna</button></a>
             <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/dna/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
@@ -158,15 +162,15 @@
     
     <!-- FOOTER -->
     <footer class="small fixed bottom maxWidth centerText">
-      <div class="white padding05 maxWidth" style="line-height: 1rem;">
-        <div class="tag black padding1 inlineBlock" title="LAST UPDATE">
+      <div class=" maxWidth" style="line-height: 1rem;">
+        <div class=" whiteBg black padding1 inlineBlock" title="LAST UPDATE">
           Digitale Props für DIE BESCHATTER
           <span class="blue">
-            v17.01.2024
+            v18.01.2024
           </span>
-        </div>
-        <div class="padding05">
-          2023 <a href="https://telefabi.ch" target="_blank">Fabian Lüscher @ telefabi.ch</a> f&uuml;r TURNUS FILM GMBH
+          <div class="padding05">
+            2023 <a href="https://telefabi.ch" target="_blank">Fabian Lüscher @ telefabi.ch</a> f&uuml;r TURNUS FILM GMBH
+          </div>
         </div>
       </div>
     </footer>
