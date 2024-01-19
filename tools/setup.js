@@ -261,9 +261,27 @@ async function setupWorkstationChooser(path) {
           a.prepend(button);
           workstationList.appendChild(a);
           workstationList.appendChild(document.createElement("br"));
+         
         break;
       }
     });
+
+    if(settingsData.length > 8) {
+      let overlayWorkstation = gebi('overlayWorkstation');
+        // overlayWorkstation.appendChild(document.createElement("br"));
+        let more = document.createElement("span");
+        more.innerHTML = "More..";
+        more.classList.add("fixed", "bottom", "white", "small", "paddingY1", "op50", "pointer");
+        more.style.right = "10%";
+        more.id="moreWork"
+        more.setAttribute("onclick", "scrollToBottom('workstationContainer'); hide('moreWork')");
+        let down = document.createElement("i");
+        down.classList.add("material-icons", "valign", "small");
+        down.innerHTML = "expand_more";
+        more.appendChild(down);
+        overlayWorkstation.appendChild(more);
+        // overlayWorkstation.appendChild(document.createElement("br"));
+    }
 }
 
 async function setupSettings(settings) {

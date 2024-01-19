@@ -111,6 +111,11 @@ function scrollToTop(id) {
   element.scrollTop=0;
 }
 
+function scrollToBottom(id) {
+  let container = gebi(id);
+  container.scrollTop = container.scrollHeight - container.clientHeight;
+}
+
 function getScreenSize() {
   let screenWidth = window.innerWidth
     || document.documentElement.clientWidth
