@@ -10,6 +10,13 @@ async function setup() {
     let os = urlParams.get('os');
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
+
+    if(darkMode === 'true') {
+        let element = document.getElementsByTagName('body')[0];
+        element.classList.add('invertKeepColors');
+        element.style.backgroundColor = "#222222";
+        gebi('paper').classList.add('invertKeepColors');
+    }
     
     let pages = urlParams.get('pages');
     if(pages) {
@@ -23,6 +30,7 @@ async function setup() {
         show('preview');
         gebi('form').style.width="60%";
         gebi('form').style.left="40%";
+        gebi('footer').style.width="60%";
         if(printText) {
             gebi('paper').innerHTML = printText;
         } else {
