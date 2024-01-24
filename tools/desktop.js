@@ -606,6 +606,20 @@ async function login(typedPassword) {
     }
 }
 
+async function changePassword() {
+    let dialogText = "For the login screen, enter new password <span class='red italics'>(only this<br>will be valid)</span> or empty it <span class='green italics'>(anything is valid)</span>:";
+    let newPassword = await showDialog("Edit temporary password", dialogText, false, password);
+    if(!newPassword) return;  // cancel btn
+
+    if(newPassword === "~EMPTY") {
+        password = "";
+        gebi("passwordHint").innerHTML = "<span class='italics'>none - type whatever</span>";
+    } else {
+        password = newPassword;
+        gebi("passwordHint").innerHTML = newPassword;
+    }
+}
+
 function setSystemColors(newcolor) {
     systemColor = newcolor;  // Update globals
     const systemElements = document.querySelectorAll('.systemColors');
