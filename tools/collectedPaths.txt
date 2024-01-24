@@ -1,4 +1,4 @@
-16.01.2024 16:11
+24.01.2024 19:26
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
 os/spa/programIcons/minimized-view_in_ar.png
@@ -254,6 +254,10 @@ programs/helpdesk/imgs/4.png
 programs/helpdesk/imgs/5.png
 programs/helpdesk/imgs/2.png
 programs/helpdesk/imgs/3.png
+programs/securiton/data/131v2-1.jpg
+programs/securiton/data/131v2-3.jpg
+programs/securiton/data/131v2-2.jpg
+programs/securiton/data/131v2-4.jpg
 programs/browser/tools/img/open-in-popup.jpg
 programs/browser/tools/img/winBtns.jpg
 programs/browser/tools/img/winUnik.jpg
@@ -312,6 +316,7 @@ programs/wifi/stylesheet.css
 programs/ftp/stylesheet.css
 programs/video/stylesheet.css
 programs/securiton/stylesheet.css
+programs/loading/stylesheet.css
 programs/magic/stylesheet.css
 programs/servermanager/stylesheet.css
 programs/servermanager/darkMode.css
@@ -348,11 +353,13 @@ programs/dna/stylesheet.css
 programs/webcam/stylesheet.css
 programs/infinity/stylesheet.css
 programs/helpdesk/stylesheet.css
+programs/bluescreen/stylesheet.css
 programs/supervisor/stylesheet.css
 programs/wifi/javascript.js
 programs/ftp/javascript.js
 programs/video/javascript.js
 programs/securiton/javascript.js
+programs/loading/javascript.js
 programs/magic/javascript.js
 programs/servermanager/javascript.js
 programs/servermanager/data/TEST.js
@@ -396,6 +403,7 @@ programs/dna/javascript.js
 programs/dna/data.js
 programs/webcam/javascript.js
 programs/helpdesk/javascript.js
+programs/bluescreen/javascript.js
 programs/supervisor/javascript.js
 programs/supervisor/data.js
 programs/terminal/text/ascii_schema.txt
