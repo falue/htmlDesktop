@@ -94,7 +94,9 @@ a.active {text-decoration: underline rgba(88,150,255,0.65) 3px;
 a:focus { outline: none; }
 
 .pointer { cursor: pointer; }
+.cursorDefault { cursor:default; }
 .noCursor { cursor: none; }
+.noUserSelect { user-select: none; }
 
 .noScrollbar::-webkit-scrollbar { display: none; }
 .noScrollbar { scrollbar-width: none; }

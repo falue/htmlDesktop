@@ -95,8 +95,8 @@ function addGradientColor() {
     newPoint.className = 'color-point marginY50';
     newPoint.innerHTML = `
         <input type="color" value="${lastColor}" class="valignText colorPickerGradient" oninput="updateGradient();">
-        <input type="range" value="100" min="0" name="range-${numOfRanges+1}" class="valignText position" max="100" oninput="enforceMinimumGradientPosition(this); updateGradient();">
-        <button type="button" class="valignText systemButton greyBg remove-point" onclick="removeGradientColor(this)">&times;</button>
+        <input type="range" value="100" min="0" name="range-${numOfRanges+1}" class="valignText position marginX1" max="100" oninput="enforceMinimumGradientPosition(this); updateGradient();">
+        <i class="material-icons valignText small round greyBg padding25 tooltip pointer remove-point" data-title="Remove this color" onclick="removeGradientColor(this)">close</i>
     `;
     colorList.appendChild(newPoint);
     updateGradient();
@@ -144,6 +144,14 @@ function updateGradient() {
     // console.log(gradient);
     gebi('gradientPreview').style.background = gradient;
     // console.log('background: ' + gradient + ';');
+
+    if(isGradientLight(gradient)) {
+        gebi('gradientPreview').classList.remove('white');
+        gebi('gradientPreview').classList.add('black');
+    } else {
+        gebi('gradientPreview').classList.add('white');
+        gebi('gradientPreview').classList.remove('black');
+    }
 }
 
 function enforceMinimumGradientPosition(el) {
