@@ -152,6 +152,12 @@ async function setup() {
   setupSettings(settings);
   // cl("SETUP: setupSettings success ");
 
+  // Set gradient color of login screen if is in local storage (overwrite settings of workstation)
+  let gradient = localStorage.getItem('htmlDesktop-loginGradient');
+  if(gradient) {
+    setLoginGradient(gradient, false);
+  }
+
   // Loop over shortcuts
   for (let shortcut of shortcuts) {
     placeShortcut(shortcut["name"], shortcut["icon"], shortcut["x"],shortcut["y"], shortcut["action"]);
@@ -298,6 +304,10 @@ async function setupSettings(settings) {
           setSystemColors(value);
           gebi('systemColorPicker').value = value;
         }
+      break;
+      // test: loginGradient: "linear-gradient(146deg, rgb(247, 247, 247) 1%, rgb(190, 45, 171) 49%, rgb(150, 135, 161) 99%)"
+      case "loginGradient":
+        setLoginGradient(value, false);
       break;
       case "darkMode":
         if (value) {

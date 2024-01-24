@@ -427,6 +427,15 @@
                   Background image from computer (temp.)
                   <input class="op0 absolute top left maxHeight maxWidth" type="file" onchange="uploadDesktopImage(this)">
               </li>
+              <li class="relative pointer" onclick="setLoginGradientWindow();">
+                <i class="material-icons blue small">desktop_windows</i>
+                Set color for login screen..
+                <div class="right top absolute nudge-y-12">
+                  <span>
+                    <i id="loginBackgroundPreview" class="material-icons fancy transparent small padding25">home</i>
+                  </span>
+                </div>
+              </li>
               <li class="tooltip pointer" data-title="Pointer+DragDrop stays sometimes bright - use physical buttons on your monitor!">
                 <div>
                   <i class="material-icons blue small">light_mode</i>
@@ -1045,6 +1054,89 @@
 
           <div class="right relative padding">
             <button class="systemButton" onclick="hide('keyboardControls');">Close</button>
+          </div>
+            <br>
+            <br>
+        </div>
+      </div>
+    </div>
+
+    <!-- SET GRADIENT -->
+    <div id="setGradient" class="hide dialog">
+      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+        <div class="darkGreyBg padding shadow white minWidth600 maxWidth700 absolute radius5">
+          <h3 class="alignCenter">
+            <i class="material-icons blue valign">palette</i>
+            Set color for login screen
+          </h3>
+          <br>
+
+          <div class="radius5 chooseBox">
+            <div id="angleContainer" class="inlineBlock">
+              <div class="angle-control valign">
+                <input type="hidden" id="angle" name="angle" value="121" oninput="updateGradient();">
+                <div id="angleDial" class="dial text-shadow--black" onmousemove="chooseGradientAngle(this, event)" onmouseout="show('angle-control-blocker')">
+                <!-- <div id="angleDial" class="dial text-shadow--black" onmousemove="chooseGradientAngle(this, event)" onclick="prevAngle = angle, setGradientAngle(angle);" onmouseleave="if(prevAngle == angle) setGradientAngle(prevAngle);"> -->
+                    <span id="angleDisplay">121°</span>
+                </div>
+                <div id="angle-control-blocker" class="angle-control-blocker" style="user-select: none;" onclick="hide('angle-control-blocker')">
+                </div>
+              </div>
+              <div class="inlineBlock marginX1 valign">
+                <button type="button" class="systemButton" onclick="setGradientAngle(0)">0°</button>
+                <button type="button" class="systemButton" onclick="setGradientAngle(45)">45°</button>
+                <button type="button" class="systemButton" onclick="setGradientAngle(90)">90°</button>
+                <button type="button" class="systemButton" onclick="setGradientAngle(180)">180°</button>
+                <button type="button" class="systemButton" onclick="setGradientAngle(315)">-45°</button>
+              </div>
+            </div>
+            <div class="inlineBlock marginX1 valign">
+              <button type="button" class="systemButton greyBg" onclick="setGradientType('linear-gradient');">Linear</button>
+              <button type="button" class="systemButton greyBg" onclick="setGradientType('radial-gradient');">Radial</button>
+            </div>
+          </div>
+            
+          <div id="colorPoints" class="inlineBlock">
+              <div class="color-point marginY50">
+                  <input type="color" value="#906c4a" class="valignText colorPickerGradient" oninput="updateGradient();">
+                  <input type="range" value="1" min="0" name="range-1" class="valignText position" max="100" oninput="enforceMinimumGradientPosition(this); updateGradient();">
+                  <button type="button" class="valignText systemButton greyBg remove-point" onclick="removeGradientColor(this)">&times;</button>
+              </div>
+              <div class="color-point marginY50">
+                  <input type="color" value="#8c3335" class="valignText colorPickerGradient" oninput="updateGradient();">
+                  <input type="range" value="49" min="0" name="range-2" class="valignText position" max="100" oninput="enforceMinimumGradientPosition(this); updateGradient();">
+                  <button type="button" class="valignText systemButton greyBg remove-point" onclick="removeGradientColor(this)">&times;</button>
+              </div>
+              <div class="color-point marginY50">
+                  <input type="color" value="#573271" class="valignText colorPickerGradient" oninput="updateGradient();">
+                  <input type="range" value="99" min="0" name="range-3" class="valignText position" max="100" oninput="enforceMinimumGradientPosition(this); updateGradient();">
+                  <button type="button" class="valignText systemButton greyBg remove-point" onclick="removeGradientColor(this)">&times;</button>
+              </div>
+          </div>
+
+          <button type="button" id="addPoint" class="systemButton marginX2 nudge-y-25" onclick="addGradientColor();">
+            + Add new color
+          </button>
+
+          <br>
+          <br>
+          
+          <div id="gradientPreview" class="radius5 valignText chooseBox borderBox relative">
+            <div>
+              <div></div>
+              <span></span>
+              <span></span>
+            </div>
+            <p></p>
+          </div>
+
+          <div class="left relative padding">
+            <button class="systemButton greyBg" onclick="hide('setGradient');">Cancel</button>
+          </div>
+
+          <div class="right relative padding">
+            <button class="systemButton greyBg" onclick="restoreDefaultGradient();">Default</button>
+            <button class="systemButton" onclick="setLoginGradient(gebi('gradientPreview').style.background, true); hide('setGradient');">Save</button>
           </div>
             <br>
             <br>

@@ -63,6 +63,166 @@ const convertBase64 = (file) => {
     });
 };
 
+// async function showDialog(title, text, selfClosing, input, feedbackButtons) {
+async function setLoginGradientWindow() {
+    updateGradient();
+    show('setGradient');
+}
+
+/* GRADIENTS */
+let angle = 121;
+let prevAngle = angle;
+let type = "linear-gradient"
+
+function addGradientColor() {
+    let colorList = gebi('colorPoints');
+
+    let colors = document.getElementsByClassName('colorPickerGradient');
+    let numOfColors = colors.length;
+    let lastColor = colors[numOfColors-1];
+    lastColor = lastColor ? lastColor.value : "#8c3335";
+
+    let rangeList = document.getElementsByClassName('position');
+    let numOfRanges = rangeList.length;
+    let lastPosition = rangeList[numOfRanges-1];
+    lastPosition = lastPosition ? parseInt(lastPosition.value) : 100;
+
+    let secondLastPosition = rangeList[numOfRanges-2];
+    secondLastPosition = secondLastPosition ? parseInt(secondLastPosition.value) : 0;
+    let newPosition = (lastPosition + secondLastPosition ) / 2;
+    if(rangeList[numOfRanges-1]) rangeList[numOfRanges-1].value = newPosition;
+    let newPoint = document.createElement('div');
+    newPoint.className = 'color-point marginY50';
+    newPoint.innerHTML = `
+        <input type="color" value="${lastColor}" class="valignText colorPickerGradient" oninput="updateGradient();">
+        <input type="range" value="100" min="0" name="range-${numOfRanges+1}" class="valignText position" max="100" oninput="enforceMinimumGradientPosition(this); updateGradient();">
+        <button type="button" class="valignText systemButton greyBg remove-point" onclick="removeGradientColor(this)">&times;</button>
+    `;
+    colorList.appendChild(newPoint);
+    updateGradient();
+}
+
+function removeGradientColor(e) {
+    //console.log(e)
+    if (e.className.includes('remove-point')) {
+        e.parentNode.remove();
+        updateGradient();
+    }
+}
+
+function setGradientType(newType) {
+    type = newType;
+    if(type === 'linear-gradient') {
+        show('angleContainer');
+    } else {
+        hide('angleContainer');
+    }
+    updateGradient();
+}
+
+function updateGradient() {
+    let angle = gebi('angle').value;
+    let colors = Array.from(document.getElementsByClassName('color-point')).map(function(el) {
+        // return value of colorPickerGradient
+        let colorPickerGradient = el.querySelector('.colorPickerGradient').value;
+        // return value of position
+        let position = el.querySelector('.position').value;
+        return `${colorPickerGradient} ${position}%`;
+    });
+    let gradient = colors[0].split(" ")[0];
+    if(colors.length === 1) {
+        gebi('gradientPreview').style.background = gradient;
+        // console.log('background: ' + gradient + ';');
+        return;
+    }
+    colors = colors.join(', ');
+    if(type === 'linear-gradient') {
+        gradient = type + '(' + angle + 'deg, ' + colors + ')';
+    } else {
+        gradient = type + '(' + colors + ')';
+    }
+    // console.log(gradient);
+    gebi('gradientPreview').style.background = gradient;
+    // console.log('background: ' + gradient + ';');
+}
+
+function enforceMinimumGradientPosition(el) {
+    // FIXME: sucks
+    /* let lastMinId = parseInt(el.name.split('-')[1])-1;
+    if(lastMinId > 0) {
+        let lastMin = document.getElementsByName("range-"+lastMinId)[0].value;
+        console.log(lastMin);
+        if(el.value < lastMin) el.value = lastMin;
+    } */
+}
+
+function setGradientAngle(degrees) {
+    gebi('angleDisplay').textContent = degrees+"°";
+    gebi('angle').value = degrees;
+    updateGradient();
+}
+
+function chooseGradientAngle(that, event) {
+    let dial = that;
+    let e = event;
+
+    let rect = dial.getBoundingClientRect();
+    let center = {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2
+    };
+    let angle = Math.atan2(e.clientY - center.y, e.clientX - center.x);
+    let degrees = (angle * (180 / Math.PI) + 90 + 360) % 360;
+    degrees = Math.round(degrees);
+    angle = degrees;
+
+    gebi('angleDisplay').textContent = degrees+"°";
+    gebi('angle').value = degrees;
+
+    let gradient = `conic-gradient(
+        white 0deg ${degrees-5}deg,
+        grey ${degrees-5}deg ${degrees+5}deg,
+        white ${degrees+5}deg 360deg
+    );`
+    console.log(gradient);
+    gebi('angleDial').style.background = gradient;
+
+    updateGradient();
+};
+
+function restoreDefaultGradient() {
+    // TODO: should reset all sliders, button, amount of colors, color pickers, etc.
+    let defaultGradient = 'linear-gradient(121deg, rgb(144, 108, 74) 1%, rgb(140, 51, 53) 49%, rgb(87, 50, 113) 99%)';
+    gebi('gradientPreview').style.background = defaultGradient;
+    gebi('loginBackgroundPreview').style.background = defaultGradient;
+    setLoginGradient(defaultGradient);
+    localStorage.removeItem('htmlDesktop-loginGradient');
+    hide('setGradient');
+}
+
+function setLoginGradient(gradient, saveToLocalStorage) {
+    gebi('loginBackgroundPreview').style.background = gradient;
+    gebi('lockScreenColorOverlay').style.background = gradient;
+
+    if(isGradientLight(gradient)) {
+        gebi('lockScreenWindow').classList.remove('white');
+        gebi('loginbuttonText').classList.remove('white');
+        gebi('loginLoader').classList.remove('white');
+        gebi('loginLoader').querySelector('i').classList.remove('white');
+    } else {
+        gebi('lockScreenWindow').classList.add('white');
+        gebi('loginbuttonText').classList.add('white');
+        gebi('loginLoader').classList.add('white');
+        gebi('loginLoader').querySelector('i').classList.add('white');
+    }
+
+    if(saveToLocalStorage) {
+        localStorage.setItem('htmlDesktop-loginGradient', gradient);
+        cl("Saved gradient");
+        cl(gradient);
+    }
+}
+
 
 // NOT async but maybe super for other things?
 // fileExists("foo.gif", function(){ cl("good"); }, function(){ cl("bad"); } );
@@ -512,6 +672,18 @@ function isLightColor(color) {
     // greyscale image from color: rgb(hsp, hsp, hsp)
     // inverted brightness of grey tone from color: rgb(255-hsp, 255-hsp, 255-hsp)
     return hsp > 127.5;
+}
+
+function isGradientLight(gradient) {
+    const colorRegex = /#(?:[0-9a-fA-F]{3}){1,2}|rgba?\((?:\d{1,3},\s?){2}\d{1,3}(?:,\s?\d(?:\.\d{1,3})?)?\)/g;
+    const colors = gradient.match(colorRegex);
+    if (!colors) {
+        cl("no colors")
+        return false; // No recognizable color format found
+    }
+    const totalBrightness = colors.reduce((acc, color) => acc + isLightColor(color)*255, 0);
+    const averageBrightness = totalBrightness / colors.length;
+    return averageBrightness > 127.5; // Brightness threshold
 }
 
 

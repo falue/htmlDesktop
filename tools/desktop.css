@@ -393,6 +393,117 @@ header.windowmenu .programButtons:hover {
 
 .minimizeWindow { animation: minimizeWindow .15s ease-in 1 forwards; }
 
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#gradientPreview {
+    height: 38vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#gradientPreview div div {
+    display: inline-flex;
+    background-color: rgba(222,222,222,.33);
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    margin-bottom:1.25em;
+    border: solid 0.25px rgba(166,166,166,.33);
+}
+#gradientPreview div span {
+    background-color: rgba(33,33,33,.33);
+    display: block;
+    width: 6em;
+    height: .7em;
+    border-radius:.35em;
+    margin-bottom:.35em;
+    border: solid 0.25px rgba(166,166,166,.33);
+}
+#gradientPreview p {
+    position: absolute;
+    background-color: rgba(33,33,33,.33);
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin:.5em 1em;
+    right:0;
+    bottom:0;
+}
+
+.angle-control {
+    position: relative;
+    display: inline-block;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.angle-control-blocker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.dial {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(125,125,125,.5);
+    border-radius: 50%;
+    cursor:all-scroll;
+    text-align: center;
+    color:white;
+
+	display: grid;
+	align-items: center;
+
+    background: conic-gradient(
+        white 0deg 40deg,
+        grey 40deg 50deg,
+        white 50deg 360deg
+    );
+}
+
+#angleDisplay {
+    user-select: none;
+    font-size: .85em;
+}
+
+/* Additional styling as needed */
+#setGradient input[type='range'] {
+    overflow: hidden;
+    width: 8em;
+    -webkit-appearance: none;
+    background-color: grey;
+    cursor: ew-resize;
+    border-radius:1em;
+    border-left: grey solid .625em;
+    border-right: grey solid .625em;
+}
+
+#setGradient input[type='range']::-webkit-slider-runnable-track {
+    height: 1em;
+    -webkit-appearance: none;
+    color: grey;
+    margin-top: -1px;
+    cursor: ew-resize;
+}
+
+#setGradient input[type='range']::-webkit-slider-thumb {
+    width: .3em;
+    -webkit-appearance: none;
+    height: 100%;
+    cursor: ew-resize;
+    background: black;
+    box-shadow: -80px 0 0 80px grey;
+}
+
+
 @keyframes minimizeWindow {
     0%   { margin-top: 0; transform: scale(1); }
     100% { margin-top: 100%; transform: scaleX(.8); }

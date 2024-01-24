@@ -1,6 +1,7 @@
 {
     "settings": {
         "systemColor": "#ffffff",
+        "loginGradient": "#222",
         "desktopColor": "#1d1b1b",
         "desktopImg": "workstations/Athletics/desktops/1.jpg",
         "os": "windows",
