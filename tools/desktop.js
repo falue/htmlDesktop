@@ -193,9 +193,6 @@ function chooseGradientAngle(that, event) {
         black ${degrees+5}deg 360deg
     )`;
     gebi('angleDial').style.background = dialGradient;
-    cl(gebi('angleDial').style.background);
-    cl(gebi('angleDial').style);
-
     updateGradient();
 };
 
