@@ -163,6 +163,7 @@ async function setup() {
   if(passwordFromStorage) {
     password = passwordFromStorage;
     gebi("passwordHint").innerHTML = passwordFromStorage;
+    gebi("passwordHint").classList.add("blue");
   }
 
   // Loop over shortcuts

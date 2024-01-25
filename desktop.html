@@ -323,13 +323,13 @@
           <div class="chooseBoxTitle white uppercase greyBg">About this workstation</div>
           <div class="chooseBox radius5">
             <ul>
-              <li class="relative noLiHover">
-                <div class="tooltip" data-title="A workstation contains your settings - desktop images, OS, windows, colors, etc">
+              <li class="relative" onclick="show('overlayWorkstation'); show('closeOverlayWorkstation'); hide('actionMenu');">
+                <div class="tooltip pointer" data-title="A workstation contains your settings - desktop images, OS, windows, colors, etc">
                   <i class="material-icons blue small">computer</i>
                   Workstation: <span id="workstationHint" class="green"></span>
                 </div>
                 <div class="right top absolute nudge-y-12 pointer">
-                  <span class="tooltip" data-title="Change workstation.." onclick="show('overlayWorkstation'); show('closeOverlayWorkstation'); hide('actionMenu');">
+                  <span class="tooltip" data-title="Change workstation..">
                     <i class="material-icons blueBg small padding25">autorenew</i>
                   </span>
                 </div>

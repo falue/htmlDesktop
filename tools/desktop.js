@@ -620,10 +620,12 @@ async function changePassword() {
     if(newPassword === "~EMPTY") {
         password = "";
         gebi("passwordHint").innerHTML = "<span class='italics'>none - type whatever</span>";
+        gebi("passwordHint").classList.add("blue");
         localStorage.removeItem('htmlDesktop-password');
     } else {
         password = newPassword;
         gebi("passwordHint").innerHTML = newPassword;
+        gebi("passwordHint").classList.add("blue");
         localStorage.setItem('htmlDesktop-password', newPassword);
     }
 }
