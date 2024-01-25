@@ -113,9 +113,9 @@ function removeGradientColor(e) {
 function setGradientType(newType) {
     type = newType;
     if(type === 'linear-gradient') {
-        show('angleContainer');
+        gebi('angleContainer').style.opacity='0';
     } else {
-        hide('angleContainer');
+        gebi('angleContainer').style.opacity='1';
     }
     updateGradient();
 }
@@ -187,13 +187,14 @@ function chooseGradientAngle(that, event) {
     gebi('angleDisplay').textContent = degrees+"°";
     gebi('angle').value = degrees;
 
-    let gradient = `conic-gradient(
-        white 0deg ${degrees-5}deg,
+    let dialGradient = `conic-gradient(
+        black 0deg ${degrees-5}deg,
         grey ${degrees-5}deg ${degrees+5}deg,
-        white ${degrees+5}deg 360deg
-    );`
-    console.log(gradient);
-    gebi('angleDial').style.background = gradient;
+        black ${degrees+5}deg 360deg
+    )`;
+    gebi('angleDial').style.background = dialGradient;
+    cl(gebi('angleDial').style.background);
+    cl(gebi('angleDial').style);
 
     updateGradient();
 };

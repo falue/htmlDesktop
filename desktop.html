@@ -421,23 +421,23 @@
                 </div>
               </li>
               <li class="relative pointer" onclick="cycleBackgroundImage();">
-                  <i class="material-icons blue small">desktop_windows</i>
-                  Swap background image
+                  <i class="material-icons blue small">wallpaper</i>
+                  Swap wallpaper
                 <div class="right top absolute nudge-y-12">
                   <input id="BGColor" type="color" class="valign tooltip pointer" onclick="event.stopPropagation();" data-title="Set plain color.." oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value; gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
                 </div>
               </li>
               <li class="relative pointer">
-                  <i class="material-icons blue small">desktop_windows</i>
-                  Background image from computer (temp.)
+                  <i class="material-icons blue small">wallpaper</i>
+                  Wallpaper from computer (temp.)
                   <input class="op0 absolute top left maxHeight maxWidth" type="file" onchange="uploadDesktopImage(this)">
               </li>
               <li class="relative pointer" onclick="setLoginGradientWindow();">
-                <i class="material-icons blue small">desktop_windows</i>
-                Set color for login screen..
+                <i class="material-icons blue small">gradient</i>
+                Set background color for login screen..
                 <div class="right top absolute nudge-y-12">
                   <span>
-                    <i id="loginBackgroundPreview" class="material-icons fancy transparent small padding25">home</i>
+                    <i id="loginBackgroundPreview" class="greyBorder material-icons fancy transparent small padding125">home</i>
                   </span>
                 </div>
               </li>
@@ -1071,8 +1071,8 @@
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white minWidth600 maxWidth700 absolute radius5">
           <h3 class="alignCenter">
-            <i class="material-icons blue valign">palette</i>
-            Set color for login screen
+            <i class="material-icons blue valign">gradient</i>
+            Set background color for login screen
           </h3>
           <br>
 
@@ -1080,11 +1080,10 @@
             <div id="angleContainer" class="inlineBlock">
               <div class="angle-control valign">
                 <input type="hidden" id="angle" name="angle" value="121" oninput="updateGradient();">
-                <div id="angleDial" class="dial text-shadow--black" onmousemove="chooseGradientAngle(this, event)" onmouseout="show('angle-control-blocker')">
-                <!-- <div id="angleDial" class="dial text-shadow--black" onmousemove="chooseGradientAngle(this, event)" onclick="prevAngle = angle, setGradientAngle(angle);" onmouseleave="if(prevAngle == angle) setGradientAngle(prevAngle);"> -->
+                <div id="angleDial" class="dial text-shadow--black" onmousemove="chooseGradientAngle(this, event)"  onclick="show('angle-control-blocker')" onmouseleave="show('angle-control-blocker')">
                     <span id="angleDisplay">121°</span>
                 </div>
-                <div id="angle-control-blocker" class="angle-control-blocker" style="user-select: none;" onclick="hide('angle-control-blocker')">
+                <div id="angle-control-blocker" class="angle-control-blocker pointer" style="user-select: none;" onclick="hide('angle-control-blocker')">
                 </div>
               </div>
               <div class="inlineBlock marginX1 valign">
