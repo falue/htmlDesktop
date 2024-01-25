@@ -158,6 +158,13 @@ async function setup() {
     setLoginGradient(gradient, false);
   }
 
+  // Get password from storage
+  let passwordFromStorage = localStorage.getItem('htmlDesktop-password');
+  if(passwordFromStorage) {
+    password = passwordFromStorage;
+    gebi("passwordHint").innerHTML = passwordFromStorage;
+  }
+
   // Loop over shortcuts
   for (let shortcut of shortcuts) {
     placeShortcut(shortcut["name"], shortcut["icon"], shortcut["x"],shortcut["y"], shortcut["action"]);
