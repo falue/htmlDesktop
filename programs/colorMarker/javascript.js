@@ -227,5 +227,6 @@ function saveToLocalStorage() {
         "colorMarkers": "`+colorMarkers+`",
         "disabledKeys": `+disabledKeys+`  
     }`
+    // FIXME: if fullscreen-greenscreen function was used, this will always be true. stupid if it always changes.
     localStorage.setItem('colorMarker', data);
 }
