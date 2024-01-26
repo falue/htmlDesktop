@@ -726,7 +726,7 @@ async function showDialog(title, text, selfClosing, input, feedbackButtons) {
 
     autoDialogHasClickedOk = false;
 
-    if(input !== false) {
+    if(input !== false && input !== undefined) {
         show("autoDialogCloseButton");
         show("autoDialogCancelButton");
         hide("autoDialogLoading");
