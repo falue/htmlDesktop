@@ -10,7 +10,6 @@ let selectedSystemMessage;
 let hotSwapped;
 let rootHtmlFile = "index.html";
 let dockAvailable = false;
-let lockKeyboard = true;
 let bootSpeed = 3;
 let localStorageSettings;
 
@@ -52,7 +51,6 @@ async function setup() {
 
   // get some data from localstorage
   localStorageSettings = JSON.parse(localStorage.getItem('htmlDesktop-settings')) ||  {};
-  if(localStorageSettings.hasOwnProperty('lockKeyboard')) setKeyboardLock(localStorageSettings.lockKeyboard)
 
   let brightness = localStorage.getItem('htmlDesktop-brightness');
   if(brightness && gebi('actionMenu')) {

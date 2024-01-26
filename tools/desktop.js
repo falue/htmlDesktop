@@ -908,33 +908,12 @@ function clearSystemMessages() {
     clearedSystemMessages = Math.floor(Date.now() / 1000);
 }
 
-function setKeyboardLock(state) {
-    // Set new state
-    lockKeyboard = state;
-    localStorageSettings.lockKeyboard = state;
-    localStorage.setItem('htmlDesktop-settings', JSON.stringify(localStorageSettings));
-    
-    // Make GUI to reflect state
-    gebi(`keyboardLockGui-false`).classList.add('whiteBgTransparent')
-    gebi(`keyboardLockGui-false`).classList.remove('blueBg');
-    gebi(`keyboardLockGui-true`).classList.add('whiteBgTransparent')
-    gebi(`keyboardLockGui-true`).classList.remove('blueBg');
-    gebi(`keyboardLockGui-all`).classList.add('whiteBgTransparent')
-    gebi(`keyboardLockGui-all`).classList.remove('blueBg');
-    
-    gebi(`keyboardLockGui-${state}`).classList.remove('whiteBgTransparent');
-    gebi(`keyboardLockGui-${state}`).classList.add('blueBg');
-}
 
 function keyboardController(event) {
-    if(lockKeyboard === "all" && gebi('blackout').classList.contains('hide') && gebi('screensaver').classList.contains('hide') && gebi('startUp').classList.contains('hide')) {
-        cl('Keyboard is locked.');
-        return;
-    }
-
     // Ignore presses in textareas and inputs, but NOT buttons because mostly fake
     if(event.target.localName !== "textarea" && event.target.localName !== "input") {
-        // Need .code not .key because i need to check for .altKey - which makes "å" out of "a" depending on the keyboard layout.
+        // Need .code not .key because i need to check for .altKey - which makes
+        // "å" out of "a" depending on the keyboard layout.
         let key = event.code;
         // 
         key = key.replace("Numpad", "");  // For numerals on keypad
@@ -972,12 +951,13 @@ function keyboardController(event) {
             return;
         }
 
-
-        // For main keyboard, all hotkeys need ctrl to work!
+        // For main keyboard, all hotkeys need alt to work!
         //   This is down here because hotkeys above here should work without alt,
         //   like leaving the screensaver, a blackout or the greenscreen
         // ATTENTION: alt+m is used by eddy-g to toggle menu bar; alt+h is "go to home"!
-        if(!event.altKey && !["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "Escape"].includes(key)) {
+
+        // Do nothing if any key was pressed without alt, but let Numpad keys work without alt
+        if(!event.altKey && !event.code.includes("Numpad")) {
             return;
         }
 
@@ -989,15 +969,24 @@ function keyboardController(event) {
             case "KeyX": case "4": screenSaver(); break;
             case "KeyG": case "5": setOverlayColor('GREEN'); break;
             case "KeyN": case "6": triggerActionOrMessage(gebi('osNotificationsSelect').value); break;
-            case "shift-KeyC": case "7": clearSystemMessages(); break;  //
+            case "shift-KeyC": case "7": clearSystemMessages(); break;
+            //case "KeyK": case "8": window.location = 'programs/bluescreen/index.html'; break;
+            case "KeyK": case "8": setOverlayColor('DEATH'); break;
             case "Escape": case "0": setOverlayColor('NONE'); break;
 
-            case "KeyC": if(!lockKeyboard) { epD(event); createShortcut(); } break;
+            case "KeyC": epD(event); createShortcut(); break;
+            case "KeyS": epD(event); save(); break;
+            case "shift-KeyS": epD(event); saveAs(false); break;
+            case "KeyD": clutterDesktop(4); break;
+            case "KeyW": startDefaultProgram(); break;
+            case "KeyA": toggle('actionMenu'); break;
+
+            /* case "KeyC": if(!lockKeyboard) { epD(event); createShortcut(); } break;
             case "KeyS": if(!lockKeyboard) { epD(event); save(); } break;
             case "shift-KeyS": if(!lockKeyboard) { epD(event); saveAs(false); } break;
             case "KeyD": if(!lockKeyboard) { clutterDesktop(4); } break;
             case "KeyW": if(!lockKeyboard) { startDefaultProgram(); } break;
-            case "KeyA": if(!lockKeyboard) { toggle('actionMenu'); } break;
+            case "KeyA": if(!lockKeyboard) { toggle('actionMenu'); } break; */
 
             /* case "1": if(!lockKeyboard) { epD(event); startDefaultProgram('terminal', 6); } break;
             case "2": if(!lockKeyboard) { startDefaultProgram('fileManager'); } break;

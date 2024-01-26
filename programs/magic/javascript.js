@@ -10,8 +10,8 @@ async function setup() {
     let id = thisWindow.id;
     let newSrc = await parent.showDialog("Set new window path", "Type new absolute path or URL.<br>Including localhost or live URLs.", false, "https://");
     if(newSrc && newSrc != "~EMPTY") {
-        let windowTitle = await parent.setWindowTitle(`title-${id}`);
-        let windowIcon = await parent.setWindowIcon(`${id}`);
+        let windowTitle = await parent.setWindowTitle(`title-${id}`, {"altKey": true});
+        let windowIcon = await parent.setWindowIcon(`${id}`, {"altKey": true});
         thisWindow.setAttribute('data-setup', `['${windowTitle}', '${windowIcon}', '${newSrc}']`);
         thisWindow.getElementsByTagName('iframe')[0].src = newSrc;
     }

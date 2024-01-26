@@ -563,17 +563,6 @@
                   <i class="material-icons blue small">keyboard</i>
                   See keyboard Controls..
                 </div>
-                <div class="right top absolute nudge-y-12">
-                  <span class="tooltip pointer" data-title="Allow keyboard control (incl. right-click window header & shortcuts)" onclick="setKeyboardLock(false);">
-                    <i id="keyboardLockGui-false" class="material-icons whiteBgTransparent small padding25">lock_open</i>
-                  </span>
-                  <span class="tooltip pointer" data-title="Block operator meta keys (like 'save', 'load', 'new shortcut' etc) - allow blackout, notification etc" onclick="setKeyboardLock(true);">
-                    <i id="keyboardLockGui-true" class="material-icons blueBg small padding25">lock</i>
-                  </span>
-                  <span class="tooltip pointer" data-title="Block all keyboard controls" onclick="setKeyboardLock('all');">
-                    <i id="keyboardLockGui-all" class="material-icons whiteBgTransparent small red padding25">do_disturb</i>
-                  </span>
-                </div>
               </li>
               <li class="tooltip pointer" data-title="Keyboard: [alt]+[b] or [1]" onclick="show('blackout'); hide('actionMenu');">
                 <!-- <i class="material-icons blue small">flare</i> -->
@@ -1008,7 +997,7 @@
     <!-- KEYBOARD CONTROL -->
     <div id="keyboardControls" class="hide dialog">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
-        <div class="darkGreyBg padding shadow white minWidth300 maxWidth400 absolute radius5">
+        <div class="darkGreyBg padding shadow white minWidth400 maxWidth500 absolute radius5">
           <h3 class="alignCenter">
             <i class="material-icons blue valign">keyboard</i>
             Keyboard controls
@@ -1018,21 +1007,15 @@
           <div class="grey">
             These shortcuts works everywhere in the OS, but not if you have a text input active (such as a terminal, or while logging in).
             <br>
-            Best to click on the desktop first.
+            <br>
+            The "Display and animations" section work also with the numpad on a full sized keyboard *without* the alt key.
           </div>
           <br>
           <div class="editIcon radius5 alignCenter chooseBox">
             <ul id="keyboardControlsList">
-              <li><h3 class="blue">USER KEYS</h3>Available if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i> or <i class="material-icons white blueBg small padding25 radius3">lock</i>:</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">1</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">b</span> Blackout screen</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">2</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">l</span> Logout animation</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">3</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">q</span> Shut down animation</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">4</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">x</span> Screensaver</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">5</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">g</span> Fullscreen-Greenscreen</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">6</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">n</span> Display notification or start action</li>
-              <li class="alignLeft"><span class="blueBg keyboardKey code">7</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">shift</span>+<span class="blueBg keyboardKey code">C</span> Clear notification / action</li>
 
-              <li style="margin-top:2em"><h3 class="blue">OPERATOR KEYS</h3>Available only if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i></li>
+              <!-- <li style="margin-top:2em"><h3 class="blue">OPERATOR KEYS</h3>Available only if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i></li> -->
+              <li><h3 class="blue">META</h3></li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">a</span> Action menu</li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">c</span> Create new shortcut</li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">s</span> Save (overwrite)</li>
@@ -1040,7 +1023,18 @@
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">d</span> Clutter desktop with files</li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">w</span> Clutter screen with windows</li>
               
-              <li class="red italics" style="margin-top:1em">If lock is <i class="material-icons blueBg small red padding25 radius3">do_disturb</i> no keypress is doing anything!</li>
+              <li class="paddingY2"><h3 class="blue nudge-y-25">DISPLAY & ANIMATIONS</h3></li>
+              <!-- <li><h3 class="blue">USER KEYS</h3>Available if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i> or <i class="material-icons white blueBg small padding25 radius3">lock</i>:</li> -->
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">1</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">b</span> Blackout screen</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">2</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">l</span> Logout animation</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">3</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">q</span> Shut down animation</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">4</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">x</span> Screensaver</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">5</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">g</span> Fullscreen-Greenscreen</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">6</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">n</span> Display notification or start action</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">7</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">shift</span>+<span class="blueBg keyboardKey code">C</span> Clear notification / action</li>
+              <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">8</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">k</span> Blue screen of death</li>
+
+              <!-- <li class="red italics" style="margin-top:1em">If lock is <i class="material-icons blueBg small red padding25 radius3">do_disturb</i> no keypress is doing anything!</li> -->
 
               <!-- <li class="alignLeft"><span class="blueBg keyboardKey code">1</span> Start program: Terminal</li>
               <li class="alignLeft"><span class="blueBg keyboardKey">2</span> Start program: File manager</li>

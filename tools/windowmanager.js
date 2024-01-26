@@ -236,13 +236,15 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   let windowIcon = document.createElement("i");
   windowIcon.setAttribute("class", "material-icons small");
   windowIcon.appendChild(document.createTextNode(icon));
-  windowIcon.setAttribute("oncontextmenu", `epD(event); if(lockKeyboard === false) { setWindowIcon('${id}') }`);
+  windowIcon.setAttribute("onclick", `epD(event); setWindowIcon('${id}', event)`);
+  windowIcon.setAttribute("oncontextmenu", `epD(event); setWindowIcon('${id}', event)`);
   windowTitle.appendChild(windowIcon);
 
   let windowTitleText = document.createElement("span");
   windowTitleText.appendChild(document.createTextNode(windowName));
   windowTitleText.setAttribute("id", "title-"+id);
-  windowTitleText.setAttribute("oncontextmenu", `epD(event); if(lockKeyboard === false) { setWindowTitle('title-${id}') }`);
+  windowTitleText.setAttribute("onclick", `epD(event); setWindowTitle('title-${id}', event)`);
+  windowTitleText.setAttribute("oncontextmenu", `epD(event); setWindowTitle('title-${id}', event)`);
   windowTitleText.setAttribute("class", "valignText");
   windowTitleText.style.paddingRight='2em';
   windowTitle.appendChild(windowTitleText);
@@ -473,7 +475,12 @@ function maximizeWindow(id) {
   windowContainer.getElementsByClassName("windowFrame")[0].setAttribute("ondblclick", "resetWindowSize('"+id+"', '"+lastX+"', '"+lastY+"', '"+lastW+"', '"+lastH+"')");
 }
 
-async function setWindowTitle(id) {
+async function setWindowTitle(id, event) {
+  if(!event.altKey) {
+    cl("Press alt key to change window title");
+    return;
+  }
+
   let currentWindowTitleElement = gebi(id);
   let currentTitle = currentWindowTitleElement.innerHTML;
   let newTitle = await showDialog("Set new window title", "", false, currentTitle);
@@ -483,7 +490,14 @@ async function setWindowTitle(id) {
   return newTitle;
 }
 
-async function setWindowIcon(id) {
+async function setWindowIcon(id, event) {
+  // if not alt, return
+  if(!event.altKey) {
+    cl("Press alt key to change window icon");
+    return;
+  }
+
+
   let currentWindowIcon = gebi(id).getElementsByClassName('windowTitle')[0].getElementsByTagName('i')[0];
   let textContent = `<div class="chooseBox editIcon radius5 alignCenter">
     <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='folder'"><i class="material-icons blue valign ">folder</i></div>
@@ -845,7 +859,7 @@ function placeShortcut(name, icon, x,y, action) {
     // Start default action
     shortcutContainer.setAttribute("ondblclick", chooseDefaultProgram(name));
   }
-  shortcutContainer.setAttribute("oncontextmenu", "epD(event); if(lockKeyboard === false) { gebi('editNewShortcut').value = 'false'; editShortcut('"+id+"'); return false; }");
+  shortcutContainer.setAttribute("oncontextmenu", "epD(event); if(event.altKey) { gebi('editNewShortcut').value = 'false'; editShortcut('"+id+"'); return false; } else { cl('Press alt to edit shortcut') }");
 
   let fileIcon = document.createElement("img");
   if(icon) {
