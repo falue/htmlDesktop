@@ -33,6 +33,7 @@ Object with all general settings of this workstation. OS and workstation-name ar
 - `"os": "windows"` *Style of OS, either `windows`, `mac` or `linux`. Must be the same as in `generalSettigns.txt`*
 - `"darkMode": true` *only gets re-set by changing the `systemColor` via the UI*
 - `"username": "Some Name"` *display name of workstation*
+- `"bootSpeed": 3` *Integer speed of boot animation. 1 to 7, 1=fastest, 7=slowest. Default: 3.*
 - `"password": "1234"` *Used for the logout action. Can be anything for the login window; to a successful login this only has to be part of the typed password*
 - `"workstation": "telefabi"` *same name as folder in `workstations/..`*
 - `"selectedSystemMessage": 1` *index of osNotification array; starts with `0`*

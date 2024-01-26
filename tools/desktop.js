@@ -364,22 +364,6 @@ function moveWindowToNewParent(id, target) {
     windowToMove.querySelector('iframe').contentWindow.focus();
 }
 
-// FIXME: DOES NOT LOAD
-/* function calcBootSpeed(speed) {
-    let step;
-    switch(speed) {
-        case 3: step = 1; break;
-        case 6: step = 2; break;
-        case 15: step = 3; break;
-        case 22: step = 4; break;
-        case 33: step = 5; break;
-        case 42: step = 6; break;
-        case 55: step = 7; break;
-        default: step = 3; break;
-    }
-    setBootSpeed(step)
-} */
-
 function setBootSpeed(step) {
     let indicator = gebi('bootSpeedIndicator');
     gebi('bootSpeedSlider').value = step;

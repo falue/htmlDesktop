@@ -363,6 +363,9 @@ async function setupSettings(settings) {
       case "selectedSystemMessage":
         selectedSystemMessage = value;
       break;
+      case "bootSpeed":
+        setBootSpeed(value);
+      break;
       default:
         // Show error if setting is not parsed and should not be here:
         if(!["workstation", "os"].includes(setting)) cl("Unknown setting: "+setting);
