@@ -29,9 +29,14 @@ async function setupImageViewer() {
     } else {
         files = JSON.parse(localStorage.getItem('imageViewer'));
         if(files) {
-            setupThumbnails(files);
-            isFirstFile = true;
-            showImage(0);  // Show first image
+            if(files[0].startsWith('data:application/pdf')) {
+                window.location.href = files[0];
+                return;
+            } else {
+                setupThumbnails(files);
+                isFirstFile = true;
+                showImage(0);  // Show first image
+            }
         } else {
             gebi('content').innerHTML = "No files in URL or local storage";
         }
@@ -253,6 +258,11 @@ function exitFullscreen() {
 
 async function uploadImages(data) {
     var selectedImages = data.files;
+    cl(selectedImages);
+    if(selectedImages[0].name.toLowerCase().endsWith('.pdf')) {
+        displayLocalPdf(selectedImages[0]);
+        return;
+    }
     // Reset thumbs & current
     files = [];
     gebi('content').innerHTML = '';
@@ -271,6 +281,17 @@ async function uploadImages(data) {
     isFirstFile = true;
     showImage(0);  // Show first image
     hide('settings');
+}
+
+function displayLocalPdf(file) {
+    const reader = new FileReader();
+    reader.addEventListener("load", function () {
+      // convert file to base64 string
+      localStorage.setItem('imageViewer', JSON.stringify([reader.result]));
+      window.location.href = reader.result;
+    }, false);
+    reader.readAsDataURL(file);
+    window.location.href = file;
 }
 
 const convertBase64 = (file) => {
