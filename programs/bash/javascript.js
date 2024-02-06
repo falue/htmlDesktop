@@ -61,8 +61,8 @@ function loadScript(script, getBashProfile = true) {
   for (lines of script) {
     if (lines === "EXIT") break; // Abort parsing file when keyword EXIT is found
     localCommands = [...localCommands, ...splitCommandLines(lines)];
-    if (lines != "[br]" && !lines.includes(":nobr")) {
-      // Do not add br for "br" "nobr" command
+    if (lines != "[br]" && !lines.includes(":nobr") && !lines.includes("javascript")) {
+      // Do not add br for "br" "nobr" and "javascript" command
       localCommands.push({ function: "br" });
     }
   }
@@ -137,10 +137,12 @@ async function playCommandAtIndex(index) {
   }
 }
 
-function resetConsole() {
-  /* gebi("console").innerHTML = "";
+function resetProfile() {
   bashProfileName = bashProfileNameInitial;
-  playCommandAtIndex(0); */
+}
+
+function resetConsole() {
+  resetProfile();
   const url = new URL(window.location.href);
   url.searchParams.set('reloadTime', Date.now().toString());
   window.location.href = url.toString();
@@ -234,7 +236,7 @@ function setupForceType(command) {
     `forceType(event, gebi('${uid}'), '${
       command.parameters[0]
     }', async function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); ${
-      includesDefaultCommands
+      includesDefaultCommands && command.parameters[1] !== "*"
         // If default command is set to forceType, try to execute command
         ? `await evalCommand('${command.parameters[0]}'${sudoOutcome || ""}); await playCommandAtIndex();`
         : "playCommandAtIndex();"
@@ -439,6 +441,9 @@ async function playCommand(command) {
     case "forceType":
       setupForceType(command);
       break;
+    case "resetProfile":
+      resetProfile();
+      break;
     case "waitForEnter":
       show("cursor");
       await waitForKey([13]);
@@ -453,11 +458,18 @@ async function playCommand(command) {
       await freeText(13);
       playCommandAtIndex();
       break;
+    case "javascript":
+      try{
+        eval(command.parameters[0]);
+      } catch(e) {
+        console.error(e)
+      }
+      break;
     case "sleep":
       await delay(command.parameters[0]);
       break;
     case "clear":
-      gebi("console").innerHTML = "";
+      resetConsole();
       break;
     case "goto":
       await playCommandAtIndex(command.parameters[0]);
