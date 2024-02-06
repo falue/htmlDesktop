@@ -33,9 +33,81 @@
             "zIndex": 1,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#206 Hauptfenster",
+            "windowName": "x_ide",
+            "icon": "code",
+            "contentPath": "x_ide",
+            "x": 8,
+            "y": 8,
+            "w": 1500,
+            "h": 800,
+            "zIndex": 11,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#206 variation 1",
+            "windowName": "TerminalZ",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 51,
+            "y": 7,
+            "w": 705,
+            "h": 763,
+            "zIndex": 12,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#206 variation 2",
+            "windowName": "PERISTALTIX - PYTHON [zen mode]",
+            "icon": "view_in_ar",
+            "contentPath": "terminal/index.html?byRows=false&startChar=278&text=psf&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 8,
+            "y": 5,
+            "w": 700,
+            "h": 750,
+            "zIndex": 13,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#206 variation 3",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=random",
+            "x": 31,
+            "y": 30,
+            "w": 900,
+            "h": 575,
+            "zIndex": 14,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#206 variation 4",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=script",
+            "x": 33,
+            "y": 32,
+            "w": 666,
+            "h": 450,
+            "zIndex": 15,
+            "minimized": false,
+            "renderToDom": false
         }
     ],
     "shortcuts": [
+        {
+            "name": "X_IDE",
+            "icon": "",
+            "x": 3,
+            "y": 82,
+            "action": "addWindow('X_IDE', 'code', 'x_ide', 8, 8, 1500,800, false);"
+        },
         {
             "name": "Trash",
             "icon": "trashFull.png",
@@ -76,13 +148,6 @@
             "icon": "pdf.png",
             "x": 1,
             "y": 69,
-            "action": ""
-        },
-        {
-            "name": "file",
-            "icon": "folderFull.png",
-            "x": 3,
-            "y": 82,
             "action": ""
         },
         {
