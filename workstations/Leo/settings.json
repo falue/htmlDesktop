@@ -1,6 +1,6 @@
 {
     "settings": {
-        "systemColor": "#000000",
+        "systemColor": "#232323",
         "desktopColor": "#1d1b1b",
         "desktopImg": "os/windows/desktop.jpg",
         "os": "spa",
@@ -33,9 +33,42 @@
             "zIndex": 1,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#213A: Hacking Videos",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=213a",
+            "x": 6,
+            "y": 6,
+            "w": 888,
+            "h": 555,
+            "zIndex": 16,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#213A: video",
+            "windowName": "test.mp4",
+            "icon": "theaters",
+            "contentPath": "imageviewer/index.html?files=test.mp4&allowZoom=true&hiddenBar=true&autoplay=true",
+            "x": 12,
+            "y": 12,
+            "w": 888,
+            "h": 555,
+            "zIndex": 17,
+            "minimized": false,
+            "renderToDom": false
         }
     ],
     "shortcuts": [
+        {
+            "name": "Securiton",
+            "icon": "",
+            "x": 9,
+            "y": 4,
+            "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=213a', 6, 6, 1250,800, false);"
+        },
         {
             "name": "DVD",
             "icon": "dvd.png",
