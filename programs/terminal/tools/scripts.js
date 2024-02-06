@@ -242,6 +242,11 @@ function type(event, id) {
     if(byRows) {
         snippet = (text.split("\n").slice(0, cursor)).join("<br>");
     } else {
+        // Jump over whitespace
+        while(text.charAt(cursor) === ' ') {
+            console.log("is space!");
+            cursor = cursor + (event.keyCode === 8 ? -1 : 1);  // backspace
+        }
         snippet = text.substring(0, cursor+speed).replace(/\n/g, "<br>");
     }
 
