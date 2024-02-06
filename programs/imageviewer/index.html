@@ -25,7 +25,7 @@
       --><button class="programButtons">Camera</button><!-- 
       --><button class="programButtons">Share</button><!-- 
       --><button class="programButtons">Presentation</button><!-- 
-      --><button class="programButtons" onclick="toggle('settings')"><i class="material-icons blue valign small">bolt</i> View</button><!-- 
+      --><button id="actionButton" class="programButtons" onclick="toggle('settings')"><i class="material-icons blue valign small">bolt</i> View</button><!-- 
       --><button class="programButtons">About</button><!-- 
       --><button id="zoomIn" class="programButtons" onclick="zoom({wheelDeltaY: -25, wheelDeltaX: 0, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_in</i></button><!-- 
       --><button id="zoomOut" class="programButtons" onclick="zoom({wheelDeltaY: 40, wheelDeltaX: 0, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_out</i></button><!--
@@ -39,7 +39,14 @@
         <input id="fileinput" class="" type="file" accept="image/png, image/gif, image/jpeg, application/pdf" onchange="uploadImages(this)" multiple>
       </fieldset>
       <fieldset class="radius3">
-        <legend>Content</legend>
+        <legend>Content + controls</legend>
+        <input id="hiddenBar" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="hiddenBar = this.checked; this.checked ? hideBar() : showBar()">
+        <label for="hiddenBar">Hide program bar</label><br>
+
+        <input id="autoplay" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="autoplay = this.checked; localStorage.setItem('imageViewer-autoplay', this.checked)">
+        <!-- <input id="autoplay" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="autoplay = this.checked; this.checked ? localStorage.setItem('imageViewer-autoplay', true) :  localStorage.removeItem('imageViewer-autoplay')"> -->
+        <label for="autoplay">Autoplay</label><br>
+
         <input id="disableVideoControls" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="disableVideoControls = this.checked; setVideoControls()">
         <label for="disableVideoControls">Video: Hide Controls</label><br>
         <input id="allowZoom" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="toggleZoom(this.checked)">

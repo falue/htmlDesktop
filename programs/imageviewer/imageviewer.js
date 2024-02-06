@@ -5,16 +5,42 @@ let imageIndex = 0;
 let isFirstFile;
 let disableVideoControls;
 let allowZoom = true;
+let hiddenBar = false;
+let autoplay = false;
 
 async function setupImageViewer() {
+
+    /* 
+        URL params:
+            files
+            disableVideoControls
+            hiddenBar
+            autoplay
+            allowZoom
+    */
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     os = urlParams.get('os');
     workstation = urlParams.get('workstation');
     disableVideoControls = urlParams.get('disableVideoControls') == "true";
     allowZoom = urlParams.get('allowZoom') == "true";
+    hiddenBar = urlParams.get('hiddenBar') == "true";
+    autoplay = urlParams.get('autoplay') == "true";
     gebi('disableVideoControls').checked = disableVideoControls;
     gebi('allowZoom').checked = allowZoom;
+
+    if(hiddenBar && localStorage.getItem('imageViewer-hiddenBar') !== 'false') {
+        hideBar();
+    }
+
+    if(autoplay || localStorage.getItem('imageViewer-autoplay') === 'true') {
+        gebi('autoplay').checked = true;
+        autoplay = true;  // set for local storage
+    }
+
+    if(localStorage.getItem('imageViewer-autoplay') === 'false') {
+        autoplay = false;  // set for local storage
+    }
 
     if(urlParams.get('files')) {
         files = urlParams.get('files').split("|");
@@ -121,6 +147,11 @@ async function showImage(index) {
     }
 
     if(file.endsWith(".mp4")) {
+        let poster = path.split('.').slice(0, -1).join('.')+".png";
+        if(await fileExists(poster, false)) {
+            gebi('videoJsPlayerWrapper_html5_api').setAttribute('poster', poster);
+        }
+
         setVideoControls();
 
         content.style.backgroundImage = "none";
@@ -153,7 +184,7 @@ async function setVideoSrcAndPlay(videoSource, type) {
         "type": type
     });
     // If user has interacted with the page (eg, if video is not first file in gallery), play video
-    if(!isFirstFile) {
+    if(!isFirstFile || autoplay) {
         await player.ready(function(){
             player.play();
         });
@@ -192,6 +223,44 @@ function navigateGallery(direction) {
     showImage(imageIndex);
 }
 
+function hideBar() {
+    hiddenBar = true;
+    localStorage.setItem('imageViewer-hiddenBar', hiddenBar);
+    let btn = gebi('actionButton');
+    if(btn) {
+        btn.style.position = 'fixed';
+        btn.style.right = '0';
+        btn.style.top = '0';
+        btn.style.width = '4em';
+        btn.style.height = '4em';
+    }
+    gebi('hiddenBar').checked = true;
+    gebi('windowmenu').classList.add('op0');
+    gebi('content').style.height = '100%';
+    gebi('content').style.top = '0';
+    gebi('videoPlayer').style.height = '100%';
+    gebi('videoPlayer').style.top = '0';
+}
+
+function showBar() {
+    hiddenBar = false;
+    localStorage.setItem('imageViewer-hiddenBar', hiddenBar);
+    let btn = gebi('actionButton');
+    if(btn) {
+        btn.style.position = null;
+        btn.style.right = null;
+        btn.style.top = null;
+        btn.style.width = null;
+        btn.style.height = null;
+    }
+    gebi('hiddenBar').checked = false;
+    gebi('windowmenu').classList.remove('op0');
+    gebi('content').style.height = 'calc(100% - 1.5em)';
+    gebi('content').style.top = '1.5em';
+    gebi('videoPlayer').style.height = 'calc(100% - 1.5em)';
+    gebi('videoPlayer').style.top = '1.5em';
+}
+
 let zoomStage = 1;
 let tempVideoControls;
 
@@ -215,8 +284,14 @@ function zoom(event, id) {
     let element = gebi(id);
     let currentPos = element.style.transformOrigin.split("px ");
 
+    let isVideo = element.tagName === "VIDEO" || !gebi('videoPlayer').classList.contains('hide');
+    // If video is scrolled by button in program bar
+    if(!gebi('videoPlayer').classList.contains('hide')) {
+        element = gebi('videoJsPlayerWrapper_html5_api');
+    }
+
     if((scrollingEvent.wheelDeltaY>1 || scrollingEvent.wheelDeltaY<-1) && (scrollingEvent.wheelDeltaX>=-1 && scrollingEvent.wheelDeltaX<=1)) {
-        if(element.tagName === "VIDEO") {
+        if(isVideo) {
             // reset controls
             tempVideoControls = disableVideoControls;
             disableVideoControls = true;
@@ -229,7 +304,7 @@ function zoom(event, id) {
         
         // if zoom is maxed out, reset controls
         disableVideoControls = tempVideoControls;
-        if(zoomStage == 1 && element.tagName === "VIDEO") {
+        if(zoomStage == 1 && isVideo) {
             setVideoControls()
         }
     } else if(scrollingEvent.wheelDeltaX>1 || scrollingEvent.wheelDeltaX<-1) {
@@ -354,4 +429,15 @@ function keyboardControllerImageViewer(event) {
             parent.keyboardController(event);
             break;
     }
+}
+
+async function fileExists(imageSrc, fallback) {
+    return fetch(imageSrc, { method: 'HEAD' })
+    .then(res => {
+        if (res.ok) {
+            return imageSrc;  // Image is found
+        } else {
+            return fallback;  // Image is not found
+        }
+    }).catch(err => console.log('Error:', err));
 }
