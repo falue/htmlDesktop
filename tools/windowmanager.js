@@ -413,6 +413,8 @@ function bringToFront(id) {
   // Hide current windowManagerOverlay in any case except is was closed
   if(currentWindow) {
     hide(currentWindow.getElementsByClassName('windowManagerOverlay')[0].id);
+    // Set focus to iframe content
+    currentWindow.querySelectorAll("iframe")[0].contentWindow.focus();
   }
 }
 
