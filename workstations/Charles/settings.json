@@ -35,7 +35,7 @@
             "renderToDom": false
         },
         {
-            "metaTitle": "#206 Hauptfenster",
+            "metaTitle": "#206 Monitor rechts",
             "windowName": "x_ide",
             "icon": "code",
             "contentPath": "x_ide",
@@ -48,20 +48,20 @@
             "renderToDom": true
         },
         {
-            "metaTitle": "#206 variation 1",
+            "metaTitle": "#206 Laptop",
             "windowName": "TerminalZ",
             "icon": "code",
             "contentPath": "terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
-            "x": 51,
-            "y": 7,
-            "w": 705,
-            "h": 763,
+            "x": 0,
+            "y": 4,
+            "w": 1800,
+            "h": 888,
             "zIndex": 12,
             "minimized": false,
             "renderToDom": false
         },
         {
-            "metaTitle": "#206 variation 2",
+            "metaTitle": "#206 Monitor links 1",
             "windowName": "PERISTALTIX - PYTHON [zen mode]",
             "icon": "view_in_ar",
             "contentPath": "terminal/index.html?byRows=false&startChar=278&text=psf&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
@@ -70,6 +70,19 @@
             "w": 700,
             "h": 750,
             "zIndex": 13,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#206 Monitor links 2",
+            "windowName": "TerminalZ",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=0&text=add-emails-start&theme=dracula&speed=4&autotype=true&humanTyper=true&cursor=false&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 51,
+            "y": 7,
+            "w": 705,
+            "h": 763,
+            "zIndex": 12,
             "minimized": false,
             "renderToDom": false
         },
