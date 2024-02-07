@@ -52,8 +52,6 @@ fi
 
 # Copy specified dir recursively
 # use port 2121 as per metanet. get IP from metanet gui. foldername of website.
-# scp -P 2121 -r ./ "filmkulissen@80.74.158.100:/${TARGETPATH}" &&
-# rsync -avz --exclude='_tools' --exclude='.git' --exclude='.gitignore' -e "ssh -p 2121" ./ filmkulissen@80.74.158.100:/${TARGETPATH} &&
 EXCLUDES=(_tools .git .gitignore deploy.sh .DS_Store)
 
 # Start building the rsync command with options
