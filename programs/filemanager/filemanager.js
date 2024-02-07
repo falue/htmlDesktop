@@ -60,7 +60,6 @@ async function setupFileManager() {
     // Cycle through all files to be displayed in treeview
     let list = document.getElementById('treeView');
     for (let file of rootFolders) {
-        cl(file)
         addFileToTree(list, file, rootName, computerName);
     }
 
