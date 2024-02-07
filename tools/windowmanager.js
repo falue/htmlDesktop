@@ -161,6 +161,8 @@ onDragEnd = function() {
 }
 
 let recentZIndex = 10;
+let recentX = 2;
+let recentY = 2;
 
 async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   // Display overlay in all other windows that youre able to click on them later
@@ -186,6 +188,23 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   windowContainer.setAttribute("draggable", "true");
   windowContainer.setAttribute("ondragstart", "onDragStart(event)");
   windowContainer.setAttribute("ondragend", "onDragEnd(event)");
+
+  // If position X+Y is set to null, place window a bit to further down and to the right.
+  // reset after 30s.
+  if(!x){
+    x = recentX+1;
+    recentX = x;
+    setTimeout(function() {
+      recentX = 2;
+    }, 20000);
+  }
+  if(!y) {
+    y = recentY+3;
+    recentY = y;
+    setTimeout(function() {
+      recentY = 2;
+    }, 20000);
+  }
 
   // Set position & size
   windowContainer.style.left = x + "%";
