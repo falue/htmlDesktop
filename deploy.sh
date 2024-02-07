@@ -7,6 +7,7 @@ if [ ! -f desktop.html ]; then
 fi
 
 TARGETPATH="telefabi.ch/htmlDesktop"
+EXCLUDES=(_tools .git .gitignore deploy.sh .DS_Store)
 KEEPSTASH=false
 
 usage() {
@@ -50,9 +51,12 @@ else
     echo -e "\n${WHITE}${ON_RED}!!! Keep unstaged changes !!!${NC} and deploy them to ${BLACK}${ON_GREEN}${TARGETPATH}${NC}."
 fi
 
+# Publish to github
+git push --quiet &&
+
+# Publish to server
 # Copy specified dir recursively
 # use port 2121 as per metanet. get IP from metanet gui. foldername of website.
-EXCLUDES=(_tools .git .gitignore deploy.sh .DS_Store)
 
 # Start building the rsync command with options
 RSYNC_CMD="rsync -avz"
