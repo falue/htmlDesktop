@@ -3,7 +3,6 @@ let patternIndex;
 let fontSize;
 let color;
 let colorMarkers;
-let disabledKeys;
 let opacity;
 let dblClickAllowed;
 let pattern = [
@@ -42,8 +41,6 @@ async function setup() {
     opacity = parseInt(urlParams.get('opacity')) || 33;
     color = urlParams.get('color') ? "#"+urlParams.get('color') : "#00ff00";
     dblClickAllowed = urlParams.get('dblClickAllowed') ? urlParams.get('dblClickAllowed') == "true" : false;
-    disabledKeys = urlParams.get('disabledKeys') ? urlParams.get('disabledKeys') == "true" : false;
-    let enforceDisablingKeyFromUrl = disabledKeys ? true : false;
     colorMarkers = urlParams.get('colorMarkers') ? "#"+urlParams.get('colorMarkers') : "#000000";
 
     /// read locaStorage
@@ -58,7 +55,6 @@ async function setup() {
         color = data.color;
         colorMarkers = data.colorMarkers;
         // Overwrite saved value if it is part of the url
-        disabledKeys = enforceDisablingKeyFromUrl ? true : data.disabledKeys;
     }
 
     
@@ -72,7 +68,6 @@ async function setup() {
     gebi('fontSizeSlider').value=fontSize;
     setBgColor(color);
     setMarkerColor(colorMarkers);
-    gebi('disabledKeys').checked = disabledKeys;
     gebi('dblClickAllowed').checked = dblClickAllowed;
 
     // Hide back to index button if in iframe
@@ -161,29 +156,23 @@ function setMarkerColor(newColor) {
 }
 
 function greenKeyboardController(event) {
-    let key = event.key;
-    let alt = event.altKey;
-    if(!disabledKeys) {
+    // TODO: alt + G or any other desktop color overlays should work aswell.
+    let key = event.code
+    if(event.altKey || key === 'NumpadMultiply') {
         switch(key) {
-            case "1": if(window.location === window.parent.location) { toggle('body'); }; break;
+            // case "1": if(window.location === window.parent.location) { toggle('body'); }; break;
             // case "b": if(alt && window.location === window.parent.location) { cl("make black") }; break;
-            case "f": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
-            case "/": if(isFullscreen) { exitFullscreen() } else { enterFullscreen(true) }; break;
-            case " ": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
+            case "KeyF": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
+            case "NumpadMultiply": if(isFullscreen) { exitFullscreen() } else { enterFullscreen(true) }; break;
+            case "Space": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
             default:
-                if(window.location !== window.parent.location) parent.keyboardController(event);
+                if(window.location !== window.parent.location) {
+                    cl("pressssed with alt in iframe")
+                    parent.keyboardController(event);
+                };
                 break;
         }
-    } else if(key == "Escape" || key == "5") {
-        if(window.location !== window.parent.location) parent.fullscreenGreenscreen();
-    } else if( key == "1") {
-        if(window.location !== window.parent.location) parent.keyboardController(event);
     }
-}
-
-function changeDisablingKeys(checked) {
-    disabledKeys = checked;
-    saveToLocalStorage();
 }
 
 function dblClickFullscreen() {
@@ -224,8 +213,7 @@ function saveToLocalStorage() {
         "opacity": `+opacity+`,
         "dblClickAllowed": `+dblClickAllowed+`,
         "color": "`+color+`",
-        "colorMarkers": "`+colorMarkers+`",
-        "disabledKeys": `+disabledKeys+`  
+        "colorMarkers": "`+colorMarkers+`"
     }`
     // FIXME: if fullscreen-greenscreen function was used, this will always be true. stupid if it always changes.
     localStorage.setItem('colorMarker', data);

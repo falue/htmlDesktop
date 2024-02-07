@@ -98,7 +98,12 @@
 
     <!-- GREENSCREEN -->
     <div id="greenscreen" class="fixed blackBg maxWidth maxHeight hide" style="z-index: 9999;">
-      <iframe id="greenscreen-iframe" src="programs/colorMarker/index.html?disabledKeys=true" class="fixed maxHeight maxWidth"></iframe>
+      <iframe id="greenscreen-iframe" src="programs/colorMarker/index.html" class="fixed maxHeight maxWidth"></iframe>
+    </div>
+
+    <!-- BLUESCREEN -->
+    <div id="death" class="fixed blackBg maxWidth maxHeight hide" style="z-index: 9999;">
+      <iframe id="death-iframe" src="programs/bluescreen/index.html" class="fixed maxHeight maxWidth"></iframe>
     </div>
 
     <!-- BLACKOUT -->
@@ -589,8 +594,8 @@
                 <i class="material-icons blue small">palette</i>
                 Fullscreen-Greenscreen
               </li>
-              <li class="tooltip pointer" data-title="Keyboard: NONE YET" onclick="window.location = 'programs/bluescreen/index.html'">
-                <i class="material-icons blue small">dangerous</i>
+              <li class="tooltip pointer" data-title="Keyboard: [alt]+[k] or [8]" onclick="setOverlayColor('DEATH')">
+                <i class="material-icons blue small">cancel_presentation</i>
                 Blue screen of death (system error page)
               </li>
             </ul>
@@ -1015,7 +1020,7 @@
             <ul id="keyboardControlsList">
 
               <!-- <li style="margin-top:2em"><h3 class="blue">OPERATOR KEYS</h3>Available only if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i></li> -->
-              <li><h3 class="blue">META</h3></li>
+              <li class="noLiHover"><h3 class="blue">META</h3></li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">a</span> Action menu</li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">c</span> Create new shortcut</li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">s</span> Save (overwrite)</li>
@@ -1023,7 +1028,7 @@
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">d</span> Clutter desktop with files</li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">w</span> Clutter screen with windows</li>
               
-              <li class="paddingY2"><h3 class="blue nudge-y-25">DISPLAY & ANIMATIONS</h3></li>
+              <li class="paddingY2 noLiHover"><h3 class="blue nudge-y-25">DISPLAY & ANIMATIONS</h3></li>
               <!-- <li><h3 class="blue">USER KEYS</h3>Available if lock is set to <i class="material-icons white blueBg small padding25 radius3">lock_open</i> or <i class="material-icons white blueBg small padding25 radius3">lock</i>:</li> -->
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">1</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">b</span> Blackout screen</li>
               <li class="alignLeft"><span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">2</span> or <span class="blueBg keyboardKey code">alt</span>+<span class="blueBg keyboardKey code">l</span> Logout animation</li>

@@ -536,13 +536,15 @@ textarea {
 .sine20 { animation: fader50 1s ease-in-out infinite; }
 .moveUpDown { animation: moveUpDown 1s ease-in-out infinite; }
 .shake { animation: shake 0.5s linear 1; }
+.popIn { animation: popIn 0.5s forwards; }
 .shine { animation: shake 1s ease-in-out infinite; }
 .wiggle, .wiggleX { animation: wiggleX 300ms ease-in-out 1; }
 .fadeOut { animation: fadeOut 1s linear 1 forwards; }
 .fadeOutFast { animation: fadeOut 250ms linear 1 forwards; }
 .fadeIn { animation: fadeIn 1s linear 1 forwards; }
 .fadeInFast { animation: fadeIn 250ms linear 1 forwards; }
-  
+.dyingScreen { animation: dyingScreenEffect 500ms ease-in-out forwards; }
+
 @keyframes spinner { 
     100% { transform:rotate(360deg); } 
 }
@@ -585,6 +587,23 @@ textarea {
     100% { opacity: 1; }
 }
 
+@keyframes popIn {
+    0% {
+        transform: translateX(100%) scale(0);
+        opacity: 0;
+    }
+    35% {
+        transform: translateX(-5%) scale(1);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(-5%) scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -606,6 +625,54 @@ textarea {
     80% { transform: translateX(-1px); }
     100% { transform: translateX(1px); }
 }
+
+@keyframes dyingScreenEffect {
+    0% {
+        transform: scaleX(1);
+        filter: brightness(90%);
+    }
+    29% {
+        transform: scaleX(1);
+        filter: brightness(90%);
+    }
+    30% {
+        transform: scaleX(1.2);
+        filter: brightness(100%);
+    }
+    39% {
+        transform: scaleX(1.2);
+        filter: brightness(100%);
+    }
+    40% {
+        transform: scaleX(1);
+        filter: brightness(100%);
+    }
+    59% {
+        transform: scaleX(1);
+        filter: brightness(100%);
+    }
+    60% {
+        transform: scaleX(1.8);
+        filter: brightness(66%);
+    }
+    79% {
+        transform: scaleX(1.8);
+        filter: brightness(88%);
+    }
+    80% {
+        transform: scaleX(1.8) translateX(5%);
+        filter: brightness(66%);
+    }
+    90% {
+        transform: scaleX(1.8) translateX(5%);
+        filter: brightness(66%);
+    }
+    100% {
+        transform: scaleX(1.7);
+        filter: brightness(82%);
+    }
+}
+
 /* @-webkit-keyframes sineWave {
     0%   { opacity: 0; }
     50%  { opacity: 1; }
@@ -615,3 +682,4 @@ textarea {
 /* MOBILE */
 @media (max-width: 800px) {
 }
+

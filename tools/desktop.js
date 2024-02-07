@@ -395,11 +395,16 @@ function setBrightness(value) {
 }
 
 async function shutDown(currentScreen) {
+    let speed = 1;
     let userImage = await fileExists('workstations/'+workstation+'/userpicture.jpg', 'os/_generic/userpicture.jpg');
     gebi('lockScreenUserPicture').src = userImage;
     gebi('lockScreenUserName').innerHTML = username;
     gebi('lockScreenText').focus();
     show('lockScreen');
+
+    if(currentScreen === 'death') {
+        speed = 0;
+    }
 
     // Reset animations
     show('shuttingDown');
@@ -411,12 +416,12 @@ async function shutDown(currentScreen) {
 
     // Start animations
     gebi('shuttingDown').classList.add("fadeInFast");
-    await delay(1200);
+    await delay(1200 * speed);
 
     // Show startUp
     gebi('startUp').classList.add("fadeInFast");
     show('startUp');
-    await delay(250);
+    await delay(250 * speed);
 
     // Show login underneath
     show('lockScreenSystemColorOverlay');
@@ -426,6 +431,17 @@ async function shutDown(currentScreen) {
     hide('shuttingDown');
     gebi('shuttingDown').classList.remove("fadeInFast");
     gebi('startUp').classList.remove("fadeInFast");
+}
+
+async function crash(speed) {
+    gebi('death').classList.add('dyingScreen');
+    await delay(1000);
+    show('blackout');
+    shutDown('death');
+    await delay(speed);
+    gebi('death').classList.remove('dyingScreen');
+    startUp();
+    setOverlayColor('NONE');
 }
 
 async function reboot() {
@@ -922,19 +938,10 @@ function keyboardController(event) {
         if(key==="Multiply") key = "*";   // For star on keypad
         if(event.key==="*") key = "*";    // For shift + 3
 
-        // Forbid ervery key when green screen is shown
-        if(!gebi('greenscreen').classList.contains('hide') && key !== "Escape" && key !== "1" && key !== "5") {
-            return;
-        }
-
-        // "Any key" wakes up from blackout. only "5" makes greenscreen
-        if(!gebi('blackout').classList.contains('hide')) {
-            epD(event);
-            if(key === "5") {
-                setOverlayColor("GREEN");
-            } else {
-                setOverlayColor("BLACK");
-            }
+        // "Any key" wakes up from blackout - but ignore if
+        //   alt key is pressed to allow for green screen activation
+        if(!gebi('blackout').classList.contains('hide') && !event.altKey) {
+            setOverlayColor("BLACK");
             return;
         }
         
@@ -958,6 +965,18 @@ function keyboardController(event) {
 
         // Do nothing if any key was pressed without alt, but let Numpad keys work without alt
         if(!event.altKey && !event.code.includes("Numpad")) {
+            return;
+        }
+
+        // special cases for black, death and green
+        if(!gebi('blackout').classList.contains('hide') || !gebi('greenscreen').classList.contains('hide') || !gebi('death').classList.contains('hide')) {
+            if(key === "5" || key === "KeyG") {
+                setOverlayColor("GREEN");
+            } else if(key === "8" || key === "KeyK") {
+                setOverlayColor("DEATH");
+            } else if(key === "1" || key === "KeyB") {
+                setOverlayColor("BLACK");
+            }
             return;
         }
 
@@ -1021,27 +1040,36 @@ function keyboardController(event) {
 let overlayColor = 'NONE';
 
 // This forgets the previous color, but also does kinda what I want.
-function setOverlayColor(buttonColor) {
-  if (overlayColor === buttonColor) {
-    overlayColor = 'NONE';
-  } else {
-    overlayColor = buttonColor;
-  }
-  // Perform actions based on the new state
-  switch (overlayColor) {
-    case 'BLACK':
-      hide('greenscreen');
-      show('blackout');
-      break;
-    case 'GREEN':
-      show('greenscreen');
-      blackoutHide();
-      break;
-    case 'NONE':
-      hide('greenscreen');
-      blackoutHide();
-      break;
-  }
+async function setOverlayColor(buttonColor) {
+    let currentScreen = "NONE";
+    currentScreen = !gebi('blackout').classList.contains('hide') ? "BLACK" : currentScreen;
+    currentScreen = !gebi('greenscreen').classList.contains('hide') ? "GREEN" : currentScreen;
+    currentScreen = !gebi('death').classList.contains('hide') ? "DEATH" : currentScreen;
+    
+    // hide everything first
+    hide('blackout');
+    hide('greenscreen');
+    hide('death');
+    
+    // If button same as before, show desktop
+    if(currentScreen === buttonColor) {
+        hide('blackout');
+        hide('greenscreen');
+        hide('death');
+    } else {
+        // if any color, show it and focus iframe
+        if(buttonColor === 'BLACK') {
+            show('blackout');
+        }
+        if(buttonColor === 'GREEN') {
+            show('greenscreen');
+            gebi('greenscreen-iframe').focus();
+        }
+        if(buttonColor === 'DEATH') {
+            show('death');
+            gebi('death-iframe').focus();
+        }
+    }
 }
 
 function blackoutHide() {
