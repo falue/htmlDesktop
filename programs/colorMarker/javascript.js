@@ -167,7 +167,6 @@ function greenKeyboardController(event) {
             case "Space": if(isFullscreen) { exitFullscreen() } else { enterFullscreen() }; break;
             default:
                 if(window.location !== window.parent.location) {
-                    cl("pressssed with alt in iframe")
                     parent.keyboardController(event);
                 };
                 break;
