@@ -1,5 +1,10 @@
 let scene;
 async function setup() {
+    /* 
+        URL parameters
+        scene: files in securitron/data/{scene}-{screenNo}.mp4 and ..data/{scene}-{screenNo}.jpg for videos
+    */
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     scene = urlParams.get('scene');
