@@ -330,6 +330,32 @@ async function counterAscii(
   return;
 }
 
+
+async function setupSpinner(command) {
+  let uid = createUniqueId();
+  let span = document.createElement("span");
+  span.classList.add("spinner");
+  span.id = uid;
+  if (command.classes) span.classList.add(command.classes);
+  gebi("console").appendChild(span);
+  await spinner(span, command.parameters);
+}
+
+async function spinner(container, parameters) {
+  let duration = parameters[0];
+  let speed = parameters[1];
+  let sprites = parameters[2].split('');
+  let index = 0;
+
+  while(duration > 0) {
+    container.innerHTML = sprites[index];
+    duration -= speed;
+    index = index < sprites.length-1 ? index+1 : 0;
+    await delay(speed);
+  }
+  container.remove();
+}
+
 function freeText(keyCode) {
   return new Promise((resolve) => {
     document.addEventListener("keydown", onKeyHandler);
@@ -467,6 +493,11 @@ async function playCommand(command) {
       break;
     case "sleep":
       await delay(command.parameters[0]);
+      break;
+    case "spinner":
+      hide("cursor");
+      await setupSpinner(command);
+      show("cursor");
       break;
     case "clear":
       resetConsole();
