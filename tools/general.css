@@ -169,6 +169,7 @@ a:focus { outline: none; }
 .overflowAutoX, .overflowXAuto { overflow-x: auto; }
 .overflowAutoY, .overflowYAuto { overflow-y: auto; }
 
+.padding0 { padding: 0; }
 .padding125 { padding: 0.125em; }
 .padding25 { padding: 0.25em; }
 .padding05, .padding50 { padding: 0.5em; }
@@ -192,6 +193,7 @@ a:focus { outline: none; }
 .paddingY1-50 { padding-top: 1.5em; padding-bottom: 1.5em; }
 .paddingY2 { padding-top: 2em; padding-bottom: 2em; }
 
+.margin0 { margin: 0; }
 .margin25 { margin: 0.25em; }
 .margin05, .margin50 { margin: 0.5em; }
 .margin60 { margin: 0.6em; }
