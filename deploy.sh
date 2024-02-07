@@ -71,7 +71,7 @@ echo -e "\n\n${GREEN}FINISHED${NC}\n${YELLOW}Built files${NC} uploaded to ${TARG
 
 if [ "$GITSTASHED" == "untracked" ]; then
     # Reapply changes to local files
-    git stash apply &&
+    git stash apply --quiet &&
     echo -e "\nCurrent local changes where git ${GREEN}stashed & reapplied${NC}."
 elif [ "$KEEPSTASH" = true ]; then
     echo -e "\nLocal unstaged changes, if any, ${WHITE}${ON_RED}where deployd!${NC}"
