@@ -324,7 +324,7 @@
         </div>
 
         <!-- Operator actions & settings -->
-        <div class="columns padding2 nobr" style="padding-right:1em">
+        <div class="columns paddingX2 paddingY1 nobr" style="padding-right:1em">
           <div class="chooseBoxTitle white uppercase greyBg">About this workstation</div>
           <div class="chooseBox radius5">
             <ul>
@@ -464,15 +464,15 @@
           </div>
         </div>
 
-        <div class="columns padding2 nobr" style="padding-left:1em">
+        <div class="columns paddingX2 paddingY1 nobr" style="padding-left:1em">
           <!-- Shortcuts -->
           <div class="chooseBoxTitle white uppercase greyBg">
             <div class="tooltip" data-title="These windows are custom-preperad for this workstation">
               Saved & prepared windows for <span id="workstationHint2" class="green"></span>
             </div>
           </div>
-          <div class="chooseBox radius5">
-            <div id="currentWindowsSettings" class="maxHeight300 overflowAutoY">
+          <div class="chooseBox radius5 relative">
+            <div id="currentWindowsSettings">
               <ul id="currentWindowActions" class="pointer">
                 <li class="grey italics noLiHover">No windows for this workstation</li>
               </ul>
@@ -559,14 +559,29 @@
             </ul>
           </div>
 
-
           <div class="chooseBoxTitle white uppercase greyBg">Computer functions</div>
           <div class="chooseBox radius5 relative">
-            <ul>
+            <ul id="computerFunctionsList">
               <li class="relative pointer">
                 <div onclick="show('keyboardControls');">
                   <i class="material-icons blue small">keyboard</i>
                   See keyboard Controls..
+                </div>
+              </li>
+              <li class="tooltip tooltipBottom noLiHover" data-title="Use on hidden Keyboard or power point presenter">
+                <div>
+                  <i class="material-icons blue small">swap_horiz</i>
+                  Left & Right arrow triggers:
+                  <select id="leftRightArrowSelect" onchange="arrowAction = this.value; localStorage.setItem('htmlDesktop-arrowAction', arrowAction);" class="padding05 maxWidth100 marginX1-50">
+                    <option value="NOTHING" selected>- Nothing -</option>
+                    <option value="ACTION">Trigger Action/System notification</option>
+                    <option value="BLACK">Blackout</option>
+                    <option value="LOGOUT">Logout User</option>
+                    <option value="SHUTDOWN">Shut down</option>
+                    <option value="SCREENSAVER">Screensaver</option>
+                    <option value="GREEN">Fullscreen-Greenscreen</option>
+                    <option value="DEATH">Blue screen of death</option>
+                  </select>
                 </div>
               </li>
               <li class="tooltip pointer" data-title="Keyboard: [alt]+[b] or [1]" onclick="show('blackout'); hide('actionMenu');">

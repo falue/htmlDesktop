@@ -957,6 +957,33 @@ function keyboardController(event) {
             startUp();
             return;
         }
+        // Remote or arrow keys
+        if((key === 'ArrowRight' || key === 'ArrowLeft') && arrowAction !== 'NOTHING') {
+            switch(arrowAction) {
+                case 'ACTION':
+                    triggerActionOrMessage(gebi('osNotificationsSelect').value);
+                    break;
+                case 'BLACK':
+                    setOverlayColor("BLACK");
+                    break;
+                case 'LOGOUT':
+                    showLockScreen();
+                    break;
+                case 'SHUTDOWN':
+                    shutDown();
+                    break;
+                case 'SCREENSAVER':
+                    screenSaver();
+                    break;
+                case 'GREEN':
+                    setOverlayColor("GREEN");
+                    break;
+                case 'DEATH':
+                    setOverlayColor("DEATH");
+                    break;
+            }
+            return;
+        }
 
         // For main keyboard, all hotkeys need alt to work!
         //   This is down here because hotkeys above here should work without alt,

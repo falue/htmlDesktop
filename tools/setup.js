@@ -12,6 +12,7 @@ let rootHtmlFile = "index.html";
 let dockAvailable = false;
 let bootSpeed = 3;
 let localStorageSettings;
+let arrowAction = 'NOTHING';
 
 async function setup() {
   // Get Workstation parameter
@@ -57,6 +58,11 @@ async function setup() {
     setBrightness(brightness);
     gebi('brightnessIndicator').innerHTML = brightness;
     gebi('brightnessSlider').value = brightness;
+  }
+
+  if(localStorage.getItem('htmlDesktop-arrowAction')) {
+    arrowAction = localStorage.getItem('htmlDesktop-arrowAction');
+    gebi('leftRightArrowSelect').value = arrowAction;
   }
 
   // If loadSaveFile OR workstation defined in URL:
@@ -401,8 +407,14 @@ function setupWindows(windows) {
     listElement.setAttribute("data-setup-type", "windowInitialState");
     listElement.setAttribute("data-setup", "['"+[window["windowName"], window["icon"], window["contentPath"], window["x"], window["y"], window["w"], window["h"], window["zIndex"]].join("', '")+"']");
     listElement.setAttribute("data-setup-minimized", window["minimized"]);
-    listElement.setAttribute("data-setup-render-to-dom", "false");
-    
+    listElement.setAttribute("data-setup-render-to-dom", "false"); 
+  }
+  // Show fadeout and arrow indicator if necessary
+  if(windows.length > 6) {
+    gebi('currentWindowsSettings').classList.add('maxHeight175', 'overflowAutoY', 'fadeOutBottom', 'arrowIndicator');
+  }
+  if(windows.length > 5) {
+    gebi('computerFunctionsList').classList.add('maxHeight175', 'overflowAutoY', 'fadeOutBottom', 'arrowIndicator');
   }
 }
 

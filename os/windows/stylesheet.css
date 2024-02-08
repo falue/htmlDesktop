@@ -67,6 +67,14 @@ body {
     transform: translate(-50%, calc(-100% - .5rem));
 }
 
+.tooltip.tooltipBottom:not(.tooltipDock)::before {
+    transform: translate(-50%, calc(100% + 1.25rem));
+}
+
+.tooltip.tooltipBottom:not(.tooltipDock)::after {
+    transform: translate(-50%, calc(100% + 2.25rem)) rotate(180deg) ;
+}
+
 
 /* SHENANIGANS */
 .lockScreen > div {
