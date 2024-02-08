@@ -97,6 +97,7 @@ a:focus { outline: none; }
 .cursorDefault { cursor:default; }
 .noCursor { cursor: none; }
 .noUserSelect { user-select: none; }
+.noPointerEvents { pointer-events: none; }
 
 .noScrollbar::-webkit-scrollbar { display: none; }
 .noScrollbar { scrollbar-width: none; }
@@ -537,7 +538,8 @@ textarea {
 .sine20 { animation: fader50 1s ease-in-out infinite; }
 .moveUpDown { animation: moveUpDown 1s ease-in-out infinite; }
 .shake { animation: shake 0.5s linear 1; }
-.popIn { animation: popIn 0.5s forwards; }
+.popInRight { animation: popInRight 0.5s forwards; }
+.popInLeft { animation: popInLeft 0.5s forwards; }
 .shine { animation: shake 1s ease-in-out infinite; }
 .wiggle, .wiggleX { animation: wiggleX 300ms ease-in-out 1; }
 .fadeOut { animation: fadeOut 1s linear 1 forwards; }
@@ -588,7 +590,7 @@ textarea {
     100% { opacity: 1; }
 }
 
-@keyframes popIn {
+@keyframes popInRight {
     0% {
         transform: translateX(100%) scale(0);
         opacity: 0;
@@ -599,6 +601,23 @@ textarea {
     }
     70% {
         transform: translateX(-5%) scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes popInLeft {
+    0% {
+        transform: translateX(-100%) scale(0);
+        opacity: 0;
+    }
+    35% {
+        transform: translateX(5%) scale(1);
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(5%) scale(1.1);
     }
     100% {
         transform: scale(1);
