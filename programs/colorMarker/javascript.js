@@ -158,7 +158,7 @@ function setMarkerColor(newColor) {
 function greenKeyboardController(event) {
     // TODO: alt + G or any other desktop color overlays should work aswell.
     let key = event.code
-    if(event.altKey || key === 'NumpadMultiply') {
+    if(event.altKey || key === 'NumpadMultiply' || key === 'ArrowLeft' || key === 'ArrowRight') {
         switch(key) {
             // case "1": if(window.location === window.parent.location) { toggle('body'); }; break;
             // case "b": if(alt && window.location === window.parent.location) { cl("make black") }; break;
