@@ -258,7 +258,7 @@ function keyboardController(event) {
     }
     // remove last message
     if(event.key === 'ArrowLeft') {
-        if(!isTyping) {
+        if(!isTyping && messageIndex > 0) {
             gebi('bubbleContainer').querySelectorAll('.bubbleContainer > .bubbleWrapper:last-of-type')[0]?.remove();
             messageIndex -= 1;  // current msg is already loaded
             messages[messageIndex].sent = false;
