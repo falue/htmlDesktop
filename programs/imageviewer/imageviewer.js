@@ -68,11 +68,22 @@ async function setupImageViewer() {
         }
     }
 
+
     if(!allowZoom) {
         hide('zoomIn');
         hide('zoomOut');
         hide('zoomReset');
     }
+
+    document.addEventListener("fullscreenchange", function() {
+        if(document.fullscreenElement) {
+            hideBar(true);
+        } else {
+            if(!hiddenBar) {
+                showBar(true)
+            }
+        }
+    });
 }
 
 function toggleZoom(value) {
@@ -223,8 +234,8 @@ function navigateGallery(direction) {
     showImage(imageIndex);
 }
 
-function hideBar() {
-    hiddenBar = true;
+function hideBar(temporary=false) {
+    if(!temporary) hiddenBar = true;
     localStorage.setItem('imageViewer-hiddenBar', hiddenBar);
     let btn = gebi('actionButton');
     if(btn) {
@@ -234,7 +245,7 @@ function hideBar() {
         btn.style.width = '4em';
         btn.style.height = '4em';
     }
-    gebi('hiddenBar').checked = true;
+    if(!temporary) gebi('hiddenBar').checked = true;
     gebi('windowmenu').classList.add('op0');
     gebi('content').style.height = '100%';
     gebi('content').style.top = '0';
@@ -242,8 +253,8 @@ function hideBar() {
     gebi('videoPlayer').style.top = '0';
 }
 
-function showBar() {
-    hiddenBar = false;
+function showBar(temporary=false) {
+    if(!temporary) hiddenBar = false;
     localStorage.setItem('imageViewer-hiddenBar', hiddenBar);
     let btn = gebi('actionButton');
     if(btn) {
@@ -253,7 +264,7 @@ function showBar() {
         btn.style.width = null;
         btn.style.height = null;
     }
-    gebi('hiddenBar').checked = false;
+    if(!temporary) gebi('hiddenBar').checked = false;
     gebi('windowmenu').classList.remove('op0');
     gebi('content').style.height = 'calc(100% - 1.5em)';
     gebi('content').style.top = '1.5em';
