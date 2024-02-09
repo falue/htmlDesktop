@@ -157,3 +157,16 @@ fieldset legend {
     font-weight: bold;
     padding: .125em;
 }
+
+
+.drag-sort-active {
+    /* background: transparent;
+    color: transparent; */
+    opacity: 0.25;
+}
+
+/* .drag-sort-active {
+    background: transparent;
+    color: transparent;
+    border: 1px solid #4ca1af;
+} */

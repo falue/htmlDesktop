@@ -68,7 +68,6 @@ async function setupImageViewer() {
         }
     }
 
-
     if(!allowZoom) {
         hide('zoomIn');
         hide('zoomOut');
@@ -108,7 +107,7 @@ function toggleLetterbox(value) {
     }
 }
 
-function setupThumbnails(files) {
+async function setupThumbnails(files) {
     let thumbnails = gebi('thumbnails');
     let content = gebi('content');
     if(files.length <= 1) {
@@ -126,16 +125,25 @@ function setupThumbnails(files) {
             thumbnail.setAttribute("id", "thumbnail-"+filename);
             thumbnail.classList.add("thumbnail", "shadow", "radius3");
             if(file.endsWith(".mp4")) {
-                thumbnail.style.backgroundImage = "url(../../os/"+os+"/systemIcons/fileMovie.png)";
+                let path = "../../workstations/"+workstation+"/files/"+file;
+                let poster = path.split('.').slice(0, -1).join('.')+".png";
+                if(await fileExists(poster, false)) {
+                    gebi('videoJsPlayerWrapper_html5_api').setAttribute('poster', poster);
+                    thumbnail.style.backgroundImage =  "url("+poster+")";
+                } else {
+                    thumbnail.style.backgroundImage = "url(../../os/"+os+"/systemIcons/fileMovie.png)";
+                }
             } else if(file.startsWith('data:image')) {
                 thumbnail.style.backgroundImage = "url("+file+")";
             } else {
                 thumbnail.style.backgroundImage = "url(../../workstations/"+workstation+"/files/"+file+")";
             }
             thumbnail.setAttribute("onclick", "showImage("+i+");");
+            thumbnail.dataset.index = i;
             thumbnails.appendChild(thumbnail);
         }
     }
+    enableDragSort('drag-sort-enable');
 }
 
 async function showImage(index) {
@@ -418,6 +426,16 @@ function keyboardControllerImageViewer(event) {
         case 70:
             cl("f");
             if(isFullscreen) { exitFullscreen() } else { enterFullscreen() };
+            break;
+
+        case 77:
+            cl("m");
+            let thumb = gebi('thumbnails');
+            if(thumb.classList.contains('videplayer')) {
+                gebi('thumbnails').classList.remove("videplayer");
+            } else {
+                gebi('thumbnails').classList.add("videplayer");
+            }
             break; 
 
         /* case 8:
@@ -452,3 +470,52 @@ async function fileExists(imageSrc, fallback) {
         }
     }).catch(err => console.log('Error:', err));
 }
+
+// https://www.codehim.com/vanilla-javascript/javascript-drag-and-drop-reorder-list/
+function enableDragSort(listClass) {
+    const sortableLists = document.getElementsByClassName(listClass);
+    Array.prototype.map.call(sortableLists, (list) => {enableDragList(list)});
+  }
+  
+  function enableDragList(list) {
+    Array.prototype.map.call(list.children, (item) => {
+        enableDragItem(item)
+    });
+  }
+  
+  function enableDragItem(item) {
+    item.setAttribute('draggable', true)
+    item.ondrag = handleDrag;
+    item.ondragend = handleDrop;
+  }
+  
+  function handleDrag(item) {
+    const selectedItem = item.target,
+    list = selectedItem.parentNode,
+    x = event.clientX,
+    y = event.clientY;
+    
+    selectedItem.classList.add('drag-sort-active');
+    let swapItem = document.elementFromPoint(x, y) === null ? selectedItem : document.elementFromPoint(x, y);
+    
+    if (list === swapItem.parentNode) {
+        swapItem = swapItem !== selectedItem.nextSibling ? swapItem : swapItem.nextSibling;
+        list.insertBefore(selectedItem, swapItem);
+    }
+}
+
+function handleDrop(item) {
+    item.target.classList.remove('drag-sort-active');
+    resortGallery();
+  }
+  
+  function resortGallery() {
+    let newOrder = []
+    document.querySelectorAll('.thumbnail').forEach(function(el) {
+        cl(el.dataset.index)
+        newOrder.push(el.dataset.index);
+    })
+    files = newOrder.map(index => files[index]);
+    gebi('thumbnails').innerHTML = '';
+    setupThumbnails(files);
+  }

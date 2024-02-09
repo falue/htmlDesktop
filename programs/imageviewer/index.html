@@ -17,7 +17,7 @@
     <link href="../../tools/libraries/video-js.css" rel="stylesheet" />
 
   </head>
-  <body onload="setupImageViewer();" onkeydown="keyboardControllerImageViewer(event);" ondblclick="document.getElementsByTagName('body')[0].requestFullscreen();">
+  <body onload="setupImageViewer();" onkeydown="keyboardControllerImageViewer(event);">
     <header id="windowmenu" class="windowmenu">
       <button class="programButtons">File</button><!-- 
       --><button class="programButtons">Edit</button><!-- 
@@ -60,7 +60,8 @@
         [left arrow]: prev image / start video from beginning<br>
         [right arrow]: next image<br>
         [space]: Video play/pause<br>
-        [f] fullscreen image gallery
+        [f] fullscreen image gallery<br>
+        [m] toggle gallery thumbs
       </fieldset>
       <button class="systemButton" onclick="hide('settings');">CLOSE SETTINGS</button>
      </div>
@@ -68,7 +69,7 @@
      <div class="imageNavigation right" onclick="navigateGallery(1); event.stopPropagation()"></div>
      <div class="imageNavigation left" onclick="navigateGallery(-1); event.stopPropagation()"></div>
 
-    <div id="content" class="content" onclick="navigateGallery(1);" onmousewheel="zoom(event, 'content')">
+    <div id="content" class="content" onclick="navigateGallery(1);" onmousewheel="zoom(event, 'content')" ondblclick="document.getElementsByTagName('body')[0].requestFullscreen();">
     </div>
 
     <!-- TODO maybe add only if files contains .mp4 -->
@@ -83,7 +84,7 @@
           <!-- <source id="videoSrcMp4"> -->
         </video>
     </div>
-    <div id="thumbnails" class="thumbnails noScrollbar">
+    <div id="thumbnails" class="thumbnails noScrollbar drag-sort-enable">
     </div>
 
 
