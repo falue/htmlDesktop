@@ -139,6 +139,7 @@ async function setupThumbnails(files) {
                 thumbnail.style.backgroundImage = "url(../../workstations/"+workstation+"/files/"+file+")";
             }
             thumbnail.setAttribute("onclick", "showImage("+i+");");
+            thumbnail.setAttribute("oncontextmenu", "this.remove(); resortGallery(); event.preventDefault()");
             thumbnail.dataset.index = i;
             thumbnails.appendChild(thumbnail);
         }
