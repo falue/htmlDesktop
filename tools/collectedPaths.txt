@@ -1,4 +1,4 @@
-09.02.2024 09:56
+09.02.2024 12:24
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
 os/spa/programIcons/minimized-view_in_ar.png
@@ -137,6 +137,11 @@ os/spa/desktop.jpg
 os/mac/desktop.jpg
 os/linux/desktop.jpg
 os/windows/desktop.jpg
+workstations/Leo/files/213a-9.png
+workstations/Leo/files/213a-8.png
+workstations/Leo/files/213a-6.png
+workstations/Leo/files/213a-7.png
+workstations/Leo/files/213a-5.png
 workstations/MinervaRezeption/files/calendar.png
 workstations/Polizei/desktop.jpg
 workstations/Polizei/userpicture.jpg
@@ -167,10 +172,6 @@ workstations/Athletics/desktops/1.jpg
 workstations/_default/userpicture.jpg
 workstations/Charles/userpicture.jpg
 workstations/Leo/userpicture.jpg
-workstations/Leo/files/213a-8.jpg
-workstations/Leo/files/213a-6.jpg
-workstations/Leo/files/213a-7.jpg
-workstations/Leo/files/213a-5.jpg
 workstations/MinervaRezeption/userpicture.jpg
 workstations/generic/userpicture.jpg
 workstations/Agotha/userpicture.jpg
@@ -229,6 +230,7 @@ workstations/Charles/bash/random.fakeBash
 workstations/Charles/bash/script.fakeBash
 workstations/Leo/bash/213a-fast.fakeBash
 workstations/Leo/bash/213a.fakeBash
+workstations/Leo/bash/213a-fast-single.fakeBash
 workstations/Leo/bash/script.fakeBash
 workstations/MinervaRezeption/bash/script.fakeBash
 workstations/generic/bash/script.fakeBash
