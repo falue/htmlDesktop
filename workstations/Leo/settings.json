@@ -35,7 +35,20 @@
             "renderToDom": false
         },
         {
-            "metaTitle": "#213A: Terminal + Videos",
+            "metaTitle": "#213A: Securiton",
+            "windowName": "Securiton",
+            "icon": "security",
+            "contentPath": "securiton/index.html?scene=213a",
+            "x": 6,
+            "y": 6,
+            "w": 1250,
+            "h": 800,
+            "zIndex": 17,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#213A: Terminal+Videos",
             "windowName": "Bash Console",
             "icon": "code",
             "contentPath": "bash/index.html?script=213a",
@@ -48,10 +61,23 @@
             "renderToDom": true
         },
         {
-            "metaTitle": "#213A: Terminal + Videos - SCHNELL",
+            "metaTitle": "#213A: Terminal+Videos - SCHNELL",
             "windowName": "Bash Console",
             "icon": "code",
             "contentPath": "bash/index.html?script=213a-fast",
+            "x": 6,
+            "y": 8,
+            "w": 1000,
+            "h": 666,
+            "zIndex": 16,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#213A: Terminal+Videos - SCHNELL zusammen",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=213a-fast-single",
             "x": 6,
             "y": 8,
             "w": 1000,
@@ -69,6 +95,19 @@
             "y": 4,
             "w": 1000,
             "h": 800,
+            "zIndex": 17,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#213A: Videoplayer zusammen",
+            "windowName": "MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4",
+            "icon": "theaters",
+            "contentPath": "imageviewer/index.html?files=213a-5.mp4|213a-6.mp4|213a-7.mp4|213a-8.mp4|213a-9.mp4&allowZoom=true&hiddenBar=true&autoplay=false",
+            "x": 8,
+            "y": 8,
+            "w": 1000,
+            "h": 588,
             "zIndex": 17,
             "minimized": false,
             "renderToDom": false
