@@ -1,4 +1,4 @@
-24.01.2024 19:26
+09.02.2024 09:56
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
 os/spa/programIcons/minimized-view_in_ar.png
@@ -14,6 +14,7 @@ os/spa/programIcons/textEditor.png
 os/spa/programIcons/minimized-folder.png
 os/spa/programIcons/browser.png
 os/spa/systemIcons/dvd.png
+os/spa/systemIcons/server.png
 os/spa/systemIcons/python.png
 os/spa/systemIcons/zip.png
 os/spa/systemIcons/doc.png
@@ -48,6 +49,7 @@ os/mac/programIcons/textEditor.png
 os/mac/programIcons/minimized-folder.png
 os/mac/programIcons/browser.png
 os/mac/systemIcons/dvd.png
+os/mac/systemIcons/server.png
 os/mac/systemIcons/python.png
 os/mac/systemIcons/zip.png
 os/mac/systemIcons/doc.png
@@ -68,6 +70,7 @@ os/mac/systemIcons/pdf.png
 os/mac/systemIcons/folderFull.png
 os/mac/systemIcons/favorites.png
 os/linux/systemIcons/dvd.png
+os/linux/systemIcons/server.png
 os/linux/systemIcons/python.png
 os/linux/systemIcons/zip.png
 os/linux/systemIcons/doc.png
@@ -88,6 +91,7 @@ os/linux/systemIcons/pdf.png
 os/linux/systemIcons/folderFull.png
 os/linux/systemIcons/favorites.png
 os/windows/systemIcons/dvd.png
+os/windows/systemIcons/server.png
 os/windows/systemIcons/python.png
 os/windows/systemIcons/zip.png
 os/windows/systemIcons/doc.png
@@ -133,11 +137,6 @@ os/spa/desktop.jpg
 os/mac/desktop.jpg
 os/linux/desktop.jpg
 os/windows/desktop.jpg
-workstations/Charles/files/4.png
-workstations/Charles/files/5.png
-workstations/Charles/files/2.png
-workstations/Charles/files/3.png
-workstations/Charles/files/1.png
 workstations/MinervaRezeption/files/calendar.png
 workstations/Polizei/desktop.jpg
 workstations/Polizei/userpicture.jpg
@@ -168,6 +167,10 @@ workstations/Athletics/desktops/1.jpg
 workstations/_default/userpicture.jpg
 workstations/Charles/userpicture.jpg
 workstations/Leo/userpicture.jpg
+workstations/Leo/files/213a-8.jpg
+workstations/Leo/files/213a-6.jpg
+workstations/Leo/files/213a-7.jpg
+workstations/Leo/files/213a-5.jpg
 workstations/MinervaRezeption/userpicture.jpg
 workstations/generic/userpicture.jpg
 workstations/Agotha/userpicture.jpg
@@ -222,7 +225,10 @@ workstations/Doro/bash/script.fakeBash
 workstations/Athletics/bash/changePassword.fakeBash
 workstations/Athletics/bash/script.fakeBash
 workstations/_default/bash/script.fakeBash
+workstations/Charles/bash/random.fakeBash
 workstations/Charles/bash/script.fakeBash
+workstations/Leo/bash/213a-fast.fakeBash
+workstations/Leo/bash/213a.fakeBash
 workstations/Leo/bash/script.fakeBash
 workstations/MinervaRezeption/bash/script.fakeBash
 workstations/generic/bash/script.fakeBash
@@ -258,11 +264,16 @@ programs/securiton/data/131v2-1.jpg
 programs/securiton/data/131v2-3.jpg
 programs/securiton/data/131v2-2.jpg
 programs/securiton/data/131v2-4.jpg
+programs/securiton/data/213a-4.jpg
+programs/securiton/data/213a-1.jpg
+programs/securiton/data/213a-3.jpg
+programs/securiton/data/213a-2.jpg
 programs/browser/tools/img/open-in-popup.jpg
 programs/browser/tools/img/winBtns.jpg
 programs/browser/tools/img/winUnik.jpg
 programs/browser/sites/metis/imgs/index.jpg
 programs/browser/sites/metis/imgs/business.jpg
+programs/browser/sites/utilities/images/placeholder.jpg
 programs/browser/sites/runnershigh/imgs/index.jpg
 programs/browser/sites/sapienz/imgs/karriere.jpg
 programs/browser/sites/sapienz/imgs/index.jpg
@@ -317,6 +328,8 @@ programs/ftp/stylesheet.css
 programs/video/stylesheet.css
 programs/securiton/stylesheet.css
 programs/loading/stylesheet.css
+programs/chat/stylesheet.css
+programs/chat/menu.css
 programs/magic/stylesheet.css
 programs/servermanager/stylesheet.css
 programs/servermanager/darkMode.css
@@ -337,6 +350,8 @@ programs/browser/sites/test/stylesheet.css
 programs/browser/sites/myGps2/stylesheet.css
 programs/browser/sites/metis/stylesheet.css
 programs/browser/sites/youtube/stylesheet.css
+programs/browser/sites/utilities/stylesheet.css
+programs/browser/sites/mysteryforum/stylesheet.css
 programs/browser/sites/qsearch/stylesheet.css
 programs/browser/sites/myGps1/stylesheet.css
 programs/browser/sites/runnershigh/stylesheet.css
@@ -360,6 +375,7 @@ programs/ftp/javascript.js
 programs/video/javascript.js
 programs/securiton/javascript.js
 programs/loading/javascript.js
+programs/chat/javascript.js
 programs/magic/javascript.js
 programs/servermanager/javascript.js
 programs/servermanager/data/TEST.js
@@ -389,6 +405,8 @@ programs/browser/sites/test/javascript.js
 programs/browser/sites/myGps2/javascript.js
 programs/browser/sites/myGps2/animation.js
 programs/browser/sites/youtube/javascript.js
+programs/browser/sites/utilities/javascript.js
+programs/browser/sites/mysteryforum/javascript.js
 programs/browser/sites/qsearch/searchTerms.js
 programs/browser/sites/qsearch/javascript.js
 programs/browser/sites/myGps1/javascript.js
@@ -429,6 +447,7 @@ programs/terminal/text/log-1.txt
 programs/terminal/text/apollo_guidance_computer.txt
 programs/browser/sites/qsearch/CHAT GPT PROMPT.txt
 programs/filemanager/CHAT GPT PROMPT.txt
+programs/chat/data/315/chat.json
 programs/bash/defaultScripts/ls.fakeBash
 programs/bash/defaultScripts/ls-l.fakeBash
 programs/bash/defaultScripts/top.fakeBash
