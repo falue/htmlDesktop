@@ -41,6 +41,8 @@
       </fieldset>
       <fieldset class="radius3">
         <legend>Content + controls</legend>
+        <button onclick="resetOrder(); location.reload(true);">Reset order</button><br>
+
         <input id="hiddenBar" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="hiddenBar = this.checked; this.checked ? hideBar() : showBar()">
         <label for="hiddenBar">Hide program bar</label><br>
 
@@ -57,11 +59,13 @@
       </fieldset>
       <fieldset class="radius3">
         <legend>Keyboard</legend>
-        [left arrow]: prev image / start video from beginning<br>
-        [right arrow]: next image<br>
-        [space]: Video play/pause<br>
-        [f] fullscreen image gallery<br>
-        [m] toggle gallery thumbs
+        <button disabled>left arrow</button>: prev image<br>
+        <button disabled>right arrow</button>: next image<br>
+        <button disabled>alt</button>+<button disabled>left arrow</button>: seek video -3s<br>
+        <button disabled>alt</button>+<button disabled>right arrow</button>: seek video +3s<br>
+        <button disabled>space</button>: Video play/pause<br>
+        <button disabled>f</button> fullscreen<br>
+        <button disabled>m</button> toggle gallery thumbs
       </fieldset>
       <button class="systemButton" onclick="hide('settings');">CLOSE SETTINGS</button>
      </div>

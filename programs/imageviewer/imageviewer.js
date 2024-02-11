@@ -7,6 +7,7 @@ let disableVideoControls;
 let allowZoom = true;
 let hiddenBar = false;
 let autoplay = false;
+let newOrder = [];
 
 async function setupImageViewer() {
 
@@ -41,6 +42,9 @@ async function setupImageViewer() {
     if(localStorage.getItem('imageViewer-autoplay') === 'false') {
         autoplay = false;  // set for local storage
     }
+    
+    // Get sort list from storage
+    newOrder = JSON.parse(localStorage.getItem('imageViewer-newOrder-'+window.location.search));
 
     if(urlParams.get('files')) {
         files = urlParams.get('files').split("|");
@@ -49,7 +53,12 @@ async function setupImageViewer() {
             window.location.href = "../../workstations/"+workstation+"/files/"+files[0];
             return;
         }
-        setupThumbnails(files);
+        // Create now to keep original index numbering
+        await setupThumbnails(files, true);
+
+        // Re sort files array + thumbs
+        sortGalleryByMemory();
+
         isFirstFile = true;
         showImage(0);  // Show first image
     } else {
@@ -59,7 +68,11 @@ async function setupImageViewer() {
                 window.location.href = files[0];
                 return;
             } else {
-                setupThumbnails(files);
+                //localStorage.removeItem('imageViewer-newOrder');
+                await setupThumbnails(files, true);
+                // Re sort files array + thumbs
+                sortGalleryByMemory();
+
                 isFirstFile = true;
                 showImage(0);  // Show first image
             }
@@ -85,6 +98,20 @@ async function setupImageViewer() {
     });
 }
 
+function sortFilesFromMemory(currentFiles) {
+    let newOrder = JSON.parse(localStorage.getItem('imageViewer-newOrder'));
+    if(newOrder) {
+        currentFiles = [];
+        for(i in newOrder) {
+            // cl(newOrder[i].index)
+            currentFiles.push(files[newOrder[i].newIndex])
+        }
+        return currentFiles;
+    } else {
+        return currentFiles;
+    }
+}
+
 function toggleZoom(value) {
     zoom(100, getCurrentContentWrapper());
     allowZoom = value;
@@ -107,7 +134,7 @@ function toggleLetterbox(value) {
     }
 }
 
-async function setupThumbnails(files) {
+async function setupThumbnails(files, initial=false) {
     let thumbnails = gebi('thumbnails');
     let content = gebi('content');
     if(files.length <= 1) {
@@ -120,7 +147,7 @@ async function setupThumbnails(files) {
         // Setup thumbnail gallery
         for (const [i, file] of files.entries()) {
             let thumbnail = document.createElement("div");
-            let filename = file.length < 100 ? file : Math.floor(Math.random() * Date.now());
+            let filename = file.length < 100 ? file : file.substr(0, 100);
             thumbnail.setAttribute("title", filename);
             thumbnail.setAttribute("id", "thumbnail-"+filename);
             thumbnail.classList.add("thumbnail", "shadow", "radius3");
@@ -139,8 +166,24 @@ async function setupThumbnails(files) {
                 thumbnail.style.backgroundImage = "url(../../workstations/"+workstation+"/files/"+file+")";
             }
             thumbnail.setAttribute("onclick", "showImage("+i+");");
-            thumbnail.setAttribute("oncontextmenu", "this.remove(); resortGallery(); event.preventDefault()");
+            thumbnail.setAttribute("oncontextmenu", "removeImageFromGallery(this); event.preventDefault()");
+
             thumbnail.dataset.index = i;
+            if(initial) {
+                thumbnail.dataset.oldIndex = i;
+                // if oldIndex is i and deleted is true, set deleted attr
+                if(newOrder) {
+                    let currentThumbOrder = newOrder.find(obj => obj.index === i && obj.deleted === true);
+                    if(currentThumbOrder?.deleted) {
+                        thumbnail.dataset.deleted = currentThumbOrder.deleted;
+                        thumbnail.classList.add('hide');  //hide
+                        // hide(thumbnail.id);
+                        thumbnail.style.display = 'none';
+                    }
+                }
+            }
+            /* thumbnail.innerHTML += `${thumbnail.dataset.index}/${thumbnail.dataset.oldIndex}`;
+            thumbnail.classList.add('white', 'text-shadow--black'); */
             thumbnails.appendChild(thumbnail);
         }
     }
@@ -160,10 +203,18 @@ async function showImage(index) {
     }
 
     /* Scroll to thumbnail & mark as active */
-    let thumbnail = gebi("thumbnail-"+file);
+    let filename = file.length < 100 ? file : file.substr(0, 100);
+    let thumbnail = gebi("thumbnail-"+filename);
     if(thumbnail) {  // If only one file is in URL, there are no thumbnails
         thumbnail.scrollIntoView({inline: "center", block: "nearest", behavior: "smooth"});
         thumbnail.classList.add('active');
+        
+        //  if dataset.deleted true
+        if(thumbnail.dataset.deleted) {
+            cl('skipped')
+            showImage(index+1);
+            return;
+        }
     }
 
     if(file.endsWith(".mp4")) {
@@ -353,6 +404,7 @@ function exitFullscreen() {
 
 async function uploadImages(data) {
     var selectedImages = data.files;
+    resetOrder();
     cl(selectedImages);
     if(selectedImages[0].name.toLowerCase().endsWith('.pdf')) {
         displayLocalPdf(selectedImages[0]);
@@ -363,16 +415,15 @@ async function uploadImages(data) {
     gebi('content').innerHTML = '';
     gebi('thumbnails').innerHTML = '';
     for(i=0; i< selectedImages.length; i++) {
-        // if(files[i].type.includes('image'))
         files.push(await convertBase64(selectedImages[i]));
     }
     try {
         localStorage.setItem('imageViewer', JSON.stringify(files));
     } catch (err) {
         cl(err);
-        alert("This / these images are too big. make them smaller pretty please");
+        alert("This / these images are too big. make them smaller in width/height + filesize pretty please");
     }
-    setupThumbnails(files);
+    setupThumbnails(files, true);
     isFirstFile = true;
     showImage(0);  // Show first image
     hide('settings');
@@ -406,15 +457,28 @@ const convertBase64 = (file) => {
 
 function keyboardControllerImageViewer(event) {
     let KeyID = event.keyCode;
+    let alt = event.altKey;
     switch(KeyID) {
         case 39:
             cl("arrow right");
-            navigateGallery(1);
+            if (alt && !gebi('videoPlayer').classList.contains('hide')) {
+                let vid = gebi('videoJsPlayerWrapper_html5_api')
+                vid.currentTime = clamp(vid.currentTime+3, 0, vid.duration);
+                vid.play();
+            } else if(files.length > 1) {
+                navigateGallery(1);
+            }
             break;
 
         case 37:
             cl("arrow left");
-            navigateGallery(-1);
+            if (alt && !gebi('videoPlayer').classList.contains('hide')) {
+                let vid = gebi('videoJsPlayerWrapper_html5_api')
+                vid.currentTime = clamp(vid.currentTime-3, 0, vid.duration);
+                vid.play();
+            } else if(files.length > 1) {
+                navigateGallery(-1);
+            }
             break;
 
         case 32:
@@ -507,16 +571,93 @@ function enableDragSort(listClass) {
 
 function handleDrop(item) {
     item.target.classList.remove('drag-sort-active');
-    resortGallery();
+    saveOrderInMemory();
   }
-  
-  function resortGallery() {
-    let newOrder = []
-    document.querySelectorAll('.thumbnail').forEach(function(el) {
-        cl(el.dataset.index)
-        newOrder.push(el.dataset.index);
+
+function saveOrderInMemory() {
+    newOrder = [];
+    let thumbs = Array.from(document.querySelectorAll('.thumbnail'));
+    thumbs.forEach(function(el, index) {
+        //el.innerHTML = `${index}"/${el.getAttribute('data-old-index')}"`;
+        //el.innerHTML += "'";
+        let data = {index: parseInt(index), oldIndex: parseInt(el.getAttribute('data-old-index'))};
+        if(el.classList.contains('hide')) {
+            data.deleted = true;
+            el.dataset.deleted = true;
+        }
+        newOrder.push(data);
     })
-    files = newOrder.map(index => files[index]);
-    gebi('thumbnails').innerHTML = '';
-    setupThumbnails(files);
-  }
+
+    localStorage.setItem('imageViewer-newOrder-'+window.location.search, JSON.stringify(newOrder));
+}
+
+// let deletedItems = [];
+function removeImageFromGallery(element) {
+    hide(element.id);
+    element.style.display = 'none';
+    saveOrderInMemory();
+    sortGalleryByMemory();
+}
+
+function sortGalleryByMemory() {
+    if(newOrder) {
+        cl("new order established")
+        files = reorderFileArray(newOrder, files);
+        // Re sort only thumbs according to newOrder
+        sortThumbs(newOrder);
+    }
+}
+
+  function sortThumbs(newOrder) {
+    // Retrieve all thumbnail divs
+    let thumbs = Array.from(document.querySelectorAll('.thumbnail'));
+
+    // Map of oldIndex to thumbnail for quick lookup
+    const oldIndexToThumb = new Map();
+    thumbs.forEach(thumb => {
+        const oldIndex = parseInt(thumb.getAttribute('data-old-index')); // Assuming you have data-old-index attributes
+        oldIndexToThumb.set(oldIndex, thumb);
+    });
+
+    // Sort the thumbs array based on the newOrder array
+    // This step is actually redundant here since we're going to directly order based on newOrder next
+    // But kept for demonstration if you needed to sort in other scenarios
+    thumbs.sort((a, b) => {
+        // fails when an image was deleted   //////////
+        const aIndex = newOrder.find(item => item.oldIndex === parseInt(a.getAttribute('data-old-index'))).index;
+        const bIndex = newOrder.find(item => item.oldIndex === parseInt(b.getAttribute('data-old-index'))).index;
+        return aIndex - bIndex;
+    });
+
+    // Clear the container
+    const container = gebi('thumbnails');
+    container.innerHTML = '';
+
+    // Append each thumb in the new order
+    newOrder.forEach(obj => {
+        const thumb = oldIndexToThumb.get(obj.oldIndex);
+        if (thumb) { // Check if the thumb exists to avoid errors
+            container.appendChild(thumb);
+        }
+    });
+}
+
+
+function reorderFileArray(orderArray, files) {
+    // Initialize an array with the same length as `files` filled with `null` to preserve spots
+    let reorderedFiles = new Array(files.length).fill(null);
+
+    // Iterate through `orderArray` to place each file in its new position
+    orderArray.forEach(obj => {
+        const filePosition = obj.oldIndex; // Get the original position
+        const newFilePosition = obj.index; // Get the new position
+        // Assign to new position
+            reorderedFiles[newFilePosition] = files[filePosition];
+    });
+    return reorderedFiles;
+}
+
+function resetOrder() {
+    localStorage.removeItem('imageViewer-newOrder-'+window.location.search);
+    newOrder = [];
+}
