@@ -25,6 +25,9 @@ header {
     background-size: contain;
     background-position: center;
     z-index: 1;
+}
+
+.content.transition {
     transition: all .25s;
 }
 

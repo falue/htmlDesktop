@@ -6,6 +6,7 @@ let isFirstFile;
 let disableVideoControls;
 let allowZoom = true;
 let hiddenBar = false;
+let hideThumbs = false;
 let autoplay = false;
 let newOrder = [];
 
@@ -234,13 +235,13 @@ async function showImage(index) {
         hide("videoPlayer");
         let player = videojs(document.querySelector('.video-js'));
         if(player) player.pause();
-        gebi('thumbnails').classList.remove("videplayer");
+        if(!hideThumbs) gebi('thumbnails').classList.remove("videplayer");
     } else {
         content.style.backgroundImage = "url("+path+")";
         hide("videoPlayer");
         let player = videojs(document.querySelector('.video-js'));
         if(player) player.pause();
-        gebi('thumbnails').classList.remove("videplayer");
+        if(!hideThumbs) gebi('thumbnails').classList.remove("videplayer");
     }
 
     // Reset
@@ -497,8 +498,10 @@ function keyboardControllerImageViewer(event) {
             cl("m");
             let thumb = gebi('thumbnails');
             if(thumb.classList.contains('videplayer')) {
+                hideThumbs = false;
                 gebi('thumbnails').classList.remove("videplayer");
             } else {
+                hideThumbs = true;
                 gebi('thumbnails').classList.add("videplayer");
             }
             break; 
