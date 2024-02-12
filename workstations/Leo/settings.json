@@ -35,6 +35,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#213A: Einzelbild Museum vermummt",
+            "windowName": "MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4",
+            "icon": "image",
+            "contentPath": "imageviewer/index.html?files=213a-still.png&allowZoom=true&hiddenBar=false&autoplay=false",
+            "x": 14,
+            "y": 14,
+            "w": 1000,
+            "h": 612,
+            "zIndex": 17,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "metaTitle": "#213A: Securiton",
             "windowName": "Securiton",
             "icon": "security",
@@ -55,10 +68,10 @@
             "x": 6,
             "y": 8,
             "w": 888,
-            "h": 666,
+            "h": 700,
             "zIndex": 16,
             "minimized": false,
-            "renderToDom": true
+            "renderToDom": false
         },
         {
             "metaTitle": "#213A: Terminal+Videos - SCHNELL",
@@ -68,7 +81,7 @@
             "x": 6,
             "y": 8,
             "w": 1000,
-            "h": 666,
+            "h": 700,
             "zIndex": 16,
             "minimized": false,
             "renderToDom": false
@@ -81,10 +94,10 @@
             "x": 6,
             "y": 8,
             "w": 1000,
-            "h": 666,
+            "h": 700,
             "zIndex": 16,
             "minimized": false,
-            "renderToDom": false
+            "renderToDom": true
         },
         {
             "metaTitle": "#213A: Ordner mit videos",
