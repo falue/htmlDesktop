@@ -489,6 +489,11 @@ function keyboardControllerImageViewer(event) {
             }
             break;
 
+        case 66:
+            cl("b");
+            gebi('content').classList.toggle('hide');
+            break;
+
         case 70:
             cl("f");
             if(isFullscreen) { exitFullscreen() } else { enterFullscreen() };
