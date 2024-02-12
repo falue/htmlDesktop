@@ -492,6 +492,7 @@ function keyboardControllerImageViewer(event) {
         case 66:
             cl("b");
             gebi('content').classList.toggle('hide');
+            parent.keyboardController(event);  // pass-through for alt-b blackout 
             break;
 
         case 70:
