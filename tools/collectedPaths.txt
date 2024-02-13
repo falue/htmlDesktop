@@ -1,4 +1,4 @@
-09.02.2024 12:24
+13.02.2024 15:03
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
 os/spa/programIcons/minimized-view_in_ar.png
@@ -142,6 +142,7 @@ workstations/Leo/files/213a-8.png
 workstations/Leo/files/213a-6.png
 workstations/Leo/files/213a-7.png
 workstations/Leo/files/213a-5.png
+workstations/Leo/files/213a-still.png
 workstations/MinervaRezeption/files/calendar.png
 workstations/Polizei/desktop.jpg
 workstations/Polizei/userpicture.jpg
@@ -204,6 +205,7 @@ workstations/Charles/folders.json
 workstations/Charles/browser.json
 workstations/Leo/settings.json
 workstations/Leo/folders.json
+workstations/Leo/settings copy.json
 workstations/Leo/browser.json
 workstations/MinervaRezeption/settings.json
 workstations/MinervaRezeption/folders.json
@@ -229,6 +231,8 @@ workstations/_default/bash/script.fakeBash
 workstations/Charles/bash/random.fakeBash
 workstations/Charles/bash/script.fakeBash
 workstations/Leo/bash/213a-fast.fakeBash
+workstations/Leo/bash/213a-hacking.fakeBash
+workstations/Leo/bash/213a-fast-single-securiton.fakeBash
 workstations/Leo/bash/213a.fakeBash
 workstations/Leo/bash/213a-fast-single.fakeBash
 workstations/Leo/bash/script.fakeBash
@@ -240,6 +244,10 @@ workstations/Polizei/desktop.jpg
 workstations/Polizei/desktops/desktop.jpg
 programs/securiton/icon.png
 programs/securiton/splash.png
+programs/securiton/data/213a-4.png
+programs/securiton/data/213a-1.png
+programs/securiton/data/213a-3.png
+programs/securiton/data/213a-2.png
 programs/servermanager/monalisa.png
 programs/servermanager/splash.png
 programs/neptcode/data/basic.png
@@ -449,6 +457,7 @@ programs/terminal/text/log-1.txt
 programs/terminal/text/apollo_guidance_computer.txt
 programs/browser/sites/qsearch/CHAT GPT PROMPT.txt
 programs/filemanager/CHAT GPT PROMPT.txt
+programs/chat/data/example/chat.json
 programs/chat/data/315/chat.json
 programs/bash/defaultScripts/ls.fakeBash
 programs/bash/defaultScripts/ls-l.fakeBash
