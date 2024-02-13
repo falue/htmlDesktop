@@ -1,26 +1,6 @@
 [
     {
-        "message": "erste nachricht",
-        "data": "",
-        "action": "",
-        "sender": "him",
-        "delay": 0,
-        "date": "",
-        "sent": true,
-        "seen": true,
-        "error": "ERRORZ"
-    },{
-        "message": "1.5",
-        "data": "",
-        "action": "",
-        "sender": "me",
-        "delay": 0,
-        "date": "",
-        "sent": true,
-        "seen": false,
-        "error": ""
-    },{
-        "message": "1.75",
+        "message": "Wo ist nächste Führung?",
         "data": "",
         "action": "",
         "sender": "me",
@@ -30,74 +10,14 @@
         "seen": true,
         "error": ""
     },{
-        "message": "zweite nachricht ist so scheiss lang ich kack mich ein und so :) Und was ist mit \nZeilen\nabständen? haha emojis: 💁👌🎍😍 und wrtf sun do (versuch nicht mit anführungszueichen)",
+        "message": "Am Spalentor 8:30",
         "data": "",
         "action": "",
-        "sender": "me",
+        "sender": "brianna",
         "delay": 0,
-        "date": "",
-        "sent": true,
-        "seen": false,
-        "error": "AAAAAAAAAA"
-    },{
-        "message": "dritte nachricht",
-        "data": "",
-        "action": "",
-        "sender": "simon",
-        "delay": 1222,
         "date": "",
         "sent": true,
         "seen": true,
         "error": ""
-    },{
-        "message": "vierte nachricht",
-        "data": "",
-        "action": "",
-        "sender": "me",
-        "delay": 1222,
-        "date": "",
-        "sent": false,
-        "seen": false,
-        "error": ""
-    },{
-        "message": "fünfte nachricht",
-        "data": "",
-        "action": "",
-        "sender": "sofie",
-        "delay": 1110,
-        "date": "",
-        "sent": false,
-        "seen": false,
-        "error": ""
-    },{
-        "message": "sechste nachricht - ist so scheiss lang ich kack mich ein und so :) Und was ist mit \nZeilen\nabständen? haha emojis: 💁👌🎍😍 und wrtf sun do (versuch nicht mit anführungszueichen)",
-        "data": "",
-        "action": "",
-        "sender": "someone",
-        "delay": 1200,
-        "date": "",
-        "sent": false,
-        "seen": false,
-        "error": ""
-    },{
-        "message": "sechseinhalbste nachricht",
-        "data": "",
-        "action": "",
-        "sender": "someone",
-        "delay": 2000,
-        "date": "",
-        "sent": false,
-        "seen": false,
-        "error": ""
-    },{
-        "message": "siebte nachricht",
-        "data": "",
-        "action": "",
-        "sender": "me",
-        "delay": 0,
-        "date": "",
-        "sent": false,
-        "seen": false,
-        "error": "it was wrong tho"
     }
 ]
