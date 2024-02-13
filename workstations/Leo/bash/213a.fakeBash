@@ -170,7 +170,7 @@
 [br]
 [bashProfile] [forceType, "xdg-open . "]
 [spinner, 1000, 88, "\|/-"]
-[javascript, "parent.addWindow('Filemanager', 'folder', 'filemanager/index.html?folderContent=ftp:203.0.113.45/surveillance/data/y/2024/0004', 32, 4, 1000,800, false);"]
+[javascript, "parent.addWindow('Filemanager', 'folder', 'filemanager/index.html?darkMode=true&folderContent=ftp:203.0.113.45/surveillance/data/y/2024/0004', 32, 4, 1000,800, false);"]
 [bashProfile] [waitForEnter]
 [clear] [goto:nobr, 0]
 

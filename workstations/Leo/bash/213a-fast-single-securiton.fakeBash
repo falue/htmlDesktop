@@ -60,7 +60,7 @@
 # [autoType, "Are you sure to open 4'612 files? \[Y/n\] or type the number of the last n files you wish to open: \[d\] "] [forceType, "4"]
 
 [sleep, 222]
-[javascript, "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1854.mp4', 'theaters', 'imageviewer/index.html?files=../../../programs/securiton/data/213a-1.mp4|../../../programs/securiton/data/213a-2.mp4|../../../programs/securiton/data/213a-3.mp4|../../../programs/securiton/data/213a-4.mp4&allowZoom=true&hiddenBar=true&autoplay=false', 12,12, 1200,700, false)"]
+[javascript, "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1854.mp4', 'theaters', 'imageviewer/index.html?files=../../../programs/securiton/data/213a-1.mp4|../../../programs/securiton/data/213a-2.mp4|../../../programs/securiton/data/213a-3.mp4|../../../programs/securiton/data/213a-4.mp4&allowZoom=true&hiddenBar=true&autoplay=false&darkMode=true', 12,12, 1200,700, false)"]
 [bashProfile] [waitForEnter]
 [clear] [goto:nobr, 0]
 
