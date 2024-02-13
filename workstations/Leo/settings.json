@@ -100,6 +100,19 @@
             "renderToDom": true
         },
         {
+            "metaTitle": "#213A: Terminal+Videos-SCHNELL+Securiton videos",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=213a-fast-single-securiton",
+            "x": 6,
+            "y": 8,
+            "w": 1000,
+            "h": 700,
+            "zIndex": 16,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
             "metaTitle": "#213A: Ordner mit videos",
             "windowName": "Filemanager",
             "icon": "folder",
