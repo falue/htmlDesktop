@@ -995,6 +995,11 @@ function keyboardController(event) {
             return;
         }
 
+        if(event.altKey && (key === "ArrowLeft" || key === "ArrowRight")) {
+            cl('prevented history back/front!');
+            event.preventDefault();
+        }
+
         // special cases for black, death and green
         if(!gebi('blackout').classList.contains('hide') || !gebi('greenscreen').classList.contains('hide') || !gebi('death').classList.contains('hide')) {
             if(key === "5" || key === "KeyG") {
