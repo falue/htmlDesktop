@@ -1,11 +1,11 @@
 {
     "settings": {
-        "systemColor": "#d4d4d4",
-        "desktopColor": "#1c1c2c",
-        "desktopImg": "",
+        "systemColor": "#232323",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "os/windows/desktop.jpg",
         "os": "spa",
         "darkMode": true,
-        "username": "Charles",
+        "username": "leo",
         "password": "",
         "workstation": "Leo",
         "selectedSystemMessage": 3,
@@ -143,107 +143,30 @@
         {
             "name": "Securiton",
             "icon": "",
-            "x": 19,
+            "x": 9,
             "y": 4,
             "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=213a', 6, 6, 1250,800, false);"
         },
         {
-            "name": "X_IDE",
-            "icon": "",
-            "x": 3,
-            "y": 82,
-            "action": "addWindow('X_IDE', 'code', 'x_ide', 8, 8, 1500,800, false);"
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 94,
+            "y": 69,
+            "action": ""
         },
         {
             "name": "Trash",
             "icon": "trashFull.png",
-            "x": 19,
-            "y": 19,
+            "x": 94,
+            "y": 82,
             "action": ""
         },
         {
             "name": "HDD",
             "icon": "hdd.png",
             "x": 3,
-            "y": 17,
+            "y": 4,
             "action": "startDefaultProgram('fileManager');"
-        },
-        {
-            "name": "Project f4eac Copy",
-            "icon": "folderFull.png",
-            "x": 1,
-            "y": 30,
-            "action": ""
-        },
-        {
-            "name": "Image",
-            "icon": "folderFull.png",
-            "x": 3,
-            "y": 43,
-            "action": ""
-        },
-        {
-            "name": "Personal.mp3",
-            "icon": "mp3.png",
-            "x": 1,
-            "y": 56,
-            "action": ""
-        },
-        {
-            "name": "Personal 90932.PDF",
-            "icon": "pdf.png",
-            "x": 1,
-            "y": 69,
-            "action": ""
-        },
-        {
-            "name": "Image Copy",
-            "icon": "folderFull.png",
-            "x": 9,
-            "y": 4,
-            "action": ""
-        },
-        {
-            "name": "file Copy.mp3",
-            "icon": "mp3.png",
-            "x": 8,
-            "y": 17,
-            "action": ""
-        },
-        {
-            "name": "Presentation",
-            "icon": "folderFull.png",
-            "x": 8,
-            "y": 30,
-            "action": ""
-        },
-        {
-            "name": "A-433 8d2bc",
-            "icon": "folderFull.png",
-            "x": 8,
-            "y": 43,
-            "action": ""
-        },
-        {
-            "name": "var",
-            "icon": "folderFull.png",
-            "x": 10,
-            "y": 56,
-            "action": ""
-        },
-        {
-            "name": "file",
-            "icon": "folderFull.png",
-            "x": 10,
-            "y": 69,
-            "action": ""
-        },
-        {
-            "name": "Text",
-            "icon": "folderFull.png",
-            "x": 3,
-            "y": 4,
-            "action": ""
         }
     ],
     "actions": [
