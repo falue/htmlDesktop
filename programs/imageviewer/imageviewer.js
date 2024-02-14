@@ -161,6 +161,9 @@ async function setupThumbnails(files, initial=false) {
                 } else {
                     thumbnail.style.backgroundImage = "url(../../os/"+os+"/systemIcons/fileMovie.png)";
                 }
+            } else if(file.startsWith("blob:")) {
+                // local video
+                thumbnail.style.backgroundImage = "url(../../os/"+os+"/systemIcons/fileMovie.png)";
             } else if(file.startsWith('data:image')) {
                 thumbnail.style.backgroundImage = "url("+file+")";
             } else {
@@ -218,14 +221,17 @@ async function showImage(index) {
         }
     }
 
-    if(file.endsWith(".mp4")) {
+    if(file.endsWith(".mp4") || file.startsWith("blob:")) {
+        if(file.startsWith("blob:")) {
+            path = file;
+        }
         let poster = path.split('.').slice(0, -1).join('.')+".png";
         if(await fileExists(poster, false)) {
             gebi('videoJsPlayerWrapper_html5_api').setAttribute('poster', poster);
+        } else {
+            gebi('videoJsPlayerWrapper_html5_api').removeAttribute('poster');
         }
-
         setVideoControls();
-
         content.style.backgroundImage = "none";
         show("videoPlayer");
         await setVideoSrcAndPlay(path, 'video/mp4');
@@ -415,8 +421,13 @@ async function uploadImages(data) {
     files = [];
     gebi('content').innerHTML = '';
     gebi('thumbnails').innerHTML = '';
+    // if mp4, do not save complete file
     for(i=0; i< selectedImages.length; i++) {
-        files.push(await convertBase64(selectedImages[i]));
+        if(selectedImages[i].type.includes('video')) {
+            files.push(URL.createObjectURL(selectedImages[i]));
+        } else {
+            files.push(await convertBase64(selectedImages[i]));
+        }
     }
     try {
         localStorage.setItem('imageViewer', JSON.stringify(files));
