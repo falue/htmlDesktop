@@ -113,6 +113,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#213A: new bash",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=213a-hacking&darkMode=true",
+            "x": 12,
+            "y": 12,
+            "w": 1000,
+            "h": 700,
+            "zIndex": 16,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
             "metaTitle": "#213A: Ordner mit videos",
             "windowName": "Filemanager",
             "icon": "folder",
