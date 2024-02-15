@@ -35,6 +35,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#403 Video Joyce",
+            "windowName": "MediaPlayerZ",
+            "icon": "theaters",
+            "contentPath": "imageviewer/index.html?files=../../../workstations/Charles/files/joyce.mp4&allowZoom=true&hiddenBar=true&autoplay=false&darkMode=true",
+            "x": 8,
+            "y": 7,
+            "w": 1190,
+            "h": 720,
+            "zIndex": 15,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "metaTitle": "#206 Monitor rechts",
             "windowName": "x_ide",
             "icon": "code",
@@ -45,7 +58,7 @@
             "h": 800,
             "zIndex": 11,
             "minimized": false,
-            "renderToDom": true
+            "renderToDom": false
         },
         {
             "metaTitle": "#206 Laptop",
