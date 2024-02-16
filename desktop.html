@@ -722,7 +722,10 @@
       <div id="taskbar" class="taskbar noScrollbar"></div>
 
       <!-- TASKBAR ICONS -->
-      <div id="systemIcons" class="systemIcons systemColors" onclick="show('editTaskbarIcons')">
+      <div id="systemIcons" class="systemIcons systemColors"
+        onclick="if(event.altKey) { show('editTaskbarIcons'); } else { cl('Press alt to edit system icons') }"
+        oncontextmenu="epD(event); if(event.altKey) { show('editTaskbarIcons'); } else { cl('Press alt to edit system icons') }"
+      >
             <div class="op50"><i data-setup-system-icons class="material-icons hover" id="systemIcons-expand_less">expand_less</i></div><!-- 
          --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-account_circle">account_circle</i></div><!-- 
          --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-wifi">wifi</i></div><!-- 
