@@ -33,6 +33,14 @@
             "showInFavorites": true,
             "onclick": false
         },{
+            "spoofUrl": "avmail.ch",
+            "realUrl": "../email/index.html?webmail=true",
+            "favoritesName": "avmail.ch",
+            "metaName": false,
+            "materialIcon": "email",
+            "showInFavorites": true,
+            "onclick": false
+        },{
             "spoofUrl": "telefabi.ch",
             "realUrl": "sites/telefabi",
             "favoritesName": "telefabi.ch",
