@@ -41,8 +41,8 @@
             "contentPath": "browser",
             "x": 4,
             "y": 2,
-            "w": 1000,
-            "h": 777,
+            "w": 1250,
+            "h": 850,
             "zIndex": 2,
             "minimized": false,
             "renderToDom": true
@@ -54,8 +54,8 @@
             "contentPath": "email/index.html?webmail=false&scene=313&inbox=inbox&selected=0",
             "x": 4,
             "y": 2,
-            "w": 1000,
-            "h": 777,
+            "w": 1250,
+            "h": 850,
             "zIndex": 2,
             "minimized": false,
             "renderToDom": false

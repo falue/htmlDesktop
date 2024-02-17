@@ -176,6 +176,17 @@
     width: 100%;
     border-bottom: 1px solid rgba(125,125,125,.5);
 }
+.email-list-container p.spam {
+    opacity: .5;
+    background-color: rgb(221, 201, 174);
+}
+.email-list-container p.spam h3:before {
+    font-family: 'Material Icons';
+    content: "\e15c";
+    color: rgb(199, 57, 0);
+    padding-right: .25em;
+    vertical-align: bottom;
+}
 
 .email-list-container p:focus,
 .email-list-container p:hover {

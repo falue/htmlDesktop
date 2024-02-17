@@ -30,6 +30,12 @@ async function setup() {
     workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
     let webmail = urlParams.get('webmail');
+
+    //let test = await parseFile(`data/example/de.json`);
+    // test.push(await parseFile(`data/default.json`));
+    /* let test = await parseFile(`data/313/inbox.json`);
+    test = shuffle(test);
+    cl(test) */
     
     // Set generic system fonts
     setSystemFont(os);
@@ -138,8 +144,9 @@ async function displayInbox(name) {
     // inbox = name;
     let path = name !== 'default' && scene ? `data/${scene}/${name}.json` : `data/default.json`;
     emails = await parseFile(path, false);
-    if(emails === 404) {
+    if(emails === 404 || name === 'default') {
         // name.json does not exist - use default and shuffle!
+        cl("SHUFFLEEEE")
         emails = await parseFile(`data/default.json`);
         emails = shuffle(emails);
     }
@@ -160,6 +167,7 @@ function createEmailOverview(data, name) {
         p.setAttribute('tabIndex', '0');
         // Fixme: if emails reverts to data/default.json, this does not work
         p.setAttribute("ondblclick", `if(typeof parent.addWindow !== 'undefined') { parent.addWindow('Email ${fromTo} ${email.sender.name}', 'email', 'email/read.html?scene=${scene}&inbox=${inbox}&selected=${index}', 5,5, 666,450, false) } else { parent.parent.addWindow('Email from ${email.sender.name}', 'email', 'email/read.html?scene=${scene}&inbox=${inbox}&selected=${index}', 5,5, 666,450, false) }`);
+        if(email.flags.spam) p.classList.add('spam');
 
         // Create and append the sender name as a <p>
         const sender = document.createElement('div');

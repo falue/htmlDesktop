@@ -1,702 +1,338 @@
 [
-  {
-    "sender": {
-      "name": "info@flatearththeoristsworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Julia Schmidt <julia.schmidt@kreativagentur.de>",
+            "avatar": ""
+        },
+        "subject": "Feedback zum Entwurf",
+        "message": "Hallo, ich habe den ersten Entwurf fertiggestellt und würde mich über dein Feedback freuen. Lass uns doch morgen kurz telefonieren.",
+        "date": "2024-02-15",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Flat earth theorists",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Flat earth theorists? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Flatearththeorists World Team",
-    "date": "01-08-2023 at 20:00",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mysticthingsworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Thomas Müller",
+            "avatar": ""
+        },
+        "subject": "Willkommensgruß an alle Neuzugänge",
+        "message": "Liebes Team, ich möchte alle neuen Mitarbeiter herzlich in unserem Unternehmen willkommen heißen. Bitte fühlt euch eingeladen, mich bei Fragen direkt anzusprechen.",
+        "date": "2024-02-17",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Mystic things",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mystic things? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mysticthings World Team",
-    "date": "28-11-2023 at 03:31",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": true
-    }
-  },
-  {
-    "sender": {
-      "name": "info@conspiracytheoriesworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Felix Neumann",
+            "avatar": ""
+        },
+        "subject": "Erinnerung: Abgabe Quartalsbericht",
+        "message": "Bitte denkt daran, eure Quartalsberichte bis spätestens Freitag, 14:00 Uhr, einzureichen.",
+        "date": "08:00",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Conspiracy theories",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Conspiracy theories? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Conspiracytheories World Team",
-    "date": "21-12-2023 at 17:44",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mysticthingsworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Projektmanagement-Team",
+            "avatar": ""
+        },
+        "subject": "Projektstatus-Update",
+        "message": "Guten Morgen, anbei findet ihr das aktuelle Update zum Projektstatus. Bitte beachtet die anstehenden Deadlines.",
+        "date": "2024-02-11",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Mystic things",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mystic things? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mysticthings World Team",
-    "date": "05-08-2023 at 15:00",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@pyramidsbuiltbyaliensworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Office Admin",
+            "avatar": ""
+        },
+        "subject": "New Printer Setup",
+        "message": "The new printer has been set up in the printing room on the third floor. Please use the network code 1234 to connect. Contact IT for any issues.",
+        "date": "02-14 at 08:00",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Pyramids built by aliens",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Pyramids built by aliens? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Pyramidsbuiltbyaliens World Team",
-    "date": "05-05-2023 at 00:17",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Alex Johnson",
+            "avatar": ""
+        },
+        "subject": "Weekly Team Meeting",
+        "message": "Reminder: Our weekly team meeting will be held in the main conference room at 10 AM. Please be prepared to discuss your current projects.",
+        "date": "02-14 at 09:00",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "10-03-2023 at 02:23",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mysticthingsworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Tobias.Mueller@spielunternehmen.de",
+            "avatar": ""
+        },
+        "subject": "Update zum Projekt WQRE",
+        "message": "Hier ist ein kurzes Update zu den Fortschritten im Projekt XY. Ich freue mich über euer Feedback.",
+        "date": "12:15",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Mystic things",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mystic things? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mysticthings World Team",
-    "date": "25-11-2023 at 09:04",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@otherworldlyphenomenaworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Kantine",
+            "avatar": ""
+        },
+        "subject": "Menüplan der Woche",
+        "message": "Entdeckt die leckeren Gerichte, die wir diese Woche für euch vorbereitet haben. Guten Appetit!",
+        "date": "13:30",
+        "flags": {
+            "error": false,
+            "spam": true,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Otherworldly phenomena",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Otherworldly phenomena? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Otherworldlyphenomena World Team",
-    "date": "23-04-2023 at 05:24",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Weinwelt Sommelier",
+            "avatar": ""
+        },
+        "subject": "Entdecken Sie unsere neuen Frühjahrsweine!",
+        "message": "Liebe Weinliebhaber, lassen Sie sich von unserer neuen Auswahl an Frühjahrsweinen verzaubern und genießen Sie exklusive Vorteile als Abonnent.",
+        "date": "2024-02-12",
+        "flags": {
+            "error": false,
+            "spam": true,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "30-04-2023 at 06:05",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@conspiracytheoriesworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Family Newsletter",
+            "avatar": ""
+        },
+        "subject": "Monthly Family Update",
+        "message": "Hello everyone! Here's our monthly update to keep you all in the loop with family news. We have a couple of birthdays coming up and a few announcements!",
+        "date": "02-14 at 16:00",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Conspiracy theories",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Conspiracy theories? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Conspiracytheories World Team",
-    "date": "09-08-2023 at 03:12",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@conspiracytheoriesworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "IT-Abteilung <it-support@unternehmen.de>",
+            "avatar": ""
+        },
+        "subject": "Erinnerung: Passwortänderung erforderlich",
+        "message": "Bitte denken Sie daran, Ihr Passwort in den nächsten 7 Tagen zu ändern, um die Sicherheitsrichtlinien einzuhalten.",
+        "date": "2024-02-14",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Conspiracy theories",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Conspiracy theories? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Conspiracytheories World Team",
-    "date": "01-11-2023 at 03:04",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@pyramidsbuiltbyaliensworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Lara Schmidt",
+            "avatar": ""
+        },
+        "subject": "Protokoll der letzten Besprechung",
+        "message": "Anbei findet ihr das Protokoll unserer letzten Besprechung. Für Rückfragen stehe ich gerne zur Verfügung.",
+        "date": "11:00",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Pyramids built by aliens",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Pyramids built by aliens? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Pyramidsbuiltbyaliens World Team",
-    "date": "04-01-2024 at 05:06",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@flatearththeoristsworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Dakota Smith",
+            "avatar": ""
+        },
+        "subject": "Lunch Tomorrow?",
+        "message": "Hey! Would you like to grab lunch tomorrow around noon? There's a new cafe downtown I've been wanting to try.",
+        "date": "02-14 at 11:30",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Flat earth theorists",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Flat earth theorists? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Flatearththeorists World Team",
-    "date": "30-10-2023 at 10:34",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@flatearththeoristsworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "HR-Team",
+            "avatar": ""
+        },
+        "subject": "Einladung zum Teambuilding-Event",
+        "message": "Wir freuen uns, euch zu unserem nächsten Teambuilding-Event am kommenden Mittwoch einzuladen. Details folgen.",
+        "date": "09:30",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Flat earth theorists",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Flat earth theorists? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Flatearththeorists World Team",
-    "date": "29-11-2023 at 15:41",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Marie Lang <privat@mail.de>",
+            "avatar": ""
+        },
+        "subject": "Kinoabend am Freitag?",
+        "message": "Hey, hast du Lust, diesen Freitag ins Kino zu gehen? Der neue Marvel-Film läuft!",
+        "date": "2024-02-13",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "01-04-2023 at 01:53",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Jamie Lee",
+            "avatar": ""
+        },
+        "subject": "Gym Membership Offer",
+        "message": "Hi! As a valued member of our fitness community, we're offering you an exclusive discount on our premium gym membership. Sign up today!",
+        "date": "02-14 at 18:30",
+        "flags": {
+            "error": false,
+            "spam": true,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "19-05-2023 at 23:27",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Tech Deals",
+            "avatar": ""
+        },
+        "subject": "Exclusive Offers Just for You!",
+        "message": "Don't miss out on our exclusive deals this week! Save up to 50% on the latest gadgets. Shop now and save big!",
+        "date": "02-14 at 12:45",
+        "flags": {
+            "error": false,
+            "spam": true,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "24-09-2023 at 08:26",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@otherworldlyphenomenaworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Julian.Koch@kreativagentur.de",
+            "avatar": ""
+        },
+        "subject": "Brainstorming-Session nächste Woche",
+        "message": "Lasst uns nächste Woche zusammenkommen, um kreative Ideen für unser neuestes Projekt zu sammeln.",
+        "date": "14:45",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Otherworldly phenomena",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Otherworldly phenomena? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Otherworldlyphenomena World Team",
-    "date": "15-08-2023 at 03:39",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@flatearththeoristsworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "FitnessStudio FitPlus <info@fitplus.de>",
+            "avatar": ""
+        },
+        "subject": "Exklusives Angebot nur für Sie!",
+        "message": "Werden Sie jetzt Mitglied und sichern Sie sich 20% Rabatt auf unsere Premium-Mitgliedschaft. Nur gültig bis Ende des Monats.",
+        "date": "2024-02-16",
+        "flags": {
+            "error": false,
+            "spam": true,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Flat earth theorists",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Flat earth theorists? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Flatearththeorists World Team",
-    "date": "31-08-2023 at 16:26",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Laura Neumann <laura.neumann@extern.de>",
+            "avatar": ""
+        },
+        "subject": "Anfrage zur Zusammenarbeit",
+        "message": "Sehr geehrte Damen und Herren, ich möchte Sie gerne zu einer potenziellen Zusammenarbeit in unserem nächsten Projekt einladen. Können wir einen Termin für ein erstes Gespräch vereinbaren?",
+        "date": "2024-02-09",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "30-05-2023 at 21:52",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Reisebüro Abenteuer <angebote@reisebuero-abenteuer.de>",
+            "avatar": ""
+        },
+        "subject": "Ihr Traumurlaub wartet!",
+        "message": "Entfliehen Sie dem Alltag und entdecken Sie unsere exklusiven Urlaubsangebote für Ihr nächstes Abenteuer.",
+        "date": "2024-02-10",
+        "flags": {
+            "error": false,
+            "spam": true,
+            "read": false
+        }
     },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "05-07-2023 at 22:50",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@flatearththeoristsworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "Charlie Wagner",
+            "avatar": ""
+        },
+        "subject": "Project Update",
+        "message": "The project is moving along as scheduled. We've completed the initial phase and will be starting on the development stage next week.",
+        "date": "02-14 at 14:15",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Flat earth theorists",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Flat earth theorists? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Flatearththeorists World Team",
-    "date": "06-11-2023 at 08:35",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mysticthingsworld.com",
-      "avatar": ""
+    {
+        "sender": {
+            "name": "max.koch@startup.de",
+            "avatar": ""
+        },
+        "subject": "Einladung zum Networking-Event",
+        "message": "Hallo zusammen, ich möchte euch herzlich zu unserem nächsten Networking-Event einladen. Es ist eine großartige Gelegenheit, Branchenkontakte zu knüpfen.",
+        "date": "2024-02-08",
+        "flags": {
+            "error": false,
+            "spam": false,
+            "read": true
+        }
     },
-    "subject": "Discover the secrets about Mystic things",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mystic things? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mysticthings World Team",
-    "date": "09-07-2023 at 13:00",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
+    {
+        "sender": {
+            "name": "info@gesundheitswelt.de",
+            "avatar": ""
+        },
+        "subject": "Ihre Gesundheit ist uns wichtig!",
+        "message": "Entdecken Sie unsere neuen Kurse für ein gesundes Leben. Melden Sie sich jetzt an und erhalten Sie einen Rabatt.",
+        "date": "10:45",
+        "flags": {
+            "error": false,
+            "spam": true,
+            "read": false
+        }
     }
-  },
-  {
-    "sender": {
-      "name": "info@pyramidsbuiltbyaliensworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Pyramids built by aliens",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Pyramids built by aliens? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Pyramidsbuiltbyaliens World Team",
-    "date": "29-12-2023 at 04:46",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@otherworldlyphenomenaworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Otherworldly phenomena",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Otherworldly phenomena? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Otherworldlyphenomena World Team",
-    "date": "06-09-2023 at 04:24",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "17-02-2023 at 04:03",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@flatearththeoristsworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Flat earth theorists",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Flat earth theorists? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Flatearththeorists World Team",
-    "date": "27-12-2023 at 06:05",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@otherworldlyphenomenaworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Otherworldly phenomena",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Otherworldly phenomena? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Otherworldlyphenomena World Team",
-    "date": "13-07-2023 at 15:14",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mysticthingsworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mystic things",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mystic things? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mysticthings World Team",
-    "date": "13-04-2023 at 04:38",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mysticthingsworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mystic things",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mystic things? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mysticthings World Team",
-    "date": "17-01-2024 at 05:43",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@conspiracytheoriesworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Conspiracy theories",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Conspiracy theories? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Conspiracytheories World Team",
-    "date": "03-01-2024 at 23:34",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mysticthingsworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mystic things",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mystic things? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mysticthings World Team",
-    "date": "12-03-2023 at 10:15",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "09-05-2023 at 04:26",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@pyramidsbuiltbyaliensworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Pyramids built by aliens",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Pyramids built by aliens? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Pyramidsbuiltbyaliens World Team",
-    "date": "09-11-2023 at 16:46",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@pyramidsbuiltbyaliensworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Pyramids built by aliens",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Pyramids built by aliens? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Pyramidsbuiltbyaliens World Team",
-    "date": "08-03-2023 at 05:07",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@flatearththeoristsworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Flat earth theorists",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Flat earth theorists? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Flatearththeorists World Team",
-    "date": "05-11-2023 at 11:47",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mysticthingsworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mystic things",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mystic things? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mysticthings World Team",
-    "date": "17-05-2023 at 20:23",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@pyramidsbuiltbyaliensworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Pyramids built by aliens",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Pyramids built by aliens? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Pyramidsbuiltbyaliens World Team",
-    "date": "13-02-2024 at 10:31",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@conspiracytheoriesworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Conspiracy theories",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Conspiracy theories? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Conspiracytheories World Team",
-    "date": "21-07-2023 at 05:38",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@otherworldlyphenomenaworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Otherworldly phenomena",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Otherworldly phenomena? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Otherworldlyphenomena World Team",
-    "date": "09-07-2023 at 05:46",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@pyramidsbuiltbyaliensworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Pyramids built by aliens",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Pyramids built by aliens? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Pyramidsbuiltbyaliens World Team",
-    "date": "03-05-2023 at 10:09",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "14-11-2023 at 07:31",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "29-11-2023 at 07:10",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@otherworldlyphenomenaworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Otherworldly phenomena",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Otherworldly phenomena? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Otherworldlyphenomena World Team",
-    "date": "12-09-2023 at 15:18",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mudflowtheorybelieversworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mudflow theory believers",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mudflow theory believers? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mudflowtheorybelievers World Team",
-    "date": "30-01-2024 at 00:01",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@otherworldlyphenomenaworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Otherworldly phenomena",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Otherworldly phenomena? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Otherworldlyphenomena World Team",
-    "date": "16-02-2023 at 16:22",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@conspiracytheoriesworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Conspiracy theories",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Conspiracy theories? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Conspiracytheories World Team",
-    "date": "11-05-2023 at 01:36",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@mysticthingsworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Mystic things",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Mystic things? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Mysticthings World Team",
-    "date": "04-10-2023 at 00:05",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@conspiracytheoriesworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Conspiracy theories",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Conspiracy theories? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Conspiracytheories World Team",
-    "date": "22-08-2023 at 09:27",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  },
-  {
-    "sender": {
-      "name": "info@otherworldlyphenomenaworld.com",
-      "avatar": ""
-    },
-    "subject": "Discover the secrets about Otherworldly phenomena",
-    "message": "Dear truth seeker,<br><br>Have you ever wondered about Otherworldly phenomena? Our latest findings will amaze you.<br>Join us to uncover the hidden truths.<br><br>Best regards,<br>Otherworldlyphenomena World Team",
-    "date": "12-07-2023 at 06:01",
-    "flags": {
-      "error": false,
-      "spam": true,
-      "read": false
-    }
-  }
 ]
