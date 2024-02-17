@@ -223,7 +223,7 @@ function createHeader(email, fromTo="from") {
             ${email.subject}
           </div>
           <div>
-            <span class='small'>${workstation === 'generic' || !workstation ? account ? 'To: '+ account : '' : 'To: '+account ? account : workstation}</span>
+            <span class='small'>${workstation === 'generic' || !workstation ? account && account !== 'generic' ? 'To: '+ account : '' : 'To: '+account ? account : workstation}</span>
           </div>
         </div>
         <div class='right top relative op50 small'>
