@@ -1,0 +1,249 @@
+.container {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 1.3fr;
+    grid-template-rows: 0.1fr 3fr 0.1fr;
+    gap: 0 0;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "header header header"
+        "inboxes email-list preview"
+        "footer footer footer";
+    height: 100%;
+}
+
+.preview {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content auto;
+    gap: 0 0;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "preview-header"
+        "preview-email";
+    grid-area: preview;
+
+    grid-template-columns: unset;
+    overflow: auto;
+}
+
+.emptyPreview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview-header {
+    background-color:rgba(125,125,125,.5);
+    grid-area: preview-header;
+    padding: 1em 2em 1em 1em;
+    border-bottom: 1px solid rgba(125,125,125,.1);
+    box-shadow: inset rgba(0,0,0,0.25) 0 3px 0px,  inset rgb(255,255,255) 0 -1px 0px;
+}
+
+.avatar {
+    font-size: 1.1em;
+    padding: .15em;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    border: .1em solid rgba(255,255,255,.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview-email {
+    background-color:white;
+    grid-area: preview-email;
+    padding: 1em;
+}
+
+.inboxes {
+    background-color:rgba(125,125,125,.5);
+    grid-area: inboxes;
+    border-right: 1px solid rgba(125,125,125,.5);
+    padding: 0 1em;
+}
+
+.inboxes > ul > li {
+    padding:.5em;
+    letter-spacing: 0.1em;
+}
+.inboxes > ul > li >ul >li {
+    padding: .25em .125em .25em .75em;
+    letter-spacing: 0;
+}
+
+.inboxes > ul > li > ul > li:hover {
+    background-color: rgba(255,255,255,.15);
+    border-radius: .25em;
+}
+
+.inboxes > ul > li:before {
+    font-family: 'Material Icons';
+    /* content: "\e5cc"; */
+    content: "\e7cd";
+    padding-right: .25em;
+    position: relative;
+    color: rgb(31, 93, 208);
+    vertical-align:middle;
+}
+
+.mailbox li:before {
+    font-family: 'Material Icons';
+    content: "\e2c7";
+    padding-right: .25em;
+    position: relative;
+    color: rgb(31, 93, 208);
+    vertical-align:middle;
+}
+
+.inboxFootnote {
+    background-color: rgb(239, 239, 239);
+    border-top: 1px solid rgba(125,125,125,.5);
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: rgba(125,125,125,.05);
+    grid-area: header;
+    height: 2.5em;
+    padding: .5em .25em .25em .5em;
+    border-bottom: 1px solid rgba(125,125,125,.5);
+}
+
+#buttons button {
+    /* border-radius: .2em; */
+    /* color: white;
+    background-color: rgb(31, 93, 208); */
+}
+
+#buttons button:hover {
+    /* background-color: rgb(67, 115, 206); */
+}
+
+#webmail button {
+    width: 2.5em;
+    height: 2.5em;
+    padding: .75em;
+}
+
+.windowmenu {
+    border-bottom: 1px solid rgba(125,125,125,.5);
+    background-color: rgb(239, 239, 239);
+}
+
+.footer {
+    background-color:  rgba(125,125,125,.5);
+    grid-area: footer;
+    height: 1em;
+    padding: .25em 1em .75em 1em;
+}
+
+.email-list {
+    border-right: .5em solid rgba(88,88,88,.75);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2em auto;
+    gap: 0 0;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "email-list-header"
+        "email-list-container";
+    grid-area: email-list;
+
+    grid-template-columns: unset; /* do not set template columns and rows */
+    /* grid-template-rows: unset; */
+    overflow: auto;
+}
+
+.email-list-header {
+    grid-area: email-list-header;
+    background-color: rgba(125,125,125,.2);
+    height: 1em;
+    padding: .25em 1em .75em 1em;
+}
+
+.email-list-container {
+    grid-area: email-list-container;
+}
+
+.email-list-container p {
+    box-sizing: border-box;
+    padding: .5em .5em .5em 1em;
+    margin:0;
+    width: 100%;
+    border-bottom: 1px solid rgba(125,125,125,.5);
+}
+
+.email-list-container p:focus,
+.email-list-container p:hover {
+    background-color: rgba(125,125,125,.2);
+    outline: none;
+}
+.email-list-container p.unread h3:before {
+    content: "⦿ ";
+    color: rgb(31, 93, 208);
+}
+.email-list-container p.unread h3 {
+    font-weight: bold;
+    /* padding-left: 1em; */
+}
+
+.email-list-container div.sender {
+    font-size: .85em;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.email-list-container h3 {
+    font-size: .92em !important;
+    font-weight: 100;
+    word-break: break-all;
+    max-width: 100%;
+    overflow: hidden !important;
+    margin: .25em 0 .35em 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.email-list-container div.summary {
+    font-size: .85em;
+    max-width: 100%;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    opacity: 0.5;
+}
+.write .preview-header {
+    padding: 0;
+}
+.write input,
+.write textarea {
+    width:100%;
+    display: block;
+    padding: .75em;
+    border-bottom: 1px solid rgba(125,125,125,.5);
+}
+.write .preview-header div {
+    padding: 1em;
+    font-size: .7em;
+    border-bottom: solid 1px white;
+}
+.write input {
+    width: calc(100% - 8em);
+}
+.write .preview-email {
+    padding-bottom: 4em;
+}
+.write .preview-email,
+.write textarea {
+    height: calc(100% - 8em);
+}

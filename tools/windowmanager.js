@@ -313,6 +313,8 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     os,
     "&workstation=",
     workstation,
+    "&windowId=",
+    id,
     parameters ? "&" : "",
     parameters
   ].join("");
@@ -1040,6 +1042,7 @@ function startDefaultProgram(program, parameters) {
       "browser",
       "ftp",
       "ftp-connect",
+      "email",
       "imageViewer",
       "textEditor-random",
       "terminal",
@@ -1069,6 +1072,9 @@ function startDefaultProgram(program, parameters) {
       break;
     case "ftp-connect":
       addWindow('FTP Client - Connect', 'storm', 'ftp/connect.html', x, y, 666,480, false);
+      break;
+    case "email":
+      addWindow('Email Petabird', 'email', 'email', x, y, 1200,650, false);
       break;
     case "imageViewer":
       // TODO: Default file list from where?

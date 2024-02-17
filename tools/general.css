@@ -97,6 +97,7 @@ a:focus { outline: none; }
 .cursorDefault { cursor:default; }
 .noCursor { cursor: none; }
 .noUserSelect { user-select: none; }
+.userSelect { user-select: text; }
 .noPointerEvents { pointer-events: none; }
 
 .noScrollbar::-webkit-scrollbar { display: none; }
@@ -228,9 +229,11 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .tiny { font-size: .6em; }
 .bodySize { font-size: 1rem; }
 .bold { font-weight: bolder; }
+.normalWeight { font-weight: normal; }
 .uppercase { text-transform: uppercase; }
 .lowercase { text-transform: lowercase; }
 .capitalize { text-transform: capitalize; }
+.normalized { text-transform: initial; }
 .italics { font-style: italic; }
 .italics.bold, .bold.italics {
     font-weight: bolder;
