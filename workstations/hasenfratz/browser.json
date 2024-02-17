@@ -25,6 +25,15 @@
                 "First entry of this list is also acting as the home page."],
     "urls": [
         {
+            "spoofUrl": "inbox.avmail.ch?login=true&hash=458123674t90v78234561",
+            "realUrl": "../email/index.html?webmail=true&scene=313&inbox=inbox&selected=0",
+            "favoritesName": "avmail.ch",
+            "metaName": false,
+            "materialIcon": "email",
+            "showInFavorites": false,
+            "onclick": false
+        },
+        {
             "spoofUrl": "qsearch.ch",
             "realUrl": "sites/qsearch/index.html",
             "favoritesName": "qsearch.ch",

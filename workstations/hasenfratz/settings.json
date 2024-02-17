@@ -33,6 +33,32 @@
             "zIndex": 1,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#313 Funcanellis emails BROWSER",
+            "windowName": "Browser",
+            "icon": "language",
+            "contentPath": "browser",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#313 Funcanellis emails APP",
+            "windowName": "Email",
+            "icon": "email",
+            "contentPath": "email/index.html?webmail=false&scene=313&inbox=inbox&selected=0",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": false
         }
     ],
     "shortcuts": [
