@@ -1,4 +1,5 @@
-13.02.2024 15:03
+17.02.2024 16:19
+os/spa/programIcons/email.png
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
 os/spa/programIcons/minimized-view_in_ar.png
@@ -34,6 +35,7 @@ os/spa/systemIcons/servermngr.png
 os/spa/systemIcons/pdf.png
 os/spa/systemIcons/folderFull.png
 os/spa/systemIcons/favorites.png
+os/mac/programIcons/email.png
 os/mac/programIcons/finder.png
 os/mac/programIcons/minimized-public.png
 os/mac/programIcons/minimized-view_in_ar.png
@@ -205,7 +207,6 @@ workstations/Charles/folders.json
 workstations/Charles/browser.json
 workstations/Leo/settings.json
 workstations/Leo/folders.json
-workstations/Leo/settings copy.json
 workstations/Leo/browser.json
 workstations/MinervaRezeption/settings.json
 workstations/MinervaRezeption/folders.json
@@ -379,6 +380,7 @@ programs/webcam/stylesheet.css
 programs/infinity/stylesheet.css
 programs/helpdesk/stylesheet.css
 programs/bluescreen/stylesheet.css
+programs/email/stylesheet.css
 programs/supervisor/stylesheet.css
 programs/wifi/javascript.js
 programs/ftp/javascript.js
@@ -432,6 +434,7 @@ programs/dna/data.js
 programs/webcam/javascript.js
 programs/helpdesk/javascript.js
 programs/bluescreen/javascript.js
+programs/email/javascript.js
 programs/supervisor/javascript.js
 programs/supervisor/data.js
 programs/terminal/text/ascii_schema.txt
@@ -459,6 +462,12 @@ programs/browser/sites/qsearch/CHAT GPT PROMPT.txt
 programs/filemanager/CHAT GPT PROMPT.txt
 programs/chat/data/example/chat.json
 programs/chat/data/315/chat.json
+programs/email/data/example/de.json
+programs/email/data/example/en.json
+programs/email/data/313/newEmail.json
+programs/email/data/313/inbox.json
+programs/email/data/313/spam.json
+programs/email/data/default.json
 programs/bash/defaultScripts/ls.fakeBash
 programs/bash/defaultScripts/ls-l.fakeBash
 programs/bash/defaultScripts/top.fakeBash
