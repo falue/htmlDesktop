@@ -1,3 +1,5 @@
+let windowId;
+
 async function setup() {
     /* 
         URL PARAMS:
@@ -10,6 +12,7 @@ async function setup() {
     let os = urlParams.get('os');
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
+    windowId = urlParams.get('windowId');
 
     if(darkMode === 'true') {
         let element = document.getElementsByTagName('body')[0];
