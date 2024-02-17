@@ -26,7 +26,7 @@
     "urls": [
         {
             "spoofUrl": "inbox.avmail.ch?login=true&hash=458123674t90v78234561",
-            "realUrl": "../email/index.html?webmail=true&scene=313&inbox=inbox&selected=0",
+            "realUrl": "../email/index.html?webmail=true&account=funancelli@avmail.ch&scene=313&inbox=inbox&selected=0",
             "favoritesName": "avmail.ch",
             "metaName": false,
             "materialIcon": "email",

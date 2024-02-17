@@ -4,9 +4,10 @@ let emails = [];
 let selectedEmail;
 let windowId;
 let workstation;
+let emailIndex;
+let account;
 
 async function setup() {
-
     /* 
         URL PARAMS:
             scene: defines which folder is searched in programs/email/data/~scene~ folder for the email list.
@@ -16,6 +17,10 @@ async function setup() {
                    if neither scene or inbox specified, it loads the file programs/email/data/default.json
 
             selected: index of already opened email to display on the right
+
+            account: if specified, is the recipient of all the emails; also the account name when webmail is true
+            
+            webmail: if true, shows logout button top right and hides program bar in window. Also displays account name near logout button.
 
             if you click "new email", the file programs/email/data/~scene~/newMail.json is loaded for force typing. Name newMail is fixed.
 
@@ -30,12 +35,8 @@ async function setup() {
     workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
     let webmail = urlParams.get('webmail');
-
-    //let test = await parseFile(`data/example/de.json`);
-    // test.push(await parseFile(`data/default.json`));
-    /* let test = await parseFile(`data/313/inbox.json`);
-    test = shuffle(test);
-    cl(test) */
+    account = urlParams.get('account') ? urlParams.get('account') : workstation;
+    if(urlParams.get('account')) gebi('webmail-account').innerHTML = account;
     
     // Set generic system fonts
     setSystemFont(os);
@@ -119,7 +120,6 @@ async function sendEmail() {
 }
 
 async function setupReadEmail() {
-    cl('do stuff when loading email');
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let  currentScene = urlParams.get('scene');
@@ -146,7 +146,6 @@ async function displayInbox(name) {
     emails = await parseFile(path, false);
     if(emails === 404 || name === 'default') {
         // name.json does not exist - use default and shuffle!
-        cl("SHUFFLEEEE")
         emails = await parseFile(`data/default.json`);
         emails = shuffle(emails);
     }
@@ -201,6 +200,7 @@ function createEmailOverview(data, name) {
 
 function previewEmail(index, name) {
     let fromTo = name === 'sent' ? 'to' :'from';
+    emailIndex = index;
     show('preview-header');
     gebi('preview-email').classList.remove('emptyPreview');
     emails[index].flags.read = true;
@@ -208,7 +208,6 @@ function previewEmail(index, name) {
     let headerContent = createHeader(emails[index], fromTo);
     header.innerHTML = headerContent;
     gebi('preview-email').innerHTML = emails[index].message;
-    // rebuild list to reflext new state?
 }
 
 function createHeader(email, fromTo="from") {
@@ -224,7 +223,7 @@ function createHeader(email, fromTo="from") {
             ${email.subject}
           </div>
           <div>
-            <span class='small'>${workstation === 'generic' || !workstation ? '' : 'To: '+workstation}</span>
+            <span class='small'>${workstation === 'generic' || !workstation ? account ? 'To: '+ account : '' : 'To: '+account ? account : workstation}</span>
           </div>
         </div>
         <div class='right top relative op50 small'>
@@ -232,7 +231,7 @@ function createHeader(email, fromTo="from") {
         </div>
         <div class='right bottom relative op50'>
             <i class="material-icons small">attachment</i>
-            <i class="material-icons small">print</i>
+            <i class="material-icons small" onclick="printEmail()">print</i>
         </div>
     </div>`;
     return email
@@ -240,4 +239,16 @@ function createHeader(email, fromTo="from") {
 
 function printHtmlEntities(text) {
     return text.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';');
+}
+
+// Yes we're all mad here
+function printEmail() {
+    let mail = emails[emailIndex];
+    let print = `${[`From: ${mail.sender.name} - ${mail.date}`, `<h3>${mail.subject}</h3>`].join('<br>')}<br><br>${mail.message}<hr>`;
+
+    if(parent.parent) {
+        parent.parent.addWindow(`Print Email "${mail.subject}"`, 'print', `print/index.html?printText=${encodeURI(print)}&pages=1`, 22,13, 800,555, false);
+    } else {
+        parent.addWindow(`Print Email "${mail.subject}"`, 'print', `print/index.html?printText=${encodeURI(print)}&pages=1`, 22,13, 800,555, false);
+    }
 }

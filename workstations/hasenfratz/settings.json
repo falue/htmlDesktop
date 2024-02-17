@@ -51,7 +51,7 @@
             "metaTitle": "#313 Funcanellis emails APP",
             "windowName": "Email",
             "icon": "email",
-            "contentPath": "email/index.html?webmail=false&scene=313&inbox=inbox&selected=0",
+            "contentPath": "email/index.html?webmail=false&account=funancelli@avmail.ch&scene=313&inbox=inbox&selected=0",
             "x": 4,
             "y": 2,
             "w": 1250,
