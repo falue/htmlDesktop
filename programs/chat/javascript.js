@@ -1,4 +1,5 @@
 let messages = [];
+let messagesInitial = [];
 let messageIndex = -1;  // where in the history of the chat you are
 let isTyping = false;
 let editMessages = false;
@@ -6,14 +7,17 @@ let typeIndicator = true;
 let chatEdit = false;
 let forceSend = false;
 let autoAdvance = true;
+let blockTypingWhileAnswerinprogress = false;
+let loop = true;
 
 async function setup() {
-
     /* 
         URL parameter
         `chat`: is scene number. looks for 'chat.json' file located in program,s/chat/data/{scenenr}/chat.js
         `sharpCorners`: make the corners on every bubble not rounded but isntead adds a pointer thingy
         `bg`: hex code of background color
+        `loop`: default true; if true the chat restarts after the last pre-programmed message without deleting the chat history.
+        if false the user is allowed to type for "real" any message they want
     */
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -35,14 +39,18 @@ async function setup() {
 
     typeIndicator = localStorage.getItem('chat-typeIndicator') === 'true';
     gebi('typeIndicator-checkbox').checked = typeIndicator;
+
+    loop = urlParams.get('loop') === "true" || !urlParams.get('loop');
+    gebi('loop-checkbox').checked = loop;
     
     let chat = urlParams.get('chat');
     if(chat) {
         messages = await parseFile(
         `data/${chat}/chat.json`
         );
+        messagesInitial = JSON.parse(JSON.stringify(messages));
     } else {
-        alert("URL parameter chat is not defined")
+        cl("URL parameter chat is not defined");
     }
 
     setupNextMessage(messageIndex);
@@ -52,7 +60,7 @@ async function setup() {
 }
 
 async function sendMessage(text, sender) {
-    if(isTyping) return;  // refuse when other is typing
+    if(isTyping && blockTypingWhileAnswerinprogress) return;  // refuse when other is typing
     if(!text) return;  // refuse empty texts
     let bubble = document.createElement("div");
     let bubbleWrapper = document.createElement("div");
@@ -107,12 +115,24 @@ async function sendMessage(text, sender) {
 }
 async function setupNextMessage(index) {
     messageIndex = index+1;
+    /* cl(messageIndex);
+    cl(messages.length);
+    cl("----------"); */
+    /* messageIndex = messageIndex >= messages.length && loop ? 0 : messageIndex;
+    cl(messageIndex)
+    cl(messages[messageIndex]); */
     let chatInput = gebi('chatInput');
+
+    // Enhance the history if loop and last message
+    if(messageIndex >= messages.length && loop && messagesInitial.length > 0) {
+        messages = messages.concat(JSON.parse(JSON.stringify(messagesInitial)));
+    }
+
     if(messageIndex < messages.length) {
         let messageObject = messages[messageIndex];
         // if(!messageObject.sent) return
         if(messageObject.sender === 'me' && !messageObject.sent && !chatEdit && !forceSend) {
-            chatInput.setAttribute('onkeydown', `if(!isTyping) {parent.forceType(event, this, '${messageObject.message}', function () { sendMessage('${messageObject.message}', '${messageObject.sender}')}, true)} else { event.preventDefault(); }`);
+            chatInput.setAttribute('onkeydown', `if(!isTyping || !blockTypingWhileAnswerinprogress) {parent.forceType(event, this, '${messageObject.message}', function () { sendMessage('${messageObject.message}', '${messageObject.sender}')}, true)} else { event.preventDefault(); }`);
             // chatInput.setAttribute('onkeydown', `parent.forceType(event, this, '${messageObject.message}', function () { sendMessage('${messageObject.message}', '${messageObject.sender}')}, true)`);
         } else {
             if(!messageObject.sent && !chatEdit) {
@@ -166,6 +186,7 @@ function finishEditMessage() {
 function resetChat() {
     // rebuild chat
     messageIndex = -1;
+    messages = messagesInitial;
     gebi('bubbleContainer').innerHTML = '';
     setupNextMessage(messageIndex);
 }
@@ -194,7 +215,49 @@ function editThisMessage(index) {
             // Create an input element
             const input = document.createElement("input");
 
-            if(typeof messages[index][key] === 'boolean') {
+            if(key === 'sender') {
+                const radio1 = document.createElement("input");
+                radio1.type = "radio";
+                radio1.id = "radio1";
+                radio1.name = "sender";
+                radio1.value= "someoneElse"
+                radio1.checked = messages[index][key] !== 'me';
+                radio1.onchange = (event) => {
+                    // Update the dataObject with the input's value when a key is pressed
+                    messages[index][key] = event.target.checked;
+                    cl(key);
+                    cl(messages[index][key]);
+                };
+                const radio1Label = document.createElement("span");
+                radio1Label.innerHTML = "Other";
+                radio1Label.for="radio1"
+
+                const radioContainer = document.createElement("div");
+                const radio2 = document.createElement("input");
+                radio2.type = "radio";
+                radio2.id = "radio2";
+                radio2.name = "sender";
+                radio2.value= "me"
+                radio2.checked = messages[index][key] === 'me';
+                radio2.onchange = (event) => {
+                    // Update the dataObject with the input's value when a key is pressed
+                    messages[index][key] = event.target.checked;
+                    cl(key);
+                    cl(messages[index][key]);
+                };
+                const radio2Label = document.createElement("span");
+                radio2Label.innerHTML = "Me";
+                radio2Label.for="radio2"
+                radio2Label.classList.add('marginX2')
+
+                // Append the input to the div
+                radio1Label.prepend(radio1);
+                radioContainer.appendChild(radio1Label);
+                radio2Label.prepend(radio2);
+                radioContainer.appendChild(radio2Label);
+                element.appendChild(radioContainer);
+
+            } else if(typeof messages[index][key] === 'boolean') {
                 input.type = "checkbox"; // or "file" if you meant to use file inputs
                 input.checked = messages[index][key]; // or "file" if you meant to use file inputs
                 // Set the onkeydown attribute
@@ -204,6 +267,8 @@ function editThisMessage(index) {
                     cl(key);
                     cl(messages[index][key]);
                 };
+                // Append the input to the div
+                element.appendChild(input);
             } else {
                 input.type = "text"; // or "file" if you meant to use file inputs
                 input.value = messages[index][key]; // or "file" if you meant to use file inputs
@@ -214,11 +279,11 @@ function editThisMessage(index) {
                     cl(key);
                     cl(messages[index][key]);
                 };
-            }
             
-            // Append the input to the div
-            element.appendChild(input);
-
+                // Append the input to the div
+                element.appendChild(input);
+    
+            }
             // Append the div to the container
             container.appendChild(element);
         });
@@ -243,7 +308,10 @@ function showTypeIndicator() {
 }
 
 function hideTypeIndicator() {
-    gebi('typeIndicator').remove();
+    // remove all because sometimes they overlap
+    document.querySelectorAll('.typeIndicator').forEach(indicator => {
+        indicator.remove();
+      });
 }
 
 function keyboardController(event) {
@@ -266,4 +334,16 @@ function keyboardController(event) {
     }
 
     // else key: trigger parent...'s parent controller ..?
+}
+
+function changeFontSize(target) {
+    let bubbleContainer = gebi('bubbleContainer');
+    let chatInput = gebi('inputs');
+    /* const cssObj = window.getComputedStyle(gebi('chatInput'), null);
+    let fontSize = parseInt(cssObj.getPropertyValue("font-size").split('px')[0]);
+    cl(fontSize) */
+
+    bubbleContainer.style.fontSize = target+"px";
+    chatInput.style.fontSize = target+"px";
+    gebi('fontSize').innerHTML = target+"px";
 }

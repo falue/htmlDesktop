@@ -8,6 +8,7 @@ body {
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 1;
 }
 
 #chatFileBtn {
@@ -20,7 +21,7 @@ body {
     left:0;
     margin:.32em;
     padding: .06em .6em !important;
-    border:solid thin rgba(155,155,155,1);
+    border:solid .05em rgba(155,155,155,1);
     border-right: none;
 }
 #chatFileBtn:hover {
@@ -40,8 +41,9 @@ body:not(.sharpCorners) #chatFileBtn {
     left:2em;
     margin: .5em .5em .4em .5em;
     padding: .33em 1em .33em 1.25em;
-    border:solid thin rgba(155,155,155,1);
+    border:solid .05em rgba(155,155,155,1);
 }
+
 body:not(.sharpCorners) #chatInput {
     border-radius:0 1em 1em 0;
 }
@@ -56,7 +58,7 @@ body:not(.sharpCorners) #chatInput {
     right:0;
     margin:.32em;
     padding: .18em 0;
-    border:solid thin white;
+    border:solid .05em white;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 #chatInputBtn:active {
@@ -73,11 +75,11 @@ body:not(.sharpCorners) #chatInputBtn {
     box-sizing: border-box;
     /* display: flex; */
     display: inherit;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-anchor:auto;
     justify-content: flex-end;
     flex-direction: column;
-    max-height: 80%;
+    height: calc(100% - 3em);
     width: 100%;
 }
 
@@ -206,7 +208,7 @@ error */
     padding: 0.25em 0 0  0.25em;
     position: relative;
 }
-#editMessage-container div input:not([type=checkbox]) {
+#editMessage-container div input:not([type=checkbox]):not([type=radio]) {
     width: 200px;
     top:0;
     right:0;
