@@ -35,6 +35,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#608: Fingerprint scan",
+            "windowName": "FingerLAB - v102.B",
+            "icon": "fingerprint",
+            "contentPath": "fingerlab/index.html?scene=608",
+            "x": 6,
+            "y": 6,
+            "w": 1250,
+            "h": 800,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "metaTitle": "#618: Securiton Van videos",
             "windowName": "Securiton",
             "icon": "security",
@@ -43,7 +56,7 @@
             "y": 6,
             "w": 1250,
             "h": 800,
-            "zIndex": 17,
+            "zIndex": 3,
             "minimized": false,
             "renderToDom": true
         },
@@ -56,7 +69,7 @@
             "y": 7,
             "w": 1190,
             "h": 720,
-            "zIndex": 15,
+            "zIndex": 4,
             "minimized": false,
             "renderToDom": false
         },
@@ -69,7 +82,7 @@
             "y": 14,
             "w": 1000,
             "h": 612,
-            "zIndex": 17,
+            "zIndex": 5,
             "minimized": false,
             "renderToDom": false
         },
@@ -82,7 +95,7 @@
             "y": 6,
             "w": 1250,
             "h": 800,
-            "zIndex": 17,
+            "zIndex": 6,
             "minimized": false,
             "renderToDom": false
         },
@@ -95,7 +108,7 @@
             "y": 8,
             "w": 888,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": 7,
             "minimized": false,
             "renderToDom": false
         },
@@ -108,7 +121,7 @@
             "y": 8,
             "w": 1000,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": 8,
             "minimized": false,
             "renderToDom": false
         },
@@ -121,7 +134,7 @@
             "y": 8,
             "w": 1000,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": 9,
             "minimized": false,
             "renderToDom": false
         },
@@ -134,7 +147,7 @@
             "y": 8,
             "w": 1000,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": 10,
             "minimized": false,
             "renderToDom": false
         },
@@ -147,7 +160,7 @@
             "y": 12,
             "w": 1000,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": 11,
             "minimized": false,
             "renderToDom": false
         },
@@ -160,7 +173,7 @@
             "y": 4,
             "w": 1000,
             "h": 800,
-            "zIndex": 17,
+            "zIndex": 12,
             "minimized": false,
             "renderToDom": false
         },
@@ -173,7 +186,7 @@
             "y": 8,
             "w": 1000,
             "h": 588,
-            "zIndex": 17,
+            "zIndex": 13,
             "minimized": false,
             "renderToDom": false
         },
@@ -186,7 +199,7 @@
             "y": 8,
             "w": 1500,
             "h": 800,
-            "zIndex": 11,
+            "zIndex": 14,
             "minimized": false,
             "renderToDom": false
         },
@@ -199,7 +212,7 @@
             "y": 4,
             "w": 1800,
             "h": 888,
-            "zIndex": 12,
+            "zIndex": 15,
             "minimized": false,
             "renderToDom": false
         },
@@ -212,7 +225,7 @@
             "y": 5,
             "w": 700,
             "h": 750,
-            "zIndex": 13,
+            "zIndex": 16,
             "minimized": false,
             "renderToDom": false
         },
@@ -225,7 +238,7 @@
             "y": 7,
             "w": 705,
             "h": 763,
-            "zIndex": 12,
+            "zIndex": 17,
             "minimized": false,
             "renderToDom": false
         },
@@ -238,7 +251,7 @@
             "y": 30,
             "w": 900,
             "h": 575,
-            "zIndex": 14,
+            "zIndex": 18,
             "minimized": false,
             "renderToDom": false
         },
@@ -251,7 +264,7 @@
             "y": 32,
             "w": 666,
             "h": 450,
-            "zIndex": 15,
+            "zIndex": 19,
             "minimized": false,
             "renderToDom": false
         }
