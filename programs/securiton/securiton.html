@@ -60,18 +60,29 @@
         </button>
       </div>
 
-      <div class="gridBox centerContentY toolBar" style="grid-column: col 2 / span 4; grid-row: row 3;">
+      <div class="gridBox centerContentY toolBar" style="grid-column: col 2 / span 3; grid-row: row 3;">
         <button class="marginX25 radius3 hover"><i class="material-icons small valign">restart_alt</i> Reconfigure</button>
         <button class="marginX25 radius3 hover"><i class="material-icons small valign">power_settings_new</i> Access</button>
         <button class="marginX25 radius3 hover"><i class="material-icons small valign">code</i> Shell</button>
         <button class="marginX25 radius3 hover"><i class="material-icons small valign">more_vert</i> Bulk actions</button>
         <button class="marginX25 radius3 hover"><i class="material-icons small valign">help</i> Help</button>
       </div>
-      <div class="gridBox centerContentYRight toolBar padding05" style="grid-column: col 6 / span 4; grid-row: row 3;">
+      <div class="gridBox centerContentYRight toolBar padding05" style="grid-column: col 5 / span 5; grid-row: row 3;">
         <div class="buttonGroup"><!-- 
-          --><button id="useGreenscreenNo" onclick="setGreenscreenFlag(false)" class="greyBg white hover pointer">Live mode</button><!-- 
-          --><button id="useGreenscreenYes" onclick="setGreenscreenFlag(true)" class="hover pointer"><i class="material-icons small valign">bolt</i> Mode</button><!-- 
-        --></div>
+        --><button id="gridBtn1" onclick="setGrid(1)" class="hover pointer"><i class="material-icons small valign">bolt</i> 1x1</button><!-- 
+        --><button id="gridBtn4" onclick="setGrid(4)" class="greyBg white hover pointer"><i class="material-icons small valign">bolt</i> 4x4</button><!-- 
+      --></div>
+
+        <div class="buttonGroup"><!-- 
+        --><button id="useGreenscreenNo" onclick="setGreenscreenFlag(false)" class="greyBg white hover pointer"><i class="material-icons small valign">bolt</i> Vid</button><!-- 
+        --><button id="useGreenscreenYes" onclick="setGreenscreenFlag(true)" class="hover pointer"><i class="material-icons small valign">bolt</i> GS</button><!-- 
+      --></div>
+
+        <div class="buttonGroup"><!-- 
+        --><button id="controlsNo" onclick="setControls(false)" class="greyBg white hover pointer"><i class="material-icons small valign">bolt</i> Live</button><!-- 
+        --><button id="controlsYes" onclick="setControls(true)" class="hover pointer"><i class="material-icons small valign">bolt</i> Arch</button><!-- 
+      --></div>
+
         <button class="selector radius3 hover">
           <i class="material-icons small valign">calendar_today</i>
           <i class="material-icons small circle valign">expand_more</i>
@@ -209,6 +220,12 @@
                 <source id="video4-src" src="data/default.mp4" type="video/mp4">
               </video>
               <iframe id="greenscreen4" src="../colorMarker/index.html?dblClickAllowed=true" class="maxWidth maxHeight hide"></iframe>
+            </div>
+            <div id="container5" class="videoContainer greyBorder hide" onmousewheel="zoom(event, 5)" style="top:0%; left:0%;">
+              <video id="video5" class="surveillanceVideo" controls onclick="togglePlay(5)"> <!--  poster="data/1.png" -->
+                <source id="video5-src" src="data/default.mp4" type="video/mp4">
+              </video>
+              <iframe id="greenscreen5" src="../colorMarker/index.html?dblClickAllowed=true" class="maxWidth maxHeight hide"></iframe>
             </div>
         </div>
 

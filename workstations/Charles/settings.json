@@ -35,6 +35,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#618: Securiton Van videos",
+            "windowName": "Securiton",
+            "icon": "security",
+            "contentPath": "securiton/index.html?scene=618",
+            "x": 6,
+            "y": 6,
+            "w": 1250,
+            "h": 800,
+            "zIndex": 17,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "metaTitle": "#403 Video Joyce",
             "windowName": "MediaPlayerZ",
             "icon": "theaters",
