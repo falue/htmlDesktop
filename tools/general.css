@@ -189,12 +189,39 @@ a:focus { outline: none; }
 .paddingX1 { padding-left: 1em; padding-right: 1em; }
 .paddingX1-50 { padding-left: 1.5em; padding-right: 1.5em; }
 .paddingX2 { padding-left: 2em; padding-right: 2em; }
+.paddingX2-50 { padding-left: 2.5em; padding-right: 2.5em; }
+.paddingX3 { padding-left: 3em; padding-right: 3em; }
+.paddingX3-50 { padding-left: 3.5em; padding-right: 3.5em; }
+.paddingX4 { padding-left: 4em; padding-right: 4em; }
+
 .paddingY0 { padding-top: 0 !important; padding-bottom: 0 !important; }
 .paddingY50 { padding-top: .5em; padding-bottom: .5em; }
 .paddingY25 { padding-top: .25em; padding-bottom: .25em; }
 .paddingY1 { padding-top: 1em; padding-bottom: 1em; }
 .paddingY1-50 { padding-top: 1.5em; padding-bottom: 1.5em; }
 .paddingY2 { padding-top: 2em; padding-bottom: 2em; }
+
+.paddingL0 { padding-left: 0 !important; }
+.paddingL25 { padding-left: .25em; }
+.paddingL50 { padding-left: .5em; }
+.paddingL1 { padding-left: 1em; }
+.paddingL1-50 { padding-left: 1.5em; }
+.paddingL2 { padding-left: 2em }
+.paddingL2-50 { padding-left: 2.5em; }
+.paddingL3 { padding-left: 3em }
+.paddingL3-50 { padding-left: 3.5em; }
+.paddingL4 { padding-left: 4em }
+
+.paddingR0 { padding-right: 0 !important; }
+.paddingR25 { padding-right: .25em; }
+.paddingR50 { padding-right: .5em; }
+.paddingR1 { padding-right: 1em; }
+.paddingR1-50 { right-left: 1.5em; }
+.paddingR2 { padding-right: 2em }
+.paddingR2-50 { right-left: 2.5em; }
+.paddingR3 { padding-right: 3em }
+.paddingR3-50 { right-left: 3.5em; }
+.paddingR4 { padding-right: 4em }
 
 .margin0 { margin: 0; }
 .margin25 { margin: 0.25em; }
@@ -706,3 +733,13 @@ textarea {
 @media (max-width: 800px) {
 }
 
+@media print {    
+    .noPrint
+    {
+        display: none !important;
+    }
+    .onlyPrint
+    {
+        display: inherit !important;
+    }
+}

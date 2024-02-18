@@ -212,27 +212,28 @@ function previewEmail(index, name) {
 
 function createHeader(email, fromTo="from") {
     email = `<div class='relative'>
-        <div class='left top relative avatar greyBg white uppercase'>
+        <div class='left top relative avatar greyBg white uppercase noPrint'>
             ${email.sender.avatar ? email.sender.avatar : email.sender.name[0] }
         </div>
-        <div style='padding-left:3.5em'>
+        <div class='paddingL3-50'>
           <div class='small'>
           <span class='op50 italics capitalize'>${fromTo}:</span> ${printHtmlEntities(email.sender.name)}
           </div>
-          <div class='marginY25' style='width:calc(100% - 3em)'>
+          <div class='marginY25 bold' style='width:calc(100% - 3em)'>
             ${email.subject}
           </div>
           <div>
             <span class='small'>${workstation === 'generic' || !workstation ? account && account !== 'generic' ? 'To: '+ account : '' : 'To: '+account ? account : workstation}</span>
           </div>
         </div>
-        <div class='right top relative op50 small'>
+        <div class='right top relative op50 small noPrint'>
         ${email.date}
         </div>
-        <div class='right bottom relative op50'>
+        <div class='right bottom relative op50 noPrint'>
             <i class="material-icons small">attachment</i>
-            <i class="material-icons small" onclick="printEmail()">print</i>
+            <i class="material-icons small" onclick="printEmail(event)">print</i>
         </div>
+        <hr class="hide onlyPrint">
     </div>`;
     return email
 }
@@ -242,13 +243,24 @@ function printHtmlEntities(text) {
 }
 
 // Yes we're all mad here
-function printEmail() {
-    let mail = emails[emailIndex];
-    let print = `${[`From: ${mail.sender.name} - ${mail.date}`, `<h3>${mail.subject}</h3>`].join('<br>')}<br><br>${mail.message}<hr>`;
-
-    if(parent.parent) {
-        parent.parent.addWindow(`Print Email "${mail.subject}"`, 'print', `print/index.html?printText=${encodeURI(print)}&pages=1`, 22,13, 800,555, false);
+async function printEmail(event) {
+    if(event.altKey) {
+        // print for real with alt key
+        if(parent.parent) {
+            await parent.parent.printElement('', gebi('preview'), false);
+        } else {
+            await parent.printElement('', gebi('preview'), false);
+        }
     } else {
-        parent.addWindow(`Print Email "${mail.subject}"`, 'print', `print/index.html?printText=${encodeURI(print)}&pages=1`, 22,13, 800,555, false);
+        // Open fake printer window
+        cl("alt + click to print for realz");
+        let mail = emails[emailIndex];
+        let print = `${[`From: ${mail.sender.name} - ${mail.date}`, `<h3>${mail.subject}</h3>`].join('<br>')}<br><br>${mail.message}<hr>`;
+        
+        if(parent.parent) {
+            parent.parent.addWindow(`Print Email "${mail.subject}"`, 'print', `print/index.html?printText=${encodeURI(print)}&pages=1`, 22,13, 800,555, false);
+        } else {
+            parent.addWindow(`Print Email "${mail.subject}"`, 'print', `print/index.html?printText=${encodeURI(print)}&pages=1`, 22,13, 800,555, false);
+        }
     }
 }
