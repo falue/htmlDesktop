@@ -33,6 +33,19 @@
             "zIndex": 1,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#315 Browser - Mystery Forum Chat",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html",
+            "x": 8,
+            "y": 4,
+            "w": 1450,
+            "h": 800,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": true
         }
     ],
     "shortcuts": [

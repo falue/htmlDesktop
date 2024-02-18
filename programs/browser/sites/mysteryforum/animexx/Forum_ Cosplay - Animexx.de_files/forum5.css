@@ -1,0 +1,422 @@
+div.postingbox {
+    margin-left: auto;
+    margin-right: 0
+}
+
+div.postingdiv {
+    overflow: hidden
+}
+
+div.posting_header {
+    background: #C3C3FF
+}
+
+.posting_body {
+    background: #E0E0FF
+}
+
+table.posting_von {
+    border-spacing: 0
+}
+
+table.posting_von th {
+    padding-right: 15px;
+    font-weight: normal
+}
+
+img.posting_icon {
+    width: 30px;
+    height: 30px;
+    float: left
+}
+
+table.threadlist {
+    width: 100%;
+    border-spacing: 1px;
+    border-bottom: solid 5px #C3C3FF;
+    table-layout: fixed
+}
+
+th.hea {
+    background-color: #C3C3FF;
+    color: black;
+    text-align: center
+}
+
+th.hea a {
+    color: black
+}
+
+td.stickyborder {
+    border-top: solid 2px #5858FF
+}
+
+td.reaktionen {
+    text-align: center;
+    vertical-align: middle
+}
+
+td.kats {
+    vertical-align: middle
+}
+
+td.betreff,
+td.reaktionen,
+td.kats,
+td.verfasser {
+    background-color: #E0E0FF;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+td.betreff .katbeschreibung {
+    padding-left: 21px;
+    color: gray;
+    font-size: 0.9em
+}
+
+div.verf_datum {
+    font-size: 9px;
+    padding-left: 13px;
+    color: gray
+}
+
+td.posting_header {
+    background-color: #C3C3FF;
+    text-align: left;
+    vertical-align: top
+}
+
+span.adminposting {
+    color: yellow;
+    font-weight: bold;
+    padding-left: 10px
+}
+
+div.kana1 {
+    position: absolute;
+    height: 40px;
+    width: 28px
+}
+
+font.kana2 {
+    position: absolute;
+    top: 0;
+    left: 4px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px
+}
+
+font.kana3 {
+    position: absolute;
+    top: 23px;
+    left: 8px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px
+}
+
+td.startb {
+    font-size: 14px
+}
+
+td.ich {
+    background-color: #C3C3FF
+}
+
+td.ob {
+    font-size: 10px;
+    text-align: center;
+    border: 4px solid #E8E8FF;
+    cursor: pointer
+}
+
+#kats_holder {
+    padding: 0;
+    width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px #c3c3ff;
+    background-color: #c3c3ff;
+    position: relative;
+    border-spacing: 0
+}
+
+#kats_holder .katsselector {
+    padding: 3px;
+    background-color: #C3C3FF;
+    width: 144px;
+    height: 26px;
+    vertical-align: middle;
+    font-weight: bold;
+    cursor: pointer;
+    border-left: solid 1px #E0E0FF;
+    border-top: solid 1px #E0E0FF;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+#kats_holder .kats_content {
+    position: relative;
+    display: none;
+    width: 550px;
+    padding-left: 2px;
+    padding-top: 2px;
+    min-height: 102px
+}
+
+#kats_sel .katsselnav_item {
+    width: 32%;
+    float: left;
+    cursor: pointer;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+#kats_sel .katsselnav_item span,
+#kats_sel #kats_sel .katsselnav_item img {
+    vertical-align: middle
+}
+
+#kats_sel .katsselnav_item:hover {
+    background-color: #C3C3FF;
+    vertical-align: middle
+}
+
+#kats_sel .katsselnav_itemm:hover {
+    background: #C3C3FF url(/pics/pfeil_rechts.gif) no-repeat center right
+}
+
+#katselect_setter,
+#statusadd_setter,
+#kat_fan_setter {
+    position: absolute;
+    width: 200px;
+    border: solid 1px #C3C3FF;
+    margin: 0;
+    padding: 0;
+    background-color: #E0E0FF;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px
+}
+
+.sichtbarkeit_setter_cont {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 2px 3px 3px 10px
+}
+
+.katselect_pfeil {
+    position: absolute;
+    left: -6px;
+    top: 45px;
+    width: 13px;
+    height: 13px;
+    background: url(/kontakte/tooltip_imgs.gif)
+}
+
+.kat_fan_pfeil {
+    position: absolute;
+    left: -6px;
+    top: -7px;
+    width: 13px;
+    height: 13px;
+    background: url(/pics/tooltipbox_obenunten.png)
+}
+
+.statusadd_pfeil {
+    position: absolute;
+    left: -6px;
+    top: 25px;
+    width: 13px;
+    height: 13px;
+    background: url(/kontakte/tooltip_imgs.gif)
+}
+
+.sichtbarkeit_setter_cont .hoverablef,
+.sichtbarkeit_setter_cont .hoverable {
+    font-size: 12px;
+    padding: 2px;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    color: black
+}
+
+.sichtbarkeit_setter_cont .hoverable span,
+.sichtbarkeit_setter_cont .hoverable img,
+.sichtbarkeit_setter_cont .hoverablef span,
+.sichtbarkeit_setter_cont .hoverablef img {
+    vertical-align: middle
+}
+
+.sichtbarkeit_setter_cont .hoverablef:hover,
+.sichtbarkeit_setter_cont .hoverable:hover {
+    background-color: #C3C3FF
+}
+
+.katselect_caller {
+    cursor: pointer;
+    position: relative
+}
+
+.statusadd_caller {
+    vertical-align: bottom;
+    position: relative
+}
+
+.topleiste {
+    width: 100%;
+    border: solid 1px #C3C3FF;
+    background: #E0E0FF;
+    padding: 2px
+}
+
+.topleiste div.button,
+.kats_content div.button {
+    margin: 2px;
+    padding: 1px 3px 1px 1px;
+    color: black;
+    vertical-align: middle;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px
+}
+
+.topleiste div.button img,
+.kats_content div.button img {
+    vertical-align: middle
+}
+
+.topleiste div.button span,
+.kats_content div.button span {
+    vertical-align: middle;
+    font-weight: bold
+}
+
+#prev_holder {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 1px
+}
+
+#prev_holder th {
+    background-color: #5858FF;
+    color: white;
+    text-align: center
+}
+
+#prev_holder td {
+    background-color: #E0E0FF
+}
+
+#prev_holder .verfasser {
+    width: 140px
+}
+
+#prev_holder .datum {
+    width: 120px
+}
+
+@media screen and (max-width: 1050px) {
+    #prev_holder {
+        width: 500px
+    }
+}
+
+@media screen and (max-width: 950px) {
+    #prev_holder {
+        width: 400px
+    }
+
+    #prev_holder .verfasser {
+        width: 90px
+    }
+
+    #prev_holder .datum {
+        width: 100px
+    }
+}
+
+.nt_regeln {
+    background: #E0E0FF;
+    width: 746px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3px;
+    display: none
+}
+
+.suchergebnis_small {
+    width: 90%;
+    margin-right: 0;
+    margin-left: auto;
+    margin-bottom: 8px;
+    background: #E0E0FF;
+    cursor: pointer
+}
+
+.startseite_veranstaltungen {
+    width: 100%;
+    font-size: 0;
+    border-top: solid 1px #5858ff;
+    border-left: solid 1px #5858ff
+}
+
+.startseite_veranstaltungen h2 {
+    border-bottom: solid 1px #5858ff;
+    border-right: solid 1px #5858ff;
+    padding: 2px;
+    background-color: #c3c3ff;
+    font-size: 16px;
+    font-weight: bold
+}
+
+.startseite_veranstaltungen .eintrag {
+    display: inline-block;
+    padding: 2px;
+    background-color: #e0e0ff;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: middle;
+    border-bottom: solid 1px #5858ff;
+    border-right: solid 1px #5858ff;
+    box-sizing: border-box;
+    width: 50%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.startseite_veranstaltungen .eintrag a,
+.startseite_veranstaltungen .eintrag a:link {
+    color: black
+}
+
+.startseite_veranstaltungen .eintrag span {
+    vertical-align: middle
+}
+
+.startseite_kategorien h2 a,
+.startseite_kategorien h2 a:link,
+.startseite_kategorien h2 a:visited {
+    color: #444
+}
+
+.startseite_kategorien ul.kategorien_liste {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+.startseite_kategorien ul.kategorien_liste>li {
+    margin: 0;
+    padding: 5px
+}
+
+/*# sourceMappingURL=forum5.css.map */

@@ -1,0 +1,18 @@
+.sidebar_mini, .sidebar_std, .leaderboard_row, .skyscraper_row, #ow_navbar_base, #skyscraper_wallpaper, #leaderboard_div, #sidebar_mini_holder, #sidebar_std_holder{ display: none !important; }
+#body_table { width: 100% !important; margin: 0 !important; }
+#xxmenu_holder a, #xxmenu_holder img, .anmeldelink { display: none !important; }
+.dunkelheader { border-bottom: solid 1px #5858FF; border-top: solid 1px #5858FF; }
+#header_caption { position: absolute; bottom: 0; right: 0; }
+footer { display: none !important; }
+#pageholder, #root, #bodyid { padding: 0 !important; margin: 0 !important; border: none !important; border-radius: 0  !important; box-shadow: 0 0 0 0 white !important; }
+#xxmenu_holder .pics_menuverlauf, #xxmenu_holder .pics_karo_smallsmall { display: none; }
+body { background: none; }
+
+html, body  { height: auto !important; display: block !important; }
+.noprint { display: none !important; }
+
+
+h2 { font-size: 15px; }
+#animexx_bodycontent { background: none; }
+#bodyid { background: none; }
+

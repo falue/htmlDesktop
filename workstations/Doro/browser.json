@@ -25,6 +25,14 @@
                 "First entry of this list is also acting as the home page."],
     "urls": [
         {
+            "spoofUrl": "forum.baselmystery.ch",
+            "realUrl": "sites/mysteryforum/index.html",
+            "favoritesName": "mystery.ch",
+            "metaName": false,
+            "materialIcon": "auto_fix_high",
+            "showInFavorites": false,
+            "onclick": false
+        },{
             "spoofUrl": "qsearch.ch",
             "realUrl": "sites/qsearch/index.html",
             "favoritesName": "qsearch.ch",
