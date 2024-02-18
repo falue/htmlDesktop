@@ -22,12 +22,9 @@ async function setup() {
     
     let data = await parseFile(path + "browser.json");
 
-    // MABYE JOIN
-    /* if(workstation !== "_generic") {
-      let baseData = await parseFile(path + "../../workstations/_generic/browser.json");
-      // TODO: remove douplicats???!
-      data = [...data, ...baseData.urls.urls];
-    } */
+    // Add generic websites to hidden menu to make them accessible for everyone
+    let defaultWebsites = await parseFile("sites/defaultWebsites.json");
+    data.urls = [...data.urls, ...defaultWebsites];  // TODO: remove duplicates
 
     // Get darkMode from URL
     data.settings.darkMode = urlParams.get('darkMode') === "true";

@@ -1,0 +1,19 @@
+[
+    {
+        "spoofUrl": "forum.baselmystery.ch",
+        "realUrl": "sites/mysteryforum/index.html",
+        "favoritesName": "mystery.ch",
+        "metaName": false,
+        "materialIcon": "auto_fix_high",
+        "showInFavorites": false,
+        "onclick": false
+    },{
+        "spoofUrl": "inbox.avmail.ch?login=true&hash=458123674t90v78234561",
+        "realUrl": "../email/index.html?webmail=true&account=funancelli@avmail.ch&scene=313&inbox=inbox&selected=0",
+        "favoritesName": "avmail.ch 313",
+        "metaName": false,
+        "materialIcon": "email",
+        "showInFavorites": false,
+        "onclick": false
+    }
+]
