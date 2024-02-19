@@ -48,6 +48,19 @@
             "renderToDom": true
         },
         {
+            "metaTitle": "#508: Hacking museum credentials",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=508&darkMode=true",
+            "x": 8,
+            "y": 12,
+            "w": 1450,
+            "h": 750,
+            "zIndex": 20,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "metaTitle": "#618: Securiton Van videos",
             "windowName": "Securiton",
             "icon": "security",
