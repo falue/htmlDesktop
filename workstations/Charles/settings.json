@@ -74,6 +74,19 @@
             "renderToDom": true
         },
         {
+            "metaTitle": "#644,206 Monitor rechts; programmieren",
+            "windowName": "x_ide",
+            "icon": "code",
+            "contentPath": "x_ide",
+            "x": 8,
+            "y": 8,
+            "w": 1500,
+            "h": 800,
+            "zIndex": 14,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
             "metaTitle": "#403 Video Joyce",
             "windowName": "MediaPlayerZ",
             "icon": "theaters",
@@ -200,19 +213,6 @@
             "w": 1000,
             "h": 588,
             "zIndex": 13,
-            "minimized": false,
-            "renderToDom": false
-        },
-        {
-            "metaTitle": "#206 Monitor rechts",
-            "windowName": "x_ide",
-            "icon": "code",
-            "contentPath": "x_ide",
-            "x": 8,
-            "y": 8,
-            "w": 1500,
-            "h": 800,
-            "zIndex": 14,
             "minimized": false,
             "renderToDom": false
         },
