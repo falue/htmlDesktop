@@ -1,3 +1,13 @@
+function setup() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  let searchTerm = urlParams.get('search');
+  if(searchTerm) {
+    console.log("search for:", searchTerm);
+    search(searchTerm);
+  }
+}
+
 function typing(event, value) {
   /* console.log(event.key); */
   if (event.key === 'Enter') {

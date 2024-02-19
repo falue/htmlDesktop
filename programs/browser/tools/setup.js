@@ -132,9 +132,26 @@ async function setupFavorites(urls) {
       let spanUrlsList = document.createElement("span");
       spanUrlsList.innerHTML = " " + metaName;
       let action = onclick ? onclick : "";
-      spanUrlsList.setAttribute("onclick", "goToUrl('"+realUrl+"', '"+spoofUrl+"'); "+action);
+      spanUrlsList.setAttribute("onclick", "hide('favoritesMenu'); goToUrl('"+realUrl+"', '"+spoofUrl+"'); "+action);
       spanUrlsList.prepend(iUrlsList);
+
       urlsList.appendChild(spanUrlsList);
+
+      // Setup saved search terms for qsearch
+      if(spoofUrl.includes('qsearch')) {
+        const ul = document.createElement('ul');
+        ul.style.marginBottom = '.5em';
+        for (const [key, value] of Object.entries(searchTerms)) {
+          const li = document.createElement('li');
+          li.style.paddingLeft = '1.75em';
+          li.style.cursor = 'pointer';
+          li.style.listStyle = 'none';
+          li.textContent = `q: ${key}`; // Druckt Schlüssel und Wert
+          li.setAttribute("onclick", "hide('favoritesMenu'); goToUrl('sites/qsearch/index.html?search="+key+"', 'qsearch.ch/q/"+key+"')");
+          ul.appendChild(li);
+        }
+        urlsList.appendChild(ul);
+      }
     }
 
     // Setup spoof urls for entering manual in URL input
