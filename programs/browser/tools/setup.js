@@ -146,7 +146,8 @@ async function setupFavorites(urls) {
           li.style.paddingLeft = '1.75em';
           li.style.cursor = 'pointer';
           li.style.listStyle = 'none';
-          li.textContent = `q: ${key}`; // Druckt Schlüssel und Wert
+          li.title=`On qsearch.ch; you can search for "${key}" and find ${value.length} results`;
+          li.innerHTML = `<span style="color:grey; display:inline">q:</span> "${key}"`; // Druckt Schlüssel und Wert
           li.setAttribute("onclick", "hide('favoritesMenu'); goToUrl('sites/qsearch/index.html?search="+key+"', 'qsearch.ch/q/"+key+"')");
           ul.appendChild(li);
         }
