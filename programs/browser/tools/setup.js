@@ -100,7 +100,7 @@ async function setupFavorites(urls) {
     let realUrl = url["realUrl"];
     let spoofUrl = url["spoofUrl"];
     let favoritesName = url["favoritesName"] ? url["favoritesName"] : spoofUrl;
-    let metaName = url["metaName"] ? url["metaName"] : favoritesName;
+    let metaName = url["metaName"] ? `${url["favoritesName"]}: ${url["metaName"]}` : favoritesName;
 
     let onclick = url["onclick"];
     favorites.push([realUrl, spoofUrl, onclick]);
