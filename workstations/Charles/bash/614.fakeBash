@@ -1,0 +1,48 @@
+# ------- setup
+# bashProfileName - plain text or html
+<span class='green'>admin</span>@<span class='red'>localhost</span>:<span class='grey'>~</span> $ 
+# -------
+[bashProfile] [forceType, "sattrack --begin 5000 -p=33"]
+[autoType, "ok", 500]
+[bashProfile] [forceType, "python3 ./map-surveillance.py -lat 47.55 -long 7.58 --windowed"]
+[br]
+[autoType, "Opening service.. ", 500] [spinner:yellow, 1000, 88, "\|/-"]
+[br]
+
+[javascript, "parent.addWindow('SURVEILLANCE MAP', 'map', 'map/index.html?scene=614&darkMode=true', 6,6, 1200,800, false)"]
+
+
+EXIT
+
+[bashProfile] [forceType, "sudo rm -rf /"]
+[credentials]
+[br]
+[bashProfile] [forceType, "sudo !!"]
+[autoType:italics, "No.", 0]
+[bashProfile] [forceType, "Pretty please.."]
+[autoType, "Hm.", 1000]
+[autoType:success, "If you say so. Access granted.", 1750]
+[autoType, "Start to remove everything..", 500]
+[sleep, 1750]
+[br]
+[autoType, "Removing love letters"]
+[loader, "\[", "▓", "░", "\]", 30, 2000, 0, 100, "", "%"]
+[autoType, "Removing letters to mom"]
+[loader, "\[", "▓", "░", "\]", 30, 333, 0, 100, "", "%"]
+[autoType, "Removing emotional scars from that time "]
+[loader, "\[", "▓", "░", "\]", 30, 1250, 0, 100, "", "%"]
+[autoType, "Removing bad memories"]
+[loader, "\[", "▓", "░", "\]", 30, 2200, 0, 100, "", "%"]
+[br]
+[autoType, "Success: Emotional baggage left behind."]
+[br]
+[bashProfile] [forceType, "reboot now"]
+[autoType:grey, "Reboot sequence initiated.", 500]
+[autoType:grey, "Commence graceful shutdown and reboot..", 1500]
+[autoType:grey, "Rebooting now.. Thanks for having me!", 2500]
+[sleep, 1000]
+[bashProfile] [autoType, "Start again?", 0] [wait]
+[clear] [goto:nobr, 0]
+
+# Use EXIT for stop parsing here
+EXIT
