@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div id="results" onclick="window.location.href = ''" class="hide fixed maxWidth maxHeight centerContent overlayWindow">
+    <div id="results" onclick="hide(this.id);" class="hide fixed maxWidth maxHeight centerContent overlayWindow">
       <div class="shadow rounded greenBg">
         <h3 class="uppercase">Matching successful</h3>
         <div class="centerText">Score: 172</div>
@@ -49,72 +49,227 @@
 
 
     <div class="container">
-      <div class="system-bar" >  <!-- style="background-color:rgb(136, 79, 79);" -->
+      <div class="system-bar invert" >  <!-- style="background-color:rgb(136, 79, 79);" -->
             <header class="windowmenu">
               <button class="programButtons">File</button><!-- 
               --><button class="programButtons">Edit</button><!-- 
               --><button class="programButtons">View</button><!-- 
               --><button class="programButtons">Settings</button><!-- 
               --><button class="programButtons">Tools</button><!-- 
+              --><button class="programButtons">Database</button><!-- 
+              --><button class="programButtons">Subjects</button><!-- 
               --><button class="programButtons">Help</button><!-- 
               --><button class="programButtons">About</button>
             </header>
       </div>
-      <div class="program-bar" >  <!-- style="background-color:rgb(55, 55, 160);" -->
+      <div class="program-bar relative" >  <!-- style="background-color:rgb(55, 55, 160);" -->
         <button><i class="material-icons valign">local_police</i></button>
         <button><i class="material-icons valign">list</i></button>
         <button><i class="material-icons valign">wysiwyg</i></button>
         <button><i class="material-icons valign">satellite_alt</i></button>
         <button><i class="material-icons valign">insert_chart_outlined</i></button>
-        <button onclick="startScan()">
-          <i class="material-icons valign">fingerprint</i>
-          Start scan
-        </button>
+        <button><i class="material-icons valign">touch_app</i></button>
+        <button onclick="window.location.href=''"><i class="material-icons valign">bolt</i></button>
+        
+        <div class="relative right top margin25 marginX1">
+          <button id="scanBtn" onclick="startScan()">
+            <i class="material-icons valign blue">fingerprint</i>
+            Start scan
+          </button>
+          <button id="resetBtn" onclick="window.location.href = ''" class="hide">
+            <i class="material-icons valign blue">fingerprint</i>
+            Start scan
+          </button>
+          <button><i class="material-icons valign blue">back_hand</i></button>
+          <button><i class="material-icons valign blue">compare</i></button>
+          <button><i class="material-icons valign blue">compare_arrows</i></button>
+        </div>
       </div>
       <div class="content">
-        <div class="tools">
-          <div class="toolList" >toolList</div>  <!-- style="background-color:rgb(154, 154, 154);" -->
-          <div class="toolFooter" >toolFooter</div>  <!-- style="background-color:rgb(0, 146, 0);" -->
+        <div class="tools overflowAuto noScrollbar">
+          <div class="toolList overflowAuto noScrollbar" >
+            <ul>
+              <li><span class="op50 uppercase">Program Overview</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">crop_free</i>Introduction to the Fingerprint Scanner Program</li>
+                  <li><i class="material-icons valign small blue">settings_applications</i> Key Features and Capabilities</li>
+                  <li><i class="material-icons valign small blue">settings_ethernet</i> User Interface and Navigation</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Enrollment and Registration</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">room_preferences</i> Creating User Profiles</li>
+                  <li><i class="material-icons valign small blue">settings_input_component</i> Enrolling Fingerprints</li>
+                  <li><i class="material-icons valign small blue">settings_input_antenna</i> Data Privacy and Security Measures</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Scan Operations</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">history</i> Conducting Fingerprint Scans</li>
+                  <li><i class="material-icons valign small blue">settings_suggest</i> Interpreting Scan Results</li>
+                  <li><i class="material-icons valign small blue">point_of_sale</i> Matching Algorithms and Accuracy</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Case Management</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">settings_system_daydream</i> Creating and Managing Cases</li>
+                  <li><i class="material-icons valign small blue">sensor_window</i> Linking Fingerprint Data to Cases</li>
+                  <li><i class="material-icons valign small blue">dns</i> Collaboration and Sharing within Departments</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Advanced Features</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">surround_sound</i> Mobile Integration for Field Operations</li>
+                  <li><i class="material-icons valign small blue">system_security_update_good</i> Cross-Jurisdictional Database Access</li>
+                  <li><i class="material-icons valign small blue">storage</i> Artificial Intelligence for Pattern Recognition</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Training and Support</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">developer_board</i> Onboarding and Continuous Training Programs</li>
+                  <li><i class="material-icons valign small blue">keyboard_hide</i> Technical Support and Maintenance</li>
+                  <li><i class="material-icons valign small blue">device_hub</i> Community Forums and User Feedback</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Compliance and Legal Considerations</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">lan</i> Adhering to Global Data Protection Regulations</li>
+                  <li><i class="material-icons valign small blue">album</i> Legal Implications of Misuse</li>
+                  <li><i class="material-icons valign small blue">spa</i> Audit Trails and Transparency</li>
+                </ul>
+              </li>
+            </ul>
+            <br>
+            <br>
+            <div class="small">
+              Speed scan <span id="speedScan-label">1000</span>ms (def. 1000ms)<br>
+              <input id="speedScan-range" type="range" min="100" max="2500" value="1000" oninput="setSpeedScan(this.value)">
+              <br>
+              <hr>
+              <br>
+              Speed search <span id="speed-label">100</span>ms (def. 100ms)<br>
+              <input id="speed-range" type="range" min="10" max="500" value="100" oninput="setSpeed(this.value)">
+              <br>
+              <hr>
+              <br>
+              <button class="block" onclick="invertScanView();">
+                Invert scanning window
+              </button>
+              <br>
+              <br>
+              <br>
+            </div>
+
+          </div>
+          <div class="toolFooter" >
+            <div>
+              <i class="material-icons valign">developer_board</i>
+              Fingerprint DB
+            </div>
+            <div class="paddingY50">
+              <i class="material-icons valign">settings_input_antenna</i>
+              Audit Trails
+            </div>
+          </div>
         </div>
-        <div class="result">
-          <div class="prints" >  <!-- style="background-color:rgb(148, 148, 114);" -->
+        <div id="result" class="result">
+          <div id="prints" class="prints" >  <!-- style="background-color:rgb(148, 148, 114);" -->
             <div id="fingerprint-empty" class="padding1 op50 maxHeight centerContent italics">
               Scanner in sleep mode<br><br>
             </div>
             <div id="fingerprint-scanned" class="hide">
+              <div id="match-1" style="background-image:url('data/match-1.jpg')" class="matches invert"></div>
+              <div id="match-2" style="background-image:url('data/match-2.jpg')" class="matches hide invert"></div>
+              <div id="match-3" style="background-image:url('data/match-3.jpg')" class="matches hide invert"></div>
+              <div id="match-4" style="background-image:url('data/match-4.jpg')" class="matches hide invert"></div>
 
-              <div id="match-1" style="background-image:url('data/match-1.jpg')" class="invert"></div>
-              <div id="match-2" style="background-image:url('data/match-2.jpg')" class="hide invert"></div>
-              <div id="match-3" style="background-image:url('data/match-3.jpg')" class="hide invert"></div>
-              <div id="match-4" style="background-image:url('data/match-4.jpg')" class="hide invert"></div>
-
-              <div id="data-1" style="background-image:url('data/data-1.png')" class="hide"></div>
-              <div id="data-2" style="background-image:url('data/data-3.png')" class="hide"></div>
-              <div id="data-3" style="background-image:url('data/data-2.png')" class="hide"></div>
-
+              <div id="data-1" style="background-image:url('data/data-1.png')" class="matches hide"></div>
+              <div id="data-2" style="background-image:url('data/data-3.png')" class="matches hide"></div>
+              <div id="data-3" style="background-image:url('data/data-2.png')" class="matches hide"></div>
             </div>
           </div>
           <div class="printsBinary code bold" >  <!-- style="background-color:rgb(0, 138, 138);" -->
-            printsBinary<br>
-            printsBinary<br>
-            printsBinary<br>
+            <iframe id="printsBinary-iframe" class="relative maxWidth maxHeight" src="../terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=6&language=none&autotype=false&humanTyper=false&cursor=true&truncateText=500&bgColor=0d0d0d&fontColor=339e91&paddingRange=5">
+            </iframe>
           </div>
         </div>
         <div class="status" >  <!-- style="background-color:rgb(216, 142, 45);" -->
-          STATUS<br>
+          <span class="op50 uppercase">Status</span>
+          <div id="status-idle" class="small">
+            <br>
+            <span class="italics">- Scanner asleep -</span>
+            <br>
+            <br>
+            Latest data dump:
+            <br>
+            <br>
+            <hr>
+            <span class="code nobr">
+              00007d70  0c 1d 4d e9 f6 94 5c 28  21 54 21 46 4e c0 e9 e0<br>
+              00007d80  ef 10 50 53 23 d5 d8 b6  92 bd 75 bb 22 0a 60 53<br>
+              00007d90  bb 42 35 d4 65 3e c1 52  9f 23 26 ee 61 31 01 12<br>
+              00007df0  6c 00 b4 85 0c dc a5 59  80 ef 8c 08 3a 26 e4 51 <br>
+              00007e00  55 41 52 19 25 52 39 93  55 23 90 c9 9d 25 48 39 <br>
+              00007e10  28 91 d3 38 f1 08 64 ce  02 51 03 64 60 10 da 00 <br>
+              00007e20  39 86 34 c3 7c bc 23 c2  8f 78 b4 f9 66 ae 7a cb <br>
+              00007e30  ff 00 49 cd 77 6e e9 da  99 d9 76 80 64 29 b9 93 <br>
+              00007e40  39 7d ec b9 0b 81 7a ae  d5 53 19 45 5b 4b 63 48 <br>
+              00007e50  54 15 7d 67 55 c9 b9 54  cc e1 21 60 d8 b7 7c e9 
+            </span>
+            <br>
+            <hr>
+            <br>Selected Mode: ASDB-B
+            <br>
+            <br>
+            <hr>
+            <br>
+            <br>
+            <button class="marginY25"><i class="material-icons valign small blue">settings</i> Settings</button>
+            <button class="marginY25"><i class="material-icons valign small blue">precision_manufacturing</i> Preface</button>
+            <br>
+            <button class="marginY25"><i class="material-icons valign small blue">checklist</i> Prefilght</button>
+            <button class="marginY25"><i class="material-icons valign small blue">checklist_rtl</i> Postfilght</button>
+          </div>
+          <div id="status-scanning" class="hide small">
+            <br>
+            <span class="italics">Scanner scanning..</span>
+            <br>
+            <i class="material-icons spin valign small blue relative">refresh</i>
+            <span id="status-scanning-bar">0%</span>
+          </div>
           <div id="compareScanBtn" class="hide small">
             <br>
-            <span class="sine20">Scanning finshed.</span><br>
+            <span class="sine20">Scanning finished.</span><br>
             <br>
-            <button onclick="gebi('fingerprint-scanned').classList.toggle('invert')" class="block marginY50">Invert</button>
-            <button class="block marginY50">Enrol..</button>
-            <button class="block marginY50">Matching settings</button>
-            <button onclick="compareScan()" class="block marginY50">Compare with DB</button>
+            <br>
+            Scanning Quality: <span class="bold blue">144</span><br>
+            Immersion: <span class="bold blue">23%</span><br>
+            Overall: <span class="bold blue">BE</span>.q<br>
+            <br>
+            <hr>
+            <br>
+            <button onclick="gebi('fingerprint-scanned').classList.toggle('invert')" class="marginY50">
+              <i class="material-icons valign small blue">opacity</i> Invert
+            </button>
+            <button class="marginY50">
+              <i class="material-icons valign small blue">grading</i> Enrol..
+            </button>
+            <button class="marginY50">
+              <i class="material-icons valign small blue">settings</i> Matching settings
+            </button>
+            <br>
+            <button class="marginY50 block maxWidth ">
+              <i class="material-icons valign small blue">code</i> See data dump
+            </button>
+            <button onclick="compareScan()" class="block maxWidth marginY50 blueBg white">
+              <i class="material-icons valign small white">compare_arrows</i> Compare with DB
+            </button>
           </div>
         </div>
-        <div class="db">
-          <div class="dbTabs small" >  <!-- style="background-color:rgb(183, 117, 183);" -->
-            dbTabs 1 | dbTab 2
+        <div class="db overflowAuto noScrollbar">
+          <div class="dbTabs small overflowAuto noScrollbar" >  <!-- style="background-color:rgb(183, 117, 183);" -->
+            <button class="">Subjects</button><!-- 
+             --><button class="greyBg white">Similars</button>
           </div>
           <div class="dbList" >  <!-- style="background-color:rgb(49, 180, 136);" -->
             <div class="fingerprint small"><img src="data/prints/print-1.jpg"><h4>Yoshida, Carmen</h4><div class="data">UID: CA63BF/T-1S <span class="score op0 bold nobr">Score: 24</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX F48B7B471442</div></div>
@@ -223,7 +378,19 @@
           </div>
         </div>
       </div>
-      <div class="footer small" >footer</div>  <!-- style="background-color:rgb(211, 170, 214);" -->
+      <div class="footer small relative white" >
+        Last Update: 
+        <i class="material-icons small op50 valign">check_circle</i>
+        vB-23-A-4
+        <div class="relative right top margin50 op50">
+          <i class="material-icons valign">analytics</i>
+          zuHHD
+          <i class="material-icons valign">dns</i>
+          <i class="material-icons valign">account_tree</i>
+          <i class="material-icons valign">task</i>
+          v2345678-B
+        </div>
+      </div>  <!-- style="background-color:rgb(211, 170, 214);" -->
     </div>
 
   </body>

@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(108, 104, 98);
+  background-color: white;
 }
 
 .overlayWindow {
@@ -33,6 +33,7 @@ body {
   z-index: 1;
   top:0;
   left:0;
+  /* background-color: black; */
 }
 
 .dbList > div {
@@ -76,7 +77,7 @@ footer
 .container {  display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 24px 3em 1fr 2em;
-    gap: 0.5em 1em;
+    gap: 0.1em 1em;
     grid-auto-flow: row;
     grid-template-areas:
       "system-bar system-bar system-bar system-bar"
@@ -95,13 +96,13 @@ footer
   .program-bar {
     grid-area: program-bar;
     padding: .35em 1em;
-    background-color: rgb(188, 188, 188);
+    background-color: rgb(51, 158, 145);
 }
   
   .content {  display: grid;
     grid-template-columns: 220px 2fr 1fr 1fr;
     grid-template-rows: 1fr;
-    gap: 0px 1em;
+    gap: 0px .1em;
     grid-auto-flow: row;
     grid-template-areas:
       "tools result status db";
@@ -123,14 +124,40 @@ footer
   
   .toolList {
     grid-area: toolList;
-    padding: 1em;
+    padding-left: .5em;
     background-color: rgb(188, 188, 188);
+  }
+
+  .toolList ul {
+    font-size: .9em;
+  }
+  .toolList ul li {
+    padding: .5em;
+  }
+  .toolList ul li ul {
+    padding: .5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-top: rgba(108,108,108) thin solid;
+  }
+  .toolList > ul > li > ul > li {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-bottom: rgba(108,108,108) thin solid;
+    padding-left: 1em;
+    padding: .5em;
+  }
+  .toolList > ul > li > ul > li:hover {
+    background-color: rgba(255,255,255,.3);
+
   }
   
   .toolFooter {
     grid-area: toolFooter;
+    color:rgb(194, 190, 190);
     padding: 1em;
-    background-color: rgb(155, 155, 155);
+    background-color: rgb(50, 98, 92);
   }
   
   .result {
@@ -152,9 +179,10 @@ footer
   }
   
   .printsBinary {
-    padding: 1em;
+    padding: 0;
     grid-area: printsBinary;
-    background-color: rgb(155, 155, 155);
+    background-color: #0d0d0d;
+    border-top: solid thin rgb(108, 104, 98);
   }
   
   .status {
@@ -183,8 +211,12 @@ footer
   
   .dbTabs {
     grid-area: dbTabs;
-    padding: 1em;
+    /* padding: 1em; */
     background-color: rgb(155, 155, 155);
+  }
+
+  .dbTabs button {
+    border-right:solid thin rgb(108, 104, 98);
   }
   
   .dbList {
@@ -195,7 +227,7 @@ footer
   .footer {
     grid-area: footer;
     padding: .5em 1em;
-    background-color: rgb(155, 155, 155);
+    background-color: rgb(51, 158, 145);
   }
 
   .loader {
