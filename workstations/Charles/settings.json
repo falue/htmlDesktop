@@ -82,7 +82,7 @@
             "y": 7,
             "w": 1190,
             "h": 720,
-            "zIndex": 22,
+            "zIndex": 25,
             "minimized": false,
             "renderToDom": false
         },
@@ -108,7 +108,7 @@
             "y": 7,
             "w": 1190,
             "h": 720,
-            "zIndex": 22,
+            "zIndex": 23,
             "minimized": false,
             "renderToDom": false
         },
@@ -124,6 +124,32 @@
             "zIndex": 14,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#614 Map ü-cams",
+            "windowName": "SURVEILLANCE MAP",
+            "icon": "map",
+            "contentPath": "map/index.html?scene=614&darkMode=true",
+            "x": 6,
+            "y": 6,
+            "w": 1200,
+            "h": 800,
+            "zIndex": 21,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#614 Hacking -> Map ü-cams",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=614&darkMode=true",
+            "x": 6,
+            "y": 8,
+            "w": 888,
+            "h": 500,
+            "zIndex": 24,
+            "minimized": false,
+            "renderToDom": true
         },
         {
             "metaTitle": "#403 Video Joyce",
@@ -349,6 +375,13 @@
             "x": 16,
             "y": 30,
             "action": "addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-5.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
+        },
+        {
+            "name": "surveillanceMapper.sh",
+            "icon": "server.png",
+            "x": 16,
+            "y": 42,
+            "action": "addWindow('Bash console', 'code', 'bash/index.html?script=614&darkMode=true', 6, 8, 888,500, false);"
         },
         {
             "name": "Trash",
