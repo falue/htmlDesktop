@@ -2,6 +2,14 @@ let spoofUrls = new Array();
 let unikVersion = "1.2-d";
 
 async function setup() {
+
+  /* 
+  
+    URL params:
+      site: tries to load a website if it is setup by this user. Eg. "carregist" loads the website "portal.carregistry.ch"
+
+  */
+
   // Set unik version
   document.getElementById('unikVersion').innerHTML = "v" + unikVersion;
 
@@ -39,8 +47,15 @@ async function setup() {
     console.log("no workstation in URL !!!")
   }
 
-  // Force cache reload iframe
-  reloadIframe();
+  const site = urlParams.get('site');
+  if(site) {
+    console.log("site")
+    console.log(site)
+    goToUrl(site);
+  } else {
+    // Force cache reload iframe
+    reloadIframe();
+  }
 }
 
 async function setupSettings(settingsData) {
