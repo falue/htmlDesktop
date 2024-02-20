@@ -50,7 +50,7 @@
         "seen": false,
         "error": ""
     },{
-        "message": "👻",
+        "message": ":)",
         "data": "",
         "action": "",
         "sender": "brianna",
@@ -75,6 +75,16 @@
         "action": "",
         "sender": "brianna",
         "delay": 1500,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Kennst du Ralph Bauer?",
+        "data": "",
+        "action": "",
+        "sender": "me",
+        "delay": 0,
         "date": "",
         "sent": false,
         "seen": false,
