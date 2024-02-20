@@ -181,7 +181,6 @@ function zoom(event, elementNumber) {
         return;
     }
 
-
     if(event.wheelDeltaY>1 || event.wheelDeltaY<-1) {
         // reset controls
         videoElem.removeAttribute('controls');
