@@ -1,67 +1,106 @@
 let searchTerms = {
-  "kunstmuseum": [
+  "Leuchtpetarden": [
+    [
+      "",
+      "www.feuerwerkfanatiker.de/leuchtpetarden",
+      "Alles über Leuchtpetarden: Sicherheit und Spass",
+      "Ein umfassender Leitfaden zu Leuchtpetarden, einschließlich Sicherheitshinweisen, Anwendungstipps und Kaufberatung.",
+    ],
+    [
+      "",
+      "www.silvesterknallerbewertung.com/leuchtpetarden-test",
+      "Leuchtpetarden im Test: Die besten Modelle für Silvester",
+      "Vergleich der populärsten Leuchtpetarden auf dem Markt. Finden Sie heraus, welche Marken in unserem Test am besten abschneiden.",
+    ],
+    [
+      "",
+      "www.pyrotechnikhistorie.net/geschichte-der-leuchtpetarden",
+      "Geschichte der Leuchtpetarden: Von Anfang bis heute",
+      "Ein faszinierender Rückblick auf die Entwicklung der Leuchtpetarden durch die Jahrhunderte.",
+    ],
+    [
+      "",
+      "www.sicherfeiern.info/leuchtpetarden-sicherheit",
+      "Leuchtpetarden sicher verwenden: Ein Ratgeber für Eltern",
+      "Tipps und Tricks, wie Sie Leuchtpetarden sicher in Gegenwart von Kindern verwenden können.",
+    ],
+    [
+      "",
+      "www.feuerwerksmarkt.de/leuchtpetarden-kaufen",
+      "Wo kann man Leuchtpetarden kaufen? Ein Einkaufsführer",
+      "Die besten Adressen und Online-Shops, um Leuchtpetarden für jeden Anlass zu kaufen.",
+    ],
+    [
+      "",
+      "www.handwerkskunstpyro.de/diy-leuchtpetarden",
+      "DIY Leuchtpetarden: So machen Sie sie sicher zu Hause",
+      "Eine Schritt-für-Schritt-Anleitung, um Ihre eigenen Leuchtpetarden zu Hause herzustellen.",
+    ],
+  ],
+
+  kunstmuseum: [
     [
       "",
       "artreviews.net/basel",
       "Neueste Ausstellungen im Kunstmuseum Basel",
-      "Entdecken Sie die aufregenden neuen Ausstellungen im Kunstmuseum Basel. Diese Sammlung ist ein absolutes Muss für Kunstliebhaber. Die neuesten Werke berühmter internationaler Künstler sind jetzt zu sehen."
+      "Entdecken Sie die aufregenden neuen Ausstellungen im Kunstmuseum Basel. Diese Sammlung ist ein absolutes Muss für Kunstliebhaber. Die neuesten Werke berühmter internationaler Künstler sind jetzt zu sehen.",
     ],
     [
       "",
       "baselguide.org/kunstmuseum",
       "Der ultimative Guide zum Kunstmuseum Basel",
-      "Das Kunstmuseum Basel ist eines der ältesten Museen der Welt. Es beherbergt eine beeindruckende Sammlung von Kunstwerken aus verschiedenen Jahrhunderten. Ein Muss für alle, die Basel besuchen."
+      "Das Kunstmuseum Basel ist eines der ältesten Museen der Welt. Es beherbergt eine beeindruckende Sammlung von Kunstwerken aus verschiedenen Jahrhunderten. Ein Muss für alle, die Basel besuchen.",
     ],
     [
       "",
       "archdaily.com/basel-museum",
       "Architektur des Kunstmuseum Basel",
-      "Das beeindruckende Gebäude des Kunstmuseum Basel ist ein Kunstwerk für sich. Erfahren Sie mehr über die Geschichte und die Architektur dieses ikonischen Bauwerks. Eine moderne Interpretation klassischer Formen."
+      "Das beeindruckende Gebäude des Kunstmuseum Basel ist ein Kunstwerk für sich. Erfahren Sie mehr über die Geschichte und die Architektur dieses ikonischen Bauwerks. Eine moderne Interpretation klassischer Formen.",
     ],
     [
       "",
       "journeyart.com/basel-highlights",
       "Kunst-Highlights im Kunstmuseum Basel",
-      "Das Museum beherbergt einige der bedeutendsten Kunstwerke der Welt. Von Renaissance bis Moderne - hier gibt es alles. Entdecken Sie die Highlights in unserer exklusiven Zusammenfassung."
+      "Das Museum beherbergt einige der bedeutendsten Kunstwerke der Welt. Von Renaissance bis Moderne - hier gibt es alles. Entdecken Sie die Highlights in unserer exklusiven Zusammenfassung.",
     ],
     [
       "",
       "travelguru.com/museums-basel",
       "Warum das Kunstmuseum Basel auf Ihrer Liste stehen sollte",
-      "Basel ist bekannt für seine reiche Kunstszene und das Kunstmuseum steht an vorderster Front. Erleben Sie die faszinierenden Exponate und lernen Sie die Geschichte dahinter kennen. Perfekt für Kunstenthusiasten und Neulinge."
+      "Basel ist bekannt für seine reiche Kunstszene und das Kunstmuseum steht an vorderster Front. Erleben Sie die faszinierenden Exponate und lernen Sie die Geschichte dahinter kennen. Perfekt für Kunstenthusiasten und Neulinge.",
     ],
     [
       "",
       "artpassion.de/basel-tours",
       "Geführte Touren im Kunstmuseum Basel",
-      "Lassen Sie sich von erfahrenen Führern durch die Hallen des Kunstmuseums Basel führen. Erhalten Sie tiefe Einblicke in die ausgestellten Werke. Eine einzigartige Gelegenheit, Kunst zu erleben."
+      "Lassen Sie sich von erfahrenen Führern durch die Hallen des Kunstmuseums Basel führen. Erhalten Sie tiefe Einblicke in die ausgestellten Werke. Eine einzigartige Gelegenheit, Kunst zu erleben.",
     ],
     [
       "",
       "museumblog.ch/basel",
       "Hinter den Kulissen des Kunstmuseum Basel",
-      "Wir nehmen Sie mit auf eine exklusive Reise hinter die Kulissen des Kunstmuseum Basel. Erfahren Sie, wie Ausstellungen organisiert werden und treffen Sie die Kuratoren. Ein einzigartiger Blick in die Welt der Kunst."
+      "Wir nehmen Sie mit auf eine exklusive Reise hinter die Kulissen des Kunstmuseum Basel. Erfahren Sie, wie Ausstellungen organisiert werden und treffen Sie die Kuratoren. Ein einzigartiger Blick in die Welt der Kunst.",
     ],
     [
       "",
       "baselnews.com/museum-events",
       "Events und Veranstaltungen im Kunstmuseum Basel",
-      "Seien Sie immer auf dem neuesten Stand über bevorstehende Events und Sonderausstellungen im Kunstmuseum Basel. Von Kunstworkshops bis zu Vorträgen - hier finden Sie alles."
+      "Seien Sie immer auf dem neuesten Stand über bevorstehende Events und Sonderausstellungen im Kunstmuseum Basel. Von Kunstworkshops bis zu Vorträgen - hier finden Sie alles.",
     ],
     [
       "",
       "basel360.com/museum-panorama",
       "Virtueller Rundgang durch das Kunstmuseum Basel",
-      "Erleben Sie das Kunstmuseum Basel bequem von zu Hause aus. Unser 360° Rundgang bietet Ihnen ein einzigartiges Erlebnis. Tauchen Sie ein in die Welt der Kunst."
+      "Erleben Sie das Kunstmuseum Basel bequem von zu Hause aus. Unser 360° Rundgang bietet Ihnen ein einzigartiges Erlebnis. Tauchen Sie ein in die Welt der Kunst.",
     ],
     [
       "",
       "travelinsights.eu/basel-museum",
       "Die Geschichte des Kunstmuseum Basel",
-      "Erfahren Sie mehr über die reiche Geschichte des Kunstmuseum Basel, von seinen Anfängen bis heute. Entdecken Sie, wie es sich zu einem der führenden Museen der Welt entwickelt hat. Ein tiefgründiger Einblick in seine Evolution."
-    ]
+      "Erfahren Sie mehr über die reiche Geschichte des Kunstmuseum Basel, von seinen Anfängen bis heute. Entdecken Sie, wie es sich zu einem der führenden Museen der Welt entwickelt hat. Ein tiefgründiger Einblick in seine Evolution.",
+    ],
   ],
-  "sapienz": [
+  sapienz: [
     [
       "../sapienz",
       "https://sapienz.ch",
@@ -112,7 +151,7 @@ let searchTerms = {
     ],
   ],
 
-  "metis": [
+  metis: [
     [
       "../metis",
       "https://metis.ch/news",
