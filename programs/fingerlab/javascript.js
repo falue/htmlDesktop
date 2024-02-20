@@ -53,7 +53,7 @@ async function startScan() {
     hide('overlay')
     hide('scanning')
     await delay(speedScan/2);
-    gebi('printsBinary-iframe').src="../terminal/index.html?byRows=true&startChar=0&text=hexdump&theme=hybrid&speed=6&language=none&autotype=false&humanTyper=false&cursor=true&truncateText=500&bgColor=0d0d0d&fontColor=339e91&paddingRange=5";
+    gebi('printsBinary-iframe').src="";
     show('compareScanBtn');
 }
 
