@@ -1,0 +1,51 @@
+body, html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding:1em;
+}
+
+header {
+    padding: 2em;
+    border-bottom:black thin solid;
+}
+button {
+    padding: .25em .75em;
+}
+
+main {
+    padding: 2em;
+    margin-bottom: 2em;
+    border-bottom:black thin solid;
+}
+
+table {
+    border:black thin solid;
+    border-collapse: collapse;
+}
+
+th {
+    border-bottom:black thin solid;
+    background-color: blanchedalmond;
+}
+
+td {
+    padding: .25em;
+    border-right:black thin solid;
+    border-bottom:black thin solid;
+}
+
+tr td:last-of-type {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    /* background-color:rgb(255, 249, 238); */
+}
+
+tr td:nth-of-type(2) {
+    /* background-color:rgb(255, 249, 238); */
+}
+
+tr td:first-of-type {
+    font-weight: 600;
+}
