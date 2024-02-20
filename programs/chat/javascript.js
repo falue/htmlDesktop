@@ -46,7 +46,7 @@ async function setup() {
     let chat = urlParams.get('chat');
     if(chat) {
         messages = await parseFile(
-        `data/${chat}/chat.json`
+        `data/${chat}/chat.json`, false
         );
         messagesInitial = JSON.parse(JSON.stringify(messages));
     } else {
