@@ -180,7 +180,7 @@ function finishEditMessage() {
     hide('menu-content');
     show('resetChat');
 
-    resetChat();
+    // resetChat();
 }
 
 function resetChat() {
