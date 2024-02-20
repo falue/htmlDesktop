@@ -54,3 +54,30 @@ To use this app, you need to clone this repo and use your own version of it to h
 In order to make the brute force attack on the local cache work (click in the action menu on "Hard reload open windows & metadata"), we need to hard reload all source files.
 
 cd into `tools/` and execute `bash collectPaths.sh`. This saves all the current .css, .js, .txt, .json, .fakeBash, .splash paths in a document called `collectedPAths.txt`, which is used to hard reload all meta data files from within javascript.
+
+
+# Problems with GIT update on prop machines
+
+If `git` errors out:
+```
+remote: Enumerating objects: 574, done.
+remote: Counting objects: 100% (574/574), done.
+remote: Compressing objects: 100% (339/339), done.
+error: RPC failed; curl 92 HTTP/2 stream 7 was not closed cleanly: CANCEL (err 8)
+error: 5573 bytes of body are still expected
+fetch-pack: unexpected disconnect while reading sideband packet
+fatal: early EOF
+fatal: fetch-pack: invalid index-pack output
+```
+
+This might be because internet connection is lacking in speed, or it could not finish beforehand.
+It is solved by adding more memory - sometimes:
+
+```
+git config --global http.postBuffer 12M
+```
+
+reset it after use (maybe?)
+```
+git config --global http.postBuffer 1M
+```
