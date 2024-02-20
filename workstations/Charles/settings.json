@@ -45,7 +45,7 @@
             "h": 800,
             "zIndex": 2,
             "minimized": false,
-            "renderToDom": true
+            "renderToDom": false
         },
         {
             "metaTitle": "#508: Hacking museum credentials",
@@ -58,7 +58,7 @@
             "h": 750,
             "zIndex": 20,
             "minimized": false,
-            "renderToDom": true
+            "renderToDom": false
         },
         {
             "metaTitle": "#618: Securiton Van videos",
@@ -71,7 +71,46 @@
             "h": 800,
             "zIndex": 3,
             "minimized": false,
-            "renderToDom": true
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#618 3xVan videos",
+            "windowName": "MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4",
+            "icon": "satellite_alt",
+            "contentPath": "imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true",
+            "x": 8,
+            "y": 7,
+            "w": 1190,
+            "h": 720,
+            "zIndex": 22,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#618B 1xVan video Shot 1",
+            "windowName": "MediaPlayerZ - @203.0.113.45/../securityCam-B-4342.mp4",
+            "icon": "satellite_alt",
+            "contentPath": "imageviewer/index.html?files=../../../programs/securiton/data/618-4.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true",
+            "x": 8,
+            "y": 7,
+            "w": 1190,
+            "h": 720,
+            "zIndex": 22,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#618B 1xVan video Shot 2",
+            "windowName": "MediaPlayerZ - @203.0.113.45/../securityCam-B-4342.mp4",
+            "icon": "satellite_alt",
+            "contentPath": "imageviewer/index.html?files=../../../programs/securiton/data/618-5.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true",
+            "x": 8,
+            "y": 7,
+            "w": 1190,
+            "h": 720,
+            "zIndex": 22,
+            "minimized": false,
+            "renderToDom": false
         },
         {
             "metaTitle": "#644,206 Monitor rechts; programmieren",
@@ -291,10 +330,31 @@
             "action": "addWindow('X_IDE', 'code', 'x_ide', 8, 8, 1500,800, false);"
         },
         {
+            "name": "LiveStream-1-2-3.py",
+            "icon": "python.png",
+            "x": 16,
+            "y": 4,
+            "action": "addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
+        },
+        {
+            "name": "LiveStream-4-0.py",
+            "icon": "python.png",
+            "x": 16,
+            "y": 17,
+            "action": "addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-4.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
+        },
+        {
+            "name": "LiveStream-4-1.py",
+            "icon": "python.png",
+            "x": 16,
+            "y": 30,
+            "action": "addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-5.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
+        },
+        {
             "name": "Trash",
             "icon": "trashFull.png",
-            "x": 19,
-            "y": 19,
+            "x": 90,
+            "y": 85,
             "action": ""
         },
         {
