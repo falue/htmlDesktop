@@ -1,4 +1,4 @@
-20.02.2024 08:31
+20.02.2024 18:30
 os/spa/programIcons/email.png
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
@@ -235,6 +235,7 @@ workstations/Charles/bash/213a-hacking.fakeBash
 workstations/Charles/bash/508.fakeBash
 workstations/Charles/bash/213a-fast-single-securiton.fakeBash
 workstations/Charles/bash/random.fakeBash
+workstations/Charles/bash/614.fakeBash
 workstations/Charles/bash/213a.fakeBash
 workstations/Charles/bash/213a-fast-single.fakeBash
 workstations/Charles/bash/script.fakeBash
@@ -489,6 +490,7 @@ programs/browser/sites/myGps1/imgs/map.svg
 programs/browser/sites/telefabi/tools/imgs/fl.svg
 programs/browser/sites/telefabi/tools/imgs/fl_1.svg
 programs/map/data/614/map.svg
+programs/map/data/614/map_orig.svg
 programs/wifi/stylesheet.css
 programs/ftp/stylesheet.css
 programs/video/stylesheet.css
