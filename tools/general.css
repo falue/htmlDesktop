@@ -408,6 +408,7 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .greyBorderLightBottom { border-bottom: thin solid lightgrey !important; }
 .greyBorderLightLeft { border-left: thin solid lightgrey !important; }
 .redBorder { border: thin solid rgba(255,80,80,1) !important; }
+.blueBorder { border: thin solid rgba(88,150,255,1) !important; }
 .clearBorder { border: thin solid rgba(0,0,0,0); }
 
 .dottedGrey {

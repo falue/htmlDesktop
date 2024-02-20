@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="../../tools/zoom.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="../../tools/zoom.js" defer></script>
+    <script src="../../tools/fileparser.js"></script>
+    <script src="javascript.js"></script>
+
+  </head>
+  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+    <header id="windowMenu-settings" class="windowmenu">
+      <button class="programButtons">File</button><!-- 
+       --><button class="programButtons">Edit</button><!-- 
+       --><button class="programButtons">View</button><!-- 
+       --><button class="programButtons">Satellite</button><!-- 
+       --><button class="programButtons">Layers</button><!-- 
+       --><button class="programButtons">GPS</button><!-- 
+       --><button class="programButtons">Settings</button><!-- 
+       --><button class="programButtons">About</button>
+    </header>
+
+    <header id="windowMenu-tools" class="windowmenu toolBar">
+      <div class="buttonGroup"><!-- 
+      --><button class="hover greyBg"><i class="material-icons small white valign">location_on</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">map</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">category</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">travel_explore</i></button>
+      </div>
+      <button class="radius3 whiteBg hover">
+        1.0 <i class="material-icons small circle greyBg white valign">unfold_more</i>
+      </button>
+      <button class="radius3 whiteBg hover">
+        <i class="material-icons small valign grey">satellite_alt</i>
+        <i class="material-icons small circle greyBg white valign">expand_more</i>
+      </button>
+      <div class="buttonGroup"><!-- 
+      --><button class="hover greyBg"><i class="material-icons small white valign">satellite</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">near_me</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">gps_fixed</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">local_library</i></button>
+      </div>
+
+      <button class="hover"><i class="material-icons small valign">layers</i></button>
+      <button class="hover"><i class="material-icons small valign">terrain</i></button>
+      <button class="hover"><i class="material-icons small valign">add_location_alt</i></button>
+      <button class="hover" onclick="setDarkMode()"><i class="material-icons small valign">bolt</i></button>
+
+      <div class="buttonGroup relative right"><!-- 
+      --><button class="hover "><i class="material-icons small  valign">add_business</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">cottage</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">other_houses</i></button><!-- 
+      --><button class="hover greyBg"><i class="material-icons small white valign">emoji_transportation</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">holiday_village</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">garage</i></button>
+      </div>
+    </header>
+
+    <div class="container overflowHidden">
+      <div id="zoom" class="zoom overflowHidden"
+        onmousewheel="zoom(event, 'zoom-container');"
+        onMouseDown="startPanning(event, 'zoom-container')"
+        onMouseMove="panning(event, 'zoom-container')"
+        onMouseUp="stopPanning(event)"
+        onMouseLeave="stopPanning(event)"
+      >
+        <div id="zoom-container" class="zoom-container absolute maxHeight ">
+          <div id="zoom-img" class="relative top left maxWidth maxHeight"></div>
+          <!-- <div class="relative black" style="left:25%; top:75%; width:4em; height:4em; font-size:1em">
+            <i class="material-icons thumbtack absolute text-shadow--white red" style="transform: translate(-50%, -100%);">push_pin</i>
+            Das is mein haus
+          </div>
+
+          <div class="relative black" style="left:50%; top:25%; width:4em; height:4em; font-size:1em">
+            <i class="material-icons thumbtack absolute text-shadow--white red" style="transform: translate(-50%, -100%);">push_pin</i>
+            NEU
+          </div> -->
+        </div>
+      </div>
+     
+    </div>
+
+  </body>
+  </html>
