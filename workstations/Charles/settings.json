@@ -39,13 +39,13 @@
             "windowName": "FingerLAB - v102.B",
             "icon": "fingerprint",
             "contentPath": "fingerlab/index.html?scene=608",
-            "x": 6,
-            "y": 6,
-            "w": 1250,
-            "h": 800,
+            "x": 4,
+            "y": 4,
+            "w": 1500,
+            "h": 850,
             "zIndex": 2,
             "minimized": false,
-            "renderToDom": false
+            "renderToDom": true
         },
         {
             "metaTitle": "#508: Hacking museum credentials",
