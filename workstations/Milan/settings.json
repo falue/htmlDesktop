@@ -35,6 +35,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#614 Browser Autonummersuche",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=carregistry",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 5,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "metaTitle": "#129+var Spy Stream - Greenscreen",
             "windowName": "Live Player - IP31.164.15.268",
             "icon": "videocam",
