@@ -384,6 +384,16 @@
             "action": "addWindow('Bash console', 'code', 'bash/index.html?script=614&darkMode=true', 6, 8, 888,500, false);"
         },
         {
+            "name": "print.gif",
+            "icon": "fileImage.png",
+            "x": 90,
+            "y": 30,
+            "action": "addWindow('MediaPlayerZ', 'image', 'imageviewer/index.html?files=../../../programs/fingerlab/data/match-4.jpg&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 30, 8, 720,720, false);"
+        },
+
+
+        
+        {
             "name": "Trash",
             "icon": "trashFull.png",
             "x": 90,
