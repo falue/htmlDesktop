@@ -9,7 +9,6 @@ let isDragging = false;
   voice_chat
   visibility
   thumbtack
-
 */
 
 function setupZoom(imageId, mapPath, pointsOfInterest, container) {
@@ -27,6 +26,7 @@ async function loadPointsOfInterest(path, id) {
 function setPointOfInterest(point, id) {
   let thumbtack = `<div class="relative inlineBlock"
       style="left:${point.x}%; top:${point.y}%; font-size:1em;"
+      onclick="${point.action}"
     >
       <i data-title="${point.tootlip}"
         class="thumbtack tooltip material-icons absolute ${point.iconClasses}"

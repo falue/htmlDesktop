@@ -16,6 +16,11 @@
     background-repeat: no-repeat;
 }
 
+.thumbtack {
+    pointer-events:all;
+
+}
+
 .thumbtack:before {
     content:" ";
     width:.75em;
@@ -26,4 +31,5 @@
     position: absolute;
     left:0;
     top:100%;
+    pointer-events:all;
 }
