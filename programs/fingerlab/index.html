@@ -193,8 +193,8 @@
             </iframe>
           </div>
         </div>
-        <div class="status" >  <!-- style="background-color:rgb(216, 142, 45);" -->
-          <span class="op50 uppercase">Status</span>
+        <div class="status overflowAuto noScrollbar" >  <!-- style="background-color:rgb(216, 142, 45);" -->
+          <span class="op50 uppercase overflowAuto noScrollbar">Status</span>
           <div id="status-idle" class="small">
             <br>
             <span class="italics">- Scanner asleep -</span>
@@ -261,7 +261,7 @@
             <button class="marginY50 block maxWidth ">
               <i class="material-icons valign small blue">code</i> See data dump
             </button>
-            <button onclick="compareScan()" class="block maxWidth marginY50 blueBg white">
+            <button id="compare-btn-now" onclick="compareScan()" class="block maxWidth marginY50 blueBg white">
               <i class="material-icons valign small white">compare_arrows</i> Compare with DB
             </button>
           </div>

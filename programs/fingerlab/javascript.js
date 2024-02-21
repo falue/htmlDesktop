@@ -1,5 +1,6 @@
 let speed = 100;
 let speedScan = 1000;
+let clickerIndex = 0;
 
 async function setup() {
     const queryString = window.location.search;
@@ -55,6 +56,9 @@ async function startScan() {
     await delay(speedScan/2);
     gebi('printsBinary-iframe').src="";
     show('compareScanBtn');
+
+    await delay(100);
+    gebi('compare-btn-now').focus();
 }
 
 function setSpeedScan(value) {
@@ -110,7 +114,23 @@ async function searchDb() {
 function keyboardControllerFingerlab(event) {
     // cl(event.key);
     if(event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        startScan();
+        cl('clicked: ')
+        switch(clickerIndex) {
+            case 0:
+                cl('case 0')
+                startScan();
+                break;
+            case 1:
+                cl('case 1')
+                compareScan();
+                break;
+            case 2:
+                cl('case 2')
+                window.location.href = '';
+                break;
+
+        }
+        clickerIndex++
         return;
     }
     // Trigger main keyboard controller
