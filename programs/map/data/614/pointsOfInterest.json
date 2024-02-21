@@ -7,8 +7,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -17,8 +17,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -27,8 +27,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -37,8 +37,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -47,8 +47,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -57,8 +57,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -67,8 +67,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -77,8 +77,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -87,8 +87,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -97,8 +97,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -107,8 +107,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -117,8 +117,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -127,8 +127,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -137,8 +137,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -147,8 +147,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -157,8 +157,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -167,8 +167,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -177,8 +177,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -187,8 +187,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     }
 
 
@@ -201,8 +201,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -212,7 +212,7 @@
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
         "text": "",
-        "action": ""
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -221,8 +221,8 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     },{
         "tooltip": "",
         "icon": "videocam",
@@ -231,7 +231,7 @@
         "size": 2,
         "iconClasses": "white blackBg round padding25",
         "iconStyles": "border-bottom-right-radius:0 !important; border:solid .08em white",
-        "text": "",
-        "action": ""
+        "text": "",        
+        "action": "parent.addWindow('MediaPlayerZ - @203.0.113.45/../securityCam-A-1801.mp4', 'satellite_alt', 'imageviewer/index.html?files=../../../programs/securiton/data/618-1.mp4|../../../programs/securiton/data/618-2.mp4|../../../programs/securiton/data/618-3.mp4&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 8, 8, 1190,720, false);"
     }
 ]
