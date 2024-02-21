@@ -385,14 +385,11 @@
         },
         {
             "name": "print.gif",
-            "icon": "fileImage.png",
+            "icon": "../../../programs/fingerlab/data/prints/print-60.jpg",
             "x": 90,
             "y": 30,
             "action": "addWindow('MediaPlayerZ', 'image', 'imageviewer/index.html?files=../../../programs/fingerlab/data/match-4.jpg&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 30, 8, 720,720, false);"
         },
-
-
-        
         {
             "name": "Trash",
             "icon": "trashFull.png",
