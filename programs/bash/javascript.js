@@ -507,15 +507,16 @@ async function playCommand(command) {
       await playCommandAtIndex(command.parameters[0]);
       break;
     case "garbageCollection":
+      // FIXME: delete by line, not by element
       // command.parameters[0]
-      let amount = command.parameters[0];
+      let amount = command.parameters[0]*2;  // *2 because each line has a <span><br></span> element.. or more
       cl(`Remove ${amount} element(s) from DOM`)
       let element = gebi('console');
-      while (element.children.length > 0 && amount > 0) {
+      // element.innerHTML='';
+      while (element.children.length >= amount && amount > 0) {
         element.removeChild(element.children[0]);
         amount--;
       }
-      cl(gebi('console').children.length)
       break;
     case "br":
       printToConsole("<br>");
