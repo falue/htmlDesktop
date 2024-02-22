@@ -180,7 +180,7 @@ async function say(text, language='en-GB', voiceName='Daniel (English (United Ki
   return new Promise((resolve, reject) => {
     let voices = [];
     function setVoiceAndSpeak() {
-      /* cl(voices.forEach(voice => console.log(voice.name))); */
+      cl(voices.forEach(voice => console.log(voice.name)));
       if (voiceName) {
         const voice = voices.find(v => v.name === voiceName);
         if (voice) {
