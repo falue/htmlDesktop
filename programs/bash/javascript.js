@@ -486,7 +486,8 @@ async function playCommand(command) {
       break;
     case "javascript":
       try{
-        eval(command.parameters[0]);
+        // eval(command.parameters[0]);
+        eval("(async () => {" + command.parameters[0] + "})()")
       } catch(e) {
         console.error(e)
       }
