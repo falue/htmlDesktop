@@ -30,9 +30,22 @@
             "y": 2,
             "w": 1000,
             "h": 777,
-            "zIndex": 1,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#509 Präsentation Athletics''",
+            "windowName": "MediaPlayerZ",
+            "icon": "image",
+            "contentPath": "imageviewer/index.html?files=../../../workstations/Leo/files/509-6.jpg|../../../workstations/Leo/files/509-5.jpg|../../../workstations/Leo/files/509-4.jpg|../../../workstations/Leo/files/509-3.jpg|../../../workstations/Leo/files/509-2.jpg|../../../workstations/Leo/files/509-1.jpg&allowZoom=true&hiddenBar=false&disableThumbs=true&autoplay=false",
+            "x": 14,
+            "y": 14,
+            "w": 1000,
+            "h": 612,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": true
         },
         {
             "metaTitle": "#219 spy cam Pokerspiel; 'View->Choose files''",
@@ -43,9 +56,9 @@
             "y": 14,
             "w": 1000,
             "h": 612,
-            "zIndex": 3,
+            "zIndex": null,
             "minimized": false,
-            "renderToDom": true
+            "renderToDom": false
         },
         {
             "metaTitle": "#213A: Einzelbild Museum vermummt",
@@ -56,7 +69,7 @@
             "y": 14,
             "w": 1000,
             "h": 612,
-            "zIndex": 17,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -69,7 +82,7 @@
             "y": 6,
             "w": 1250,
             "h": 800,
-            "zIndex": 17,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -82,7 +95,7 @@
             "y": 8,
             "w": 888,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -95,7 +108,7 @@
             "y": 8,
             "w": 1000,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -108,7 +121,7 @@
             "y": 8,
             "w": 1000,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -121,7 +134,7 @@
             "y": 8,
             "w": 1000,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -134,7 +147,7 @@
             "y": 12,
             "w": 1000,
             "h": 700,
-            "zIndex": 16,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -147,7 +160,7 @@
             "y": 4,
             "w": 1000,
             "h": 800,
-            "zIndex": 17,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -160,7 +173,7 @@
             "y": 8,
             "w": 1000,
             "h": 588,
-            "zIndex": 17,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         }
