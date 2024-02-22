@@ -2,6 +2,12 @@
 # bashProfileName - plain text or html
 <span class='green'>admin</span>@<span class='red'>localhost</span>:<span class='grey'>~</span> $ 
 # -------
+
+[bashProfile] [forceType, "echo \'username:email@museumbasel.ch\' >> credentials.cred"]
+[bashProfile] [forceType, "brutePwn --prime credentials.cred"]
+[br]
+[autoType:red, "  brutePwn primed + armed", 500]
+[br]
 [bashProfile] [forceType, "brutePwn -P https://api.museumbaselbasel.ch/login -c credentials.cred"]
 [br]
 [autoType:bold, "Reading credentials and PWD list, hold on..", 500]
@@ -215,7 +221,10 @@
 [br]
 [br]
 [br]
-
+# Eddy (English (United Kingdom))
+# Bad News
+# Arthur
+[javascript, "await parent.say('dinner is ready', 'en-GB', 'Grandma (English (United Kingdom))')"]
 [autoType:yellow, " _____ _____ _   _ _   _ ______ _____    _____  _____   _____  ______          _______     __"]
 [autoType:yellow, "|  __ \_   _| \ | | \ | |  ____|  __ \  |_   _|/ ____| |  __ \|  ____|   /\   |  __ \ \   / /"]
 [autoType:yellow, "| |  | || | |  \| |  \| | |__  | |__) |   | | | (___   | |__) | |__     /  \  | |  | \ \_/ / "]
@@ -223,13 +232,6 @@
 [autoType:yellow, "| |__| || |_| |\  | |\  | |____| | \ \   _| |_ ____) | | | \ \| |____ / ____ \| |__| | | |   "]
 [autoType:yellow, "|_____/_____|_| \_|_| \_|______|_|  \_\ |_____|_____/  |_|  \_\______/_/    \_\_____/  |_|   "]
 
-[br]
-[br]
-[br]
-[br]
-[br]
-[br]
-[br]
 [br]
 [br]
 [br]
