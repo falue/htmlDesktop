@@ -1,4 +1,4 @@
-20.02.2024 18:30
+22.02.2024 20:33
 os/spa/programIcons/email.png
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
@@ -174,7 +174,22 @@ workstations/Athletics/userpicture.jpg
 workstations/Athletics/desktops/1.jpg
 workstations/_default/userpicture.jpg
 workstations/Charles/userpicture.jpg
+workstations/Charles/files/640-8.jpg
+workstations/Charles/files/640-9.jpg
+workstations/Charles/files/640-4.jpg
+workstations/Charles/files/640-5.jpg
+workstations/Charles/files/640-7.jpg
+workstations/Charles/files/640-6.jpg
+workstations/Charles/files/640-2.jpg
+workstations/Charles/files/640-3.jpg
+workstations/Charles/files/640-1.jpg
 workstations/Leo/userpicture.jpg
+workstations/Leo/files/509-3.jpg
+workstations/Leo/files/509-2.jpg
+workstations/Leo/files/509-1.jpg
+workstations/Leo/files/509-5.jpg
+workstations/Leo/files/509-4.jpg
+workstations/Leo/files/509-6.jpg
 workstations/MinervaRezeption/userpicture.jpg
 workstations/generic/userpicture.jpg
 workstations/Agotha/userpicture.jpg
@@ -239,6 +254,7 @@ workstations/Charles/bash/614.fakeBash
 workstations/Charles/bash/213a.fakeBash
 workstations/Charles/bash/213a-fast-single.fakeBash
 workstations/Charles/bash/script.fakeBash
+workstations/Charles/bash/508-infinite.fakeBash
 workstations/Leo/bash/213a-fast.fakeBash
 workstations/Leo/bash/213a-hacking.fakeBash
 workstations/Leo/bash/213a-fast-single-securiton.fakeBash
@@ -260,11 +276,13 @@ programs/securiton/data/213a-2.png
 programs/servermanager/monalisa.png
 programs/servermanager/splash.png
 programs/neptcode/data/basic.png
+programs/browser/sites/carregistry/flag.png
 programs/browser/sites/myGps3/imgs/map.png
 programs/browser/sites/myGps3/imgs/map POINTS.png
 programs/browser/sites/frutti/logo.png
 programs/browser/sites/myGps2/imgs/map DOTS.png
 programs/browser/sites/myGps2/imgs/map.png
+programs/browser/sites/personenregister/flag.png
 programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum_kombi_nur.png
 programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/folder-open.png
 programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum_kombi_ausser.png
@@ -279,6 +297,10 @@ programs/browser/sites/qsearch/imgs/logo.png
 programs/browser/sites/myGps1/imgs/map.png
 programs/browser/sites/myGps1/imgs/calendar.png
 programs/browser/sites/myGps1/imgs/map_test.png
+programs/browser/sites/wintiwurm/images/logo.png
+programs/browser/sites/wintiwurm/images/icons/email.png
+programs/browser/sites/wintiwurm/images/icons/instaicon.png
+programs/browser/sites/wintiwurm/images/icons/fb.png
 programs/browser/sites/telefabi/tools/imgs/fl_1.png
 programs/x_ide/icon.png
 programs/x_ide/files.png
@@ -336,6 +358,9 @@ programs/browser/sites/frutti/data/art-6-2.jpg
 programs/browser/sites/metis/imgs/index.jpg
 programs/browser/sites/metis/imgs/business.jpg
 programs/browser/sites/utilities/images/placeholder.jpg
+programs/browser/sites/wintiwurm/images/logo.jpg
+programs/browser/sites/wintiwurm/images/wuermer2.jpg
+programs/browser/sites/wintiwurm/images/wuermer1.jpg
 programs/browser/sites/runnershigh/imgs/index.jpg
 programs/browser/sites/sapienz/imgs/karriere.jpg
 programs/browser/sites/sapienz/imgs/index.jpg
@@ -487,6 +512,11 @@ programs/servermanager/data/floorplan-67.svg
 programs/colorMarker/tools/marker.svg
 programs/browser/sites/myGps1/imgs/map-245-1_5500.svg
 programs/browser/sites/myGps1/imgs/map.svg
+programs/browser/sites/wintiwurm/tools/fontface/Quicksand-Regular.svg
+programs/browser/sites/wintiwurm/tools/fontface/_/roboto-v27-latin/Roboto-Regular.svg
+programs/browser/sites/wintiwurm/tools/fontface/_/roboto-slab-v13-latin/RobotoSlab-Regular.svg
+programs/browser/sites/wintiwurm/tools/fontface/_/roboto-slab-v13-latin/RobotoSlab-Medium.svg
+programs/browser/sites/wintiwurm/tools/fontface/Quicksand-Bold.svg
 programs/browser/sites/telefabi/tools/imgs/fl.svg
 programs/browser/sites/telefabi/tools/imgs/fl_1.svg
 programs/map/data/614/map.svg
@@ -522,6 +552,7 @@ programs/browser/sites/myGps2/stylesheet.css
 programs/browser/sites/metis/stylesheet.css
 programs/browser/sites/youtube/stylesheet.css
 programs/browser/sites/utilities/stylesheet.css
+programs/browser/sites/personenregister/stylesheet.css
 programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/fontawesome.min.css
 programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/styles-print.css
 programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/style.css
@@ -533,6 +564,11 @@ programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/fo
 programs/browser/sites/mysteryforum/stylesheet.css
 programs/browser/sites/qsearch/stylesheet.css
 programs/browser/sites/myGps1/stylesheet.css
+programs/browser/sites/wintiwurm/tools/akkordeon.css
+programs/browser/sites/wintiwurm/tools/hamburger.css
+programs/browser/sites/wintiwurm/tools/material.css
+programs/browser/sites/wintiwurm/tools/stylesheet.css
+programs/browser/sites/wintiwurm/tools/lightbox.css
 programs/browser/sites/runnershigh/stylesheet.css
 programs/browser/sites/sapienz/stylesheet.css
 programs/browser/sites/telefabi/tools/stylesheet.css
@@ -591,6 +627,7 @@ programs/browser/sites/myGps2/javascript.js
 programs/browser/sites/myGps2/animation.js
 programs/browser/sites/youtube/javascript.js
 programs/browser/sites/utilities/javascript.js
+programs/browser/sites/personenregister/javascript.js
 programs/browser/sites/mysteryforum/javascript.js
 programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/main.min.js
 programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/legacy.js
@@ -607,6 +644,7 @@ programs/browser/sites/qsearch/javascript.js
 programs/browser/sites/myGps1/javascript.js
 programs/browser/sites/myGps1/animation.js
 programs/browser/sites/myGps1/stages.js
+programs/browser/sites/wintiwurm/tools/javascript.js
 programs/browser/sites/sapienz/javascript.js
 programs/browser/sites/telefabi/tools/javascript.js
 programs/map/javascript.js
