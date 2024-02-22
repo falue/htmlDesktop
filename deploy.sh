@@ -9,6 +9,7 @@ fi
 TARGETPATH="telefabi.ch/htmlDesktop"
 EXCLUDES=(_tools .git .gitignore deploy.sh .DS_Store)
 KEEPSTASH=false
+SUBFOLDER=$(git rev-parse --abbrev-ref HEAD)  # get git branch name
 
 usage() {
     echo "Usage:"
@@ -48,7 +49,7 @@ if [ "$KEEPSTASH" = false ]; then
         echo -e "\n${YELLOW}Does not need stashing, commence.${NC}"
     fi
 else
-    echo -e "\n${WHITE}${ON_RED}!!! Keep unstaged changes !!!${NC} and deploy them to ${BLACK}${ON_GREEN}${TARGETPATH}${NC}."
+    echo -e "\n${WHITE}${ON_RED}!!! Keep unstaged changes !!!${NC} and deploy them to ${BLACK}${ON_GREEN}${TARGETPATH}/${SUBFOLDER}${NC}."
 fi
 
 # Publish to github
@@ -67,11 +68,11 @@ done
 # Add the SSH command with the custom port
 RSYNC_CMD+=" -e 'ssh -p 2121'"
 # Specify source and destination
-RSYNC_CMD+=" ./ filmkulissen@80.74.158.100:${TARGETPATH}"
+RSYNC_CMD+=" ./ filmkulissen@80.74.158.100:${TARGETPATH}/${SUBFOLDER}"
 # Execute the command
 eval $RSYNC_CMD
 
-echo -e "\n\n${GREEN}FINISHED${NC}\n${YELLOW}Built files${NC} uploaded to ${TARGETPATH}."
+echo -e "\n\n${GREEN}FINISHED${NC}\n${YELLOW}Built files${NC} uploaded to ${TARGETPATH}/${SUBFOLDER}."
 
 if [ "$GITSTASHED" == "untracked" ]; then
     # Reapply changes to local files
