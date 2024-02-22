@@ -11,7 +11,6 @@ let autoplay = false;
 let newOrder = [];
 
 async function setupImageViewer() {
-
     /* 
         URL params:
             files
@@ -25,6 +24,7 @@ async function setupImageViewer() {
     os = urlParams.get('os');
     workstation = urlParams.get('workstation');
     disableVideoControls = urlParams.get('disableVideoControls') == "true";
+    let disableThumbs = urlParams.get('disableThumbs') == "true";
     allowZoom = urlParams.get('allowZoom') == "true";
     hiddenBar = urlParams.get('hiddenBar') == "true";
     autoplay = urlParams.get('autoplay') == "true";
@@ -42,6 +42,10 @@ async function setupImageViewer() {
 
     if(localStorage.getItem('imageViewer-autoplay') === 'false') {
         autoplay = false;  // set for local storage
+    }
+
+    if(disableThumbs) {
+        toggleThumbnails();
     }
     
     // Get sort list from storage
@@ -515,14 +519,7 @@ function keyboardControllerImageViewer(event) {
 
         case 77:
             cl("m");
-            let thumb = gebi('thumbnails');
-            if(thumb.classList.contains('videplayer')) {
-                hideThumbs = false;
-                gebi('thumbnails').classList.remove("videplayer");
-            } else {
-                hideThumbs = true;
-                gebi('thumbnails').classList.add("videplayer");
-            }
+            toggleThumbnails();
             break; 
 
         /* case 8:
@@ -544,6 +541,19 @@ function keyboardControllerImageViewer(event) {
         default:
             parent.keyboardController(event);
             break;
+    }
+}
+
+function toggleThumbnails() {
+    let thumb = gebi('thumbnails');
+    if(thumb.classList.contains('videplayer')) {
+        hideThumbs = false;
+        gebi('disableThumbs').removeAttribute('checked')
+        gebi('thumbnails').classList.remove("videplayer");
+    } else {
+        gebi('disableThumbs').setAttribute('checked', 'checked')
+        hideThumbs = true;
+        gebi('thumbnails').classList.add("videplayer");
     }
 }
 
