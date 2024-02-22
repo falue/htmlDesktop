@@ -437,6 +437,7 @@ async function uploadImages(data) {
         }
     }
     try {
+        ///// FIXME: MP4 "blob:" DOES NOT STAY AFTER HARD RELOAD.. not solvable???
         localStorage.setItem('imageViewer', JSON.stringify(files));
     } catch (err) {
         cl(err);
