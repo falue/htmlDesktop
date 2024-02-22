@@ -49,8 +49,6 @@ async function setup() {
 
   const site = urlParams.get('site');
   if(site) {
-    console.log("site")
-    console.log(site)
     goToUrl(site);
   } else {
     // Force cache reload iframe

@@ -371,7 +371,8 @@ body {
 .fake-browser-container {
     position: absolute;
     width: 100%;
-    height: -webkit-fill-available;
+    top:80px;
+    bottom:0;
     box-sizing: border-box;
     background-color: #fff;
 }
@@ -515,5 +516,9 @@ button:hover {
     }
     .fake-browser-bar .hamburger-menu {
         padding: 3px 0 0 8px;
+    }
+
+    .fake-browser-container {
+        top:42px;
     }
 }
