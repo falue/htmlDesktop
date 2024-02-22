@@ -382,7 +382,7 @@ function zoom(event, id) {
             setVideoControls()
         }
         // zoom in / zoom out
-        zoomStage = scrollingEvent.zoomReset ? 1 : clamp(zoomStage-scrollingEvent.wheelDeltaY/100, 1,8);
+        zoomStage = scrollingEvent.zoomReset ? 1 : clamp(zoomStage-scrollingEvent.wheelDeltaY/1000, 1,100);
         element.style.transform = 'scale('+zoomStage+')';
         element.style.transformOrigin = scrollingEvent.offsetX+'px '+scrollingEvent.offsetY+'px';
         
@@ -391,10 +391,11 @@ function zoom(event, id) {
         if(zoomStage == 1 && isVideo) {
             setVideoControls()
         }
-    } else if(scrollingEvent.wheelDeltaX>1 || scrollingEvent.wheelDeltaX<-1) {
+    // X-Scroll
+    /* } else if(scrollingEvent.wheelDeltaX>1 || scrollingEvent.wheelDeltaX<-1) {
         let newX = currentPos[0] - scrollingEvent.wheelDeltaX;
         newX = clamp(newX, 0, window.innerWidth);
-        element.style.transformOrigin = newX +'px '+ currentPos[1];
+        element.style.transformOrigin = newX +'px '+ currentPos[1]; */
     }
 }
 let isFullscreen = false;
