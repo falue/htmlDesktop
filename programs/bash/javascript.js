@@ -61,7 +61,7 @@ function loadScript(script, getBashProfile = true) {
   for (lines of script) {
     if (lines === "EXIT") break; // Abort parsing file when keyword EXIT is found
     localCommands = [...localCommands, ...splitCommandLines(lines)];
-    if (lines != "[br]" && !lines.includes(":nobr") && !lines.includes("javascript")) {
+    if (lines != "[br]" && !lines.includes(":nobr") && !lines.includes("javascript") && !lines.includes("garbageCollection")) {
       // Do not add br for "br" "nobr" and "javascript" command
       localCommands.push({ function: "br" });
     }
@@ -505,6 +505,17 @@ async function playCommand(command) {
       break;
     case "goto":
       await playCommandAtIndex(command.parameters[0]);
+      break;
+    case "garbageCollection":
+      // command.parameters[0]
+      let amount = command.parameters[0];
+      cl(`Remove ${amount} element(s) from DOM`)
+      let element = gebi('console');
+      while (element.children.length > 0 && amount > 0) {
+        element.removeChild(element.children[0]);
+        amount--;
+      }
+      cl(gebi('console').children.length)
       break;
     case "br":
       printToConsole("<br>");
