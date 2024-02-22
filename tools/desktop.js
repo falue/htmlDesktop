@@ -710,6 +710,75 @@ function isGradientLight(gradient) {
     return averageBrightness > 127.5; // Brightness threshold
 }
 
+// Test for weighted gradient. if white is from 0 to 12% and the rest black,
+//   it should result in a "dark gradient" and not be 50-50
+/* function isGradientLight(gradient) {
+    // Check if the gradient is actually a gradient with percentages
+    if (!gradient.includes('gradient') || !gradient.match(/\d+%/)) {
+        // Handle non-gradient or gradient without explicit percentages
+        if (gradient.startsWith('#') || gradient.startsWith('rgb')) {
+            // Single color
+            return isLightColor(gradient);
+        }
+        // If it doesn't match known patterns, return null or a default assumption
+        return null;
+    }
+
+    // Adjusted regex to capture colors with their percentages
+    const colorRegex = /(#(?:[0-9a-fA-F]{3}){1,2}|rgba?\((?:\d{1,3},\s?){2,3}\d+(?:,\s?\d+(?:\.\d+)?)?\))\s*(\d+\.?\d*)?%/g;
+    let match;
+    let colorsWithPercentages = [];
+
+    while ((match = colorRegex.exec(gradient)) !== null) {
+        const color = match[1];
+        const percentage = parseFloat(match[2]);
+        colorsWithPercentages.push({ color, percentage });
+    }
+
+    if (colorsWithPercentages.length === 0) {
+        // No colors with percentages found, default assumption or null
+        return null;
+    }
+
+    // Calculate weighted brightness
+    let totalWeightedBrightness = 0;
+    let lastPercentage = 0;
+
+    cl("-----");
+    cl(colorsWithPercentages);
+
+    colorsWithPercentages.forEach(({ color, percentage }, index) => {
+        const brightness = isLightColor(color);
+        const weight = index === 0
+            ? percentage + colorsWithPercentages[1].percentage/2
+            // : (percentage - lastPercentage)/2 + percentage;
+            // : (percentage - lastPercentage)/2 + lastPercentage;  // for last?
+            : typeof colorsWithPercentages[index+1] === 'undefined'  // for last
+                ? (percentage - lastPercentage)/2 + lastPercentage  // for last
+                : ((colorsWithPercentages[index+1].percentage - percentage)/2+percentage) - (percentage - lastPercentage/2);  // for last?
+
+        // 0, 40, 100
+        // 20, 50, 30
+        cl(color);
+        cl(brightness);
+        cl(weight);
+        cl(percentage);
+        cl("-----");
+        totalWeightedBrightness += brightness*255 * weight;
+        lastPercentage = percentage;
+    });
+
+    // Handle the last segment if it doesn't reach 100%
+    if (lastPercentage < 100) {
+        totalWeightedBrightness += (100 - lastPercentage) * isLightColor(colorsWithPercentages[colorsWithPercentages.length - 1].color);
+    }
+
+    // Normalize to percentage scale
+    const averageBrightness = totalWeightedBrightness / 100;
+
+    return averageBrightness > 127.5; // Brightness threshold
+} */
+
 
 let autoDialogHasClickedOk = false;
 async function showDialog(title, text, selfClosing, input, feedbackButtons) {
