@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>frutti.ch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../../../tools/general.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../../../tools/general.js"></script>
+    <script src="javascript.js"></script>
+    
+  </head>
+  <body onkeydown="keyboardControllerFrutti(event)">
+    <div id="preview-1" class="hide preview fixed left top maxWidth maxHeight whiteBgTransparent centerContent">
+      <span class="fixed top right margin1 padding1 redBg round" onclick="hide('preview-1')"><i class="material-icons large valign white bold">close</i></span>
+      <div id="preview-1-0" style="background-image: url('data/art-1-1.jpg')" onclick="nextImg(1);" class=""></div>
+      <div id="preview-1-1" style="background-image: url('data/art-1-2.jpg')" onclick="nextImg(1);" class="hide"></div>
+      <div id="preview-1-2" style="background-image: url('data/art-1-3.jpg')" onclick="nextImg(1);" class="hide"></div>
+      <div id="preview-1-3" style="background-image: url('data/art-1-4.jpg')" onclick="nextImg(1);" class="hide"></div>
+    </div>
+
+    <div id="preview-2" class="hide preview fixed left top maxWidth maxHeight whiteBgTransparent centerContent">
+      <span class="fixed top right margin1 padding1 redBg round" onclick="hide('preview-2')"><i class="material-icons large valign white bold">close</i></span>
+        <div id="preview-2-0" style="background-image: url('data/art-2-2.jpg')" onclick="nextImg(2);" class=""></div>
+        <div id="preview-2-1" style="background-image: url('data/art-2-3.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-2" style="background-image: url('data/art-3-1.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-3" style="background-image: url('data/art-3-2.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-4" style="background-image: url('data/art-3-3.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-5" style="background-image: url('data/art-3-4.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-6" style="background-image: url('data/art-4-1.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-7" style="background-image: url('data/art-4-2.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-8" style="background-image: url('data/art-4-3.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-9" style="background-image: url('data/art-4-4.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-10" style="background-image: url('data/art-5-1.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-11" style="background-image: url('data/art-5-2.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-12" style="background-image: url('data/art-5-3.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-13" style="background-image: url('data/art-6-1.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-14" style="background-image: url('data/art-6-2.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-15" style="background-image: url('data/art-6-3.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-16" style="background-image: url('data/art-6-4.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-17" style="background-image: url('data/art-7-1.jpg')" onclick="nextImg(2);" class="hide"></div>
+        <div id="preview-2-18" style="background-image: url('data/art-7-2.jpg')" onclick="nextImg(2);" class="hide"></div>
+    </div>
+
+    <header class="relative shadowLight" onclick="window.location.href =''">
+      <img src="logo.png" class="valign" style="width:4em;">
+      <div class="valign grey margin1 marginX3 paddingY25 paddingX1 relative left top nudge-x-250">
+        <span class="mainColor">FRUTTI.CH</span><br>
+        <span class="small italics">A moltobene company</span>
+      </div>
+      <div class="relative right top margin1 paddingY50">
+        <button class="shadowLight"><i class="material-icons medium valign bold">menu</i> Alle kategorien</button>
+        <button class="shadowLight"><i class="material-icons medium valign bold">checkroom</i> Kleidung & Accessoires</button>
+        <button class="shadowLight"><i class="material-icons medium valign bold">sports_soccer</i> Sport</button>
+        <button class="shadowLight"><i class="material-icons medium valign bold">local_florist</i> Handwerk & Garten</button>
+        <button class="shadowLight"><i class="material-icons medium valign bold">computer</i> Computer & Netzwerk</button>
+      </div>
+    </header>
+
+    <aside>
+      <h2 class="uppercase relative mainColor whiteBg nudge-x--60 paddingX1 shadowLight" style="border-bottom-right-radius:5em; border-top-right-radius:5em;">
+        <i class="material-icons small valign grey op25">arrow_back_ios</i>
+        Sport
+      </h2>
+      <br>
+      <ul>
+        <li><h3 class="uppercase small"><i class="material-icons medium valign">hiking</i> Wandern & Camping</h3></li>
+        <li>Zelte <span class="op50 small italics">(123)</span></li>
+        <li>Schlafsäcke <span class="op50 small italics">(444)</span></li>
+        <li>Wanderbekleidung <span class="op50 small italics">(756)</span></li>
+        <li class="bold underline"><b>Rucksäcke</b> <span class="op50 small italics">(235)</span></li>
+        <li>Wanderstöcke <span class="op50 small italics">(234)</span></li>
+        <li>Wintersport <span class="op50 small italics">(1122)</span></li>
+      </ul>
+
+      <ul>
+        <li><h3 class="uppercase small"><i class="material-icons medium valign">downhill_skiing</i> Ski & Snowboards</h3></li>
+        <li>Schlittschuhe <span class="op50 small italics">(7234)</span></li>
+        <li>Wintersportbekleidung <span class="op50 small italics">(3456)</span></li>
+        <li>Helme & Schutz <span class="op50 small italics">(345)</span></li>
+        <li>Langlaufausrüstung <span class="op50 small italics">(765)</span></li>
+        <li>Wassersport <span class="op50 small italics">(999+)</span></li>
+      </ul>
+      <ul>
+        <li><h3 class="uppercase small"><i class="material-icons medium valign">pool</i> Schwimmbekleidung</h3></li>
+        <li>Surfbretter <span class="op50 small italics">(567)</span></li>
+        <li>Tauchausrüstung <span class="op50 small italics">(33)</span></li>
+        <li>Kajaks & Kanus <span class="op50 small italics">(534)</span></li>
+        <li>Rettungswesten <span class="op50 small italics">(667)</span></li>
+        <li>Laufen & Jogging <span class="op50 small italics">(564)</span></li>
+      </ul>
+      <ul>
+        <li><h3 class="uppercase small"><i class="material-icons medium valign">directions_run</i> Laufschuhe</h3></li>
+        <li>Fitness-Tracker <span class="op50 small italics">(890)</span></li>
+        <li>Laufbekleidung <span class="op50 small italics">(456)</span></li>
+        <li>Trinkflaschen & Gürtel <span class="op50 small italics">(870)</span></li>
+        <li>Kopfhörer & Laufzubehör <span class="op50 small italics">(458)</span></li>
+      </ul>
+      <br>
+      <div class="shadowLight padding25 marginX2 marginY25 centerContent whiteBg mainColor" style="border-radius: 4em;"><i class="material-icons medium valign bold">mail</i> Newsletter</div>
+      <div class="shadowLight padding25 marginX2 marginY25 centerContent whiteBg mainColor" style="border-radius: 4em;"><i class="material-icons medium valign bold">policy</i> Privacy</div>
+      <div class="shadowLight padding25 marginX2 marginY25 centerContent whiteBg grey" style="border-radius: 4em;"><i class="material-icons medium valign bold">more_horiz</i> Mehr</div>
+    </aside>
+
+    <main>
+      <span class="uppercase small">
+        <i class="material-icons medium valign bold mainColor">sports_soccer</i> Sport
+        <i class="material-icons valign grey op50 marginX50">navigate_next</i>
+        <i class="material-icons medium valign bold mainColor">sports_soccer</i> Wandern & Camping
+        <i class="material-icons valign grey op50 marginX50">navigate_next</i>
+        <i class="material-icons medium valign bold mainColor">hiking</i> <span class="bold underline">Rucksäcke</span>
+      </span>
+      <span class="right marginX2 paddingX2">
+        <i class="material-icons medium valign bold mainColor">menu</i>
+      </span>
+      <br>
+      <br>
+      <hr>
+      <br>
+      <h3 class="italics op50">
+        ANGEBOT VON ULTRADIVE <i class="material-icons valign small grey op50">star</i><i class="material-icons valign small grey op50">star</i><i class="material-icons valign small grey op50">star</i>:
+      </h3>
+      <h2>
+        <i class="material-icons small valign bold">hiking</i> Gebrauchter Roter Rucksack
+      </h2>
+
+      <div class="artDetails alignRight bold nudge-y--500">
+        Gebrauchter Roter Rucksack<br>
+        <div class="op50 small" style="margin-bottom:.5em">Artikelname</div>
+        300 CHF<br>
+        <div class="op50 small" style="margin-bottom:.5em">Verkaufspreis</div>
+        500 CHF<br>
+        <div class="op50 small" style="margin-bottom:.5em">Neupreis (für das gesamte Set)</div>
+      </div>
+
+      <div class="gallery maxWidth centerContent" onclick="currentGallery=1; show('preview-1')">
+        <div style="background-image: url('data/art-1-1.jpg')" class="shadow inlineBlock"></div>
+        <div style="background-image: url('data/art-1-2.jpg')" class="shadow inlineBlock"></div>
+        <div style="background-image: url('data/art-1-3.jpg')" class="shadow inlineBlock"></div>
+        <div style="background-image: url('data/art-1-4.jpg')" class="shadow inlineBlock"></div>
+      </div>
+
+      <article>
+        <p class="bold">
+          <span class="italics op50">ULTRADIVE schreibt:</span>
+          Ein idealer Begleiter für Tagestouren und Stadtabenteuer. Dieser leuchtend rote Rucksack zeichnet sich durch sein strapazierfähiges Material und sein stylisches Design aus. Enthalten sind:
+        </p>
+
+        <ul>
+          <li>&middot; Hauptfach: Geräumig mit integriertem Laptopfach, passend für bis zu 15 Zoll.</li>
+          <li>&middot; Vordertasche: Mit Organizer für kleine Gegenstände wie Schlüssel und Handy.</li>
+          <li>&middot; Seitentaschen: Zwei offene Seitentaschen für Trinkflaschen oder Regenschirme.</li>
+          <li>&middot; Gepolsterte Schultergurte: Für erhöhten Tragekomfort, verstellbar.</li>
+          <li>&middot; Wasserabweisendes Material: Hält Ihre Sachen trocken bei leichtem Regen.</li>
+          <li>&middot; Zustand: Der Rucksack wurde für etwa ein Jahr für gelegentliche Ausflüge verwendet und ist in einem sehr guten Zustand. Leichte Gebrauchsspuren sind vorhanden, beeinträchtigen jedoch nicht die Funktionalität oder das ästhetische Erscheinungsbild.</li>
+        </ul>
+        <br>
+        <br>
+        <p>
+          Dieser Rucksack ist perfekt für Personen, die einen zuverlässigen und modischen Rucksack suchen, der sowohl für den Alltag als auch für leichte Wanderungen geeignet ist.
+        </p>
+      </article>
+
+      <!-- <p>
+        Kurze Beschreibung: Dieses Set enthält hochwertige Thermobekleidung und -ausrüstung für Ihre Winterwanderungen. Enthalten sind:
+        1. Thermo-Fleecejacke: Eine wärmende Fleecejacke mit wasserabweisendem Finish. Größe M. Wenig getragen, wie neu.
+        2. Thermo-Leggings: Isolierte Leggings mit feuchtigkeitsableitender Technologie. Größe S. Nur einmal verwendet, in ausgezeichnetem Zustand.
+        3. Thermo-Handschuhe: Wasserdichte und winddichte Handschuhe mit Isolierung. Größe L. Kaum benutzt, einwandfreier Zustand.
+        4. Thermo-Stirnband: Ein Stirnband aus Thermomaterial, um die Ohren warm zu halten. Ungetragen, brandneu.
+        5. Thermo-Wanderrucksack: Ein kompakter Wanderrucksack mit isoliertem Fach für Trinkflaschen und genügend Stauraum. Wenig benutzt, in sehr gutem Zustand.
+      </p>
+
+      <p>
+        Dieses Set bietet alles, was Sie brauchen, um warm und bequem während Ihrer Winterwanderungen zu bleiben. Alle Artikel sind von hoher Qualität und wurden sorgfältig gepflegt.
+      </p> -->
+      
+      <div id="chat-window" class="hide chat-window shadowLight">
+        <div class="centerContent">
+          <div class="shadowLight paddingX2 paddingY50 marginX2 marginY25 inlineBlock whiteBg bold" style="border-radius: 4em;">
+            CHAT MIT ULTRADIVE ZUM ARTIKEL
+          </div>
+        </div>
+
+        <div onclick="hide('chat-window')" class="relative top right margin1 white">
+          <i class="material-icons medium valign">cancel</i>
+        </div>
+
+        <iframe
+          class="chat-window-iframe maxWidth"
+          src="../../../chat/index.html?chat=508&sharpCorners=false&bg=79a4cf&loop=false"
+        ></iframe>
+      </div>
+      <div class="chatBtn round centerContent shadowLight" onclick="toggle('chat-window')">
+        <i class="material-icons large white">question_answer</i>
+      </div>
+
+
+      <hr>
+      <br>
+      <h3 class="centerContent">Weitere Artikel von Ultradive</h3>
+      <br>
+      <br>
+      <div class="gallery maxWidth small centerContent" onclick="currentGallery=2; show('preview-2')">
+        <div style="background-image: url('data/art-2-1.jpg')" class="shadow inlineBlock"></div>
+        <!-- <div style="background-image: url('data/art-2-2.jpg')" class="shadow inlineBlock"></div> -->
+        <!-- <div style="background-image: url('data/art-2-3.jpg')" class="shadow inlineBlock"></div> -->
+        <div style="background-image: url('data/art-3-1.jpg')" class="shadow inlineBlock"></div>
+        <!-- <div style="background-image: url('data/art-3-2.jpg')" class="shadow inlineBlock"></div> -->
+        <!-- <div style="background-image: url('data/art-3-3.jpg')" class="shadow inlineBlock"></div> -->
+        <!-- <div style="background-image: url('data/art-3-4.jpg')" class="shadow inlineBlock"></div> -->
+        <div style="background-image: url('data/art-4-1.jpg')" class="shadow inlineBlock"></div>
+        <!-- <div style="background-image: url('data/art-4-2.jpg')" class="shadow inlineBlock"></div> -->
+        <!-- <div style="background-image: url('data/art-4-3.jpg')" class="shadow inlineBlock"></div> -->
+        <!-- <div style="background-image: url('data/art-4-4.jpg')" class="shadow inlineBlock"></div> -->
+        <div style="background-image: url('data/art-5-1.jpg')" class="shadow inlineBlock"></div>
+        <!-- <div style="background-image: url('data/art-5-2.jpg')" class="shadow inlineBlock"></div> -->
+        <!-- <div style="background-image: url('data/art-5-3.jpg')" class="shadow inlineBlock"></div> -->
+        <div style="background-image: url('data/art-6-1.jpg')" class="shadow inlineBlock"></div>
+        <!-- <div style="background-image: url('data/art-6-2.jpg')" class="shadow inlineBlock"></div> -->
+        <!-- <div style="background-image: url('data/art-6-3.jpg')" class="shadow inlineBlock"></div> -->
+        <!-- <div style="background-image: url('data/art-6-4.jpg')" class="shadow inlineBlock"></div> -->
+        <div style="background-image: url('data/art-7-1.jpg')" class="shadow inlineBlock"></div>
+        <!-- <div style="background-image: url('data/art-7-2.jpg')" class="shadow inlineBlock"></div> -->
+      </div>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <hr>
+      <br>
+      <br>
+      <footer class="centerContent small uppercase">
+        AGB
+        <span class="mainColor paddingX2">&middot;</span>
+        Datenschutz
+        <span class="mainColor paddingX2">&middot;</span>
+        Impressum
+        <span class="mainColor paddingX2">&middot;</span>
+        Hilfe
+        <span class="mainColor paddingX2">&middot;</span>
+        News
+        <span class="mainColor paddingX2">&middot;</span>
+        Jobs
+      </footer>
+
+
+
+      </main>
+  </body>
+</html>

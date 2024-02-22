@@ -237,6 +237,9 @@ a:focus { outline: none; }
 .marginX1 { margin-left: 1em; margin-right: 1em; }
 .marginX1-50 { margin-left: 1.5em; margin-right: 1.5em; }
 .marginX2 { margin-left: 2em; margin-right: 2em; }
+.marginX3 { margin-left: 3em; margin-right: 3em; }
+.marginX4 { margin-left: 4em; margin-right: 4em; }
+.marginX5 { margin-left: 5em; margin-right: 5em; }
 .marginY50 { margin-top: .5em; margin-bottom: .5em; }
 .marginY25 { margin-top: .25em; margin-bottom: .25em; }
 .marginY1 { margin-top: 1em; margin-bottom: 1em; }
