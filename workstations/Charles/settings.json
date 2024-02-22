@@ -8,7 +8,7 @@
         "username": "charles",
         "password": "",
         "workstation": "Charles",
-        "selectedSystemMessage": 0,
+        "selectedSystemMessage": 1,
         "osNotificationsDelay": 0
     },
     "systemIcons": [
@@ -78,9 +78,9 @@
             "windowName": "Bash Console",
             "icon": "code",
             "contentPath": "bash/index.html?script=508&darkMode=true",
-            "x": 8,
-            "y": 12,
-            "w": 1450,
+            "x": 4,
+            "y": 6,
+            "w": 1200,
             "h": 750,
             "zIndex": null,
             "minimized": false,
@@ -91,9 +91,9 @@
             "windowName": "Bash Console",
             "icon": "code",
             "contentPath": "bash/index.html?script=508-infinite&darkMode=true",
-            "x": 8,
-            "y": 12,
-            "w": 1450,
+            "x": 4,
+            "y": 6,
+            "w": 1200,
             "h": 750,
             "zIndex": null,
             "minimized": false,
@@ -523,6 +523,7 @@
     ],
     "osNotifications": [],
     "actions": [
-        ["#640: Receive files", "showSystemMessage({'title': 'Receiving files.. <i class=\\'material-icons spin valign small blue marginX50 relative\\'>refresh</i>', 'description': 'From: Charles-mobile', 'icon': 'cloud_sync', 'initialDelay': 0, 'timeOut': 2500, 'action': ''}); await delay(1500); addWindow('Received Files', 'cloud_sync', 'imageviewer/index.html?files=../../../workstations/Charles/files/640-1.jpg|../../../workstations/Charles/files/640-2.jpg|../../../workstations/Charles/files/640-3.jpg|../../../workstations/Charles/files/640-4.jpg|../../../workstations/Charles/files/640-5.jpg|../../../workstations/Charles/files/640-6.jpg|../../../workstations/Charles/files/640-7.jpg|../../../workstations/Charles/files/640-8.jpg|../../../workstations/Charles/files/640-9.jpg&allowZoom=true', 6, 6, 900,700, false);"]
+        ["#640: Receive files", "showSystemMessage({'title': 'Receiving files.. <i class=\\'material-icons spin valign small blue marginX50 relative\\'>refresh</i>', 'description': 'From: Charles-mobile', 'icon': 'cloud_sync', 'initialDelay': 0, 'timeOut': 2500, 'action': ''}); await delay(1500); addWindow('Received Files', 'cloud_sync', 'imageviewer/index.html?files=../../../workstations/Charles/files/640-1.jpg|../../../workstations/Charles/files/640-2.jpg|../../../workstations/Charles/files/640-3.jpg|../../../workstations/Charles/files/640-4.jpg|../../../workstations/Charles/files/640-5.jpg|../../../workstations/Charles/files/640-6.jpg|../../../workstations/Charles/files/640-7.jpg|../../../workstations/Charles/files/640-8.jpg|../../../workstations/Charles/files/640-9.jpg&allowZoom=true', 6, 6, 900,700, false);"],
+        ["#508: Dinner is ready", "addWindow('Bash Console', 'code', 'bash/index.html?script=508-finale&darkMode=true', 4, 6, 1200,750, false);"]
     ]
 }
