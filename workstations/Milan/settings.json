@@ -30,20 +30,33 @@
             "y": 2,
             "w": 1000,
             "h": 777,
-            "zIndex": 1,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#507 Browser Leuchtpetarden",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=qsearch",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": true
         },
         {
             "metaTitle": "#507 Browser Fussballblog",
             "windowName": "Browser",
             "icon": "public",
             "contentPath": "browser/index.html?site=baslerballkunst",
-            "x": 4,
-            "y": 2,
+            "x": 8,
+            "y": 6,
             "w": 1000,
             "h": 777,
-            "zIndex": 5,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": true
         },
@@ -56,7 +69,7 @@
             "y": 2,
             "w": 1000,
             "h": 777,
-            "zIndex": 5,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -69,7 +82,7 @@
             "y": 2,
             "w": 1000,
             "h": 777,
-            "zIndex": 3,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -82,7 +95,7 @@
             "y": 2,
             "w": 1000,
             "h": 777,
-            "zIndex": 4,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -95,7 +108,7 @@
             "y": 2,
             "w": 1250,
             "h": 800,
-            "zIndex": 2,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         }

@@ -30,9 +30,35 @@
             "y": 2,
             "w": 1000,
             "h": 777,
-            "zIndex": 1,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "metaTitle": "#507 Browser utilities.ch",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=utilities",
+            "x": 6,
+            "y": 4,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#507 Browser frutti.ch",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=frutti",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": true
         },
         {
             "metaTitle": "#159 - Telebasel (Green)",
@@ -43,7 +69,7 @@
             "y": 2,
             "w": 1250,
             "h": 800,
-            "zIndex": 2,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -56,7 +82,7 @@
             "y": 4,
             "w": 1250,
             "h": 800,
-            "zIndex": 3,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         },
@@ -69,7 +95,7 @@
             "y": 4,
             "w": 1250,
             "h": 800,
-            "zIndex": 4,
+            "zIndex": null,
             "minimized": false,
             "renderToDom": false
         }
