@@ -45,7 +45,9 @@ async function setupImageViewer() {
     }
     
     // Get sort list from storage
-    newOrder = JSON.parse(localStorage.getItem('imageViewer-newOrder-'+window.location.search));
+    // remove unique ID from window to let user reopen window and get same order
+    // from windowId= .... &
+    newOrder = JSON.parse(localStorage.getItem('imageViewer-newOrder-'+removeWindowId(window.location.search)));
 
     if(urlParams.get('files')) {
         files = urlParams.get('files').split("|");
@@ -607,8 +609,9 @@ function saveOrderInMemory() {
         }
         newOrder.push(data);
     })
-
-    localStorage.setItem('imageViewer-newOrder-'+window.location.search, JSON.stringify(newOrder));
+    // remove unique ID from window to
+    localStorage.setItem('imageViewer-newOrder-'+removeWindowId(window.location.search), JSON.stringify(newOrder));
+    // localStorage.setItem('imageViewer-newOrder-'+window.location.search, JSON.stringify(newOrder));
 }
 
 // let deletedItems = [];
@@ -678,6 +681,11 @@ function reorderFileArray(orderArray, files) {
 }
 
 function resetOrder() {
-    localStorage.removeItem('imageViewer-newOrder-'+window.location.search);
+    localStorage.removeItem('imageViewer-newOrder-'+removeWindowId(window.location.search));
     newOrder = [];
+}
+
+function removeWindowId(params) {
+    const result = params.replace(/(windowId=).*?(&)/, '$1');  // $2
+    return result;
 }
