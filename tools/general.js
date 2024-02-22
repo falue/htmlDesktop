@@ -145,6 +145,72 @@ function delay(delayTimeMs) {
   return new Promise(resolve => setTimeout(resolve, delayTimeMs));
 }
 
+// Available voice (175):
+/* Daniel (English (United Kingdom)), Aaron, Albert, Alice, Alva, Amélie, Amira, Anna, Arthur, Bad News, Bahh, Bells, Boing, 
+Bubbles, Carmit, Catherine, Cellos, Damayanti, Daniel (French (France)), Daria, Eddy (German (Germany)), 
+Eddy (English (United Kingdom)), Eddy (English (United States)), Eddy (Spanish (Spain)), Eddy (Spanish (Mexico)), 
+Eddy (Finnish (Finland)), Eddy (French (Canada)), Eddy (French (France)), Eddy (Italian (Italy)), 
+Eddy (Portuguese (Brazil)), Ellen, Flo (German (Germany)), Flo (English (United Kingdom)), 
+Flo (English (United States)), Flo (Spanish (Spain)), Flo (Spanish (Mexico)), Flo (Finnish (Finland)), 
+Flo (French (Canada)), Flo (French (France)), Flo (Italian (Italy)), Flo (Portuguese (Brazil)), Fred, Good News, 
+Gordon, Grandma (German (Germany)), Grandma (English (United Kingdom)), Grandma (English (United States)), 
+Grandma (Spanish (Spain)), Grandma (Spanish (Mexico)), Grandma (Finnish (Finland)), Grandma (French (Canada)), 
+Grandma (French (France)), Grandma (Italian (Italy)), Grandma (Portuguese (Brazil)), Grandpa (German (Germany)), 
+Grandpa (English (United Kingdom)), Grandpa (English (United States)), Grandpa (Spanish (Spain)), 
+Grandpa (Spanish (Mexico)), Grandpa (Finnish (Finland)), Grandpa (French (Canada)), Grandpa (French (France)), 
+Grandpa (Italian (Italy)), Grandpa (Portuguese (Brazil)), Hattori, Helena, Ioana, Jacques, Jester, Joana, Junior, 
+Kanya, Karen, Kathy, Kyoko, Lana, Laura, Lekha, Lesya, Li-Mu, Linh, Luciana, Majed, Marie, Martha, Martin, Meijia, Melina, 
+Milena, Moira, Montse, Mónica, Nicky, Nora, O-Ren, Organ, Paulina, Ralph, Reed (German (Germany)), Reed (English (United Kingdom)), 
+Reed (English (United States)), Reed (Spanish (Spain)), Reed (Spanish (Mexico)), Reed (Finnish (Finland)), 
+Reed (French (Canada)), Reed (Italian (Italy)), Reed (Portuguese (Brazil)), Rishi, Rocko (German (Germany)), 
+Rocko (English (United Kingdom)), Rocko (English (United States)), Rocko (Spanish (Spain)), Rocko (Spanish (Mexico)), 
+Rocko (Finnish (Finland)), Rocko (French (Canada)), Rocko (French (France)), Rocko (Italian (Italy)), 
+Rocko (Portuguese (Brazil)), Samantha, Sandy (German (Germany)), Sandy (English (United Kingdom)), 
+Sandy (English (United States)), Sandy (Spanish (Spain)), Sandy (Spanish (Mexico)), Sandy (Finnish (Finland)), 
+Sandy (French (Canada)), Sandy (French (France)), Sandy (Italian (Italy)), Sandy (Portuguese (Brazil)), Sara, Satu, 
+Shelley (German (Germany)), Shelley (English (United Kingdom)), Shelley (English (United States)), 
+Shelley (Spanish (Spain)), Shelley (Spanish (Mexico)), Shelley (Finnish (Finland)), Shelley (French (Canada)), 
+Shelley (French (France)), Shelley (Italian (Italy)), Shelley (Portuguese (Brazil)), Sinji, Superstar, Tessa, 
+Thomas, Tingting, Trinoids, Tünde, Whisper, Wobble, Xander, Yelda, Yu-shu, Yuna, Zarvox, Zosia, Zuzana, Google Deutsch, 
+Google US English, Google UK English Female, Google UK English Male, Google español, Google español de Estados Unidos, 
+Google français, Google हिन्दी, Google Bahasa Indonesia, Google italiano, Google 日本語, Google 한국의, Google Nederlands, 
+Google polski, Google português do Brasil, Google русский, Google 普通话（中国大陆）, Google 粤語（香港）, Google 國語（臺灣 */
+
+async function say(text, language='en-GB', voiceName='Daniel (English (United Kingdom))') {
+  return new Promise((resolve, reject) => {
+    let voices = [];
+    function setVoiceAndSpeak() {
+      /* cl(voices.forEach(voice => console.log(voice.name))); */
+      if (voiceName) {
+        const voice = voices.find(v => v.name === voiceName);
+        if (voice) {
+          speech.voice = voice;
+        } else {
+          reject(`Voice "${voiceName}" not found`);
+          return;
+        }
+      }
+      window.speechSynthesis.speak(speech);
+    }
+
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = language;
+    speech.onend = () => resolve('Speech has finished');
+    speech.onerror = (e) => reject(`An error occurred during speech synthesis: ${e.error}`);
+
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = () => {
+        voices = window.speechSynthesis.getVoices();
+        setVoiceAndSpeak();
+      };
+    } else {
+      voices = window.speechSynthesis.getVoices();
+      setVoiceAndSpeak();
+    }
+  });
+}
+
+
 // Counts up from start to stop, e.g. "0% -> 100%"
 // Useful for loading percentage
 async function counter(targetId, append, duration, jitter, start, stop) {
