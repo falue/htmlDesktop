@@ -74,10 +74,23 @@
             "renderToDom": false
         },
         {
-            "metaTitle": "#508: Hacking security credentials - DINNER IS READY",
+            "metaTitle": "#508: DINNER IS READY - Hacking security credentials",
             "windowName": "Bash Console",
             "icon": "code",
             "contentPath": "bash/index.html?script=508&darkMode=true",
+            "x": 8,
+            "y": 12,
+            "w": 1450,
+            "h": 750,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#508: DINNER IS READY - infinite scrolling",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=508-infinite&darkMode=true",
             "x": 8,
             "y": 12,
             "w": 1450,
