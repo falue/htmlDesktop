@@ -24,6 +24,11 @@ header button i {
     color:#ffaa11;
 }
 
+
+.mainColorBg {
+    background-color:#ffaa11;
+}
+
 main {
     position: absolute;
     box-sizing: border-box;
@@ -109,8 +114,7 @@ aside ul li:hover {
 
 .gallery {
     box-sizing: border-box;
-    /* padding:.5em; */
-    /* margin: .5em; */
+    width: 80%;
 }
 
 .preview div,
