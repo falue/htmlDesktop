@@ -36,6 +36,96 @@ let searchTerms = {
       "DIY Leuchtpetarden: So machen Sie sie sicher zu Hause",
       "Eine Schritt-für-Schritt-Anleitung, um Ihre eigenen Leuchtpetarden zu Hause herzustellen.",
     ],
+    [
+      "",
+      "Leuchtpetarden und Umwelt: Eine grüne Perspektive",
+      "www.umweltundfeuerwerk.de/leuchtpetarden-umwelt",
+      "Erfahren Sie, wie Leuchtpetarden die Umwelt beeinflussen und was Hersteller tun, um ihre Produkte umweltfreundlicher zu gestalten."
+    ],
+    [
+      "",
+      "Professionelle Leuchtpetarden Shows: Ein Blick hinter die Kulissen",
+      "www.nachtderlichter.de/professionelle-leuchtpetarden-shows",
+      "Entdecken Sie, wie professionelle Pyrotechniker atemberaubende Leuchtpetarden Shows kreieren."
+    ],
+    [
+      "",
+      "Leuchtpetarden in der Fotografie: Tipps für spektakuläre Fotos",
+      "www.fotofeuerwerk.de/leuchtpetarden-in-der-fotografie",
+      "Lernen Sie, wie Sie Leuchtpetarden effektiv in der Fotografie einsetzen können, um beeindruckende Bilder zu erzielen."
+    ],
+    [
+      "",
+      "Gesetzliche Regelungen für Leuchtpetarden: Ein Überblick",
+      "www.pyrogesetze.de/leuchtpetarden-regelungen",
+      "Ein detaillierter Leitfaden zu den gesetzlichen Bestimmungen für den Einsatz von Leuchtpetarden."
+    ],
+    [
+      "",
+      "Leuchtpetarden: Tradition in Kultur und Festen",
+      "www.kulturfeste.de/leuchtpetarden-tradition",
+      "Erfahren Sie mehr über die Rolle von Leuchtpetarden in verschiedenen Kulturen und bei Festlichkeiten weltweit."
+    ],
+    [
+      "",
+      "Sicherheitsvorkehrungen für den Einsatz von Leuchtpetarden",
+      "www.sicherfeuerwerk.de/leuchtpetarden-sicherheitsvorkehrungen",
+      "Wichtige Sicherheitstipps und Richtlinien für den sicheren Umgang mit Leuchtpetarden."
+    ],
+    [
+      "",
+      "Die Zukunft der Leuchtpetarden: Technologische Entwicklungen",
+      "www.pyroinnovationen.de/zukunft-leuchtpetarden",
+      "Ein Ausblick auf die zukünftigen technologischen Entwicklungen im Bereich der Leuchtpetarden."
+    ],
+    [
+      "",
+      "Leuchtpetarden bei Sportveranstaltungen: Emotionen und Risiken",
+      "www.sportpyrotechnik.de/leuchtpetarden-sportveranstaltungen",
+      "Eine Analyse der Verwendung von Leuchtpetarden bei Sportevents und die damit verbundenen emotionalen und sicherheitstechnischen Aspekte."
+    ],
+    [
+      "",
+      "Kreative Ideen für Leuchtpetarden in der Eventplanung",
+      "www.eventfeuerwerk.de/kreative-ideen-leuchtpetarden",
+      "Inspiration und praktische Tipps für die Integration von Leuchtpetarden in Ihre Eventplanung."
+    ],
+    [
+      "",
+      "Leuchtpetarden: Ein Vergleich internationaler Marken",
+      "www.pyrovergleich.de/leuchtpetarden-internationale-marken",
+      "Ein Vergleich der besten internationalen Marken für Leuchtpetarden und was sie auszeichnet."
+    ],
+    [
+      "",
+      "Kundenerfahrungen mit Leuchtpetarden: Bewertungen und Empfehlungen",
+      "www.kundenstimmen.de/leuchtpetarden-erfahrungen",
+      "Lesen Sie, was Kunden über verschiedene Leuchtpetarden sagen und welche Produkte empfohlen werden."
+    ],
+    [
+      "",
+      "Leuchtpetarden in der Kunst: Pyrotechnik als kreatives Medium",
+      "www.kunstfeuerwerk.de/leuchtpetarden-kunst",
+      "Entdecken Sie, wie Künstler Leuchtpetarden nutzen, um beeindruckende Kunstwerke zu schaffen."
+    ],
+    [
+      "",
+      "Leuchtpetarden sicher lagern und transportieren",
+      "www.pyrosicherheit.de/leuchtpetarden-lagerung-transport",
+      "Ratschläge für die sichere Lagerung und den Transport von Leuchtpetarden, um Unfälle zu vermeiden."
+    ],
+    [
+      "",
+      "Jugendschutz und Leuchtpetarden: Altersbeschränkungen und Aufklärung",
+      "www.jugendschutzpyro.de/leuchtpetarden-jugendschutz",
+      "Informationen über Altersbeschränkungen für den Kauf und Gebrauch von Leuchtpetarden sowie Tipps zur Aufklärung."
+    ],
+    [
+      "",
+      "Die wissenschaftliche Seite der Leuchtpetarden: Chemie und Physik",
+      "www.pyrowissenschaft.de/leuchtpetarden-wissenschaft",
+      "Ein tiefer Einblick in die chemischen und physikalischen Grundlagen, die Leuchtpetarden ihre spektakulären Effekte verleihen."
+    ]
   ],
 
   kunstmuseum: [
