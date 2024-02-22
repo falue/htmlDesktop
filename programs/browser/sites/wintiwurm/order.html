@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+  <title>Winti Wurm - Kompostw&uuml;rmer aus und f&uuml;r Winterthur | Bestellen</title>
+  <link rel="stylesheet" type="text/css" href="tools/stylesheet.css?v=11" />
+  <link rel="stylesheet" type="text/css" href="tools/material.css?v=11" />
+  <link rel="stylesheet" type="text/css" href="tools/hamburger.css?v=11" />
+  <link rel="stylesheet" type="text/css" href="tools/akkordeon.css?v=11" />
+  <link rel="stylesheet" type="text/css" href="tools/lightbox.css?v=11" />
+  <script src="tools/javascript.js?v=11"></script>
+
+  <!-- Do not allow zoom on mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <!-- ISO-8859-1 -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6HH09GTW1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-J6HH09GTW1');
+  </script>
+  
+</head>
+<body>
+    <!-- MOBILE NAVIGATION -->
+    <div class="dropdown">
+      <input type="checkbox" id="checkbox_toggle">
+      <label for="checkbox_toggle" class="hamburger">
+          <div class="line line-1"></div><div class="line line-2"></div><div class="line line-3"></div>
+      </label>
+      <nav class="navigation_mobile">
+        <ul class="desktop">
+            <a href="index.html"><li>HOME</li></a>
+            <a href="info.html"><li>INFOS</li></a>
+            <a href="about.html"><li>&Uuml;BER WINTIWURM</li></a>
+            <a href="order.html" class="active"><li>BESTELLEN</li></a>
+            <a href="kontakt.html"><li>KONTAKT</li></a>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- DESKTOP NAVIGATION -->
+    <div class="navigation">
+        <ul>
+        <a href="index.html"><li>HOME</li></a>
+        <a href="info.html"><li>INFOS</li></a>
+        <a href="about.html"><li>&Uuml;BER WINTIWURM</li></a>
+        <a href="order.html" class="active"><li>BESTELLEN</li></a>
+        <a href="kontakt.html"><li>KONTAKT</li></a>
+        </ul>
+    </div>
+
+    <section>
+      <!-- <div class="logo"></div> -->
+		
+        <article lang="de">
+          <header>Bestellen</header>
+            <p>Unser Sortiment wird laufend ausgebaut!</p>
+          <p>Zur Zeit können Sie hier bereits eine kleine Wurmpopulation für Ihren heimischen Kompost / Wurmfarm bestellen.</p>
+          <p>Wir sind dabei weitere Produkte für Sie zur Verfügung zu stellen um Ihre eigene Wurmfarm in Betrieb zu nehmen.&nbsp; &nbsp;&nbsp;</p>
+          <hr>
+          <p class="bold">Kompostwürmer "Esenia fertida"</p>
+          
+          <img class="image" src="images/wuermer1.jpg" alt=""/>
+          <img class="image" src="images/wuermer2.jpg" alt=""/>
+
+          <table class="productlist" cellspacing="0">
+            <thead>
+              <td>Biomasse</td>
+              <td>Würmer</td>
+              <td>CHF</td>
+            </thead>
+              <tr onclick="goToAnchor('fs-frm'); selectProduct('wuermer', '250g');">
+                <td>250g</td>
+                <td>~500 stk.</td>
+                <td>35.00</td>
+              </tr>
+              <tr onclick="goToAnchor('fs-frm'); selectProduct('wuermer', '500g');">
+                <td>500g</td>
+                <td>~1000 stk.</td>
+                <td>60.00</td>
+              </tr>
+          </table>
+
+          <hr>
+          <p class="bold">Wurmkomposter (Wurmturm/Wurmkiste)</p>
+          
+          <input type="checkbox" class="lightbox" id="image1"/>
+          <label for="image1">
+            <img class="image" src="images/kiste1.jpeg" alt=""/>
+          </label>
+
+          <input type="checkbox" class="lightbox" id="image2"/>
+          <label for="image2">
+            <img class="image" src="images/kiste2.jpeg" alt=""/>
+          </label>
+          
+          <table class="productlist" cellspacing="0">
+            <thead>
+              <td>Produkt</td>
+              <td>Dimensionen (BxHxT)</td>
+              <td>CHF</td>
+            </thead>
+              <tr onclick="goToAnchor('fs-frm'); selectProduct('wuermer', 'WintiWurmkiste #2');">
+                <td>WintiWurmkiste #2</td>
+                <td>~60x40x40cm</td>
+                <td>249.00</td>
+              </tr>
+          </table>
+
+          <hr>
+          <hr>
+          
+<form id="fs-frm" name="survey-form" accept-charset="utf-8" action="https://formspree.io/f/xpzkygrl" method="post">
+            
+  <fieldset id="fs-frm-inputs">
+    <span class="bold">Jetzt bestellen:</span>
+
+    <fieldset id="fs-frm-selects">
+      <div class="form__group">
+        <select name="wuermer" id="wuermer" class="form__field" required="" onChange="updateCost(this);">
+          <option value="Choose" selected="" disabled="">Artikel auswählen...</option>
+          <option value="250g" data-cost="35.00" data-shipping="7.00">ca. 500 Würmer / 250g Biomasse   - CHF 35.00</option>
+          <option value="500g" data-cost="60.00" data-shipping="7.00">ca. 1000 Würmer / 500g Biomasse - CHF 60.00 </option>
+          <option value="WintiWurmkiste #2" data-cost="249.00" data-shipping="20.50">WintiWurmkiste #2 - CHF 249.00 </option>
+        </select>
+        <label class="form__label" for="timely">Ich möchte bestellen:</label>
+      </div>
+
+      <div class="form__group">
+        <select name="termin" id="termin" class="form__field" required="">
+          <option value="Choose" selected="" disabled="">Bitte auswählen...</option>
+          <option value="Sofort">Sofort</option>
+          <option value="Spaeter">Frühestens am (Datum in Kommetarfeld eintragen)</option>
+        </select>
+        <label class="form__label" for="liefertimn">Liefertermin</label>
+      </div>
+    </fieldset>
+
+    <div class="form__group">
+      <input type="text" name="name" id="full-name" class="form__field" placeholder="Max Mustermann" required="">
+      <label class="form__label" for="full-name">Vor- und Nachname</label>
+    </div>
+
+    <div class="form__group">
+      <input type="text" name="strasse" id="street" class="form__field" placeholder="Beispielstrasse 123" required="">
+      <label class="form__label" for="street">Strasse / Nr.</label>
+    </div>
+
+    <div class="form__group">
+      <input type="text" name="wohnort" id="city" class="form__field" placeholder="1234 Beispielstadt" required="">
+      <label class="form__label" for="city">PLZ / Wohnort</label>
+    </div>
+
+    <div class="form__group">
+      <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" name="email" id="email-address" class="form__field" placeholder="email@domain.com" required="">
+      <label class="form__label" for="email-address">E-Mail Addresse</label>
+    </div>      
+
+    <div class="form__group">
+      <textarea rows="3" name="message" id="message" class="form__field" placeholder="Anmerkungen / Datum für Versand falls nicht -Sofort- ausgewählt" required=""></textarea>
+      <label class="form__label" for="Kommentar">Kommentar</label>
+    </div>
+    <input type="hidden" name="_subject" id="email-subject" value="Survey Responses">
+    
+    <br>
+    <div class="title pricetag">
+      Versand: CHF <span id="shipping">0.00</span><br>
+      Total: CHF <span id="cost">0.00</span>
+    </div>
+    <div class="submitButton"><input type="submit" class="button" value="Bestellung abschicken"></div>
+    <br>
+  </fieldset>
+</form>
+
+          <footer class="footer">
+            WintiWurm <span>|</span> Michael Loser <span>|</span> <a href="tel:078 764 06 68">078 764 06 68</a>
+            <br>
+            <a href="mailto:info@wintiwurm.ch">info@wintiwurm.ch</a> <span>|</span> <a href="https://goo.gl/maps/Yad8VMXgbsooSR2k7" target="_blank">Wülflingerstrasse 351, 8408 Winterthur</a>
+          </footer>
+        </article>
+    </section>
+</body>
+</html>

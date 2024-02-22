@@ -47,5 +47,13 @@
         "materialIcon": "directions_car",
         "showInFavorites": false,
         "onclick": false
+    },{
+        "spoofUrl": "wintiwurm.ch",
+        "realUrl": "sites/wintiwurm/index.html",
+        "favoritesName": "wintiwurm.ch",
+        "metaName": "",
+        "materialIcon": "compost",
+        "showInFavorites": false,
+        "onclick": false
     }
 ]
