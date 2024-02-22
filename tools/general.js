@@ -186,8 +186,8 @@ async function say(text, language='en-GB', voiceName='Daniel (English (United Ki
         if (voice) {
           speech.voice = voice;
         } else {
-          reject(`Voice "${voiceName}" not found`);
-          return;
+          cl(`Voice "${voiceName}" not found - revert to 'Daniel (English (United Kingdom))'`);
+          speech.voice = 'Daniel (English (United Kingdom))';
         }
       }
       window.speechSynthesis.speak(speech);
