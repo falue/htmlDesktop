@@ -1,0 +1,77 @@
+header {
+    position: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1em;
+    margin: 0 1em;
+    border-bottom: solid rgb(211, 211, 211) .05em;
+    background-color: white;
+    z-index: 666;
+}
+
+header i {
+    color: #f3ca4a;
+    background-color: #1212d4;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+}
+
+article h3 {
+    margin-left: -2em;
+    padding-bottom: 1em;
+
+}
+
+article {
+   margin-top:6em;
+   padding: 0 35% 20em 6em;
+   position: relative;
+}
+
+aside {
+    margin-top:6em;
+    right:0%;
+    top:0;
+    width:15%;
+    position: fixed;
+    box-sizing: border-box;
+}
+
+aside .ad img {
+    box-sizing: border-box;
+    margin: 1em;
+    width: 80%;
+    border-radius: .25em;
+}
+
+.fcbG {
+    color:#f3ca4a;
+}
+
+.fcbB {
+    color:#1212d4;
+}
+
+.fcbR {
+    color:#eb392a;
+}
+
+
+.commentSection {
+    
+}
+.commentSection li {
+    padding-bottom: 1em;
+    
+}
+
+.user {
+    padding-bottom: .5em;
+
+}
+
+.comment {
+    padding-left: 1em;
+
+}
