@@ -35,6 +35,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#507 Browser Fussballblog",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=baslerballkunst",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 5,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "metaTitle": "#614 Browser Autonummersuche",
             "windowName": "Browser",
             "icon": "public",
@@ -45,7 +58,7 @@
             "h": 777,
             "zIndex": 5,
             "minimized": false,
-            "renderToDom": true
+            "renderToDom": false
         },
         {
             "metaTitle": "#129+var Spy Stream - Greenscreen",
