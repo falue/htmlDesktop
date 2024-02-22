@@ -1,4 +1,4 @@
-22.02.2024 20:33
+22.02.2024 21:24
 os/spa/programIcons/email.png
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
@@ -190,6 +190,7 @@ workstations/Leo/files/509-1.jpg
 workstations/Leo/files/509-5.jpg
 workstations/Leo/files/509-4.jpg
 workstations/Leo/files/509-6.jpg
+workstations/Leo/files/509-4-1.jpg
 workstations/MinervaRezeption/userpicture.jpg
 workstations/generic/userpicture.jpg
 workstations/Agotha/userpicture.jpg
