@@ -297,7 +297,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   // iFrame Content
   let content = document.createElement("iframe");
   content.id = `iframe-${id}`;
-  content.classList.add("content", "hide");
+  content.classList.add("content", "hide", "blackBg");
   // Automatically attach current os, workstation & darkMode to iframe URL
   contentPath = contentPath.split("?");
   let mainProgram = contentPath.shift();  // Remove first element *AND* return first element
