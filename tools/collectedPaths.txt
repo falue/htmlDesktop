@@ -1,4 +1,4 @@
-22.02.2024 21:24
+23.02.2024 11:50
 os/spa/programIcons/email.png
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
@@ -186,11 +186,13 @@ workstations/Charles/files/640-1.jpg
 workstations/Leo/userpicture.jpg
 workstations/Leo/files/509-3.jpg
 workstations/Leo/files/509-2.jpg
+workstations/Leo/files/509-0.jpg
 workstations/Leo/files/509-1.jpg
 workstations/Leo/files/509-5.jpg
 workstations/Leo/files/509-4.jpg
 workstations/Leo/files/509-6.jpg
 workstations/Leo/files/509-4-1.jpg
+workstations/Leo/files/642.jpg
 workstations/MinervaRezeption/userpicture.jpg
 workstations/generic/userpicture.jpg
 workstations/Agotha/userpicture.jpg
@@ -248,6 +250,7 @@ workstations/Athletics/bash/script.fakeBash
 workstations/_default/bash/script.fakeBash
 workstations/Charles/bash/213a-fast.fakeBash
 workstations/Charles/bash/213a-hacking.fakeBash
+workstations/Charles/bash/508-finale.fakeBash
 workstations/Charles/bash/508.fakeBash
 workstations/Charles/bash/213a-fast-single-securiton.fakeBash
 workstations/Charles/bash/random.fakeBash
@@ -284,16 +287,6 @@ programs/browser/sites/frutti/logo.png
 programs/browser/sites/myGps2/imgs/map DOTS.png
 programs/browser/sites/myGps2/imgs/map.png
 programs/browser/sites/personenregister/flag.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum_kombi_nur.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/folder-open.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum_kombi_ausser.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/folder-horizontal.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/node.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/sql-join-left-exclude.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/sql-join-inner.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/award_star_bronze_3.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/table-import.png
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/globe-model.png
 programs/browser/sites/qsearch/imgs/logo.png
 programs/browser/sites/myGps1/imgs/map.png
 programs/browser/sites/myGps1/imgs/calendar.png
@@ -554,14 +547,6 @@ programs/browser/sites/metis/stylesheet.css
 programs/browser/sites/youtube/stylesheet.css
 programs/browser/sites/utilities/stylesheet.css
 programs/browser/sites/personenregister/stylesheet.css
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/fontawesome.min.css
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/styles-print.css
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/style.css
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/legacy.css
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/fa-brands.min.css
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/sky.css
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/footer.css
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum5.css
 programs/browser/sites/mysteryforum/stylesheet.css
 programs/browser/sites/qsearch/stylesheet.css
 programs/browser/sites/myGps1/stylesheet.css
@@ -630,16 +615,6 @@ programs/browser/sites/youtube/javascript.js
 programs/browser/sites/utilities/javascript.js
 programs/browser/sites/personenregister/javascript.js
 programs/browser/sites/mysteryforum/javascript.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/main.min.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/legacy.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/vendor.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/main.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/ext.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum5.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/base.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/_history.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/QMAX_animexx.de.js
-programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/jquery-2.1.4.min.js
 programs/browser/sites/qsearch/searchTerms.js
 programs/browser/sites/qsearch/javascript.js
 programs/browser/sites/myGps1/javascript.js
