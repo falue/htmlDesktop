@@ -61,7 +61,7 @@
 [sleep, 100]
 
 [autoType:grey, "Connected to stva"]
-[autoType, "<span class='blue'>admin1</span>@<span class='yellow bold'>177.0.1.144</span>:<span class='red'>~</span> $ ", 0] [forceType, "mysql -u admin1 -p stvaDB-live -e \"SELECT * FROM your_table_name WHERE name LIKE \'%Ava Dunker%\';\""]
+[autoType, "<span class='blue'>admin1</span>@<span class='yellow bold'>177.0.1.144</span>:<span class='red'>~</span> $ ", 0] [forceType, "mysql -u admin1 -p stvaDB-live -e \"SELECT * FROM stvaDB-live WHERE name LIKE \'%Ava Dunker%\';\""]
 [br]
 [sleep, 333] [spinner:yellow, 2000, 88, "\|/-"]
 
