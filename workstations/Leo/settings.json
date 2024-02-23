@@ -48,6 +48,19 @@
             "renderToDom": false
         },
         {
+            "metaTitle": "#640 Mumien Ring Foto",
+            "windowName": "MediaPlayerZ",
+            "icon": "image",
+            "contentPath": "imageviewer/index.html?files=../../../workstations/Charles/files/640-2.jpg&allowZoom=true",
+            "x": 50,
+            "y": 8,
+            "w": 600,
+            "h": 650,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
             "metaTitle": "#509 Präsentation 'Athletics'",
             "windowName": "MediaPlayerZ",
             "icon": "image",
@@ -58,7 +71,7 @@
             "h": 612,
             "zIndex": null,
             "minimized": false,
-            "renderToDom": true
+            "renderToDom": false
         },
         {
             "metaTitle": "#219 spy cam Pokerspiel; 'View->Choose files''",
