@@ -38,7 +38,7 @@
             "metaTitle": "#642 Familienwappen Bättig",
             "windowName": "MediaPlayerZ - Familienwappen",
             "icon": "image",
-            "contentPath": "imageviewer/index.html?files=../../../workstations/Leo/files/642.png&allowZoom=true&hiddenBar=false&disableThumbs=true&autoplay=false",
+            "contentPath": "imageviewer/index.html?files=../../../workstations/Leo/files/642.jpg&allowZoom=true&hiddenBar=false&disableThumbs=true&autoplay=false",
             "x": 8,
             "y": 8,
             "w": 600,
@@ -225,7 +225,7 @@
             "icon": "fileImage.png",
             "x": 1.5,
             "y": 17,
-            "action": "addWindow('MediaPlayerZ - Familienwappen', 'image', 'imageviewer/index.html?files=../../../workstations/Leo/files/642.png&allowZoom=true&hiddenBar=false&disableThumbs=true&autoplay=false', 8, 8, 600,650, false);"
+            "action": "addWindow('MediaPlayerZ - Familienwappen', 'image', 'imageviewer/index.html?files=../../../workstations/Leo/files/642.jpg&allowZoom=true&hiddenBar=false&disableThumbs=true&autoplay=false', 8, 8, 600,650, false);"
         }
     ],
     "actions": [
