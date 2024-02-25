@@ -16,6 +16,14 @@
         "showInFavorites": false,
         "onclick": false
     },{
+        "spoofUrl": "registerdb.admin.ch",
+        "realUrl": "sites/personenregister/index.html",
+        "favoritesName": "admin.ch",
+        "metaName": "644 Personenregister",
+        "materialIcon": "equalizer",
+        "showInFavorites": false,
+        "onclick": false
+    },{
         "spoofUrl": "utilities.ch",
         "realUrl": "sites/utilities/index.html",
         "favoritesName": "utilities.ch",
