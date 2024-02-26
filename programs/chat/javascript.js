@@ -316,6 +316,7 @@ function hideTypeIndicator() {
 
 function keyboardController(event) {
     // Trigger next message
+    // FIXME: crashes - infinite loop
     if(event.key === 'ArrowRight') {
         if(!isTyping) {
             forceSend = true;
@@ -325,6 +326,7 @@ function keyboardController(event) {
         }
     }
     // remove last message
+    // FIXME: does not set correct next forcetyping when overflowing
     if(event.key === 'ArrowLeft') {
         if(!isTyping && messageIndex > 0) {
             gebi('bubbleContainer').querySelectorAll('.bubbleContainer > .bubbleWrapper:last-of-type')[0]?.remove();
