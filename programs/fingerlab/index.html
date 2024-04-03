@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>FingerLAB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js"></script>
+
+  </head>
+  <body onload="setup();" onkeydown="keyboardControllerFingerlab(event);">
+
+    <div id="overlay" onclick="window.location.href = ''" class="hide fixed maxWidth maxHeight whiteBgTransparent"></div>
+    <div id="scanning" onclick="window.location.href = ''" class="hide fixed maxWidth maxHeight centerContent overlayWindow">
+      <div class="shadow rounded">
+        <h3 class="uppercase">Scanning..</h3>
+        <div class="centerContent small marginY2">
+          <div class="loader small"></div>
+        </div>
+        <br>
+        <div class="small italics op50 marginY50">
+          <span class="small">Scanner: REX FE31EAFFAFBE<br>
+          ✓ Connection established</span>
+        </div>
+      </div>
+    </div>
+    <div id="results" onclick="hide(this.id); hide('overlay');" class="hide fixed maxWidth maxHeight centerContent overlayWindow">
+      <div class="shadow rounded greenBg">
+        <h3 class="uppercase">Matching successful</h3>
+        <div class="centerText">Score: 172</div>
+        <div class="code bold padding50 marginY1 whiteBg">
+          Bayani, Joyce<br>
+          &nbsp;UID: A5C942/T-9M<br>
+        </div>
+        <div class="right padding1">
+          <button>Close</button>
+          <button>Details</button>
+          <button>Enrol..</button>
+        </div>
+        <br>
+        <span class="small"><span class="small">Elapsed time: 12.4s</span></span>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="system-bar invert" >  <!-- style="background-color:rgb(136, 79, 79);" -->
+            <header class="windowmenu">
+              <button class="programButtons">File</button><!-- 
+              --><button class="programButtons">Edit</button><!-- 
+              --><button class="programButtons">View</button><!-- 
+              --><button class="programButtons">Settings</button><!-- 
+              --><button class="programButtons">Tools</button><!-- 
+              --><button class="programButtons">Database</button><!-- 
+              --><button class="programButtons">Subjects</button><!-- 
+              --><button class="programButtons">Help</button><!-- 
+              --><button class="programButtons">About</button>
+            </header>
+      </div>
+      <div class="program-bar relative" >  <!-- style="background-color:rgb(55, 55, 160);" -->
+        <button><i class="material-icons valign">local_police</i></button>
+        <button><i class="material-icons valign">list</i></button>
+        <button><i class="material-icons valign">wysiwyg</i></button>
+        <button><i class="material-icons valign">satellite_alt</i></button>
+        <button><i class="material-icons valign">insert_chart_outlined</i></button>
+        <button><i class="material-icons valign">touch_app</i></button>
+        <button onclick="window.location.href=''"><i class="material-icons valign">bolt</i></button>
+        
+        <div class="relative right top margin25 marginX1">
+          <button id="scanBtn" onclick="startScan()">
+            <i class="material-icons valign blue">fingerprint</i>
+            Start scan
+          </button>
+          <button id="resetBtn" onclick="window.location.href = ''" class="hide">
+            <i class="material-icons valign blue">fingerprint</i>
+            Start scan
+          </button>
+          <button><i class="material-icons valign blue">back_hand</i></button>
+          <button><i class="material-icons valign blue">compare</i></button>
+          <button><i class="material-icons valign blue">compare_arrows</i></button>
+        </div>
+      </div>
+      <div class="content">
+        <div class="tools overflowAuto noScrollbar">
+          <div class="toolList overflowAuto noScrollbar" >
+            <ul>
+              <li><span class="op50 uppercase">Program Overview</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">crop_free</i>Introduction to the Fingerprint Scanner Program</li>
+                  <li><i class="material-icons valign small blue">settings_applications</i> Key Features and Capabilities</li>
+                  <li><i class="material-icons valign small blue">settings_ethernet</i> User Interface and Navigation</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Enrollment and Registration</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">room_preferences</i> Creating User Profiles</li>
+                  <li><i class="material-icons valign small blue">settings_input_component</i> Enrolling Fingerprints</li>
+                  <li><i class="material-icons valign small blue">settings_input_antenna</i> Data Privacy and Security Measures</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Scan Operations</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">history</i> Conducting Fingerprint Scans</li>
+                  <li><i class="material-icons valign small blue">settings_suggest</i> Interpreting Scan Results</li>
+                  <li><i class="material-icons valign small blue">point_of_sale</i> Matching Algorithms and Accuracy</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Case Management</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">settings_system_daydream</i> Creating and Managing Cases</li>
+                  <li><i class="material-icons valign small blue">sensor_window</i> Linking Fingerprint Data to Cases</li>
+                  <li><i class="material-icons valign small blue">dns</i> Collaboration and Sharing within Departments</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Advanced Features</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">surround_sound</i> Mobile Integration for Field Operations</li>
+                  <li><i class="material-icons valign small blue">system_security_update_good</i> Cross-Jurisdictional Database Access</li>
+                  <li><i class="material-icons valign small blue">storage</i> Artificial Intelligence for Pattern Recognition</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Training and Support</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">developer_board</i> Onboarding and Continuous Training Programs</li>
+                  <li><i class="material-icons valign small blue">keyboard_hide</i> Technical Support and Maintenance</li>
+                  <li><i class="material-icons valign small blue">device_hub</i> Community Forums and User Feedback</li>
+                </ul>
+              </li>
+              <li><span class="op50 uppercase">Compliance and Legal Considerations</span>
+                <ul>
+                  <li><i class="material-icons valign small blue">lan</i> Adhering to Global Data Protection Regulations</li>
+                  <li><i class="material-icons valign small blue">album</i> Legal Implications of Misuse</li>
+                  <li><i class="material-icons valign small blue">spa</i> Audit Trails and Transparency</li>
+                </ul>
+              </li>
+            </ul>
+            <br>
+            <br>
+            <div class="small">
+              Speed scan <span id="speedScan-label">1000</span>ms (def. 1000ms)<br>
+              <input id="speedScan-range" type="range" min="100" max="2500" value="1000" oninput="setSpeedScan(this.value)">
+              <br>
+              <hr>
+              <br>
+              Speed search <span id="speed-label">100</span>ms (def. 100ms)<br>
+              <input id="speed-range" type="range" min="10" max="500" value="100" oninput="setSpeed(this.value)">
+              <br>
+              <hr>
+              <br>
+              <button class="block" onclick="invertScanView();">
+                Invert scanning window
+              </button>
+              <br>
+              <br>
+              <br>
+            </div>
+
+          </div>
+          <div class="toolFooter" >
+            <div>
+              <i class="material-icons valign">developer_board</i>
+              Fingerprint DB
+            </div>
+            <div class="paddingY50">
+              <i class="material-icons valign">settings_input_antenna</i>
+              Audit Trails
+            </div>
+          </div>
+        </div>
+        <div id="result" class="result">
+          <div id="prints" class="prints" >  <!-- style="background-color:rgb(148, 148, 114);" -->
+            <div id="fingerprint-empty" class="padding1 op50 maxHeight centerContent italics">
+              Scanner in sleep mode<br><br>
+            </div>
+            <div id="fingerprint-scanned" class="hide">
+              <div id="match-1" style="background-image:url('data/match-1.jpg')" class="matches invert"></div>
+              <div id="match-2" style="background-image:url('data/match-2.jpg')" class="matches hide invert"></div>
+              <div id="match-3" style="background-image:url('data/match-3.jpg')" class="matches hide invert"></div>
+              <div id="match-4" style="background-image:url('data/match-4.jpg')" class="matches hide invert"></div>
+
+              <div id="data-1" style="background-image:url('data/data-1.png')" class="matches hide"></div>
+              <div id="data-2" style="background-image:url('data/data-3.png')" class="matches hide"></div>
+              <div id="data-3" style="background-image:url('data/data-2.png')" class="matches hide"></div>
+            </div>
+          </div>
+          <div class="printsBinary code bold" >  <!-- style="background-color:rgb(0, 138, 138);" -->
+            <iframe id="printsBinary-iframe" class="noPointerEvents relative maxWidth maxHeight" src="">
+            </iframe>
+          </div>
+        </div>
+        <div class="status overflowAuto noScrollbar" >  <!-- style="background-color:rgb(216, 142, 45);" -->
+          <span class="op50 uppercase overflowAuto noScrollbar">Status</span>
+          <div id="status-idle" class="small">
+            <br>
+            <span class="italics">- Scanner asleep -</span>
+            <br>
+            <br>
+            Latest data dump:
+            <br>
+            <br>
+            <hr>
+            <span class="code nobr">
+              00007d70  0c 1d 4d e9 f6 94 5c 28  21 54 21 46 4e c0 e9 e0<br>
+              00007d80  ef 10 50 53 23 d5 d8 b6  92 bd 75 bb 22 0a 60 53<br>
+              00007d90  bb 42 35 d4 65 3e c1 52  9f 23 26 ee 61 31 01 12<br>
+              00007df0  6c 00 b4 85 0c dc a5 59  80 ef 8c 08 3a 26 e4 51 <br>
+              00007e00  55 41 52 19 25 52 39 93  55 23 90 c9 9d 25 48 39 <br>
+              00007e10  28 91 d3 38 f1 08 64 ce  02 51 03 64 60 10 da 00 <br>
+              00007e20  39 86 34 c3 7c bc 23 c2  8f 78 b4 f9 66 ae 7a cb <br>
+              00007e30  ff 00 49 cd 77 6e e9 da  99 d9 76 80 64 29 b9 93 <br>
+              00007e40  39 7d ec b9 0b 81 7a ae  d5 53 19 45 5b 4b 63 48 <br>
+              00007e50  54 15 7d 67 55 c9 b9 54  cc e1 21 60 d8 b7 7c e9 
+            </span>
+            <br>
+            <hr>
+            <br>Selected Mode: ASDB-B
+            <br>
+            <br>
+            <hr>
+            <br>
+            <br>
+            <button class="marginY25"><i class="material-icons valign small blue">settings</i> Settings</button>
+            <button class="marginY25"><i class="material-icons valign small blue">precision_manufacturing</i> Preface</button>
+            <br>
+            <button class="marginY25"><i class="material-icons valign small blue">checklist</i> Prefilght</button>
+            <button class="marginY25"><i class="material-icons valign small blue">checklist_rtl</i> Postfilght</button>
+          </div>
+          <div id="status-scanning" class="hide small">
+            <br>
+            <span class="italics">Scanner scanning..</span>
+            <br>
+            <i class="material-icons spin valign small blue relative">refresh</i>
+            <span id="status-scanning-bar">0%</span>
+          </div>
+          <div id="compareScanBtn" class="hide small">
+            <br>
+            <span class="sine20">Scanning finished.</span><br>
+            <br>
+            <br>
+            Scanning Quality: <span class="bold blue">144</span><br>
+            Immersion: <span class="bold blue">23%</span><br>
+            Overall: <span class="bold blue">BE</span>.q<br>
+            <br>
+            <hr>
+            <br>
+            <button onclick="gebi('fingerprint-scanned').classList.toggle('invert')" class="marginY50">
+              <i class="material-icons valign small blue">opacity</i> Invert
+            </button>
+            <button class="marginY50">
+              <i class="material-icons valign small blue">grading</i> Enrol..
+            </button>
+            <button class="marginY50">
+              <i class="material-icons valign small blue">settings</i> Matching settings
+            </button>
+            <br>
+            <button class="marginY50 block maxWidth ">
+              <i class="material-icons valign small blue">code</i> See data dump
+            </button>
+            <button id="compare-btn-now" onclick="compareScan()" class="block maxWidth marginY50 blueBg white">
+              <i class="material-icons valign small white">compare_arrows</i> Compare with DB
+            </button>
+          </div>
+        </div>
+        <div class="db overflowAuto noScrollbar">
+          <div class="dbTabs small overflowAuto noScrollbar" >  <!-- style="background-color:rgb(183, 117, 183);" -->
+            <button class="">Subjects</button><!-- 
+             --><button class="greyBg white">Similars</button>
+          </div>
+          <div class="dbList" onclick="parent.addWindow('MediaPlayerZ', 'image', 'imageviewer/index.html?files=../../../programs/fingerlab/data/match-4.jpg&allowZoom=true&disableVideoControls=true&hiddenBar=true&autoplay=true&darkMode=true', 30, 8, 720,720, false);">  <!-- style="background-color:rgb(49, 180, 136);" -->
+            <div class="fingerprint small"><img src="data/prints/print-1.jpg"><h4>Yoshida, Carmen</h4><div class="data">UID: CA63BF/T-1S <span class="score op0 bold nobr">Score: 24</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX F48B7B471442</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-2.jpg"><h4>Gupta, Omar</h4><div class="data">UID: DEBD3D/T-5R <span class="score op0 bold nobr">Score: 86</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 4B8079B6E35F</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-3.jpg"><h4>Li, Arjun</h4><div class="data">UID: C9E911/T-9R <span class="score op0 bold nobr">Score: 18</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 3FA7A218A407</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-4.jpg"><h4>Dubois, Ming</h4><div class="data">UID: 1A578E/T-7R <span class="score op0 bold nobr">Score: 56</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX CD6013295BFE</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-5.jpg"><h4>Hansen, Fiona</h4><div class="data">UID: CF1D0B/T-4R <span class="score op0 bold nobr">Score: 77</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX B188788F02B5</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-6.jpg"><h4>Johansson, Luca</h4><div class="data">UID: D8AF6D/T-8S <span class="score op0 bold nobr">Score: 15</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX F5F4B3CCF7F0</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-7.jpg"><h4>Hansen, Elif</h4><div class="data">UID: 15F14F/T-1S <span class="score op0 bold nobr">Score: 71</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 791F220EC043</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-8.jpg"><h4>Dubois, Arjun</h4><div class="data">UID: B25343/T-4S <span class="score op0 bold nobr">Score: 35</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 02E72C11B0E8</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-9.jpg"><h4>Dubois, Fiona</h4><div class="data">UID: A49CF4/T-2M <span class="score op0 bold nobr">Score: 34</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX F7F48AAD8485</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-10.jpg"><h4>Costa, Minh</h4><div class="data">UID: 45F417/T-3M <span class="score op0 bold nobr">Score: 28</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX C2E4DEE688BB</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-11.jpg"><h4>García, Haruto</h4><div class="data">UID: AD3D49/T-7R <span class="score op0 bold nobr">Score: 81</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 7F40313E4CFA</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-12.jpg"><h4>Murphy, Luca</h4><div class="data">UID: E16975/T-6M <span class="score op0 bold nobr">Score: 25</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX F42E1D52EC1C</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-13.jpg"><h4>Santos, Min-jun</h4><div class="data">UID: 2F772A/T-8S <span class="score op0 bold nobr">Score: 81</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX F379684547EC</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-14.jpg"><h4>Diallo, Omar</h4><div class="data">UID: EA4C47/T-5R <span class="score op0 bold nobr">Score: 37</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 727F31E2F4F3</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-15.jpg"><h4>Jensen, Olivia</h4><div class="data">UID: D5314E/T-0M <span class="score op0 bold nobr">Score: 29</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 32AE19BA1EB4</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-16.jpg"><h4>Bernard, Mateus</h4><div class="data">UID: 5BAD65/T-5M <span class="score op0 bold nobr">Score: 21</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX E1E8EAF06A44</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-17.jpg"><h4>Khan, Ricardo</h4><div class="data">UID: B69122/T-8S <span class="score op0 bold nobr">Score: 58</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 230ADAF7911D</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-18.jpg"><h4>O'Reilly, Luca</h4><div class="data">UID: 90F50F/T-0R <span class="score op0 bold nobr">Score: 3</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX B8ECBBA95BA1</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-19.jpg"><h4>Chen, Marie</h4><div class="data">UID: 9C9E10/T-9M <span class="score op0 bold nobr">Score: 62</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 0081E25164B0</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-20.jpg"><h4>Wong, Sean</h4><div class="data">UID: C9BEE3/T-7S <span class="score op0 bold nobr">Score: 77</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 816FB35493CB</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-21.jpg"><h4>Hansen, Felix</h4><div class="data">UID: 132D90/T-7M <span class="score op0 bold nobr">Score: 8</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX D2B7D76604A3</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-22.jpg"><h4>Patel, Luca</h4><div class="data">UID: ECFC92/T-8R <span class="score op0 bold nobr">Score: 44</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 6724DA30281F</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-23.jpg"><h4>Silva, Alexei</h4><div class="data">UID: 6C14B3/T-1S <span class="score op0 bold nobr">Score: 64</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 0819788BA747</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-24.jpg"><h4>Bernasconi, Aidan</h4><div class="data">UID: 5F912B/T-1M <span class="score op0 bold nobr">Score: 59</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 213215427438</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-25.jpg"><h4>Khan, Luca</h4><div class="data">UID: 2B3666/T-7S <span class="score op0 bold nobr">Score: 53</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 4A996600A447</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-26.jpg"><h4>Zhang, Aïssa</h4><div class="data">UID: 417E92/T-9M <span class="score op0 bold nobr">Score: 73</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX F87CC81F836D</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-27.jpg"><h4>O'Reilly, Carmen</h4><div class="data">UID: 9DBF84/T-3M <span class="score op0 bold nobr">Score: 19</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 0388CF0287E9</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-28.jpg"><h4>Wong, Ivan</h4><div class="data">UID: 68FEB2/T-0S <span class="score op0 bold nobr">Score: 84</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 3E752FEE4419</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-29.jpg"><h4>Wang, Angela</h4><div class="data">UID: 1FD303/T-0S <span class="score op0 bold nobr">Score: 79</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 948B9752A0D1</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-30.jpg"><h4>Hernandez, Tadeusz</h4><div class="data">UID: 6AF7A0/T-8M <span class="score op0 bold nobr">Score: 67</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX A8865BAAA2D8</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-31.jpg"><h4>Dubois, Ming</h4><div class="data">UID: 280AD0/T-1R <span class="score op0 bold nobr">Score: 19</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX A096B0D44D6E</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-32.jpg"><h4>López, Rhys</h4><div class="data">UID: 411D04/T-7R <span class="score op0 bold nobr">Score: 55</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX EC5DEDCE92E0</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-33.jpg"><h4>Diallo, Olivia</h4><div class="data">UID: 0202DE/T-0R <span class="score op0 bold nobr">Score: 7</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 2599EA1FFB0F</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-34.jpg"><h4>Ahmed, Haruto</h4><div class="data">UID: 985848/T-6R <span class="score op0 bold nobr">Score: 11</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 7E6A17E23578</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-35.jpg"><h4>O'Reilly, Mohamed</h4><div class="data">UID: 618CF4/T-5S <span class="score op0 bold nobr">Score: 3</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 0E56A1E42E97</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-36.jpg"><h4>Rossi, Noah</h4><div class="data">UID: F35139/T-8R <span class="score op0 bold nobr">Score: 32</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX E5B4B23AC22C</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-37.jpg"><h4>Costa, Omar</h4><div class="data">UID: C7B6B8/T-7R <span class="score op0 bold nobr">Score: 15</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX B1B533B3D475</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-38.jpg"><h4>Russo, Luca</h4><div class="data">UID: 741213/T-0R <span class="score op0 bold nobr">Score: 88</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 48F4C59D959A</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-39.jpg"><h4>Russo, Hassan</h4><div class="data">UID: A1CA55/T-1S <span class="score op0 bold nobr">Score: 23</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 9EF3D19E18E5</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-40.jpg"><h4>Costa, Carlos</h4><div class="data">UID: AA17E1/T-5M <span class="score op0 bold nobr">Score: 3</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX A8FECAB19CB4</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-41.jpg"><h4>Dupont, Hassan</h4><div class="data">UID: 62FD08/T-1M <span class="score op0 bold nobr">Score: 3</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX FB9A03257C71</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-42.jpg"><h4>Meier, Ming</h4><div class="data">UID: 614A78/T-6S <span class="score op0 bold nobr">Score: 50</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 270A335363FE</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-43.jpg"><h4>Suzuki, Isabella</h4><div class="data">UID: 420D23/T-4M <span class="score op0 bold nobr">Score: 51</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 9F764EC0FC43</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-44.jpg"><h4>Costa, Ananya</h4><div class="data">UID: FEA969/T-0M <span class="score op0 bold nobr">Score: 57</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 18604882EBDC</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-45.jpg"><h4>Ahmed, Tadeusz</h4><div class="data">UID: C92742/T-3S <span class="score op0 bold nobr">Score: 13</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 26CD427B6CE3</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-46.jpg"><h4>Peterson, Wei</h4><div class="data">UID: 13E9F4/T-2S <span class="score op0 bold nobr">Score: 10</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 0AD7C6CB7766</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-47.jpg"><h4>Müller, Emily</h4><div class="data">UID: 48BBB8/T-6S <span class="score op0 bold nobr">Score: 52</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX E074475F9AF6</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-48.jpg"><h4>Jensen, Sakura</h4><div class="data">UID: 4FCA32/T-6M <span class="score op0 bold nobr">Score: 9</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 078256CD0FC1</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-49.jpg"><h4>Nguyen, Alexei</h4><div class="data">UID: 509FA8/T-2M <span class="score op0 bold nobr">Score: 77</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX D7C2671ABECA</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-50.jpg"><h4>Kovács, Carmen</h4><div class="data">UID: 0CD386/T-8S <span class="score op0 bold nobr">Score: 43</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX B2722783B25C</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-51.jpg"><h4>Hernandez, Tadeusz</h4><div class="data">UID: 3A009C/T-6M <span class="score op0 bold nobr">Score: 21</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX ED78C027BFA5</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-52.jpg"><h4>Patel, Tadeusz</h4><div class="data">UID: 7E8D51/T-9M <span class="score op0 bold nobr">Score: 17</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX C8C9E543C4A5</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-53.jpg"><h4>Li, Tadeusz</h4><div class="data">UID: 94045D/T-1M <span class="score op0 bold nobr">Score: 83</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 0D4A056124E2</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-54.jpg"><h4>Abdi, Luca</h4><div class="data">UID: 0D8A08/T-1M <span class="score op0 bold nobr">Score: 77</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 0A070F77C1D8</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-55.jpg"><h4>Yilmaz, Isabella</h4><div class="data">UID: 12A00C/T-6R <span class="score op0 bold nobr">Score: 3</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX C7349727B625</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-56.jpg"><h4>Meier, Alejandro</h4><div class="data">UID: A5C942/T-9M <span class="score op0 bold nobr">Score: 33</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 9AAF93F58ABE</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-57.jpg"><h4>Gupta, Marie</h4><div class="data">UID: 6CEAA2/T-9M <span class="score op0 bold nobr">Score: 32</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 636594A50DFA</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-58.jpg"><h4>Bernard, Sami</h4><div class="data">UID: 9B3326/T-5S <span class="score op0 bold nobr">Score: 31</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 211B0776CE5D</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-59.jpg"><h4>Schmidt, Yuto</h4><div class="data">UID: 334109/T-5R <span class="score op0 bold nobr">Score: 70</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 6F9ADCB8DD64</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-60.jpg"><h4>Murphy, Olivia</h4><div class="data">UID: B8589D/T-5S <span class="score op0 bold nobr">Score: 64</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 6661E0A20251</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-61.jpg"><h4>Abdi, Alexei</h4><div class="data">UID: D0AC7B/T-8R <span class="score op0 bold nobr">Score: 41</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 94880BA7B861</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-62.jpg"><h4>Ivanov, Márk</h4><div class="data">UID: C76079/T-4R <span class="score op0 bold nobr">Score: 11</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 83CE5CADD51A</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-63.jpg"><h4>Nguyen, Giulia</h4><div class="data">UID: F878FB/T-1S <span class="score op0 bold nobr">Score: 13</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 34260B306BEB</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-64.jpg"><h4>Dubois, Min-jun</h4><div class="data">UID: BA5194/T-5S <span class="score op0 bold nobr">Score: 74</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 31179E3C570C</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-65.jpg"><h4>Bernard, Jose</h4><div class="data">UID: 9301B0/T-9M <span class="score op0 bold nobr">Score: 83</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX FF7C7B4FC7B3</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-66.jpg"><h4>Müller, Sofía</h4><div class="data">UID: 710F44/T-0S <span class="score op0 bold nobr">Score: 59</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX B534438A5636</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-67.jpg"><h4>Costa, Hassan</h4><div class="data">UID: 9FA5B2/T-3S <span class="score op0 bold nobr">Score: 14</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX DF23F1F70B09</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-68.jpg"><h4>Müller, Yuto</h4><div class="data">UID: C77D92/T-3R <span class="score op0 bold nobr">Score: 21</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 2D6C6FDA3E16</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-69.jpg"><h4>Diallo, Sofía</h4><div class="data">UID: C0A3DB/T-4R <span class="score op0 bold nobr">Score: 68</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 1F9E31674C7D</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-70.jpg"><h4>Levi, Elif</h4><div class="data">UID: 1DC38D/T-4R <span class="score op0 bold nobr">Score: 15</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 3E56F09DBAC9</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-71.jpg"><h4>Alonso, Aidan</h4><div class="data">UID: 028D22/T-1M <span class="score op0 bold nobr">Score: 58</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 73C01D12CBA5</div></div>
+            
+              <div class="fingerprint small"><img src="data/match-4.jpg"><h4>Bayani, Joyce</h4><div class="data">UID: A5C942/T-9M <span id="joyce-score" class="score op0 bold nobr sine20">Score: 172</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 093D215A45EE</div></div>
+            
+            <div class="fingerprint small"><img src="data/prints/print-72.jpg"><h4>Silveira, Erik</h4><div class="data">UID: 85C30C/T-9M <span class="score op0 bold nobr">Score: 75</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 985FC87E97C7</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-73.jpg"><h4>Rossi, Tadeusz</h4><div class="data">UID: E5AEF2/T-5M <span class="score op0 bold nobr">Score: 76</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX C87BF3E5081F</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-74.jpg"><h4>Abdi, Li</h4><div class="data">UID: E3B4B5/T-8R <span class="score op0 bold nobr">Score: 77</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX B8CF833B7F14</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-75.jpg"><h4>Jensen, Olivia</h4><div class="data">UID: 9426A8/T-3R <span class="score op0 bold nobr">Score: 33</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX A3CD092E682E</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-76.jpg"><h4>Diallo, Arjun</h4><div class="data">UID: 42FD7F/T-5R <span class="score op0 bold nobr">Score: 54</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 8DB194278832</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-77.jpg"><h4>Zhang, Mateus</h4><div class="data">UID: D0B81D/T-9M <span class="score op0 bold nobr">Score: 71</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX CC85902A8FBD</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-78.jpg"><h4>Khan, Olivia</h4><div class="data">UID: 431836/T-6S <span class="score op0 bold nobr">Score: 44</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 8C3FB01E1162</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-79.jpg"><h4>Nguyen, Jasmine</h4><div class="data">UID: 7A9635/T-2R <span class="score op0 bold nobr">Score: 23</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX B4339A33AF74</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-80.jpg"><h4>Smith, Isabella</h4><div class="data">UID: B9174B/T-4M <span class="score op0 bold nobr">Score: 33</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 0472A96B6319</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-81.jpg"><h4>Johnson, Mateus</h4><div class="data">UID: 0F67D0/T-7M <span class="score op0 bold nobr">Score: 25</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX FFA046757673</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-82.jpg"><h4>Kovács, Olivia</h4><div class="data">UID: 2C2291/T-4M <span class="score op0 bold nobr">Score: 31</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 50334E8C1FF3</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-83.jpg"><h4>Jensen, Angela</h4><div class="data">UID: EEAB2F/T-7S <span class="score op0 bold nobr">Score: 35</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 01CB9831864D</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-84.jpg"><h4>Johansson, Haruto</h4><div class="data">UID: F1AF2B/T-8S <span class="score op0 bold nobr">Score: 24</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX FE31EAFFAFBE</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-85.jpg"><h4>Petrov, Fiona</h4><div class="data">UID: 91966E/T-7M <span class="score op0 bold nobr">Score: 2</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 33CA4CE62A1E</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-86.jpg"><h4>Dupont, Ella</h4><div class="data">UID: C049CA/T-6S <span class="score op0 bold nobr">Score: 67</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX E4AEBF09A510</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-87.jpg"><h4>Chen, Sofía</h4><div class="data">UID: 362BCA/T-9R <span class="score op0 bold nobr">Score: 29</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX EB4B38B98C06</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-88.jpg"><h4>Kumar, Marie</h4><div class="data">UID: 04A6C9/T-8M <span class="score op0 bold nobr">Score: 14</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 925555DFC386</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-89.jpg"><h4>Kumar, Claire</h4><div class="data">UID: 7B9DF7/T-4R <span class="score op0 bold nobr">Score: 21</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX C58CB1A580D3</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-90.jpg"><h4>Patel, Yuto</h4><div class="data">UID: B48399/T-0S <span class="score op0 bold nobr">Score: 52</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX F9E003814E72</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-91.jpg"><h4>Khan, Ricardo</h4><div class="data">UID: C3F3C6/T-0M <span class="score op0 bold nobr">Score: 86</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 302F5EFF3FB8</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-92.jpg"><h4>Wang, Emily</h4><div class="data">UID: 5E3636/T-1M <span class="score op0 bold nobr">Score: 55</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 7F8B6407E585</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-93.jpg"><h4>Kim, Julia</h4><div class="data">UID: 667174/T-6M <span class="score op0 bold nobr">Score: 17</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX B7D353FE4A62</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-94.jpg"><h4>Davies, Astrid</h4><div class="data">UID: 00D0EA/T-4M <span class="score op0 bold nobr">Score: 16</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX CD549A48593E</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-95.jpg"><h4>Ozdemir, Zara</h4><div class="data">UID: 4E7D28/T-0M <span class="score op0 bold nobr">Score: 37</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 8F993019A796</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-96.jpg"><h4>Kazinsky, Julia</h4><div class="data">UID: 94CA08/T-1S <span class="score op0 bold nobr">Score: 54</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 2E79BF004BE9</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-97.jpg"><h4>Murphy, Giulia</h4><div class="data">UID: 8BBFD9/T-4R <span class="score op0 bold nobr">Score: 65</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX B3C4F7088FD8</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-98.jpg"><h4>Suzuki, Minh</h4><div class="data">UID: FB0568/T-2M <span class="score op0 bold nobr">Score: 43</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 5C6AF780E688</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-99.jpg"><h4>Peterson, Mohamed</h4><div class="data">UID: 22F2A6/T-9M <span class="score op0 bold nobr">Score: 70</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX C98DCACC3B1E</div></div>
+            <div class="fingerprint small"><img src="data/prints/print-100.jpg"><h4>Yilmaz, Aidan</h4><div class="data">UID: 97CB48/T-8M <span class="score op0 bold nobr">Score: 47</span></div><div id="data2" class="small op50 italics">Fingerprint acquired on REX 093D215A45EE</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer small relative white" >
+        Last Update: 
+        <i class="material-icons small op50 valign">check_circle</i>
+        vB-23-A-4
+        <div class="relative right top margin50 op50">
+          <i class="material-icons valign">analytics</i>
+          zuHHD
+          <i class="material-icons valign">dns</i>
+          <i class="material-icons valign">account_tree</i>
+          <i class="material-icons valign">task</i>
+          v2345678-B
+        </div>
+      </div>  <!-- style="background-color:rgb(211, 170, 214);" -->
+    </div>
+
+  </body>
+  </html>

@@ -13,80 +13,104 @@
     <script src="javascript.js"></script>
 
   </head>
-  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+  <body id="body" onload="setup();" onkeydown="greenKeyboardController(event);" ondblclick="dblClickFullscreen();">
     <div onclick="show('settings');" class="padding2 fixed top right" style="z-index: 665;">
     </div>
-    <div id="settings" class="radius3 blackBgTransparent shadow white margin1 padding1 fixed top right hide" style="z-index: 666;">
+    <div id="settings" class="radius3 blackBgTransparent shadow white margin1 fixed top right hide" style="z-index: 666;">
+      <fieldset class="radius3">
+        <legend>Sync</legend>
+        <div class="centerContent">
+          <button class="systemButton margin1" onclick="window.location.href='index.html'">SYNC FROM LAST CHANGE</button>
+        </div>
+      </fieldset>
+
       <!-- bg color -->
-      <fieldset>
+      <fieldset class="radius3">
         <legend>Background color</legend>
         <div class="inline" >
-          <input id="colorPickerBg" class="valign" type="color" value="#00ff00" oninput="setBgColor(this.value);">
+          <input id="colorPickerBg" class="valign greyBorderLight middleGreyBg pointer" type="color" value="#00ff00" oninput="setBgColor(this.value);">
         </div>
-        <button onclick="setBgColor('#00ff00');">green</button>
-        <button onclick="setBgColor('#0000ff');">blue</button>
-        <button onclick="setBgColor('#ffffff');">white</button>
-        <button onclick="setBgColor('#7f7f7f');">grey 50%</button>
-        <br>
-        <button onclick="setBgColor('#222222');">darkgrey</button>
-        <button onclick="setBgColor('#000000');">black</button>
-        <button onclick="setBgColor('#ff00ff');">pink</button>
-        <button onclick="toggleChess();">chess</button>
+        <button onclick="setBgColor('#00ff00');" style="background-color:#00ff00" class="black pointer">green</button>
+        <button onclick="setBgColor('#0000ff');" style="background-color:#0000ff" class="white pointer">blue</button>
+        <button onclick="setBgColor('#ffffff');" style="background-color:#ffffff" class="black pointer">white</button>
+        <button onclick="setBgColor('#7f7f7f');" style="background-color:#7f7f7f" class="white pointer">grey</button>
+        <button onclick="setBgColor('#222222');" style="background-color:#222222" class="white pointer">darkgrey</button>
+        <button onclick="setBgColor('#000000');" style="background-color:#000000" class="white pointer">black</button>
+        <button onclick="setBgColor('#ff00ff');" style="background-color:#ff00ff" class="white pointer">pink</button>
       </fieldset>
 
 
       <!-- which pattern of marker is displayed -->
-      <fieldset>
+      <fieldset class="radius3">
         <legend>Marker</legend>
-        <div class="inlineBlock minWidth100">
-          <h5>Pattern</h4>
-        </div>
-        <div class="inlineBlock minWidth100">
-          <h5>Icon Size</h4>
-        </div>
-        <br>
-        <div class="inlineBlock minWidth100">
-            <button onclick="prevPattern();"><i class="material-icons">arrow_left</i></button>
-            <button onclick="nextPattern();"><i class="material-icons">arrow_right</i></button>
-        </div>
+        <h5>Pattern Style: <span id="patternStyle"></span></h4>
+        <button onclick="prevPattern();" class="middleGreyBg white moderate padding25 pointer"><i class="material-icons">arrow_left</i></button>
+        <button onclick="nextPattern();" class="middleGreyBg white moderate padding25 pointer"><i class="material-icons">arrow_right</i></button>
           
         <!-- marker size -->
-        <div class="inlineBlock minWidth100">
-          <button onclick="changeFontSize();"><i class="material-icons">add</i></button>
-          <button onclick="changeFontSize(true);">0</button>
-        </div>
+        <h5>Icon Size: <span id="fontSize"></span></h4>
+        <input type="range" class="maxWidth padding2 borderBox" id="fontSizeSlider" value="1" min=".1" max="14" step=".1" oninput="setFontSize(this.value);"/>
 
         <!-- which marker is used -->
         <h5>Icon style</h4>
-        <button onclick="prevStyle();"><i class="material-icons">arrow_left</i></button>
-        <button onclick="nextStyle();"><i class="material-icons">arrow_right</i></button>
-        <button onclick="markerIndex = 1; createCells(patternIndex);" class="small"><img src='tools/marker.svg' alt=''></button>
-        <button onclick="markerIndex = 2; createCells(patternIndex);">&#9650;</button>
-        <button onclick="markerIndex = 3; createCells(patternIndex);">&#9709;</button>
-        <button onclick="markerIndex = 4; createCells(patternIndex);">&middot;</button>
-        <button onclick="markerIndex = 5; createCells(patternIndex);">+</button>
-        <button onclick="markerIndex = 6; createCells(patternIndex);">&times;</button>
-        
+        <!-- <button onclick="prevStyle();"><i class="material-icons">arrow_left</i></button>
+        <button onclick="nextStyle();"><i class="material-icons">arrow_right</i></button> -->
+        <button onclick="markerIndex = 1; createCells(patternIndex);" class="middleGreyBg  moderate"><img src='tools/marker.svg' alt=''></button>
+        <button onclick="markerIndex = 2; createCells(patternIndex);" class="middleGreyBg white moderate">&#9650;</button>
+        <button onclick="markerIndex = 3; createCells(patternIndex);" class="middleGreyBg white moderate">&#9709;</button>
+        <button onclick="markerIndex = 4; createCells(patternIndex);" class="middleGreyBg white moderate">&middot;</button>
+        <button onclick="markerIndex = 5; createCells(patternIndex);" class="middleGreyBg white moderate">+</button>
+        <button onclick="markerIndex = 6; createCells(patternIndex);" class="middleGreyBg white moderate">✚</button>
+        <button onclick="markerIndex = 7; createCells(patternIndex);" class="middleGreyBg white moderate">&times;</button>
         
         <!-- marker color -->
-        <h5>Color</h4>
-        <div class=" inline" >
-          <input id="colorPickerMarker" class="valign" type="color" value="#000000" oninput="setMarkerColor(this.value);">
+        <h5>Marker color</h4>
+        <div class="inline">
+          <input id="colorPickerMarker" class="valign greyBorderLight pointer" type="color" value="#000000" oninput="setMarkerColor(this.value);">
         </div>
-        <button onclick="setMarkerColor('#00ff00');">green</button>
-        <button onclick="setMarkerColor('#0000ff');">blue</button>
-        <button onclick="setMarkerColor('#ffffff');">white</button>
-        <button onclick="setMarkerColor('#7f7f7f');">grey</button>
+        <button onclick="setMarkerColor('#00ff00');" style="background-color: #00ff00;" class="black pointer">green</button>
+        <button onclick="setMarkerColor('#0000ff');" style="background-color: #0000ff;" class="white pointer">blue</button>
+        <button onclick="setMarkerColor('#000000');" style="background-color: #000000;" class="white pointer">black</button>
+        <button onclick="setMarkerColor('#ffffff');" style="background-color: #ffffff;" class="black pointer">white</button>
+        <button onclick="setMarkerColor('#7f7f7f');" style="background-color: #7f7f7f;" class="black pointer">grey</button>
+        <button onclick="setMarkerColor('#222222');" style="background-color: #222222;" class="white pointer">darkgrey</button>
+        <button onclick="setMarkerColor('#ff00ff');" style="background-color: #ff00ff;" class="black pointer">pink</button>
+
         <br>
-        <button onclick="setMarkerColor('#222222');">darkgrey</button>
-        <button onclick="setMarkerColor('#000000');">black</button>
-        <button onclick="setMarkerColor('#ff00ff');">pink</button>
+        <!-- Opacity -->
+        <h5>Opacity Marker <span id="opacity"></span></h4>
+        <div class="inlineBlock minWidth100">
+          <input type="range" class="maxWidth padding2 borderBox" id="opacitySlider" value="100" min="0" max="100" step="1" oninput="setOpacity(this.value);"/>
+        </div>
       </fieldset>
 
+      <fieldset id="blackoutHint" class="radius3 hide">
+        <legend>Hotkeys</legend>
+        <div class="small marginY1">
+          <p>Press [1] to toggle entire screen to black.</p>
+          <p>Press [/] to make fullscreen</p>
+        </div>
+      </fieldset>
 
+      <fieldset id="fullscreenSettings" class="radius3">
+        <legend>Fullscreen</legend>
+        <div class="centerContent">
+          <button class="systemButton marginX1" onclick="enterFullscreen(); hide('settings');">GO FULLSCREEN</button>
+          <button class="systemButton marginX1" onclick="exitFullscreen(); hide('settings');">EXIT FULLSCREEN</button>
+        </div>
+        <div class="small marginY1">
+          <p>Press [alt]+[F] or [alt]+[SPACE] or Numpad-[/] to enter Fullscreen.</p>
+          <p>If you're looking at the fullscreen-greenscreen now, press [Escape] [5] to hide it again.</p>
+          <br>
+          <input id="dblClickAllowed" type="checkbox" class="large" style="margin-right:.5em" onchange="dblClickAllowed = this.checked; saveToLocalStorage()"><label for="dblClickAllowed">Double-Clicking the green makes fullscreen</label>
+        </div>
+      </fieldset>
+
+      <!-- <input id="disabledKeys" type="checkbox" class="large" style="margin-right:.5em" onchange="changeDisablingKeys(this.checked)"><label for="disabledKeys">Disable Keyboard input for slashing on the keyboard everywhere</label> -->
+      
       <div class="centerContent padding1">
-        <button class="systemButton" onclick="hide('settings');">close</button>
-        <button class="systemButton" onclick="window.history.back();">back</button>
+        <button id="backToIndex" class="systemButton redBg marginX1" onclick="window.location.href = '../../index.html'">BACK TO INDEX</button>
+        <button class="systemButton marginX1" onclick="hide('settings');">CLOSE SETTINGS</button>
       </div>
     </div>
 

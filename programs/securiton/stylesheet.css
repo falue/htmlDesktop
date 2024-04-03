@@ -1,0 +1,308 @@
+body, html {
+    background-color: #312f33;
+    color: white;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin:0;
+}
+
+.accent {
+    color: #00c6a7 !important;
+}
+.accentBg {
+    background-color: #00c6a7 !important;
+}
+
+.windowmenu .programButtons {
+    border-left:none !important;
+    border-right:solid 4px rgba(0,0,0,.2) !important;
+}
+
+/* .surveillanceVideo::-webkit-media-controls-panel { */
+.surveillanceVideo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black;
+}
+
+.videoContainer {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: black;
+    overflow: hidden;
+}
+
+/* body {
+    overflow: auto;
+    background-color: white;
+    color: black;
+} */
+
+h2 {
+    padding-bottom: .5em;
+}
+
+.header:not(.tabList) {
+    /* background-color: rgba(0,0,0,.25); */
+    border-bottom: solid thin black;
+}
+
+.footer {
+    background-color: rgba(0,0,0,.25);
+    border-top: solid thin black;
+}
+.asideLeft {
+    border-right: solid thin black;
+}
+.asideRight {
+    border-left: solid thin black;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/* GENERIC BUTTONS */
+button {
+    border: solid thin rgba(0,0,0,.75);
+    background-color: rgba(255,255,255,.125);
+    color: white;
+}
+
+button:hover {
+    background-color: grey;
+}
+
+
+.toolBar {
+    background-color: rgba(0,0,0,.25);
+    border-bottom: solid thin black;
+}
+
+.toolBar button {
+    font-family: inherit;
+    border: solid thin rgba(0,0,0,.75) !important;
+    background-color: rgba(255,255,255,.125);
+    color:white;
+}
+
+.toolBar > button {
+    /* margin-right: .5em; */
+}
+
+.buttonGroup {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.buttonGroup button {
+    border-left: none;
+}
+
+.buttonGroup button:first-of-type {
+    border-top-left-radius: .25em;
+    border-bottom-left-radius: .25em;
+    border-left: solid thin rgba(0,0,0,.75);
+}
+
+.buttonGroup button:last-of-type {
+    border-top-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+}
+
+/* TABS */
+.tabList {
+    background-color:rgba(0,0,0,.25);
+}
+.tabList button.active {
+    border-bottom: none !important;
+    background-color: #202633;
+}
+.tabList button:not(.active) {
+    color: grey;
+    border-bottom: solid 2px rgba(0,0,0,1) !important;
+}
+.tab {
+    /* display: none; */
+}
+.tabList button:hover {
+    color: white !important;
+}
+
+/* GRID */
+.gridLayout {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+    /* background-color: rgba(0,0,255,.5); */
+    grid-template-rows: [row] auto [row] auto [row] 3em [row] 2em [row] 1fr [row] ;
+}
+
+.gridBox {
+    position: relative;
+    box-sizing: border-box;
+    /* border: solid rgba(255,0,0,.5) 1px; */
+}
+
+/* CHARTS */
+.charts.gridLayout {
+    height: initial;
+    grid-gap: 1em;
+    grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+    grid-template-rows: [row] auto [row] auto [row];
+}
+
+.charts .gridBox {
+    padding: 1em;
+    background-color: #333;
+    color: #fff;
+}
+
+/* treeview */
+.treeview {
+    line-height: 1.5em;
+}
+.treeview li {
+    padding-left: 1em;
+    white-space: nowrap;
+}
+.treeview li:hover {
+    background-color: rgba(125,125,125,0.4) !important;
+}
+
+.treeview li:focus {
+    background-color: rgba(125,125,125,0.6) !important;
+}
+
+.treeview li.active {
+    background-color: rgba(255,255,255,.2);
+}
+
+#summeryTitle i {
+    display: none;
+}
+/* .treeview li:hover {
+    background-color: rgba(255,255,255,.125);
+}
+.treeview li:hover ul  {
+    background-color: transparent;
+} */
+.treeview > li {
+    padding-left: 0;
+}
+
+.treeview ul:last-child li:last-of-type {
+    padding-bottom: .5em;
+}
+
+/* FILELIST */
+.filelist.path {
+    padding:.5em .5em 0 .5em;
+}
+
+.filelist {
+    background-color: rgb(137, 137, 137);
+    color: white;
+    overflow: auto;
+    user-select: none;
+    font-size: .75em; 
+}
+
+.footer .filelist {
+    max-height: 6em;
+}
+
+.selected i,
+.filelist tr.selected td:nth-child(2),
+.selected {
+    color: white !important;
+}
+
+.filelist table {
+    /* width: 150%; */
+    border-collapse: collapse;
+}
+
+.filelist td {
+    text-align: left;
+    width: initial;
+    border-right: solid thin darkgrey;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: .5em;
+}
+
+.footer .filelist th,
+.footer .filelist td {
+    padding: 0 .5em;
+}
+
+.filelist th {
+    font-weight: normal;
+    text-align: left;
+    border-bottom: solid thin white;
+    padding: .5em;
+    color:black;
+    background-color: white;
+}
+
+.filelist td:nth-child(1) {
+    width: 1.75em;
+    padding-right: initial;
+    color: black;
+}
+.filelist td:nth-child(2) {
+    padding-right: 1em;
+    width: 35%;
+}
+.filelist td:nth-child(3),
+.filelist td:nth-child(6),
+.filelist td:nth-child(4) {
+    width: 5em;
+}
+.filelist td:nth-child(5) {
+    font-style: italic;
+    width: 8em;
+}
+
+.filelist tr:nth-child(even) {
+    background: rgb(125, 125, 125);
+}
+.filelist tr:nth-child(even) td:not(:last-of-type) {
+    border-right: solid thin darkgrey;
+}
+
+/* FORCETYPE */
+.forceType  {
+    position: relative;
+    width: 100%;
+}
+.forceType textarea {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    bottom: 0;
+    opacity: 0;
+    background-color: darkgrey;
+    z-index: 1;
+    box-sizing: border-box;
+    resize: none;
+}
+.forceType div  {
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: fit-content;
+    min-height: 2em;
+    z-index: 0;
+}

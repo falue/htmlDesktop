@@ -161,6 +161,8 @@ onDragEnd = function() {
 }
 
 let recentZIndex = 10;
+let recentX = 2;
+let recentY = 2;
 
 async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   // Display overlay in all other windows that youre able to click on them later
@@ -186,6 +188,23 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   windowContainer.setAttribute("draggable", "true");
   windowContainer.setAttribute("ondragstart", "onDragStart(event)");
   windowContainer.setAttribute("ondragend", "onDragEnd(event)");
+
+  // If position X+Y is set to null, place window a bit to further down and to the right.
+  // reset after 30s.
+  if(!x){
+    x = recentX+1;
+    recentX = x;
+    setTimeout(function() {
+      recentX = 2;
+    }, 20000);
+  }
+  if(!y) {
+    y = recentY+3;
+    recentY = y;
+    setTimeout(function() {
+      recentY = 2;
+    }, 20000);
+  }
 
   // Set position & size
   windowContainer.style.left = x + "%";
@@ -226,7 +245,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
 
   // Window Title
   let windowFrame = document.createElement("div");
-  windowFrame.setAttribute("class", "windowFrame systemColors");
+  windowFrame.setAttribute("class", "windowFrame systemColors alignLeft");
   windowFrame.setAttribute("onclick", "bringToFront('"+id+"')");
   windowFrame.setAttribute("ondblclick", "maximizeWindow('"+id+"')");
 
@@ -236,13 +255,15 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   let windowIcon = document.createElement("i");
   windowIcon.setAttribute("class", "material-icons small");
   windowIcon.appendChild(document.createTextNode(icon));
-  windowIcon.setAttribute("oncontextmenu", `epD(event); setWindowIcon('${id}')`);
+  windowIcon.setAttribute("onclick", `epD(event); setWindowIcon('${id}', event)`);
+  windowIcon.setAttribute("oncontextmenu", `epD(event); setWindowIcon('${id}', event)`);
   windowTitle.appendChild(windowIcon);
 
   let windowTitleText = document.createElement("span");
   windowTitleText.appendChild(document.createTextNode(windowName));
   windowTitleText.setAttribute("id", "title-"+id);
-  windowTitleText.setAttribute("oncontextmenu", `epD(event); setWindowTitle('title-${id}')`);
+  windowTitleText.setAttribute("onclick", `epD(event); setWindowTitle('title-${id}', event)`);
+  windowTitleText.setAttribute("oncontextmenu", `epD(event); setWindowTitle('title-${id}', event)`);
   windowTitleText.setAttribute("class", "valignText");
   windowTitleText.style.paddingRight='2em';
   windowTitle.appendChild(windowTitleText);
@@ -276,7 +297,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   // iFrame Content
   let content = document.createElement("iframe");
   content.id = `iframe-${id}`;
-  content.classList.add("content", "hide");
+  content.classList.add("content", "hide", "blackBg");
   // Automatically attach current os, workstation & darkMode to iframe URL
   contentPath = contentPath.split("?");
   let mainProgram = contentPath.shift();  // Remove first element *AND* return first element
@@ -292,11 +313,24 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     os,
     "&workstation=",
     workstation,
+<<<<<<< HEAD
+=======
+    "&windowId=",
+    id,
+>>>>>>> beschatterSe02
     parameters ? "&" : "",
     parameters
   ].join("");
   content.setAttribute("src", isDirectUrl ? isDirectUrl : srcIframe);
   content.setAttribute("onload", `show('iframe-${id}')`);
+<<<<<<< HEAD
+=======
+  // make it possible to have video inside iframe be fullscreen
+  content.setAttribute("allowfullscreen", "true");
+  content.setAttribute("webkitallowfullscreen", "true");
+  content.setAttribute("allow", "fullscreen");
+  content.setAttribute("allow", "fullscreen *");
+>>>>>>> beschatterSe02
   windowContainer.appendChild(content);
 
   // For some godforsaken reason, i cannot parse .html files OR files with no extension,
@@ -350,6 +384,10 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
 
   makeResizableDiv('#'+id);
   setSystemColors(systemColor);
+
+  // Set focus to iframe content
+  content.contentWindow.focus();
+  return id;
 }
 
 function getFrontMostWindow(includingMinimized) {
@@ -402,6 +440,8 @@ function bringToFront(id) {
   // Hide current windowManagerOverlay in any case except is was closed
   if(currentWindow) {
     hide(currentWindow.getElementsByClassName('windowManagerOverlay')[0].id);
+    // Set focus to iframe content
+    currentWindow.querySelectorAll("iframe")[0].contentWindow.focus();
   }
 }
 
@@ -464,7 +504,12 @@ function maximizeWindow(id) {
   windowContainer.getElementsByClassName("windowFrame")[0].setAttribute("ondblclick", "resetWindowSize('"+id+"', '"+lastX+"', '"+lastY+"', '"+lastW+"', '"+lastH+"')");
 }
 
-async function setWindowTitle(id) {
+async function setWindowTitle(id, event) {
+  if(!event.altKey) {
+    cl("Press alt key to change window title");
+    return;
+  }
+
   let currentWindowTitleElement = gebi(id);
   let currentTitle = currentWindowTitleElement.innerHTML;
   let newTitle = await showDialog("Set new window title", "", false, currentTitle);
@@ -474,9 +519,47 @@ async function setWindowTitle(id) {
   return newTitle;
 }
 
-async function setWindowIcon(id) {
+async function setWindowIcon(id, event) {
+  // if not alt, return
+  if(!event.altKey) {
+    cl("Press alt key to change window icon");
+    return;
+  }
+
+
   let currentWindowIcon = gebi(id).getElementsByClassName('windowTitle')[0].getElementsByTagName('i')[0];
-  let newIcon = await parent.showDialog("Set new window icon", "See <a href='https://fonts.google.com/icons?selected=Material+Icons' target='_blank'>here</a> for all icons. Copy the plain text variable.", false, currentWindowIcon.innerHTML);
+  let textContent = `<div class="chooseBox editIcon radius5 alignCenter">
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='folder'"><i class="material-icons blue valign ">folder</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='folder_open'"><i class="material-icons blue valign ">folder_open</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='edit_note'"><i class="material-icons blue valign ">edit_note</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='image'"><i class="material-icons blue valign ">image</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='grid_view'"><i class="material-icons blue valign ">grid_view</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='public'"><i class="material-icons blue valign ">public</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='person'"><i class="material-icons blue valign ">person</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='inventory_2'"><i class="material-icons blue valign ">inventory_2</i></div>
+
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='code'"><i class="material-icons blue valign ">code</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='videocam'"><i class="material-icons blue valign ">videocam</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='storm'"><i class="material-icons blue valign ">storm</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='view_in_ar'"><i class="material-icons blue valign ">view_in_ar</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='reorder'"><i class="material-icons blue valign ">reorder</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='location_searching'"><i class="material-icons blue valign ">location_searching</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='map'"><i class="material-icons blue valign ">map</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='fastfood'"><i class="material-icons blue valign ">fastfood</i></div>
+
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='call_to_action'"><i class="material-icons blue valign ">call_to_action</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='local_florist'"><i class="material-icons blue valign ">local_florist</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='trip_origin'"><i class="material-icons blue valign ">trip_origin</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='description'"><i class="material-icons blue valign ">description</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='folder_zip'"><i class="material-icons blue valign ">folder_zip</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='warning'"><i class="material-icons blue valign ">warning</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value='feedback'"><i class="material-icons blue valign ">feedback</i></div>
+    <div class="pointer inlineBlock hover radius5 whiteBgTransparent margin25" onclick="gebi('autoDialogInput').value=''"><i class="material-icons blue valign op0">folder</i></div>
+  </div>
+  See
+  <a href='https://fonts.google.com/icons?selected=Material+Icons' target='_blank'>here</a> for all icons.
+  Copy the plain text variable.`
+  let newIcon = await parent.showDialog("Set new window icon", textContent, false, currentWindowIcon.innerHTML);
   if(newIcon && newIcon != "~EMPTY") {
     currentWindowIcon.innerHTML = newIcon;
   } 
@@ -497,6 +580,138 @@ function closeAllWindows() {
     gebi(windowData.id).remove();
     gebi("minimized-"+windowData.id).remove();
   }
+}
+
+function clearCacheOfFiles(target, type, attributeName) {
+  // Get element and reload file; ignoring cache (maybe..)
+  // Get all bg images
+  if(type === 'backgroundImgs') {
+    let bgImgs = getAllElemenentsWithBackgroundImg(target);
+    for(let index in bgImgs) {
+        cl(`Clear <*element/> with css-background image of ${bgImgs[index]}`);
+        fetch(bgImgs[index], {cache: 'reload', mode: 'no-cors'});
+    }
+    return;
+  }
+  let selection = target.querySelectorAll(`${type}[${attributeName}]`);
+  let loadedSources = [];
+  for (let currentFile of selection) {
+    if(currentFile.hasAttribute(attributeName)) {
+      if(!loadedSources.includes(currentFile[attributeName])) {
+        cl(`Clear <${type}/> with ${attributeName} of ${currentFile[attributeName]}`);
+        fetch(currentFile[attributeName], {cache: 'reload', mode: 'no-cors'});
+        loadedSources.push(currentFile[attributeName]);
+      /* } else {
+        cl(`Already fetched ${currentFile[attributeName]}`); */
+      }
+    }
+  }
+}
+
+function getAllElemenentsWithBackgroundImg(doc) {
+  const srcChecker = /url\(\s*?['"]?\s*?(\S+?)\s*?["']?\s*?\)/i
+  return Array.from(
+    Array.from(doc.querySelectorAll('*'))
+      .reduce((collection, node) => {
+        let prop = window.getComputedStyle(node, null)
+          .getPropertyValue('background-image')
+        // match `url(...)`
+        let match = srcChecker.exec(prop)
+        if (match) {
+          collection.add(match[1])
+        }
+        return collection
+      }, new Set())
+  )
+}
+
+async function hardReloadAllIframes(doc) {
+  cl("======================================================")
+  cl("Start reloading files and windows...")
+  cl("------------------------------------------------------")
+  showSystemMessage({title: `Fetching meta data files..`, description: "", icon:"hourglass_empty", timeOut: 1500});
+  await fetch('tools/collectedPaths.txt', {cache: 'reload', mode: 'no-cors'});  // Reload the reload file first
+  let updatedFiles = await hardReloadMetaSources();
+  showSystemMessage({title: `Reloaded ${updatedFiles[0]} meta data files from ${updatedFiles[1]}`, description: ".css, .js, .txt, .json, .fakeBash, .splash", icon:"rotate_left", timeOut: 12000});
+  let updatesIframes = await hardReloadIframe(doc);
+  showSystemMessage({title: `Reloaded ${updatesIframes[0]} ${plural(updatesIframes[0], "window")}`, description: `Reloaded Imgs, scripts and some css:<br><ul class="list"><li>${updatesIframes[1]}</li><br>Good to go!`, icon:"rotate_left", timeOut: 3500});
+}
+
+async function hardReloadMetaSources() {
+  return await fetchFilePathsAndReload('tools/collectedPaths.txt');
+}
+
+async function fetchFilePathsAndReload(fileListUrl) {
+  try {
+    // Fetch the file list
+    const response = await fetch(fileListUrl);
+    const text = await response.text();
+    // Assume each line in the file is a path to a file
+    const filePathsArray = text.split('\n');
+    // Filter out empty lines or any other processing you might need
+    const validPaths = filePathsArray.filter(path => path.trim() !== '');
+    // Reload files
+    return await reloadFiles(validPaths);
+  } catch (error) {
+    console.error('There was an error fetching the file list', error);
+  }
+}
+
+async function reloadFiles(filePaths) {
+  let date = filePaths.shift();
+  let errors = {};
+  for (const pathToFile of filePaths) {
+    try {
+      const response = await fetch(pathToFile, {cache: 'reload', mode: 'no-cors'});
+      if(pathToFile.endsWith('.jpg')) console.log(pathToFile);
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error(`Failed to reload: ${pathToFile}`, error);
+      errors[error] = errors[error] ? errors[error]+"<li>"+pathToFile+"</li>" : "<li>"+pathToFile+"</li>";
+    }
+  }
+  if(Object.keys(errors).length) {
+    for (const currError of Object.keys(errors)) {
+      showSystemMessage({title: currError, description: `While getting static meta data, this file(s) errored out:<br><ul class="list">${errors[currError]}</ul>`, icon:"sync_problem", timeOut: 0});
+    }
+  }
+  console.log(`${filePaths.length} meta files have been reloaded.`);
+  cl("------------------------------------------------------");
+  return [filePaths.length, date];
+}
+
+
+async function hardReloadIframe(doc) {
+  // await doc loaded
+  let iFrames = doc.querySelectorAll("iframe");
+  let windowTitles = [];
+  for (let currentIframe of iFrames) {
+    let currentSrc = currentIframe.src;
+    let currentId = currentIframe.id;
+    let currDocument = currentIframe.contentWindow.document;
+    await hardReloadIframe(currentIframe.contentWindow.document);  // recursively find iframes within
+    windowTitles.push(currentIframe.contentWindow.document.title);
+    
+    cl(`Hard reload '${currentIframe.contentWindow.document.title}': ${currentSrc}`);
+    currDocument.location.reload();  // Maybe does not remove cache
+    await fetch(currentSrc, {cache: 'reload', mode: 'no-cors'});
+    
+    // wait until file is loaded... sketchy!
+    // can't use onload because there is already an onload event..
+    await delay(666);
+
+    // New iframe with refreshed content
+    let currentNewIframe = doc.getElementById(currentId).contentWindow.document;  // do not use gebi()! because it uses main 'document'
+    clearCacheOfFiles(currentNewIframe, "script", "src");
+    clearCacheOfFiles(currentNewIframe, "style", "href");
+    clearCacheOfFiles(currentNewIframe, "link", "href");
+    clearCacheOfFiles(currentNewIframe, "img", "src");
+    clearCacheOfFiles(currentNewIframe, "backgroundImgs");
+    cl("------------------------------------------------------")
+ }
+ return [iFrames.length, windowTitles.join("</li><li>")];
 }
 
 function removeAllShortcuts() {
@@ -532,6 +747,43 @@ function resetWindowSize(id, x,y, w,h) {
   // Reset click into window top bar to maximize window position
   windowContainer.getElementsByClassName("windowFrame")[0].setAttribute("ondblclick", "maximizeWindow('"+id+"')");
 }
+
+async function grabWindowFromWorkstation() {
+  let list = '';
+  let countWorkstations = 0;
+  let countWindows = 0;
+  let settingsData = await parseFile("tools/general.settings");
+  let alreadySavedWindows = [];
+  for (let e of settingsData) {
+    let workstationWindowList = ''; // Initialize an empty string
+    let settings = e.split("=");
+    let workstationName = settings[1].split(";")[0];
+    let savedWindows = await parseFile(`workstations/${workstationName}/settings.json`);
+
+    if (savedWindows.windows.length > 0) {
+      countWorkstations++;
+      for (let window of savedWindows.windows) {
+        if(!alreadySavedWindows.includes(window.metaTitle+window.windowName+window.contentPath)) {
+          workstationWindowList += `<li onclick="addWindow('${window.windowName}', '${window.icon}', '${window.contentPath}', ${window.x},${window.y}, ${window.w},${window.h}, ${window.minimized}, ${window.zIndex});">`;
+          workstationWindowList += `<i class="material-icons grey small">${window.icon}</i>`;
+          workstationWindowList += (window.metaTitle || window.windowName).replaceAll(/#(\d\w+)/gm, `<span class='green'>#$1</span>`);
+          workstationWindowList += `</li>`;
+          alreadySavedWindows.push(window.metaTitle+window.windowName+window.contentPath);
+          countWindows++;
+        }
+      }
+      if(workstationWindowList.length > 0) {
+        workstationWindowList = `<li><span class="green">${workstationName}</span><ul>`+workstationWindowList;
+        workstationWindowList += `</ul></li>`;
+      }
+      list += workstationWindowList;
+    }
+  }
+  let textContent = `Available windows: ${countWindows} from ${countWorkstations} workstations<br>
+    <div class="chooseBox radius3 maxHeight noScrollbar"><ul>${list}</ul></div>`;
+  showDialog('Grab window from another workstation', textContent);
+}
+
 
 /* SHORTCUTS */
 // Displays the edit shortcut dialog window
@@ -636,11 +888,17 @@ function placeShortcut(name, icon, x,y, action) {
     // Start default action
     shortcutContainer.setAttribute("ondblclick", chooseDefaultProgram(name));
   }
-  shortcutContainer.setAttribute("oncontextmenu", "gebi('editNewShortcut').value = 'false'; editShortcut('"+id+"'); return false;");
+  shortcutContainer.setAttribute("oncontextmenu", "epD(event); if(event.altKey) { gebi('editNewShortcut').value = 'false'; editShortcut('"+id+"'); return false; } else { cl('Press alt to edit shortcut') }");
 
   let fileIcon = document.createElement("img");
   if(icon) {
     fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+icon);
+  } else if(action.startsWith('addWindow')) {
+    // if icon is not set but action, it might be a custom program
+    let programName = action.match(/'([^']+)'/g).map(function(match) {
+      return match.replace(/'/g, ''); // Remove single quotes
+    })[2].split("/")[0];
+    fileIcon.setAttribute("src", "programs/"+programName+"/icon.png");
   } else {
     fileIcon.setAttribute("src", "os/"+os+"/systemIcons/"+iconDecider(name, name.split(".").length === 1));
   }
@@ -662,6 +920,7 @@ function placeShortcut(name, icon, x,y, action) {
 function clutterDesktop(count) {
   let randomNameParts = [
     "File", "file", "Document", "Home", "Personal", "var", "VAR", "Favorites", "A-433", "Photos", "Links", "Important",
+    "Document1", "File2", "Data", "Report", "Image", "Note", "Presentation", "Spreadsheet", "Picture", "Memo", "Text", "Project"
   ]
   let randomNameSuffix = [
     "", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "","", "", "", "", "", "", "",
@@ -753,6 +1012,7 @@ function incrementWindowsPosition(axe) {
 function chooseDefaultProgram(fileName) {
   let programToStart = "fileManager";
   let extension = fileName.split(".").length ? fileName.split(".")[1] : fileName;
+  extension = extension?.length ? extension.toLowerCase() : extension;
   if(["jpg","jpeg","png","tiff","psd","pdf","mp4","avi","mpeg","mkv"].includes(extension)) {
     // Image file
     programToStart = "imageViewer";
@@ -788,6 +1048,7 @@ function startDefaultProgram(program, parameters) {
       "browser",
       "ftp",
       "ftp-connect",
+      "email",
       "imageViewer",
       "textEditor-random",
       "terminal",
@@ -818,9 +1079,13 @@ function startDefaultProgram(program, parameters) {
     case "ftp-connect":
       addWindow('FTP Client - Connect', 'storm', 'ftp/connect.html', x, y, 666,480, false);
       break;
+    case "email":
+      addWindow('Email Petabird', 'email', 'email', x, y, 1200,650, false);
+      break;
     case "imageViewer":
       // TODO: Default file list from where?
-      parameters = parameters ? typeof(parameters) === "string" ? parameters : parameters.join("|") : "1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg";
+      // parameters = parameters ? typeof(parameters) === "string" ? parameters : parameters.join("|") : "1.jpg|2.jpg|3.jpg|1.mp4|2.mp4|4.jpg|5.jpg|6.jpg|7.jpg|8.jpg|9.jpg|10.jpg";
+      parameters = parameters ? typeof(parameters) === "string" ? parameters : parameters.join("|") : "";
       addWindow('Image viewer', 'image', 'imageviewer/index.html?files='+parameters, x, y, 666,450, false);
       break;
     case "textEditor":

@@ -3,11 +3,23 @@
     <meta charset="UTF-8" />
     <title>htmlDESKTOP - digitalProps</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Do not store any cache. since cache and files are stored both lcoally, only minor delays are to be expected. -->
+    <meta http-equiv="Cache-Control" content="no-store" />
     
     <meta name="robots" content="noindex,nofollow" />
     <link rel="stylesheet" href="indexTools/stylesheet.css">
     <link rel="stylesheet" href="tools/general.css">
     <link rel="stylesheet" href="tools/fonts.css">
+    <script src="tools/general.js"></script>
+    <script src="tools/desktop.js"></script>
+
+    <meta name="description" content="htmlDesktop is a tool for the digital props master for film and TV to simulate a desktop.">
+    <meta property="og:description" content="htmlDesktop is a tool for the digital props master for film and TV to simulate a desktop.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="htmlDesktop">
+    <meta property="og:url" content="https://telefabi.ch/htmlDesktop/beschatterSe02/">
+    <meta property="og:image" content="https://telefabi.ch/htmlDesktop/beschatterSe02/indexTools/ogimage.jpeg">
 
     <script>
       let host = window.location.origin + window.location.pathname;
@@ -19,37 +31,62 @@
           window.location.href = "desktop.html?workstation=telefabi";
         }
       }
+
+      async function editUrlBeforeLoading(url) {
+        let editedUrl = await showDialog("Edit path to display", "Enter URL with optional params:", false, url);
+        if(editedUrl && editedUrl != "~EMPTY") {
+            window.location.href = editedUrl;
+        }
+      }
     </script>
 
   </head>
-  <body class="fancy">
+  <body class="fancy" onkeydown="if(event.key === '5') { window.location.href = 'programs/colorMarker/index.html'; } else if(event.key === '0') { window.location.href = 'programs/videoplayer/index.html'; }">
     <div class="bg"></div>
     <article lang="en">
 
       <!-- PROJECT LOGO -->
-      <p><img src="indexTools/logo.svg" class="logo" alt=""/></p>
+      <p><img src="indexTools/logo.png" class="logo" alt=""/></p>
+      <br>
+      <br>
+      <br>
+      <h1 class="fillWidth centerContent code large">index</h1>
+      <br>
 
-      <p>Scene specific</p>
-      <p><a href="indexTools/scenes/1/index.html"><button><span class="tag">#1</span> Scene Title; content</button></a></p>
-      <p><a href="indexTools/scenes/2/index.html"><button><span class="tag">#2</span> Scene Title; content</button></a></p>
-      <p><a href="indexTools/scenes/3/index.html"><button><span class="tag">#3</span> Scene Title; content</button></a></p>
-
-      <p>&nbsp;</p>
-
-      <p>Desktops</p>
-      <p><a href="desktop.html"><button> htmlDesktop</button></a></p>
-
-      <p>&nbsp;</p>
-
-      <p>Generic fullscreen</p>
-      <p>
-        <a href="programs/colorMarker/index.html"><button> colorMarker</button></a>
-
-        <a href="programs/bash/index.html" title="Mode: 'freeText'; try cd, top, sudo, clear"><button> Bash console</button></a>
-
-        <div onmouseover="document.getElementById('terminalSpecials').classList.remove('hide')" onmouseout="document.getElementById('terminalSpecials').classList.add('hide')">
-          <a href="programs/terminal/index.html"><button> Terminal</button></a>
+        <!-- <a href="programs/video/index.html"><button> Philippines</button></a><br>
+        <br> -->
+      <div class="fillWidth centerText">
+        <a href="desktop.html"><button class="margin25" style="font-size:1.4em"> START DESKTOP</button></a>
+        <a href="programs/colorMarker/index.html" title="greenscreen"><button class="margin25" style="font-size:1.4em"> GREENSCREEN [key: 5]</button></a>
+        <a href="programs/videoplayer/index.html"><button class="margin25" style="font-size:1.4em"> MEDIA PLAYER [key: 0]</button></a>
+        <br>
+        <br>
+        <a href="howto/index.html"><button class="margin25" style="font-size:1.4em"> Desktop: How To</button></a>
+        <br>
+        <br>
+        <br>
+          
+          <!-- <a href="programs/pink/index.html"><button> #100</button></a><br>
+            
+            <a href="programs/bios/index.html"><button> bios</button></a><br>
+            
+            <a href="programs/infinity/index.html"><button> infinity</button></a><br> -->
+            
+            
+            <!--  <div onclick="document.getElementById('bashSpecials').classList.remove('hide')" onmouseout="document.getElementById('bashSpecials').classList.add('hide')">
+              <a href="programs/bash/index.html" title="Mode: 'freeText'; try cd, top, sudo, clear"><button> Bash console</button></a>
+              <span id="bashSpecials" class="hide">
+                <a href="programs/bash/index.html?script=34&workstation=gamerig&darkMode=true"><button class="greyBg hover" title="Gamerig training (NV top sketch)">(#34)</button></a>
+                <a href="programs/bash/index.html?script=67&workstation=ramon&darkMode=true"><button class="greyBg hover" title="Rauls Network check">#67</button></a>
+                <a href="programs/bash/index.html?script=73&workstation=monalisa&darkMode=true"><button class="greyBg hover" title="Rauls random bashing">#73</button></a>
+                <a href="programs/bash/index.html?script=93&workstation=monalisa&darkMode=true"><button class="greyBg hover" title="Sonny restarts mona lisa">#93</button></a>
+              </span>
+            </div> -->
+            
+        <div onclick="document.getElementById('terminalSpecials').classList.remove('hide')">
+          <button class="greyBg"> Terminals..</button>
           <span id="terminalSpecials" class="hide">
+          <a href="programs/terminal/index.html"><button class="greyBg"> BasicTerminal</button></a>
             <a href="programs/terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
               <button class="greyBg hover">Update</button></a>
   
@@ -67,18 +104,112 @@
   
             <a href="programs/terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
               <button class="greyBg hover">Selber tippen - python script</button></a>
+            <br>
+            <br>
           </span>
         </div>
+
+        <div onclick="document.getElementById('defaultPrograms').classList.remove('hide')">
+          <button class="greyBg"> Some programs..</button>
+          <div id="defaultPrograms" class="hide margin0 paddingX1">
+            <a href="programs/dna"><button class="greyBg hover">dna</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/dna/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/helpdesk"><button class="greyBg hover">helpdesk</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/helpdesk/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/servermanager"><button class="greyBg hover">servermanager</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/servermanager/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/supervisor"><button class="greyBg hover">supervisor</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/supervisor/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/neptcode"><button class="greyBg hover">neptcode</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/neptcode/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/threejs/player"><button class="greyBg hover">threejs/player</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/threejs/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/filemanager"><button class="greyBg hover">filemanager</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/filemanager/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/terminal"><button class="greyBg hover">terminal</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/terminal/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/bash"><button class="greyBg hover">bash</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/bash/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/colorMarker"><button class="greyBg hover">Greenscreen</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/colorMarker/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/ftp"><button class="greyBg hover">ftp</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/ftp/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/browser"><button class="greyBg hover">browser</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/browser/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/imageviewer"><button class="greyBg hover">imageviewer</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/imageviewer/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/texteditor"><button class="greyBg hover">texteditor</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/texteditor/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+            <a href="programs/webcam"><button class="greyBg hover">webcam</button></a>
+            <a href="#" title="Edit URL and params before loading"><button onclick="editUrlBeforeLoading('programs/webcam/index.html');" class="greyBg hover"><i class="material-icons valign small">edit</i></button></a><br>
+
+          </div>
+        </div>
+      </div>
       </p>
 
-      <p>&nbsp;</p>
-      
-      <!-- FOOTER -->
-      <footer class="small">
-        <div class="tag whiteBgTransparent padding05" style="line-height: 1rem;">
-          2022 <a href="https://telefabi.ch" target="_blank">Fabian Lüscher @ telefabi.ch</a> f&uuml;r 8horses
-        </div>
-      </footer>
     </article>
+
+    <!-- <h1 class="fillWidth centerContent code large">- Index -</h1> -->
+    
+    <!-- FOOTER -->
+    <footer class="small fixed bottom maxWidth centerText">
+      <div class=" maxWidth" style="line-height: 1rem;">
+        <div class=" whiteBg black padding1 inlineBlock" title="LAST UPDATE">
+          Digitale Props für DIE BESCHATTER
+          <span class="blue">
+            THE DAY OF DAYS HAS COME
+          </span>
+          <div class="padding05">
+            2023 <a href="https://telefabi.ch" target="_blank">Fabian Lüscher @ telefabi.ch</a> f&uuml;r TURNUS FILM GMBH
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- DIALOG COPY PASTE -->
+      <!-- DIALOG: AUTO DIALOG -->
+      <div id="autoDialog" class="fixed dialog hide" style="top:0; z-index: 666;">
+        <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+          <div class="darkGreyBg padding shadow white minWidth300 maxWidth600 absolute radius5">
+            <h3 class="alignCenter">
+              <i class="material-icons blue valign">info</i>
+              <span id="autoDialogTitle"></span>
+            </h3>
+            <br>
+            <div id="autoDialogText"></div>
+  
+            <input type="text" id="autoDialogInput" class="maxWidth radius2 padding" placeholder="Type.."
+              onkeydown="if(event.key === 'Enter') gebi('autoDialogCloseButtonButton').click();"
+            ></input>
+            <br>
+            <div id="autoDialogCancelButton" class="left relative padding">
+              <button id="autoDialogCancelButtonButton" class="systemButton greyBg" onclick="hide('autoDialog');">Cancel</button>
+            </div>
+            <div id="autoDialogCloseButton" class="right relative padding">
+              <button id="autoDialogCloseButtonButton" class="systemButton" onclick="hide('autoDialog');">Close</button>
+            </div>
+            <div id="autoDialogLoading" class="right relative padding grey">
+              <i class="material-icons blue valign spin">refresh</i>
+            </div>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
   </body>
 </html>

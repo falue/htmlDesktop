@@ -1,0 +1,29 @@
+html, body {
+    background-color: #0013FF;
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: none;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    margin: 0 5em;
+    padding-top: 3em;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    font-family: monospace;
+    white-space: pre-line;
+    font-size: 1.5em;
+    color: white;
+}
+
+.title {
+    padding: .35em .75em;
+    background-color: rgb(107, 107, 107);
+    color:white;
+}

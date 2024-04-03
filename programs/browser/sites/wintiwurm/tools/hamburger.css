@@ -1,0 +1,116 @@
+.dropdown {
+  position: fixed;
+  z-index: 666;
+  width: 100%;
+}
+
+.dropdown input[type=checkbox] {
+  opacity: 0;
+  z-index: -1;
+}
+
+.navigation_mobile {
+  transition: all 1s cubic-bezier(.5, 1, .22, 1);
+}
+
+.navigation_mobile ul:not(.subnavi) {
+  padding: 2em 0 0 2em;
+  max-height: 0px;
+  overflow: hidden;
+  list-style: none;
+  font-weight: 800;
+  transition: all 1s cubic-bezier(.325, 1, .22, 1);
+}
+
+.navigation_mobile li {
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 0;
+  display: flex;
+}
+
+.dropdown a:link,
+.dropdown a:visited,
+.dropdown a:focus {
+  color: white;
+}
+
+.dropdown a.active {
+  text-decoration: underline white 3px;
+}
+
+.dropdown input[type=checkbox]:checked~.navigation_mobile {
+  background-color: #f78aa7;
+  border-bottom: solid 1px white;
+  transition: all 1s cubic-bezier(.5, 1, .22, 1);
+}
+
+.dropdown input[type=checkbox]:checked~.navigation_mobile ul:not(.subnavi) {
+  height: auto;
+  max-height: 25rem;
+  padding-top: 3em;
+  padding-bottom: 2em;
+  transition: all 1s cubic-bezier(.5, 1, .22, 1);
+}
+
+.hamburger {
+  background-color: #f78aa7;
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  margin: 1em;
+  padding: .65em;
+  height: 27px;
+  width: 27px;
+  cursor: pointer;
+  transition: all 1s cubic-bezier(.19, 1, .22, 1);
+}
+
+.line {
+  position: absolute;
+  display: block;
+  background-color: white;
+  width: 18px;
+  height: .15rem;
+  border-radius: .2rem;
+  left: 1em;
+  transition: all .6s cubic-bezier(.5, .1, 0, 1.2);
+}
+
+.line-1 {
+  top: 1em;
+}
+
+.line-2 {
+  top: calc(1em + 7px);
+  width: 14px;
+  transform: translateX(2px);
+  -webkit-transform: translateX(2px);
+}
+
+.line-3 {
+  top: calc(1em + 14px);
+}
+
+.dropdown input[type=checkbox]:checked {
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown input[type=checkbox]:checked~label .line-1 {
+  top: 1em;
+  width: 22px;
+  transform: translateX(-11px) rotate(-45deg) translateY(12px);
+}
+
+.dropdown input[type=checkbox]:checked~label .line-2 {
+  opacity: 0;
+}
+
+.dropdown input[type=checkbox]:checked~label .line-3 {
+  top: calc(1em + 14px);
+  width: 22px;
+  transform: translateX(-8px) rotate(45deg) translateY(-8px);
+}

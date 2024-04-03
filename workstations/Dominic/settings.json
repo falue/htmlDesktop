@@ -1,0 +1,149 @@
+{
+    "settings": {
+        "systemColor": "#474747",
+        "desktopColor": "#121212",
+        "desktopImg": "",
+        "os": "spa",
+        "darkMode": true,
+        "username": "dominic",
+        "password": "",
+        "workstation": "Dominic",
+        "selectedSystemMessage": -1,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 1,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#130 fenster 1: Auto update",
+            "windowName": "TerminalZ",
+            "icon": "code",
+            "contentPath": "terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=an-old-hope&speed=2&language=python&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 51,
+            "y": 7,
+            "w": 705,
+            "h": 763,
+            "zIndex": 12,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#130 fenster 2: programmieren",
+            "windowName": "PERISTALTIX - PYTHON [zen mode]",
+            "icon": "view_in_ar",
+            "contentPath": "terminal/index.html?byRows=false&startChar=278&text=psf&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 8,
+            "y": 5,
+            "w": 700,
+            "h": 750,
+            "zIndex": 13,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#130 fenster 3: CLI kommandos",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=random",
+            "x": 31,
+            "y": 30,
+            "w": 900,
+            "h": 575,
+            "zIndex": 14,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#130 fenster 3: CLI kommandos (alternative)",
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=script",
+            "x": 33,
+            "y": 32,
+            "w": 666,
+            "h": 450,
+            "zIndex": 15,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#131A - Securiton",
+            "windowName": "Securiton",
+            "icon": "security",
+            "contentPath": "securiton/index.html?scene=131",
+            "x": 6,
+            "y": 6,
+            "w": 1250,
+            "h": 800,
+            "zIndex": 16,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Securiton",
+            "icon": "",
+            "x": 9,
+            "y": 4,
+            "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=131v2', 6, 6, 1250,800, false);"
+        },
+        {
+            "name": "X_IDE",
+            "icon": "",
+            "x": 2,
+            "y": 30,
+            "action": "addWindow('X_IDE', 'code', 'x_ide', 6, 6, 1250,800, false);"
+        },
+        {
+            "name": "Server",
+            "icon": "computer.png",
+            "x": 2,
+            "y": 17,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 93,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Terminal",
+            "icon": "txt.png",
+            "x": 1,
+            "y": 43,
+            "action": "addWindow('Terminal', 'code', 'terminal/index.html?byRows=true&startChar=0&text=apt-get&theme=xt256&speed=8&language=c&autotype=true&humanTyper=false&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10', 45,12, 666,666, false);"
+        }
+    ],
+    "osNotifications": [],
+    "actions": []
+}

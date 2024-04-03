@@ -1,0 +1,55 @@
+
+
+[
+    {
+        "message": "Hey, ich habe Interesse an diesem Rucksack. Wo kann ich sie abholen?",
+        "data": "",
+        "action": "",
+        "sender": "me",
+        "delay": 0,
+        "date": "",
+        "sent": true,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Hallo! Du kannst sie bei mir abholen. Wir können uns morgen an der Schmiedgasse 4b treffen.",
+        "data": "",
+        "action": "",
+        "sender": "ultradive",
+        "delay": 1500,
+        "date": "",
+        "sent": true,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Andreas Wilder<br><a class='underline'>Schmiedgasse 4b<br>4058 Basel-Stadt</a>",
+        "data": "",
+        "action": "",
+        "sender": "ultradive",
+        "delay": 1500,
+        "date": "",
+        "sent": true,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Danke für die Info. Gibt es noch etwas, worauf ich achten sollte, wenn ich morgen komme?",
+        "data": "",
+        "action": "",
+        "sender": "me",
+        "delay": 0,
+        "date": "",
+        "sent": true,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Nicht wirklich, aber wenn du sicherstellen könntest, dass du Bargeld dabei hast, wäre das grossartig. Der Preis beträgt 300 CHF",
+        "data": "",
+        "action": "",
+        "sender": "ultradive",
+        "delay": 1000,
+        "date": "",
+        "sent": true,
+        "seen": false,
+        "error": ""
+    }
+]

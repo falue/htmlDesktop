@@ -6,6 +6,9 @@
 body {
     user-select: none;
     overflow: hidden;
+    /* FIXME: does not propagate through iframes etc
+    cursor:  url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22pointer_cursor%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%0A%09%20y%3D%220px%22%20width%3D%2228px%22%20height%3D%2228px%22%20viewBox%3D%220%200%2028%2028%22%20style%3D%22enable-background%3Anew%200%200%2028%2028%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpolygon%20fill%3D%22rgb(255%2C255%2C255)%22%20points%3D%2211.6%2C11.6%200%2C0%200%2C16%203.2%2C12.8%205.5%2C18.2%209.1%2C16.7%207%2C11.6%20%22%2F%3E%0A%3Cpolygon%20points%3D%229.2%2C10.6%201%2C2.4%201%2C13.6%203.6%2C11.1%205.9%2C16.8%207.8%2C16%205.5%2C10.6%20%22%2F%3E%0A%3C%2Fsvg%3E"), auto;
+    */
 }
 
 .shortcut {
@@ -101,6 +104,25 @@ input[type=button]:not(.systemButton) {
     margin-bottom: 1em;
     max-height: 24em;
     overflow-y:  auto;
+}
+
+.fadeOutBottom {
+    mask-image: linear-gradient(to bottom, black calc(100% - 3em), transparent 100%);
+    padding-bottom: 2em;
+}
+.fadeOutBottom.arrowIndicator:before {
+    content: "⌄";
+    font-size: 1.5em;
+    color: white;
+    position: absolute;
+    display: block;
+    bottom: .5em;
+    left: calc(50% - 0.5em);
+    text-shadow:
+     -1px -1px 1px #000,  
+      1px -1px 1px #000,
+      -1px 1px 1px #000,
+       1px 1px 1px #000;
 }
 
 #autoDialogText {
@@ -244,6 +266,7 @@ header.windowmenu .programButtons:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    z-index: 20000;
 }
 
 #actionMenu,
@@ -270,7 +293,7 @@ header.windowmenu .programButtons:hover {
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
-    width: 180px;
+    width: 220px;
 }
 
 .actionMenu ul,
@@ -388,6 +411,125 @@ header.windowmenu .programButtons:hover {
 }
 
 .minimizeWindow { animation: minimizeWindow .15s ease-in 1 forwards; }
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#gradientPreview {
+    height: 38vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#gradientPreview div div {
+    font-size:.85em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: inline-flex;
+    background-color: rgba(222,222,222,.33);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-bottom:1.25rem;
+    border: solid 0.25px rgba(166,166,166,.33);
+}
+#gradientPreview div span {
+    font-size:.5em;
+    text-align: left;
+    background-color: rgba(33,33,33,.33);
+    display: block;
+    width: 6rem;
+    height: .5rem;
+    border-radius:.5rem;
+    margin-bottom:.35rem;
+    padding:.2rem .35rem;
+    border: solid 0.25px rgba(166,166,166,.33);
+}
+#gradientPreview p {
+    position: absolute;
+    background-color: rgba(33,33,33,.33);
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin:.5em 1em;
+    right:0;
+    bottom:0;
+}
+
+.angle-control {
+    position: relative;
+    display: inline-block;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.angle-control-blocker {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.dial {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(125,125,125,.5);
+    border-radius: 50%;
+    cursor:crosshair;
+    text-align: center;
+    color:white;
+
+	display: grid;
+	align-items: center;
+
+    background: conic-gradient(
+        black 0deg 40deg,
+        grey 40deg 50deg,
+        black 50deg 360deg
+    );
+}
+
+#angleDisplay {
+    user-select: none;
+    font-size: .85em;
+}
+
+/* Additional styling as needed */
+#setGradient input[type='range'] {
+    overflow: hidden;
+    width: 8em;
+    -webkit-appearance: none;
+    background-color: #808080;
+    cursor: default;
+    border-radius:1em;
+    border-left: #808080 solid .625em;
+    border-right: #808080 solid .625em;
+}
+
+#setGradient input[type='range']::-webkit-slider-runnable-track {
+    height: 1em;
+    -webkit-appearance: none;
+    color: #808080;
+    margin-top: -1px;
+    cursor: default;
+}
+
+#setGradient input[type='range']::-webkit-slider-thumb {
+    width: .3em;
+    -webkit-appearance: none;
+    height: 2em;
+    margin-top:-.5em;
+    cursor: ew-resize;
+    background: #5896FF;
+    box-shadow: -80px 0 0 80px #808080;
+}
+
 
 @keyframes minimizeWindow {
     0%   { margin-top: 0; transform: scale(1); }

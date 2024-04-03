@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>htmlDESKTOP - digitalProps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="stylesheet" href="../indexTools/stylesheet.css">
+    <link rel="stylesheet" href="../tools/general.css">
+    <link rel="stylesheet" href="../tools/fonts.css">
+    <style>
+      body {
+        line-height: 1.5em;
+        scroll-behavior: smooth;
+      }
+      article {
+        width: 90%;
+        max-width: 1000px;
+      }
+      .bg {
+        opacity:.1;
+      }
+      fieldset {
+        display: inline-block;
+        padding-right:4em;
+      }
+      img, video {
+        display:block;
+        border-radius: 3px;
+      }
+      .howToImg {
+        margin: 1.5em 0 0.5em 0;
+        border: solid thin rgba(255,255,255,0.22);
+      }
+      ol {
+        margin: .5em 0;
+      }
+      li {
+        margin-left: 1em;
+      }
+      h2 {
+        margin-top:5.5em;
+        margin-bottom: 1em;
+      }
+      .imgText:before {
+        content: "^ ";
+        color: rgba(255,255,255,0.33);
+      }
+      .imgText {
+        color: rgba(255,255,255,0.55);
+      }
+    </style>
+
+  </head>
+  <body class="blackBg">
+    <div class="bg"></div>
+    <article lang="en">
+
+      <!-- PROJECT LOGO -->
+      DIGITAL PROPS FÜR<br>
+      <br>
+      <img src="../indexTools/logo.png" class="logo" alt=""/>
+      <br>
+      <img class="blackBg block maxWidth marginY1" src="media/how-0.png">
+      <br>
+      <br>
+      <br>
+      <h3 id="index">CONTENTS</h3>
+      <ul>
+        <li class="pointer blue hover" onclick="document.getElementById('general').scrollIntoView();">GENERAL HANDLING OF htmlDESKTOP</li>
+        <li class="pointer blue hover" onclick="document.getElementById('actionMenu').scrollIntoView();">THE ACTION MENU IN DETAIL</li>
+        <li class="pointer blue hover" onclick="document.getElementById('windows').scrollIntoView();">CUSTOMIZING WINDOWS + SHORTCUTS</li>
+        <li class="pointer blue hover" onclick="document.getElementById('spontiWindows').scrollIntoView();">UNPLANNED WINDOWS AND BASIC COMPUTER ANIMATIONS</li>
+        <li class="pointer blue hover" onclick="document.getElementById('green').scrollIntoView();">GREENSCREEN</li>
+        <li class="pointer blue hover" onclick="document.getElementById('errors').scrollIntoView();">EDDY ERROR MESSAGES</li>
+        <li class="pointer blue hover" onclick="document.getElementById('howtos').scrollIntoView();">COMPUTER + EDDY-G HANDLING ON SET</li>
+        <li class="pointer blue hover" onclick="document.getElementById('').scrollIntoView();"></li>
+      </ul>
+
+      <br>
+      <br>
+      <a href="../index.html"><button class="systemButton redBg ">< Back to Index</button></a>
+      
+      <h2 id="general" class="white tag fancy">GENERAL HANDLING OF htmlDESKTOP</h2>
+      <!-- <ol>
+        <li><a href="../desktop.html?workstation=spital&os=windows" target="_blank">Open Workstation: Hospital</a></li>
+        <li>No interaction</li>
+      </ol> -->
+      The "Action menu" contains all the options that a props person on set would want. Changes in the looks, you add windows, etc.
+      Keep in mind that all the settings here do not get permamently saved!
+      You can save the current look and window positions etc, though its not really reliable after restarting the computer.
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-3.png">
+      <span class="imgText">The action menu.</span>
+      <br>
+      <br>
+      The bolt (<i class="material-icons white small">bolt</i>) is the hidden indicator for functions for the props person on set.
+      You get this main action menu from it like this.
+      <img class="blackBg inlineBlock howToImg maxWidth maxWidth400" src="media/how-1.png">
+      &emsp;
+      <img class="blackBg inlineBlock howToImg maxWidth maxWidth400" src="media/how-2.png">
+      <br>
+      <span class="imgText">"Mac" style on the left, "Windows/Linux" style on the right.</span>
+      <br>
+      <br>
+      <br>
+
+      Or you find some obscure buttons with that bolt: click it and find out what it does.
+      <br>
+      <img class="blackBg inlineBlock howToImg maxWidth maxWidth400" src="media/how-12.png">
+      &emsp;
+      <img class="blackBg inlineBlock howToImg maxWidth maxWidth400" src="media/how-22.png">
+      <br>
+      <span class="imgText">Example 1: Here, "<i class="material-icons white small">bolt</i> display" actually changes the list view to a grid view.</span>
+      <br>
+      <span class="imgText">Example 2:  "<i class="material-icons white small">bolt</i> Mode" changes the videos to a greenscreen, etc.</span>
+      
+      <br>
+      <div class="small inlineBlock pointer black hover tag marginY2" onclick="document.getElementById('index').scrollIntoView();">^ top</div>
+
+
+      <h2 id="actionMenu" class="white tag fancy">THE ACTION MENU IN DETAIL</h2>
+
+      "Workstations" are what I call a dives of a character.
+      Agotha has a workstation, Charles etc.
+      Each workstation has a look defined by me.
+      You can temporary change the appearance of each workstation here.
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-4.png">
+      <span class="imgText">Switch to another Workstation, the user + password for the fake Loginscreen cannot be changed.</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-5.png">
+      <span class="imgText">
+        You can save the current state of all your windows.
+        If you have a scene that requieres rearranging windows or changing colors, save it, and after the take reload it.
+        This is maybe not correctly working when restarting the machine. Be careful.
+      </span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-6.png">
+      <span class="imgText">Changes to the look of the Operating system, colors and type of MAC/WIndows/Linux/"Spa".</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-7.png">
+      <span class="imgText">
+        If I pre programmed windows to use for a specific scene, you'll see them here.
+        Those windows are special and are linked to the workstation.
+        However, you can "grab" a window from abother workstation if you must
+      </span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-8.png">
+      <span class="imgText">
+        Add, organize, remove shortcuts on the desktop.
+        Add new random windows.
+        If you need a news Look for this workstation, jsut press "w" and "d" a couple of times and your desktop will look like your moms.
+      </span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-9.png">
+      <span class="imgText">
+        Some functions can be controlled by keyboard.
+        There are 3 options with which to block those commands, so an actor or actress cannot mistakingly press one.<br>
+        - <i class="material-icons white small">lock</i> Every shortcut is allowed.<br>
+        - <i class="material-icons white small">lock_open</i> Only shortcuts that are user functions are allowed (like blackout, screensaver, etc).<br>
+        - <i class="material-icons white small">do_disturb</i> No shortcuts are allowed.<br>
+        <a href="media/htmlDesktop_shortcuts.pdf" target="_blank">List of Keyboard commands as PDF here</a>
+        <br>
+        Super easy is to use the delivered remote keypad. all the numerical functions are available with it, so you can control the desktop from afar.
+      </span>
+
+      <div class="small inlineBlock pointer black hover tag marginY2" onclick="document.getElementById('index').scrollIntoView();">^ top</div>
+
+      <h2 id="windows" class="white tag fancy">CUSTOMIZING WINDOWS + SHORTCUTS</h2>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-10.png">
+      <span class="imgText">As an example, this is the fileManager.</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-11.png">
+      <span class="imgText">Right click on the icon top left to change it, right click on the name of the window to change it.</span>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-13.png">
+      <span class="imgText">Choose a matching icon on every window</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-14.png">
+      <span class="imgText">Set a name for your window</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-15.png">
+      <span class="imgText">Right click on a dekstop icon to change the name and the icon</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-16.png">
+      <span class="imgText">Set an icon, set a name, and if you're really fancy, set a havascript function to be executed when the shortcut is boulbe clicked.</span>
+
+      <br>
+      <div class="small inlineBlock pointer black hover tag marginY2" onclick="document.getElementById('index').scrollIntoView();">^ top</div>
+      
+      <h2 id="spontiWindows" class="white tag fancy">UNPLANNED WINDOWS AND BASIC COMPUTER ANIMATIONS</h2>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-18.png">
+      <span class="imgText">If you need "just any new window" pick a random one from the real fake main menu. Pictured: Windows variant</span>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-19.png">
+      <span class="imgText">The same windows are available on the mac/linux variant.</span>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-20.png">
+      <span class="imgText">In the same menu, the "Shut down" functionality is available.</span>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-21.png">
+      <span class="imgText">Adjust the slider in the action menu to change the duration the boot takes.</span>
+      <img class="blackBg block howToImg maxWidth maxWidth400" src="media/how-17.png">
+      <span class="imgText">On the login window, every "password" is valid, unless it is specified.</span>
+      
+      <br>
+      <div class="small inlineBlock pointer black hover tag marginY2" onclick="document.getElementById('index').scrollIntoView();">^ top</div>
+
+      <h2 id="green" class="white tag fancy">GREENSCREEN</h2>
+      Top right is a hidden button.
+      When the green is active, press "F" for fullscreen.
+      "Sync from last change" is useful when you have multiple green windows open. It will take the last changes you made.
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-23.png">
+      <br>
+      <div class="small inlineBlock pointer black hover tag marginY2" onclick="document.getElementById('index').scrollIntoView();">^ top</div>
+
+
+      <h2 id="errors" class="white tag fancy">EDDY ERROR MESSAGES</h2>
+      <img class="blackBg block howToImg maxWidth maxWidth800" src="media/how-24.png">
+      <span class="imgText">Due to shortcomings in Error-Handling, this message appears also if there is *no* internet.</span>
+      <br>
+      <div class="small inlineBlock pointer black hover tag marginY2" onclick="document.getElementById('index').scrollIntoView();">^ top</div>
+
+
+      <h2 id="howtos" class="white tag fancy">COMPUTER + EDDY-G HANDLING ON SET</h2>
+      <a href="media/USER_MANUAL_lenovo_V15G4.pdf" target="_blank">USER_MANUAL_lenovo_V15G4.pdf</a><br>
+      <a href="media/USER_MANUAL_ASUS.pdf" target="_blank">USER_MANUAL_ASUS.pdf</a><br>
+      <a href="media/USER_MANUAL_ASUS_X515M.pdf" target="_blank">USER_MANUAL_ASUS_X515M.pdf</a><br>
+
+      <div class="small inlineBlock pointer black hover tag marginY2" onclick="document.getElementById('index').scrollIntoView();">^ top</div>
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="" style="line-height: 1rem;">
+          <a href="../index.html"><button class="systemButton redBg ">< Back to Index</button></a>
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Email</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="../../tools/fileparser.js"></script>
+    <script src="javascript.js"></script>
+
+  </head>
+  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+
+    <!-- created with https://grid.layoutit.com/ -->
+    <div id="container" class="container">
+
+      <div id="preview" class="preview noScrollbar">
+        <div id="preview-header" class="preview-header hide">
+        </div>
+        <div id="preview-email" class="preview-email userSelect emptyPreview">
+          <div class="op50 small">Select an email to display</div>
+        </div>
+      </div>
+
+      <div id="inboxes" class="inboxes relative">
+        <ul class="marginY50">
+          <li class="uppercase grey small">Mailboxes
+            <ul class="mailbox black normal normalWeight normalized margin50">
+              <li onclick="displayInbox('inbox')" class="">Inbox <span class="op50">(444)</span></li>
+              <li onclick="displayInbox('sent')" class="">Sent <span class="op50">(32)</span></li>
+              <li onclick="displayInbox('drafts')" class="">Drafts <span class="op50">(234)</span></li>
+              <li onclick="displayInbox('spam')" class="">Spam <span class="op50">(667)</span></li>
+              <li onclick="displayInbox('flagged')" class="">Flagged <span class="op50">(12)</span></li>
+              <li onclick="displayInbox('archived')" class="">Archived <span class="op50">(458)</span></li>
+            </ul>
+          </li>
+          <li class="uppercase grey small ">Favorites</li>
+          <li class="uppercase grey small ">Automatic</li>
+          <li class="uppercase grey small ">Local</li>
+        </ul>
+
+        <div id="inboxFootnote" class="small inboxFootnote relative bottom left maxWidth">
+          <div class="op50 nobr ellipsis">
+            Connected to server
+            <i class="material-icons small">help</i>
+          </div>
+        </div>
+      </div>
+
+      <div id="header" class="header">
+
+        <header id="programBar" class="windowmenu absolute top left maxWidth hide">
+          <button class="programButtons">Accounts</button><!-- 
+           --><button class="programButtons">Edit</button><!-- 
+           --><button class="programButtons">Mailbox</button><!-- 
+           --><button class="programButtons">Message</button><!-- 
+           --><button class="programButtons">Format</button><!-- 
+           --><button class="programButtons">Window</button><!-- 
+           --><button class="programButtons">Settings</button><!-- 
+           --><button class="programButtons">About</button>
+        </header>
+
+        <div id="buttons" class="relative nobr ellipsis noScrollbar">
+          <button class="circle"><i class="material-icons medium blue">menu</i></button>
+          <button id="newEmailButton"><i class="material-icons medium">mark_email_unread</i></button>
+          <button><i class="material-icons medium">edit</i></button>
+          <button><i class="material-icons medium">folder_zip</i></button>
+          <button><i class="material-icons medium">update</i></button>
+          <button><i class="material-icons medium">mark_as_unread</i></button>
+          <button><i class="material-icons medium">calendar_today</i></button>
+          <button><i class="material-icons medium">description</i></button>
+          <span class="grey marginX50 op25 small"></span>
+          <span class="grey marginX50 op25 small"></span>
+          <button><i class="material-icons medium grey">work</i></button>
+          <button><i class="material-icons medium grey">people</i></button>
+          <button><i class="material-icons medium grey">free_breakfast</i></button>
+
+          <div class="top relative padding1 nobr ellipsis" style="left: 58%">
+            <span class="grey marginX50 op25 small">|</span>
+            <i class="material-icons hover small blue">inventory</i>
+            <span class="grey marginX50 op25 small">|</span>
+            <i class="material-icons hover small blue">delete</i>
+            <span class="grey marginX50 op25 small">|</span>
+            <i class="material-icons hover small blue">reply</i>
+            <span class="grey marginX50 op25 small">|</span>
+            <i class="material-icons hover small blue">reply_all</i>
+            <span class="grey marginX50 op25 small">|</span>
+            <i class="material-icons hover small blue">forward_to_inbox</i>
+            <span class="grey marginX50 op25 small">|</span>
+            <i class="material-icons hover small blue" onclick="printEmail(event)">print</i>
+          </div>
+
+          <div class="right top relative noScrollbar">
+            <span id="webmail" class="hide">
+              <span id="webmail-account" class="small op50">Account</span>
+              <button class="white blackBg round"><i class="material-icons small bold">logout</i></button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div id="footer" class="footer">
+        <div class="relative">
+          <span class="small">
+            Updated: Recently
+          </span>
+          <div class="right top relative padding25 op50">
+            <i class="material-icons small">more_horiz</i>
+            <i class="material-icons small">hub</i>
+            <i class="material-icons small">router</i>
+            <i class="material-icons small">lan</i>
+          </div>
+        </div>
+      </div>
+
+      <div id="email-list" class="email-list noScrollbar">
+        <div id="email-list-header" class="email-list-header op50 relative">
+          <span id="inbox-name" class="small capitalize">Mailbox: Inbox - 122 mails</span>
+          <div class="right top relative padding50">
+            <i class="material-icons small">mark_email_unread</i>
+            <i class="material-icons small">filter_list</i>
+          </div>
+        </div>
+        <div id="email-list-container" class="email-list-container">
+          <!-- Email list -->
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+  </html>

@@ -1,0 +1,194 @@
+{
+    "settings": {
+        "systemColor": "#1a3d2f",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "os/_generic/desktops/4.jpg",
+        "os": "windows",
+        "darkMode": true,
+        "username": "hasenfratz",
+        "password": "",
+        "workstation": "hasenfratz",
+        "selectedSystemMessage": -1,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 1,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#313 Funcanellis emails BROWSER",
+            "windowName": "Browser",
+            "icon": "language",
+            "contentPath": "browser",
+            "x": 4,
+            "y": 2,
+            "w": 1250,
+            "h": 850,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#313 Funcanellis emails APP",
+            "windowName": "Email",
+            "icon": "email",
+            "contentPath": "email/index.html?webmail=false&account=funancelli@avmail.ch&scene=313&inbox=inbox&selected=0",
+            "x": 4,
+            "y": 2,
+            "w": 1250,
+            "h": 850,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 93,
+            "y": 31,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 17,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Memo",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet Copy",
+            "icon": "folderFull.png",
+            "x": 14,
+            "y": 55,
+            "action": ""
+        },
+        {
+            "name": "Photos 4ca10.mkv",
+            "icon": "fileMovie.png",
+            "x": 0,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Image",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "File2.pyc",
+            "icon": "python.png",
+            "x": 2,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Personal.PDF",
+            "icon": "pdf.png",
+            "x": 8,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Document Copy",
+            "icon": "folderFull.png",
+            "x": 0,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 42,
+            "action": ""
+        },
+        {
+            "name": "Important 73d70",
+            "icon": "folderFull.png",
+            "x": 7,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 17,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet.avi",
+            "icon": "fileMovie.png",
+            "x": 14,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet",
+            "icon": "folderFull.png",
+            "x": 15,
+            "y": 43,
+            "action": ""
+        }
+    ],
+    "osNotifications": [],
+    "actions": []
+}

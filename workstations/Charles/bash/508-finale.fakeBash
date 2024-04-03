@@ -1,0 +1,74 @@
+# ------- setup
+# bashProfileName - plain text or html
+<span class='green'>admin</span>@<span class='red'>localhost</span>:<span class='grey'>~</span> $ 
+# -------
+
+
+[autoType, "<span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>7215ee9c7d9dc229d2921a40e899ec5f</span>   <span class='bold red'>fail</span>   response dur 89ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>0cc175b9c0f1b6a831c399e269772661</span>   <span class='bold red'>fail</span>   response dur 65ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>92eb5ffee6ae2fec3ad71c777531578f</span>   <span class='bold red'>fail</span>   response dur 53ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>e4da3b7fbbce2345d7772b0674a318d5</span>   <span class='bold red'>fail</span>   response dur 15ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>c4ca4238a0b923820dcc509a6f75849b</span>   <span class='bold red'>fail</span>   response dur 53ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>6b86b273ff34fce19d6b804eff5a3f57</span>   <span class='bold red'>fail</span>   response dur 86ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>7215ee9c7d9dc229d2921a40e899ec5f</span>   <span class='bold red'>fail</span>   response dur 75ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>0cc175b9c0f1b6a831c399e269772661</span>   <span class='bold red'>fail</span>   response dur 42ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>92eb5ffee6ae2fec3ad71c777531578f</span>   <span class='bold red'>fail</span>   response dur 9ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>e4da3b7fbbce2345d7772b0674a318d5</span>   <span class='bold red'>fail</span>   response dur 78ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>c4ca4238a0b923820dcc509a6f75849b</span>   <span class='bold red'>fail</span>   response dur 112ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>7215ee9c7d9dc229d2921a40e899ec5f</span>   <span class='bold red'>fail</span>   response dur 75ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>0cc175b9c0f1b6a831c399e269772661</span>   <span class='bold red'>fail</span>   response dur 41ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>92eb5ffee6ae2fec3ad71c777531578f</span>   <span class='bold red'>fail</span>   response dur 8ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>e4da3b7fbbce2345d7772b0674a318d5</span>   <span class='bold red'>fail</span>   response dur 78ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>c4ca4238a0b923820dcc509a6f75849b</span>   <span class='bold red'>fail</span>   response dur 100ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>6b86b273ff34fce19d6b804eff5a3f57</span>   <span class='bold red'>fail</span>   response dur 14ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>6512bd43d9caa6e02c990b0a82652dca</span>   <span class='bold red'>fail</span>   response dur 78ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>81dc9bdb52d04dc20036dbd8313ed055</span>   <span class='bold red'>fail</span>   response dur 65ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>aab3238922bcc25a6f606eb525ffdc56</span>   <span class='bold red'>fail</span>   response dur 21ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>c20ad4d76fe97759aa27a0c99bff6710</span>   <span class='bold red'>fail</span>   response dur 77ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>eccbc87e4b5ce2fe28308fd9f2a7baf3</span>   <span class='bold red'>fail</span>   response dur 74ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>1679091c5a880faf6fb5e6087eb1b2dc</span>   <span class='bold red'>fail</span>   response dur 12ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>8f14e45fceea167a5a36dedd4bea2543</span>   <span class='bold red'>fail</span>   response dur 45ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>c9f0f895fb98ab9159f51fd0297e236d</span>   <span class='bold red'>fail</span>   response dur 65ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>7215ee9c7d9dc229d2921a40e899ec5f</span>   <span class='bold red'>fail</span>   response dur 89ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>0cc175b9c0f1b6a831c399e269772661</span>   <span class='bold red'>fail</span>   response dur 65ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>92eb5ffee6ae2fec3ad71c777531578f</span>   <span class='bold red'>fail</span>   response dur 53ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>e4da3b7fbbce2345d7772b0674a318d5</span>   <span class='bold red'>fail</span>   response dur 15ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>c4ca4238a0b923820dcc509a6f75849b</span>   <span class='bold red'>fail</span>   response dur 53ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>6b86b273ff34fce19d6b804eff5a3f57</span>   <span class='bold red'>fail</span>   response dur 86ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>7215ee9c7d9dc229d2921a40e899ec5f</span>   <span class='bold red'>fail</span>   response dur 75ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>0cc175b9c0f1b6a831c399e269772661</span>   <span class='bold red'>fail</span>   response dur 42ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>92eb5ffee6ae2fec3ad71c777531578f</span>   <span class='bold red'>fail</span>   response dur 9ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>e4da3b7fbbce2345d7772b0674a318d5</span>   <span class='bold red'>fail</span>   response dur 78ms<br><span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>c4ca4238a0b923820dcc509a6f75849b</span>   <span class='bold red'>fail</span>   response dur 112ms", 0]
+
+[autoType, "<span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>c4ca4238a0b923820dcc509a6f75849b</span>   <span class='bold red'>fail</span>   response dur 53ms", 15]
+[autoType, "<span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>6b86b273ff34fce19d6b804eff5a3f57</span>   <span class='bold red'>fail</span>   response dur 86ms", 18]
+[autoType, "<span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>7215ee9c7d9dc229d2921a40e899ec5f</span>   <span class='bold red'>fail</span>   response dur 75ms", 17]
+[autoType, "<span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>0cc175b9c0f1b6a831c399e269772661</span>   <span class='bold red'>fail</span>   response dur 42ms", 14]
+[autoType, "<span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>92eb5ffee6ae2fec3ad71c777531578f</span>   <span class='bold red'>fail</span>   response dur 9ms", 1 ]
+[autoType, "<span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>e4da3b7fbbce2345d7772b0674a318d5</span>   <span class='bold red'>fail</span>   response dur 78ms", 17]
+[autoType, "<span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>c4ca4238a0b923820dcc509a6f75849b</span>   <span class='bold red'>fail</span>   response dur 112ms", 111]
+[autoType, "<span class='grey'>Try:</span> <span class='bold'>info@stva.ch</span> @<span class='yellow'>81dc9bdb52d04dc20036dbd8313ed055", 50]
+
+[autoType:green, "Logging success! ", 50] [autoType, "response dur 50ms ", 50 ", 50] [spinner, 1000, 88, "\|/-"]
+
+[br]
+[br]
+[br]
+# Eddy (English (United Kingdom))
+# Bad News
+# Arthur
+[javascript, "await parent.say('dinner is ready', 'en-GB', 'Grandma (English (United Kingdom))')"]
+[autoType:yellow, " _____ _____ _   _ _   _ ______ _____    _____  _____   _____  ______          _______     __"]
+[autoType:yellow, "|  __ \_   _| \ | | \ | |  ____|  __ \  |_   _|/ ____| |  __ \|  ____|   /\   |  __ \ \   / /"]
+[autoType:yellow, "| |  | || | |  \| |  \| | |__  | |__) |   | | | (___   | |__) | |__     /  \  | |  | \ \_/ / "]
+[autoType:yellow, "| |  | || | | . ` | . ` |  __| |  _  /    | |  \___ \  |  _  /|  __|   / /\ \ | |  | |\   /  "]
+[autoType:yellow, "| |__| || |_| |\  | |\  | |____| | \ \   _| |_ ____) | | | \ \| |____ / ____ \| |__| | | |   "]
+[autoType:yellow, "|_____/_____|_| \_|_| \_|______|_|  \_\ |_____|_____/  |_|  \_\______/_/    \_\_____/  |_|   "]
+
+[br]
+[br]
+[br]
+[br]
+[br]
+[br]
+[br]
+[br]
+[br]
+[br]
+[br]
+[br]
+[br]
+[br]
+[sleep, 233] [spinner, 1000, 88, "\|/-"]
+   
+[autoType:green, "####### CRACKED AFTER 47’456 ATTEMPTS ####", 0]
+[autoType:bold, "*--------------------------*", 0]
+[autoType:bold, "|                          |", 0]
+[autoType:bold, "|  USERNAME: admin1        |", 0]
+[autoType:bold, "|                          |", 0]
+[autoType:bold, "|  PASSWORD: yCr7zDCE9     |", 0]
+[autoType:bold, "|                          |", 0]
+[autoType:bold, "*----------\[THANKS\]--------*", 0]
+[br]
+[bashProfile] [forceType, "ssh admin1@177.0.1.144"]
+[credentials, true]
+[sleep, 100]
+
+[autoType:grey, "Connected to stva"]
+[autoType, "<span class='blue'>admin1</span>@<span class='yellow bold'>177.0.1.144</span>:<span class='red'>~</span> $ ", 0] [forceType, "mysql -u admin1 -p stvaDB-live -e \"SELECT * FROM stvaDB-live WHERE name LIKE \'%Ava Dunker%\';\""]
+[br]
+[sleep, 333] [spinner:yellow, 2000, 88, "\|/-"]
+
+[autoType:grey, "Found 1 Result(s):"]
+[autoType, "+------+------------+----------------------+---------------------+---------------------+<br>| id   | name       | email                | created_at          | Vorstrafen          |<br>+------+------------+----------------------+---------------------+---------------------+<br>| 4456 | <span class='bold green'>Ava Dunker</span> | ava.dunker@email.com | 07-15 10:05:33      | 5 (Ladendiebstahl)  |<br>+------+------------+----------------------+---------------------+---------------------+"]
+[br]
+[autoType, "<span class='blue'>admin1</span>@<span class='yellow bold'>177.0.1.144</span>:<span class='red'>~</span> $ ", 0] [waitForEnter]
+[clear] [goto:nobr, 0]
+
+EXIT

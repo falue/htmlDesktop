@@ -1,0 +1,113 @@
+{
+    "settings": {
+        "systemColor": "#ffffff",
+        "loginGradient": "#222",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "workstations/Athletics/desktops/1.jpg",
+        "os": "windows",
+        "darkMode": true,
+        "username": "athlAdm_01",
+        "password": "",
+        "workstation": "Athletics",
+        "selectedSystemMessage": -1,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 1,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 9,
+            "y": 82,
+            "action": "addWindow('File manager', 'folder', 'loading', 8,12, 600,350, false);"
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 4,
+            "action": "addWindow('File manager', 'folder', 'loading', 10,14, 600,350, false);"
+        },
+        {
+            "name": "Athletics Spot.avi",
+            "icon": "fileMovie.png",
+            "x": 57,
+            "y": 17,
+            "action": "addWindow('Movieplayer - Athletics Spot.avi', 'movie', 'loading', 12,16, 600,350, false);"
+        },
+        {
+            "name": "Lager 2-B",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 43,
+            "action": "addWindow('File manager', 'folder', 'loading', 14,18, 600,350, false);"
+        },
+        {
+            "name": "Lager",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 30,
+            "action": "addWindow('File manager', 'folder', 'loading', 16,20, 600,350, false);"
+        },
+        {
+            "name": "Bestellungen",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 17,
+            "action": "addWindow('File manager', 'folder', 'loading', 18,22, 600,350, false);"
+        },
+        {
+            "name": "Report",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 69,
+            "action": "addWindow('File manager', 'folder', 'loading', 20,24, 600,350, false);"
+        },
+        {
+            "name": "Personal",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 82,
+            "action": "addWindow('File manager', 'folder', 'loading', 22,26, 600,350, false);"
+        },
+        {
+            "name": "Project.jpeg",
+            "icon": "fileImage.png",
+            "x": 58,
+            "y": 30,
+            "action": "addWindow('Imageviewer', 'image', 'loading', 24,28, 600,350, false);"
+        },
+        {
+            "name": "Präsentation",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 56,
+            "action": "addWindow('File manager', 'folder', 'loading', 26,30, 600,350, false);"
+        }
+    ],
+    "osNotifications": [],
+    "actions": []
+}

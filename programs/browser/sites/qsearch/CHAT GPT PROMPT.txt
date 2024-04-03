@@ -1,0 +1,19 @@
+Erfinde 10 fiktive google-suchergebnisse für das suchwort "Karl-Theodor", ohne dabei lebende personen zu erwähnen. Format, keine Anführungen oder Titel verwenden, nur den effektiven inhalt auflisten. Keine Anführungszeichen. fiktive url beinhaltet nicht das Suchwort. Verwende ein Auflistungsformat wie folgt - pro ergebnis nur total drei Punkte, lasse die beschreibungen weg:
+
+- fiktive url mit subdomain oder url path (urls nicht verlinken)
+   - Titel passend zur suchanfrage
+   - Drei Sätze passend zum Inhalt als zusammenfassung, auf einer Linie (mache keine weiteren punkte oder zeilen hierfür)
+
+Zusätzlich: Dieselben Ergebnisse im Format als ein gültiges JSON im folgenden Stil. Erfinde keine zusätzlichen Werte, nur exakt die beschriebenen 4 Werte. Vergiss nicht der immer gleich lautende erste Wert "../pfad", der ist immer identisch.
+
+```
+"suchwort": [
+    [
+      "../pfad",
+      "fiktive url mit subdomain oder url path",
+      "Titel passend zum Suchwort",
+      "Drei Sätze passend zum Inhalt als zusammenfassung",
+    ],
+   [...]
+}
+```

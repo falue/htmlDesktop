@@ -1,0 +1,255 @@
+{
+    "settings": {
+        "systemColor": "#000000",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "os/_generic/desktops/9.jpg",
+        "os": "windows",
+        "darkMode": true,
+        "username": "milan",
+        "password": "",
+        "workstation": "Milan",
+        "selectedSystemMessage": 0,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#507 Browser Leuchtpetarden",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=qsearch",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#507 Browser Fussballblog",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=baslerballkunst",
+            "x": 8,
+            "y": 6,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#614 Browser Autonummersuche",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=carregistry",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#129+var Spy Stream - Greenscreen",
+            "windowName": "Live Player - IP31.164.15.268",
+            "icon": "videocam",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#129 Spy Stream - Agotha",
+            "windowName": "Live Player - IP31.164.15.268",
+            "icon": "videocam",
+            "contentPath": "imageviewer/index.html?files=../../Milan/files/129.mp4&disableVideoControls=true&allowZoom=true",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#131A #136 #141 - Securiton",
+            "windowName": "Securiton",
+            "icon": "security",
+            "contentPath": "securiton/index.html?scene=131",
+            "x": 4,
+            "y": 2,
+            "w": 1250,
+            "h": 800,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Securiton",
+            "icon": "",
+            "x": 2,
+            "y": 17,
+            "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=136', 4, 2, 1250,800, false);"
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Note.docx",
+            "icon": "doc.png",
+            "x": 92,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Image Copy",
+            "icon": "folderFull.png",
+            "x": 85,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Report d2bc4",
+            "icon": "folderFull.png",
+            "x": 92,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "File Copy.pdf",
+            "icon": "pdf.png",
+            "x": 1,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "File2.tiff",
+            "icon": "fileImage.png",
+            "x": 86,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Data",
+            "icon": "folderFull.png",
+            "x": 94,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Report",
+            "icon": "folderFull.png",
+            "x": 93,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Important Copy",
+            "icon": "folderFull.png",
+            "x": 28,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Data Copy",
+            "icon": "folderFull.png",
+            "x": 29,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Important.png",
+            "icon": "fileImage.png",
+            "x": 28,
+            "y": 42,
+            "action": ""
+        },
+        {
+            "name": "Image bcf8b",
+            "icon": "fileImage.png",
+            "x": 29,
+            "y": 55,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "file",
+            "icon": "doc.png",
+            "x": 3,
+            "y": 42,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Links.pdf",
+            "icon": "pdf.png",
+            "x": 93,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Document Copy",
+            "icon": "folderFull.png",
+            "x": 84,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Home Copy",
+            "icon": "folderFull.png",
+            "x": 92,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Presentation.PDF",
+            "icon": "pdf.png",
+            "x": 84,
+            "y": 30,
+            "action": ""
+        }
+    ],
+    "osNotifications": [
+    ],
+    "actions": [
+    ]
+}

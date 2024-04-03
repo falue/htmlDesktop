@@ -208,12 +208,19 @@ function updateFolderContent(path, folderContent) {
         let fileTile = document.createElement("div");
         let fileName = document.createElement("div");
         let fileIcon = document.createElement("img");
+        fileName.id=filename;
         fileIcon.setAttribute("alt", "");
         fileIcon.setAttribute("src", "../../os/"+os+"/systemIcons/"+iconDecider(filename, isFolder));
         fileTile.appendChild(fileIcon);
         fileName.appendChild(document.createTextNode(filename));
         fileTile.setAttribute("class", "fileTile");
         fileTile.setAttribute("title", filename);
+        fileTile.setAttribute("tabIndex", "0");
+
+        fileTile.oncontextmenu = function() { 
+            renameFile(filename);
+            return false;
+        };
 
         // Set actions ondblclick
         if(action && action !== "action") {
@@ -225,8 +232,8 @@ function updateFolderContent(path, folderContent) {
                 // Image: filename can be named anything.
                 //   Image viewer only opens if real path is defined in data (eg. "1.jpg" or "1.jpg|2.jpg").
                 //   path relative to workstation root.
-                if(data && data !== "data") {
-                    fileTile.setAttribute("ondblclick", "parent.addWindow('Image viewer', 'image', 'imageviewer/index.html?files="+data+"', 5,5, 666,450, false)");
+                if(data) {
+                    fileTile.setAttribute("ondblclick", "parent.addWindow('Image viewer', 'image', 'imageviewer/index.html?"+(data !== 'data' ? 'files='+data : '')+"', 5,5, 666,450, false)");
                 }
             } else if(["doc","docx","txt","rtf"].includes(extension)) {
                 // Text file
@@ -254,6 +261,54 @@ function updateFolderContent(path, folderContent) {
     }
 }
 
+function renameFile(fileName) {
+    let extension = (fileName.split(".")[1]+"");
+    extension = extension !== "undefined" ? "."+extension : "";
+    let name = fileName.replace(extension, "");
+    let editFileName = document.createElement("input");
+    editFileName.setAttribute("id", fileName+"-edit");
+    editFileName.setAttribute("value", name);
+    editFileName.setAttribute("class", 'editFileName');
+    gebi(fileName).innerHTML = '';
+    gebi(fileName).appendChild(editFileName);
+    gebi(fileName).appendChild(document.createTextNode(extension));
+
+    gebi(fileName+"-edit").style.width = (gebi(fileName+"-edit").value.length+1) + "ch";
+
+    editFileName.focus();
+    editFileName.select();
+    editFileName.onblur = function() {
+        if(gebi(fileName+"-edit").value.length) {
+            gebi(fileName).innerHTML = gebi(fileName+"-edit").value + extension;
+        } else {
+            gebi(fileName).innerHTML = fileName;
+        }
+    };
+
+    // resize input field
+    editFileName.oninput = function(event) {
+        gebi(fileName+"-edit").style.width = gebi(fileName+"-edit").value.length + "ch";
+    }
+    // if etner, finalize renaming; escape = revert changes
+    editFileName.onkeyup = function(event) {
+        // cl(event.key);
+        switch(event.key) {
+            case "Enter":
+                gebi(fileName).innerHTML = gebi(fileName+"-edit").value + extension;
+                break;
+            case "Escape":
+                gebi(fileName).innerHTML = fileName;
+                break;
+            default:
+                break;
+        }
+        return false;
+    };
+
+    // set focus to input
+    // onBLur revert
+}
+
 // Swap icon in treeview
 function openCloseFolderIcon(id) {
     let checkbox = document.getElementById("checkbox-"+id);
@@ -276,3 +331,37 @@ function addStylesheet(path) {
     link.href = path;
     head.appendChild(link);
   }
+
+let keyboardSearch = "";
+let searchTimeout;
+
+function keyboardController(event) {
+    // Clear the previous timeout
+    clearTimeout(searchTimeout);
+
+    if(event.target.type === 'text') return;
+    keyboardSearch += event.key;
+    var containerDiv = document.getElementById('folderContent'); // Replace 'yourDivId' with your div's ID
+    var firstElement = containerDiv.querySelector('[title^="'+keyboardSearch+'" i]');
+    
+    cl(keyboardSearch);
+
+    if(firstElement) {
+        cl(firstElement.id);
+        firstElement.scrollIntoView({inline: "center", block: "center", behavior: "smooth"});
+        firstElement.focus();
+    } else {
+        keyboardSearch = "";
+        containerDiv.focus();
+    }
+
+    // Reset keyboardSearch after 1 second of no typing
+    searchTimeout = setTimeout(function() {
+        console.log("Reset search");
+        keyboardSearch = "";
+    }, 666);
+    
+    // Pipe other keys to the main controller
+    document.parent.keyboardController(event);
+
+}

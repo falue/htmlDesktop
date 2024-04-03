@@ -10,7 +10,9 @@ let selectedSystemMessage;
 let hotSwapped;
 let rootHtmlFile = "index.html";
 let dockAvailable = false;
-let lockKeyboard = false;
+let bootSpeed = 3;
+let localStorageSettings;
+let arrowAction = 'NOTHING';
 
 async function setup() {
   // Get Workstation parameter
@@ -48,6 +50,21 @@ async function setup() {
     data = await parseFile("workstations/" + workstation + "/settings.json");
   }
 
+  // get some data from localstorage
+  localStorageSettings = JSON.parse(localStorage.getItem('htmlDesktop-settings')) ||  {};
+
+  let brightness = localStorage.getItem('htmlDesktop-brightness');
+  if(brightness && gebi('actionMenu')) {
+    setBrightness(brightness);
+    gebi('brightnessIndicator').innerHTML = brightness;
+    gebi('brightnessSlider').value = brightness;
+  }
+
+  if(localStorage.getItem('htmlDesktop-arrowAction')) {
+    arrowAction = localStorage.getItem('htmlDesktop-arrowAction');
+    gebi('leftRightArrowSelect').value = arrowAction;
+  }
+
   // If loadSaveFile OR workstation defined in URL:
   // Load & define all the settings
   let settings;
@@ -63,7 +80,6 @@ async function setup() {
     darkMode = settings.darkMode;
     username = settings.username;
     password = settings.password;
-
     windows = data.windows;
     shortcuts = data.shortcuts;
     systemIcons = data.systemIcons;
@@ -140,6 +156,20 @@ async function setup() {
   setupSettings(settings);
   // cl("SETUP: setupSettings success ");
 
+  // Set gradient color of login screen if is in local storage (overwrite settings of workstation)
+  let gradient = localStorage.getItem('htmlDesktop-loginGradient');
+  if(gradient) {
+    setLoginGradient(gradient, false);
+  }
+
+  // Get password from storage
+  let passwordFromStorage = localStorage.getItem('htmlDesktop-password');
+  if(passwordFromStorage) {
+    password = passwordFromStorage;
+    gebi("passwordHint").innerHTML = passwordFromStorage;
+    gebi("passwordHint").classList.add("blue");
+  }
+
   // Loop over shortcuts
   for (let shortcut of shortcuts) {
     placeShortcut(shortcut["name"], shortcut["icon"], shortcut["x"],shortcut["y"], shortcut["action"]);
@@ -163,8 +193,14 @@ async function setup() {
   // Loop over osNotifications
   setupSystemMessages(osNotifications);
 
+  // If neither actions nor notifications are set, hide entry in actionmenu
+  if(actions.length + osNotifications.length == 0) {
+    hide('osNotificationSettingsContainer');
+  }
+    
   // Show name in actionMenu
   gebi('workstationHint').innerHTML = workstation;
+  gebi('workstationHint2').innerHTML = workstation;
 
   // Create generic Shortcuts if none are defined
   if(!shortcuts.length) {
@@ -243,9 +279,27 @@ async function setupWorkstationChooser(path) {
           a.prepend(button);
           workstationList.appendChild(a);
           workstationList.appendChild(document.createElement("br"));
+         
         break;
       }
     });
+
+    if(settingsData.length > 8) {
+      let overlayWorkstation = gebi('overlayWorkstation');
+        // overlayWorkstation.appendChild(document.createElement("br"));
+        let more = document.createElement("span");
+        more.innerHTML = "More..";
+        more.classList.add("fixed", "bottom", "white", "small", "paddingY1", "op50", "pointer");
+        more.style.right = "10%";
+        more.id="moreWork"
+        more.setAttribute("onclick", "scrollToBottom('workstationContainer'); hide('moreWork')");
+        let down = document.createElement("i");
+        down.classList.add("material-icons", "valign", "small");
+        down.innerHTML = "expand_more";
+        more.appendChild(down);
+        overlayWorkstation.appendChild(more);
+        // overlayWorkstation.appendChild(document.createElement("br"));
+    }
 }
 
 async function setupSettings(settings) {
@@ -262,6 +316,10 @@ async function setupSettings(settings) {
           setSystemColors(value);
           gebi('systemColorPicker').value = value;
         }
+      break;
+      // test: loginGradient: "linear-gradient(146deg, rgb(247, 247, 247) 1%, rgb(190, 45, 171) 49%, rgb(150, 135, 161) 99%)"
+      case "loginGradient":
+        setLoginGradient(value, false);
       break;
       case "darkMode":
         if (value) {
@@ -309,6 +367,9 @@ async function setupSettings(settings) {
       case "selectedSystemMessage":
         selectedSystemMessage = value;
       break;
+      case "bootSpeed":
+        setBootSpeed(value);
+      break;
       default:
         // Show error if setting is not parsed and should not be here:
         if(!["workstation", "os"].includes(setting)) cl("Unknown setting: "+setting);
@@ -330,9 +391,9 @@ function setupWindows(windows) {
     let windowIcon = document.createElement("i");
     windowIcon.setAttribute("class", "material-icons small grey");
     windowIcon.appendChild(document.createTextNode(window["icon"]));
-    listElement.title = window["contentPath"];
+    listElement.title = window["contentPath"] + ' - ' + window["metaTitle"] || window["windowName"];
     listElement.appendChild(windowIcon);
-    listElement.innerHTML+=" "+(window["metaTitle"] || window["windowName"]).replaceAll(/#(\d+)/gm, `<span class='green'>#$1</span>`);
+    listElement.innerHTML+=" "+(window["metaTitle"] || window["windowName"]).replaceAll(/#(\d\w+)/gm, `<span class='green'>#$1</span>`);
     listElement.setAttribute("onclick", `addWindow('${window["windowName"]}', '${window["icon"]}', '${window["contentPath"]}', ${window["x"]}, ${window["y"]}, ${window["w"]}, ${window["h"]}, false); hide("actionMenu");`);
     listOfWindows.appendChild(listElement);
 
@@ -346,8 +407,14 @@ function setupWindows(windows) {
     listElement.setAttribute("data-setup-type", "windowInitialState");
     listElement.setAttribute("data-setup", "['"+[window["windowName"], window["icon"], window["contentPath"], window["x"], window["y"], window["w"], window["h"], window["zIndex"]].join("', '")+"']");
     listElement.setAttribute("data-setup-minimized", window["minimized"]);
-    listElement.setAttribute("data-setup-render-to-dom", "false");
-    
+    listElement.setAttribute("data-setup-render-to-dom", "false"); 
+  }
+  // Show fadeout and arrow indicator if necessary
+  if(windows.length > 6) {
+    gebi('currentWindowsSettings').classList.add('maxHeight175', 'overflowAutoY', 'fadeOutBottom', 'arrowIndicator');
+  }
+  if(windows.length > 5) {
+    gebi('computerFunctionsList').classList.add('maxHeight175', 'overflowAutoY', 'fadeOutBottom', 'arrowIndicator');
   }
 }
 

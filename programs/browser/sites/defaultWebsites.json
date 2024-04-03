@@ -1,0 +1,67 @@
+[
+    {
+        "spoofUrl": "forum.baselmystery.ch",
+        "realUrl": "sites/mysteryforum/index.html",
+        "favoritesName": "mystery.ch",
+        "metaName": "315",
+        "materialIcon": "auto_fix_high",
+        "showInFavorites": false,
+        "onclick": false
+    },{
+        "spoofUrl": "inbox.avmail.ch?login=true&hash=458123674t90v78234561",
+        "realUrl": "../email/index.html?webmail=true&account=funancelli@avmail.ch&scene=313&inbox=inbox&selected=0",
+        "favoritesName": "avmail.ch",
+        "metaName": "313",
+        "materialIcon": "email",
+        "showInFavorites": false,
+        "onclick": false
+    },{
+        "spoofUrl": "registerdb.admin.ch",
+        "realUrl": "sites/personenregister/index.html",
+        "favoritesName": "admin.ch",
+        "metaName": "644 Personenregister",
+        "materialIcon": "equalizer",
+        "showInFavorites": false,
+        "onclick": false
+    },{
+        "spoofUrl": "utilities.ch",
+        "realUrl": "sites/utilities/index.html",
+        "favoritesName": "utilities.ch",
+        "metaName": "507/508 outdoor supply",
+        "materialIcon": "hiking",
+        "showInFavorites": false,
+        "onclick": false
+    },{
+        "spoofUrl": "frutti.ch",
+        "realUrl": "sites/frutti/index.html",
+        "favoritesName": "frutti.ch",
+        "metaName": "507/508",
+        "materialIcon": "compost",
+        "showInFavorites": false,
+        "onclick": false
+    },{
+        "spoofUrl": "blog.baslerballkunst.ch",
+        "realUrl": "sites/fussballblog/index.html",
+        "favoritesName": "baslerballkunst.ch",
+        "metaName": "507/508 fussball blog",
+        "materialIcon": "sports_soccer",
+        "showInFavorites": false,
+        "onclick": false
+    },{
+        "spoofUrl": "portal.carregistry.ch",
+        "realUrl": "sites/carregistry/index.html",
+        "favoritesName": "carregistry.ch",
+        "metaName": "614 Autonummer suche",
+        "materialIcon": "directions_car",
+        "showInFavorites": false,
+        "onclick": false
+    },{
+        "spoofUrl": "wintiwurm.ch",
+        "realUrl": "sites/wintiwurm/index.html",
+        "favoritesName": "wintiwurm.ch",
+        "metaName": "",
+        "materialIcon": "compost",
+        "showInFavorites": false,
+        "onclick": false
+    }
+]

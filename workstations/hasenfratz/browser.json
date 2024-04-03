@@ -1,0 +1,134 @@
+{   
+    "comment1": "Browser settings",
+    "settings": {
+            "hideFavorites": false,
+            "hideAddons": false,
+            "hideHomeButton": false,
+            "hideReloadButton": false,
+            "hideLoadingAnimation": false,
+            "internetConnection": true,
+        "comment2": "loaderCircle or loaderLinear",
+            "loaderType": "loaderLinear"
+    },
+    "comment2": ["URL and favorites list",
+                "Comma and space seperated list:",
+                "  showInFavorites, materialIcon, realUrl, spoofUrl, onclick",
+                "     showInFavorites: 'show' or 'hide' determines if the URL is in the favorites list",
+                "     materialIcon: Available icons see https://fonts.google.com/icons?selected=Material+Icons:settings",
+                "     realUrl: Enter the path to your local index file or enter any valid real URL.",
+                "               If realUrl is './', it will not have become link but will be displayed as a spoof favorite.",
+                "     spoofUrl: The Url to enter in the URL bar to visit site.",
+                "     favoritesName: The display name in the favorites list.",
+                "     metaName: Will be displayed only in the URL overview (top right) eg. for better naming",
+                "                  of different scenes with the same URL",
+                "     onclick: Optional javascript function to execute.",
+                "First entry of this list is also acting as the home page."],
+    "urls": [
+        {
+            "spoofUrl": "inbox.avmail.ch?login=true&hash=458123674t90v78234561",
+            "realUrl": "../email/index.html?webmail=true&account=funancelli@avmail.ch&scene=313&inbox=inbox&selected=0",
+            "favoritesName": "avmail.ch",
+            "metaName": false,
+            "materialIcon": "email",
+            "showInFavorites": false,
+            "onclick": false
+        },
+        {
+            "spoofUrl": "qsearch.ch",
+            "realUrl": "sites/qsearch/index.html",
+            "favoritesName": "qsearch.ch",
+            "metaName": false,
+            "materialIcon": "travel_explore",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "telefabi.ch",
+            "realUrl": "sites/telefabi",
+            "favoritesName": "telefabi.ch",
+            "metaName": false,
+            "materialIcon": "code",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "vidshare.com",
+            "realUrl": "sites/youtube",
+            "favoritesName": "vidshare.com",
+            "metaName": false,
+            "materialIcon": "smart_display",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "sci-hub.com",
+            "realUrl": "sites/metis",
+            "favoritesName": "sci-hub.com",
+            "metaName": false,
+            "materialIcon": "science",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "pharmazon.com",
+            "realUrl": "sites/sapienz",
+            "favoritesName": "pharmazon.com",
+            "metaName": false,
+            "materialIcon": "biotech",
+            "showInFavorites": false,
+            "onclick": false
+        },{
+            "spoofUrl": "sites/runnershigh",
+            "realUrl": "sites/runnershigh",
+            "favoritesName": "runnershigh.ch",
+            "metaName": false,
+            "materialIcon": "directions_run",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "translocate.io",
+            "metaName": false,
+            "materialIcon": "train",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "theEatGuide.com",
+            "metaName": false,
+            "materialIcon": "restaurant",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "_ARCHIV",
+            "metaName": false,
+            "materialIcon": "folder_open",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "Music",
+            "metaName": false,
+            "materialIcon": "folder_open",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "Notizen",
+            "metaName": false,
+            "materialIcon": "folder_open",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "",
+            "realUrl": "./",
+            "favoritesName": "Research",
+            "metaName": false,
+            "materialIcon": "folder_open",
+            "showInFavorites": true,
+            "onclick": false
+        }
+    ]
+}

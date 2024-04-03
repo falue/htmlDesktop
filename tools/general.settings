@@ -1,6 +1,14 @@
 # Define all available workstations here
 
-workstation=telefabi;windows
-workstation=programmer;linux
-workstation=business;mac
-workstation=linuxSpa;spa
+workstation=generic;spa
+workstation=Polizei;windows
+workstation=Agotha;windows
+workstation=Athletics;windows
+workstation=Carlos;windows
+workstation=Charles;spa
+workstation=Dominic;spa
+workstation=Doro;mac
+workstation=hasenfratz;windows
+workstation=Leo;spa
+workstation=Milan;windows
+workstation=MinervaRezeption;windows

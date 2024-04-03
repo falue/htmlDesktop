@@ -67,6 +67,14 @@ li.showMac { display: list-item !important; }
     transform: translate(-50%, calc(-100% - .5rem));
 }
 
+.tooltip.tooltipBottom:not(.tooltipDock)::before {
+    transform: translate(-50%, calc(100% + 1.25rem));
+}
+
+.tooltip.tooltipBottom:not(.tooltipDock)::after {
+    transform: translate(-50%, calc(100% + 2.25rem)) rotate(180deg) ;
+}
+
 /* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
 .dock .tooltipDock {
     position: relative;
@@ -179,7 +187,7 @@ li.showMac { display: list-item !important; }
 
 /* WINDOW */
 .window {
-    background-color: grey;
+    background-color: black;
     border-radius: .6em;
     border: rgba(127,127,127,1) solid .06em;
     box-sizing: border-box;
@@ -453,12 +461,13 @@ li.showMac { display: list-item !important; }
 }
 .startMenu li {
     position: relative;
-    padding: .15em .5em 0 .5em;
+    padding: .15em .5em .15em .5em;
     width: 17em;
     border-radius: .25em;
 }
+.startMenu .appList li:hover,
 .startMenu li:hover {
-    background-color: rgba(0,0,0,.1);
+    background-color: rgba(125,125,125,.25);
 }
 .startMenu li i {
     display: none;

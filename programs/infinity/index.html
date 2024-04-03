@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>infinity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+
+    <script>
+      function invertAndBack(id) {
+        let elem = gebi(id);
+        let filter = elem.style.filter;
+        if(filter === "invert(1)") {
+          elem.style.filter = 'invert(0)';
+        } else if(filter === "invert(0)") {
+          elem.style.filter = 'invert(1) brightness(0.5)';
+        } else {
+          elem.style.filter = 'invert(1)';
+        }
+      }
+    </script>
+
+  </head>
+  <body id="body" onclick="invertAndBack('body')" style="filter:invert(0);">
+  </body>
+  </html>

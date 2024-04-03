@@ -2,6 +2,14 @@ let spoofUrls = new Array();
 let unikVersion = "1.2-d";
 
 async function setup() {
+
+  /* 
+  
+    URL params:
+      site: tries to load a website if it is setup by this user. Eg. "carregist" loads the website "portal.carregistry.ch"
+
+  */
+
   // Set unik version
   document.getElementById('unikVersion').innerHTML = "v" + unikVersion;
 
@@ -22,12 +30,9 @@ async function setup() {
     
     let data = await parseFile(path + "browser.json");
 
-    // MABYE JOIN
-    /* if(workstation !== "_generic") {
-      let baseData = await parseFile(path + "../../workstations/_generic/browser.json");
-      // TODO: remove douplicats???!
-      data = [...data, ...baseData.urls.urls];
-    } */
+    // Add generic websites to hidden menu to make them accessible for everyone
+    let defaultWebsites = await parseFile("sites/defaultWebsites.json");
+    data.urls = [...data.urls, ...defaultWebsites];  // TODO: remove duplicates
 
     // Get darkMode from URL
     data.settings.darkMode = urlParams.get('darkMode') === "true";
@@ -42,8 +47,13 @@ async function setup() {
     console.log("no workstation in URL !!!")
   }
 
-  // Force cache reload iframe
-  reloadIframe();
+  const site = urlParams.get('site');
+  if(site) {
+    goToUrl(site);
+  } else {
+    // Force cache reload iframe
+    reloadIframe();
+  }
 }
 
 async function setupSettings(settingsData) {
@@ -103,7 +113,7 @@ async function setupFavorites(urls) {
     let realUrl = url["realUrl"];
     let spoofUrl = url["spoofUrl"];
     let favoritesName = url["favoritesName"] ? url["favoritesName"] : spoofUrl;
-    let metaName = url["metaName"] ? url["metaName"] : favoritesName;
+    let metaName = url["metaName"] ? `${url["favoritesName"]}: ${url["metaName"]}` : favoritesName;
 
     let onclick = url["onclick"];
     favorites.push([realUrl, spoofUrl, onclick]);
@@ -135,9 +145,27 @@ async function setupFavorites(urls) {
       let spanUrlsList = document.createElement("span");
       spanUrlsList.innerHTML = " " + metaName;
       let action = onclick ? onclick : "";
-      spanUrlsList.setAttribute("onclick", "goToUrl('"+realUrl+"', '"+spoofUrl+"'); "+action);
+      spanUrlsList.setAttribute("onclick", "hide('favoritesMenu'); goToUrl('"+realUrl+"', '"+spoofUrl+"'); "+action);
       spanUrlsList.prepend(iUrlsList);
+
       urlsList.appendChild(spanUrlsList);
+
+      // Setup saved search terms for qsearch
+      if(spoofUrl.includes('qsearch')) {
+        const ul = document.createElement('ul');
+        ul.style.marginBottom = '.5em';
+        for (const [key, value] of Object.entries(searchTerms)) {
+          const li = document.createElement('li');
+          li.style.paddingLeft = '1.75em';
+          li.style.cursor = 'pointer';
+          li.style.listStyle = 'none';
+          li.title=`On qsearch.ch; you can search for "${key}" and find ${value.length} results`;
+          li.innerHTML = `<span style="color:grey; display:inline">q:</span> "${key}"`; // Druckt Schlüssel und Wert
+          li.setAttribute("onclick", "hide('favoritesMenu'); goToUrl('sites/qsearch/index.html?search="+key+"', 'qsearch.ch/q/"+key+"')");
+          ul.appendChild(li);
+        }
+        urlsList.appendChild(ul);
+      }
     }
 
     // Setup spoof urls for entering manual in URL input

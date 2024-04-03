@@ -27,8 +27,11 @@ The `EXIT` command stops parsing the file at this location. Good for testing.
 - `[wait]` - waits for the user to press any key
 - `[waitForEnter]` - waits for the user to press enter
 - `[sleep, 1000]` - waits 1000ms
-- `[clear]` - clears the screen
+- `[javascript, "parent.show('elementOnDesktop')"]` - does anything
 - `[goto, 4]` - jump to command index `4`; `0` for begin of script
+- `[clear]` - clears the screen. Use `[clear] [goto:nobr, 0]` to clear the screen, start from scratch and get the white space correct.
+- `[garbageCollection, 50]` - removes first 50 lines from `body` to preserve data
+- `[resetProfile]` - reset the path in the bash profile to its initial state.
 - `[loader, "Loading: \[", "▓", "░", "\]", 30, 2000, 0, 100, "Progress: ", "%"]` - Shows a loading animation with the char `▓` max repeated `30` times; `2000`ms total duration; goes from `0` to `100`;  and looks like this:
 ```
 Loading: [▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░] Progress: 17%
@@ -38,6 +41,10 @@ Loading: [▓▓▓▓▓░░░░░░░░░░░░░░░░░░�
 **NOTE**: If you want to have `[` or `]` anywhere in text, use `\[` or `\]`
 
 **NOTE**: User interaction is only available when `freeText`, `forceType`, `credentials` or `wait` is being used.
+
+**NOTE**: `[goto:nobr, 0]` does somehow wait for an input even if the command at index `1` is `Autotpye`. To resolve this, remove the `:nobr` class. Will make a `<br>` too much but it loops correctly.
+
+**ATTENTION**: Theres no automatic garbage collection. The document will get bigger and bigger. Use `[garbageCollection, 50]` on and off again.
 
 ### forceType & *default scripts*
 
@@ -52,7 +59,8 @@ All the *default scripts* above can be used as well within `forceType`:
 - `[forceType, "cd .."]`
 - `[forceType, "sudo ls -l -a", true]`
 **NOTE**: if you use `sudo` in forcetype, there is no need for an additional `[credentials]` command, as `sudo` already triggers that.
-Also, there is a *third* parameter for sudo in forceType: Same functionality as in the `[credentials]` command; true/false or no third parameter.
+**NOTE**: Also, there is a *third* parameter for sudo in forceType: Same functionality as in the `[credentials]` command; true/false or no third parameter.
+**NOTE**: A *third* parameter string asteriks (eg., `[forceType, "ls -l -a", "*"]`) does inhibit a default script. The example leads to the "ls -l -a" default script to not trigger, eg. nothing happens and you can echo any file list, for example.
 
 
 ## Example

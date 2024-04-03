@@ -27,11 +27,13 @@ After creation of the new workstation folder (automatically or manually), you ca
 #### **settings**
 Object with all general settings of this workstation. OS and workstation-name are defined in general.settings aswell!
 - `"systemColor": "#000000"` *HEX color code for background of taskbar, window headers etc. Font color is either white or black, depending on the darkness of this color*
+- `"loginGradient": "linear-gradient(...)"` *Any valid background css property. If available, overwrites default gradient*
 - `"desktopColor": "#000000"` *HEX color code for dekstop background*
 - `"desktopImg": "os/_generic/desktops/7.jpg"` *Path to desktop image, either to `os/_generic/desktops/..` or `workstations/../desktops/1.jpg`, see [below](#user-and-desktop-images). Can also be `random` to select a different desktop image each time.*
 - `"os": "windows"` *Style of OS, either `windows`, `mac` or `linux`. Must be the same as in `generalSettigns.txt`*
 - `"darkMode": true` *only gets re-set by changing the `systemColor` via the UI*
 - `"username": "Some Name"` *display name of workstation*
+- `"bootSpeed": 3` *Integer speed of boot animation. 1 to 7, 1=fastest, 7=slowest. Default: 3.*
 - `"password": "1234"` *Used for the logout action. Can be anything for the login window; to a successful login this only has to be part of the typed password*
 - `"workstation": "telefabi"` *same name as folder in `workstations/..`*
 - `"selectedSystemMessage": 1` *index of osNotification array; starts with `0`*
@@ -63,7 +65,7 @@ Objects of live, displayed or hidden windows. accessible programs like terminal,
 define desktop icons with dbl click action: 1: 'test.exe', 'folderFull.png', 250,650, ['action', 'path oder so']
 
 - `"name": "DVD"` *displayed filename (do not use `"` or `'`)*
-- `"icon": "dvd.png"` *filename of icon image in `os/../systemIcons/`*
+- `"icon": "dvd.png"` *filename of icon image in `os/../systemIcons/` - or, if empty AND `"action"` starts with 'addWindow', it shows the image in `programs/<programNameDefinedInAction>/icon.png`. If `"action"` is also empty, it shows a default icon for that filename*
 - `"x": 93` *X-Position of shortcut in percent (integer)*
 - `"y": 67` *Y-Position of shortcut in percent (integer)*
 - `"action": ".."` *javascript action as string like `startDefaultProgram('fileManager')` or `addWindow(..)`*

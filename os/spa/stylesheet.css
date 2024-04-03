@@ -66,6 +66,14 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
     transform: translate(-50%, calc(-100% - .5rem));
 }
 
+.tooltip.tooltipBottom:not(.tooltipDock)::before {
+    transform: translate(-50%, calc(100% + 1.25rem));
+}
+
+.tooltip.tooltipBottom:not(.tooltipDock)::after {
+    transform: translate(-50%, calc(100% + 2.25rem)) rotate(180deg) ;
+}
+
 /* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
 .dock .tooltipDock {
     position: relative;
@@ -149,11 +157,11 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
 
 #lockScreen.loginAnimation #lockScreenColorOverlay {
     animation: animateBgColor 750ms ease-in-out 1 forwards;
-    animation: fadeoutLoginWindow 500ms 1500ms ease-in-out 1 forwards;
+    animation: fadeoutLoginWindow 500ms 500ms ease-in-out 1 forwards;
 }
 
 .loginAnimation #lockScreenSystemColorOverlay {
-    animation: fadeoutLoginWindow 750ms 2s ease-in-out 1 forwards;
+    animation: fadeoutLoginWindow 500ms 500ms ease-in-out 1 forwards;
 }
 
 @keyframes animateBgColor {
@@ -178,7 +186,7 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
 
 /* WINDOW */
 .window {
-    background: grey;
+    background: black;
     border-radius: .25em;
 }
 
@@ -441,6 +449,13 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
     border: 1em transparent solid;
     border-left: 2.5em transparent solid;
 }
+.startMenu li {
+    padding: .15em .5em .15em .5em;
+}
+.startMenu .appList li:hover,
+.startMenu li:hover {
+    background-color: rgba(125,125,125,.25);
+}
 .startMenu li:hover div.submenu {
     display: block;
 }
@@ -493,7 +508,6 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
     text-align: center;
     box-sizing: border-box;
     padding: .25em;
-    margin-top: .5em;
 }
 .osNotifications .textContainer {
     padding-left: 1em;

@@ -1,0 +1,65 @@
+a:hover {
+    cursor:pointer;
+}
+
+.website {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.footer,
+.header {
+    position: fixed;
+    z-index: 11;
+    overflow: hidden;
+}
+
+.header.index {
+    height: 15.1vw; /* defines height in percent of width */
+}
+
+.patientsList {
+    position: fixed;
+    z-index: 10;
+    top: 15.1vw;
+    left:16.35vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#patientFilter {
+    /* background-color: red; */
+    position:absolute;
+    border:none;
+    top:11.1vw;
+    left:20%;
+    font-size: .95em;
+    padding:0;
+    width: 74%;
+}
+
+.header.index2 {
+    height: 10vw; /* defines height in percent of width */
+}
+
+.footer.index {
+    height: 2vw; /* defines height in percent of width */
+    bottom:0;
+    z-index: 12;
+}
+
+.footer.index img {
+    position: absolute;
+    bottom:0;
+}
+
+.patientsList img,
+.footer img,
+.header img,
+.website img {
+    width: 100%;
+}

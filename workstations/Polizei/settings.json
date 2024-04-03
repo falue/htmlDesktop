@@ -1,0 +1,56 @@
+{
+    "settings": {
+        "systemColor": "#000000",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "workstations/Polizei/desktops/desktop.jpg",
+        "os": "windows",
+        "darkMode": true,
+        "username": "Polizeizentrale",
+        "password": "",
+        "workstation": "Polizei",
+        "selectedSystemMessage": 3,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 1,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        }
+    ],
+    "actions": [],
+    "osNotifications": []
+}

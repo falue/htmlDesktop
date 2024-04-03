@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SUPERVISOR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js" defer></script>
+    <script src="data.js" defer></script>
+
+    <!-- Charts -->
+    <script src="../../tools/libraries/chart.js"></script>
+    <script src="../../tools/autoCharts.js"></script>
+  </head>
+  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+    <div class="gridLayout">
+      <!-- ROW 1 -->
+      <header class="gridBox mainWindowmenu header bgDark centerContentY op75" style="grid-column: col / span 6; grid-row: row;">
+        <button class="marginX50 grey valign"><i class="material-icons small valign">scatter_plot</i></button><!-- 
+        --><button class="marginX50 grey">File</button><!-- 
+        --><button class="marginX50 grey">Edit</button><!-- 
+        --><button class="marginX50 grey">View</button><!-- 
+        --><button class="marginX50 grey">Settings</button><!-- 
+        --><button class="marginX50 grey">About</button>
+      </header>
+
+      <!-- ROW 2 -->
+      <div class="gridBox centerContentY black bgDark op75" style="grid-column: col / span 6; grid-row: row 2;">
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">restore_page</i></button>
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">query_stats</i></button>
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">schema</i></button>
+        |
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">view_in_ar</i></button>
+        <button class="programButtons marginX25"><i class="material-icons blue medium valign grey">3d_rotation</i></button>
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">data_exploration</i></button>
+        <button class="programButtons marginX25"><i class="material-icons medium valign grey">mobiledata_off</i></button>
+        |
+        <button class="programButtons marginX25 grey nobr">Select Node.. <i class="material-icons white medium valign grey">expand_more</i></button>
+        |
+        <button class="programButtons marginX25 grey nobr">Select Data.. <i class="material-icons white medium valign grey">expand_more</i></button>
+        <button class="programButtons marginX25 grey nobr">Select Custom.. <i class="material-icons white medium valign grey">expand_more</i></button>
+      </div>
+      
+      <!-- <div class="gridBox centerContentY" style="grid-column: col 2 / span 3; grid-row: row 2;">4</div>
+      <div class="gridBox centerContentY" style="grid-column: col 5 / span 3; grid-row: row 2;">4.1</div> -->
+      <div class="gridBox centerContentYRight bgDark nobr op75 alignRight" style="grid-column: col 7 / span 2; grid-row: row 1 / 3;">
+        <!-- <button class="programButtons marginX25 grey nobr">Generation.. <i class="material-icons white medium valign grey">expand_more</i></button>
+        <button class="programButtons "><i class="material-icons medium valign grey">scatter_plot</i></button> -->
+        <div style="line-height: .75em; padding:.5em">SUPERVISOR<br>
+          <span class="tiny grey italics">© Tessier-Ashpool SA</span>
+        </div>
+        <i class="material-icons blueBg medium valign marginX25 white" style="padding:.3em; float:left; border-radius:.5em;">scatter_plot</i>
+      </div>
+
+      <header class="gridBox header windowmenu tabList noPadding bgDark" style="grid-column: col / span 4; grid-row: row 3;">
+        <button class="programButtons tabButton" onclick="switchTabs(1);">Settings</button><!-- 
+        --><button class="programButtons tabButton" onclick="switchTabs(2);">Overview</button><!-- 
+        --><button class="programButtons tabButton" onclick="switchTabs(3);">Activity</button><!--
+        --><button class="programButtons tabButton" onclick="switchTabs(4);">Log <code>1715781615</code></button>
+        <div class="tabListLineBehindTabs greyBorderLightBottom"></div>
+      </header>
+
+      <header class="gridBox header windowmenu tabList notTablist noPadding bgDark greyBorderLightBottom" style="grid-column: col 5 / span 3; grid-row: row 3;">
+        <button class="programButtons tabButton">Genepool</button><!--
+        --><button class="programButtons tabButton">Setup</button><!--
+        --><button class="programButtons tabButton">Search <i class="material-icons small valign">search</i></button><!--
+        --><button class="programButtons tabButton">...</button>
+      </header>
+
+      <div class="gridBox  windowmenu centerContentYRight noPadding bgDark greyBorderLightBottom" style="grid-column: col 8 / span 1; grid-row: row 3;">
+          <i class="material-icons medium valign marginX25 blue">expand_more</i>
+          <i class="material-icons small valign grey">wifi_channel</i>
+          <i class="material-icons small valign grey">rule_folder</i>
+          <i class="material-icons small valign grey">candlestick_chart</i>
+          <i class="material-icons small valign grey">nfc</i>
+          <i class="material-icons small valign grey">settings</i>
+      </div>
+
+      <!-- ROW 3 -->
+      <!-- TAB1 -->
+      <div class="gridBox tab overflowAuto noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
+        <div class="gridLayout contentContent">
+          <div class="gridBox" style="grid-column: col / span 6; grid-row: row 1 / 3;">
+            <h2>SETTINGS</h2>
+          </div>
+          <div class="gridBox overflowAuto" style="grid-column: col 7 / span 2; grid-row: row 1 / 3;">
+            <h3>default</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2 -->
+      <div class="noScrollbar gridBox tab overflowAuto noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
+        <div class="gridLayout contentContent ">
+          <div class="gridBox overview" style="grid-column: col / span 8; grid-row: row 1 / 3;">
+            <div class="centerText">
+              <h2 class="inline">Project Overview: <code class="blackBgTransparent padding125 radius3 marginX1">&nbsp;SONN-HS<i class="material-icons small valign">more_vert</i></code></h2>
+            </div>
+            <div class="marginY1">
+              <div class="gridLayout charts contentContent">
+                <div id="target1" class="gridBox contentContent" style="grid-column: col / span 4; grid-row: row;">
+                  
+                </div>
+                <div id="target2" class="gridBox contentContent" style="grid-column: col 5 / span 4; grid-row: row;">
+                  
+                </div>
+
+                <div id="target3" class="gridBox contentContent" style="grid-column: col / span 2; grid-row: row 2;">
+                  <div class="buttonGroup bottom padding50 " style="box-sizing: border-box; width: 92%;">
+                    <button><i class="material-icons small valign">zoom_out_map</i></button>
+                    <button><i class="material-icons small valign">multiline_chart</i></button>
+                    <button><i class="material-icons small valign">addchart</i></button>
+                    <button><i class="material-icons small valign">content_cut</i></button>
+                    <div class="small right inline alignRight">Report data<br>Export</div>
+                  </div>
+                </div>
+                <div id="target4" class="gridBox contentContent" style="grid-column: col 3 / span 2; grid-row: row 2;">
+                  <div class="buttonGroup bottom padding50 " style="box-sizing: border-box; width: 92%;">
+                    <button><i class="material-icons small valign">zoom_out_map</i></button>
+                    <button><i class="material-icons small valign">multiline_chart</i></button>
+                    <button><i class="material-icons small valign">addchart</i></button>
+                    <button><i class="material-icons small valign">content_cut</i></button>
+                    <div class="small right inline alignRight">Report data<br>Export</div>
+                  </div>
+                </div>
+                <div id="target5" class="gridBox contentContent" style="grid-column: col 5 / span 2; grid-row: row 2;">
+                  <div class="buttonGroup bottom padding50 " style="box-sizing: border-box; width: 92%;">
+                    <button><i class="material-icons small valign">zoom_out_map</i></button>
+                    <button><i class="material-icons small valign">multiline_chart</i></button>
+                    <button><i class="material-icons small valign">addchart</i></button>
+                    <button><i class="material-icons small valign">content_cut</i></button>
+                    <div class="small right inline alignRight">Report data<br>Export</div>
+                  </div>
+                </div>
+                <div id="target6" class="gridBox contentContent " style="grid-column: col 7 / span 2; grid-row: row 2;">
+                  <div class="buttonGroup bottom padding50 " style="box-sizing: border-box; width: 92%;">
+                    <button><i class="material-icons small valign">zoom_out_map</i></button>
+                    <button><i class="material-icons small valign">multiline_chart</i></button>
+                    <button><i class="material-icons small valign">addchart</i></button>
+                    <button><i class="material-icons small valign">content_cut</i></button>
+                    <div class="small right inline alignRight">Report data<br>Export</div>
+                  </div>
+                </div>
+
+                <div id="target7" class="gridBox contentContent centerText" style="grid-column: col / span 8; grid-row: row 3;">
+                  <h2 class="inline">Project Processes</h2>
+                  <br>
+                  <div class="buttonGroup marginY50">
+                    <button><i class="material-icons small valign">data_exploration</i></button>
+                    <button><i class="material-icons small valign">dns</i></button>
+                    <button><i class="material-icons small valign">system_update_alt</i></button>
+                    <button><i class="material-icons small valign">storage</i></button>
+                    <button><i class="material-icons small valign">inventory_2</i></button>
+                    <button><i class="material-icons small valign">kitchen</i></button>
+                    <button><i class="material-icons small valign">data_usage</i></button>
+                    <button><i class="material-icons small valign">post_add</i></button>
+                    |
+                    <button><i class="material-icons small valign red">flag</i></button>
+                    <button><i class="material-icons small valign green">flag</i></button>
+                    <button><i class="material-icons small valign blue">flag</i></button>
+                    |
+                    <button><i class="material-icons small valign ">save</i></button>
+
+                  </div>
+                </div>
+                <div id="target8" class="gridBox contentContent" style="grid-column: col / span 8; grid-row: row 4;"></div>
+                <div id="target9" class="gridBox contentContent" style="grid-column: col / span 8; grid-row: row 5;"></div>
+                <!-- <div id="target10" class="gridBox contentContent" style="grid-column: col / span 8; grid-row: row 6;"></div> -->
+                <div id="target10" class="gridBox contentContent" style="grid-column: col / span 4; grid-row: row 6;"></div>
+                <div id="target11" class="gridBox contentContent" style="grid-column: col 5 / span 4; grid-row: row 6;">
+                  <div  class="buttonGroup top  padding50 " style="box-sizing: border-box; width: 95%;">
+                    <button id="showChartBigTarget2" class="right hide" onclick="showChartBig(67, 6)"><i class="material-icons small valign">zoom_out_map</i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3 -->
+      <div class="gridBox tab overflowAuto noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
+        <div class="gridLayout contentContent">
+          <div class="gridBox " style="grid-column: col / span 6; grid-row: row 1 / 3;">
+            <h2>Activity</h2>
+          </div>
+          <div class="gridBox overflowAuto" style="grid-column: col 7 / span 2; grid-row: row 1 / 3;">
+          </div>
+        </div>
+      </div>
+      
+      <!-- TAB 4 -->
+      <div class="gridBox tab overflowHidden noPadding hide bgSuperLight" style="grid-column: col / span 8; grid-row: row 4;">
+        <div class="gridLayout contentContent">
+          <div class="gridBox noPadding" style="grid-column: col / span 6; grid-row: row 1 / 3;">
+            <iframe data-src=""></iframe>
+          </div>
+          <div class="gridBox noPadding overflowHidden" style="grid-column: col 7 / span 2; grid-row: row 1;">
+            <div class="settingsBar bgDark greyBorderLightBottom"><i class="material-icons valign small blue">expand_more</i> Import</div>
+            <div class="settingsBar bgDark greyBorderLightBottom"><i class="material-icons valign small blue">expand_more</i> Export</div>
+            <div class="settingsBar bgDark relative">
+              <i class="material-icons valign small blue">expand_less</i> Latest Log
+              <button class="right maxHeight bottom bgDark" onclick="parent.addWindow('Bash console - log.dat', 'code', 'bash/index.html?script=67', 8,11, 1200,810, false);">
+                <i class="material-icons valign small blue">open_in_new</i> Open log
+              </button>
+            </div>
+            <div class="padding05" onclick="parent.addWindow('Bash console - log.dat', 'code', 'bash/index.html?script=67', 8,11, 1200,810, false);">
+              <code class="nobr small">
+                [05-01-22 00:25:24.385] LOG  : General, 1715781615385> OpenGL version: 2.1 Metal - 71.7.1.<br>
+[1715781615.387] LOG  : General, 1715781615387> Desktop resolution 1440x900.<br>
+[1715781615.390] LOG  : General, 1715781615390> Initial resolution 1920x1200 fullScreen=false.<br>
+[1715781615.392] LOG  : General, 1715781615392> OpenGL 1.5 buffer objects supported.<br>
+[1715781615.394] LOG  : General, 1715781615394> VSync:<br>
+[1715781615.424] LOG  : General, 1715781615424> 1715781615424 fmod: Create DSP for capture sound.<br>
+[1715781615.280] LOG  : General, 1715781615279> AngelCodeFont failed to load page 0 texture ~/Library/Application Support/Steam/steamapps/common/ProjectZomboid/Project Zomboid.app/Contents/Java/media/mainfont_0.png.<br>
+[1715781615.330] LOG  : General, 1715781615329> AngelCodeFont failed to load page 0 texture ~/Library/Application Support/Steam/steamapps/common/ProjectZomboid/Project Zomboid.app/Contents/Java/media/fonts/zomboidDialogue.bmfc_0.png.<br>
+[1715781615.349] WARN : General, 1715781615349> TextManager.Init> font "DebugConsole" not found in fonts.txt.<br>
+[1715781615.605] LOG  : General, 1715781615605> Loading networking libraries....<br>
+[1715781615.607] LOG  : General, 1715781615607> Loading steam_api....<br>
+[1715781615.610] LOG  : General, 1715781615610> Loading RakNet....<br>
+[1715781615.620] LOG  : General, 1715781615620> Loading ZNetJNI....<br>
+[1715781615.630] LOG  : General, 1715781615629> 1715781615629 znet: ZNet loaded.<br>
+[1715781615.631] LOG  : General, 1715781615631> 1715781615631 znet: Compiled with SERVER_STEAMAPI == 0.<br>
+[1715781615.632] LOG  : General, 1715781615632> 1715781615632 znet: Starting with bServer == false.<br>
+[1715781615.650] LOG  : General, 1715781615650> 1715781615650 znet: SteamAPI initialised successfully.<br>
+[1715781615.651] LOG  : General, 1715781615651> SteamUtils initialised successfully.<br>
+[1715781615.657] LOG  : General, 1715781615657> 1715781615657 znet: Java_zombie_core_znet_SteamWorkshop_n_1Init.<br>
+              </code>
+            </div>
+            <div class="bottom maxWidth">
+              <div class="settingsBar bgDark greyBorderLightTop" onclick="toggle('islandOpenNewWindow'); swapClasses('expandTheIsland', 'rotate180'); "><i id="expandTheIsland" class="material-icons valign small blue">expand_more</i> Landscape Context</div>
+              <div id="islandOpenNewWindow" class="greyBorderLightTop hide padding50" style="background-color:#353535;" onclick="parent.addWindow('Supervisor - Context', 'scatter_plot', 'threejs/player/ELCH_FullIsland_SZ42.html', 5,5,800,550);">
+                <span class="small">Landscape: TheIslandv2.fbx</span><br>
+                <span class="small">Agent(s): 1</span><br>
+                <span class="small">Vertex: 1.2m</span><br>
+                <div class="maxWidth centerContent paddingY50 radius3">
+                  <button>
+                    <i class="material-icons valign small blue">open_in_new</i> Open context
+                  </button>
+                </div>
+              </div>
+              <div class="settingsBar bgDark greyBorderLightTop"><i class="material-icons valign small blue">expand_more</i> Console</div>
+            </div>
+          </div>
+          <div class="gridBox noPadding overflowHidden blackBg " style="grid-column: col 7 / span 2; grid-row: row 2;">
+            <iframe data-src="../bash/index.html?workstation=sonny&darkMode=true&script=supervisor"></iframe>
+          </div>
+        </div>
+    </div>
+
+
+
+      <!-- ROW 4 -->
+      <div class="gridBox greyBorderLightTop grey small centerContentY bgDark" style="grid-column: col / span 5; grid-row: row 5;">
+        <span class="op50">Root:</span> C:\monalisa\node1
+      </div>
+      <div class="gridBox greyBorderLightTop small centerContentYRight bgDark" style="grid-column: col 6 / span 3; grid-row: row 5;">
+        <span class="grey marginX50"><i class="material-icons small valign">warning</i> 0 deprecation</span>
+        <span class="grey"><i class="material-icons medium valign">download</i> 0 update</span>
+      </div>
+    </div>
+
+  </body>
+  </html>

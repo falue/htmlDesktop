@@ -1,4 +1,5 @@
 let codeIndex;
+let initialFontSize;
 
 async function setup() {
     const queryString = window.location.search;
@@ -34,8 +35,11 @@ async function setup() {
     // Open the start tab
     switchTabs(1);
 
-    if(scene === "41") {
+    if(scene === "41" || scene === "34") {
         gebi('paper').classList.add('max');
+    }
+    if(scene === "34") {
+        createLearningBars();
     }
 
     // Setup code blocks
@@ -45,6 +49,11 @@ async function setup() {
     // Wait for additional js to load until commencing setup process
     script.setAttribute('onload', 'setupCodeblocks()');
     document.getElementsByTagName('head')[0].appendChild(script);
+
+
+
+    // Save initial fontsize for resetting font size
+    initialFontSize = getFontSize('paper');
 }
 
 
@@ -248,3 +257,45 @@ function addStylesheet(path, replace=true) {
     link.href = path;
     head.appendChild(link);
   }
+
+  let epochLearning = 1245;
+  async function createLearningBars() {
+      let progress = document.createElement("span");
+      progress.classList.add('block', 'nobr', 'overflowAuto');
+      if(gebi('moreLearning')) {
+        let uid = "progress-"+createUniqueId();
+        progress.innerHTML = `<span class="minWidth150 inlineBlock" style="margin-top:.5em;">Epoch #${epochLearning}:</span> <progress id="${uid}" value="0" min="0" max="100" class="greyBg minWidth250"></progress> <span id="text-${uid}">0%</span> ${epochLearning}M/3,099M [${randomBetween(0,1)}:${randomBetween(1,59)}:${randomBetween(0,59)}<00:00, ${randomBetween(50,120)}.0it/s]`;
+        /* if(gebi('moreLearning').childElementCount > 4) {
+            // remove first bar if more than 4
+            gebi('moreLearning').removeChild(gebi('moreLearning').getElementsByTagName('span')[0]);
+        } */
+        gebi('moreLearning').appendChild(progress);
+        scrollToBottom("paperHolder");
+        // await delay(1000);
+        let randTime = randomBetween(500,4500);
+        counter(`text-${uid}`, "%", randTime, 94, 0, 100);
+        await counter(uid, "", randTime, 94, 0, 100);
+        gebi(uid)?.classList.add("finished");
+        if(gebi(`text-${uid}`)) gebi(`text-${uid}`).innerHTML="100%";
+        epochLearning++;
+      } else {
+          await delay(100);
+      }
+      createLearningBars();
+  }
+
+function changeFontSize(element, increment) {
+    let container = gebi(element);
+    let fontSize = initialFontSize;
+    if(increment != 0) {
+        fontSize = clamp(getFontSize(element) + increment, 5, 50);
+    }
+    container.style.fontSize = fontSize + 'px';
+}
+
+
+function getFontSize(element) {
+    const cssObj = window.getComputedStyle(gebi(element));
+    let fontSize = cssObj.getPropertyValue("font-size");
+    return parseInt(fontSize);
+}

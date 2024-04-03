@@ -137,7 +137,7 @@ footer .qsearchBlue {
 .results footer {
   padding: 1em;
   position: fixed;
-  bottom: 80px;
+  bottom: 0;
   left: 0;
   height: 40px;
   width: 100%;
@@ -153,7 +153,7 @@ footer .qsearchBlue {
 .results .resultsList {
   overflow-y: auto;
   max-height: 100%;
-  padding: 110px 1em 150px;
+  padding: 110px 1em 150px 50px;
   /* background-color: hotpink; */
 }
 

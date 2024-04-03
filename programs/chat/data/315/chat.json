@@ -1,0 +1,93 @@
+[
+    {
+        "message": "Kannst du mir etwas über das münster sagen?",
+        "data": "",
+        "action": "",
+        "sender": "me",
+        "delay": 0,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Das Basler Münster ist alt, wurde im 1019 angefangen zu bauen, nachdem ein Erdbeben den vorherigen Bau zerstört hat. Über die Jahrhunderte wurde es immer wieder umgebaut und erweitert, so dass es heute eine Mischung aus romanischen und gotischen Stilen zeigt, echt beeindruckend.",
+        "data": "",
+        "action": "",
+        "sender": "brianna",
+        "delay": 1500,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "danke für die infos. Weisst du etwas über die mysteriöse geschichte der Bruderschaft",
+        "data": "",
+        "action": "",
+        "sender": "me",
+        "delay": 0,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Die Bruderschaft hat im Mittelalter Symbole im Basler Münster hinterlassen, anscheinend für Schutz oder so. Total mysteriös, oder?",
+        "data": "",
+        "action": "",
+        "sender": "brianna",
+        "delay": 1000,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Hab gehört, diese geheimen Baumeister vom Basler Münster, die Bruderschaft, sollen echt krassen Kram beschützen, voll mit alten Ritualen und so, echt spooky!",
+        "data": "",
+        "action": "",
+        "sender": "me",
+        "delay": 0,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    },{
+        "message": ":)",
+        "data": "",
+        "action": "",
+        "sender": "brianna",
+        "delay": 500,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Wo ist denn die nächste Führung?",
+        "data": "",
+        "action": "",
+        "sender": "me",
+        "delay": 0,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Am Spalentor, 8:30",
+        "data": "",
+        "action": "",
+        "sender": "brianna",
+        "delay": 1500,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    },{
+        "message": "Kennst du Ralph Bauer?",
+        "data": "",
+        "action": "",
+        "sender": "me",
+        "delay": 0,
+        "date": "",
+        "sent": false,
+        "seen": false,
+        "error": ""
+    }
+]

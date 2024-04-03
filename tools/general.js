@@ -111,6 +111,11 @@ function scrollToTop(id) {
   element.scrollTop=0;
 }
 
+function scrollToBottom(id) {
+  let container = gebi(id);
+  container.scrollTop = container.scrollHeight - container.clientHeight;
+}
+
 function getScreenSize() {
   let screenWidth = window.innerWidth
     || document.documentElement.clientWidth
@@ -139,6 +144,72 @@ function getPositionInPercentage(direction, pixelPosition) {
 function delay(delayTimeMs) {
   return new Promise(resolve => setTimeout(resolve, delayTimeMs));
 }
+
+// Available voice (175):
+/* Daniel (English (United Kingdom)), Aaron, Albert, Alice, Alva, Amélie, Amira, Anna, Arthur, Bad News, Bahh, Bells, Boing, 
+Bubbles, Carmit, Catherine, Cellos, Damayanti, Daniel (French (France)), Daria, Eddy (German (Germany)), 
+Eddy (English (United Kingdom)), Eddy (English (United States)), Eddy (Spanish (Spain)), Eddy (Spanish (Mexico)), 
+Eddy (Finnish (Finland)), Eddy (French (Canada)), Eddy (French (France)), Eddy (Italian (Italy)), 
+Eddy (Portuguese (Brazil)), Ellen, Flo (German (Germany)), Flo (English (United Kingdom)), 
+Flo (English (United States)), Flo (Spanish (Spain)), Flo (Spanish (Mexico)), Flo (Finnish (Finland)), 
+Flo (French (Canada)), Flo (French (France)), Flo (Italian (Italy)), Flo (Portuguese (Brazil)), Fred, Good News, 
+Gordon, Grandma (German (Germany)), Grandma (English (United Kingdom)), Grandma (English (United States)), 
+Grandma (Spanish (Spain)), Grandma (Spanish (Mexico)), Grandma (Finnish (Finland)), Grandma (French (Canada)), 
+Grandma (French (France)), Grandma (Italian (Italy)), Grandma (Portuguese (Brazil)), Grandpa (German (Germany)), 
+Grandpa (English (United Kingdom)), Grandpa (English (United States)), Grandpa (Spanish (Spain)), 
+Grandpa (Spanish (Mexico)), Grandpa (Finnish (Finland)), Grandpa (French (Canada)), Grandpa (French (France)), 
+Grandpa (Italian (Italy)), Grandpa (Portuguese (Brazil)), Hattori, Helena, Ioana, Jacques, Jester, Joana, Junior, 
+Kanya, Karen, Kathy, Kyoko, Lana, Laura, Lekha, Lesya, Li-Mu, Linh, Luciana, Majed, Marie, Martha, Martin, Meijia, Melina, 
+Milena, Moira, Montse, Mónica, Nicky, Nora, O-Ren, Organ, Paulina, Ralph, Reed (German (Germany)), Reed (English (United Kingdom)), 
+Reed (English (United States)), Reed (Spanish (Spain)), Reed (Spanish (Mexico)), Reed (Finnish (Finland)), 
+Reed (French (Canada)), Reed (Italian (Italy)), Reed (Portuguese (Brazil)), Rishi, Rocko (German (Germany)), 
+Rocko (English (United Kingdom)), Rocko (English (United States)), Rocko (Spanish (Spain)), Rocko (Spanish (Mexico)), 
+Rocko (Finnish (Finland)), Rocko (French (Canada)), Rocko (French (France)), Rocko (Italian (Italy)), 
+Rocko (Portuguese (Brazil)), Samantha, Sandy (German (Germany)), Sandy (English (United Kingdom)), 
+Sandy (English (United States)), Sandy (Spanish (Spain)), Sandy (Spanish (Mexico)), Sandy (Finnish (Finland)), 
+Sandy (French (Canada)), Sandy (French (France)), Sandy (Italian (Italy)), Sandy (Portuguese (Brazil)), Sara, Satu, 
+Shelley (German (Germany)), Shelley (English (United Kingdom)), Shelley (English (United States)), 
+Shelley (Spanish (Spain)), Shelley (Spanish (Mexico)), Shelley (Finnish (Finland)), Shelley (French (Canada)), 
+Shelley (French (France)), Shelley (Italian (Italy)), Shelley (Portuguese (Brazil)), Sinji, Superstar, Tessa, 
+Thomas, Tingting, Trinoids, Tünde, Whisper, Wobble, Xander, Yelda, Yu-shu, Yuna, Zarvox, Zosia, Zuzana, Google Deutsch, 
+Google US English, Google UK English Female, Google UK English Male, Google español, Google español de Estados Unidos, 
+Google français, Google हिन्दी, Google Bahasa Indonesia, Google italiano, Google 日本語, Google 한국의, Google Nederlands, 
+Google polski, Google português do Brasil, Google русский, Google 普通话（中国大陆）, Google 粤語（香港）, Google 國語（臺灣 */
+
+async function say(text, language='en-GB', voiceName='Daniel (English (United Kingdom))') {
+  return new Promise((resolve, reject) => {
+    let voices = [];
+    function setVoiceAndSpeak() {
+      cl(voices.forEach(voice => console.log(voice.name)));
+      if (voiceName) {
+        const voice = voices.find(v => v.name === voiceName);
+        if (voice) {
+          speech.voice = voice;
+        } else {
+          cl(`Voice "${voiceName}" not found - revert to 'Daniel (English (United Kingdom))'`);
+          speech.voice = 'Daniel (English (United Kingdom))';
+        }
+      }
+      window.speechSynthesis.speak(speech);
+    }
+
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = language;
+    speech.onend = () => resolve('Speech has finished');
+    speech.onerror = (e) => reject(`An error occurred during speech synthesis: ${e.error}`);
+
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = () => {
+        voices = window.speechSynthesis.getVoices();
+        setVoiceAndSpeak();
+      };
+    } else {
+      voices = window.speechSynthesis.getVoices();
+      setVoiceAndSpeak();
+    }
+  });
+}
+
 
 // Counts up from start to stop, e.g. "0% -> 100%"
 // Useful for loading percentage
@@ -171,6 +242,10 @@ async function counter(targetId, append, duration, jitter, start, stop) {
             element.value = i;
           } else {
             element.innerHTML = i + append;
+          }
+          // if has data-width
+          if(element.hasAttribute("data-set-width")) {
+            element.style.width=i+"%";
           }
       }
       await delay(waitDuration);
@@ -239,10 +314,12 @@ function notSoRandomInts(count, min, max, seed, maxDiff, incline, doNotMaxOut = 
       if(i === 0) {
           if(incline > 0) {
               // start low for inclining graph
-              newNumber = min;
+              // newNumber = min;
+              newNumber = randomBetween(min, (min+max)/2);
           } else if (incline < 0) {
               // start high for declining graph
-              newNumber = max;
+              // newNumber = max;
+              newNumber = randomBetween(max/2, max);
           } else {
               // start at random number
               newNumber = Math.floor(random(seed+i) * (max - min + 1) + min);
@@ -279,6 +356,25 @@ function random(seed) {
   return x - Math.floor(x);
 }
 
+// shuffle an array
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
 function isHtml(data) {
   return /<\/?[a-z][\s\S]*>/i.test(data);
 }
@@ -303,6 +399,10 @@ function createUniqueId(max) {
     return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
   };
   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4()).substring(0,max);
+}
+
+function plural(number, singular, plural) {
+  return number === 1 ? singular : plural ? plural : singular+"s";
 }
 
 // Ignore user input
@@ -344,6 +444,15 @@ function dynamicSort(keyName) {
 
 function iconDecider(filename, folderContentAmount) {
   let path;
+  if(filename.startsWith("ftp:")) return "server.png";
+  if(filename.startsWith("ftps:")) return "server.png";
+  if(filename.startsWith("http:")) return "server.png";
+  if(filename.startsWith("https:")) return "server.png";
+  if(filename === 'USB') return "usb.png";
+  if(filename === 'DVD') return "dvd.png";
+  if(filename === 'Trash') return "trashFull.png";
+  if(filename.endsWith(":")) return "hdd.png";
+
   if(folderContentAmount === 0) return "folderEmpty.png";
   if(folderContentAmount > 0) return "folderFull.png";
 
@@ -377,6 +486,7 @@ function iconDecider(filename, folderContentAmount) {
 
 
 function forceType(event, element, text, endAction = false, waitForEnter = false) {
+  // FIXME: if text to type contains ' it breaks
   // If its an input or textarea, and possibly empty, .value is a string nontheless
   let currentText = typeof(element.value) === "string" ? element.value : element.innerHTML ? element.innerHTML : "";
   let index = currentText.length;

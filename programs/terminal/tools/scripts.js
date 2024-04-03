@@ -68,6 +68,10 @@ async function startup() {
         type("", terminal);  // Trigger typing to enter text
         speed = initSpeed;  // reset speed so fast speed = faster typing
     }
+    setTimeout(() => {
+        // Wait because addWindow() is setting focus() to the body first
+        document.getElementById('terminal').focus();
+      }, 100);
 }
 
 
@@ -238,6 +242,10 @@ function type(event, id) {
     if(byRows) {
         snippet = (text.split("\n").slice(0, cursor)).join("<br>");
     } else {
+        // Jump over whitespace
+        while(text.charAt(cursor) === ' ') {
+            cursor = cursor + (event.keyCode === 8 ? -1 : 1);  // 8 = backspace
+        }
         snippet = text.substring(0, cursor+speed).replace(/\n/g, "<br>");
     }
 

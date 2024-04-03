@@ -62,6 +62,7 @@ function compileSaveFile(saveFileName, download) {
     password: password,
     workstation: workstation,
     selectedSystemMessage: selectedSystemMessage,
+    bootSpeed: parseInt(gebi('bootSpeedSlider').value),
     osNotificationsDelay: parseInt(gebi('osNotificationsDurationSlider').value)
   };
   data["systemIcons"] = systemIcons;

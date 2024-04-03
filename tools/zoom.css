@@ -1,0 +1,35 @@
+.zoom {
+    position: absolute;
+    background-color:black;
+    width: 100%;
+    height: 100%;
+}
+
+.zoom-container {
+    position: relative;
+    pointer-events: none;
+}
+
+#zoom-img {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.thumbtack {
+    pointer-events:all;
+
+}
+
+.thumbtack:before {
+    content:" ";
+    width:.75em;
+    height:.15em;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.35);
+    filter: blur(2px);
+    position: absolute;
+    left:0;
+    top:100%;
+    pointer-events:all;
+}

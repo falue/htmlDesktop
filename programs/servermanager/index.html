@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SERVER MANAGER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js" defer></script>
+
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" id="syntaxTheme" href="../../tools/libraries/highlight/styles/an-old-hope.css">
+    <script src="../../tools/libraries/highlight/highlight.min.js"></script>
+
+    <!-- Charts -->
+    <script src="../../tools/libraries/chart.js"></script>
+    <script src="../../tools/autoCharts.js"></script>
+  </head>
+  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+    <div class="gridLayout">
+      <!-- ROW 1: LOGO -->
+      <div class="gridBox padding05" style="grid-column: col / span 5; grid-row: row;">
+        <i class="material-icons medium valign fancy round padding25 tintBlue">storm</i>
+        SERVER MNGR
+        <span class="small grey italics">v4.2.01</span>
+
+        <span class="transparent">M</span>
+        <button class="selector radius3 whiteBg hover minWidth150 relative alignLeft">
+          <span class="valign white italics">Search..</span>
+          <i class="material-icons small circle darkGreyBg valign right marginX1 padding05 op50 " style="transform: translate(.75em, -.35em);">search</i>
+        </button>
+      </div>
+
+      <div class="gridBox padding05 centerContentYRight" style="grid-column: col 6 / span 3; grid-row: row;">
+        <img src="splash.png" alt="" style="height: 2.2em;">
+      </div>
+      
+      <!-- ROW 2: HEADER -->
+      <header class="gridBox header windowmenu" style="grid-column: col / span 5; grid-row: row 2;">
+        <button class="programButtons valign"><i class="material-icons medium valign">menu</i></button><!-- 
+        --><button class="programButtons">File</button><!-- 
+        --><button class="programButtons">Edit</button><!-- 
+        --><button class="programButtons">View</button><!-- 
+        --><button class="programButtons">Settings</button><!-- 
+        --><button class="programButtons">About</button>
+      </header>
+      
+      <div class="gridBox header padding05" style="grid-column: col 6 / span 3; grid-row: row 2; text-align: right;">
+        <button class="paddingY0 radius3 "><i class="material-icons small valign blue">menu_book</i> Documentation</button>
+        <button class="paddingY0 radius3 "><i class="material-icons small valign red">computer</i> Create VM</button>
+        <button class="paddingY0 radius3 "><i class="material-icons small valign blue">dns</i> Create CT</button>
+        <button class="paddingY0 radius3 "><i class="material-icons small valign green">account_circle</i> User <i class="material-icons small op50 valign">expand_more</i></button>
+        <i class="material-icons small valign grey">settings</i>
+      </div>
+
+      <!-- ROW 3: TOOLBAR -->
+      <div class="gridBox centerContentY toolBar padding05" style="grid-column: col; grid-row: row 3;">
+        <button class="selector radius3 whiteBg hover maxWidth relative alignLeft hover">
+          <span class="valign white ">Server view</span>
+          <i class="material-icons small valign right padding05" style="transform: translate(0, -.35em);">expand_more</i>
+        </button>
+      </div>
+
+      <div class="gridBox centerContentY toolBar" style="grid-column: col 2 / span 4; grid-row: row 3;">
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">restart_alt</i> Reboot</button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">power_settings_new</i> Shutdown</button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">code</i> Shell</button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">more_vert</i> Bulk actions</button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">help</i> Help</button>
+      </div>
+      <div class="gridBox centerContentYRight toolBar padding05" style="grid-column: col 6 / span 4; grid-row: row 3;">
+        <div class="buttonGroup"><!-- 
+          --><button class="greyBg white">Live mode</button><!-- 
+          --><button class="hover">Select Timespan</button><!-- 
+        --></div>
+        <button class="selector radius3 hover">
+          <i class="material-icons small valign">calendar_today</i>
+          <i class="material-icons small circle valign">expand_more</i>
+        </button>
+        <button class="marginX25 radius3 hover"><i class="material-icons small valign">sync</i> Update</button>
+      </div>
+
+      <!-- ROW 4 -->
+      <div class="noScrollbar gridBox overflowAuto asideLeft padding05" style="grid-column: col / span 1; grid-row: row 4 / 6;">
+        <ul class="treeview" style="font-size:0.825em">
+          <li><i class="material-icons small valign grey">business</i> AmericanGothic<i class="material-icons small valign grey">expand_more</i></li>
+          <li><i class="material-icons small valign grey">business</i> Guernica<i class="material-icons small valign grey">expand_more</i></li>
+          <li><i class="material-icons small valign grey">business</i> MonaLisa<i class="material-icons small valign">expand_less</i></li>
+          <li>
+
+            <!-- <ul><li><i class="material-icons small valign grey">desktop_windows</i> 100 (Spa-11 logger)</li></ul>
+            <ul><li><i class="material-icons small valign grey">desktop_windows</i> 101 (SONN-HS)</li></ul> -->
+
+            <!-- <ul><li><i class="material-icons small valign grey">dns</i> Block 00 <i class="material-icons small valign grey">expand_more</i></li></ul> -->
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 01 <i class="material-icons small valign" style="color:yellow;">warning</i> <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul>
+              <li><i class="material-icons small valign grey">dns</i> Block 02 <i class="material-icons small valign" style="color:yellow;">warning</i> <i class="material-icons small valign ">expand_less</i></li>
+              <li><ul>
+                <li><i class="material-icons small valign grey">storage</i> Node 02-000 (mlve)</li>
+                <li><i class="material-icons small valign grey">storage</i> Node 02-001 (mlve)</li>
+                <!-- <li><i class="material-icons small valign grey">storage</i> Node 02-002 (mlve)</li>
+                <li><i class="material-icons small valign grey">storage</i> Node 02-003 (mlve)</li>
+                <li><i class="material-icons small valign grey">storage</i> Node 02-004 (mlve)</li> -->
+                <li class="italics grey"><i class="material-icons small valign clear">storage</i> (...158 more) <i class="material-icons small valign grey">expand_more</i></li>
+              </ul></li>
+            </ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 03 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 04 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li class="active"><i class="material-icons small valign grey">dns</i> Block 05 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 06 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 07 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 08 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 09 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 10 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 11 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 12 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 13 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 14 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 15 <i class="material-icons small valign grey">expand_more</i></li></ul>
+            <ul><li><i class="material-icons small valign grey">dns</i> Block 16 <i class="material-icons small valign grey">expand_more</i></li></ul>
+<!--             <ul><li><i class="material-icons small valign grey">dns</i> Block 17 <i class="material-icons small valign grey">expand_more</i></li></ul>
+ -->          </li>
+          <li><i class="material-icons small valign grey">business</i> PersistenceOfMemory<i class="material-icons small valign grey">expand_more</i></li>
+          <li><i class="material-icons small valign grey">business</i> StarryNight<i class="material-icons small valign grey">expand_more</i></li>
+          <li><i class="material-icons small valign grey">business</i> WhistlersMother<i class="material-icons small valign grey">expand_more</i></li>
+          </ul>
+      </div>
+      <header class="gridBox header windowmenu tabList" style="grid-column: col 2 / span 6; grid-row: row 4;">
+        <button class="programButtons tabButton" onclick="switchTabs(1);">Summary</button><!-- 
+         --><button class="programButtons tabButton" onclick="switchTabs(2);">Network</button><!-- 
+         --><button class="programButtons tabButton" onclick="switchTabs(3);">Task history</button><!--
+         --><button class="programButtons tabButton">Search <i class="material-icons small valign">search</i></button><!--
+         --><button class="programButtons tabButton">...</button>
+      </header>
+
+
+      <div class="gridBox centerContentYRight padding05 tabList" style="grid-column: col 8 / span 1; grid-row: row 4;">
+        <i class="material-icons medium valign">more_vert</i>
+      </div>
+
+      <!-- Tab 1 -->
+      <div class="noScrollbar gridBox overflowAuto tab padding1" style="grid-column: col 2 / span 7; grid-row: row 5;">
+        <h2><i class="material-icons blue small valign">menu_book</i> Summary <code id="summeryTitle" class="grey" style="font-weight:normal;">Block 05</code></h2>
+        <div class="paddingY50 small">
+          <span class="whiteBgTransparent padding05 radius3">VM</span>
+          <i class="material-icons grey small valign">desktop_windows</i>
+          <span id="vm">SONN-HS</span> <span class="grey">v0.2.01</span>
+          <span class="transparent">M</span>
+          <span class="whiteBgTransparent padding05 radius3">DEV</span> <span id="vmManager">J.Brugger</span>
+          <br>
+          <br>
+        </div>
+        <img src="monalisa.png" alt="" style="height: 1.5em;" class="right top marginX1-50 marginY1 tintBlue">
+        <div class="gridLayout charts">
+          <div id="target1" class="gridBox centerContent" style="grid-column: col / span 3; grid-row: row; height: 24em;"></div>
+          <div id="target2" class="gridBox centerContent" style="grid-column: col 4 / span 1; grid-row: row;"></div>
+          
+          <div id="target3" class="gridBox centerContent" style="grid-column: col; grid-row: row 2;"></div>
+          <div id="target4" class="gridBox centerContent" style="grid-column: col 2; grid-row: row 2;"></div>
+          <div id="target5" class="gridBox centerContent" style="grid-column: col 3; grid-row: row 2;"></div>
+          <div id="target6" class="gridBox centerContent" style="grid-column: col 4; grid-row: row 2;"></div>
+          
+          <div id="target7" class="gridBox centerContent" style="grid-column: col / span 4; grid-row: row 3;"></div>
+        </div>
+      </div>
+
+      <!-- Tab 2 -->
+      <div class="noScrollbar gridBox overflowAuto tab padding1" style="grid-column: col 2 / span 7; grid-row: row 5;">
+        <h2 onclick="makeData();"><i class="material-icons blue small valign">sync_alt</i> Network</h2>
+        <p>
+          <button class="marginX25 radius3 hover">Create <i class="material-icons small valign">more_vert</i></button>
+          <span class="grey small">|</span>
+          <button class="marginX25 radius3 hover">Revert</button>
+          <button class="marginX25 radius3 hover">Edit</button>
+          <button class="marginX25 radius3 hover">Remove</button>
+          <span class="grey small">|</span>
+          <button class="marginX25 radius3 hover">Apply Configuration</button>
+        </p>
+        <div class="filelist ">
+          <table class="maxWidth">
+            <tr>
+              <th>Name<i class="material-icons grey advanced op50 valign">arrow_drop_up</i>
+              </th>
+              <th>Type
+              </th>
+              <th>Active
+              </th>
+              <th>Autostart
+              </th>
+              <th>VLAN
+              </th>
+              <th>Ports/Slaves
+              </th>
+              <th>Bond Mode
+              </th>
+              <th>CIDR
+              </th>
+              <th>Gateway
+              </th>
+              <th>Comment
+              </th>
+            </tr>
+<tr><td>ens505s86d4</td><td>Network Device</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td>192.168.0.352<td></td></tr>
+<tr><td>enp342d81d9</td><td>Bridge</td><td>No</td><td>No</td><td>Yes</td><td><td></td><td></td><td>192.168.0.881<td></td></tr>
+<tr><td>enp726s00</td><td>Network Device</td><td>No</td><td>Yes</td><td>Yes</td><td>enp528<td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr517d97s0</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>ens487d05</td><td>Bridge</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>ens447d60f6</td><td>Bridge</td><td>Yes</td><td>No</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr375d49s3</td><td>Bridge</td><td>Yes</td><td>No</td><td>No</td><td>vmbr868<td></td><td></td><td></td><td></td></tr>
+<tr><td>escm706f20</td><td>Network Device</td><td>No</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr892s70</td><td>Network Device</td><td>No</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>env160s87</td><td>Bridge</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td>192.168.0.149<td></td></tr>
+<tr><td>vmbr922f31s1</td><td>Bridge</td><td>Yes</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp469f80d4</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>ens478d48</td><td>Bridge</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td>192.168.0.776<td></td></tr>
+<tr><td>enp671d19</td><td>Bridge</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>escm295f54</td><td>Network Device</td><td>Yes</td><td>No</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>env348s08</td><td>Bridge</td><td>Yes</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td>192.168.0.638<td></td></tr>
+<tr><td>enp433d30</td><td>Network Device</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>escm317d52f9</td><td>Bridge</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>ens029s94f8</td><td>Network Device</td><td>Yes</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp348d17</td><td>Bridge</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>escm133d51</td><td>Network Device</td><td>Yes</td><td>No</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp602f00s9</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>Yes</td><td>escm293<td></td><td></td><td></td><td></td></tr>
+<tr><td>env083d51f7</td><td>Network Device</td><td>No</td><td>No</td><td>Yes</td><td><td></td><td></td><td>192.168.0.398<td></td></tr>
+<tr><td>enp747s38</td><td>Network Device</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td>192.168.0.862<td></td></tr>
+<tr><td>enp621f20s0</td><td>Network Device</td><td>Yes</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>escm925s07</td><td>Bridge</td><td>Yes</td><td>No</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp653f56f6</td><td>Network Device</td><td>No</td><td>No</td><td>Yes</td><td><td></td><td></td><td>192.168.0.333<td></td></tr>
+<tr><td>escm305d11f5</td><td>Network Device</td><td>No</td><td>No</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>escm516s44d8</td><td>Bridge</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>ens258s26s7</td><td>Network Device</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>env628f27f7</td><td>Bridge</td><td>No</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr368s98s6</td><td>Network Device</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr828s39</td><td>Bridge</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td>192.168.0.293<td></td></tr>
+<tr><td>vmbr400f49s3</td><td>Bridge</td><td>No</td><td>Yes</td><td>No</td><td><td></td><td></td><td>192.168.0.332<td></td></tr>
+<tr><td>enp940d46</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td>192.168.0.213<td></td></tr>
+<tr><td>env304d83d0</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td>192.168.0.305<td></td></tr>
+<tr><td>vmbr836f53</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>escm335f27</td><td>Bridge</td><td>No</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr019f28</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td>192.168.0.951<td></td></tr>
+<tr><td>vmbr906d75d2</td><td>Bridge</td><td>Yes</td><td>No</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp817f09s4</td><td>Bridge</td><td>No</td><td>Yes</td><td>No</td><td>enp810<td></td><td></td><td>192.168.0.850<td></td></tr>
+<tr><td>escm571d60d3</td><td>Network Device</td><td>No</td><td>No</td><td>Yes</td><td><td></td><td></td><td>192.168.0.222<td></td></tr>
+<tr><td>ens499d74</td><td>Bridge</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td>192.168.0.478<td></td></tr>
+<tr><td>env586f74d9</td><td>Bridge</td><td>Yes</td><td>No</td><td>No</td><td><td></td><td></td><td>192.168.0.232<td></td></tr>
+<tr><td>ens849s15</td><td>Bridge</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr347s82f9</td><td>Network Device</td><td>No</td><td>Yes</td><td>No</td><td>escm645<td></td><td></td><td></td><td></td></tr>
+<tr><td>escm191f22f5</td><td>Bridge</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>env685d41</td><td>Bridge</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>ens480f46s7</td><td>Network Device</td><td>No</td><td>No</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp392f93</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr138f60s9</td><td>Network Device</td><td>No</td><td>Yes</td><td>Yes</td><td>vmbr867<td></td><td></td><td></td><td></td></tr>
+<tr><td>env676s47</td><td>Network Device</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>ens691d37</td><td>Bridge</td><td>Yes</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>env194s68</td><td>Bridge</td><td>No</td><td>No</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>ens696d04f6</td><td>Bridge</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp223d50</td><td>Network Device</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr277f69d6</td><td>Network Device</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr917f77s2</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td>192.168.0.050<td></td></tr>
+<tr><td>escm680f30f4</td><td>Bridge</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp520f45s6</td><td>Bridge</td><td>No</td><td>No</td><td>Yes</td><td>env843<td></td><td></td><td></td><td></td></tr>
+<tr><td>escm119d37</td><td>Network Device</td><td>No</td><td>No</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp866d33</td><td>Network Device</td><td>No</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>env747s12f5</td><td>Network Device</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>escm348d31d1</td><td>Bridge</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>enp462f29d9</td><td>Network Device</td><td>Yes</td><td>No</td><td>No</td><td><td></td><td></td><td>192.168.0.735<td></td></tr>
+<tr><td>enp277d55</td><td>Bridge</td><td>Yes</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr658s36f6</td><td>Bridge</td><td>Yes</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>escm793d69</td><td>Network Device</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>escm432d41</td><td>Bridge</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td>192.168.0.057<td></td></tr>
+<tr><td>vmbr423f35d4</td><td>Network Device</td><td>No</td><td>No</td><td>No</td><td><td></td><td></td><td>192.168.0.932<td></td></tr>
+<tr><td>env857d55</td><td>Bridge</td><td>No</td><td>Yes</td><td>No</td><td><td></td><td></td><td></td><td></td></tr>
+<tr><td>vmbr433d38s0</td><td>Bridge</td><td>No</td><td>Yes</td><td>Yes</td><td><td></td><td></td><td>192.168.0.147<td></td></tr>
+<tr><td>ens672d93</td><td>Network Device</td><td>Yes</td><td>Yes</td><td>No</td><td><td></td><td></td><td>192.168.0.525<td></td></tr>
+
+
+
+
+          </table>
+        </div>
+
+      </div>
+
+      <!-- Tab 3 -->
+      <div class="gridBox overflowAuto tab padding1" style="grid-column: col 2 / span 7; grid-row: row 5;">
+        <h2><i class="material-icons blue small valign">history</i> Task history</h2>
+        <div id="target6"></div>
+        <!-- FORCE TYPE & SYNTAX HIGHLIGHTS!!!!! -->
+        <div class="forceType">
+          <textarea onkeydown="forceType(event, this, textToType, false, true); gebi('terminal1').innerHTML=this.value.replaceAll('\n', '<br>'); updateSyntaxHighlighting()">[05-01-22 00:25:24.424] </textarea>
+          <div id="terminal1" class="maxWidth terminal c" >[05-01-22 00:25:24.424] </div>
+        </div>
+        <!-- FORCE TYPE & SYNTAX HIGHLIGHTS!!!!! -->
+      </div>
+
+      <!-- ROW 6 -->
+      <div class="gridBox footer" style="grid-column: col / span 7; grid-row: row 6;">
+        <div class="padding05">
+          <button class="paddingY0 radius3 small">Task</button>
+          <button class="paddingY0 radius3 small">Block log</button>
+          <div class="small right top margin05 ">
+            <i class="material-icons white medium op50 valign">info</i>
+            <i class="material-icons white medium op50 valign">more_vert</i>
+            <i class="material-icons white medium op50 valign rotate90">code</i>
+          </div>
+        </div>
+        <div class="filelist">
+          <table class="maxWidth">
+            <tr>
+              <th>
+              </th>
+              <th>Log<i class="material-icons grey advanced op50 valign">arrow_drop_up</i>
+              </th>
+              <th>Size
+              </th>
+              <th>Owner
+              </th>
+              <th>Rights
+              </th>
+              <th>Checksum
+              </th>
+              <th>Group
+              </th>
+            </tr>
+            <!-- TH end -->
+            
+            <tr onclick="toggleSelection(this)"><!-- access_regulations.csv -->
+              <td><i class="material-icons small margin05 black">text_snippet</i></td>
+              <td>access_regulations.csv</td>
+              <td>251<span class="black op75">kb</span></td>
+              <td>HFL-22</td>
+              <td>rwxr-xr-x (755)</td>
+              <td>2522</td>
+              <td>None</td>
+            </tr>
+            <tr><!-- vergalium/ -->
+              <td><i class="material-icons small margin05 black">folder_open</i></td>
+              <td>vergalium/logs-temp/</td>
+              <td>4.15<span class="black op75">mb</span></td>
+              <td>HFL-22</td>
+              <td>rwxr-xr-x (755)</td>
+              <td>2522</td>
+              <td>None</td>
+            </tr>
+            <tr><!-- vergalium-SECURE_BARRIER.keys -->
+              <td><i class="material-icons small margin05 black">text_snippet</i></td>
+              <td>vergalium-SECURE_BARRIER.keys</td>
+              <td>112<span class="black op75">kb</span></td>
+              <td>HFL-22</td>
+              <td>rwxr-xr-x (755)</td>
+              <td>2522</td>
+              <td>None</td>
+            </tr>
+            <tr><!-- vergalium%20Protokoll%20%C3%BCber_PCF-54986.doc.PDF -->
+              <td><i class="material-icons small margin05 black">picture_as_pdf</i></td>
+              <td>vergalium%20Protokoll%20%C3%BCber_PCF-54986.doc.PDF</td>
+              <td>1.1<span class="black op75">mb</span></td>
+              <td>HFL-22</td>
+              <td>rwxr-xr-x (755)</td>
+              <td>2522</td>
+              <td>None</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="gridBox footer padding1" style="grid-column: col 8 / span 1; grid-row: row 6;">
+        <button class="paddingY0 radius3 small maxWidth">Status</button>
+        <button class="paddingY0 radius3 small maxWidth">Report</button>
+        <button class="paddingY0 radius3 small maxWidth">Support</button>
+        <button class="paddingY0 radius3 small maxWidth">Licenses</button>
+      </div>
+    </div>
+  </body>
+  </html>

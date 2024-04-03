@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <link rel="stylesheet" href="menu.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="../../tools/desktop.js"></script>
+    <script src="../../tools/fileparser.js"></script>
+    <script src="javascript.js"></script>
+
+  </head>
+  <!-- <body onload="setup();" onkeydown="parent.keyboardController(event);"> -->
+  <body onload="setup();" onkeydown="keyboardController(event);">
+    <div class="hiddenMenu" onclick="show('menu-content')"></div>
+
+    <div id="menu-content" class="menu-content hide">
+      <div class="menu-close" onclick="toggleClass('menu-content', 'hide'); return false">✖</div>
+      <h3>Chat</h3>
+      <br>
+
+      <div class="settingsGroupTitle">
+          General Settings
+      </div>
+      <div class="greyBox generalSettings">
+        <div >
+          Font sizes
+          <div class="inline">
+            <input type="range" class="valign maxWidth75" min="5" max="22" value="16" oninput="changeFontSize(parseInt(this.value))">
+            <span id="fontSize" class="valign">16px</span>
+          </div>
+        </div>
+        <div>
+          Allow typing during answer
+          <input id="typingBlock-checkbox" type="checkbox" onchange="blockTypingWhileAnswerinprogress = this.checked">
+        </div>
+        <div>
+          Loop chat at the end
+          <input id="loop-checkbox" type="checkbox" onchange="loop = this.checked" checked>
+        </div>
+        <div>
+          Show type indicator
+          <input id="typeIndicator-checkbox" type="checkbox" onchange="typeIndicator = this.checked; localStorage.setItem('chat-typeIndicator', this.checked)" checked>
+        </div>
+        <div>
+          Autoadvance to next message (or wait for arrow right)
+          <input id="autoAdvance-checkbox" type="checkbox" onchange="autoAdvance = this.checked" checked>
+        </div>
+      </div>
+
+      <div class="settingsGroupTitle">
+        Shortcuts
+      </div>
+      <div class="greyBox generalSettings">
+        <div>
+          Arrow Left: 
+          Remove last message
+        </div>
+        <div>
+          Arrow Right: 
+          Send next message
+        </div>
+      </div>
+
+      <div id="editMessage" class="hide">
+        <div class="settingsGroupTitle">
+            Edit message
+        </div>
+        <div id="editMessage-container" class="greyBox">
+        </div>
+      </div>
+      <br>
+      <input type="button" id="editMessages" onclick="setupEditMessage()" value="Edit Messages">
+      <input type="button" id="editMessagesFinish" class="hide" onclick="finishEditMessage()" value="Finish edit">
+      <br>
+      <input type="button" id="resetChat" class="marginY50" onclick="resetChat(); hide('menu-content');" value="Reset chat">
+    </div>
+
+    <div id="bubbleContainer" class="bubbleContainer noScrollbar">
+    </div>
+    <div id="inputs" class="bottom absolute left redBg maxWidth">
+      <input type="text" id="chatInput" onkeyup="this.scrollLeft = this.scrollWidth;">
+      <input id="chatInputBtn" class="pointer" type="button" onclick="sendMessage(gebi('chatInput').value, 'me')" value="❯">
+      <input id="chatFileBtn" class="pointer" type="button" value="➕">
+    </div>
+  </body>
+  </html>

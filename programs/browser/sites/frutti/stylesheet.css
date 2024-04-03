@@ -1,0 +1,144 @@
+header {
+    width: 100%;
+    background-color: white;
+    color: white;
+    padding: .5em 1em;
+    box-sizing: border-box;
+    margin-bottom: 4em;
+    z-index: 8;
+}
+
+header button {
+    border-radius: 4em;
+    padding: .25em 1em;
+    margin-left:1em;
+    border:none;
+    cursor: pointer;
+    background-color: white;
+}
+header button i {
+    color:#ffaa11;
+}
+
+.mainColor {
+    color:#ffaa11;
+}
+
+
+.mainColorBg {
+    background-color:#ffaa11;
+}
+
+main {
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    overflow: auto;
+    right:0;
+    width: 80%;
+    height: 100%;
+    padding: 4em;
+    padding-top: 8em;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+article {
+    margin: 3em 0;
+    width: 75%;
+}
+
+.artDetails {
+    padding: 2em 0;
+}
+
+aside {
+    position: fixed;
+    color:white;
+    box-sizing: border-box;
+    top:0;
+    z-index: 5;
+    left:0;
+    width: 20%;
+    height: 100%;
+    padding: 8em 1em 1em 1em;
+    background-color: #79a4cf;
+}
+
+aside ul {
+    padding-left: 2em;
+    margin-bottom: 1em;
+}
+aside ul li:first-of-type {
+    margin-left: -1.45em;
+    margin-bottom: .25em;
+    color:#ffaa11;
+}
+aside ul li:hover {
+    color:black;
+    cursor: pointer !important;
+}
+
+.chatBtn {
+    position: fixed;
+    margin:1.5em;
+    padding:0.75em;
+    right:0;
+    bottom: 0;
+    background-color: #ffaa11;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.chat-window {
+    position: fixed;
+    background-color: #ffaa11;
+    padding: 1em;
+    margin: 1em;
+    right:0;
+    bottom: 6em;
+    width: 33%;
+    top: 20%;
+    min-width: 27em;
+    border-radius: .5em;
+    z-index: 5;
+}
+
+.chat-window-iframe {
+    margin:1.5em 0 0 0;
+    border-radius:.75em;
+    position: relative;
+    top:0;
+    height: calc(100% - 4em);
+    /* bottom: 0; */
+}
+
+.gallery {
+    box-sizing: border-box;
+    width: 80%;
+}
+
+.preview div,
+.gallery div {
+    box-sizing: border-box;
+    margin: 0 1em 1em 0;
+    width: 12em;
+    height: 12em;
+    background-color: #124578;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 24em;
+}
+.preview div {
+    border-radius: 0;
+}
+.preview div {
+    width: 75%;
+    height: 75%;
+    background-size: contain;
+    background-color: unset;
+}
+
+.preview {
+    z-index: 666;
+}

@@ -1,0 +1,466 @@
+{
+    "settings": {
+        "systemColor": "#30263b",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "os/_generic/desktops/7.jpg",
+        "os": "windows",
+        "darkMode": true,
+        "username": "agotha",
+        "password": "",
+        "workstation": "Agotha",
+        "selectedSystemMessage": 0,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#507 Browser utilities.ch",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=utilities",
+            "x": 6,
+            "y": 4,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#507 Browser frutti.ch",
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=frutti",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#159 - Telebasel (Green)",
+            "windowName": "Telebasel - LIVE",
+            "icon": "sports_soccer",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1250,
+            "h": 800,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#141 - Videofile (Green)",
+            "windowName": "CAM-2634-B.mp4",
+            "icon": "videocam",
+            "contentPath": "colorMarker",
+            "x": 6,
+            "y": 4,
+            "w": 1250,
+            "h": 800,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#141 - Securiton (Green)",
+            "windowName": "Securiton",
+            "icon": "security",
+            "contentPath": "securiton/index.html?scene=131",
+            "x": 6,
+            "y": 4,
+            "w": 1250,
+            "h": 800,
+            "zIndex": null,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Securiton",
+            "icon": "",
+            "x": 2,
+            "y": 38,
+            "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=131', 4, 2, 1250,800, false);"
+        },
+        {
+            "name": "CAM-2634-B.mp4",
+            "icon": "fileMovie.png",
+            "x": 1,
+            "y": 24,
+            "action": "addWindow('CAM-2634-B.mp4', 'videocam', 'colorMarker', 4, 2, 1250,800, false);"
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "File",
+            "icon": "folderFull.png",
+            "x": 73,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Personal.png",
+            "icon": "fileImage.png",
+            "x": 85,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Links 3a24e",
+            "icon": "folderFull.png",
+            "x": 72,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Photos b399e.docx",
+            "icon": "doc.png",
+            "x": 15,
+            "y": 17,
+            "action": "startDefaultProgram('textEditor-random');"
+        },
+        {
+            "name": "var Copy",
+            "icon": "folderFull.png",
+            "x": 51,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 31,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "File.zip",
+            "icon": "zip.png",
+            "x": 24,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Photos.txt",
+            "icon": "txt.png",
+            "x": 58,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Favorites Copy.zip",
+            "icon": "zip.png",
+            "x": 57,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "File.mkv",
+            "icon": "fileMovie.png",
+            "x": 86,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "File Copy.avi",
+            "icon": "fileMovie.png",
+            "x": 30,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Favorites 15a31",
+            "icon": "folderFull.png",
+            "x": 57,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 59,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Important.pdf",
+            "icon": "pdf.png",
+            "x": 78,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "File",
+            "icon": "folderFull.png",
+            "x": 52,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Home 4847a",
+            "icon": "folderFull.png",
+            "x": 43,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Important 4b894.mpeg",
+            "icon": "fileMovie.png",
+            "x": 23,
+            "y": 16,
+            "action": ""
+        },
+        {
+            "name": "Document",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "file Copy.jpeg",
+            "icon": "fileImage.png",
+            "x": 8,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "VAR",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Personal Copy",
+            "icon": "folderFull.png",
+            "x": 29,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Document.doc",
+            "icon": "doc.png",
+            "x": 29,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Links.avi",
+            "icon": "fileMovie.png",
+            "x": 51,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "VAR Copy",
+            "icon": "folderFull.png",
+            "x": 30,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Photos.rtf",
+            "icon": "txt.png",
+            "x": 23,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Home Copy",
+            "icon": "folderFull.png",
+            "x": 86,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Document",
+            "icon": "folderFull.png",
+            "x": 93,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "A-433 Copy",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 29,
+            "action": ""
+        },
+        {
+            "name": "File d4f1b",
+            "icon": "folderFull.png",
+            "x": 30,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "var Copy",
+            "icon": "folderFull.png",
+            "x": 72,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 79,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Links",
+            "icon": "folderFull.png",
+            "x": 66,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Personal Copy.avi",
+            "icon": "fileMovie.png",
+            "x": 43,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Document b1449.mp3",
+            "icon": "mp3.png",
+            "x": 50,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Personal Copy",
+            "icon": "folderFull.png",
+            "x": 36,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Personal.PDF",
+            "icon": "pdf.png",
+            "x": 36,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "file.png",
+            "icon": "fileImage.png",
+            "x": 94,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Personal.mp3",
+            "icon": "mp3.png",
+            "x": 15,
+            "y": 3,
+            "action": ""
+        },
+        {
+            "name": "Important a1620",
+            "icon": "folderFull.png",
+            "x": 36,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Favorites Copy",
+            "icon": "folderFull.png",
+            "x": 36,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Favorites.mp3",
+            "icon": "mp3.png",
+            "x": 78,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "var 863a5",
+            "icon": "folderFull.png",
+            "x": 79,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Photos 25631",
+            "icon": "folderFull.png",
+            "x": 71,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 45,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "VAR",
+            "icon": "folderFull.png",
+            "x": 17,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "VAR.doc",
+            "icon": "doc.png",
+            "x": 9,
+            "y": 69,
+            "action": ""
+        }
+    ],
+    "actions": [
+    ],
+    "osNotifications": [
+    ]
+}

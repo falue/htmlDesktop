@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>X_IDE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js"></script>
+
+  </head>
+  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+    <header class="windowmenu invert">
+      <button class="programButtons">File</button><!-- 
+       --><button class="programButtons">Edit</button><!-- 
+       --><button class="programButtons">View</button><!-- 
+       --><button class="programButtons">Settings</button><!-- 
+       --><button class="programButtons">Go</button><!-- 
+       --><button class="programButtons">Selection</button><!-- 
+       --><button class="programButtons">Run</button><!-- 
+       --><button class="programButtons">Terminal</button><!-- 
+       --><button class="programButtons">About</button>
+    </header>
+
+    <header class="windowmenu toolBar invert">
+      <div class="buttonGroup"><!-- 
+      --><button class="hover greyBg"><i class="material-icons small white valign">hub</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">code</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">vpn_key</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">data_object</i></button>
+      </div>
+
+      <button class="radius3 whiteBg hover">
+        1.0 <i class="material-icons small circle greyBg white valign">unfold_more</i>
+      </button>
+
+      <button class="radius3 whiteBg hover">
+        <i class="material-icons small valign grey">code</i>
+        <i class="material-icons small circle greyBg white valign">expand_more</i>
+      </button>
+      
+      <div class="buttonGroup"><!-- 
+      --><button class="hover "><i class="material-icons small  valign">subtitles</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">search</i></button><!-- 
+      --><button class="hover greyBg"><i class="material-icons small  white valign">kitchen</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">menu</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">map</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">gps_fixed</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">testtestsearch</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">layers</i></button><!-- 
+      --><button class="hover"><i class="material-icons small valign">iron</i></button>
+      </div>
+
+      <button class="radius3 whiteBg hover">
+        Track git <i class="material-icons small circle greyBg white valign">unfold_more</i>
+      </button>
+
+      <div class="buttonGroup"><!-- 
+      --><button class="hover "><i class="material-icons small  valign">dns</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">settings</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">surround_sound</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">wysiwyg</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">build</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">handyman</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">construction</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">trending_up</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">leaderboard</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">insert_chart</i></button><!-- 
+      --><button class="hover "><i class="material-icons small  valign">score</i></button>
+      </div>
+
+      <button class="hover "><i class="material-icons small valign">help</i></button>
+    </header>
+
+    <div class="container" style="width: 15%; left:0; background-color:#252526">
+      <img src="files.png" style="width:100%; min-width: 255px;">
+    </div>
+    <div class="container" style="width: 44%; left:15%;">
+      <iframe src="../../programs/terminal/index.html?byRows=false&startChar=61178&text=apollo_guidance_computer&theme=an-old-hope&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10">
+      </iframe>
+    </div>
+    <div class="container" style="width: 39%; left:60%;">
+      <iframe src="../../programs/terminal/index.html?byRows=false&startChar=1000&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=200">
+      </iframe>
+    </div>
+  </body>
+  </html>

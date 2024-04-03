@@ -1,0 +1,108 @@
+body, html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    padding: 2em;
+    background-color: rgb(57, 57, 227);
+    color: white;
+    z-index: 666;
+}
+
+aside {
+    padding: 1em;
+    padding-top:12em;
+    box-sizing: border-box;
+    width: 22%;
+    background-color:aliceblue;
+    z-index: 6;
+    height: 100%;
+}
+
+button {
+    padding: .25em .75em;
+}
+
+main {
+    margin-top:8em;
+    padding: 2em 2em 2em 24%;
+    margin-bottom: 2em;
+    border-bottom:black thin solid;
+    z-index: 5;
+}
+
+table {
+    border-bottom:rgb(93, 93, 93) thin solid;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+th {
+    color: white;
+    padding: 1em;
+    background-color: rgb(26, 156, 255);
+    font-weight: 100;
+}
+
+td {
+    padding: .75em 0;
+    /* border-right:black thin solid; */
+    border-bottom:rgb(172, 172, 172) thin solid;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+tr {
+    max-width: 100%;
+}
+
+/* tr td:last-of-type {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+} */
+
+tr td:nth-of-type(2) {
+    /* background-color:rgb(255, 249, 238); */
+}
+
+tr td:first-of-type {
+    font-weight: 600;
+}
+
+#search {
+    border-radius: .5em 0 0 .5em;
+    border:solid thin black;
+    border-right: none;
+    width: 9em;
+}
+
+button.search {
+    padding: .25em .5em;
+    border:solid thin black;
+    border-right: none;
+}
+
+button.close {
+    padding: .25em .5em;
+    border:solid thin black;
+    border-radius: 0 .5em .5em 0;
+}
+
+
+aside ul {
+    padding-left: 2em;
+    margin-bottom: 1em;
+}
+aside ul li:first-of-type {
+    margin-left: -1.45em;
+    margin-bottom: .25em;
+    font-weight: 600;
+}
+aside ul li:hover {
+    color:black;
+    cursor: pointer !important;
+}

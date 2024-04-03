@@ -1,0 +1,48 @@
+.akkordeon {
+  position: relative;
+}
+
+.akkordeon:not(:target) .hide,
+.akkordeon:target .show {
+  display: none;
+}
+
+.akkordeon:target .inhalt {
+  opacity: 1;
+  overflow: hidden;
+  max-height: 1000px;
+  transition: all 1s ease-in-out;
+}
+
+.akkordeon:not(:target) .inhalt {
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+}
+
+.akkordeon a:before {
+  color: white;
+  display: inline-block;
+  background-color: #f78aa7;
+  width: 1em;
+  height: 1em;
+  line-height: .9em;
+  margin-right:.35em;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+.akkordeon a.hide:before {
+  content: "-";
+}
+
+.akkordeon a.show:before {
+  content: "+";
+}
+
+.close {
+  position: relative;
+  top: 0;
+  height: 2em;
+}

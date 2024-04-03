@@ -1,0 +1,23 @@
+body {
+    background-color: #202633;
+    color: white;
+}
+
+.programButtons {
+    font-family: inherit;
+    color: white;
+    background-color: rgba(255,255,255,.125);
+    border-color: rgba(0,0,0,.75) !important;
+    border-bottom: solid rgba(0,0,0,.75) thin !important;
+}
+
+.selector {
+    background-color: grey !important;
+}
+.selector i {
+    color:white !important;
+}
+
+.filelist {
+    filter: invert(1); /* YES YES LAZY BASTARD */
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Write Email</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="../../tools/fileparser.js"></script>
+    <script src="javascript.js"></script>
+
+  </head>
+  <body id="body" class="write" onload="setupWriteEmail();" onkeydown="parent.keyboardController(event);">
+    
+    <div id="preview-header" class="preview-header">
+      <div class="relative">To <input id="to" tabindex="0" class="absolute top right"></div>
+      <div class="relative">CC <input id="cc" tabindex="1" class="absolute top right"></div>
+      <div class="relative">BCC <input id="bcc" tabindex="2" class="absolute top right"></div>
+      <div class="relative">Subject <input id="subject" tabindex="3" class="absolute top right"></div>
+    </div>
+    <div id="preview-email" class="preview-email userSelect">
+      <textarea tabindex="4" class="" id="message"></textarea>
+      
+      <div class="left bottom absolute padding1">
+        <button onclick="clearEmail()"><i class="material-icons hover small blue">close</i></button>
+      </div>
+      <div class="right bottom absolute padding1">
+        <button id="send-button" onclick="sendEmail()" class="blueBg"><i class="material-icons hover white ">send</i></button>
+      </div>
+    </div>
+
+  </body>
+  </html>

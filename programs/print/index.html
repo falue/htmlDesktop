@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Print</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js"></script>
+
+  </head>
+  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+    <!-- <div class="relative paddingX1">
+      <h2 class="marginY1 relative">Print Document</h2>
+      <div class="top right absolute paddingX1" onclick="parent.openPrinter();">
+        <button class=""><i class="material-icons valign">settings</i></button>
+        <button class=""><i class="material-icons valign">print</i></button>
+        <button class=""><i class="material-icons valign">info</i></button>
+      </div>
+    </div> -->
+
+    <div id="preview" class="preview">
+      <div id="paper" class="paper shadow">
+      </div>
+      <div class="white absolute left bottom maxWidth blueBg centerText paddingY1 small">
+        Page 1 / <span id="pageIndicator1">1</span>
+      </div>
+
+    </div>
+
+    <div id="form" class="form">
+      <fieldset>
+          <legend><i class="material-icons valign blue medium">expand_more</i> Printer</legend>
+          <label for="printer">Printer:</label>
+          <select id="printer" name="printer" class="marginX1">
+              <option value="DYNOMA">DYNOMA KT-400 Series</option>
+              <option value="PrintMaster">PrintMaster ProJet 2000</option>
+              <option value="ColorCraft">ColorCraft Spectrum X5</option>
+              <option value="LaserDoc">LaserDoc Elite Series</option>
+              <option value="PixelPrint">PixelPrint Precision 4D</option>
+          </select>
+          <button onclick="parent.openFileManager()">Add printer..</button>
+      </fieldset>
+      
+      <fieldset>
+          <legend><i class="material-icons valign blue medium">expand_more</i> Pages</legend>
+          <label for="copies">Number of copies:</label>
+          <input type="number" id="copies" name="copies" min="1" value="1">
+          <br>
+          <input type="radio" id="all_pages" name="pages" value="all_pages" checked>
+          <label for="all_pages">All Pages</label>
+          <br>
+          <input type="radio" id="page_range" name="pages" value="page_range">
+          <label for="page_range">Range:</label>
+          <input type="number" id="range_from" name="range_from" value="1">
+          <label for="range_to" style="margin-left:1em">to</label>
+          <input type="number" id="range_to" name="range_to" value="1">
+      </fieldset>
+      
+      <fieldset>
+          <legend><i class="material-icons valign blue medium">expand_more</i> Options</legend>
+          <label for="color_print">Print in Color</label>
+          <input type="checkbox" id="color_print" name="color_print">
+          <br>
+          <label for="double_sided">Double-sided</label>
+          <input type="checkbox" id="double_sided" name="double_sided">
+          <br>
+          <label for="paper_size">Paper Size:</label>
+          <select id="paper_size" name="paper_size">
+              <option>A4 210 by 297 mm</option>
+              <option>----</option>
+              <option>A2 420 by 594 mm</option>
+              <option>A3 297 by 420 mm</option>
+              <option>A4 210 by 297 mm</option>
+              <option>A5 148 by 210 mm</option>
+              <option>A6 105 by 148 mm</option>
+              <option>A7 74 by 105 mm</option>
+              <option>A8 52 by 74 mm</option>
+              <option>----</option>
+              <option>Letter 8.5 by 11 inches (215.9 by 279.4 mm)</option>
+              <option>Legal 8.5 by 14 inches (215.9 by 355.6 mm)</option>
+              <option>Ledger/Tabloid 11 by 17 inches (279.4 by 431.8 mm)</option>
+          </select>
+          <br>
+          <label for="orientation">Orientation:</label>
+          <input type="radio" id="portrait" name="orientation" value="portrait" checked>
+          <label for="portrait">Portrait</label>
+          <input type="radio" id="landscape" name="orientation" value="landscape">
+          <label for="landscape">Landscape</label>
+      </fieldset>
+
+
+      <fieldset>
+        <legend><i class="material-icons valign grey medium">chevron_right</i> Media & Quality</legend>
+      </fieldset>
+      <fieldset>
+        <legend><i class="material-icons valign grey medium">chevron_right</i> Paper Handling</legend>
+      </fieldset>
+
+    </div>
+    </div>
+
+    <div id="footer" class="maxWidth borderBox right alignRight bottom fixed paddingY1 paddingX1 printButtonContainer">
+      <button class="paddingX2 marginX1" onclick="parent.closeWindow(windowId);">&emsp;Cancel&emsp;</button>
+      <button class="paddingX2 marginX1 blueBg white" onclick="parent.closeWindow(windowId);">&emsp;Print&emsp;</button>
+    </div>
+
+  </body>
+  </html>

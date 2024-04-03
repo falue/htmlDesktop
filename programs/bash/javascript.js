@@ -61,8 +61,8 @@ function loadScript(script, getBashProfile = true) {
   for (lines of script) {
     if (lines === "EXIT") break; // Abort parsing file when keyword EXIT is found
     localCommands = [...localCommands, ...splitCommandLines(lines)];
-    if (lines != "[br]" && !lines.includes(":nobr")) {
-      // Do not add br for "br" "nobr" command
+    if (lines != "[br]" && !lines.includes(":nobr") && !lines.includes("javascript") && !lines.includes("garbageCollection")) {
+      // Do not add br for "br" "nobr" and "javascript" command
       localCommands.push({ function: "br" });
     }
   }
@@ -138,10 +138,19 @@ async function playCommandAtIndex(index) {
   }
 }
 
+<<<<<<< HEAD
 function resetConsole() {
   /* gebi("console").innerHTML = "";
   bashProfileName = bashProfileNameInitial;
   playCommandAtIndex(0); */
+=======
+function resetProfile() {
+  bashProfileName = bashProfileNameInitial;
+}
+
+function resetConsole() {
+  resetProfile();
+>>>>>>> beschatterSe02
   const url = new URL(window.location.href);
   url.searchParams.set('reloadTime', Date.now().toString());
   window.location.href = url.toString();
@@ -169,13 +178,21 @@ function waitForKey(keyCode) {
 
 /* SPECIFIC */
 let credentialsTrials = 0;
-async function askCredentials(outcome) {
+async function askCredentials(outcome, prompt=false, success=false, error=false) {
   /* cl("outcome::");
   cl(outcome); */
   // Scroll to bottom of console
   scrollToBottom();
   await delay(50); // wait for release of enter from action before!
+<<<<<<< HEAD
   printToConsole("Password:🔒 ");
+=======
+  if(prompt!==false) {
+    printToConsole(prompt+"<i class='material-icons small valign'>lock</i> ");
+  } else {
+    printToConsole("Password:<i class='material-icons small valign'>lock</i> ");
+  }
+>>>>>>> beschatterSe02
   // enter 13
   // f=fail = 70
   // s=succeed = 83
@@ -189,7 +206,15 @@ async function askCredentials(outcome) {
   if(returnKey != 13) enterKey = await waitForKey([13]);
   // If "s" & enter ist typed, or outcome is true and not false and not "real", then grant access
   if((((returnKey === 83 && enterKey === 13) && credentialsTrials < 3) || outcome === true || outcome === credentialsTrials+1) && outcome != false) {
+<<<<<<< HEAD
     printToConsole("<br>Access granted.<br>", "success");
+=======
+    if(success) {
+      printToConsole(success, "success");
+    } else if (success === false) {
+      printToConsole("<br>Access granted.<br>", "success");
+    }
+>>>>>>> beschatterSe02
     credentialsTrials = 0;
     return true;
   } else {
@@ -227,7 +252,7 @@ function setupForceType(command) {
     `forceType(event, gebi('${uid}'), '${
       command.parameters[0]
     }', async function () { document.getElementsByTagName('body')[0].setAttribute('onkeydown', 'keyboardControllerBash(event);'); ${
-      includesDefaultCommands
+      includesDefaultCommands && command.parameters[1] !== "*"
         // If default command is set to forceType, try to execute command
         ? `await evalCommand('${command.parameters[0]}'${sudoOutcome || ""}); await playCommandAtIndex();`
         : "playCommandAtIndex();"
@@ -321,6 +346,32 @@ async function counterAscii(
   return;
 }
 
+
+async function setupSpinner(command) {
+  let uid = createUniqueId();
+  let span = document.createElement("span");
+  span.classList.add("spinner");
+  span.id = uid;
+  if (command.classes) span.classList.add(command.classes);
+  gebi("console").appendChild(span);
+  await spinner(span, command.parameters);
+}
+
+async function spinner(container, parameters) {
+  let duration = parameters[0];
+  let speed = parameters[1];
+  let sprites = parameters[2].split('');
+  let index = 0;
+
+  while(duration > 0) {
+    container.innerHTML = sprites[index];
+    duration -= speed;
+    index = index < sprites.length-1 ? index+1 : 0;
+    await delay(speed);
+  }
+  container.remove();
+}
+
 function freeText(keyCode) {
   return new Promise((resolve) => {
     document.addEventListener("keydown", onKeyHandler);
@@ -372,7 +423,7 @@ async function loadExternalScript(scriptName) {
 async function evalCommand(command, sudoOutcome) {
   // Preemptively add sudo before actual command
   if(command.startsWith("sudo")) {
-    /* await loadExternalScript("sudo"); */
+    blockCommand = true;
     printToConsole("<br>");
     let success = await askCredentials(sudoOutcome);  // add param real, true or false!!
     if(success) {
@@ -381,7 +432,7 @@ async function evalCommand(command, sudoOutcome) {
       // Wrong passwor (no "s" typed in pw!)
       return;
     }
-    /* cl("end of sudo if"); */
+    blockCommand = false;
   }
 
   // For 'cd' to work, initial bashProfileName (path) must include "..~<.." !
@@ -432,27 +483,59 @@ async function playCommand(command) {
     case "forceType":
       setupForceType(command);
       break;
+    case "resetProfile":
+      resetProfile();
+      break;
     case "waitForEnter":
       show("cursor");
       await waitForKey([13]);
       break;
     case "credentials":
       // TODO: key gets pressed already
-      await askCredentials(command.parameters[0] === undefined ? "real" : Number.isInteger(command.parameters[0]) ? command.parameters[0] : command.parameters[0] === "true");
+      cl(command.parameters);
+      await askCredentials(command.parameters[0] === undefined ? "real" : Number.isInteger(command.parameters[0]) ? command.parameters[0] : command.parameters[0] === "true", command.parameters[1] ? command.parameters[1] : false, command.parameters[2] ? command.parameters[2] : false);
       break;
     case "freeText":
       show("cursor");
       await freeText(13);
       playCommandAtIndex();
       break;
+    case "javascript":
+      try{
+        // eval(command.parameters[0]);
+        eval("(async () => {" + command.parameters[0] + "})()")
+      } catch(e) {
+        console.error(e)
+      }
+      break;
     case "sleep":
       await delay(command.parameters[0]);
       break;
+    case "spinner":
+      hide("cursor");
+      await setupSpinner(command);
+      show("cursor");
+      break;
     case "clear":
-      gebi("console").innerHTML = "";
+      resetConsole();
       break;
     case "goto":
       await playCommandAtIndex(command.parameters[0]);
+<<<<<<< HEAD
+=======
+      break;
+    case "garbageCollection":
+      // FIXME: delete by line, not by element
+      // command.parameters[0]
+      let amount = command.parameters[0]*2;  // *2 because each line has a <span><br></span> element.. or more
+      cl(`Remove ${amount} element(s) from DOM`)
+      let element = gebi('console');
+      // element.innerHTML='';
+      while (element.children.length >= amount && amount > 0) {
+        element.removeChild(element.children[0]);
+        amount--;
+      }
+>>>>>>> beschatterSe02
       break;
     case "br":
       printToConsole("<br>");

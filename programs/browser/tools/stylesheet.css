@@ -250,7 +250,8 @@ body {
     color:black !important;
     top: 48px;
     right: 10px;
-    width: 220px;
+    min-width: 220px;
+    max-width: 380px;
     padding: 10px;
     z-index: 999;
     background-color: white;
@@ -368,9 +369,10 @@ body {
 
 
 .fake-browser-container {
-    position: relative;
+    position: absolute;
     width: 100%;
-    height: 100%;
+    top:80px;
+    bottom:0;
     box-sizing: border-box;
     background-color: #fff;
 }
@@ -514,5 +516,9 @@ button:hover {
     }
     .fake-browser-bar .hamburger-menu {
         padding: 3px 0 0 8px;
+    }
+
+    .fake-browser-container {
+        top:42px;
     }
 }

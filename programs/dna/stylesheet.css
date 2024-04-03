@@ -1,0 +1,161 @@
+body {
+    overflow: auto;
+    background-color: white;
+    color: black;
+}
+
+header {
+    /*  background-color: burlywood; */
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: solid thin grey;
+    background-color: rgba(0,0,0,.05);
+}
+
+.toolBar {
+    top: 1.5em;
+    height: 2.1em;
+    padding: .25em;
+    box-sizing: border-box;
+}
+
+.toolBar button {
+    font-family: inherit;
+    border: solid thin grey;
+    padding: .25em;
+}
+
+.toolBar > button {
+    margin-right: .5em;
+}
+
+.buttonGroup {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.buttonGroup button {
+    border-left: none;
+}
+
+.buttonGroup button:first-of-type {
+    border-top-left-radius: .25em;
+    border-bottom-left-radius: .25em;
+    border-left: solid thin grey;
+}
+
+.buttonGroup button:last-of-type {
+    border-top-right-radius: .25em;
+    border-bottom-right-radius: .25em;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 3.6em);
+    top: 3.6em;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+/* GRID */
+.gridLayout {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+    /* background-color: rgba(0,0,255,.5); */
+    grid-template-rows: [row] 2em [row] 3em [row] 1fr [row] ;
+}
+
+.gridBox {
+    position: relative;
+    box-sizing: border-box;
+    /* background-color: lavender; */
+    /* border: solid rgba(255,0,0,.5) 1px; */
+}
+
+/* CHARTS */
+.charts.gridLayout {
+    height: initial;
+    grid-gap: 1em;
+    grid-template-columns: [col] 1fr [col] 1fr [col] 1fr [col] 1fr;
+    grid-template-rows: [row] auto [row] auto [row];
+}
+
+.charts .gridBox {
+    padding: 1em;
+    background-color: #333;
+    color: #fff;
+}
+
+
+/* treeview */
+.treeview {
+    line-height: 1.5em;
+}
+.treeview li {
+    padding-left: 1em;
+    white-space: nowrap;
+}
+
+.treeview li.active {
+    background-color: rgba(255,255,255,.2);
+}
+#dna {
+    overflow-x: auto;
+}
+#dna.darkMode:not(.loading) {
+    background-color:rgba(0,0,0,.85);
+}
+
+.dnaList {
+    padding-bottom: 12em;
+    font-weight: 800;
+    font-size:1.2em;
+}
+/* .dnaList li:nth-child(odd) {
+    background-color: rgba(0,0,0,.05);
+} */
+.dnaList li {
+    padding-left: .5em;
+    margin-bottom: .15em;
+}
+
+.dnaList li span {
+    /* background-color:rgba(0,0,0,.75); */
+    padding: 0 .25em;
+}
+
+#dna:not(.darkMode) li span.G {
+    color: rgb(255, 170, 0);
+}
+
+#dna:not(.darkMode) li span.T {
+    color: rgb(0, 179, 0);
+}
+
+#dna:not(.darkMode) li span.C {
+    color: rgb(0, 188, 188);
+}
+
+#loader {
+    width: 50%;
+}
+
+.selector {
+    background-color: lightgrey !important;
+}
+
+.A { color: rgb(255, 0, 0); }
+.G { color: rgb(255, 255, 0); }
+.T { color: rgb(0, 255, 0); }
+.C { color: rgb(0, 255, 255); }
+
+.A,
+.G,
+.T,
+.C { margin-right: .15em; }

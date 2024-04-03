@@ -15,7 +15,7 @@
     <script src="../../tools/fileparser.js"></script>
 
   </head>
-  <body onload="setupFileManager();" onkeydown="parent.keyboardController(event);">
+  <body onload="setupFileManager();" onkeydown="keyboardController(event);">
     <header class="windowmenu">
       <button class="programButtons">File</button><!-- 
       --><button class="programButtons">Edit</button><!-- 
@@ -35,7 +35,7 @@
         <i class="material-icons blue valign">visibility</i> Preview
       </button>
       <button class="radius3" onclick="gebi('folderContent').classList.toggle('listView')">
-        <i class="material-icons blue valign">apps</i> Display
+        <i class="material-icons blue valign">bolt</i> Display
       </button>
       <button class="radius3">
         <i class="material-icons blue valign">code</i> File name extensions
@@ -120,8 +120,8 @@
 
       <hr>
 
-      <ul class="tree hardcodedFolders">
-        <!-- DRIVES -->
+      <!-- DRIVES -->
+      <!-- <ul class="tree hardcodedFolders">
         <li>
           <img id="icon-drives" src="../../os/windows/systemIcons/folderFull.png" alt="">
           <input id="checkbox-drives" type="checkbox" checked>
@@ -147,7 +147,7 @@
             </li>
           </ul>
         </li>
-      </ul>
+      </ul> -->
       
       <hr>
 
@@ -164,7 +164,7 @@
     </div>
 
     <!-- FOLDER CONTENTS -->
-    <div id="folderContent" class="content noScrollbar"></div>
+    <div id="folderContent" class="content noScrollbar listView"></div>
 
     <!-- FOLDER CONTENT INFOS -->
     <div id="folderInfo" class="grey small padding05">0 files</div>

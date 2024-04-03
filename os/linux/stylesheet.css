@@ -67,6 +67,14 @@ body {
     transform: translate(-50%, calc(-100% - .5rem));
 }
 
+.tooltip.tooltipBottom:not(.tooltipDock)::before {
+    transform: translate(-50%, calc(100% + 1.25rem));
+}
+
+.tooltip.tooltipBottom:not(.tooltipDock)::after {
+    transform: translate(-50%, calc(100% + 2.25rem)) rotate(180deg) ;
+}
+
 
 /* SHENANIGANS */
 .lockScreen > div {
@@ -98,12 +106,12 @@ body {
 }
 
 #lockScreen.loginAnimation #lockScreenColorOverlay {
-    animation: animateBgColor 750ms ease-in-out 1 forwards;
-    animation: fadeoutLoginWindow 500ms 1500ms ease-in-out 1 forwards;
+    animation: animateBgColor 400ms ease-in-out 1 forwards;
+    animation: fadeoutLoginWindow 250ms ease-in-out 1 forwards;
 }
 
 .loginAnimation #lockScreenSystemColorOverlay {
-    animation: fadeoutLoginWindow 750ms 2s ease-in-out 1 forwards;
+    animation: fadeoutLoginWindow 50ms ease-in-out 1 forwards;
 }
 
 @keyframes animateBgColor {
@@ -128,7 +136,7 @@ body {
 
 /* WINDOW */
 .window {
-    background: grey;
+    background: black;
     border-radius: .25em;
 }
 
