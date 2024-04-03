@@ -1,6 +1,7 @@
 # Define all available workstations here
 
 workstation=generic;spa
+workstation=telefabi;windows
 workstation=Polizei;windows
 workstation=Agotha;windows
 workstation=Athletics;windows
