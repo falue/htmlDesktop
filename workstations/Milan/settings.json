@@ -119,7 +119,7 @@
             "icon": "",
             "x": 2,
             "y": 17,
-            "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=131', 4, 2, 1250,800, false);"
+            "action": "addWindow('Securiton', 'security', 'securiton/index.html?scene=136', 4, 2, 1250,800, false);"
         },
         {
             "name": "Trash",
