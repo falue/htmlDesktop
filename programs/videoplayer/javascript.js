@@ -565,15 +565,20 @@ function transformVideo(action) {
 
 function buildChapters() {
     let chapterList = gebi('chapterList');
+    let chapterIndicators = gebi('chapterIndicatorContainer');
     chapterList.innerHTML = '';
+    chapterIndicators.innerHTML = '';
     chapters.sort(function (a, b) {  return a - b;  });
     for(i=0; i< chapters.length; i++) {
         let clearChapter = '<span class="redBg" title="Remove chapter" style="color:white; display:inline-block; width:1.5em; height:1.5em; border-radius:50%; top:0; margin-left:.5em; padding-top:.12em; box-sizing:border-box;" onclick="removeChapter('+i+')">&times;</span>';
         if(i == 0) clearChapter = '';
         chapterList.innerHTML += '<button class="small" title="alt + '+(i+1)+'" style="margin:0 0.5em 0.5em 0">#'+(i+1)+') <span onclick="seek('+chapters[i]+')">'+secToTime(chapters[i])+'</span>'+clearChapter+'</button>';
+        let left = (chapters[i] / duration) * 100;
+        chapterIndicators.innerHTML += '<div class="redBg" style="border:none; position:absolute; top:0; height:19px; left:'+left+'%; width:1px; pointer-events: none; padding:0;"></div>'
     }
     if(chapters.length === 1) {
         chapterList.innerHTML = '<span class="small grey">No chapters.</span>';
+        chapterIndicators.innerHTML = '';
     }
 }
 function removeChapter(index) {
