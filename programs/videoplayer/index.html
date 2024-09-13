@@ -14,21 +14,21 @@
     <div>
         <label><strong>MEDIAPLAYER</strong></label>
         <button class="medium" style="position: absolute; top: .25em; right:.5em; background-color:rgba(255,80,80,1);" onclick="window.location.href = '../../index.html'">&larr; Index</button>
-        <button class="medium" onclick="toggleMenu()">Toggle Menu</button>
+        <button class="medium" onclick="toggleMenu()">Menu</button>
         <button class="medium video"
                 onclick="toggleControls()">
-            Toggle Video Controls
+            Video Controls
         </button>
         <button class="medium video" onclick="togglePlayPause()">Play / Pause</button>
-        <button class="medium video" onclick="toggleMute()">Toggle Mute</button>
-        <button class="medium video" onclick="toggleLoop()">Toggle Loop</button>
-        <button class="medium" onclick="toggleFullscreen()">Toggle Fullscreen</button>
+        <button class="medium video" onclick="toggleMute()">Mute</button>
+        <button class="medium" onclick="toggleFullscreen()">Fullscreen</button>
         <!-- <button class="medium" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">Open in Pop Up</button> -->
     </div>
-    <div >
-        <input id="currentTimeRange" style="width:80%; cursor:ew-resize" type="range" step="0.1" class="valign" value="0" min="0" max="100" oninput="seek(this.value); this.blur();">
-        <span id="currentTime" class="small">0.0</span> -
-        <span id="duration" class="small">0.0</span>
+    <div style="position:relative;">
+        <input id="currentTimeRange" style="width:100%; cursor:ew-resize" type="range" step="0.1" class="valign" value="0" min="0" max="100" oninput="seek(this.value); this.blur();">
+        <code style="position:absolute; top:11px; right:25px; pointer-events: none;">
+            <span id="currentTime">0.0</span>/<span id="duration">0.0</span>
+        </code>    
     </div>
     <div class="hotkeys gallery hide">
         Hotkeys Images 
@@ -65,7 +65,9 @@
         <table style="width:100%">
             <tr>
                 <td style="width:33%; font-weight: bold;">Looping</td>
-                <td id="looping">Yes</td>
+                <td>
+                    <button class="medium video blueBg" onclick="toggleLoop()" id="looping">Yes</button>
+                </td>
             </tr>
             <tr>
                 <td style="width:33%; font-weight: bold;">In <span id="inPoint" style="font-weight:normal">0.0s</span></td>
@@ -77,18 +79,15 @@
         <label>
             <strong>Sources (Video or image files)</strong>
         </label>
-        <select onchange="changeSource(this.value)" class="video">
+        <select onchange="changeSource(this.value)" class="video" style="width:48%">
             <option value="media/Karaoke_Scharlachrot_small.mp4">Karaoke_Scharlachrot.mp4</option>
             <!-- <option value="" disabled="disabled">----------</option> -->
             <option value="media/Karaoke_Scharlachrot_5_Sek_Counter_small.mp4">Karaoke_Scharlachrot_5_Sek_Counter.mp4</option>
             <option value="media/Karaoke_Im_Wagen_Vor_Mir_small.mp4">Karaoke_Im_Wagen_Vor_Mir.mp4</option>
             <option value="media/Karaoke_Im_Wagen_Vor_Mir_5_Sek_Counter_small.mp4">Karaoke_Im_Wagen_Vor_Mir_5_Sek_Counter.mp4</option>
         </select>
-
-        <hr class="video">
-        <input id="movieSelector" type="file" onchange="uploadFile(this)" multiple>
+        <input id="movieSelector" style="width:48%" type="file" onchange="uploadFile(this)" multiple>
         <div id="galleryList" class="gallery"></div>
-
     </div>
     <div class="gallery ">
         <strong>Video fitting</strong>
@@ -108,50 +107,34 @@
                 <input style="width:8em" placeholder="Type speed + enter" onchange="changeSpeed(parseFloat(this.value*10))">
                 <span id="speed-val">1</span>x</code>
             <button class="small" onclick="gebi('speed').value=10; setColors()" title="Set to default">default</button>
-            
         </label>
         <input id="speed" type="range" value="10" min="1" max="160" onchange="changeSpeed(this.value)" oninput="changeSpeed(this.value)">
-        
-    </div>
-    <div>
         <label>
             <strong>Blur</strong><code><span id="blur-val">0</span>px</code>
             <button class="small" onclick="gebi('blur').value=0; setColors()" title="Set to default">default</button>
         </label>
         <input id="blur" type="range" min="0" max="30" step="1" value="0" oninput="setColors()"/>
-    </div>
-    <div>
         <label><strong>Saturation</strong><code><span id="saturate-val">1</span></code>
             <button class="small" onclick="gebi('saturate').value=1; setColors()" title="Set to default">default</button>
         </label>
         <input id="saturate" type="range" min="0" max="25" step="0.1" value="1" oninput="setColors()"/>
-    </div>
-    <div>
         <label><strong>Hue</strong><code><span id="hue-val">0</span>deg</code>
         <button class="small" onclick="gebi('hue').value=0; setColors()" title="Set to default">default</button>
         </label>
         <input id="hue" type="range" min="0" max="360" step="1" value="0" oninput="setColors()"/>
-    </div>
-    <div>
         <label>
             <strong>Brightness</strong><code><span id="brightness-val">0</span>%</code>
         <button class="small" onclick="gebi('brightness').value=100; setColors()" title="Set to default">default</button>
         </label>
         <input id="brightness" type="range" min="0" max="1600" step="10" value="100" oninput="setColors()"/>
-    </div>
-    <div>
         <label><strong>Contrast</strong><code><span id="contrast-val">0</span></code>
             <button class="small" onclick="gebi('contrast').value=1; setColors()" title="Set to default">default</button>
         </label>
         <input id="contrast" type="range" min="0" max="15" step="0.05" value="1" oninput="setColors()"/>
-    </div>
-    <div>
         <label><strong>Invert</strong><code><span id="invert-val">0</span></code>
             <button class="small" onclick="gebi('invert').value=0; setColors()" title="Set to default">default</button>
         </label>
         <input id="invert" type="range" min="0" max="1" step="0.05" value="0" oninput="setColors()"/>
-    </div>
-    <div>
         <label><strong>Sepia</strong><code><span id="sepia-val">0</span></code>
             <button class="small" onclick="gebi('sepia').value=0; setColors()" title="Set to default">default</button>
         </label>
