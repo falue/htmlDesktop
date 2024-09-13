@@ -143,6 +143,10 @@ input::-webkit-slider-thumb {
     border-radius: 3px;
 }
 
+#currentTimeRange::-webkit-slider-thumb {
+    width: 2px;
+}
+
 .noScrollbar::-webkit-scrollbar { display: none; }
 .noScrollbar { scrollbar-width: none; }
 
