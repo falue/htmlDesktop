@@ -7,7 +7,7 @@
     <script src="javascript.js"></script>
 </head>
 
-<body class="noScrollbar" onload="setup()" onkeydown="keyboardController(event)">
+<body id="body" class="noScrollbar" onload="setup()" onkeydown="keyboardController(event)">
 
 <div id="menu-hidden" class="hide menu-hidden" onclick="toggleClass('menu', 'hide'); toggleClass('menu-hidden', 'hide')">&nbsp;</div>
 <aside id="menu" class="noScrollbar">
@@ -24,7 +24,11 @@
         <button class="medium video" onclick="toggleLoop()">Toggle Loop</button>
         <button class="medium" onclick="toggleFullscreen()">Toggle Fullscreen</button>
         <!-- <button class="medium" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">Open in Pop Up</button> -->
-
+    </div>
+    <div >
+        <input id="currentTimeRange" style="width:80%; cursor:ew-resize" type="range" step="0.1" class="valign" value="0" min="0" max="100" oninput="seek(this.value); this.blur();">
+        <span id="currentTime" class="small">0.0</span> -
+        <span id="duration" class="small">0.0</span>
     </div>
     <div class="hotkeys gallery hide">
         Hotkeys Images 
@@ -39,7 +43,7 @@
     </div>
     <div class="hotkeys video">
         Hotkeys Videos 
-        <code><a href="videplayer_hotkeys.pdf" target="_blank">[download PDF]</a></code>
+        <a href="videplayer_hotkeys.pdf" target="_blank"><button class="small">download PDF</button></a>
         <button class="small" onclick="toggle('hotkeysVideos')">Show</button>
         <br>
         <nav id="hotkeysVideos" class="hide">
@@ -58,15 +62,16 @@
         </nav>
     </div>
     <div class="video">
-        Tot. duration: <span id="duration">0.0</span>
-        <br>
-        Looping: <span id="looping">Yes</span>
-        <br>
-        Current Time: <span id="currentTime">0.0</span>
-        <br>
-        In: <span id="inPoint">0.0</span>
-        <br>
-        Out: <span id="outPoint">0.0</span>
+        <table style="width:100%">
+            <tr>
+                <td style="width:33%; font-weight: bold;">Looping</td>
+                <td id="looping">Yes</td>
+            </tr>
+            <tr>
+                <td style="width:33%; font-weight: bold;">In <span id="inPoint" style="font-weight:normal">0.0s</span></td>
+                <td style="font-weight: bold;">Out <span id="outPoint" style="font-weight:normal">0.0s</span></td>
+            </tr>
+        </table>
     </div>
     <div>
         <label>
@@ -85,14 +90,16 @@
         <div id="galleryList" class="gallery"></div>
 
     </div>
-    <div class="gallery hide">
-        <label>
-            <strong>Image fitting</strong>
+    <div class="gallery ">
+        <strong>Video fitting</strong>
+        <button id="scale" class="scaleButton small" onclick="videoFit('scale')">scale</button>
+        <button id="letterbox" class="scaleButton small blueBg" onclick="videoFit('letterbox')">letterbox</button>
+        <button id="stretch" class="scaleButton small" onclick="videoFit('stretch')">stretch</button>
+        
+        <label id="letterboxColorContainer" for="letterboxColor" title="Letterbox color" style="display: inline-block; margin-left:0.5em;">
+            <input id="letterboxColor" style="vertical-align: middle; width:1.5em; height:1.5em; padding: 0;" oninput="changeLetterboxColor(this.value)" onchange="this.blur();" type="color" value="#000000">
+            <input id="letterboxColorText" onchange="changeLetterboxColor(this.value)" type="text" size="8" value="#000000" class="" style="width:auto; display:inline-block">
         </label>
-        <button class="" onclick="gallery.style.backgroundSize = 'contain'" title="Set to default">Contain (letterboxed)</button>
-        <br>
-        <br>
-        <button class="" onclick="gallery.style.backgroundSize = 'cover'" title="Set to default">Cover (fill screen)</button>
     </div>
     <div class="video">
         <label>
@@ -165,7 +172,7 @@
     <video id="video" class="video" width="640" height="480"
         loop
         autoplay="true"
-        class="noControls"
+        class="noControls letterbox"
         oncanplay="setupVideo()"
         ontimeupdate="checkForO(this.currentTime)"
         ondblclick="this.webkitRequestFullscreen()"

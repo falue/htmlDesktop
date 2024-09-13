@@ -19,6 +19,10 @@ body {
     color: white;
 }
 
+.blueBg {
+    background-color: rgba(88,150,255,1);
+}
+
 aside {
     position: fixed;
     width: 420px;
@@ -81,6 +85,16 @@ select,
 button:focus, button:active,
 input:focus, input:active {
     outline: none;
+}
+
+.scale {
+    object-fit: cover;  /* proportionally scale up */
+}
+.letterbox {
+    object-fit:contain;  /* letterbox/pillarbox */
+}
+.stretch {
+    object-fit:fill; /* stretch to fit */
 }
 
 select, input, button {
