@@ -314,7 +314,7 @@
     </div>
 
     <!-- ACTION MENU -->
-    <div id="actionMenu" class="hide">
+    <div id="actionMenu" class="hide dontResizeWithGui">
       <div class="actionMenu darkGreyBg shadow radius5">
         <!-- TITEL -->
         <div class="actionMenuTitle paddingY50 paddingX1 maxWidth fancy" onclick="hide('actionMenu');">
@@ -769,7 +769,7 @@
     </div>
 
     <!-- DIALOG: AUTO DIALOG -->
-    <div id="autoDialog" class="dialog hide">
+    <div id="autoDialog" class="dialog hide dontResizeWithGui">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white minWidth300 maxWidth600 absolute radius5">
           <h3 class="alignCenter">
@@ -799,7 +799,7 @@
     </div>
 
     <!-- DIALOG: SAVED FILES FROM LOCAL STORAGE -->
-    <div id="savedFilesDialog" class="dialog hide">
+    <div id="savedFilesDialog" class="dialog hide dontResizeWithGui">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 88888;">
         <div class="darkGreyBg padding shadow white minWidth400 maxWidth500 absolute radius5">
           <h3 class="alignCenter">
@@ -834,7 +834,7 @@
     </div>
 
     <!-- DIALOG: EDIT SHORTCUTS -->
-    <div id="editShortcut" class="hide dialog">
+    <div id="editShortcut" class="hide dialog dontResizeWithGui">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white maxWidth300 absolute radius5">
           <h3 class="alignCenter">
@@ -936,7 +936,7 @@
     </div>
 
     <!-- DIALOG TASKBAR ICONS EDIT -->
-    <div id="editTaskbarIcons" class="hide dialog">
+    <div id="editTaskbarIcons" class="hide dialog dontResizeWithGui">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white maxWidth300 absolute radius5">
           <h3 class="alignCenter">
@@ -1026,7 +1026,6 @@
               <i class="inlineBlock material-icons editTaskbarIcon-clock-hide hover tiny redBg circle" onclick="gebi('editTaskbarIcon-clock').value = ''; gebi('editTaskbarIcon-clock').classList.remove('blueBg'); hide('systemIcons-clock');">close</i>
               <input class="radius5" placeholder="HH:MM" type="time" oninput="this.value ? [this.classList.add('blueBg'), show('systemIcons-clock'), gebi('systemIcons-clock').innerHTML = this.value] :  [this.classList.remove('blueBg'), hide('systemIcons-clock')]" id="editTaskbarIcon-clock" name="editTaskbarIcon" value="">
             </label>
-            
           </div>
           <div class="right padding">
             <button class="systemButton" onclick="hide('editTaskbarIcons');">Done</button>
@@ -1039,7 +1038,7 @@
     </div>
     
     <!-- KEYBOARD CONTROL -->
-    <div id="keyboardControls" class="hide dialog">
+    <div id="keyboardControls" class="hide dialog dontResizeWithGui">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white minWidth400 maxWidth500 absolute radius5">
           <h3 class="alignCenter">
@@ -1105,7 +1104,7 @@
     </div>
 
     <!-- SET GRADIENT -->
-    <div id="setGradient" class="hide dialog">
+    <div id="setGradient" class="hide dialog dontResizeWithGui">
       <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white minWidth600 maxWidth700 absolute radius5">
           <h3 class="alignCenter">
