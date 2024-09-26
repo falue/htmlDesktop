@@ -88,7 +88,7 @@ input[type=button]:not(.systemButton) {
 
 .chooseBox {
     padding: 0.5em;
-    border: thin grey solid;
+    border: thin white solid;
 }
 
 .chooseBoxTitle {
@@ -104,6 +104,7 @@ input[type=button]:not(.systemButton) {
     margin-bottom: 1em;
     max-height: 24em;
     overflow-y:  auto;
+    border: thin grey solid;
 }
 
 .fadeOutBottom {
@@ -163,6 +164,7 @@ input[type=button]:not(.systemButton) {
 #savedFilesDialog .chooseBox {
     max-height: 350px;
     overflow-y: auto;
+    border: thin grey solid;
 }
 
 .editTaskbarIcon-clock-hide {
