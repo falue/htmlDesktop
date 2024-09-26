@@ -1050,6 +1050,9 @@ function keyboardController(event) {
                 case 'DEATH':
                     setOverlayColor("DEATH");
                     break;
+                case 'GPU':
+                    toggle("gpuFail");
+                    break;
             }
             return;
         }

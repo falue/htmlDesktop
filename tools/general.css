@@ -731,6 +731,41 @@ textarea {
     }
 }
 
+
+
+@keyframes gpuFail {
+    0.0% { transform: scaleX(1);                    filter: brightness(90%); }
+    1.0% { transform: scaleX(1);                   filter: brightness(90%); }
+    2.0% { transform: scaleX(1.2);                 filter: brightness(100%); }
+    2.2% { transform: scaleX(1.2);                 filter: brightness(100%); }
+    2.9% { transform: scaleX(1);                   filter: brightness(100%); }
+    3.0% { transform: scaleX(1);                   filter: brightness(100%); }
+    3.5% { transform: scaleX(1.8);                 filter: brightness(66%); }
+    4.0% { transform: scaleX(1.8);                 filter: brightness(88%); }
+    4.3% { transform: scaleX(1.8) translateX(5%);  filter: brightness(66%); }
+    4.6% { transform: scaleX(1.8) translateX(5%);  filter: brightness(66%); }
+    4.8% { transform: scaleX(1.7);                filter: brightness(82%); }
+    5.0% { transform: scaleX(1);                   filter: brightness(100%); }
+
+    12.0% { transform: scaleX(1);                   filter: brightness(100%)}
+    12.1% { transform: scaleX(1);                    filter: brightness(90%), hue-rotate(90deg); }
+    13.0% { transform: scaleX(1);                   filter: brightness(90%), hue-rotate(90deg); }
+    13.5% { transform: scaleX(1.2);                 filter: brightness(100%), hue-rotate(90deg); }
+    13.7% { transform: scaleX(1.2);                 filter: brightness(100%), hue-rotate(90deg); }
+    14.0% { transform: scaleX(1);                   filter: brightness(100%), hue-rotate(90deg); }
+    14.6% { transform: scaleX(1);                   filter: brightness(100%), hue-rotate(90deg); }
+    15.0% { transform: scaleX(1);                   filter: brightness(100%); }
+
+    20.0% { transform: scaleX(1);                   filter: brightness(100%); }
+    21.0% { transform: scaleX(1.8) translateX(5%);  filter: brightness(66%); }
+    22.0% { transform: scaleX(1.8) translateX(5%);  filter: brightness(66%); }
+    22.5% { transform: scaleX(1.7);                filter: brightness(82%); }
+    23.0% { transform: scaleX(1);                   filter: brightness(100%); }
+
+    25.0% { transform: scaleX(1);                    filter: brightness(90%); }
+    100.0% { transform: scaleX(1);                    filter: brightness(90%); }
+}
+
 /* @-webkit-keyframes sineWave {
     0%   { opacity: 0; }
     50%  { opacity: 1; }

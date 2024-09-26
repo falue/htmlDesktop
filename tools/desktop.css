@@ -530,6 +530,14 @@ body {
     box-shadow: -80px 0 0 80px #808080;
 }
 
+#gpuFail {
+    pointer-events: none;
+    background-image: url(../tools/gpuFail.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    animation: gpuFail 5000ms ease-in infinite;
+}
+
 
 @keyframes minimizeWindow {
     0%   { margin-top: 0; transform: scale(1); }

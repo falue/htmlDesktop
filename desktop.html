@@ -106,6 +106,10 @@
       <iframe id="death-iframe" src="programs/bluescreen/index.html" class="fixed maxHeight maxWidth"></iframe>
     </div>
 
+    <!-- GPUFAIL -->
+    <div id="gpuFail" class="fixed maxWidth maxHeight hide gpuFail" style="z-index: 9998;">
+    </div>
+
     <!-- BLACKOUT -->
     <div id="blackout" onclick="setOverlayColor('BLACK');" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 11111;"></div>
 
@@ -581,6 +585,7 @@
                     <option value="SCREENSAVER">Screensaver</option>
                     <option value="GREEN">Fullscreen-Greenscreen</option>
                     <option value="DEATH">Blue screen of death</option>
+                    <option value="GPU">GPU fail</option>
                   </select>
                 </div>
               </li>
@@ -612,6 +617,10 @@
               <li class="tooltip pointer" data-title="Keyboard: [alt]+[k] or [8]" onclick="setOverlayColor('DEATH'); hide('actionMenu');">
                 <i class="material-icons blue small">cancel_presentation</i>
                 Blue screen of death (system error page)
+              </li>
+              <li onclick="toggle('gpuFail');">
+                <i class="material-icons blue small">waves</i>
+                Toggle GPU failing
               </li>
             </ul>
           </div>
