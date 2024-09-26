@@ -460,6 +460,13 @@
                 </div>
                 <input type="range" class="maxWidth padding2 borderBox" id="brightnessSlider" value="100" min="10" max="100" oninput="setBrightness(this.value)"/>
               </li>
+
+              <li class="tooltip pointer" data-title="Use the browsers or Eddy-g's scaling function!">
+                  <i class="material-icons blue small">format_size</i>
+                  GUI size <span id="guiSizeIndicator">100</span>%
+                <input type="range" id="guiSizeSlider" class="padding2 borderBox valign right top marginX50" style="width:60%" value="100" min="33" max="250" oninput="setGuiSize(this.value)"/>
+              </li>
+
               <li id="actionMenuDockLock" class="hide maxWidth pointer" onclick="gebi('dock').classList.toggle('dockLock')">
                   <i class="material-icons blue small">call_to_action</i>
                   Lock dock
