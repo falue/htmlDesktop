@@ -313,24 +313,18 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     os,
     "&workstation=",
     workstation,
-<<<<<<< HEAD
-=======
     "&windowId=",
     id,
->>>>>>> beschatterSe02
     parameters ? "&" : "",
     parameters
   ].join("");
   content.setAttribute("src", isDirectUrl ? isDirectUrl : srcIframe);
   content.setAttribute("onload", `show('iframe-${id}')`);
-<<<<<<< HEAD
-=======
   // make it possible to have video inside iframe be fullscreen
   content.setAttribute("allowfullscreen", "true");
   content.setAttribute("webkitallowfullscreen", "true");
   content.setAttribute("allow", "fullscreen");
   content.setAttribute("allow", "fullscreen *");
->>>>>>> beschatterSe02
   windowContainer.appendChild(content);
 
   // For some godforsaken reason, i cannot parse .html files OR files with no extension,
