@@ -429,17 +429,18 @@
                   </span>
                 </div>
               </li>
-              <li class="relative pointer" onclick="cycleBackgroundImage();">
+              <li class="relative pointer">
+                <div onclick="cycleBackgroundImage();">
                   <i class="material-icons blue small">wallpaper</i>
                   Swap wallpaper
+                </div>
                 <div class="right top absolute nudge-y-12">
                   <input id="BGColor" type="color" class="valign tooltip pointer" onclick="event.stopPropagation();" data-title="Set plain color.." oninput="gebi('desktop').style.backgroundImage = 'none'; gebi('desktop').style.backgroundColor = this.value; gebi('actionMenu').classList.add('op25');" onchange="gebi('actionMenu').classList.remove('op25');" value="#000000"/>
+                  <i class="material-icons blueBg small padding25 tooltip pointer" data-title="Set Wallpaper from computer (temp.)" >
+                    backup
+                    <input class="op0 absolute top left maxHeight maxWidth" type="file" onchange="uploadDesktopImage(this)">
+                  </i>
                 </div>
-              </li>
-              <li class="relative pointer">
-                  <i class="material-icons blue small">wallpaper</i>
-                  Wallpaper from computer (temp.)
-                  <input class="op0 absolute top left maxHeight maxWidth" type="file" onchange="uploadDesktopImage(this)">
               </li>
               <li class="relative pointer" onclick="setLoginGradientWindow();">
                 <i class="material-icons blue small">gradient</i>
