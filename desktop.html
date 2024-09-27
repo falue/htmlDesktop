@@ -378,12 +378,12 @@
                 </span>
                 <span class="grey marginX50">|</span>
                 <span class="saveButtonsTooltips tooltip pointer" data-title="Temporary save these settings as a new file [alt]+[shift]+[S]" onclick="saveAs(false);">
-                  <i class="material-icons blue small">save</i>
+                  <i class="material-icons blue small">save_as</i>
                   Save as..
                 </span>
                 <span class="grey marginX50">|</span>
                 <span class="saveButtonsTooltips tooltip pointer" data-title="Export these settings as .json" onclick="saveAs(true);" >
-                  <i class="material-icons small blue">file_upload</i>
+                  <i class="material-icons small blue">cloud_download</i>
                   Export
                 </span>
               </li>
@@ -583,7 +583,7 @@
               <li class="tooltip tooltipBottom noLiHover" data-title="Use on hidden Keyboard or power point presenter">
                 <div>
                   <i class="material-icons blue small">swap_horiz</i>
-                  Left & Right arrow triggers:
+                  Left & Right arrow keys:
                   <select id="leftRightArrowSelect" onchange="arrowAction = this.value; localStorage.setItem('htmlDesktop-arrowAction', arrowAction);" class="padding05 maxWidth100 marginX1-50">
                     <option value="NOTHING" selected>- Nothing -</option>
                     <option value="ACTION">Trigger Action/System notification</option>
