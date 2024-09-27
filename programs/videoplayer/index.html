@@ -27,7 +27,7 @@
     <div style="position:relative;">
         <input type="range" id="currentTimeRange" style="width:100%;" step="0.1" class="valign" value="0" min="0" max="100" oninput="seek(this.value); this.blur();">
         <code style="position:absolute; top:11px; right:25px; pointer-events: none;">
-            <span id="currentTime">00:00</span>/<span id="duration">00:00</span>
+            <span id="currentTime">0.0</span>/<span id="duration">0.0</span>
         </code>    
     </div>
     <div class="hotkeys gallery hide">
@@ -71,8 +71,8 @@
                 </td>
             </tr>
             <tr>
-                <td style="width:33%; font-weight: bold;">In <span id="inPoint" style="font-weight:normal">00:00</span></td>
-                <td style="font-weight: bold;">Out <span id="outPoint" style="font-weight:normal">00:00</span></td>
+                <td style="width:33%; font-weight: bold;">In <span id="inPoint" style="font-weight:normal">0.0s</span></td>
+                <td style="font-weight: bold;">Out <span id="outPoint" style="font-weight:normal">0.0s</span></td>
             </tr>
         </table>
     </div>
