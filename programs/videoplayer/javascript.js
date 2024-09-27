@@ -38,7 +38,7 @@ function setup() {
 
 function setupVideo() {
     duration = gebi('video').duration;
-    gebi('duration').innerHTML = secToTime(duration);
+    gebi('duration').innerHTML = duration.toFixed(1)+"s";
     gebi('currentTimeRange').setAttribute("max", parseInt(duration)); 
 }
 
@@ -329,8 +329,8 @@ function setI() {
     console.log("set start");
     i = video.currentTime;
     if(i < o) o = 0;
-    gebi("inPoint").innerHTML = secToTime(i);
-    gebi("outPoint").innerHTML = secToTime(o);
+    gebi("inPoint").innerHTML = i.toFixed(2)+"s";
+    gebi("outPoint").innerHTML = o.toFixed(2)+"s";
 }
 
 function setO() {
@@ -339,21 +339,21 @@ function setO() {
     if(i > o) i = 0;
     video.currentTime = i;
     
-    gebi("inPoint").innerHTML = secToTime(i);
-    gebi("outPoint").innerHTML = secToTime(o);
+    gebi("inPoint").innerHTML = i.toFixed(2)+"s";
+    gebi("outPoint").innerHTML = o.toFixed(2)+"s";
 }
 
 function clear() {
     console.log("clear");
     i = 0;
     o = 0;
-    gebi("inPoint").innerHTML = secToTime(i);
-    gebi("outPoint").innerHTML = secToTime(o);
+    gebi("inPoint").innerHTML = i.toFixed(2)+"s";
+    gebi("outPoint").innerHTML = o.toFixed(2)+"s";
 }
 
 function checkForO(time) {
     // console.log(time);
-    gebi("currentTime").innerHTML = secToTime(time);
+    gebi("currentTime").innerHTML = time.toFixed(1);
     gebi("currentTimeRange").value = time;
     if(o > 0) {
         // leeway if(o < time +.25 && time-0.25 > o) {
@@ -477,10 +477,6 @@ function changeLetterboxColor(value) {
     document.getElementById("letterboxColor").value = value;
     document.getElementById("letterboxColorText").value = value;
     gebi('body').style.backgroundColor = value;  // If blur is applied, chose the same color
-}
-
-function secToTime(sec) {
-    return zeroPad(Math.floor(sec / 60), 2)+':'+zeroPad((sec-Math.floor(sec / 60)*60).toFixed(0), 2)
 }
 
 function seek(time) {
