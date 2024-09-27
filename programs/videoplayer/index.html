@@ -25,7 +25,7 @@
         <!-- <button class="medium" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">Open in Pop Up</button> -->
     </div>
     <div style="position:relative;">
-        <input type="range" id="currentTimeRange" style="width:100%;" step="0.1" class="valign" value="0" min="0" max="100" oninput="seek(this.value); this.blur();">
+        <input id="currentTimeRange" style="width:100%; cursor:ew-resize" type="range" step="0.1" class="valign" value="0" min="0" max="100" oninput="seek(this.value); this.blur();">
         <code style="position:absolute; top:11px; right:25px; pointer-events: none;">
             <span id="currentTime">0.0</span>/<span id="duration">0.0</span>
         </code>    
@@ -104,7 +104,7 @@
         <label>
             <strong>Speed</strong>
             <code>
-                <input style="width:8em;" placeholder="Type speed + enter" onchange="changeSpeed(parseFloat(this.value*10))">
+                <input style="width:8em" placeholder="Type speed + enter" onchange="changeSpeed(parseFloat(this.value*10))">
                 <span id="speed-val">1</span>x</code>
             <button class="small" onclick="gebi('speed').value=10; setColors()" title="Set to default">default</button>
         </label>
@@ -140,22 +140,8 @@
         </label>
         <input id="sepia" type="range" min="0" max="1" step="0.05" value="0" oninput="setColors()"/>
     </div>
-    <div style="padding-bottom:10px">
-        <strong>Transform</strong>
-        <code>
-            <button onclick="transformVideo('zoomin'); this.blur();" class="small">+</button>
-            <button onclick="transformVideo('zoomout'); this.blur();" class="small">-</button>
-            <button onclick="transformVideo('left'); this.blur();" class="small">⇠</button>
-            <button onclick="transformVideo('right'); this.blur();" class="small">⇢</button>
-            <button onclick="transformVideo('up'); this.blur();" class="small">⇡</button>
-            <button onclick="transformVideo('down'); this.blur();" class="small">⇣</button>
-            <button onclick="transformVideo('rotateleft'); this.blur();" class="small">&#x21bb;</button>
-            <button onclick="transformVideo('rotateright'); this.blur();" class="small">&#x21ba;</button>
-            <button onclick="transformVideo('hardReset'); this.blur();" class="small">Reset</button>
-        </code>
-    </div>
     <div>
-        <button class="redBg" onclick="gebi('speed').value=10; gebi('blur').value=0; gebi('saturate').value=1; gebi('hue').value=0; gebi('brightness').value=100; gebi('contrast').value=1; gebi('invert').value=0; gebi('sepia').value=0; setColors(); transformVideo('hardReset');">
+        <button onclick="gebi('speed').value=10; gebi('blur').value=0; gebi('saturate').value=1; gebi('hue').value=0; gebi('brightness').value=100; gebi('contrast').value=1; gebi('invert').value=0; gebi('sepia').value=0; setColors()">
             default all
         </button>
     </div>

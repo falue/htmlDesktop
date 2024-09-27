@@ -8,16 +8,6 @@ let isVideoplayer = true;
 let imageGallery = [];
 let imageGalleryIndex = 0;
 
-// Tranformation
-let zoom = 1;
-let rotate = 0;
-let topMargin = 0;
-let leftMargin = 0;
-let rotateLast = rotate;
-let zoomLast = zoom;
-let topMarginLast = topMargin;
-let leftMarginLast = leftMargin;
-
 function setup() {
     video = gebi("video");
     gallery = gebi("gallery");
@@ -482,57 +472,3 @@ function changeLetterboxColor(value) {
 function seek(time) {
     video.currentTime = time;
 }
-
-function transformVideo(action) {
-    switch(action) {
-      case "zoomin":
-        zoom += 0.05;
-        break;
-      case "zoomout":
-        zoom -= 0.05;
-        break;
-      case 'left':
-        leftMargin -= 5;
-        break;
-      case 'right':
-        leftMargin += 5;
-        break;
-      case 'up':
-        topMargin -= 5;
-        break;
-      case 'down':
-        topMargin += 5;
-        break;
-      case "rotateleft":
-        rotate += 1;
-        break;
-      case "rotateright":
-        rotate -= 1;
-        break;
-      case "reset":
-        rotate = 0;
-        zoom = 1;
-        topMargin = 0;
-        leftMargin = 0;
-        break;
-      case "hardReset":
-        rotate = 0;
-        zoom = 1;
-        topMargin = 0;
-        leftMargin = 0;
-        break;
-      case "resetLast":
-        rotate = rotateLast;
-        zoom = zoomLast;
-        topMargin = topMarginLast;
-        leftMargin = leftMarginLast;
-        break;
-    }
-    if(action != "reset") {
-      rotateLast = rotate;
-      zoomLast = zoom;
-      topMarginLast = topMargin;
-      leftMarginLast = leftMargin;
-    }
-    video.style.transform ='scale('+zoom+') rotate('+rotate+'deg) translate('+leftMargin+'px,'+topMargin+'px)';
-  }

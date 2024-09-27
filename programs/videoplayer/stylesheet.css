@@ -19,8 +19,9 @@ body {
     color: white;
 }
 
-.blueBg { background-color: rgba(88,150,255,1); }
-.redBg { background-color: rgba(255,80,80,1); }
+.blueBg {
+    background-color: rgba(88,150,255,1);
+}
 
 aside {
     position: fixed;
