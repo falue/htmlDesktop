@@ -28,8 +28,7 @@ function setup() {
 
 function setupVideo() {
     duration = gebi('video').duration;
-    gebi('duration').innerHTML = duration.toFixed(1)+"s";
-    gebi('currentTimeRange').setAttribute("max", parseInt(duration)); 
+    gebi('duration').innerHTML = duration;
 }
 
 // Feel free to fork and improve on this if you'd like
@@ -319,8 +318,8 @@ function setI() {
     console.log("set start");
     i = video.currentTime;
     if(i < o) o = 0;
-    gebi("inPoint").innerHTML = i.toFixed(2)+"s";
-    gebi("outPoint").innerHTML = o.toFixed(2)+"s";
+    gebi("inPoint").innerHTML = i;
+    gebi("outPoint").innerHTML = o;
 }
 
 function setO() {
@@ -329,22 +328,21 @@ function setO() {
     if(i > o) i = 0;
     video.currentTime = i;
     
-    gebi("inPoint").innerHTML = i.toFixed(2)+"s";
-    gebi("outPoint").innerHTML = o.toFixed(2)+"s";
+    gebi("inPoint").innerHTML = i;
+    gebi("outPoint").innerHTML = o;
 }
 
 function clear() {
     console.log("clear");
     i = 0;
     o = 0;
-    gebi("inPoint").innerHTML = i.toFixed(2)+"s";
-    gebi("outPoint").innerHTML = o.toFixed(2)+"s";
+    gebi("inPoint").innerHTML = i;
+    gebi("outPoint").innerHTML = o;
 }
 
 function checkForO(time) {
     // console.log(time);
-    gebi("currentTime").innerHTML = time.toFixed(1);
-    gebi("currentTimeRange").value = time;
+    gebi("currentTime").innerHTML = time;
     if(o > 0) {
         // leeway if(o < time +.25 && time-0.25 > o) {
         if(time > o) {
@@ -442,32 +440,3 @@ function showClass(className) {
           elements[i].classList.add('hide');
       }
   }
-
-function videoFit(fit) {
-    video.classList.remove('scale');
-    video.classList.remove('letterbox');
-    video.classList.remove('stretch');
-    video.classList.add(fit);
-
-    let scaleButtons = document.getElementsByClassName("scaleButton");
-    for(i=0; i< scaleButtons.length; i++) { 
-            scaleButtons[i].classList.remove('blueBg');
-        }
-    gebi(fit).classList.add('blueBg');
-    if(fit === "letterbox") {
-        show('letterboxColorContainer');
-    } else {
-        hide('letterboxColorContainer');
-    }
-}
-
-function changeLetterboxColor(value) {
-    video.style.backgroundColor = value;
-    document.getElementById("letterboxColor").value = value;
-    document.getElementById("letterboxColorText").value = value;
-    gebi('body').style.backgroundColor = value;  // If blur is applied, chose the same color
-}
-
-function seek(time) {
-    video.currentTime = time;
-}
