@@ -373,7 +373,6 @@ function toggleLoop() {
     console.log("toggle loop");
     video.loop = !video.loop;
     gebi("looping").innerHTML = video.loop ? 'Yes' : 'No';
-    gebi("looping").classList.toggle("blueBg");
 }
 
 
