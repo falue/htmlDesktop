@@ -113,9 +113,9 @@ function removeGradientColor(e) {
 function setGradientType(newType) {
     type = newType;
     if(type === 'linear-gradient') {
-        gebi('angleContainer').style.opacity='0';
-    } else {
         gebi('angleContainer').style.opacity='1';
+    } else {
+        gebi('angleContainer').style.opacity='0';
     }
     updateGradient();
 }
