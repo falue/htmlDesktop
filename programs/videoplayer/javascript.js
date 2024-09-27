@@ -483,11 +483,6 @@ function secToTime(sec) {
     return zeroPad(Math.floor(sec / 60), 2)+':'+zeroPad((sec-Math.floor(sec / 60)*60).toFixed(0), 2)
 }
 
-function zeroPad(num, places) {
-    var zero = places - num.toString().length + 1;
-    return Array(+(zero > 0 && zero)).join("0") + num;
-}
-
 function seek(time) {
     video.currentTime = time;
 }
