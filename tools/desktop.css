@@ -540,8 +540,7 @@ body {
     pointer-events: none;
     background-image: url(../tools/gpuFail.png);
     background-size: 100% 100%;
-    background-repeat: no-repeat;
-    animation: gpuFail 5000ms ease-in infinite;
+    animation: gpuFail 5000ms ease-in infinite,  gpuFailMovement 3333ms linear infinite;
 }
 
 

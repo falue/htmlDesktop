@@ -733,6 +733,15 @@ textarea {
 
 
 
+@keyframes gpuFailMovement {
+    0.0% { background-position: 0px 0px;  background-size: 100% 100%; }
+    9.0% { background-position: 0px 0px;  background-size: 100% 100%; }
+    10.0% { background-position: 666px 0; background-size: 160% 100%; }
+    11.0% { background-position: 666px 0; background-size: 100% 100%; }
+    50.0% { background-position: 666px 0; background-size: 100% 100%; }
+    51.0% { background-position: 0px 0px; background-size: 100% 100%; }
+}
+
 @keyframes gpuFail {
     0.0% { transform: scaleX(1);                    filter: brightness(90%); }
     1.0% { transform: scaleX(1);                   filter: brightness(90%); }
