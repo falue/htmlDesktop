@@ -275,6 +275,31 @@ header.windowmenu .programButtons:hover {
     z-index: 20000;
 }
 
+@media all and (max-width: 800px) {
+    /* Make as much space as possible */
+    .actionMenu {
+        top: 0;
+        height: 100%;
+        overflow-y: auto;
+        border-radius: 0;
+    }
+    .actionMenu .footer {
+        position: relative;
+        margin:0;
+        text-align: center;
+    }
+    .actionMenu .columns {
+        padding: 0.5em !important;
+    }
+}
+
+@media all and (max-width: 600px) {
+    /* Make one column */
+    .actionMenu .columns {
+        width: 100% !important;
+    }
+}
+
 #actionMenu,
 #actionMenu.op25 {
     transition: opacity 250ms;
