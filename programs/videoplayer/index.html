@@ -59,7 +59,6 @@
             <div><span>9</span> or <span>alt + u</span>: Seek start or 'i' and pause</div>
             <div><span>/</span> or <span>alt + f</span>: Fullscreen</div>
             <div><span>=</span> or <span>alt + l</span>: Loop</div>
-            <div><span>alt + number</span> </span>: Jump to chapter number</div>
         </nav>
     </div>
     <div class="video">
@@ -100,15 +99,6 @@
             <input id="letterboxColor" style="vertical-align: middle; width:1.5em; height:1.5em; padding: 0;" oninput="changeLetterboxColor(this.value)" onchange="this.blur();" type="color" value="#000000">
             <input id="letterboxColorText" onchange="changeLetterboxColor(this.value)" type="text" size="8" value="#000000" class="" style="width:auto; display:inline-block">
         </label>
-    </div>
-    <div class="video">
-        <strong>Chapters</strong>
-        <button class="" onclick="addChapter(video.currentTime)">
-            Add chapter @ current video position
-        </button>
-        <div id="chapterList" class="padding50 greyBorder marginY50" style="max-width:350px">
-            <span class="small grey">No chapters.</span>
-        </div>
     </div>
     <div class="video">
         <strong>Video filters</strong>

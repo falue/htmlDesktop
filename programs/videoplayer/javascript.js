@@ -7,7 +7,6 @@ let isFullscreen = false;
 let isVideoplayer = true;
 let imageGallery = [];
 let imageGalleryIndex = 0;
-let chapters = [0.0];
 
 // Tranformation
 let zoom = 1;
@@ -281,15 +280,6 @@ function keyboardController(event) {
 
         if(event.altKey || ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", " "].includes(key) || /^[0-9]+$/.test(key)) {
             if(isVideoplayer) {
-                // Chapter navigation when number plus alt
-                if(event.altKey) {
-                    if(chapters[parseInt(key)-1] >= 0) {
-                        video.currentTime = chapters[parseInt(key)-1];       
-                        video.play();
-                        return
-                    }
-                }
-                // if number or anything else
                 switch(key) {
                     case "0": case "m": toggleMute(); break;
                     case "1": case "i": setI(); event.preventDefault(); break;
@@ -555,28 +545,3 @@ function transformVideo(action) {
     }
     video.style.transform ='scale('+zoom+') rotate('+rotate+'deg) translate('+leftMargin+'px,'+topMargin+'px)';
   }
-
-  function addChapter(sec) {
-    if(!chapters.includes(sec)) {
-        chapters.push(sec);
-        buildChapters();
-    }
-}
-
-function buildChapters() {
-    let chapterList = gebi('chapterList');
-    chapterList.innerHTML = '';
-    chapters.sort(function (a, b) {  return a - b;  });
-    for(i=0; i< chapters.length; i++) {
-        let clearChapter = '<span class="redBg" title="Remove chapter" style="color:white; display:inline-block; width:1.5em; height:1.5em; border-radius:50%; top:0; margin-left:.5em; padding-top:.12em; box-sizing:border-box;" onclick="removeChapter('+i+')">&times;</span>';
-        if(i == 0) clearChapter = '';
-        chapterList.innerHTML += '<button class="small" title="alt + '+(i+1)+'" style="margin:0 0.5em 0.5em 0">#'+(i+1)+') <span onclick="seek('+chapters[i]+')">'+secToTime(chapters[i])+'</span>'+clearChapter+'</button>';
-    }
-    if(chapters.length === 1) {
-        chapterList.innerHTML = '<span class="small grey">No chapters.</span>';
-    }
-}
-function removeChapter(index) {
-    chapters.splice(index, 1);
-    buildChapters();
-}
