@@ -138,19 +138,12 @@ async function playCommandAtIndex(index) {
   }
 }
 
-<<<<<<< HEAD
-function resetConsole() {
-  /* gebi("console").innerHTML = "";
-  bashProfileName = bashProfileNameInitial;
-  playCommandAtIndex(0); */
-=======
 function resetProfile() {
   bashProfileName = bashProfileNameInitial;
 }
 
 function resetConsole() {
   resetProfile();
->>>>>>> beschatterSe02
   const url = new URL(window.location.href);
   url.searchParams.set('reloadTime', Date.now().toString());
   window.location.href = url.toString();
@@ -184,15 +177,11 @@ async function askCredentials(outcome, prompt=false, success=false, error=false)
   // Scroll to bottom of console
   scrollToBottom();
   await delay(50); // wait for release of enter from action before!
-<<<<<<< HEAD
-  printToConsole("Password:🔒 ");
-=======
   if(prompt!==false) {
     printToConsole(prompt+"<i class='material-icons small valign'>lock</i> ");
   } else {
     printToConsole("Password:<i class='material-icons small valign'>lock</i> ");
   }
->>>>>>> beschatterSe02
   // enter 13
   // f=fail = 70
   // s=succeed = 83
@@ -206,15 +195,11 @@ async function askCredentials(outcome, prompt=false, success=false, error=false)
   if(returnKey != 13) enterKey = await waitForKey([13]);
   // If "s" & enter ist typed, or outcome is true and not false and not "real", then grant access
   if((((returnKey === 83 && enterKey === 13) && credentialsTrials < 3) || outcome === true || outcome === credentialsTrials+1) && outcome != false) {
-<<<<<<< HEAD
-    printToConsole("<br>Access granted.<br>", "success");
-=======
     if(success) {
       printToConsole(success, "success");
     } else if (success === false) {
       printToConsole("<br>Access granted.<br>", "success");
     }
->>>>>>> beschatterSe02
     credentialsTrials = 0;
     return true;
   } else {
@@ -521,8 +506,6 @@ async function playCommand(command) {
       break;
     case "goto":
       await playCommandAtIndex(command.parameters[0]);
-<<<<<<< HEAD
-=======
       break;
     case "garbageCollection":
       // FIXME: delete by line, not by element
@@ -535,7 +518,6 @@ async function playCommand(command) {
         element.removeChild(element.children[0]);
         amount--;
       }
->>>>>>> beschatterSe02
       break;
     case "br":
       printToConsole("<br>");
