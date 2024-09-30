@@ -47,6 +47,7 @@ aside > div {
     padding: 5px 0;
 }
 
+#hotkeysImages div:hover,
 #hotkeysVideos div:hover {
     background: #666;
 }
@@ -97,6 +98,10 @@ select,
 button:focus, button:active,
 input:focus, input:active {
     outline: none;
+}
+
+button:active {
+    filter:invert(1)
 }
 
 .scale {

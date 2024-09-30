@@ -7,6 +7,8 @@ let isFullscreen = false;
 let isVideoplayer = true;
 let imageGallery = [];
 let imageGalleryIndex = 0;
+let slideshowDuration = 1500;
+let isPlaying = false;
 let chapters = [0.0];
 
 // Tranformation
@@ -178,6 +180,46 @@ function displayImage(index) {
     gebi('gallery').style.backgroundImage = `url(${imageGallery[imageGalleryIndex]})`;
 }
 
+function setSlideshowDuration(value) {
+    gebi('slideshowDurationIndicator').innerHTML=parseFloat(value).toFixed(1);
+    slideshowDuration = parseFloat(value)*1000;
+}
+
+function prevImage() {
+    imageGalleryIndex -= 1;
+    displayImage(imageGalleryIndex);
+}
+
+function nextImage() {
+    imageGalleryIndex += 1;
+    displayImage(imageGalleryIndex);
+}
+
+
+async function togglePlayPauseSlideshow() {
+    isPlaying = !isPlaying;
+    if(isPlaying) {
+        console.log("Slideshow started");
+        // Play the slideshow by going to the next image at intervals
+        while (isPlaying) {
+            await delay(slideshowDuration); // Wait for the slideshow duration
+            // If the play/pause button was pressed again, stop the slideshow immediately
+            if (!isPlaying) {
+                console.log("Slideshow paused");
+                break;
+            }
+            nextImage();
+        }
+    } else {
+        // Stop the slideshow if it's playing
+        console.log("Slideshow paused");
+    }
+}
+
+function delay(delayTimeMs) {
+    return new Promise(resolve => setTimeout(resolve, delayTimeMs));
+}
+
 function loadVideoFile(videoFile) {
     var file = videoFile.files[0];
     var type = file.type;
@@ -313,8 +355,9 @@ function keyboardController(event) {
                 }
             } else {
                 switch(key) {
-                    case "4": case "ArrowLeft": imageGalleryIndex -= 1; displayImage(imageGalleryIndex); event.preventDefault(); break;
-                    case "6": case "ArrowRight": imageGalleryIndex += 1; displayImage(imageGalleryIndex); event.preventDefault(); break;
+                    case "5": case " ": case "p": togglePlayPauseSlideshow(); event.preventDefault(); break;
+                    case "4": case "ArrowLeft": prevImage(); event.preventDefault(); break;
+                    case "6": case "ArrowRight": nextImage(); event.preventDefault(); break;
                     case "8": case "t": toggleMenu(); break;
                     case "/": case "f": toggleFullscreen(); break;
                 }
