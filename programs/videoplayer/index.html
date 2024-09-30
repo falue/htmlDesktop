@@ -13,20 +13,19 @@
 <aside id="menu" class="noScrollbar">
     <div>
         <label><strong>MEDIAPLAYER</strong></label>
-        <button class="medium" style="position: absolute; top: .25em; right:.5em; background-color:rgba(255,80,80,1);" onclick="window.location.href = '../../index.html'">&larr; Index</button>
-        <button class="medium" onclick="toggleMenu()">Menu</button>
-        <button class="medium video"
-                onclick="toggleControls()">
-            Video Controls
+        <button class="medium" style="position: absolute; top: 1.25em; right:1em; background-color:rgba(255,80,80,1);" onclick="window.location.href = '../../index.html'">&larr; Index</button>
+        <button class="medium" onclick="toggleMenu()" title="8 or alt + t">≡​​ Hide menu [8]</button>
+        <button class="medium video" onclick="toggleControls()" title="2 or alt + c">
+            … Video Controls [2]
         </button>
-        <button class="medium video" onclick="togglePlayPause()">Play / Pause</button>
-        <button class="medium video" onclick="toggleMute()">Mute</button>
-        <button class="medium" onclick="toggleFullscreen()">Fullscreen</button>
+        <button class="medium video" onclick="togglePlayPause()" title="5 or space or alt + p">► Play/Pause [5]</button>
+        <button class="medium video" onclick="toggleMute()" title="0 or alt + m">&#128263; Mute [0]</button>
+        <button class="medium" onclick="toggleFullscreen()" title="/ or alt + f">&#x26F6; Fullscreen [/]</button>
         <!-- <button class="medium" onclick="window.open('index.html','popup','width=1280,height=960'); return false;">Open in Pop Up</button> -->
     </div>
-    <div style="position:relative;">
+    <div style="position:relative;" class="video">
         <input type="range" id="currentTimeRange" style="width:100%;" step="0.1" class="valign" value="0" min="0" max="100" oninput="seek(this.value); this.blur();">
-        <code style="position:absolute; top:11px; right:25px; pointer-events: none;">
+        <code style="position:absolute; top:1.25em; right:1em; pointer-events: none;">
             <span id="currentTime">00:00</span>/<span id="duration">00:00</span>
         </code>
         <div id="chapterIndicatorContainer" style="pointer-events: none; position: absolute; top:8px; border:none; width: calc(100% - 40px);"></div>
@@ -43,7 +42,7 @@
         </nav>
     </div>
     <div class="hotkeys video">
-        Hotkeys Videos 
+        Hotkeys Videos
         <a href="videplayer_hotkeys.pdf" target="_blank"><button class="small">download PDF</button></a>
         <button class="small" onclick="toggle('hotkeysVideos')">Show</button>
         <br>
@@ -81,15 +80,15 @@
         <label>
             <strong>Sources (Video or image files)</strong>
         </label>
-        <select onchange="changeSource(this.value)" class="video" style="width:48%">
-            <option value="media/Karaoke_Scharlachrot_small.mp4">Karaoke_Scharlachrot.mp4</option>
+        <select onchange="changeSource(this.value)" class="video" style="width:65%">
+            <option value="media/badApple.mp4">【東方】Bad Apple!! ＰＶ【影絵】</option>
             <!-- <option value="" disabled="disabled">----------</option> -->
-            <option value="media/Karaoke_Scharlachrot_5_Sek_Counter_small.mp4">Karaoke_Scharlachrot_5_Sek_Counter.mp4</option>
-            <option value="media/Karaoke_Im_Wagen_Vor_Mir_small.mp4">Karaoke_Im_Wagen_Vor_Mir.mp4</option>
-            <option value="media/Karaoke_Im_Wagen_Vor_Mir_5_Sek_Counter_small.mp4">Karaoke_Im_Wagen_Vor_Mir_5_Sek_Counter.mp4</option>
         </select>
-        <input id="movieSelector" style="width:48%" type="file" onchange="uploadFile(this)" multiple>
-        <div id="galleryList" class="gallery"></div>
+        <div style="position: relative; float: right;">
+            <button style="position: relative;">Upload file(s)</button>
+            <input id="movieSelector" style="width:100%; height:100%; position: absolute; top:0; left:0; opacity: 0;" type="file" onchange="uploadFile(this)" multiple>
+        </div>
+        <ol id="galleryList" class="gallery video"></ol>
     </div>
     <div class="video">
         <strong>Video fitting</strong>
@@ -107,23 +106,25 @@
         <button class="" onclick="addChapter(video.currentTime)">
             Add chapter @ current video position
         </button>
-        <div id="chapterList" class="padding50 greyBorder marginY50" style="max-width:350px">
+        <p id="chapterList" class="padding50 greyBorder marginY50" style="max-width:350px">
             <span class="small grey">No chapters.</span>
-        </div>
+        </p>
     </div>
     <div class="video">
-        <strong>Video filters</strong>
+        <label>
+            <strong>Playback speed</strong>
+            <input id="speedFineDial" style="width:8em;" onchange="changeSpeed(parseFloat(this.value*10))" value="Type speed + enter">
+            <code>
+                <span id="speed-val">1</span>x</code>
+            <button class="small" onclick="gebi('speed').value=10; setColors();" title="Set to default">default</button>
+        </label>
+        <input id="speed" type="range" value="10" min="1" max="160" onchange="changeSpeed(this.value)" oninput="changeSpeed(this.value)">
+    </div>
+    <div class="video">
+        <strong>Video filters..</strong>
         <button class="small" onclick="toggle('videoFilters')">Show</button>
         <br>
         <nav id="videoFilters" class="hide">
-            <label>
-                <strong>Speed</strong>
-                <code>
-                    <input style="width:8em;" placeholder="Type speed + enter" onchange="changeSpeed(parseFloat(this.value*10))">
-                    <span id="speed-val">1</span>x</code>
-                <button class="small" onclick="gebi('speed').value=10; setColors()" title="Set to default">default</button>
-            </label>
-            <input id="speed" type="range" value="10" min="1" max="160" onchange="changeSpeed(this.value)" oninput="changeSpeed(this.value)">
             <label>
                 <strong>Blur</strong><code><span id="blur-val">0</span>px</code>
                 <button class="small" onclick="gebi('blur').value=0; setColors()" title="Set to default">default</button>
@@ -169,13 +170,14 @@
                     <button onclick="transformVideo('hardReset'); this.blur();" class="small">Reset</button>
                 </code>
             </nav>
+            <div>
+                <br>
+                <button class="redBg" onclick="gebi('blur').value=0; gebi('saturate').value=1; gebi('hue').value=0; gebi('brightness').value=100; gebi('contrast').value=1; gebi('invert').value=0; gebi('sepia').value=0; setColors(); transformVideo('hardReset');">
+                    Default all filters
+                </button>
+            </div>
         </nav>
     </div>
-        <div>
-            <button class="redBg" onclick="gebi('speed').value=10; gebi('blur').value=0; gebi('saturate').value=1; gebi('hue').value=0; gebi('brightness').value=100; gebi('contrast').value=1; gebi('invert').value=0; gebi('sepia').value=0; setColors(); transformVideo('hardReset');">
-                Default all
-            </button>
-        </div>
 </aside>
 
 
@@ -191,7 +193,7 @@
         ondblclick="this.webkitRequestFullscreen()"
     >
     <!--onpause="clearTimeout(timeout)"-->
-        <source src="media/Karaoke_Scharlachrot_small.mp4" type="video/mp4"/>
+        <source src="media/badApple.mp4" type="video/mp4"/>
         Your not cool and I won't let you watch this awesome video of cats.
     </video>
 </section>

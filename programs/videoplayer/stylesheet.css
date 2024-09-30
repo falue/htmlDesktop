@@ -23,31 +23,41 @@ body {
 .redBg { background-color: rgba(255,80,80,1); }
 
 aside {
+    margin: 1em;
+    padding: 1em;
+    box-sizing: border-box;
     position: fixed;
     width: 420px;
-    height: 100%;
     background: #444;
     overflow-y: auto;
     z-index: 666;
+    max-height: calc(100% - 2em);
+    border-radius: 3px;
 }
 
-aside div {
-    padding: 5px 20px;
+aside > div {
+    padding: 10px 0;
     border-bottom: 1px solid #222;
     border-top: 1px solid #888;
     transition: background 0.3s ease;
 }
 
+#hotkeysImages div,
+#hotkeysVideos div {
+    padding: 5px 0;
+}
+
+#hotkeysVideos div:hover {
+    background: #666;
+}
+
 aside div:first-child {
     padding-top: 20px;
+    border-top: none;
 }
 
 aside div:last-child {
     border-radius: 0 0 4px 0;
-}
-
-aside div:not(.hotkeys):hover {
-    background: #666;
 }
 
 label {
@@ -76,6 +86,10 @@ code {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
+}
+
+ol {
+    padding-inline-start: 1em;
 }
 
 video,

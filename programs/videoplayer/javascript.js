@@ -25,7 +25,7 @@ function setup() {
 
     // READ IMAGES FROM TO LOCALSTORAGE
     let data = JSON.parse(localStorage.getItem('videoplayer'));
-    if(data.gallery) {
+    if(data && data.gallery) {
         console.log("some data in gallery!");
         imageGallery = data.gallery;
         isVideoplayer = false;
@@ -33,7 +33,7 @@ function setup() {
         hideClass('video');
         showClass('gallery');
         displayImage(0);
-        gebi('galleryList').innerHTML = `${imageGallery.length} image(s) from memory`;
+        gebi('galleryList').innerHTML = `<li>${imageGallery.length} image(s) from memory <button onclick="clearMemory()" style="display:inline-block; width: fit-content;">clear memory</button></li>`;
     }
 }
 
@@ -141,7 +141,8 @@ function uploadFile(data) {
         // Show video controls
         loadVideoFile(data);
         showClass('video');
-        hideClass('gallery');
+        //hideClass('gallery');
+        gebi('galleryList').innerHTML = `<li>Video: ${data.files[0].name}</li>`;
     }
 }
 
@@ -149,7 +150,7 @@ async function makeImageGallery(data) {
     gebi('galleryList').innerHTML = '';
     for (let index = 0; index < data.files.length; index++) {
         imageGallery.push(await convertBase64(data.files[index]));
-        gebi('galleryList').innerHTML += `${index+1}. ${data.files[index].name}<br>`;
+        gebi('galleryList').innerHTML += `<li>${index+1}. ${data.files[index].name}</li>`;
     }
     // SAVE TO LOCALSTORAGE
     try {
@@ -163,6 +164,11 @@ async function makeImageGallery(data) {
     }
     gebi('movieSelector').value = '';
     displayImage(0);
+}
+
+function clearMemory() {
+    localStorage.removeItem('videoplayer');
+    window.location="./"
 }
 
 function displayImage(index) {
@@ -574,7 +580,7 @@ function buildChapters() {
         if(i == 0) clearChapter = '';
         chapterList.innerHTML += '<button class="small" title="alt + '+(i+1)+'" style="margin:0 0.5em 0.5em 0">#'+(i+1)+') <span onclick="seek('+chapters[i]+')">'+secToTime(chapters[i])+'</span>'+clearChapter+'</button>';
         let left = (chapters[i] / duration) * 100;
-        chapterIndicators.innerHTML += '<div class="redBg" style="border:none; position:absolute; top:0; height:19px; left:'+left+'%; width:1px; pointer-events: none; padding:0;"></div>'
+        chapterIndicators.innerHTML += '<div class="redBg" style="border:none; position:absolute; top:.4em; height:19px; left:'+left+'%; width:1px; pointer-events: none; padding:0;"></div>'
     }
     if(chapters.length === 1) {
         chapterList.innerHTML = '<span class="small grey">No chapters.</span>';
