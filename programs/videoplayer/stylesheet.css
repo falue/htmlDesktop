@@ -19,7 +19,11 @@ body {
     color: white;
 }
 
+.blue { color: rgba(88,150,255,1); }
 .blueBg { background-color: rgba(88,150,255,1); }
+.green { color: rgb(150, 255, 80); }
+.greenBg { background-color: rgb(150, 255, 80); }
+.red { color: rgba(255,80,80,1); }
 .redBg { background-color: rgba(255,80,80,1); }
 
 aside {

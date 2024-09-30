@@ -390,6 +390,11 @@ function setI() {
     if(i < o) o = 0;
     gebi("inPoint").innerHTML = secToTime(i);
     gebi("outPoint").innerHTML = secToTime(o);
+
+    if(gebi('inPointMarker')) gebi('inPointMarker').remove();
+    let chapterIndicators = gebi('chapterIndicatorContainer');
+    let left = (i / duration) * 100;
+    chapterIndicators.innerHTML += '<div id="inPointMarker" class="blueBg" style="border:none; position:absolute; top:.4em; height:19px; left:'+left+'%; width:2px; pointer-events: none; padding:0;"></div>'
 }
 
 function setO() {
@@ -400,6 +405,11 @@ function setO() {
     
     gebi("inPoint").innerHTML = secToTime(i);
     gebi("outPoint").innerHTML = secToTime(o);
+
+    if(gebi('outPointMarker')) gebi('outPointMarker').remove();
+    let chapterIndicators = gebi('chapterIndicatorContainer');
+    let left = (o / duration) * 100;
+    chapterIndicators.innerHTML += '<div id="outPointMarker" class="greenBg" style="border:none; position:absolute; top:.4em; height:19px; left:'+left+'%; width:2px; pointer-events: none; padding:0;"></div>'
 }
 
 function clear() {
