@@ -1,0 +1,264 @@
+{
+    "settings": {
+        "systemColor": "#c0c0c0",
+        "desktopColor": "#008081",
+        "desktopImg": "os/windows95/desktop-2.jpg",
+        "os": "windows95",
+        "darkMode": true,
+        "username": "Carine",
+        "password": "",
+        "workstation": "Carine",
+        "selectedSystemMessage": 3,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+    ],
+    "windows": [
+        {
+            "windowName": "Office - Spreadsheet calculator",
+            "icon": "border_all",
+            "contentPath": "office/spreadsheet.html?type=spreadsheet&data=23",
+            "x": 5,
+            "y": 2,
+            "w": 900,
+            "h": 666,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 1,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 93,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 93,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 2,
+            "y": 30,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Document.mp4",
+            "icon": "fileMovie.png",
+            "x": 0,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Links",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Project.jpg",
+            "icon": "fileImage.png",
+            "x": 0,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Home.mkv",
+            "icon": "fileMovie.png",
+            "x": 1,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Project",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Image Copy.JPG",
+            "icon": "fileImage.png",
+            "x": 0,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Home ee3eb Copy.psd",
+            "icon": "fileImage.png",
+            "x": 5,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Image",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "var Copy.mp3",
+            "icon": "mp3.png",
+            "x": 7,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Links d9de6.pyc",
+            "icon": "python.png",
+            "x": 34,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Photos.mpeg",
+            "icon": "fileMovie.png",
+            "x": 14,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet Copy.jpg",
+            "icon": "fileImage.png",
+            "x": 19,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Important Copy",
+            "icon": "folderFull.png",
+            "x": 13,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Document1.docx",
+            "icon": "doc.png",
+            "x": 13,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Important Copy",
+            "icon": "folderFull.png",
+            "x": 27,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "VAR",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "A-433",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "A-433 Copy",
+            "icon": "folderFull.png",
+            "x": 7,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "file.zip",
+            "icon": "zip.png",
+            "x": 23,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Document 12e55 Copy",
+            "icon": "folderFull.png",
+            "x": 26,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet",
+            "icon": "folderFull.png",
+            "x": 21,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "var Copy",
+            "icon": "folderFull.png",
+            "x": 29,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Links.JPG",
+            "icon": "fileImage.png",
+            "x": 29,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Picture.docx",
+            "icon": "doc.png",
+            "x": 0,
+            "y": 4,
+            "action": ""
+        }
+    ],
+    "actions": [],
+    "osNotifications": []
+}

@@ -1,4 +1,4 @@
-09.10.2024 18:00
+09.10.2024 18:05
 os/windows95/systemIcons/dvd.png
 os/windows95/systemIcons/server.png
 os/windows95/systemIcons/python.png
@@ -177,6 +177,7 @@ os/windows/desktop.jpg
 workstations/Saul/desktops/clouds.png
 workstations/_default/userpicture.jpg
 workstations/Saul/userpicture.jpg
+workstations/Carine/userpicture.jpg
 workstations/_default/settings.json
 workstations/_default/folders.json
 workstations/_default/settings FULL EXAMPLE.json
@@ -185,8 +186,13 @@ workstations/Saul/settings.json
 workstations/Saul/folders.json
 workstations/Saul/settings FULL EXAMPLE.json
 workstations/Saul/browser.json
+workstations/Carine/settings.json
+workstations/Carine/folders.json
+workstations/Carine/settings FULL EXAMPLE.json
+workstations/Carine/browser.json
 workstations/_default/bash/script.fakeBash
 workstations/Saul/bash/script.fakeBash
+workstations/Carine/bash/script.fakeBash
 programs/securiton/icon.png
 programs/securiton/splash.png
 programs/securiton/data/213a-4.png
