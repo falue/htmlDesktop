@@ -1,4 +1,34 @@
-23.02.2024 11:50
+09.10.2024 14:17
+os/windows95/systemIcons/dvd.png
+os/windows95/systemIcons/server.png
+os/windows95/systemIcons/python.png
+os/windows95/systemIcons/sleep.png
+os/windows95/systemIcons/zip.png
+os/windows95/systemIcons/doc.png
+os/windows95/systemIcons/file.png
+os/windows95/systemIcons/folderEmpty.png
+os/windows95/systemIcons/usb-plug.png
+os/windows95/systemIcons/usb.png
+os/windows95/systemIcons/trashEmpty.png
+os/windows95/systemIcons/trashFull.png
+os/windows95/systemIcons/fileMovie.png
+os/windows95/systemIcons/volume-control.png
+os/windows95/systemIcons/supervisor.png
+os/windows95/systemIcons/txt.png
+os/windows95/systemIcons/hdd.png
+os/windows95/systemIcons/logo.png
+os/windows95/systemIcons/fileImage.png
+os/windows95/systemIcons/cd-music.png
+os/windows95/systemIcons/mp3.png
+os/windows95/systemIcons/computer.png
+os/windows95/systemIcons/servermngr.png
+os/windows95/systemIcons/pdf.png
+os/windows95/systemIcons/cd.png
+os/windows95/systemIcons/folderFull.png
+os/windows95/systemIcons/network.png
+os/windows95/systemIcons/favorites.png
+os/windows95/systemIcons/speaker.png
+os/windows95/systemIcons/sweeper.png
 os/spa/programIcons/email.png
 os/spa/programIcons/finder.png
 os/spa/programIcons/minimized-public.png
@@ -113,6 +143,8 @@ os/windows/systemIcons/servermngr.png
 os/windows/systemIcons/pdf.png
 os/windows/systemIcons/folderFull.png
 os/windows/systemIcons/favorites.png
+os/windows95/desktop.jpg
+os/windows95/desktop-2.jpg
 os/_generic/userpicture.jpg
 os/_generic/desktops/8.jpg
 os/_generic/desktops/9.jpg
@@ -131,10 +163,13 @@ os/spa/desktop.jpg
 os/mac/desktop.jpg
 os/linux/desktop.jpg
 os/windows/desktop.jpg
+os/windows95/scrollbars.css
+os/windows95/stylesheet.css
 os/spa/stylesheet.css
 os/mac/stylesheet.css
 os/linux/stylesheet.css
 os/windows/stylesheet.css
+os/windows95/desktop.jpg
 os/spa/desktop.jpg
 os/mac/desktop.jpg
 os/linux/desktop.jpg
@@ -146,6 +181,7 @@ workstations/Leo/files/213a-7.png
 workstations/Leo/files/213a-5.png
 workstations/Leo/files/213a-still.png
 workstations/MinervaRezeption/files/calendar.png
+workstations/win95/desktops/clouds.png
 workstations/Polizei/desktop.jpg
 workstations/Polizei/userpicture.jpg
 workstations/Polizei/desktops/desktop.jpg
@@ -191,12 +227,25 @@ workstations/Leo/files/509-1.jpg
 workstations/Leo/files/509-5.jpg
 workstations/Leo/files/509-4.jpg
 workstations/Leo/files/509-6.jpg
+workstations/Leo/files/509-7.jpg
 workstations/Leo/files/509-4-1.jpg
 workstations/Leo/files/642.jpg
 workstations/MinervaRezeption/userpicture.jpg
 workstations/generic/userpicture.jpg
 workstations/Agotha/userpicture.jpg
+workstations/win95/userpicture.jpg
 workstations/hasenfratz/userpicture.jpg
+workstations/telefabi/userpicture.jpg
+workstations/telefabi/files/8.jpg
+workstations/telefabi/files/9.jpg
+workstations/telefabi/files/10.jpg
+workstations/telefabi/files/4.jpg
+workstations/telefabi/files/5.jpg
+workstations/telefabi/files/7.jpg
+workstations/telefabi/files/6.jpg
+workstations/telefabi/files/2.jpg
+workstations/telefabi/files/3.jpg
+workstations/telefabi/files/1.jpg
 workstations/Polizei/settings.json
 workstations/Polizei/folders.json
 workstations/Polizei/browser.json
@@ -236,9 +285,16 @@ workstations/generic/browser.json
 workstations/Agotha/settings.json
 workstations/Agotha/folders.json
 workstations/Agotha/browser.json
+workstations/win95/settings.json
+workstations/win95/folders.json
+workstations/win95/settings FULL EXAMPLE.json
+workstations/win95/browser.json
 workstations/hasenfratz/settings.json
 workstations/hasenfratz/folders.json
 workstations/hasenfratz/browser.json
+workstations/telefabi/settings.json
+workstations/telefabi/folders.json
+workstations/telefabi/browser.json
 workstations/Polizei/bash/script.fakeBash
 workstations/Milan/bash/script.fakeBash
 workstations/Dominic/bash/random.fakeBash
@@ -268,7 +324,9 @@ workstations/Leo/bash/script.fakeBash
 workstations/MinervaRezeption/bash/script.fakeBash
 workstations/generic/bash/script.fakeBash
 workstations/Agotha/bash/script.fakeBash
+workstations/win95/bash/script.fakeBash
 workstations/hasenfratz/bash/script.fakeBash
+workstations/telefabi/bash/script.fakeBash
 workstations/Polizei/desktop.jpg
 workstations/Polizei/desktops/desktop.jpg
 programs/securiton/icon.png
@@ -287,6 +345,16 @@ programs/browser/sites/frutti/logo.png
 programs/browser/sites/myGps2/imgs/map DOTS.png
 programs/browser/sites/myGps2/imgs/map.png
 programs/browser/sites/personenregister/flag.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum_kombi_nur.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/folder-open.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum_kombi_ausser.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/folder-horizontal.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/node.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/sql-join-left-exclude.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/sql-join-inner.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/award_star_bronze_3.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/table-import.png
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/globe-model.png
 programs/browser/sites/qsearch/imgs/logo.png
 programs/browser/sites/myGps1/imgs/map.png
 programs/browser/sites/myGps1/imgs/calendar.png
@@ -517,7 +585,6 @@ programs/map/data/614/map.svg
 programs/map/data/614/map_orig.svg
 programs/wifi/stylesheet.css
 programs/ftp/stylesheet.css
-programs/video/stylesheet.css
 programs/securiton/stylesheet.css
 programs/loading/stylesheet.css
 programs/chat/stylesheet.css
@@ -547,6 +614,14 @@ programs/browser/sites/metis/stylesheet.css
 programs/browser/sites/youtube/stylesheet.css
 programs/browser/sites/utilities/stylesheet.css
 programs/browser/sites/personenregister/stylesheet.css
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/fontawesome.min.css
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/styles-print.css
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/style.css
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/legacy.css
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/fa-brands.min.css
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/sky.css
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/footer.css
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum5.css
 programs/browser/sites/mysteryforum/stylesheet.css
 programs/browser/sites/qsearch/stylesheet.css
 programs/browser/sites/myGps1/stylesheet.css
@@ -560,6 +635,7 @@ programs/browser/sites/sapienz/stylesheet.css
 programs/browser/sites/telefabi/tools/stylesheet.css
 programs/map/stylesheet.css
 programs/imageviewer/imageviewer.css
+programs/filemanager/windows95.css
 programs/filemanager/darkMode.css
 programs/filemanager/treeview.css
 programs/filemanager/lightMode.css
@@ -576,7 +652,6 @@ programs/email/stylesheet.css
 programs/supervisor/stylesheet.css
 programs/wifi/javascript.js
 programs/ftp/javascript.js
-programs/video/javascript.js
 programs/securiton/javascript.js
 programs/loading/javascript.js
 programs/chat/javascript.js
@@ -615,6 +690,16 @@ programs/browser/sites/youtube/javascript.js
 programs/browser/sites/utilities/javascript.js
 programs/browser/sites/personenregister/javascript.js
 programs/browser/sites/mysteryforum/javascript.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/main.min.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/legacy.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/vendor.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/main.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/ext.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/forum5.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/base.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/_history.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/QMAX_animexx.de.js
+programs/browser/sites/mysteryforum/animexx/Forum_ Cosplay - Animexx.de_files/jquery-2.1.4.min.js
 programs/browser/sites/qsearch/searchTerms.js
 programs/browser/sites/qsearch/javascript.js
 programs/browser/sites/myGps1/javascript.js
@@ -665,6 +750,7 @@ programs/chat/data/315/chat.json
 programs/chat/data/508/chat.json
 programs/browser/sites/defaultWebsites.json
 programs/map/data/614/pointsOfInterest.json
+programs/.vscode/settings.json
 programs/email/data/313/newEmail.json
 programs/email/data/313/inbox.json
 programs/email/data/examples/de.json
@@ -679,6 +765,7 @@ programs/bash/defaultScripts/ls-l-a.fakeBash
 programs/bash/defaultScripts/sudo.fakeBash
 tools/libraries/highlight/styles/school-book.png
 tools/libraries/highlight/styles/brown-papersq.png
+tools/gpuFail.png
 tools/libraries/highlight/styles/pojoaque.jpg
 tools/fontface/weblysleek-semibold.svg
 tools/fontface/roboto-v29-latin-regular.svg
