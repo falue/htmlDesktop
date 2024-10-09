@@ -1,0 +1,560 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>IQCSN Chat</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <style type="text/css">
+        body, html {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+            background-color: #e0e0e0;
+            background-image: url(bg.gif);
+        }
+        .chat-container {
+	        position:relative;
+            width: 900px;
+            left:50%;
+            margin: 100px 10px;
+            margin-left:-422px;
+            border: 1px solid #cccccc;
+            background-color: white;
+        }
+        #chat-header {
+            background-color: rgb(227, 182, 127);
+            padding: 5px;
+            text-align: left;
+        }
+        #chat-display .name {
+            font-weight: 800;
+        }
+        #chat-display {
+            /* font-family: 'Courier New', Courier, monospace; */
+            /* font-weight: 800; */
+            height: 405px;
+            overflow: auto;
+            padding: 5px 20px 25px 5px;
+        }
+        #chat-display img {
+            height: 10px;
+            vertical-align: middle;
+        }
+        #chat {
+            /* padding: 5px 10px; */
+            background-color: #cfce95;
+        }
+        #chat-input-container {
+            /* font-family: 'Courier New', Courier, monospace; */
+            width: 500px;
+            cursor: text;
+            /*line-height: 20px; /* image height */
+            white-space: nowrap;
+            display: inline-block;
+            /*padding: 2px 5px 2px 5px;*/ /* WORKS  */
+            padding:5px 0 5px 0;
+            vertical-align:middle;
+            background-color: #ffffff;
+            line-height:30px;
+        }
+        .chat-input {
+            display: inline-block;
+            /* text-align: right; */
+            /* overflow-x: hidden; */
+            /*white-space: nowrap;*/
+            /*height: 10px;*/
+            /*top:0;*/
+            /*left:0;*/
+            
+            /*padding:0 0 4px 0;*/
+            padding:0;
+            /*margin:0;*/
+            margin:4px 0 0 4px;
+            line-height:0;
+            /*line-height:12px;*/
+            white-space: nowrap;
+            overflow:hidden;
+            /*background-color: red;*/
+            
+			font-family: 'Courier New', Courier, monospace;
+            width:1px;
+            height:16px;
+            vertical-align:middle;
+            /*max-width: 285px;*/
+        }
+        #noCursor,
+        #cursor {
+            height: 12px;
+            /*line-height:0;*/
+            display: inline-block;
+            vertical-align: middle;
+            margin-top:0px;
+            padding-bottom:2px;
+            padding-left: 1px;
+            /*padding-bottom: 8px;*/
+        }
+        #cursor {
+            visibility: hidden;
+        }
+        #realUserInput {
+            color: #cfce95;
+            background-color: #cfce95;
+            border:none;
+            font-size: 1px;
+            width: 1px;
+            height: 1px;
+        }
+
+        #realUserInput:focus {
+            outline: none;
+            border: none;
+        }
+        .win95Border {
+            border-bottom:solid 2px #c0c0c0;
+            border-right:solid 2px #c0c0c0;
+            border-left:solid 2px black;
+            border-top:solid 2px black;
+        }
+        .chatInput {
+            /*display: inline-block;*/
+        }
+        .chatInput .win95Button {
+            /*height: 36px;*/
+            vertical-align: bottom;
+        }
+        .win95Button {
+            padding: 5px;
+            background-color: #c0c0c0;
+            border-top:solid 2px white;
+            border-left:solid 2px white;
+            border-right:solid 2px black;
+            border-bottom:solid 2px black;
+        }
+        
+        .win95Button:active {
+            border-bottom:solid 2px white;
+            border-right:solid 2px white;
+            border-left:solid 2px black;
+            border-top:solid 2px black;
+        }
+        .message {
+            margin: 5px 0;
+        }
+        #log {
+            padding: 5px 5px 22px 5px;
+            color: white;
+            background-color: black;
+        }
+        .small {
+            font-size: 12px;
+        }
+        .maxWidth {
+            width:100%;
+        }
+        .maxHeight {
+            height:100%;
+        }
+        table {
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        td {
+            padding: 5px;
+            border: 3px solid #000000;
+        }
+        .headers {
+            font-weight: bold;
+            padding:5px;
+            background-color: #cfce95;
+        }
+        .chatters {
+            width: 50px;
+        }
+        ul {
+            padding: 5px;
+            margin:0;
+        }
+        ul li {
+            list-style: none;
+            white-space: nowrap;
+        }
+        .emoji {
+            height: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body onload="displayPastMessages(); conversationNext(false);">
+    <table style="border: solid black thin;" class="chat-container">
+        <tr>
+            <td id="chat-header" colspan="2">
+            <div style="position:relative">
+                <img src="icons/logo.gif" style="padding-right: 8px;">
+                <strong>IQCSN Chat</strong>
+                (welcome to your private chatroom)
+                <img src="icons/world.gif" style="position:absolute; right:10px; top:8px;">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top; padding:0;">
+                <div id="chat-display" style="overflow: auto;">
+                    <!-- Chat messages will appear here -->
+                </div>
+            </td>
+            <td style="vertical-align: top; padding:0;" class="chatters">
+                <div class="headers">Previews contacts (24)</div>
+                <ul style="overflow: auto; height:375px; padding: 0 12px 0 12px;">
+                    <li><img src="emoji/set1/enojo.gif" class="emoji"> brita</li>
+                    <li><img src="emoji/set1/feliz.gif" class="emoji"> abua</li>
+                    <li><img src="emoji/set1/apenado.gif" class="emoji"> saul</li>
+                    <li><img src="emoji/set1/otro.gif" class="emoji"> xXsabineXx</li>
+                    <li><img src="emoji/set1/yoqse.gif" class="emoji"> karen_7_7</li>
+                    <li><img src="emoji/set1/uhm.gif" class="emoji"> dan0Smith</li>
+                    <li><img src="emoji/set1/qno.gif" class="emoji"> cool_click295</li>
+                    <li><img src="emoji/set1/sonriente.gif" class="emoji"> chatMaster9000</li>
+                    <li><img src="emoji/set1/ohhh.gif" class="emoji"> carla-cmyk</li>
+                    <li><img src="emoji/set1/tampocose.gif" class="emoji"> NetScapeWarrior</li>
+                    <li><img src="emoji/set1/ufnose.gif" class="emoji"> ChatGuru_X</li>
+                    <li><img src="emoji/set1/guinio.gif" class="emoji"> scriptRunner_88</li>
+                    <li><img src="emoji/set1/hablador.gif" class="emoji"> DataWhisperer</li>
+                    <li><img src="emoji/set1/poeshito.gif" class="emoji"> packet_freak</li>
+                    <li><img src="emoji/set1/ohhh.gif" class="emoji"> WinZipStealer</li>
+                    <li><img src="emoji/set1/burlon.gif" class="emoji"> IE_virago</li>
+                    <li><img src="emoji/set1/confuso.gif" class="emoji"> dialupMMM</li>
+                    <li><img src="emoji/set1/enojo.gif" class="emoji"> RetroRaverChatMaster9000</li>
+                    <li><img src="emoji/set1/feliz.gif" class="emoji"> CyberWizard</li>
+                    <li><img src="emoji/set1/apenado.gif" class="emoji"> DialUpDiva</li>
+                    <li><img src="emoji/set1/otro.gif" class="emoji"> ByteKnight</li>
+                    <li><img src="emoji/set1/yoqse.gif" class="emoji"> BinaryBandit</li>
+                    <li><img src="emoji/set1/uhm.gif" class="emoji"> PacketPunk</li>
+                    <li><img src="emoji/set1/qno.gif" class="emoji"> TheCyberGoth</li>
+                    <li><img src="emoji/set1/sonriente.gif" class="emoji"> Win95Warlock</li>
+                    <li><img src="emoji/set1/ohhh.gif" class="emoji"> PixelPirate</li>
+                    <li><img src="emoji/set1/tampocose.gif" class="emoji"> MatrixMaven</li>
+                    <li><img src="emoji/set1/ufnose.gif" class="emoji"> ChatGuru_X</li>
+                    <li><img src="emoji/set1/guinio.gif" class="emoji"> ASCIIArtist</li>
+                    <li><img src="emoji/set1/hablador.gif" class="emoji"> TechnoScribe</li>
+                    <li><img src="emoji/set1/poeshito.gif" class="emoji"> NetSurfer93</li>
+                    <li><img src="emoji/set1/burlon.gif" class="emoji"> NetScapeWarrior</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #cfce95; white-space:nowrap" id="chat" class="chat">
+                <div style="">
+                	<input type="button" class="win95Button" type="button" value="B" style="width:15px; font-weight:bold"><!--
+                	--><input type="button" class="win95Button" type="button" value="i" style="width:15px; font-style:italic;"><!--
+                	--><input type="button" class="win95Button" type="button" value="U" style="width:15px; text-decoration:underline">
+                	
+                	<select>
+                		<option>Font:</option>
+                		<option>Arial</option>
+                		<option>Verdana</option>
+                		<option>Tahoma</option>
+                		<option>Trebuchet</option>
+                		<option>Times</option>
+                		<option>Georgia</option>
+                		<option>Garamond</option>
+                		<option>Courier</option>
+                		<option>Brush</option>
+                	</select>
+                	
+                    <input type="button" class="win95Button" type="button" value="Preferences">
+                    <input type="button" class="win95Button" type="button" value="Friends" style="vertical-align:middle">
+                    <input type="button" class="win95Button" type="button" value="Emotions">
+                    <input type="text" id="realUserInput" onkeypress="handleInput(event);" onblur="blurRealInput()">
+                    <!-- <input type="button" class="win95Button" type="button" value="Stop Voice"> -->
+                </div>
+                <hr>
+                <div style="vertical-align:bottom;">
+                	<div id="chat-input-container" class="win95Border chat-input-container" onclick="focusRealInput();" style="display:inline-block;"><!--
+           	         	--><span id="chat-input" class="chat-input"></span><img src="cursor.gif" id="cursor" alt=""><img src="no_cursor.jpg" id="noCursor" alt=""><!--
+           	         --></div>
+                	<div class="chatInput" style="display:inline-block;">
+                    	<input id="sendButton" class="win95Button" type="button" style="margin-top:8px" onclick="chatInput.innerHTML = ''; realUserInput.value=''; conversationNext(true); chatInput.style.width = '0px';" value="Send"><!-- 
+                     	--><input id="resetButton" class="win95Button" type="button" onclick="resetChat();" value="Clear"><!-- 
+                     	--><!-- 
+                 	--></div>
+                 </div>
+            </td>
+            <td style="background-color: #cfce95; vertical-align: top;">
+                <input type="button" class="win95Button" value="PM">
+                <input type="button" class="win95Button" value="Ignore">
+                <input type="button" class="win95Button" value="More">
+                <hr>
+                <span class="small">
+                    <strong>Status</strong>
+                    <span class="win95Border" style="background-color: white; padding:5px 3px;">I'm available </span><!-- 
+                    --><span class="win95Button" type="button">,</span>
+                    <hr>
+                    <a href="#">Home</a> - <a href="#">Preferences</a> - <a href="#">Basic</a> - <a href="#">History</a>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #cfce95" colspan="2">
+                <input type="button" class="win95Button" type="button" value="Voice: Hands free"><!-- 
+                --><input type="button" class="win95Button" type="button" value="talk" style="background-color: #adda68;">
+                <input type="button" class="win95Button" type="button" value="Ready" style="margin-right:300px;">
+                <!--<span><hr style="display:inline-block; width:250px; margin-bottom: 3px; margin-left:15px; margin-right:15px"></span>-->
+                <span class="small">
+                    <a href="#">About</a>
+                    <a href="#">Account</a>
+                    <a href="#">Help</a>
+                    <a href="#">Change room</a>
+                    <a href="#">Exit</a>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top; padding: 0; background-color: #cfce95">
+                <!-- <img src="gifs/finger-logo-me-girl.gif" alt=""> -->
+                <img src="gifs/hamrad.gif" alt="" style="vertical-align:top; width:16.66%"><!-- 
+                 --><img src="gifs/doghouse1.gif" alt="" style="vertical-align:top; width:16.66%"><!-- 
+                 --><img src="gifs/best800x600.gif" alt="" style="vertical-align:top; width:16.66%"><!-- 
+                 --><img src="gifs/fosi.gif" alt="" style="vertical-align:top; width:16.66%"><!-- 
+                 --><img src="gifs/freeemail.gif" alt="" style="vertical-align:top; width:16.66%"><!-- 
+                 --><img src="gifs/top100womensites.gif" alt="" style="vertical-align:top; width:16.66%">
+            </td>
+            <td style="background-color: #cfce95">
+                <ul>
+                    <li style="font-weight:bold">HOME</li>
+                    <li style="padding-left: 5px;"><a href="#">Whos chatting</a></li>
+                    <li style="padding-left: 5px;"><a href="#">Change room</a></li>
+                    <li style="padding-left: 5px;"><a href="#">Create roomSurf the Web</a></li>
+                    <li style="padding-left: 5px;"><a href="#">Help</a></li>
+                    <li style="padding-left: 5px;"><a href="#">Exit</a></li>
+                </ul>
+                <select>
+                    <option>aaaaaaa</option>
+                    <option>bbbbbbb</option>
+                    <option>ccccccc</option>
+                </option>
+            </td>
+        </tr>
+    </table>
+    
+
+    <script type="text/javascript">
+        // DEFINES WHO IS YOU IN CHAT
+        // Who types, and also your name does not stand there its YOU
+        var pov = "SAUL";
+
+        var pastConversation = [
+            // ATTENTION! APOSTRPOHES (') OR QUOTES (") are not allowed! use "greek smooth breathing ᾽ instead"
+            // {name: "BRITA", pov: pov=="BRITA", text: ' "Did anyone else notice how quiet it's been?", delay: 0, style: "", color: "magenta"},
+            // {name: "BRITA", pov: pov=="BRITA", text: "lately?", delay: 0, style: "", color: "magenta"},
+            // {name: "ABUA", pov: pov=="ABUA", text: "Yeah, almost unsettling...", delay: 0, style: "", color: "green"},
+            // {name: "ABUA", pov: pov=="ABUA", text: "like we're missing something", delay: 0, style: "", color: "green"},
+            // {name: "SAUL", pov: pov=="SAUL", text: "Maybe everyone's just tired. It's been a long stretch for all of us.", delay: 0, style: "", color: "blue"},
+            // {name: "BRITA", pov: pov=="BRITA", text: "True", delay: 0, style: "", color: "magenta"},
+            // {name: "BRITA", pov: pov=="BRITA", text: "but still... ", delay: 0, style: "", color: "magenta"},
+            // {name: "BRITA", pov: pov=="BRITA", text: "you'd expect some kind of update", delay: 0, style: "", color: "magenta"},
+            {name: "BRITA", pov: pov=="BRITA", text: "wouldn't you?", delay: 0, style: "", color: "magenta"},
+            {name: "ABUA", pov: pov=="ABUA", text: "We've been patient this long. Maybe they're just being cautious.", delay: 0, style: "", color: "green"},
+            {name: "SAUL", pov: pov=="SAUL", text: "It's hard to believe they haven't shared more with us by now.", delay: 0, style: "", color: "blue"},
+            {name: "ABUA", pov: pov=="ABUA", text: "no news means they're still figuring things out.", delay: 0, style: "", color: "green"},
+            {name: "BRITA", pov: pov=="BRITA", text: "Still we deserve clarity.", delay: 0, style: "", color: "magenta"},
+            {name: "BRITA", pov: pov=="BRITA", text: "It's exhausting being left in the dark.", delay: 0, style: "", color: "magenta"},
+            {name: "SAUL", pov: pov=="SAUL", text: "I try not to think about it, but it lingers", delay: 0, style: "", color: "blue"},
+            {name: "ABUA", pov: pov=="ABUA", text: "small steps", delay: 0, style: "", color: "green"},
+            {name: "BRITA", pov: pov=="BRITA", text: "Yes...", delay: 0, style: "", color: "magenta"},
+            // In the script:
+            {name: "BRITA", pov: pov=="BRITA", text: "I know how PR works. They are not telling us the whole story. ", delay: 0, style: "", color: "magenta"},
+        ]
+        var conversation = [
+            // A man's hands TYPE:
+            {name: "SAUL", pov: pov=="SAUL", text: "It has been nine months... they must know something.", delay: 2000, style: "", color: "blue"},
+            {name: "ABUA", pov: pov=="ABUA", text: "We have to find some way to let it go... We need some peace.", delay: 2000, style: "", color: "green"},
+            // Saul pauses, types
+            {name: "SAUL", pov: pov=="SAUL", text: "I don't know if I'll ever have that kind of peace again.", delay: 2000, style: "", color: "blue"},
+            {name: "ABUA", pov: pov=="ABUA", text: "I know how you feel...", delay: 2000, style: "", color: "green"},
+            // A pause...
+            {name: "BRITA", pov: pov=="BRITA", text: "One almost wishes to go back to Halifax and SEE what the hell they are doing there.", delay: 3000, style: "", color: "magenta"},
+        ]
+
+        // SCRIPT
+        /* 
+        106 INT. WESTCHESTER MEDICAL CENTER, SAUL'S OFFICE - DAY 106
+            earlier
+                BRITA: AND WHO IS RESPONSIBLE? STILL NO ANSWERS AND SWISSAIR GOES ABOUT BUSINESS AS USUAL. WHAT ABOUT THE FAMILIES!?
+
+        113 INT. MARIA & SAUL ROSENTHAL'S HOUSE, SAUL'S DEN - MORNING113
+            earlier
+                BRITA: I know how PR works. They are not telling us the whole story. 
+            A man's hands TYPE:
+                SAUL: It has been nine months... they must know something.
+                ABUA: We have to find some way to let it go... We need some peace.
+            Saul pauses, types
+                SAUL: I don't know if I'll ever have that kind of peace again.
+                ABUA: I know how you feel...
+            A pause...
+                BRITA: One almost wishes to go back to Halifax and SEE what the hell they are doing there.
+            
+            SCENE 113A???
+                ABUA / ASHGAR
+                    revert von 113 wo ASHGAR typed?
+        */
+
+        // GLOBALS: Settings
+        var freetypeAfterEnd = false;
+
+        // GLOBALS: DOM
+        var chatInput = document.getElementById('chat-input');
+        var realUserInput = document.getElementById('realUserInput');
+        var chatDisplay = document.getElementById('chat-display');
+        var cursor = document.getElementById('cursor');
+        var noCursor = document.getElementById('noCursor');
+        var logTextarea = document.getElementById('log');
+        
+        // GLOBALS: Things
+        var messagesLength = conversation.length;
+        var messageCounter = 0;
+        var locked = false;
+        var printToConsole = false;
+
+        function displayPastMessages() {
+            if(printToConsole) logAction("displayPastMessages");
+            for (var i = 0; i < pastConversation.length; i++) {
+                var otherMessage = document.createElement('div');
+                var nameBox = document.createElement('strong');
+                otherMessage.className = 'message';
+                otherMessage.style = pastConversation[i].style;
+                var chatBox = document.createElement('span');
+                nameBox.className += "name";
+                nameBox.style.color = pastConversation[i].color;
+                nameBox.innerText = (pastConversation[i].name == pov ? 'YOU' : pastConversation[i].name) + ': ';
+                chatBox.innerText += pastConversation[i].text;
+                otherMessage.appendChild(nameBox);
+                otherMessage.appendChild(chatBox);
+                chatDisplay.appendChild(otherMessage);
+                chatDisplay.scrollTop = chatDisplay.scrollHeight; // Scroll to the bottom
+            }
+        }
+
+        function conversationNext(povForce) {
+            var message = conversation[messageCounter];
+            if(!message) return;
+            if(message.name == pov && !povForce) {
+                if(printToConsole) logAction("Wait for user to type");
+            } else {
+                displayMessage(message)
+            }
+        }
+
+        function focusRealInput() {
+            if(printToConsole) logAction("focusRealInput");
+            realUserInput.focus();
+            cursor.style.visibility = 'visible';
+            noCursor.style.visibility = 'hidden';
+        }
+
+        function blurRealInput() {
+            if(printToConsole) logAction("blurRealInput");
+            cursor.style.visibility = 'hidden';
+            noCursor.style.visibility = 'visible';
+        }
+
+        function handleInput(event) {
+            if(locked) {
+                if(printToConsole) logAction("someone else is typing");
+                event.preventDefault();
+                return;
+            }
+            // Cache the length for performance
+            var message = conversation[messageCounter];  // % messagesLength
+            var currentInputLength = realUserInput.value.length + 1;
+
+            if (messageCounter === messagesLength) {
+                if(printToConsole) logAction("last message received - press clear");
+                if (event.keyCode === 13) { // Enter pressed
+                	chatInput.style.width = '0px';
+                    sendPovMessage(message);
+                } else {
+                    // Freetyping after the last message ??
+                    if(freetypeAfterEnd) {
+                        chatInput.innerText += event.key;
+                    }
+                }
+                return;
+            }
+
+            // For non-final messages, handle input updates
+            if (event.keyCode === 13) { // Enter key
+                // not finished but send anyway
+                chatInput.style.width = '0px';
+                sendPovMessage(message);
+            } else {
+	            var width = ((currentInputLength > message.text.length ? message.text.length : currentInputLength) *8);  // -20
+	            //width = width < 8 ? 8 : width;
+            	chatInput.style.width = width+'px';
+                chatInput.innerHTML = message.text.substr(0, currentInputLength);
+            }
+        }
+
+        function sendPovMessage(message) {
+            realUserInput.value = "";
+            chatInput.innerText = "";
+            displayMessage(message);
+        }
+
+        function displayMessage(message) {
+            messageCounter += 1;
+            locked = true;
+            if(printToConsole) logAction("displayAutoMessage");
+            if(!message.name) {
+                // empty message at end?
+                return;
+            }
+            var messageStr = "{name: \""+message.name+"\", pov: pov==\""+message.name+"\", text: \""+message.text+"\", delay: "+message.delay+", style: \""+message.style+"\", color: \""+message.color+"\"}";
+            if(printToConsole) logAction(messageStr);
+            
+            // IE 5 for MAC does not work with function references. first argument is a string of the function name (!?)
+            // See https://www.thecodingforums.com/threads/settimeout-not-working-on-mac-ie-5-2.917891/
+            setTimeout("displayMessageTimeout("+messageStr+")", message.name == pov ? 0 : message.delay);
+        }
+
+        function displayMessageTimeout(message) {
+            if(printToConsole) logAction("displayAutoMessage - setTimeout - display message after delay");
+            var messageContainer = document.createElement('div');
+            messageContainer.className = message.name == pov ? 'message user-message' : 'message';
+            // messageContainer.style.color = message.color;
+            
+            var nameBox = document.createElement('strong');
+            var chatBox = document.createElement('span');
+                nameBox.className += "name";
+                nameBox.style.color = message.color;
+                nameBox.innerText = (message.name == pov ? 'YOU' : message.name) + ': ';
+                chatBox.innerText += message.text;
+                messageContainer.appendChild(nameBox);
+                messageContainer.appendChild(chatBox);
+            
+            
+            // messageContainer.innerText = (message.name == pov ? 'YOU' : message.name) + ': ' + message.text;
+            
+            chatDisplay.appendChild(messageContainer);
+            chatDisplay.scrollTop = chatDisplay.scrollHeight; // Scroll to the bottom
+            locked = false;
+            conversationNext(false);
+        }
+
+        function resetChat() {
+            if(printToConsole) logAction("resetChat");
+            chatDisplay.innerText = ''; // Clear the chat display
+            chatInput.innerHTML = ''; // Use real input
+            chatInput.style.width = '0px';
+            realUserInput.value = ''; // Clear the chat display
+            messageCounter = 0; // Reset the message counter
+            locked = false;
+            focusRealInput();
+            displayPastMessages();
+        }
+
+        function logAction(action) {
+            // console.log(action);  // BREAKS IE 5 (!?)
+            var pastLog = logTextarea.innerHTML;
+            logTextarea.innerHTML = action + "\n" + pastLog;
+            // logTextarea.scrollTop = logTextarea.scrollHeight;
+        }
+    </script>
+</body>
+</html>

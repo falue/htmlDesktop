@@ -27,6 +27,18 @@
             "renderToDom": true
         },
         {
+            "windowName": "IQCSN - Chat",
+            "icon": "volume_up",
+            "contentPath": "iqcsn/index.html",
+            "x": 35,
+            "y": 2,
+            "w": 640,
+            "h": 480,
+            "zIndex": 3,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
             "metaTitle": "#000 Greenscreen - right click title to change!",
             "windowName": "Window",
             "icon": "grid_view",
