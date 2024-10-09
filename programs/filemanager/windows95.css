@@ -1,0 +1,246 @@
+body {
+    color: black;
+    background-color: white;
+}
+
+/* its a mess */
+
+header {
+    border-top:solid .1em white !important;
+    border-bottom:solid .1em black;
+    box-shadow:inset 0 -.1em #808080, inset 0 0.1em #dfdfdf !important;
+    background-color: #c0c0c0;
+}
+
+body > header.fileManagerTools.relative {
+    padding:.4em 0 ;
+}
+
+.fileManagerToolsRight {
+    margin-top:.4em;
+    padding:0;
+}
+
+button {
+    background-color: #c0c0c0;
+    border-top:solid .1em white !important;
+    border-left:solid .1em white !important;
+    border-right:solid .1em black !important;
+    border-bottom:solid .1em black !important;
+    box-shadow:inset -.1em -.1em #808080, inset .1em .1em #dfdfdf !important;
+}
+
+button:active {
+    border-bottom:solid .1em white !important;
+    border-right:solid .1em white !important;
+    border-left:solid .1em black !important;
+    border-top:solid .1em black !important;
+    box-shadow:inset .1em .1em #808080, inset -.1em -.1em #dfdfdf !important;
+    opacity: .2;
+}
+
+.windowmenu button.programButtons:first-letter{
+    text-decoration:underline
+}
+.windowmenu button.programButtons {
+    border:none !important;
+    box-shadow:none !important;
+    background-color:unset !important;
+}
+.windowmenu button.programButtons:hover,
+.windowmenu button.programButtons:active {
+    border:none !important;
+    box-shadow:none !important;
+    background-color:unset !important;
+}
+
+
+.fileManagerTools {
+    height:2em;
+    display:flex;
+    white-space: initial;
+}
+
+.logo.hardcodedFolders.op50,
+.fileManagerTools button {
+    opacity: 1;
+}
+
+.fileManagerTools button {
+    padding-top:.55em;
+    height:2.25em;
+}
+.fileManagerTools button i.blue {
+    color: grey !important;
+    font-size:0.95em;
+}
+
+.fileManagerPath {
+    padding-top:.45em;
+}
+
+.fileManagerPath #fileManagerPath {
+    color:black !important;
+    background-color: white;
+    border-radius: 0;
+    left:3em;
+    width: calc(100% - 4.75em);
+    padding:0.125em .25em;
+    top:0.2em;
+    border-bottom:solid .1em white !important;
+    border-right:solid .1em white !important;
+    border-left:solid .1em black !important;
+    border-top:solid .1em black !important;
+}
+
+.fileManagerPath i {
+    display: none;
+}
+
+button.radius3 {
+    border-radius: 0;
+}
+
+.browser {
+    padding: 0.5em 0 0 0;
+    border-right:solid .5em #c0c0c0; /*  #808080; */
+    box-shadow:inset -.1em 0 white !important;
+    height: calc(100% - 7.35em);
+    background-color: #c0c0c0;
+}
+
+/* Enable windows95 scrollbars from os/windwos95/scrollbar.css */
+.content.noScrollbar,
+.browser.noScrollbar {
+    scrollbar-width: initial !important;
+}
+.content.noScrollbar::-webkit-scrollbar,
+.browser.noScrollbar::-webkit-scrollbar {
+    display: initial !important;
+}
+
+.browser .logo {
+    padding:0 0.5em 0.5em 1.5em;
+    color:grey;
+    text-shadow: white 0.1em 0.1em 0;
+}
+
+.browser .logo img {
+    padding-top: 1.25em;
+    padding-left: 0.5em;
+    width:2em
+}
+
+.browser > ul {
+    padding:.5em .5em 0 2em;
+    background-color: white;
+}
+
+.browser hr {
+    height:.15em;
+    background-color: #c0c0c0;
+    border-top:solid .1em #dfdfdf !important;
+    border-bottom:solid .1em #808080 !important;
+}
+
+.content {
+    border-left:solid .1em #808080;
+    box-shadow:inset .1em 0 black !important;
+    /* overflow-x: auto; */  /* FIXME: stays even when enough space */
+    padding:.5em .5em 4em .5em;
+    height: calc(100% - 7.35em);
+}
+
+.content.listView .fileTile:focus {
+    /* background-color: blue; */
+}
+
+.content.listView .fileTile:not(:focus):hover {
+    background-color: unset;
+}
+
+#folderInfo {
+    /* display: none; */
+    position: fixed;
+    bottom:0;
+    left:0;
+    width: 100%;
+    height: 2.5em;
+    z-index: 6;
+    color:black !important;
+    padding:.75em 1em .5em 1em;
+    box-sizing: border-box;
+
+    background-color: #c0c0c0;
+    border-top:solid .1em #808080 !important;
+    border-left:solid .1em white !important;
+    border-right:solid .1em black !important;
+    border-bottom:solid .1em black !important;
+    box-shadow:inset -.1em -.1em #808080, inset .1em .1em white !important;
+}
+
+#folderInfo:before {
+    content: "Folder: ";
+    color:grey;
+    text-shadow: white 0.1em 0.1em 0;
+}
+
+#folderInfo:after {
+    content: " (plus 0 hidden)";
+}
+
+/* FROM treeview.css */
+.fileTile:hover img {
+    background-color: rgba(0,0,0,.15);
+}
+
+.fileTile img {
+    background-color: rgba(0,0,0,.05);
+}
+
+.tree ul li {
+    line-height: normal !important;
+}
+
+.treeView li {
+    border-bottom: thin solid rgba(0,0,0,.1);
+}
+
+.tree img {
+    background-color: white;
+    height: .9em;
+    margin-top:0;
+    padding-left:.2em;
+}
+
+.tree ul > li > ul > li img {
+    margin-left:-2.25em;
+}
+
+.tree li:before {
+    border-left: 0.1em solid rgba(125,125,125,1);
+}
+.tree_label {
+    padding-left: 2.5em;
+}
+.tree_label:after {
+    border-radius:0;
+    width:1em;
+    border-bottom: 0.1em solid rgba(125,125,125,1);
+    border-left: 0.1em solid rgba(125,125,125,1);
+}
+
+:checked~label.tree_label {
+    padding-left:4em;
+}
+
+:checked~label.tree_label:after {
+    border-radius:0;
+    width:1.5em;
+    border-top: 0.1em solid rgba(125,125,125,1);
+    border-right: 0.1em solid rgba(125,125,125,1);
+}
+
+#about {
+    display:none;
+}

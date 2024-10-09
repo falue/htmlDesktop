@@ -30,6 +30,12 @@ async function setupFileManager() {
             rootNameDisplay = "Macintosh HD"
             computerName = "Macintosh HD"
         break;
+        case "windows95":
+            rootNameDisplay = "C:"
+            computerName = "Workstation"
+            addStylesheet("windows95.css");
+            addStylesheet("../../os/windows95/scrollbars.css", false);
+        break;
         case "windows":
             rootNameDisplay = "C:"
             computerName = "This PC"
@@ -320,9 +326,9 @@ function openCloseFolderIcon(id) {
     }
 }
 
-function addStylesheet(path) {
+function addStylesheet(path, replace=true) {
     let currentStylesheet = gebi('osStylesheet');
-    if(currentStylesheet) currentStylesheet.remove();
+    if(currentStylesheet && replace) currentStylesheet.remove();
     let head = document.head;
     let link = document.createElement("link");
     link.id = "osStylesheet"

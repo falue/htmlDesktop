@@ -131,6 +131,9 @@ async function setup() {
   // Add OS specific styles
   addStylesheet("os/"+os+"/stylesheet.css");
   //  cl("Final workstation: " + workstation + ", OS: " + os);
+  if(os === "windows95") {
+    addStylesheet("../os/windows95/scrollbars.css", false);
+  }
 
   // Define if dock is available for OS
   switch(os) {
@@ -215,9 +218,9 @@ async function setup() {
   return;
 }
 
-function addStylesheet(path) {
+function addStylesheet(path, replace=true) {
   let currentStylesheet = gebi('osStylesheet');
-  if(currentStylesheet) currentStylesheet.remove();
+  if(currentStylesheet && replace) currentStylesheet.remove();
   let head = document.head;
   let link = document.createElement("link");
   link.id = "osStylesheet"

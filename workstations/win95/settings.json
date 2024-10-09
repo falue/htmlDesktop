@@ -1,0 +1,68 @@
+{
+    "settings": {
+        "systemColor": "#c0c0c0",
+        "desktopColor": "#008081",
+        "desktopImg": "workstations/win95/desktops/clouds.png",
+        "os": "windows95",
+        "darkMode": true,
+        "username": "SAF95",
+        "password": "",
+        "workstation": "win95",
+        "selectedSystemMessage": 3,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+    ],
+    "windows": [
+        {
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager/index.html?folderContent=Downloads",
+            "x": 12,
+            "y": 4,
+            "w": 598,
+            "h": 444,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 4,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 94,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        }
+    ],
+    "actions": [],
+    "osNotifications": []
+}

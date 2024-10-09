@@ -184,6 +184,9 @@ function setSystemFontForBrowser(os) {
     case "windows":
         document.getElementsByTagName('body')[0].style.fontFamily = "weblysleek, Roboto, Arial, Helvetica, sans-serif";
     break;
+    case "windows95":
+        document.getElementsByTagName('body')[0].style.fontFamily = "win95, Verdana, Helvetica, sans-serif;";
+    break;
     case "linux":
         document.getElementsByTagName('body')[0].style.fontFamily = "Roboto, Arial, Helvetica, sans-serif";
     break;

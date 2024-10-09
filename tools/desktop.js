@@ -650,18 +650,21 @@ function setSystemColors(newcolor) {
 function setDefaultSystemColors(os) {
     let newSystemColor;
     switch(os) {
-      case "windows":
-          newSystemColor = "#000000";
-          break;
-      case "mac":
-          newSystemColor = "#FCFCFC";
-          break;
-      case "linux":
-          newSystemColor = "#502259";
-          break;
-      case "spa":
-          newSystemColor = "#2f3643";
-          break;
+        case "windows":
+            newSystemColor = "#000000";
+            break;
+        case "windows95":
+            newSystemColor = "#c0c0c0";
+            break;
+        case "mac":
+            newSystemColor = "#FCFCFC";
+            break;
+        case "linux":
+            newSystemColor = "#502259";
+            break;
+        case "spa":
+            newSystemColor = "#2f3643";
+            break;
     }
     gebi('systemColorPicker').value = newSystemColor;
     setSystemColors(newSystemColor);

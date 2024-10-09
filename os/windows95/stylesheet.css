@@ -1,0 +1,643 @@
+body, input, button {
+    font-family: win95, Verdana, Helvetica, sans-serif;
+}
+
+.showWindows95 { display: initial !important; }
+
+.desktop {
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 0;
+    background-image: url(desktop.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.systemColors {
+    background-color: #c0c0c0;
+    color: white;
+}
+
+.bold {
+    text-shadow: currentColor .035em 0 0, currentColor -.035em 0 0;
+    letter-spacing: .1em;
+}
+
+/* .shortcut {
+    border-radius: 50% !important;
+}
+
+.shortcut:hover {
+    background-color: red !important;
+}
+
+.shortcut:hover span {
+    background-color: #000080 !important;
+} */
+
+.shortcut span {
+    /* background-color: initial; */
+    /* color: white */
+}
+
+/* TOOLTIPS! */
+/* by https://www.florin-pop.com/blog/2019/05/pure-css-tooltip/ */
+.actionMenu .tooltip {
+    position: relative;
+}
+.actionMenu .tooltip::before {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    content: attr(data-title);
+    white-space: nowrap;
+    background-color: white;
+    border-radius: .25rem;
+    color: black;
+    display: none;
+    padding: .5rem;
+    position: absolute;
+    font-size: .8rem;
+    text-align: center;
+    z-index: 1110;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 1rem));
+    box-shadow: rgba(0,0,0,0.5) 3px 5px 7px;
+}
+
+.actionMenu .tooltip:hover::before,
+.actionMenu .tooltip:hover::after {
+    display: block;
+}
+
+/* Arrow */
+.actionMenu .tooltip::after {
+    /* background-color: white; */
+    border-left: .5rem solid transparent;
+    border-right: .5rem solid transparent;
+    border-top: .5rem solid white;
+    content: ' ';
+    display: none;
+    position: absolute;
+    z-index: 1111;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - .5rem));
+}
+
+.actionMenu .tooltip.tooltipBottom:not(.tooltipDock)::before {
+    transform: translate(-50%, calc(100% + 1.25rem));
+}
+
+.actionMenu .tooltip.tooltipBottom:not(.tooltipDock)::after {
+    transform: translate(-50%, calc(100% + 2.25rem)) rotate(180deg) ;
+}
+
+
+.win95Button {
+    background-color: #c0c0c0;
+    border-top:solid .1em white;
+    border-left:solid .1em white;
+    border-right:solid .1em black;
+    border-bottom:solid .1em black;
+    box-shadow:inset -.1em -.1em #808080, inset .1em .1em #dfdfdf;
+}
+
+.win95Button:active {
+    border-bottom:solid .1em white;
+    border-right:solid .1em white;
+    border-left:solid .1em black;
+    border-top:solid .1em black;
+    box-shadow:inset .1em .1em #808080, inset -.1em -.1em #dfdfdf;
+}
+
+/* SHENANIGANS */
+.lockScreen > div {
+    font-size: 1.25em;
+    line-height: 1.5em;
+    padding:1.5em 2em;
+}
+
+#lockScreenWindow,
+#lockScreenUserName {
+    background: none !important;
+}
+
+#lockScreenUserName {
+    font-size: 1.25em;
+}
+
+.lockScreen #lockScreenUserPicture {
+    width: 7em;
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+
+.lockScreen input {
+    width: 20em;
+    padding: .5em 1em;
+    margin-bottom: 1em;
+    color: white;
+    border: solid rgba(255,255,255,0.25) .12em;
+    background-color: rgba(0,0,0,.25);
+}
+
+.lockScreen input:focus {
+    background-color: rgba(255,255,255,.1);
+}
+
+.lockScreen button {
+    padding: .5em 1em;
+    margin: 2em 0 0.25em 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    box-sizing: border-box;
+    transform: translate(-.12em, -1.75em);
+    background-color: rgba(255,255,255,.1) !important;
+}
+
+.lockScreen button:hover {
+    background-color: rgba(255,255,255,.2) !important;
+}
+
+.lockScreen button span span.initialLoginbuttonText {
+    font-size: 0;
+    line-height: 0;
+    margin: 0 .5rem;
+    overflow: hidden;
+}
+
+.lockScreen button span span.initialLoginbuttonText:before {
+    content: "arrow_forward";
+    font-family: 'Material icons';
+    vertical-align: middle;
+    font-size: 1rem;
+    position: absolute;
+    transform: scale(1.5) translate(-.3em, .325em);
+}
+
+#lockScreenColorOverlay {
+    background: rgba(131,58,180,.5);
+    background: linear-gradient(329deg, rgba(131,58,180,.5) 0%, rgba(253,29,29,.5) 50%, rgba(252,176,69,.5) 100%);
+}
+
+#lockScreen.loginAnimation #lockScreenColorOverlay {
+    animation: animateBgColor 750ms ease-in-out 1 forwards;
+    animation: fadeoutLoginWindow 500ms 1500ms ease-in-out 1 forwards;
+}
+
+.loginAnimation #lockScreenSystemColorOverlay {
+    animation: fadeoutLoginWindow 750ms 2s ease-in-out 1 forwards;
+}
+
+@keyframes animateBgColor {
+    0%   { background-size: 100%; }
+    100%  { background-size: 600%; }
+}
+
+@keyframes fadeoutLoginWindow {
+    0%  { opacity: 1; }
+    /* 50%  { opacity: 1; } */
+    100%  { opacity: 0; }
+}
+
+#wrongPassword {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* background-color: teal; */
+    /* text-align: left; */
+    width: 100%;
+    font-size: .75em;
+    line-height: 2em;
+}
+
+/* WINDOW */
+.shadow {
+    box-shadow: initial;
+}
+.window {
+    background: white;
+    border-top:solid .1em white;
+    border-left:solid .1em white;
+    border-right:solid .1em black;
+    border-bottom:solid .1em black;
+}
+
+.window .content {
+    height: calc(100% - 1.6em);
+    width: calc(100% - .2em);
+    top: 1.5em;
+    border-left:solid .1em #dfdfdf;
+    border-right:solid .1em #808080;
+    border-bottom:solid .1em #808080;
+}
+
+.window .windowFrame {  
+    height: 1.5em;
+    background-color: #000080 !important;
+    color: white !important;
+    border-top:solid .1em #dfdfdf;
+    border-left:solid .1em #dfdfdf;
+    border-right:solid .1em #808080;
+}
+.window .windowFrame .windowTitle span {
+    padding-bottom:.95em;
+    font-size: .75em;
+    text-shadow: currentColor .035em 0 0, currentColor -.035em 0 0;
+    letter-spacing: .05em;
+}
+
+.window .windowFrame .windowTitle i  {
+    padding: 0.25em .25em 0 .5em;
+    color: #ffcc99;
+    text-shadow: white -.035em -.035em 0, black .035em .035em 0;
+}
+
+.window .windowFrame .windowActions {
+    padding: .15em;
+}
+
+.window .windowFrame .windowActions i {
+    font-size: .8em;
+    padding: 0.1em 0.15em;
+    color:black;
+    background-color: #c0c0c0;
+    border-top:solid .1em white;
+    border-left:solid .1em white;
+    border-right:solid .1em black;
+    border-bottom:solid .1em black;
+    box-shadow:inset -.1em -.1em #808080, inset .1em .1em #dfdfdf;
+}
+
+.window .windowFrame .windowActions i:active {
+    border-bottom:solid .1em white;
+    border-right:solid .1em white;
+    border-left:solid .1em black;
+    border-top:solid .1em black;
+    box-shadow:inset .1em .1em #808080, inset -.1em -.1em #dfdfdf;
+}
+
+.window .windowFrame .windowActions i:last-of-type {
+    margin-left:.35em;
+}
+
+body .minimizeWindow { animation: minimizeWindow 0s ease-in 1 forwards !important; }
+
+/* SYSTEMBAR */
+.systemBar {
+    position: fixed;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    bottom: 0;
+    padding-left: .5em;
+    white-space: nowrap;
+    z-index: 1;
+    border-top:solid .1em white;
+    box-shadow:inset 0 .1em #dfdfdf;
+}
+.systemBar > div {
+    /* border: hotpink solid thin; */
+    box-sizing: border-box;
+    display: inline-block;
+    height: inherit;
+}
+
+.startButton, .dockContainer button {
+    height: 80% !important;
+    width: unset !important;
+    padding: .125em .5em !important;
+    margin: .25em .25em 0 0;
+    font-weight: 800;
+}
+.startButton i {
+    padding-top: .15em;
+    transform: skew(0, -15deg);
+}
+
+/* SPACER */
+.systemBar .spacer {
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+/* BUTTONS */
+.systemBar button {
+    font-size: inherit;
+    height: 100%;
+    width: 3em;
+    padding: 0;
+
+    border-top:solid .1em white;
+    border-left:solid .1em white;
+    border-right:solid .1em black;
+    border-bottom:solid .1em black;
+    box-shadow:inset -.1em -.1em #808080, inset .1em .1em #dfdfdf;
+}
+
+.systemBar button:active {
+    border-bottom:solid .1em white;
+    border-right:solid .1em white;
+    border-left:solid .1em black;
+    border-top:solid .1em black;
+    box-shadow:inset .1em .1em #808080, inset -.1em -.1em #dfdfdf;
+}
+
+/* .systemBar button:hover {
+    background-color: rgba(125,125,125,0.2) !important;
+} */
+.systemBar .buttonGroup button i {
+    padding-top: .2em;
+    font-size: 1.5em;
+    color: #ffcc99;
+    text-shadow: white -.035em -.035em 0, black .035em .035em 0;
+}
+
+.dockContainer {
+    height: 100%;
+}
+
+/* TASKBAR */
+.systemBar .taskbar {
+    flex: 1;
+    overflow: auto hidden;
+    padding: 0;
+}
+.systemBar .taskbar button {
+    height: 80%;
+    width: initial;
+    padding: 0 .75em;
+    margin: .25em .25em .25em 0;
+    max-width: 10em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.systemBar .taskbar button i {
+    margin-right: .45em;
+    color: #ffcc99;
+    text-shadow: white -.035em -.035em 0, black .035em .035em 0;
+}
+
+/* SYSTEM ICONS */
+.systemIcons {
+    margin:0.25em;
+    padding: .25em !important;
+    border-top:solid .1em #808080;
+    border-left:solid .1em #808080;
+    border-right:solid .1em #dfdfdf;
+    border-bottom:solid .1em #dfdfdf;
+}
+.systemIcons .showWindows95 img {
+    height: 1.25em;
+}
+
+.systemIcons > div {
+    /* border: blue solid .06em; */
+    box-sizing: border-box;
+    padding: 0;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.systemIcons div i {
+    font-size: 1.25em;
+    padding-top: .4em;
+    margin-left:.5em;
+}
+.systemIcons div #systemIcons-clock {
+    border-top: .85em transparent solid;
+    font-size: .75em;
+    margin-left: .5em;
+}
+
+.systemClock {
+    margin: 0 0 .35em 0;
+}
+
+/* STARTMENU */
+.startMenu {
+    /* color: white; */
+    position: fixed;
+    left: 0;
+    bottom: 2.7em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 0 0 2.75em;
+    
+    border-top:solid .1em white;
+    border-left:solid .1em white;
+    border-right:solid .1em black;
+    border-bottom:solid .1em black;
+    box-shadow:inset -.1em -.1em #808080, inset .1em .1em #dfdfdf, #000080 2.75em 0 0 inset;
+}
+
+.startMenu:before {
+    content: "SAF95";
+    padding: .75em .75em .75em 1.25em;
+    font-size:1.1em;
+    position: absolute;
+    left:0;
+    top:1.5em;
+    color:white;
+    transform: rotate(-90deg) translateY(-1em);
+}
+
+.startMenu .columns {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+/* .startMenu ul, */
+.startMenu h3,
+.startMenu h4,
+.startMenu h5 {
+    /* float: left; */
+    margin: .5em .5em 0 .5em;
+}
+
+.startMenu ul {
+    align-self: flex-end;
+}
+
+.startMenu li {
+    position: relative;
+    /* padding: 1em 2em; */
+    /* margin: .5em 0; */
+    background-color: #c0c0c0;
+}
+
+.startMenu li:last-of-type {
+    border-top:solid .1em #808080;
+    box-shadow:inset 0 .1em white;
+}
+
+.startMenu ul.fastAccess li i {
+    font-size: 1em;
+    /* background-color: darkslategrey; */
+}
+
+.startMenu ul.fastAccess li button {
+    display: block;
+    margin-top: 1em;
+    border-radius: 0 !important;
+}
+
+.startMenu li:not(.noLiHover):hover {
+    /* background-color: rgba(255,255,255,0.2); */
+    background-color: #000080;
+    color: white;
+}
+
+.startMenu h1,
+.startMenu h3,
+.startMenu h4 {
+    opacity: 0.75;
+}
+
+.startMenu li i {
+    vertical-align: middle;
+}
+
+.startMenu ul.appList li {
+    width: 10em;
+    padding: 1em;
+}
+.startMenu ul.appList li i {
+    margin-right: .75em;
+    font-size: 1em;
+    color: #f0c919 !important;
+    text-shadow: white -.035em -.035em 0, black .035em .035em 0;
+    opacity: 1;
+}
+.startMenu ul.appList li i.whiteTransparent {
+    color: black !important;
+    text-shadow: initial;
+}
+.startMenu ul.appList li:hover i.whiteTransparent {
+    color: white !important;
+}
+
+/* SUBMENU */
+.startMenu ul div.submenu {
+    display: none;
+    position: absolute;
+    bottom: -11.75em;
+    left: 100%;
+    box-sizing: content-box;
+    border-top:solid .1em white;
+    border-left:solid .1em white;
+    border-right:solid .1em black;
+    border-bottom:solid .1em black;
+    box-shadow:inset -.1em -.1em #808080, inset .1em .1em #dfdfdf;
+}
+
+.startMenu li:hover div.submenu {
+    display: block;
+}
+
+.startMenu ul div.submenu ul {
+    /* padding: .5em; */
+    max-height:17.75em;
+    overflow: auto;
+}
+
+.startMenu ul div.submenu ul li {
+    padding: .5em 1em;
+}
+
+.startMenu ul div.submenu ul li div {
+    transform: translateY(-.32em);
+}
+.startMenu ul div.submenu ul li button {
+    padding: 0;
+    text-align: center;
+}
+.startMenu ul div.submenu ul li button i {
+    padding: .5em;
+    margin:0;
+}
+
+.osNotifications {
+    position: fixed;
+    bottom: 3em;
+    padding: 0 1em .5em 0;
+    right: 0;
+    z-index: 99999;
+    max-width: 20em;
+}
+
+.osNotifications .message.radius5 {
+    border-radius: initial;
+}
+.osNotifications .message {
+    color: black;
+    padding: .5em 1.2em .5em .5em;
+    margin-top: 1.5em;
+    background-color: #ffcc99;
+    position: relative;
+    display: flex;
+    border-top:solid .1em white;
+    border-left:solid .1em white;
+    border-right:solid .1em black;
+    border-bottom:solid .1em black;
+    box-shadow:inset -.1em -.1em #7c7e5d, inset .1em .1em #d8de86;
+}
+
+.osNotifications .icon {
+    display: block;
+    color: white;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: .25em;
+}
+.osNotifications .textContainer {
+    padding-left: .5em;
+}
+.osNotifications .title {
+    
+    font-size: 1em;
+}
+.osNotifications .description {
+    font-style: italic;
+    font-size: small;
+}
+.osNotifications .close {
+    width: 1.5em;
+    height: 1.5em;
+    /* border-radius: 50%; */
+    background-color: white;
+    position: absolute;
+    text-align: center;
+    box-sizing: border-box;
+    top:0;
+    right:0;
+    color: black;
+    font-weight: bolder;
+    background-color: #c0c0c0;
+    border-top:solid .1em white;
+    border-left:solid .1em white;
+    border-right:solid .1em black;
+    border-bottom:solid .1em black;
+    box-shadow:inset -.1em -.1em #808080, inset .1em .1em #dfdfdf;
+}
+
+.osNotifications .close:active {
+    border-bottom:solid .1em white;
+    border-right:solid .1em white;
+    border-left:solid .1em black;
+    border-top:solid .1em black;
+    box-shadow:inset .1em .1em #808080, inset -.1em -.1em #dfdfdf;
+}

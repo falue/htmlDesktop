@@ -411,10 +411,11 @@
                   Swap OS:
                 </div>
                 <div class="right top absolute">
-                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showMac pointer" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
-                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showWindows pointer" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
-                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
-                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('spa');">spa</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows95 showLinux showMac pointer" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showMac showWindows pointer" onclick="hide('actionMenu'); hotSwapOs('windows95');">WIN95</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows95 showLinux showWindows pointer" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows95 showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
+                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows95 showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('spa');">spa</span>
                 </div>
               </li>
               <li class="relative">
@@ -670,7 +671,11 @@
 
       <!-- START BUTTON -->
       <div>
-        <button onclick="toggle('startMenu'); hide('actionMenu');" class="valign systemColors startButton">
+        <button onclick="toggle('startMenu'); hide('actionMenu');" class="valign systemColors startButton win95Button">
+          <span class="showWindows95 bold">
+            <img src="os/windows95/systemIcons/logo.png" style="height:1em" class="valign">
+            Start
+          </span>
           <i class="material-icons showWindows">view_module</i>
           <i class="material-icons showLinux">house</i>
           <i class="material-icons showMac grey">menu</i>
@@ -710,36 +715,36 @@
        <div id="dock" class="buttonGroup dock dockLock">
          <div class="dockContainer">
           <button data-title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors tooltip tooltipDock">
-            <i class="material-icons showWindows showLinux">bolt</i>
+            <i class="material-icons showWindows showWindows95 showLinux">bolt</i>
             <img class="showMac" src="os/mac/programIcons/action.png" alt=""/>
             <img class="showSpa" src="os/spa/programIcons/action.png" alt=""/>
           </button><!-- 
-          --><button data-title="File manager" onclick="startDefaultProgram('fileManager');" class="valign systemColors tooltip tooltipDock">
+          --><button data-title="File manager" onclick="startDefaultProgram('fileManager');" class="valign systemColors tooltip tooltipDock showWindows showLinux showMac showSpa">
             <i class="material-icons showWindows showLinux">folder</i>
             <img class="showMac" src="os/mac/programIcons/finder.png" alt=""/>
             <img class="showSpa" src="os/spa/programIcons/finder.png" alt=""/>
           </button><!--  
-          --><button data-title="Email Petabird" onclick="startDefaultProgram('email');" class="valign systemColors tooltip tooltipDock">
+          --><button data-title="Email Petabird" onclick="startDefaultProgram('email');" class="valign systemColors tooltip tooltipDock showWindows showLinux showMac showSpa">
             <i class="material-icons showWindows showLinux">email</i>
             <img class="showMac" src="os/mac/programIcons/email.png" alt=""/>
             <img class="showSpa" src="os/spa/programIcons/email.png" alt=""/>
           </button><!-- 
-          --><button data-title="Browser" onclick="startDefaultProgram('browser');" class="valign systemColors tooltip tooltipDock">
+          --><button data-title="Browser" onclick="startDefaultProgram('browser');" class="valign systemColors tooltip tooltipDock showWindows showLinux showMac showSpa">
             <i class="material-icons showWindows showLinux">public</i>
             <img class="showMac" src="os/mac/programIcons/browser.png" alt=""/>
             <img class="showSpa" src="os/spa/programIcons/browser.png" alt=""/>
           </button><!-- 
-        --><button data-title="Terminal" onclick="startDefaultProgram('terminal', 0);" class="valign systemColors tooltip tooltipDock">
+        --><button data-title="Terminal" onclick="startDefaultProgram('terminal', 0);" class="valign systemColors tooltip tooltipDock showWindows showLinux showMac showSpa">
             <i class="material-icons showWindows showLinux">code</i>
             <img class="showMac" src="os/mac/programIcons/terminal.png" alt=""/>
             <img class="showSpa" src="os/spa/programIcons/terminal.png" alt=""/>
           </button><!-- 
-        --><button data-title="Text editor" onclick="startDefaultProgram('textEditor');" class="valign systemColors tooltip tooltipDock">
+        --><button data-title="Text editor" onclick="startDefaultProgram('textEditor');" class="valign systemColors tooltip tooltipDock showWindows showLinux showMac showSpa">
             <i class="material-icons showWindows showLinux">edit_note</i>
             <img class="showMac" src="os/mac/programIcons/textEditor.png" alt=""/>
             <img class="showSpa" src="os/spa/programIcons/textEditor.png" alt=""/>
           </button><!-- 
-        --><button data-title="Image viewer" onclick="startDefaultProgram('imageViewer');" class="valign systemColors tooltip tooltipDock">
+        --><button data-title="Image viewer" onclick="startDefaultProgram('imageViewer');" class="valign systemColors tooltip tooltipDock showWindows showLinux showMac showSpa">
             <i class="material-icons showWindows showLinux">image</i>
             <img class="showMac" src="os/mac/programIcons/vorschau.png" alt=""/>
             <img class="showSpa" src="os/spa/programIcons/vorschau.png" alt=""/>
@@ -766,6 +771,14 @@
         onclick="if(event.altKey) { show('editTaskbarIcons'); } else { cl('Press alt to edit system icons') }"
         oncontextmenu="epD(event); if(event.altKey) { show('editTaskbarIcons'); } else { cl('Press alt to edit system icons') }"
       >
+            <div class="showWindows95">
+              <img id="systemIcons-95-usb-plug" src="os/windows95/systemIcons/usb-plug.png" alt="usb-plug">
+              <img id="systemIcons-95-network" src="os/windows95/systemIcons/network.png" alt="network">
+              <img id="systemIcons-95-sleep" src="os/windows95/systemIcons/sleep.png" alt="sleep">
+              <img id="systemIcons-95-volume-control" src="os/windows95/systemIcons/volume-control.png" alt="volume-control">
+              <img id="systemIcons-95-sweeper" src="os/windows95/systemIcons/sweeper.png" alt="sweeper">
+              <img id="systemIcons-95-speaker" src="os/windows95/systemIcons/speaker.png" alt="speaker">
+            </div>
             <div class="op50"><i data-setup-system-icons class="material-icons hover" id="systemIcons-expand_less">expand_less</i></div><!-- 
          --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-account_circle">account_circle</i></div><!-- 
          --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-wifi">wifi</i></div><!-- 
@@ -966,81 +979,109 @@
           <input type="hidden" id="editShortcutId">
           
           <div class="chooseBox editIcon radius5 alignCenter">
-            <label for="editTaskbarIcon-expand_less" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-expand_less" name="editTaskbarIcon" value="expand_less">
-              <i class="material-icons medium radius5 valign">expand_less</i>
-            </label>
+            <div class="showWindows95">
+              <label for="editTaskbarIcon-95-usb-plug" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-95-usb-plug" name="editTaskbarIcon" value="95-usb-plug">
+                <img src="os/windows95/systemIcons/usb-plug.png" alt="usb-plug" class="win95Button">
+              </label>
+              <label for="editTaskbarIcon-95-network" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-95-network" name="editTaskbarIcon" value="95-network">
+                <img src="os/windows95/systemIcons/network.png" alt="network" class="win95Button">
+              </label>
+              <label for="editTaskbarIcon-95-sleep" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-95-sleep" name="editTaskbarIcon" value="95-sleep">
+                <img src="os/windows95/systemIcons/sleep.png" alt="sleep" class="win95Button">
+              </label>
+              <label for="editTaskbarIcon-95-volume-control" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-95-volume-control" name="editTaskbarIcon" value="95-volume-control">
+                <img src="os/windows95/systemIcons/volume-control.png" alt="volume-control" class="win95Button">
+              </label>
+              <label for="editTaskbarIcon-95-sweeper" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-95-sweeper" name="editTaskbarIcon" value="95-sweeper">
+                <img src="os/windows95/systemIcons/sweeper.png" alt="sweeper" class="win95Button">
+              </label>
+              <label for="editTaskbarIcon-95-speaker" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-95-speaker" name="editTaskbarIcon" value="95-speaker">
+                <img src="os/windows95/systemIcons/speaker.png" alt="speaker" class="win95Button">
+              </label>
+            </div>
+            <div class="showWindows showLinux showMac showSpa">
+              <label for="editTaskbarIcon-expand_less" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-expand_less" name="editTaskbarIcon" value="expand_less">
+                <i class="material-icons medium radius5 valign">expand_less</i>
+              </label>
+              
+              <label for="editTaskbarIcon-account_circle" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-account_circle" name="editTaskbarIcon" value="account_circle">
+                <i class="material-icons medium radius5 valign">account_circle</i>
+              </label>
+              
+              <label for="editTaskbarIcon-wifi" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-wifi" name="editTaskbarIcon" value="wifi">
+                <i class="material-icons medium radius5 valign">wifi</i>
+              </label>
+              
+              <label for="editTaskbarIcon-wifi_off" class="pointer">
+                <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-wifi_off" name="editTaskbarIcon" value="wifi_off">
+                <i class="material-icons medium radius5 valign">wifi_off</i>
+              </label>
+              
+              <label for="editTaskbarIcon-usb" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-usb" name="editTaskbarIcon" value="usb">
+                <i class="material-icons medium radius5 valign">usb</i>
+              </label>
+              
+              <label for="editTaskbarIcon-bluetooth" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-bluetooth" name="editTaskbarIcon" value="bluetooth">
+                <i class="material-icons medium radius5 valign">bluetooth</i>
+              </label>
+              
+              <label for="editTaskbarIcon-gpp_maybe" class="pointer">
+                <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-gpp_maybe" name="editTaskbarIcon" value="gpp_maybe">
+                <i class="material-icons medium radius5 valign">gpp_maybe</i>
+              </label>
+              
+              <label for="editTaskbarIcon-shield" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-shield" name="editTaskbarIcon" value="shield">
+                <i class="material-icons medium radius5 valign">shield</i>
+              </label>
+              
+              <label for="editTaskbarIcon-warning" class="pointer">
+                <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-warning" name="editTaskbarIcon" value="warning">
+                <i class="material-icons medium radius5 valign">warning</i>
+              </label>
+              
+              <label for="editTaskbarIcon-mail" class="pointer">
+                <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-mail" name="editTaskbarIcon" value="mail">
+                <i class="material-icons medium radius5 valign">mail</i>
+              </label>
+              
+              <label for="editTaskbarIcon-lan" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-lan" name="editTaskbarIcon" value="lan">
+                <i class="material-icons medium radius5 valign">lan</i>
+              </label>
+              
+              <label for="editTaskbarIcon-cloud" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-cloud" name="editTaskbarIcon" value="cloud">
+                <i class="material-icons medium radius5 valign">cloud</i>
+              </label>
+              
+              <label for="editTaskbarIcon-volume_up" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-volume_up" name="editTaskbarIcon" value="volume_up">
+                <i class="material-icons medium radius5 valign">volume_up</i>
+              </label>
+              
+              <label for="editTaskbarIcon-volume_mute" class="pointer">
+                <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-volume_mute" name="editTaskbarIcon" value="volume_mute">
+                <i class="material-icons medium radius5 valign">volume_mute</i>
+              </label>
+              
+              <label for="editTaskbarIcon-watch_later" class="pointer">
+                <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-watch_later" name="editTaskbarIcon" value="watch_later">
+                <i class="material-icons medium radius5 valign">watch_later</i>
+              </label>
+            </div>
             
-            <label for="editTaskbarIcon-account_circle" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-account_circle" name="editTaskbarIcon" value="account_circle">
-              <i class="material-icons medium radius5 valign">account_circle</i>
-            </label>
-            
-            <label for="editTaskbarIcon-wifi" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-wifi" name="editTaskbarIcon" value="wifi">
-              <i class="material-icons medium radius5 valign">wifi</i>
-            </label>
-            
-            <label for="editTaskbarIcon-wifi_off" class="pointer">
-              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-wifi_off" name="editTaskbarIcon" value="wifi_off">
-              <i class="material-icons medium radius5 valign">wifi_off</i>
-            </label>
-            
-            <label for="editTaskbarIcon-usb" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-usb" name="editTaskbarIcon" value="usb">
-              <i class="material-icons medium radius5 valign">usb</i>
-            </label>
-            
-            <label for="editTaskbarIcon-bluetooth" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-bluetooth" name="editTaskbarIcon" value="bluetooth">
-              <i class="material-icons medium radius5 valign">bluetooth</i>
-            </label>
-            
-            <label for="editTaskbarIcon-gpp_maybe" class="pointer">
-              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-gpp_maybe" name="editTaskbarIcon" value="gpp_maybe">
-              <i class="material-icons medium radius5 valign">gpp_maybe</i>
-            </label>
-            
-            <label for="editTaskbarIcon-shield" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-shield" name="editTaskbarIcon" value="shield">
-              <i class="material-icons medium radius5 valign">shield</i>
-            </label>
-            
-            <label for="editTaskbarIcon-warning" class="pointer">
-              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-warning" name="editTaskbarIcon" value="warning">
-              <i class="material-icons medium radius5 valign">warning</i>
-            </label>
-            
-            <label for="editTaskbarIcon-mail" class="pointer">
-              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-mail" name="editTaskbarIcon" value="mail">
-              <i class="material-icons medium radius5 valign">mail</i>
-            </label>
-            
-            <label for="editTaskbarIcon-lan" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-lan" name="editTaskbarIcon" value="lan">
-              <i class="material-icons medium radius5 valign">lan</i>
-            </label>
-            
-            <label for="editTaskbarIcon-cloud" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-cloud" name="editTaskbarIcon" value="cloud">
-              <i class="material-icons medium radius5 valign">cloud</i>
-            </label>
-            
-            <label for="editTaskbarIcon-volume_up" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-volume_up" name="editTaskbarIcon" value="volume_up">
-              <i class="material-icons medium radius5 valign">volume_up</i>
-            </label>
-            
-            <label for="editTaskbarIcon-volume_mute" class="pointer">
-              <input class="hide" type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-volume_mute" name="editTaskbarIcon" value="volume_mute">
-              <i class="material-icons medium radius5 valign">volume_mute</i>
-            </label>
-            
-            <label for="editTaskbarIcon-watch_later" class="pointer">
-              <input class="hide" checked type="checkbox" onchange="toggle('systemIcons-'+this.value);" id="editTaskbarIcon-watch_later" name="editTaskbarIcon" value="watch_later">
-              <i class="material-icons medium radius5 valign">watch_later</i>
-            </label>
-
             <label for="editTaskbarIcon-clock" class="pointer relative nobr ">
               <i class="inlineBlock material-icons editTaskbarIcon-clock-hide hover tiny redBg circle" onclick="gebi('editTaskbarIcon-clock').value = ''; gebi('editTaskbarIcon-clock').classList.remove('blueBg'); hide('systemIcons-clock');">close</i>
               <input class="radius5" placeholder="HH:MM" type="time" oninput="this.value ? [this.classList.add('blueBg'), show('systemIcons-clock'), gebi('systemIcons-clock').innerHTML = this.value] :  [this.classList.remove('blueBg'), hide('systemIcons-clock')]" id="editTaskbarIcon-clock" name="editTaskbarIcon" value="">
