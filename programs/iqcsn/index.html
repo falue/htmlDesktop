@@ -3,19 +3,18 @@
 <head>
     <title>IQCSN Chat</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="../../os/windows95/scrollbars.css" media="all">
     <style type="text/css">
         body, html {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 10px;
             background-color: #e0e0e0;
             background-image: url(bg.gif);
+            margin:0;
         }
         .chat-container {
 	        position:relative;
-            width: 900px;
-            left:50%;
-            margin: 100px 10px;
-            margin-left:-422px;
+            width: 100%;
             border: 1px solid #cccccc;
             background-color: white;
         }
@@ -30,7 +29,7 @@
         #chat-display {
             /* font-family: 'Courier New', Courier, monospace; */
             /* font-weight: 800; */
-            height: 405px;
+            height: 406px;
             overflow: auto;
             padding: 5px 20px 25px 5px;
         }
@@ -44,14 +43,14 @@
         }
         #chat-input-container {
             /* font-family: 'Courier New', Courier, monospace; */
-            width: 500px;
+            width: calc(100% - 8em);
             cursor: text;
             /*line-height: 20px; /* image height */
             white-space: nowrap;
             display: inline-block;
             /*padding: 2px 5px 2px 5px;*/ /* WORKS  */
             padding:5px 0 5px 0;
-            vertical-align:middle;
+            vertical-align:top;
             background-color: #ffffff;
             line-height:30px;
         }
@@ -68,17 +67,17 @@
             padding:0;
             /*margin:0;*/
             margin:4px 0 0 4px;
-            line-height:0;
-            /*line-height:12px;*/
+            /* line-height:0; */
+            line-height:12px;
             white-space: nowrap;
             overflow:hidden;
-            /*background-color: red;*/
             
 			font-family: 'Courier New', Courier, monospace;
-            width:1px;
+            /* width:1px; */
             height:16px;
             vertical-align:middle;
             /*max-width: 285px;*/
+            /* background-color: red; */
         }
         #noCursor,
         #cursor {
@@ -153,7 +152,7 @@
             height:100%;
         }
         table {
-            border-collapse: collapse;
+            /* border-collapse: collapse; */
             font-size: 14px;
         }
         td {
@@ -202,7 +201,7 @@
             </td>
             <td style="vertical-align: top; padding:0;" class="chatters">
                 <div class="headers">Previews contacts (24)</div>
-                <ul style="overflow: auto; height:375px; padding: 0 12px 0 12px;">
+                <ul style="overflow-y: auto; overflow-x:hidden; height:410px; padding: 0 12px 0 12px;">
                     <li><img src="emoji/set1/enojo.gif" class="emoji"> brita</li>
                     <li><img src="emoji/set1/feliz.gif" class="emoji"> abua</li>
                     <li><img src="emoji/set1/apenado.gif" class="emoji"> saul</li>
@@ -241,22 +240,12 @@
         <tr>
             <td style="background-color: #cfce95; white-space:nowrap" id="chat" class="chat">
                 <div style="">
-                	<input type="button" class="win95Button" type="button" value="B" style="width:15px; font-weight:bold"><!--
-                	--><input type="button" class="win95Button" type="button" value="i" style="width:15px; font-style:italic;"><!--
-                	--><input type="button" class="win95Button" type="button" value="U" style="width:15px; text-decoration:underline">
+                	<input type="button" class="win95Button" type="button" value="B" style="width:28px; font-weight:bold"><!--
+                	--><input type="button" class="win95Button" type="button" value="i" style="width:28px; font-style:italic;"><!--
+                	--><input type="button" class="win95Button" type="button" value="U" style="width:28px; text-decoration:underline">
                 	
-                	<select>
-                		<option>Font:</option>
-                		<option>Arial</option>
-                		<option>Verdana</option>
-                		<option>Tahoma</option>
-                		<option>Trebuchet</option>
-                		<option>Times</option>
-                		<option>Georgia</option>
-                		<option>Garamond</option>
-                		<option>Courier</option>
-                		<option>Brush</option>
-                	</select>
+                    <div class="win95Border" style="display:inline-block; width:75px; background-color: white; padding:5px 3px;">Font: </div><!-- 
+                    --><span class="win95Button" type="button">▼</span>
                 	
                     <input type="button" class="win95Button" type="button" value="Preferences">
                     <input type="button" class="win95Button" type="button" value="Friends" style="vertical-align:middle">
@@ -270,7 +259,7 @@
            	         	--><span id="chat-input" class="chat-input"></span><img src="cursor.gif" id="cursor" alt=""><img src="no_cursor.jpg" id="noCursor" alt=""><!--
            	         --></div>
                 	<div class="chatInput" style="display:inline-block;">
-                    	<input id="sendButton" class="win95Button" type="button" style="margin-top:8px" onclick="chatInput.innerHTML = ''; realUserInput.value=''; conversationNext(true); chatInput.style.width = '0px';" value="Send"><!-- 
+                    	<input id="sendButton" class="win95Button" type="button" style="margin-top:1.5px" onclick="chatInput.innerHTML = ''; realUserInput.value=''; conversationNext(true); chatInput.style.width = '0px';" value="Send"><!-- 
                      	--><input id="resetButton" class="win95Button" type="button" onclick="resetChat();" value="Clear"><!-- 
                      	--><!-- 
                  	--></div>
@@ -284,7 +273,7 @@
                 <span class="small">
                     <strong>Status</strong>
                     <span class="win95Border" style="background-color: white; padding:5px 3px;">I'm available </span><!-- 
-                    --><span class="win95Button" type="button">,</span>
+                    --><span class="win95Button" type="button">▼</span>
                     <hr>
                     <a href="#">Home</a> - <a href="#">Preferences</a> - <a href="#">Basic</a> - <a href="#">History</a>
                 </span>
@@ -358,8 +347,9 @@
             {name: "SAUL", text: "I try not to think about it, but it lingers", delay: 0, style: "", color: "blue"},
             {name: "ABUA", text: "small steps", delay: 0, style: "", color: "green"},
             {name: "BRITA", text: "Yes...", delay: 0, style: "", color: "magenta"},
+            // In the script 106:
             {name: "BRITA", text: "AND WHO IS RESPONSIBLE? STILL NO ANSWERS AND SWISSAIR GOES ABOUT BUSINESS AS USUAL. WHAT ABOUT THE FAMILIES!?", delay: 0, style: "", color: "magenta"},
-            // In the script:
+            // In the script 113:
             {name: "BRITA", text: "I know how PR works. They are not telling us the whole story. ", delay: 0, style: "", color: "magenta"},
         ]
         var conversation = [
@@ -411,7 +401,7 @@
         var messagesLength = conversation.length;
         var messageCounter = 0;
         var locked = false;
-        var printToConsole = false;
+        var printToConsole = true;
 
         function displayPastMessages() {
             if(printToConsole) logAction("displayPastMessages");
@@ -437,6 +427,7 @@
             if(!message) return;
             if(message.name == pov && !povForce) {
                 if(printToConsole) logAction("Wait for user to type");
+                focusRealInput();
             } else {
                 displayMessage(message)
             }
@@ -482,12 +473,14 @@
             // For non-final messages, handle input updates
             if (event.keyCode === 13) { // Enter key
                 // not finished but send anyway
-                chatInput.style.width = '0px';
+                //chatInput.style.width = '0px';
                 sendPovMessage(message);
             } else {
-	            var width = ((currentInputLength > message.text.length ? message.text.length : currentInputLength) *8);  // -20
+                console.log('aaaa')
+                console.log(currentInputLength)
+	            //var width = ((currentInputLength > message.text.length ? message.text.length : currentInputLength) *8);  // -20
 	            //width = width < 8 ? 8 : width;
-            	chatInput.style.width = width+'px';
+            	//chatInput.style.width = width+'px';
                 chatInput.innerHTML = message.text.substr(0, currentInputLength);
             }
         }
@@ -507,7 +500,7 @@
                 return;
             }
             var messageStr = "{name: \""+message.name+"\", pov: pov==\""+message.name+"\", text: \""+message.text+"\", delay: "+message.delay+", style: \""+message.style+"\", color: \""+message.color+"\"}";
-            if(printToConsole) logAction(messageStr);
+            // if(printToConsole) logAction(messageStr);
             
             // IE 5 for MAC does not work with function references. first argument is a string of the function name (!?)
             // See https://www.thecodingforums.com/threads/settimeout-not-working-on-mac-ie-5-2.917891/
@@ -528,7 +521,6 @@
                 chatBox.innerText += message.text;
                 messageContainer.appendChild(nameBox);
                 messageContainer.appendChild(chatBox);
-            
             
             // messageContainer.innerText = (message.name == pov ? 'YOU' : message.name) + ': ' + message.text;
             
@@ -551,9 +543,9 @@
         }
 
         function logAction(action) {
-            // console.log(action);  // BREAKS IE 5 (!?)
-            var pastLog = logTextarea.innerHTML;
-            logTextarea.innerHTML = action + "\n" + pastLog;
+            console.log(action);  // BREAKS IE 5 (!?)
+            //var pastLog = logTextarea.innerHTML;
+            // logTextarea.innerHTML += "\n" +action;
             // logTextarea.scrollTop = logTextarea.scrollHeight;
         }
     </script>
