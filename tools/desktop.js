@@ -393,11 +393,119 @@ function setBrightness(value) {
     // let rgb = parseInt(value*2.55);
     // document.getElementsByTagName('body')[0].style.cursor = `url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22pointer_cursor%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%0A%09%20y%3D%220px%22%20width%3D%2228px%22%20height%3D%2228px%22%20viewBox%3D%220%200%2028%2028%22%20style%3D%22enable-background%3Anew%200%200%2028%2028%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpolygon%20fill%3D%22rgb(${rgb}%2C${rgb}%2C${rgb})%22%20points%3D%2211.6%2C11.6%200%2C0%200%2C16%203.2%2C12.8%205.5%2C18.2%209.1%2C16.7%207%2C11.6%20%22%2F%3E%0A%3Cpolygon%20points%3D%229.2%2C10.6%201%2C2.4%201%2C13.6%203.6%2C11.1%205.9%2C16.8%207.8%2C16%205.5%2C10.6%20%22%2F%3E%0A%3C%2Fsvg%3E"), auto`;
 }
-function setGuiSize(value) {
+
+function setGuiSize(value, setSliderValue=false) {
+    localStorage.setItem('htmlDesktop-guiSize', value);
     gebi('guiSizeIndicator').innerHTML = value;
     let em = value / 100;
     document.getElementsByTagName("body")[0].style.fontSize = em + "em";
+    if(setSliderValue) gebi("guiSizeSlider").value= value;
 }
+
+function setViewportMargins(margins) {
+    // Load from memory during setup
+    changeViewportMarginDisplay('top', margins.topMargin, true);
+    changeViewportMarginDisplay('right', margins.rightMargin, true);
+    changeViewportMarginDisplay('bottom', margins.bottomMargin, true);
+    changeViewportMarginDisplay('left', margins.leftMargin, true);
+    changeViewportMargins();
+}
+
+function changeViewportMarginDisplay(side, value, setSliderValue=false) {
+    // Update the labels with the current values
+    gebi(`${side}Label`).textContent = value <= 0 ? value : "+" + value;
+    gebi(`${side}Slider`).classList.toggle("negative", value < 0);
+    if(setSliderValue) gebi(`${side}Slider`).value= value;
+}
+
+function changeViewportMargins() {
+    // PROBLEMS
+    // tested + not working + i don't care
+    // actionMenu
+    // bottom: systemBar changes height??
+    // when changing OS, reset margins ?
+    // also window /shortcuts icons drag and drop are positionned using the full window which is weird
+
+    // save in localstorage!!!
+    // when setup() load it
+    
+    const container = gebi('body');
+    const leftMargin = parseInt(gebi('leftSlider').value) || 0;
+    const rightMargin = parseInt(gebi('rightSlider').value) || 0;
+    const topMargin = parseInt(gebi('topSlider').value) || 0;
+    const bottomMargin = parseInt(gebi('bottomSlider').value) || 0;
+
+    localStorage.setItem('htmlDesktop-viewportMargins', `{"leftMargin": ${leftMargin}, "rightMargin": ${rightMargin}, "topMargin": ${topMargin}, "bottomMargin": ${bottomMargin}}`);
+
+    // Apply the margins dynamically using calc()
+    // Dynamically adjust the width and height of the container
+    container.style.width = `calc(100% - ${leftMargin + rightMargin}px)`;
+    container.style.height = `calc(100% - ${topMargin + bottomMargin}px)`;
+    container.style.marginLeft = `${leftMargin}px`;
+    container.style.marginRight = `${rightMargin}px`;
+    container.style.marginTop = `${topMargin}px`;
+    container.style.marginBottom = `${bottomMargin}px`;
+
+    let systemBar = gebi('systemBar');
+    let systemBarPosition = window.getComputedStyle(systemBar);
+    let systemBarOnTop = parseInt(systemBarPosition.top) < parseInt(systemBarPosition.bottom);
+    // resize system bar
+    systemBar.style.width = `calc(100% - ${leftMargin + rightMargin}px)`;
+
+    if(systemBarOnTop) {
+        cl("systemBar is on top");
+        systemBar.style.marginTop = `${topMargin}px`;
+        gebi('startMenuWindow').style.marginTop = `${topMargin}px`;
+        gebi('startMenuWindow').style.marginLeft = `${leftMargin}px`;
+        gebi('osNotifications').style.top = `calc(2em + ${topMargin}px)`;
+        gebi('osNotifications').style.right = `${rightMargin}px`;
+    } else {
+        cl("systemBar is on bottom");
+        systemBar.style.marginBottom = `${bottomMargin}px`;
+        gebi('startMenuWindow').style.marginBottom = `${bottomMargin}px`;
+        gebi('startMenuWindow').style.marginLeft = `${leftMargin}px`;
+        gebi('osNotifications').style.bottom = `calc(3em + ${bottomMargin}px)`;
+        gebi('osNotifications').style.right = `${rightMargin}px`;
+    }
+
+    // Reposition dock
+    if(dockAvailable) {
+        gebi('dock').style.marginBottom = `${bottomMargin}px`;
+        gebi('dock').style.left = `calc(50% + ${(leftMargin - rightMargin)/2}px)`;
+    } else {
+        gebi('dock').style.marginBottom = `initial`;
+        gebi('dock').style.left = `initial`;
+    }
+    gebi('osNotifications').style.right = `${rightMargin}px`;
+
+    // change with and height and... of all elements that are set fixed and 100% w/h
+    // i know i know this has to change whenever i add a new element that is maxWIdth / maxHeight in fullscreen
+    let fullscreenElements = [
+        'gpuFail',
+        'lockScreen',
+        'lockScreenSystemColorOverlay',
+        'lockScreenColorOverlay',
+        'greenscreen',
+        'greenscreen-iframe',
+        'death',
+        'death-iframe',
+        'screensaver',
+        'splashScreenOverlay',
+        'loggingOut',
+        'shuttingDown',
+        'overlayWorkstation',
+        'keyboardControlsWindow',
+        'autoDialogWindow',
+        'editTaskbarIconsWindow',
+        'editShortcutWindow',
+        'setGradientWindow',
+    ];
+    fullscreenElements.forEach(element => {
+        gebi(element).style.width = `calc(100% - ${leftMargin + rightMargin}px)`;
+        gebi(element).style.height = `calc(100% - ${topMargin + bottomMargin}px)`;
+    });
+}
+
 
 async function shutDown(currentScreen) {
     let speed = 1;
