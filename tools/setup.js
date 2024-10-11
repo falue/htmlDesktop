@@ -52,6 +52,11 @@ async function setup() {
 
   // get some data from localstorage
   localStorageSettings = JSON.parse(localStorage.getItem('htmlDesktop-settings')) ||  {};
+  
+  let guiSize = localStorage.getItem('htmlDesktop-guiSize');
+  if(guiSize) {
+    setGuiSize(parseInt(guiSize), true);
+  }
 
   let brightness = localStorage.getItem('htmlDesktop-brightness');
   if(brightness && gebi('actionMenu')) {
@@ -152,6 +157,13 @@ async function setup() {
     show('actionMenuDockLock');
   } else {
     hide('actionMenuDockLock');
+  }
+
+  let viewportMargins = localStorage.getItem('htmlDesktop-viewportMargins');
+  // This is here because systemBar is set with those os-specific stylesheets
+  if(viewportMargins) {
+    viewportMargins = JSON.parse(viewportMargins);
+    setViewportMargins(viewportMargins);
   }
 
   // Workstation is chosen, read workstation settings

@@ -25,7 +25,7 @@
     <meta name="robots" content="noindex" />
 
   </head>
-  <body onload="setup();" class="maxWidth maxHeight fixed" onkeydown="keyboardController(event);">
+  <body id="body" onload="setup();" class="maxWidth maxHeight fixed" onkeydown="keyboardController(event);">
 
     <!-- SELECT Workstation -->
     <div id="overlayWorkstation" class="overlay hide fancy">
@@ -40,7 +40,7 @@
     </div>
 
     <!-- BRIGHTNESS -->
-    <div id="brightnessOverlay" class="blackBg fixed top left maxWidth maxHeight op0" style="pointer-events: none; z-index: 15000;">
+    <div id="brightnessOverlay" class="blackBg fixed top left maxWidth maxHeight op0" style="pointer-events: none; z-index: 10000;">
     </div>
 
     <!-- SHENANIGANS -->
@@ -111,10 +111,10 @@
     </div>
 
     <!-- BLACKOUT -->
-    <div id="blackout" onclick="setOverlayColor('BLACK');" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 11111;"></div>
+    <div id="blackout" onclick="setOverlayColor('BLACK');" class="fixed top left blackBg maxWidth maxHeight hide noCursor" style="z-index: 11111;"></div>
 
     <!-- STARTUP -->
-    <div id="startUp" data-is-starting-up="false" onclick="startUp();" class="fixed blackBg white maxWidth maxHeight hide noCursor padding1" style="z-index: 9999;">
+    <div id="startUp" data-is-starting-up="false" onclick="startUp();" class="fixed top left blackBg white maxWidth maxHeight hide noCursor padding1" style="z-index: 9999;">
       <code id="startUp-code" class="small whiteSpace" style="font-family:'Source Code Pro', Consolas, monospace;"></code>
       <div id="startUp-loader" class="hide centerContent white maxHeight">
         <div class="block alignCenter">
@@ -145,7 +145,7 @@
 
     <!-- START MENU -->
     <div id="startMenu" class="hide">
-      <div class="startMenu systemColors shadow">
+      <div id="startMenuWindow" class="startMenu systemColors shadow">
         <div class="columns">
           <div class="startMenuHeader showLinux">
             <h3>
@@ -314,7 +314,7 @@
     </div>
 
     <!-- ACTION MENU -->
-    <div id="actionMenu" class="hide dontResizeWithGui">
+    <div id="actionMenu" class="hide fixed top left maxWidth maxHeight dontResizeWithGui">
       <div class="actionMenu darkGreyBg shadow radius5 noScrollbar">
         <!-- TITEL -->
         <div class="actionMenuTitle paddingY50 paddingX1 maxWidth fancy" onclick="hide('actionMenu');">
@@ -411,11 +411,11 @@
                   Swap OS:
                 </div>
                 <div class="right top absolute">
-                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows95 showLinux showMac pointer" onclick="hide('actionMenu'); hotSwapOs('windows');">WIN</span>
-                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showMac showWindows pointer" onclick="hide('actionMenu'); hotSwapOs('windows95');">WIN95</span>
-                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows95 showLinux showWindows pointer" onclick="hide('actionMenu'); hotSwapOs('mac');">MAC</span>
-                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows95 showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('linux');">Linux</span>
-                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows95 showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('spa');">spa</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows95 showLinux showMac pointer" onclick="hide('actionMenu'); hotSwapOs('windows'); changeViewportMargins()">WIN</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showLinux showMac showWindows pointer" onclick="hide('actionMenu'); hotSwapOs('windows95'); changeViewportMargins()">WIN95</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows95 showLinux showWindows pointer" onclick="hide('actionMenu'); hotSwapOs('mac'); changeViewportMargins()">MAC</span>
+                  <span class="blueBg keyboardKey bold hover valign showSpa showWindows95 showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('linux'); changeViewportMargins()">Linux</span>
+                  <span class="blueBg keyboardKey bold hover valign showLinux showWindows95 showWindows showMac pointer" onclick="hide('actionMenu'); hotSwapOs('spa'); changeViewportMargins()">spa</span>
                 </div>
               </li>
               <li class="relative">
@@ -452,6 +452,20 @@
                   </span>
                 </div>
               </li>
+              <li id="actionMenuDockLock" class="hide maxWidth pointer" onclick="gebi('dock').classList.toggle('dockLock'); swap('dockLock-locked', 'dockLock-unlocked')">
+                  <i class="material-icons blue small">call_to_action</i>
+                  Lock dock:
+                  <i id="dockLock-locked" class="material-icons red small valign">lock</i>
+                  <i id="dockLock-unlocked" class="material-icons green small valign hide">lock_open</i>
+              </li>
+            </ul>
+          </div>
+
+          <div class="chooseBoxTitle black bold uppercase whiteBg italics">
+            <i class="material-icons yellow small text-outline--black valign">warning</i> Here be dragons
+          </div>
+          <div class="chooseBox radius5">
+            <ul>
               <li class="tooltip pointer relative" data-title="Pointer+DragDrop stays sometimes bright - use physical buttons on your monitor!">
                 <div>
                   <i class="material-icons blue small">light_mode</i>
@@ -463,18 +477,55 @@
                 <input type="range" class="maxWidth padding2 borderBox" id="brightnessSlider" value="100" min="10" max="100" oninput="setBrightness(this.value)"/>
               </li>
 
-              <li class="tooltip pointer" data-title="Use the browsers or Eddy-g's scaling function!">
+              <li class="tooltip pointer" data-title="Window-contents stay the same - Use the browsers or Eddy-g's scaling function!">
                   <i class="material-icons blue small">format_size</i>
                   GUI size <span id="guiSizeIndicator">100</span>%
-                <input type="range" id="guiSizeSlider" class="padding2 borderBox valign right top marginX50" list="zommGuiTicks" style="width:60%" value="100" min="33" max="250" oninput="setGuiSize(this.value)"/>
+                <input type="range" id="guiSizeSlider" class="padding2 nudge-y--25 borderBox valign right top marginX50" list="zommGuiTicks" style="width:60%" value="100" min="33" max="250" oninput="setGuiSize(this.value)"/>
                 <datalist id="zommGuiTicks">
                   <option value="100">
                 </option>
               </li>
 
-              <li id="actionMenuDockLock" class="hide maxWidth pointer" onclick="gebi('dock').classList.toggle('dockLock')">
-                  <i class="material-icons blue small">call_to_action</i>
-                  Lock dock
+              <li id="viewPortMarginsSettingsContainer" class="relative noLiHover">
+                <div class="tooltip pointer" data-title="Adjust the display areay of the screen for mis-matched video signal converters." onclick="toggle('viewPortMarginsSettings'); gebi('viewPortMarginsSettingsArrow').classList.toggle('rotate180');">
+                  <i class="material-icons blue small">settings_overscan</i>
+                  Adjust viewport margins
+                  <i id="viewPortMarginsSettingsArrow" class="material-icons grey small">keyboard_double_arrow_down</i>
+                  <div class="small grey right top padding25">
+                    <i class="material-icons yellow small marginX50">warning</i>Bugs ahead
+                  </div>
+                </div>
+                <div id="viewPortMarginsSettings" class="hide padding05 small">
+                  <ul>
+                    <li class="relative">
+                      <label class="valign marginY1" for="topSlider">Top Margin: <span id="topLabel">0</span>px</label>
+                      <input id="topSlider" class="nudge-y--25 marginX50 valign right paddingY0 marginY0" type="range" min="-400" max="400" value="0" list="viewportMarginTicks" oninput="changeViewportMarginDisplay('top', this.value)" onchange="changeViewportMargins()">
+                    </li>
+                    
+                    <li class="relative">
+                      <label class="valign marginY1" for="rightSlider">Right Margin: <span id="rightLabel">0</span>px</label>
+                      <input id="rightSlider" class="nudge-y--25 marginX50 valign right paddingY0 marginY0" type="range" min="-400" max="400" value="0" list="viewportMarginTicks" oninput="changeViewportMarginDisplay('right', this.value)" onchange="changeViewportMargins()">
+                    </li>
+                    
+                    <li class="relative">
+                      <label class="valign marginY1" for="bottomSlider">Bottom Margin: <span id="bottomLabel">0</span>px</label>
+                      <input id="bottomSlider" class="nudge-y--25 marginX50 valign right paddingY0 marginY0" type="range" min="-400" max="400" value="0" list="viewportMarginTicks" oninput="changeViewportMarginDisplay('bottom', this.value)" onchange="changeViewportMargins()">
+                    </li>
+
+                    <li class="relative">
+                      <label class="valign marginY1" for="leftSlider">Left Margin: <span id="leftLabel">0</span>px</label>
+                      <input id="leftSlider" class="nudge-y--25 marginX50 valign right paddingY0 marginY0" type="range" min="-400" max="400" value="0" list="viewportMarginTicks" oninput="changeViewportMarginDisplay('left', this.value)" onchange="changeViewportMargins()">
+                    </li>
+                    <li class="relative noLiHover alignRight">
+                      <span class="pointer blueBg small padding25"onclick="setViewportMargins({'topMargin': 0, 'rightMargin': 0, 'bottomMargin': 0, 'leftMargin': 0})">
+                        Reset all viewport margins
+                      </span>
+                    </li>
+                  </ul>
+                  <datalist id="viewportMarginTicks">
+                    <option value="0">
+                  </option>
+                </div>
               </li>
             </ul>
           </div>
@@ -616,7 +667,10 @@
                   Shut down
                 </div>
                 <div  class="small grey right top padding50">Boot speed: <span id="bootSpeedIndicator">fast-ish [~12s]</span></div>
-                <input type="range" class="maxWidth padding2 borderBox" id="bootSpeedSlider" value="3" min="1" max="7" oninput="setBootSpeed(this.value);"/>
+                <input type="range" class="maxWidth padding2 borderBox" id="bootSpeedSlider" value="3" min="1" max="7" list="shutdownTicks" oninput="setBootSpeed(this.value);"/>
+                <datalist id="shutdownTicks">
+                  <option value="3">
+                </option>
               </li>
               <li class="tooltip pointer" data-title="Keyboard: [alt]+[x] or [4]" onclick="screenSaver(); hide('actionMenu');">
                 <i class="material-icons blue small">dark_mode</i>
@@ -716,7 +770,7 @@
        
       <!-- PROGRAM FAST ACCESS -->
        <div id="dock" class="buttonGroup dock dockLock">
-         <div class="dockContainer">
+         <div id="dockContainer" class="dockContainer">
           <button data-title="Action menu" onclick="toggle('actionMenu'); hide('startMenu');" class="valign systemColors tooltip tooltipDock">
             <i class="material-icons showWindows showWindows95 showLinux">bolt</i>
             <img class="showMac" src="os/mac/programIcons/action.png" alt=""/>
@@ -805,7 +859,7 @@
 
     <!-- DIALOG: AUTO DIALOG -->
     <div id="autoDialog" class="dialog hide dontResizeWithGui">
-      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+      <div id="autoDialogWindow" class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white minWidth300 maxWidth600 absolute radius5">
           <h3 class="alignCenter">
             <i class="material-icons blue valign">info</i>
@@ -870,7 +924,7 @@
 
     <!-- DIALOG: EDIT SHORTCUTS -->
     <div id="editShortcut" class="hide dialog dontResizeWithGui">
-      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+      <div id="editShortcutWindow" class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white maxWidth300 absolute radius5">
           <h3 class="alignCenter">
             <i class="material-icons blue valign ">edit_location_alt</i>
@@ -972,7 +1026,7 @@
 
     <!-- DIALOG TASKBAR ICONS EDIT -->
     <div id="editTaskbarIcons" class="hide dialog dontResizeWithGui">
-      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+      <div id="editTaskbarIconsWindow" class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white maxWidth300 absolute radius5">
           <h3 class="alignCenter">
             <i class="material-icons blue valign ">call_to_action</i>
@@ -1102,7 +1156,7 @@
     
     <!-- KEYBOARD CONTROL -->
     <div id="keyboardControls" class="hide dialog dontResizeWithGui">
-      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+      <div id="keyboardControlsWindow" class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white minWidth400 maxWidth500 absolute radius5">
           <h3 class="alignCenter">
             <i class="material-icons blue valign">keyboard</i>
@@ -1168,7 +1222,7 @@
 
     <!-- SET GRADIENT -->
     <div id="setGradient" class="hide dialog dontResizeWithGui">
-      <div class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
+      <div id="setGradientWindow" class="maxWidth maxHeight fixed blackBgTransparent centerContent" style="z-index: 99999;">
         <div class="darkGreyBg padding shadow white minWidth600 maxWidth700 absolute radius5">
           <h3 class="alignCenter">
             <i class="material-icons blue valign">gradient</i>
