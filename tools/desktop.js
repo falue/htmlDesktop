@@ -435,7 +435,11 @@ function changeViewportMargins() {
     const topMargin = parseInt(gebi('topSlider').value) || 0;
     const bottomMargin = parseInt(gebi('bottomSlider').value) || 0;
 
-    localStorage.setItem('htmlDesktop-viewportMargins', `{"leftMargin": ${leftMargin}, "rightMargin": ${rightMargin}, "topMargin": ${topMargin}, "bottomMargin": ${bottomMargin}}`);
+    if(topMargin + rightMargin + bottomMargin + leftMargin === 0) {
+        localStorage.removeItem('htmlDesktop-viewportMargins');
+    } else {
+        localStorage.setItem('htmlDesktop-viewportMargins', `{"leftMargin": ${leftMargin}, "rightMargin": ${rightMargin}, "topMargin": ${topMargin}, "bottomMargin": ${bottomMargin}}`);
+    }
 
     // Apply the margins dynamically using calc()
     // Dynamically adjust the width and height of the container
@@ -453,14 +457,14 @@ function changeViewportMargins() {
     systemBar.style.width = `calc(100% - ${leftMargin + rightMargin}px)`;
 
     if(systemBarOnTop) {
-        cl("systemBar is on top");
+        // cl("systemBar is on top");
         systemBar.style.marginTop = `${topMargin}px`;
         gebi('startMenuWindow').style.marginTop = `${topMargin}px`;
         gebi('startMenuWindow').style.marginLeft = `${leftMargin}px`;
         gebi('osNotifications').style.top = `calc(2em + ${topMargin}px)`;
         gebi('osNotifications').style.right = `${rightMargin}px`;
     } else {
-        cl("systemBar is on bottom");
+        // cl("systemBar is on bottom");
         systemBar.style.marginBottom = `${bottomMargin}px`;
         gebi('startMenuWindow').style.marginBottom = `${bottomMargin}px`;
         gebi('startMenuWindow').style.marginLeft = `${leftMargin}px`;
