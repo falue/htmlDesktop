@@ -519,7 +519,7 @@ function forceType(event, element, text, endAction = false, waitForEnter = false
     case 8:
       // cl("backspace");
       event.preventDefault();
-      newTypedText = text.substring(0,index-1);
+      newTypedText = currentText.substring(0,index-1);
       index--;
       break; 
         
