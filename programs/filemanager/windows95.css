@@ -4,12 +4,14 @@ body {
 }
 
 /* its a mess */
-
 header {
+    background-color: #c0c0c0;
+}
+
+header:not(.windowmenu):not(.fileManagerTools) {
     border-top:solid .1em white !important;
     border-bottom:solid .1em black;
     box-shadow:inset 0 -.1em #808080, inset 0 0.1em #dfdfdf !important;
-    background-color: #c0c0c0;
 }
 
 body > header.fileManagerTools.relative {
