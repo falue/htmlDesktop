@@ -204,7 +204,7 @@
                 <ul style="overflow-y: auto; overflow-x:hidden; height:410px; padding: 0 12px 0 12px;">
                     <li><img src="emoji/set1/enojo.gif" class="emoji"> brita</li>
                     <li><img src="emoji/set1/feliz.gif" class="emoji"> abua</li>
-                    <li><img src="emoji/set1/apenado.gif" class="emoji"> saul</li>
+                    <li><img src="emoji/set1/apenado.gif" class="emoji"> SAULR</li>
                     <li><img src="emoji/set1/otro.gif" class="emoji"> xXsabineXx</li>
                     <li><img src="emoji/set1/yoqse.gif" class="emoji"> karen_7_7</li>
                     <li><img src="emoji/set1/uhm.gif" class="emoji"> dan0Smith</li>
@@ -313,10 +313,13 @@
                     <li style="padding-left: 5px;"><a href="#">Help</a></li>
                     <li style="padding-left: 5px;"><a href="#">Exit</a></li>
                 </ul>
-                <select>
-                    <option>aaaaaaa</option>
-                    <option>bbbbbbb</option>
-                    <option>ccccccc</option>
+                <button id="showYou" onclick="showYou = !showYou; location.href = './index.html?pov='+pov+'&showYou='+showYou">
+                    showYou yes
+                </button>
+                <select id="povChanger" onchange="location.href = './index.html?pov='+this.value+'&showYou='+showYou">
+                    <option value="SAULR">#113 SAULR</option>
+                    <option value="ABUA">#113A ABUA</option>
+                    <option value="BRITA">[BRITA]</option>
                 </option>
             </td>
         </tr>
@@ -326,7 +329,25 @@
     <script type="text/javascript">
         // DEFINES WHO IS "YOU" IN CHAT
         // Who types, and also your name does not stand there its "YOU"
-        var pov = "SAUL";
+
+        // URL APRAMS POV !!!!
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let pov = urlParams.get("pov");
+        if(!pov) pov = "SAULR";
+        document.getElementById('povChanger').value = pov;
+        // var pov = "SAULR";
+        
+        
+        let showYou = urlParams.get("showYou");
+        if(showYou) {
+            showYou = showYou == "true";
+        } else {
+            showYou = true;
+        }
+        document.getElementById('showYou').innerHTML = showYou ? 'showYou=no' : 'showYou=yes';
+
+
 
         var pastConversation = [
             // ATTENTION! APOSTRPOHES (') OR QUOTES (") are not allowed! use "greek smooth breathing ᾽ instead"
@@ -334,17 +355,17 @@
             // {name: "BRITA", text: "lately?", delay: 0, style: "", color: "magenta"},
             // {name: "ABUA", text: "Yeah, almost unsettling...", delay: 0, style: "", color: "green"},
             // {name: "ABUA", text: "like we're missing something", delay: 0, style: "", color: "green"},
-            // {name: "SAUL", text: "Maybe everyone's just tired. It's been a long stretch for all of us.", delay: 0, style: "", color: "blue"},
+            // {name: "SAULR", text: "Maybe everyone's just tired. It's been a long stretch for all of us.", delay: 0, style: "", color: "blue"},
             // {name: "BRITA", text: "True", delay: 0, style: "", color: "magenta"},
             // {name: "BRITA", text: "but still... ", delay: 0, style: "", color: "magenta"},
             // {name: "BRITA", text: "you'd expect some kind of update", delay: 0, style: "", color: "magenta"},
             {name: "BRITA", text: "wouldn't you?", delay: 0, style: "", color: "magenta"},
             {name: "ABUA", text: "We've been patient this long. Maybe they're just being cautious.", delay: 0, style: "", color: "green"},
-            {name: "SAUL", text: "It's hard to believe they haven't shared more with us by now.", delay: 0, style: "", color: "blue"},
+            {name: "SAULR", text: "It's hard to believe they haven't shared more with us by now.", delay: 0, style: "", color: "blue"},
             {name: "ABUA", text: "no news means they're still figuring things out.", delay: 0, style: "", color: "green"},
             {name: "BRITA", text: "Still we deserve clarity.", delay: 0, style: "", color: "magenta"},
             {name: "BRITA", text: "It's exhausting being left in the dark.", delay: 0, style: "", color: "magenta"},
-            {name: "SAUL", text: "I try not to think about it, but it lingers", delay: 0, style: "", color: "blue"},
+            {name: "SAULR", text: "I try not to think about it, but it lingers", delay: 0, style: "", color: "blue"},
             {name: "ABUA", text: "small steps", delay: 0, style: "", color: "green"},
             {name: "BRITA", text: "Yes...", delay: 0, style: "", color: "magenta"},
             // In the script 106:
@@ -354,29 +375,35 @@
         ]
         var conversation = [
             // A man's hands TYPE:
-            {name: "SAUL", text: "It has been nine months... they must know something.", delay: 2000, style: "", color: "blue"},
+            {name: "SAULR", text: "It has been nine months... they must know something.", delay: 2000, style: "", color: "blue"},
             {name: "ABUA", text: "We have to find some way to let it go... We need some peace.", delay: 2000, style: "", color: "green"},
-            // Saul pauses, types
-            {name: "SAUL", text: "I don't know if I'll ever have that kind of peace again.", delay: 2000, style: "", color: "blue"},
+            // SAULR pauses, types
+            {name: "SAULR", text: "I don't know if I'll ever have that kind of peace again.", delay: 2000, style: "", color: "blue"},
             {name: "ABUA", text: "I know how you feel...", delay: 2000, style: "", color: "green"},
             // A pause...
             {name: "BRITA", text: "One almost wishes to go back to Halifax and SEE what the hell they are doing there.", delay: 3000, style: "", color: "magenta"},
         ]
 
+        /// SOLVE OR SO
+        /* if scene not 106
+            add to pastConversation
+                {name: "BRITA", text: "I know how PR works. They are not telling us the whole story. ", delay: 0, style: "", color: "magenta"},
+         */
+
         // SCRIPT
         /* 
-        106 INT. WESTCHESTER MEDICAL CENTER, SAUL'S OFFICE - DAY 106
+        106 INT. WESTCHESTER MEDICAL CENTER, SAULR'S OFFICE - DAY 106
             earlier
                 BRITA: AND WHO IS RESPONSIBLE? STILL NO ANSWERS AND SWISSAIR GOES ABOUT BUSINESS AS USUAL. WHAT ABOUT THE FAMILIES!?
 
-        113 INT. MARIA & SAUL ROSENTHAL'S HOUSE, SAUL'S DEN - MORNING113
+        113 INT. MARIA & SAULR ROSENTHAL'S HOUSE, SAULR'S DEN - MORNING113
             earlier
                 BRITA: I know how PR works. They are not telling us the whole story. 
             A man's hands TYPE:
-                SAUL: It has been nine months... they must know something.
+                SAULR: It has been nine months... they must know something.
                 ABUA: We have to find some way to let it go... We need some peace.
-            Saul pauses, types
-                SAUL: I don't know if I'll ever have that kind of peace again.
+            SAULR pauses, types
+                SAULR: I don't know if I'll ever have that kind of peace again.
                 ABUA: I know how you feel...
             A pause...
                 BRITA: One almost wishes to go back to Halifax and SEE what the hell they are doing there.
@@ -413,7 +440,7 @@
                 var chatBox = document.createElement('span');
                 nameBox.className += "name";
                 nameBox.style.color = pastConversation[i].color;
-                nameBox.innerText = (pastConversation[i].name == pov ? 'YOU' : pastConversation[i].name) + ': ';
+                nameBox.innerText = (pastConversation[i].name == pov && showYou ? 'YOU' : pastConversation[i].name) + ': ';
                 chatBox.innerText += pastConversation[i].text;
                 otherMessage.appendChild(nameBox);
                 otherMessage.appendChild(chatBox);
@@ -517,7 +544,7 @@
             var chatBox = document.createElement('span');
                 nameBox.className += "name";
                 nameBox.style.color = message.color;
-                nameBox.innerText = (message.name == pov ? 'YOU' : message.name) + ': ';
+                nameBox.innerText = (message.name == pov && showYou ? 'YOU' : message.name) + ': ';
                 chatBox.innerText += message.text;
                 messageContainer.appendChild(nameBox);
                 messageContainer.appendChild(chatBox);
