@@ -1,0 +1,108 @@
+{
+    "settings": {
+        "systemColor": "#c0c0c0",
+        "desktopColor": "#008081",
+        "desktopImg": "os/windows95/desktop-2.jpg",
+        "os": "windows95",
+        "darkMode": true,
+        "username": "Carine",
+        "password": "",
+        "workstation": "Carine",
+        "selectedSystemMessage": 3,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+    ],
+    "windows": [
+        {
+            "metaTitle": "#23-25-27 Crew Count 111",
+            "windowName": "CREW COUNT - Encabulator - Flight: SR111",
+            "icon": "flight_takeoff",
+            "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true",
+            "x": 12,
+            "y": 6,
+            "w": 780,
+            "h": 780,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#23-25-27 Crew Count 144",
+            "windowName": "CREW COUNT - Encabulator - Flight: SR144",
+            "icon": "flight_takeoff",
+            "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23-1&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true",
+            "x": 12,
+            "y": 6,
+            "w": 780,
+            "h": 780,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "metaTitle": "#23-25-27 Crew Count 0456",
+            "windowName": "CREW COUNT - Encabulator - Flight: SR0456",
+            "icon": "flight_takeoff",
+            "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23-2&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true",
+            "x": 12,
+            "y": 6,
+            "w": 780,
+            "h": 780,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#23-25-27 Crew Count 0234",
+            "windowName": "CREW COUNT - Encabulator - Flight: SR0234",
+            "icon": "flight_takeoff",
+            "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23-3&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true",
+            "x": 12,
+            "y": 6,
+            "w": 780,
+            "h": 780,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 1,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 93,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 93,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 2,
+            "y": 30,
+            "action": "startDefaultProgram('fileManager');"
+        }
+    ],
+    "actions": [],
+    "osNotifications": []
+}

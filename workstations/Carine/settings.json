@@ -15,7 +15,8 @@
     ],
     "windows": [
         {
-            "windowName": "CREW COUNT - Encabulator",
+            "metaTitle": "#23-25-27 Crew Count 111",
+            "windowName": "CREW COUNT - Encabulator - Flight: SR111",
             "icon": "flight_takeoff",
             "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true",
             "x": 12,
@@ -260,17 +261,7 @@
         }
     ],
     "actions": [
-        ["USB stick: Place shortcut & notify", "placeShortcut('USB drive', 'hdd.png', 4,85, 'startDefaultProgram(\"fileManager\");'); await delay(2000); showSystemMessage({'title': 'New USB drive detected', 'description': 'Open drive & check for viruses', 'icon': 'stream', 'initialDelay': 0, 'timeOut': 2500, 'action': 'startDefaultProgram(\"fileManager\");'})"]
     ],
     "osNotifications": [
-        {
-            "metaTitle": "",
-            "title": "Activate OS now",
-            "description": "Please invest in a robust system and pay us just $14.99 per day to experience the most comfort a meaty fleshbag can enjoy. We will remind you again in one hour.",
-            "icon": "shield",
-            "initialDelay": true,
-            "timeOut": 4500,
-            "action": ""
-        }
     ]
 }

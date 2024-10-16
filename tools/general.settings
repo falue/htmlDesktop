@@ -4,3 +4,5 @@ workstation=generic;spa
 workstation=Saul;windows95
 
 workstation=Carine;windows95
+
+workstation=OperationsCenter;windows95
