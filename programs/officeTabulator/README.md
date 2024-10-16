@@ -24,7 +24,8 @@ Put `.csv` in `data/`.
 | `borderColor` | in hex (without `#`)) |
 | `fontColor` | in hex (without `#`)) |
 | `zoom` | int percent, 100% = 16px |
-| `hideRulers` | `true` or `false` to hide the first column and first row |
+| `hideRulers` | `true` or `false` to hide the first column and first row |$
+| `hideTextBtn` | Hides the text-styling things to not look as much as a word processor |
 
 
 ## Styling cells
