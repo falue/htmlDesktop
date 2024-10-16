@@ -3,7 +3,9 @@ body {
 }
 
 input, textarea {
-    font-family: win95, Verdana, Helvetica, sans-serif;
+    /* font-family: win95, Verdana, Helvetica, sans-serif; */
+    font-family: inherit;
+    font-size: inherit;
     /* font-family: win95-mono, win95, Verdana, Helvetica, sans-serif;
     letter-spacing: -.075em; */
 }

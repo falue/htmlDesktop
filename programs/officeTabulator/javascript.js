@@ -7,6 +7,14 @@ async function setup() {
   let scene = urlParams.get("scene");
   let type = urlParams.get("type");
 
+  let tabulatorFont =  urlParams.get("font");
+  let fontSize =  urlParams.get("fontSize");
+  let bgColor =  urlParams.get("bgColor");
+  let borderColor =  urlParams.get("borderColor");
+  let fontColor =  urlParams.get("fontColor");
+  let zoom =  urlParams.get("zoom");
+  let hideRulers =  urlParams.get("hideRulers") === "true";
+
   gebi('body').classList.add(os);
   gebi('body').classList.add(type);
   // if(type) gebi('content').src = `${type}.html?scene=${scene}&os=${os}`
@@ -25,7 +33,15 @@ async function setup() {
   handleColumnResizing();
   handleRowResizing();
 
-  if(scene) loadCsv(`data/${scene}.csv`);
+  if(scene) await loadCsv(`data/${scene}.csv`);
+
+  if(tabulatorFont) setTabulatorFont(tabulatorFont);
+  if(fontSize) setFontSize(parseInt(fontSize));
+  if(bgColor) setBgColor("#"+bgColor);
+  if(borderColor) setBorderColor("#"+borderColor);
+  if(fontColor) setFontColor("#"+fontColor);
+  if(zoom) zoomTable(parseInt(zoom));
+  toggleRulers(hideRulers);
 }
 
 

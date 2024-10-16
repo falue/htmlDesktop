@@ -18,7 +18,13 @@ Put `.csv` in `data/`.
 | Parameter                          | Meaning |
 | ---------------------------------- | ------- |
 | `scene` | onload, the script looks out for the `.csv` in `data/*scene*.csv` |
-
+| `font` | `win95`,`win95-mono`,`topaz`,`'Courier New'`,`Roboto`,`Garuda` or any standard font. |
+| `fontSize` | gets divided by 12 to get `em` sizes |
+| `bgColor` | in hex (without `#`)) |
+| `borderColor` | in hex (without `#`)) |
+| `fontColor` | in hex (without `#`)) |
+| `zoom` | int percent, 100% = 16px |
+| `hideRulers` | `true` or `false` to hide the first column and first row |
 
 
 ## Styling cells
