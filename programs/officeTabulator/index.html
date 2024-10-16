@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OFFICE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <link rel="stylesheet" href="spreadsheet.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js"></script>
+    <script src="spreadsheet.js" defer></script>
+
+  </head>
+  <body id="body" onload="setup();" onkeydown="parent.keyboardController(event);">
+    <div class="gridLayout">
+      <!-- ROW 1 -->
+      <div class="gridBox windowmenu" style="grid-column: col / span 6; grid-row: row; overflow: hidden;">
+        <button class="programButtons">File..</button>
+        <button class="programButtons">Edit</button>
+        <button class="programButtons">View</button>
+        <button class="programButtons">Insert</button>
+        <button class="programButtons">Format</button>
+        <button class="programButtons">Tools</button>
+        <button class="programButtons">Window</button>
+        <button class="programButtons">Help</button>
+        <button class="programButtons disabled">Query</button>
+      </div>
+      <div class="gridBox windowmenu" style="grid-column: col 7 / span 2; grid-row: row; text-align: right;">
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="gridBox centerContentY tabButtons win95BorderTop win95BorderBottom" style="grid-column: col / span 8; grid-row: row 2;">
+        <button class="win95Button"><img src="icons/application-metalink+xml.png" alt="file" onclick="initializeTable(16, 66);"></button>
+        <button class="win95Button" style="overflow: hidden;"><img src="icons/folder-adwaita-documents-open.png" alt="open">
+          <input class="op0 maxWidth maxHeight absolute top left" type="file" title="" id="csvFile" accept=".csv" onchange="loadCsvFromFileInput(event)"/>
+        </button>
+        <button class="win95Button"><img src="icons/media-floppy.png"></button>
+        <span style="width:.5em;"></span>
+        
+        <button class="win95Button"><img src="icons/scanner.png"></button>
+        <button class="win95Button"><img src="icons/input-dialpad.png"></button>
+        <button class="win95Button"><img src="icons/blueman-keyboard.png"></button>
+
+        <button class="win95Button"><img src="icons/gnome-dev-printer.png"></button>
+        
+        <div style="margin-left:.25em" class="win95BorderRight maxHeight">&nbsp;</div>
+        <div style="margin-right:.25em" class="win95BorderLeft maxHeight">&nbsp;</div>
+        
+        <button class="win95Button"><img src="icons/view-table-of-contents-rtl.png" class="tintLightGreen"></button>
+        <button class="win95Button"><img src="icons/view-table-of-contents-ltr.png" class="tintLightGreen"></button>
+        <button class="win95Button"><img src="icons/stock_insert-table.png" class="tintRed"></button>
+        <button class="win95Button"><img src="icons/insert-table.png"></button>
+        <button class="win95Button"><img src="icons/insert-tableofcontents.png"></button>
+        <button class="win95Button"><img src="icons/insert-text-frame.png" class="tintBlue"></button>
+        
+        <div style="margin-left:.25em" class="win95BorderRight maxHeight">&nbsp;</div>
+        <div style="margin-right:.25em" class="win95BorderLeft maxHeight">&nbsp;</div>
+        
+        <button class="win95Button"><img src="icons/insert-table-of-contents.png"></button>
+        <button class="win95Button"><img src="icons/draw-text.png"></button>
+        <button class="win95Button"><img src="icons/edit-select-text.png"></button>
+        <span style="width:.5em;"></span>
+        
+        <button class="win95Button"><img src="icons/format-text-symbol.png"></button>
+        
+        <div style="margin-left:.25em" class="win95BorderRight maxHeight">&nbsp;</div>
+        <div style="margin-right:.25em" class="win95BorderLeft maxHeight">&nbsp;</div>
+        
+        <button class="win95Button"><img src="icons/edit-table-insert-row-below.png"></button>
+        <button class="win95Button"><img src="icons/edit-table-insert-row-under.png"></button>
+        <span style="width:.5em;"></span>
+        
+        <button class="win95Button"><img src="icons/edit-table-insert-column-right.png" class="tintBrown"></button>
+        <button class="win95Button"><img src="icons/edit-table-insert-row-above.png" class="tintLightBlue"></button>
+        <button class="win95Button"><img src="icons/edit-table-delete-column.png" class="tintOrange"></button>
+        <button class="win95Button"><img src="icons/edit-table-delete-row.png" class="tintYellow"></button>
+        <button class="win95Button"><img src="icons/edit-table-insert-column-left.png"></button>
+        <button class="win95Button"><img src="icons/edit-table-cell-split.png"></button>
+        <span style="width:.5em;"></span>
+        
+        <button class="win95Button"><img src="icons/edit-table-cell-merge.png"></button>
+        
+        <div style="margin-left:.25em" class="win95BorderRight maxHeight">&nbsp;</div>
+        <div style="margin-right:.25em" class="win95BorderLeft maxHeight">&nbsp;</div>
+
+        <select class="win95option right marginX1">
+          <option>Template: G</option>
+          <option>FFA</option>
+          <option>ased-1</option>
+        </select>
+      </div>
+
+      <!-- ROW 3 -->
+      <div class="gridBox centerContentY tabButtons win95BorderTop win95BorderBottom" style="grid-column: col / span 8; grid-row: row 3;">
+        <select class="win95option">
+          <option>Font: Default</option>
+          <option>Fantasy font</option>
+          <option>Font of despair</option>
+        </select>
+        <span style="width:.5em;"></span>
+        
+        <img src="icons/dialog-text-and-font.png">
+        <span style="width:.5em;"></span>
+
+        <select class="win95option">
+          <option>4pt</option>
+          <option>6pt</option>
+          <option>8pt</option>
+          <option>9pt</option>
+          <option>10pt</option>
+          <option>11pt</option>
+          <option selected>12pt</option>
+          <option>13pt</option>
+          <option>14pt</option>
+          <option>15pt</option>
+          <option>16pt</option>
+          <option>17pt</option>
+          <option>18pt</option>
+          <option>19pt</option>
+          <option>20pt</option>
+        </select>
+        <span style="width:.5em;"></span>
+
+        
+        <button class="win95Button"><img src="icons/format-text-underline.png" class="tintBlack"></button>
+        <button class="win95Button"><img src="icons/format-text-bold.png" class="tintBlack"></button>
+        <button class="win95Button"><img src="icons/format-text-italic.png" class="tintBlack"></button>
+        <button class="win95Button" style="overflow: hidden;"><img src="icons/dialog-text-and-font.png" class="tintRed" alt="colorFont">
+          <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setFontColor(this.value)" value="#000000"/>
+        </button>
+        <span style="width:.5em;"></span>
+
+        <button class="win95Button" style="overflow: hidden;"><img src="icons/box.png" class="tintWhite" alt="colorBg">
+          <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBgColor(this.value)" value="#ffffff"/>
+        </button>
+        <button class="win95Button" style="overflow: hidden;"><img src="icons/table.png" class="tintOrange" alt="color">
+          <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBorderColor(this.value)" value="#dedede"/>
+        </button>
+        
+        <div style="margin-left:.25em" class="win95BorderRight maxHeight">&nbsp;</div>
+        <div style="margin-right:.25em" class="win95BorderLeft maxHeight">&nbsp;</div>
+        
+        <img src="icons/zoom.png">
+        <span style="width:.5em;"></span>
+        <button class="win95Button" style="overflow: hidden;"><img src="icons/xml-element-new.png" alt="" onclick="zoomTable(currentZoom+5)"></button>
+        <button class="win95Button" style="overflow: hidden;"><img src="icons/xml-attribute-delete.png" alt="" onclick="zoomTable(currentZoom-5)"></button>
+        <span style="width:.5em;"></span>
+        
+        <button class="win95Button"><img src="icons/application-vnd.kde.kphotoalbum-import.png"></button>
+        <button class="win95Button"><img src="icons/xml-node-delete.png"></button>
+        <span style="width:.5em;"></span>
+        
+        <button class="win95Button"><img src="icons/zoom-1-to-2.png"></button>
+        <button class="win95Button"><img src="icons/zoom-2-to-1.png" class="tintBlack"></button>
+        <button class="win95Button"><img src="icons/zoom-best-fit.png"></button>
+        <button class="win95Button"><img src="icons/zoom-center-page.png"></button>
+        <button class="win95Button"><img src="icons/zoom-double-size.png"></button>
+        <button class="win95Button"><img src="icons/zoom-draw.png"></button>
+        <span style="width:.5em;"></span>
+
+        <button class="win95Button"><img src="icons/zoom-fit-best.png" class="tintBlack"></button>
+        <button class="win95Button"><img src="icons/zoom-fit-drawing.png"></button>
+        <button class="win95Button"><img src="icons/zoom-fit-height.png"></button>
+        <button class="win95Button"><img src="icons/zoom-fit-page.png"></button>
+        <button class="win95Button"><img src="icons/zoom-fit-selection.png"></button>
+        <span style="width:.5em;"></span>
+        <span style="width:.5em;"></span>
+
+        <button class="win95Button"><img src="icons/adjustcurves.png"></button>
+        <button class="win95Button"><img src="icons/add-placemark.png"></button>
+
+        <div style="margin-left:.25em" class="win95BorderRight maxHeight">&nbsp;</div>
+        <div style="margin-right:.25em" class="win95BorderLeft maxHeight">&nbsp;</div>
+
+      </div>
+      <!-- ROW 4 -->
+      <!-- <div class="gridBox overflowAuto" style="grid-column: col / span 1; grid-row: row 3;">3.0
+      </div> -->
+      <!-- <div class="gridBox paddingX0 paddingY0" style="grid-column: col 2 / span 7; grid-row: row 3;"> -->
+      <div id="spreadsheetContainer" class="gridBox paddingX0 paddingY0" style="grid-column: col / span 8; grid-row: row 4; overflow:auto;">
+          <table id="spreadsheet">
+              <thead>
+              </thead>
+              <tbody>
+              </tbody>
+          </table>
+        <!-- </div> -->
+      </div>
+
+      <!-- ROW 5 -->
+      <div class="gridBox win95BorderRight" style="padding:0.5em; grid-column: col / span 5; grid-row: row 5;">
+        <span class="small">
+          Turbo encabulator status:
+          <span class="disabled">READY</span>
+        </span>
+      </div>
+      <div class="gridBox win95BorderLeft" style="padding:0.5em; grid-column: col 6 / span 3; grid-row: row 5;">
+        <div class="absolute top left" style="padding-top: .25em; padding-left:1em; ">
+          <input id="zoomScale" class="win95range valign" type="range" min="10" max="300" value="100" step="5" list="zoomTicks" oninput="zoomTable(parseInt(this.value))">
+          <span id="currentZoom">100%</span>
+          <datalist id="zoomTicks">
+            <option value="0">
+            <option value="10">
+            <option value="100">
+            <option value="300">
+          </option>
+        </div>
+        <div class="right valign" style="padding-right: 0.5em;">
+          <span class="disabled small">
+            Default Spread
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  </html>
