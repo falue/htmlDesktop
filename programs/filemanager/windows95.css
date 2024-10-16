@@ -1,6 +1,7 @@
 body {
     color: black;
     background-color: white;
+    /* font-family: win95, Verdana, Helvetica, sans-serif; */
 }
 
 /* its a mess */
@@ -22,40 +23,6 @@ body > header.fileManagerTools.relative {
     margin-top:.4em;
     padding:0;
 }
-
-button {
-    background-color: #c0c0c0;
-    border-top:solid .1em white !important;
-    border-left:solid .1em white !important;
-    border-right:solid .1em black !important;
-    border-bottom:solid .1em black !important;
-    box-shadow:inset -.1em -.1em #808080, inset .1em .1em #dfdfdf !important;
-}
-
-button:active {
-    border-bottom:solid .1em white !important;
-    border-right:solid .1em white !important;
-    border-left:solid .1em black !important;
-    border-top:solid .1em black !important;
-    box-shadow:inset .1em .1em #808080, inset -.1em -.1em #dfdfdf !important;
-    opacity: .2;
-}
-
-.windowmenu button.programButtons:first-letter{
-    text-decoration:underline
-}
-.windowmenu button.programButtons {
-    border:none !important;
-    box-shadow:none !important;
-    background-color:unset !important;
-}
-.windowmenu button.programButtons:hover,
-.windowmenu button.programButtons:active {
-    border:none !important;
-    box-shadow:none !important;
-    background-color:unset !important;
-}
-
 
 .fileManagerTools {
     height:2em;

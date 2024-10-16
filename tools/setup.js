@@ -137,7 +137,7 @@ async function setup() {
   addStylesheet("os/"+os+"/stylesheet.css");
   //  cl("Final workstation: " + workstation + ", OS: " + os);
   if(os === "windows95") {
-    addStylesheet("../os/windows95/scrollbars.css", false);
+    addStylesheet("../os/windows95/inputs.css", false);
   }
 
   // Define if dock is available for OS

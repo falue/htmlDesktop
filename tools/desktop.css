@@ -218,6 +218,7 @@ header.windowmenu {
     white-space: nowrap;
 }
 
+div.windowmenu .programButtons,
 header.windowmenu .programButtons {
     font-family: inherit;
     background-color: none;
