@@ -45,14 +45,15 @@
         <button class="win95Button"><img src="icons/input-dialpad.png"></button>
         <button class="win95Button"><img src="icons/blueman-keyboard.png"></button>
 
-        <button class="win95Button"><img src="icons/gnome-dev-printer.png"></button>
+        <!-- <button class="win95Button"><img src="icons/gnome-dev-printer.png" onclick="parent.printElement('CREW COUNT ENCABULATOR', gebi('spreadsheet'), true)"></button> -->
+        <button class="win95Button"><img src="icons/gnome-dev-printer.png" onclick="parent.addWindow(`CREW COUNT ENCABULATOR`, 'print', `print/index.html?printText=${encodeURIComponent(Array.from(document.querySelectorAll('#spreadsheet input')).map(input => input.value.trim()).filter(value => value !== '').join(', '))}&pages=1`, 22,13, 800,555, false);"></button>
         
         <div style="margin-left:.25em" class="win95BorderRight maxHeight">&nbsp;</div>
         <div style="margin-right:.25em" class="win95BorderLeft maxHeight">&nbsp;</div>
         
-        <button class="win95Button"><img src="icons/view-table-of-contents-rtl.png" class="tintLightGreen"></button>
-        <button class="win95Button"><img src="icons/view-table-of-contents-ltr.png" class="tintLightGreen"></button>
-        <button class="win95Button"><img src="icons/stock_insert-table.png" class="tintRed" onclick="toggleRulers()"></button>
+        <button class="win95Button"><img src="icons/view-table-of-contents-rtl.png"></button>
+        <button class="win95Button"><img src="icons/view-table-of-contents-ltr.png"></button>
+        <button class="win95Button"><img src="icons/stock_insert-table.png" class="tintLightGreen" onclick="toggleRulers()"></button>
 
         <button class="win95Button"><img src="icons/insert-tableofcontents.png"></button>
         <button class="win95Button"><img src="icons/insert-text-frame.png" class="tintBlue"></button>
@@ -96,10 +97,10 @@
 
       <!-- ROW 3 -->
       <div class="gridBox centerContentY tabButtons win95BorderTop win95BorderBottom" style="grid-column: col / span 8; grid-row: row 3;">
-        <button class="win95Button" onclick="toggle('fontSettings')"><img src="icons/dialog-text-and-font.png"></button>
+        <button class="win95Button" onclick="swapClasses('fontSettings', 'hide', 'flex')"><img src="icons/dialog-text-and-font.png"></button>
 
-        <div id="fontSettings" class="hide nobr" style="align-items: center;">
-          <select class="win95option" onchange="setTabulatorFont(this.value)">
+        <div id="fontSettings" class="hide nobr paddingX50">
+          <select id="tabulatorFont" class="win95option" onchange="setTabulatorFont(this.value)">
             <option value="win95" selected>Font: Default</option>
             <option value="win95-mono">win95-mono</option>
             <option value="topaz">Topaz</option>
@@ -110,7 +111,7 @@
           
           <span style="width:.5em;"></span>
 
-          <select class="win95option" onchange="setFontSize(this.value)">
+          <select id="fontSize" class="win95option" onchange="setFontSize(this.value)">
             <option value="4">4pt</option>
             <option value="6">6pt</option>
             <option value="8">8pt</option>
@@ -129,19 +130,19 @@
           </select>
           <span style="width:.5em;"></span>
           
-          <button class="win95Button"><img src="icons/format-text-underline.png" class="tintBlack"></button>
-          <button class="win95Button"><img src="icons/format-text-bold.png" class="tintBlack"></button>
-          <button class="win95Button"><img src="icons/format-text-italic.png" class="tintBlack"></button>
+          <button class="win95Button"><img src="icons/format-text-underline.png" class=""></button>
+          <button class="win95Button"><img src="icons/format-text-bold.png" class=""></button>
+          <button class="win95Button"><img src="icons/format-text-italic.png" class=""></button>
           <button class="win95Button" style="overflow: hidden;"><img src="icons/dialog-text-and-font.png" class="tintRed" alt="colorFont">
-            <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setFontColor(this.value)" value="#000000"/>
+            <input id="fontColorInput" class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setFontColor(this.value)" value="#000000"/>
           </button>
           <span style="width:.5em;"></span>
 
           <button class="win95Button" style="overflow: hidden;"><img src="icons/box.png" class="tintWhite" alt="colorBg">
-            <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBgColor(this.value)" value="#ffffff"/>
+            <input id="bgColorInput" class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBgColor(this.value)" value="#ffffff"/>
           </button>
           <button class="win95Button" style="overflow: hidden;"><img src="icons/table.png" class="tintOrange" alt="color">
-            <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBorderColor(this.value)" value="#dedede"/>
+            <input id="borderColorInput" class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBorderColor(this.value)" value="#dedede"/>
           </button>
         </div>
 
@@ -159,8 +160,8 @@
         <button class="win95Button"><img src="icons/xml-node-delete.png"></button>
         <span style="width:.5em;"></span>
         
+        <button class="win95Button"><img src="icons/zoom-2-to-1.png" class="tintBlack" onclick="gebi('spreadsheet').requestFullscreen();"></button>
         <button class="win95Button"><img src="icons/zoom-1-to-2.png"></button>
-        <button class="win95Button"><img src="icons/zoom-2-to-1.png" class="tintBlack"></button>
         <button class="win95Button"><img src="icons/zoom-best-fit.png"></button>
         <button class="win95Button"><img src="icons/zoom-center-page.png"></button>
         <button class="win95Button"><img src="icons/zoom-double-size.png"></button>

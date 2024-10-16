@@ -171,6 +171,14 @@ function initializeTable(columnCount = 12, rowCount = 46) {
     }
     tbody.appendChild(tr);
   }
+
+  setTabulatorFont(gebi('tabulatorFont').value);
+  setFontSize(gebi('fontSize').value);
+  setBgColor(gebi('bgColorInput').value);
+  setBorderColor(gebi('borderColorInput').value);
+  setFontColor(gebi('fontColorInput').value);
+  zoomTable(gebi('zoomScale').value);
+
 }
 
 // Helper function to convert a number to a column letter (e.g., 0 -> A, 25 -> Z, 26 -> AA)
