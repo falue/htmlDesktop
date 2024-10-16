@@ -16,9 +16,9 @@
     "windows": [
         {
             "metaTitle": "#23-25-27 Crew Count 111",
-            "windowName": "CREW COUNT - Encabulator - Flight: SR111",
+            "windowName": "CREW COUNT - Encabulator - Flight: SR0111",
             "icon": "flight_takeoff",
-            "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true",
+            "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true&hideTextBtns=true",
             "x": 12,
             "y": 6,
             "w": 780,
