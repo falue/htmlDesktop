@@ -35,12 +35,27 @@ async function setup() {
 
   if(scene) await loadCsv(`data/${scene}.csv`);
 
-  if(tabulatorFont) setTabulatorFont(tabulatorFont);
-  if(fontSize) setFontSize(parseInt(fontSize));
-  if(bgColor) setBgColor("#"+bgColor);
-  if(borderColor) setBorderColor("#"+borderColor);
-  if(fontColor) setFontColor("#"+fontColor);
-  if(zoom) zoomTable(parseInt(zoom));
+  if(tabulatorFont){
+     setTabulatorFont(tabulatorFont);
+  }
+  if(fontSize) {
+    setFontSize(parseInt(fontSize));
+  }
+  if(bgColor) {
+    setBgColor("#"+bgColor);
+    gebi('bgColorInput').value="#"+bgColor;
+  }
+  if(borderColor) {
+    setBorderColor("#"+borderColor);
+    gebi('borderColorInput').value="#"+borderColor;
+  }
+  if(fontColor) {
+    setFontColor("#"+fontColor);
+    gebi('fontColorInput').value="#"+fontColor;
+  }
+  if(zoom) {
+    zoomTable(parseInt(zoom));
+  }
   toggleRulers(hideRulers);
 }
 

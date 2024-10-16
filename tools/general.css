@@ -280,6 +280,7 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 .fixed { position: fixed;}
 .absolute { position: absolute; }
 .relative { position: relative; }
+.flex { display: flex; }
 .top { position: absolute; top: 0; }
 .right { position: absolute; right: 0; }
 .bottom { position: absolute; bottom: 0; }
