@@ -24,8 +24,8 @@ async function setup() {
 
   switch (os) {
     case "windows95":
-        addStylesheet("windows95.css");
-        addStylesheet("../../os/windows95/scrollbars.css", false);
+        addStylesheet("windows95.css", false);
+        addStylesheet("../../os/windows95/inputs.css", false);
     break;
   }
 
@@ -57,11 +57,6 @@ async function setup() {
     zoomTable(parseInt(zoom));
   }
   toggleRulers(hideRulers);
-}
-
-
-function setupSpreadhseet() {
-    cl('setupSpreadhseet..')
 }
 
 function addStylesheet(path, replace = true) {

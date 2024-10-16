@@ -34,7 +34,7 @@ async function setupFileManager() {
             rootNameDisplay = "C:"
             computerName = "Workstation"
             addStylesheet("windows95.css");
-            addStylesheet("../../os/windows95/scrollbars.css", false);
+            addStylesheet("../../os/windows95/inputs.css", false);
         break;
         case "windows":
             rootNameDisplay = "C:"
