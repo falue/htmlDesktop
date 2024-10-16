@@ -163,7 +163,7 @@ os/spa/desktop.jpg
 os/mac/desktop.jpg
 os/linux/desktop.jpg
 os/windows/desktop.jpg
-os/windows95/scrollbars.css
+os/windows95/inputs.css
 os/windows95/stylesheet.css
 os/spa/stylesheet.css
 os/mac/stylesheet.css
