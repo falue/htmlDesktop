@@ -365,9 +365,15 @@ hr { border-color: rgba(255,255,255,.3); margin: 0; }
 
 .tintRed { filter: brightness(0.5) sepia(100%) hue-rotate(310deg) saturate(800%); }
 .tintGreen { filter: brightness(0.5) sepia(100%) hue-rotate(90deg) saturate(330%); }
+.tintLightGreen { filter: brightness(1) sepia(100%) hue-rotate(90deg) saturate(330%); }
 .tintBlue { filter: brightness(0.5) sepia(100%) hue-rotate(180deg) saturate(250%); }
 .tintPink { filter: brightness(0.5) sepia(100%) hue-rotate(310deg) saturate(250%); }
 .tintYellow { filter: brightness(0.8) sepia(100%) hue-rotate(0deg) saturate(250%); }
+.tintLightBlue { filter: brightness(1) sepia(100%) hue-rotate(180deg) saturate(330%); }
+.tintOrange { filter: brightness(1) sepia(100%) hue-rotate(-30deg) saturate(330%); }
+.tintBrown { filter: brightness(1) sepia(100%) hue-rotate(-15deg) saturate(330%); }
+.tintBlack { filter: brightness(0) saturate(0%); }
+.tintWhite { filter: brightness(100) saturate(0%); }
 
 .text-stroke--black,
 .text-outline--black { 
