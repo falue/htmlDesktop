@@ -80,6 +80,14 @@
     src: url('fontface/w95fa-mono.woff2') format('woff2'), 
          url('fontface/w95fa-mono.woff') format('woff');
 }
+@font-face {
+    font-family: 'topaz';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fontface/topaz.eot');
+    src: url('fontface/topaz.woff2') format('woff2'), 
+         url('fontface/topaz.woff') format('woff');
+}
 
   .material-icons {
     font-family: 'Material Icons';
