@@ -25,15 +25,15 @@
             "h": 780,
             "zIndex": 2,
             "minimized": false,
-            "renderToDom": false
+            "renderToDom": true
         },
         {
             "metaTitle": "#23-25-27 Crew Count 144",
             "windowName": "CREW COUNT - Encabulator - Flight: SR144",
             "icon": "flight_takeoff",
             "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23-1&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true&hideTextBtns=true",
-            "x": 12,
-            "y": 6,
+            "x": 14,
+            "y": 8,
             "w": 780,
             "h": 780,
             "zIndex": 2,
@@ -45,26 +45,26 @@
             "windowName": "CREW COUNT - Encabulator - Flight: SR0456",
             "icon": "flight_takeoff",
             "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23-2&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true&hideTextBtns=true",
-            "x": 12,
-            "y": 6,
+            "x": 16,
+            "y": 10,
             "w": 780,
             "h": 780,
             "zIndex": 2,
             "minimized": false,
-            "renderToDom": false
+            "renderToDom": true
         },
         {
             "metaTitle": "#23-25-27 Crew Count 0234",
             "windowName": "CREW COUNT - Encabulator - Flight: SR0234",
             "icon": "flight_takeoff",
             "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23-3&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true&hideTextBtns=true",
-            "x": 12,
-            "y": 6,
+            "x": 18,
+            "y": 12,
             "w": 780,
             "h": 780,
             "zIndex": 2,
             "minimized": false,
-            "renderToDom": false
+            "renderToDom": true
         },
         {
             "metaTitle": "#000 Greenscreen - right click title to change!",
