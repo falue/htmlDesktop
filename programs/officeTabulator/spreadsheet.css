@@ -1,0 +1,102 @@
+table {
+    border-collapse: collapse;
+    color: black;
+    background-color: white;
+}
+
+#spreadsheetContainer {
+    background-color: white;
+}
+
+table input {
+    background-color: transparent;
+    padding: 2px !important;
+    width:100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    color: currentColor;
+
+    /* min-width: 100px; */
+    /* min-height: 30px; */
+
+    white-space: nowrap;     
+    overflow: hidden; 
+    text-overflow:ellipsis; 
+    box-sizing: border-box;
+}
+
+td, th {
+    border: 1px solid #dedede;
+    padding: 0;
+}
+td {
+    /* min-height: 30px; */
+    position: relative;
+    /* overflow: hidden; */
+}
+tr {
+    /* min-height: 2em; */
+}
+
+th {
+    /* min-width: 100px; */
+    background-color: #494949;
+    /* color: white; */
+    /* cursor: col-resize; */
+    border: 1px solid black;
+}
+
+th:first-of-type {
+    border: 1px solid black;
+    background-color: #494949;
+    width:1em;
+    min-width: initial;
+}
+
+.resizable-row {
+    cursor: row-resize;
+}
+
+/* Make the first row and column resizable */
+table th, table tr:first-child td {
+    position: relative;
+}
+
+table th:after, table tr:first-child td:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    right: 0;
+    top: 0;
+}
+
+table thead tr {
+    cursor: col-resize;
+}
+
+.resize-handle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    cursor: row-resize;
+    background-color: transparent;
+}
+/* 
+input[type="text"] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    box-sizing: border-box;
+}
+*/
+
+
+/* STYLING */
+.center {
+    text-align: center !important;
+}
