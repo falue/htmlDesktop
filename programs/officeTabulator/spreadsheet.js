@@ -1,11 +1,12 @@
 // Function to load CSV from a path (URL or file path)
-function loadCsv(path) {
-  fetch(path)
-    .then((response) => response.text())
-    .then((csv) => {
-      processCsv(csv);
-    })
-    .catch((error) => console.error("Error loading CSV:", error));
+async function loadCsv(path) {
+  try {
+    const response = await fetch(path);
+    const csv = await response.text(); // Wait for the CSV content
+    processCsv(csv); // Process the CSV once it's fully loaded
+  } catch (error) {
+    console.error("Error loading CSV:", error);
+  }
 }
 
 // Function to load CSV from file input
@@ -80,14 +81,9 @@ function processCsv(csv) {
               if (key === "colspan" && val) {
                 td.colSpan = parseInt(val);
               } else if (key === "forceType") {
-                // Add onkeydown event for focetype
-                // input.setAttribute("onkeydown", `forceType(event, this, '${val}')`);
                 const strippedVal = val.replace(/^'(.*)'$/, '$1');
-                // Add onkeydown event for focetype with stripped value
                 input.setAttribute("onkeydown", `forceType(event, this, '${strippedVal}', false, true)`);
-            
               } else {
-                // td.style[key] = val;
                 input.style[key] = val;
               }
             } else {
@@ -104,8 +100,20 @@ function processCsv(csv) {
     // Reapply resizing after updating the table
     handleColumnResizing();
     handleRowResizing();
-  }
+}
   
+
+/* function setFocus(element) {
+  let focusedElements = document.getElementsByClassName('focus');
+  if(focusedElements.length > 0) {
+    document.getElementsByClassName('focus')[0].classList.remove('focus');
+  }
+  if(element.classList.contains('focus')) {
+    element.classList.remove('focus');
+  } else {
+    element.classList.add('focus');
+  }
+} */
 
 // Function to initialize the table with headers and empty cells
 function initializeTable(columnCount = 12, rowCount = 46) {
@@ -153,6 +161,9 @@ function initializeTable(columnCount = 12, rowCount = 46) {
       const td = document.createElement("td");
       const input = document.createElement("input");
       input.type = "text";
+      /* input.setAttribute("onfocus", "this.classList.add('focus')"); */
+      /* input.setAttribute("onfocus", "setFocus(this)"); */
+      /* input.setAttribute("onfocus", "document.getElementsByClassname('focus')[0].classList.remove('focus'); this.classList.add('focus')"); */
       input.style.width = "100%"; // Make sure input takes the full width of the cell
       input.style.height = "100%"; // Make sure input takes the full height of the cell
       td.appendChild(input);
@@ -247,12 +258,23 @@ function handleRowResizing() {
   });
 }
 
+function setTabulatorFont(fontName) {
+  gebi('spreadsheet').style.fontFamily = fontName;
+}
+
+function setFontSize(size) {
+  let focusedElements = document.getElementsByClassName('focus');
+  if(focusedElements.length > 0) {
+    focusedElements[0].style.fontSize = parseInt(size)/12 + "em";
+  } else {
+    gebi('spreadsheet').style.fontSize = parseInt(size)/12 + "em";
+  }
+}
 
 function setBgColor(color) {
-    cl("setBorderColor: " + color);
+    cl("setBgColor: " + color);
     gebi('spreadsheetContainer').style.backgroundColor = color;
     gebi('spreadsheet').style.backgroundColor = color;
-
 }
 
 function setBorderColor(color) {
@@ -266,8 +288,22 @@ function setBorderColor(color) {
 }
 
 function setFontColor(color) {
-    cl("setBorderColor: " + color);
+    cl("setFontColor: " + color);
     gebi('spreadsheet').style.color = color;
+}
+
+function toggleRulers(hideRulers=2) {
+  let rulers = document.getElementsByTagName('th');
+  cl(hideRulers);
+  for(let i = 0;i < rulers.length; i++) {
+    if(hideRulers===false) {
+      rulers[i].classList.remove('op0');
+    } else if(hideRulers===true) {
+      rulers[i].classList.add('op0');
+    } else if(hideRulers===2) {
+      rulers[i].classList.toggle('op0');
+    }
+  }
 }
 
 let currentZoom = 100; // Start with 100%, meaning no zoom applied initially

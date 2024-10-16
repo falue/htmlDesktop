@@ -15,9 +15,9 @@
     ],
     "windows": [
         {
-            "windowName": "Office - Spreadsheet Encabulator",
-            "icon": "border_all",
-            "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23",
+            "windowName": "CREW COUNT - Encabulator",
+            "icon": "flight_takeoff",
+            "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23&font=topaz&fontSize=6&bgColor=0000ff&borderColor=0000ff&fontColor=fff&zoom=125&hideRulers=true",
             "x": 12,
             "y": 6,
             "w": 780,

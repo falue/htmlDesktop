@@ -52,8 +52,8 @@
         
         <button class="win95Button"><img src="icons/view-table-of-contents-rtl.png" class="tintLightGreen"></button>
         <button class="win95Button"><img src="icons/view-table-of-contents-ltr.png" class="tintLightGreen"></button>
-        <button class="win95Button"><img src="icons/stock_insert-table.png" class="tintRed"></button>
-        <button class="win95Button"><img src="icons/insert-table.png"></button>
+        <button class="win95Button"><img src="icons/stock_insert-table.png" class="tintRed" onclick="toggleRulers()"></button>
+
         <button class="win95Button"><img src="icons/insert-tableofcontents.png"></button>
         <button class="win95Button"><img src="icons/insert-text-frame.png" class="tintBlue"></button>
         
@@ -96,50 +96,55 @@
 
       <!-- ROW 3 -->
       <div class="gridBox centerContentY tabButtons win95BorderTop win95BorderBottom" style="grid-column: col / span 8; grid-row: row 3;">
-        <select class="win95option">
-          <option>Font: Default</option>
-          <option>Fantasy font</option>
-          <option>Font of despair</option>
-        </select>
-        <span style="width:.5em;"></span>
-        
-        <img src="icons/dialog-text-and-font.png">
-        <span style="width:.5em;"></span>
+        <button class="win95Button" onclick="toggle('fontSettings')"><img src="icons/dialog-text-and-font.png"></button>
 
-        <select class="win95option">
-          <option>4pt</option>
-          <option>6pt</option>
-          <option>8pt</option>
-          <option>9pt</option>
-          <option>10pt</option>
-          <option>11pt</option>
-          <option selected>12pt</option>
-          <option>13pt</option>
-          <option>14pt</option>
-          <option>15pt</option>
-          <option>16pt</option>
-          <option>17pt</option>
-          <option>18pt</option>
-          <option>19pt</option>
-          <option>20pt</option>
-        </select>
-        <span style="width:.5em;"></span>
+        <div id="fontSettings" class="hide nobr" style="align-items: center;">
+          <select class="win95option" onchange="setTabulatorFont(this.value)">
+            <option value="win95" selected>Font: Default</option>
+            <option value="win95-mono">win95-mono</option>
+            <option value="topaz">Topaz</option>
+            <option value="'Courier New'">Courier New</option>
+            <option value="Roboto">Roboto</option>
+            <option value="Garuda">Garuda</option>
+          </select>
+          
+          <span style="width:.5em;"></span>
 
-        
-        <button class="win95Button"><img src="icons/format-text-underline.png" class="tintBlack"></button>
-        <button class="win95Button"><img src="icons/format-text-bold.png" class="tintBlack"></button>
-        <button class="win95Button"><img src="icons/format-text-italic.png" class="tintBlack"></button>
-        <button class="win95Button" style="overflow: hidden;"><img src="icons/dialog-text-and-font.png" class="tintRed" alt="colorFont">
-          <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setFontColor(this.value)" value="#000000"/>
-        </button>
-        <span style="width:.5em;"></span>
+          <select class="win95option" onchange="setFontSize(this.value)">
+            <option value="4">4pt</option>
+            <option value="6">6pt</option>
+            <option value="8">8pt</option>
+            <option value="9">9pt</option>
+            <option value="10">10pt</option>
+            <option value="11">11pt</option>
+            <option value="12" selected>12pt</option>
+            <option value="13">13pt</option>
+            <option value="14">14pt</option>
+            <option value="15">15pt</option>
+            <option value="16">16pt</option>
+            <option value="17">17pt</option>
+            <option value="18">18pt</option>
+            <option value="19">19pt</option>
+            <option value="20">20pt</option>
+          </select>
+          <span style="width:.5em;"></span>
+          
+          <button class="win95Button"><img src="icons/format-text-underline.png" class="tintBlack"></button>
+          <button class="win95Button"><img src="icons/format-text-bold.png" class="tintBlack"></button>
+          <button class="win95Button"><img src="icons/format-text-italic.png" class="tintBlack"></button>
+          <button class="win95Button" style="overflow: hidden;"><img src="icons/dialog-text-and-font.png" class="tintRed" alt="colorFont">
+            <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setFontColor(this.value)" value="#000000"/>
+          </button>
+          <span style="width:.5em;"></span>
 
-        <button class="win95Button" style="overflow: hidden;"><img src="icons/box.png" class="tintWhite" alt="colorBg">
-          <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBgColor(this.value)" value="#ffffff"/>
-        </button>
-        <button class="win95Button" style="overflow: hidden;"><img src="icons/table.png" class="tintOrange" alt="color">
-          <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBorderColor(this.value)" value="#dedede"/>
-        </button>
+          <button class="win95Button" style="overflow: hidden;"><img src="icons/box.png" class="tintWhite" alt="colorBg">
+            <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBgColor(this.value)" value="#ffffff"/>
+          </button>
+          <button class="win95Button" style="overflow: hidden;"><img src="icons/table.png" class="tintOrange" alt="color">
+            <input class="op0 maxWidth maxHeight absolute top left" type="color" oninput="setBorderColor(this.value)" value="#dedede"/>
+          </button>
+        </div>
+
         
         <div style="margin-left:.25em" class="win95BorderRight maxHeight">&nbsp;</div>
         <div style="margin-right:.25em" class="win95BorderLeft maxHeight">&nbsp;</div>
