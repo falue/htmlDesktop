@@ -14,6 +14,7 @@ async function setup() {
   let fontColor =  urlParams.get("fontColor");
   let zoom =  urlParams.get("zoom");
   let hideRulers =  urlParams.get("hideRulers") === "true";
+  let hideTextBtns =  urlParams.get("hideTextBtns") === "true";
 
   gebi('body').classList.add(os);
   gebi('body').classList.add(type);
@@ -56,7 +57,10 @@ async function setup() {
   if(zoom) {
     zoomTable(parseInt(zoom));
   }
+  
   toggleRulers(hideRulers);
+
+  if(hideTextBtns) swapClasses('fontSettings', 'hide', 'flex')
 }
 
 function addStylesheet(path, replace = true) {
