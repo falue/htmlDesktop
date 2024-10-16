@@ -29,7 +29,7 @@
         {
             "windowName": "IQCSN - Chat",
             "icon": "volume_up",
-            "contentPath": "iqcsn/index.html",
+            "contentPath": "iqcsn/index.html?pov=SAUL&showYou=true",
             "x": 14,
             "y": 2,
             "w": 833,

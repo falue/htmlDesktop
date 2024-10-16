@@ -15,13 +15,13 @@
     ],
     "windows": [
         {
-            "windowName": "Office - Spreadsheet calculator",
+            "windowName": "Office - Spreadsheet Encabulator",
             "icon": "border_all",
-            "contentPath": "office/spreadsheet.html?type=spreadsheet&data=23",
-            "x": 5,
-            "y": 2,
-            "w": 900,
-            "h": 666,
+            "contentPath": "officeTabulator/index.html?type=spreadsheet&scene=23",
+            "x": 12,
+            "y": 6,
+            "w": 780,
+            "h": 780,
             "zIndex": 2,
             "minimized": false,
             "renderToDom": true
@@ -259,6 +259,18 @@
             "action": ""
         }
     ],
-    "actions": [],
-    "osNotifications": []
+    "actions": [
+        ["USB stick: Place shortcut & notify", "placeShortcut('USB drive', 'hdd.png', 4,85, 'startDefaultProgram(\"fileManager\");'); await delay(2000); showSystemMessage({'title': 'New USB drive detected', 'description': 'Open drive & check for viruses', 'icon': 'stream', 'initialDelay': 0, 'timeOut': 2500, 'action': 'startDefaultProgram(\"fileManager\");'})"]
+    ],
+    "osNotifications": [
+        {
+            "metaTitle": "",
+            "title": "Activate OS now",
+            "description": "Please invest in a robust system and pay us just $14.99 per day to experience the most comfort a meaty fleshbag can enjoy. We will remind you again in one hour.",
+            "icon": "shield",
+            "initialDelay": true,
+            "timeOut": 4500,
+            "action": ""
+        }
+    ]
 }
