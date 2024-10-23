@@ -1,9 +1,9 @@
 // Function to load CSV from a path (URL or file path)
-async function loadCsv(path) {
+async function loadCsv(path, resetStyles = true) {
   try {
     const response = await fetch(path);
     const csv = await response.text(); // Wait for the CSV content
-    processCsv(csv); // Process the CSV once it's fully loaded
+    processCsv(csv, resetStyles); // Process the CSV once it's fully loaded
   } catch (error) {
     console.error("Error loading CSV:", error);
   }
@@ -25,7 +25,7 @@ function loadCsvFromFileInput(event) {
 }
 
 // Function to process and display the CSV data
-function processCsv(csv) {
+function processCsv(csv, resetStyles = true) {
     // Parse the CSV while ignoring commas inside double quotes
     const rows = parseCSV(csv);
   
@@ -37,7 +37,9 @@ function processCsv(csv) {
     const rowCount = Math.max(rows.length, 66);
   
     // Initialize the table with at least 12 columns and 46 rows
-    initializeTable(columnCount, rowCount);
+    if(resetStyles) {
+      initializeTable(columnCount, rowCount);
+    }
   
     // Process the first row to set column widths
     const headerRow = document
@@ -102,18 +104,9 @@ function processCsv(csv) {
     handleRowResizing();
 }
   
-
-/* function setFocus(element) {
-  let focusedElements = document.getElementsByClassName('focus');
-  if(focusedElements.length > 0) {
-    document.getElementsByClassName('focus')[0].classList.remove('focus');
-  }
-  if(element.classList.contains('focus')) {
-    element.classList.remove('focus');
-  } else {
-    element.classList.add('focus');
-  }
-} */
+function resetFile() {
+  loadCsv(`data/${scene}.csv`, false);
+}
 
 // Function to initialize the table with headers and empty cells
 function initializeTable(columnCount = 12, rowCount = 46) {

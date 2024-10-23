@@ -1,10 +1,12 @@
+let scene;
+
 async function setup() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let os = urlParams.get("os");
   let workstation = urlParams.get("workstation");
   let darkMode = urlParams.get("darkMode");
-  let scene = urlParams.get("scene");
+  scene = urlParams.get("scene");
   let type = urlParams.get("type");
 
   let tabulatorFont =  urlParams.get("font");
