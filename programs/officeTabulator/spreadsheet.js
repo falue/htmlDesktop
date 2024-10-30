@@ -65,6 +65,7 @@ function processCsv(csv, resetStyles = true) {
       row.forEach((cell, cellIndex) => {
         const td = tr.getElementsByTagName("td")[cellIndex];
         const input = td.getElementsByTagName("input")[0];
+        input.setAttribute('spellcheck', 'false');
   
         // Extract the value and any classes/styles
         const cellMatch = cell.match(/(.*)\[(.*)\]$/);
