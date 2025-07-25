@@ -6,6 +6,8 @@ let windowId;
 let workstation;
 let emailIndex;
 let account;
+let lang = "en";
+let langId = 0;  // {"en":0, "de": 1};
 
 async function setup() {
     /* 
@@ -22,6 +24,8 @@ async function setup() {
             
             webmail: if true, shows logout button top right and hides program bar in window. Also displays account name near logout button.
 
+            lang:   default en, if de Deutsch is visible
+
             if you click "new email", the file programs/email/data/~scene~/newMail.json is loaded for force typing. Name newMail is fixed.
 
             other inboxes:
@@ -35,6 +39,7 @@ async function setup() {
     workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
     let webmail = urlParams.get('webmail');
+    lang = urlParams.get('lang');
     account = urlParams.get('account') ? urlParams.get('account') : workstation;
     if(urlParams.get('account')) gebi('webmail-account').innerHTML = account;
     
@@ -46,6 +51,10 @@ async function setup() {
     } else {
         show('programBar');
         gebi('header').style.paddingTop = '1.75em'
+    }
+    if(lang) {
+        gebi('body').classList.add('lang-'+lang);
+        if(lang == "de") langId = 1;
     }
 
     scene = urlParams.get('scene');
@@ -125,6 +134,11 @@ async function setupReadEmail() {
     let  currentScene = urlParams.get('scene');
     let  currentInbox = urlParams.get('inbox');
     let  currentSelected = urlParams.get('selected');
+    lang = urlParams.get('lang');
+    if(lang) {
+        gebi('body').classList.add('lang-'+lang);
+        if(lang == "de") langId = 1;
+    }
 
     emails = await parseFile(
         `data/${currentScene}/${currentInbox}.json`, false
@@ -136,7 +150,7 @@ async function setupReadEmail() {
         );
     }
 
-    gebi('preview-header').innerHTML = createHeader(emails[currentSelected]);
+    gebi('preview-header').innerHTML = createHeader(emails[currentSelected], ['from', 'von'][langId]);
     gebi('preview-email').innerHTML = emails[currentSelected].message;
 }
 
@@ -157,7 +171,7 @@ function createEmailOverview(data, name) {
     let messagesList = gebi('email-list-container');
     messagesList.innerHTML= "";
 
-    let fromTo = name === 'sent' ? 'to' :'from';
+    let fromTo = name === 'sent' ? ['to', 'an'][langId] :['from', 'von'][langId];
 
     data.forEach((email, index) => {
         // Create the main div for the email
@@ -165,7 +179,7 @@ function createEmailOverview(data, name) {
         p.setAttribute('onclick', `previewEmail(${index}, '${name}'); this.classList.remove('unread')`);
         p.setAttribute('tabIndex', '0');
         // Fixme: if emails reverts to data/default.json, this does not work
-        p.setAttribute("ondblclick", `if(typeof parent.addWindow !== 'undefined') { parent.addWindow('Email ${fromTo} ${email.sender.name}', 'email', 'email/read.html?scene=${scene}&inbox=${inbox}&selected=${index}', 5,5, 666,450, false) } else { parent.parent.addWindow('Email from ${email.sender.name}', 'email', 'email/read.html?scene=${scene}&inbox=${inbox}&selected=${index}', 5,5, 666,450, false) }`);
+        p.setAttribute("ondblclick", `if(typeof parent.addWindow !== 'undefined') { parent.addWindow('Email ${fromTo} ${email.sender.name}', 'email', 'email/read.html?scene=${scene}&inbox=${inbox}&selected=${index}&lang=${lang}', 5,5, 666,450, false) } else { parent.parent.addWindow('Email from ${email.sender.name}', 'email', 'email/read.html?scene=${scene}&inbox=${inbox}&selected=${index}', 5,5, 666,450, false) }`);
         if(email.flags.spam) p.classList.add('spam');
 
         // Create and append the sender name as a <p>
@@ -199,7 +213,7 @@ function createEmailOverview(data, name) {
 }
 
 function previewEmail(index, name) {
-    let fromTo = name === 'sent' ? 'to' :'from';
+    let fromTo = name === 'sent' ? ['to', 'an'][langId] :['from', 'von'][langId];
     emailIndex = index;
     show('preview-header');
     gebi('preview-email').classList.remove('emptyPreview');

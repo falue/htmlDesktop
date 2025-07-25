@@ -14,7 +14,7 @@
     <script src="javascript.js"></script>
 
   </head>
-  <body onload="setup();" onkeydown="parent.keyboardController(event);">
+  <body id="body" onload="setup();" onkeydown="parent.keyboardController(event);">
 
     <!-- created with https://grid.layoutit.com/ -->
     <div id="container" class="container">
@@ -23,30 +23,63 @@
         <div id="preview-header" class="preview-header hide">
         </div>
         <div id="preview-email" class="preview-email userSelect emptyPreview">
-          <div class="op50 small">Select an email to display</div>
+          <div class="op50 small">
+            <i class="lang-en">Select an email to display</i>
+            <i class="lang-de">Bitte eine Nachricht auswählen</i>
+          </div>
         </div>
       </div>
 
       <div id="inboxes" class="inboxes relative">
         <ul class="marginY50">
-          <li class="uppercase grey small">Mailboxes
+          <li class="uppercase grey small">
+            <i class="lang-en">Mailboxes</i>
+            <i class="lang-de">Postfächer</i>
             <ul class="mailbox black normal normalWeight normalized margin50">
-              <li onclick="displayInbox('inbox')" class="">Inbox <span class="op50">(444)</span></li>
-              <li onclick="displayInbox('sent')" class="">Sent <span class="op50">(32)</span></li>
-              <li onclick="displayInbox('drafts')" class="">Drafts <span class="op50">(234)</span></li>
-              <li onclick="displayInbox('spam')" class="">Spam <span class="op50">(667)</span></li>
-              <li onclick="displayInbox('flagged')" class="">Flagged <span class="op50">(12)</span></li>
-              <li onclick="displayInbox('archived')" class="">Archived <span class="op50">(458)</span></li>
+              <li onclick="displayInbox('inbox')" class="">
+                  <i class="lang-en">Inbox</i>
+                  <i class="lang-de">Eingang</i>
+                <span class="op50">(444)</span></li>
+              <li onclick="displayInbox('sent')" class="">
+                  <i class="lang-en">Sent</i>
+                  <i class="lang-de">Ausgang</i>
+                <span class="op50">(32)</span></li>
+              <li onclick="displayInbox('drafts')" class="">
+                  <i class="lang-en">Drafts</i>
+                  <i class="lang-de">Entwurf</i>
+                <span class="op50">(234)</span></li>
+              <li onclick="displayInbox('spam')" class="">
+                  <i class="lang-en">Spam</i>
+                  <i class="lang-de">Werbung</i>
+                <span class="op50">(667)</span></li>
+              <li onclick="displayInbox('flagged')" class="">
+                  <i class="lang-en">Flagged</i>
+                  <i class="lang-de">Markiert</i>
+                <span class="op50">(12)</span></li>
+              <li onclick="displayInbox('archived')" class="">
+                  <i class="lang-en">Archived</i>
+                  <i class="lang-de">Archiviert</i>
+                <span class="op50">(458)</span></li>
             </ul>
           </li>
-          <li class="uppercase grey small ">Favorites</li>
-          <li class="uppercase grey small ">Automatic</li>
-          <li class="uppercase grey small ">Local</li>
+          <li class="uppercase grey small ">
+            <i class="lang-en">Favorites</i>
+            <i class="lang-de">Favoriten</i>
+          </li>
+          <li class="uppercase grey small ">
+            <i class="lang-en">Automatic</i>
+            <i class="lang-de">Automatik</i>
+          </li>
+          <li class="uppercase grey small ">
+            <i class="lang-en">Local</i>
+            <i class="lang-de">Lokal</i>
+          </li>
         </ul>
 
         <div id="inboxFootnote" class="small inboxFootnote relative bottom left maxWidth">
           <div class="op50 nobr ellipsis">
-            Connected to server
+            <i class="lang-en">Connected to server</i>
+            <i class="lang-de">Mit server verbunden</i>
             <i class="material-icons small">help</i>
           </div>
         </div>
@@ -55,14 +88,30 @@
       <div id="header" class="header">
 
         <header id="programBar" class="windowmenu absolute top left maxWidth hide">
-          <button class="programButtons">Accounts</button><!-- 
-           --><button class="programButtons">Edit</button><!-- 
-           --><button class="programButtons">Mailbox</button><!-- 
-           --><button class="programButtons">Message</button><!-- 
-           --><button class="programButtons">Format</button><!-- 
-           --><button class="programButtons">Window</button><!-- 
-           --><button class="programButtons">Settings</button><!-- 
-           --><button class="programButtons">About</button>
+          <button class="programButtons">
+            <i class="lang-en">Accounts</i><i class="lang-de">Benutzerkonten</i>
+          </button><!-- 
+           --><button class="programButtons">
+            <i class="lang-en">Edit</i><i class="lang-de">Bearbeiten</i>
+          </button><!-- 
+           --><button class="programButtons">
+            <i class="lang-en">Mailbox</i><i class="lang-de">Postfächer</i>
+          </button><!-- 
+           --><button class="programButtons">
+            <i class="lang-en">Message</i><i class="lang-de">Nachricht</i>
+          </button><!-- 
+           --><button class="programButtons">
+            <i class="lang-en">Format</i><i class="lang-de">Format</i>
+          </button><!-- 
+           --><button class="programButtons">
+            <i class="lang-en">Window</i><i class="lang-de">Fenster</i>
+          </button><!-- 
+           --><button class="programButtons">
+            <i class="lang-en">Settings</i><i class="lang-de">Einstellungen</i>
+          </button><!-- 
+           --><button class="programButtons">
+            <i class="lang-en">About</i><i class="lang-de">Info</i>
+          </button>
         </header>
 
         <div id="buttons" class="relative nobr ellipsis noScrollbar">
@@ -97,7 +146,7 @@
 
           <div class="right top relative noScrollbar">
             <span id="webmail" class="hide">
-              <span id="webmail-account" class="small op50">Account</span>
+              <span id="webmail-account" class="small op50"><i class="lang-en">Account</i><i class="lang-de">Benutzerkonto</i></span>
               <button class="white blackBg round"><i class="material-icons small bold">logout</i></button>
             </span>
           </div>
@@ -107,7 +156,7 @@
       <div id="footer" class="footer">
         <div class="relative">
           <span class="small">
-            Updated: Recently
+            <i class="lang-en">Updated: Recently</i><i class="lang-de">Update: Vor kurzem</i></span>
           </span>
           <div class="right top relative padding25 op50">
             <i class="material-icons small">more_horiz</i>
@@ -120,7 +169,9 @@
 
       <div id="email-list" class="email-list noScrollbar">
         <div id="email-list-header" class="email-list-header op50 relative">
-          <span id="inbox-name" class="small capitalize">Mailbox: Inbox - 122 mails</span>
+          <span id="inbox-name" class="small capitalize">
+            <i class="lang-en">Mailbox: Inbox - 122 mails</i><i class="lang-de">Postfach: Posteingang  - 122 mails</i></span>
+          </span>
           <div class="right top relative padding50">
             <i class="material-icons small">mark_email_unread</i>
             <i class="material-icons small">filter_list</i>
