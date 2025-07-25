@@ -48,7 +48,7 @@
         {
             "windowName": "Email Petabird",
             "icon": "email",
-            "contentPath": "email/index.html?scene=000&lang=de",
+            "contentPath": "email/index.html?scene=000&lang=de&account=drsteiger@medhbfk.ch&inbox=inbox",
             "x": 12,
             "y": 4,
             "w": 1400,
