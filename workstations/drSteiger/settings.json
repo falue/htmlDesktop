@@ -5,9 +5,9 @@
         "desktopImg": "",
         "os": "windows",
         "darkMode": true,
-        "username": "minerva",
+        "username": "drSteiger",
         "password": "",
-        "workstation": "MinervaRezeption",
+        "workstation": "drSteiger",
         "selectedSystemMessage": 3,
         "osNotificationsDelay": 0
     },
@@ -22,7 +22,7 @@
     ],
     "windows": [
         {
-            "windowName": "File manager",
+            "windowName": "Dateimanager",
             "icon": "folder",
             "contentPath": "filemanager/index.html?folderContent=Downloads",
             "x": 64,
@@ -34,26 +34,26 @@
             "renderToDom": true
         },
         {
-            "windowName": "Calendar",
+            "windowName": "Kalender",
             "icon": "calendar_today",
             "contentPath": "imageviewer/index.html?files=calendar.png&allowZoom=true",
             "x": 4,
-            "y": 4,
+            "y": 6,
             "w": 1265,
-            "h": 850,
+            "h": 823,
             "zIndex": 13,
             "minimized": false,
             "renderToDom": true
         },
         {
-            "windowName": "Search - Helpdesk",
-            "icon": "support_agent",
-            "contentPath": "helpdesk/index.html",
-            "x": 16,
-            "y": 8,
-            "w": 1250,
-            "h": 640,
-            "zIndex": 11,
+            "windowName": "Email Petabird",
+            "icon": "email",
+            "contentPath": "email/index.html?scene=000&lang=de",
+            "x": 12,
+            "y": 4,
+            "w": 1400,
+            "h": 1080,
+            "zIndex": 14,
             "minimized": false,
             "renderToDom": true
         }

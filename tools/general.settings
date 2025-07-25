@@ -1,16 +1,3 @@
 # Define all available workstations here
 
-workstation=generic;spa
-workstation=win95;windows95
-workstation=telefabi;windows
-workstation=Polizei;windows
-workstation=Agotha;windows
-workstation=Athletics;windows
-workstation=Carlos;windows
-workstation=Charles;spa
-workstation=Dominic;spa
-workstation=Doro;mac
-workstation=hasenfratz;windows
-workstation=Leo;spa
-workstation=Milan;windows
-workstation=MinervaRezeption;windows
+workstation=drSteiger;windows
