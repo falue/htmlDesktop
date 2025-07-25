@@ -1,9 +1,17 @@
 // Function to load CSV from a path (URL or file path)
+<<<<<<< HEAD
 async function loadCsv(path) {
   try {
     const response = await fetch(path);
     const csv = await response.text(); // Wait for the CSV content
     processCsv(csv); // Process the CSV once it's fully loaded
+=======
+async function loadCsv(path, resetStyles = true) {
+  try {
+    const response = await fetch(path);
+    const csv = await response.text(); // Wait for the CSV content
+    processCsv(csv, resetStyles); // Process the CSV once it's fully loaded
+>>>>>>> halifax
   } catch (error) {
     console.error("Error loading CSV:", error);
   }
@@ -25,7 +33,11 @@ function loadCsvFromFileInput(event) {
 }
 
 // Function to process and display the CSV data
+<<<<<<< HEAD
 function processCsv(csv) {
+=======
+function processCsv(csv, resetStyles = true) {
+>>>>>>> halifax
     // Parse the CSV while ignoring commas inside double quotes
     const rows = parseCSV(csv);
   
@@ -37,7 +49,13 @@ function processCsv(csv) {
     const rowCount = Math.max(rows.length, 66);
   
     // Initialize the table with at least 12 columns and 46 rows
+<<<<<<< HEAD
     initializeTable(columnCount, rowCount);
+=======
+    if(resetStyles) {
+      initializeTable(columnCount, rowCount);
+    }
+>>>>>>> halifax
   
     // Process the first row to set column widths
     const headerRow = document
@@ -63,6 +81,10 @@ function processCsv(csv) {
       row.forEach((cell, cellIndex) => {
         const td = tr.getElementsByTagName("td")[cellIndex];
         const input = td.getElementsByTagName("input")[0];
+<<<<<<< HEAD
+=======
+        input.setAttribute('spellcheck', 'false');
+>>>>>>> halifax
   
         // Extract the value and any classes/styles
         const cellMatch = cell.match(/(.*)\[(.*)\]$/);
@@ -102,6 +124,7 @@ function processCsv(csv) {
     handleRowResizing();
 }
   
+<<<<<<< HEAD
 
 /* function setFocus(element) {
   let focusedElements = document.getElementsByClassName('focus');
@@ -114,6 +137,11 @@ function processCsv(csv) {
     element.classList.add('focus');
   }
 } */
+=======
+function resetFile() {
+  loadCsv(`data/${scene}.csv`, false);
+}
+>>>>>>> halifax
 
 // Function to initialize the table with headers and empty cells
 function initializeTable(columnCount = 12, rowCount = 46) {
