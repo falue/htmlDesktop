@@ -1,3 +1,18 @@
+body {
+    background-color: white;
+}
+
+i.lang-en, i.lang-de { font-style: inherit; }
+
+body.lang-de .lang-en,
+body.lang-en .lang-de {
+    display: none;
+}
+/* Default */
+body:not(.lang-de):not(.lang-en) .lang-de {
+    display: none;
+  }
+  
 .container {
     display: grid;
     grid-template-columns: 0.5fr 1.5fr 1.3fr;
@@ -56,6 +71,7 @@
     background-color:white;
     grid-area: preview-email;
     padding: 1em;
+    white-space: pre-line;
 }
 
 .inboxes {
