@@ -24,7 +24,7 @@
         {
             "windowName": "Dateimanager",
             "icon": "folder",
-            "contentPath": "filemanager/index.html?folderContent=Downloads",
+            "contentPath": "filemanager/index.html",
             "x": 64,
             "y": 12,
             "w": 598,
@@ -37,7 +37,7 @@
             "windowName": "Kalender",
             "icon": "calendar_today",
             "contentPath": "imageviewer/index.html?files=calendar.png&allowZoom=true",
-            "x": 4,
+            "x": 6,
             "y": 6,
             "w": 1265,
             "h": 823,
@@ -58,166 +58,146 @@
             "renderToDom": true
         }
     ],
+
     "shortcuts": [
         {
             "name": "DVD",
             "icon": "dvd.png",
-            "x": 3,
+            "x": 88,
             "y": 4,
             "action": "startDefaultProgram('fileManager');"
         },
         {
             "name": "Trash",
             "icon": "trashFull.png",
-            "x": 93,
-            "y": 83,
-            "action": ""
-        },
-        {
-            "name": "HDD",
-            "icon": "hdd.png",
-            "x": 84,
-            "y": 15,
-            "action": "startDefaultProgram('fileManager');"
-        },
-        {
-            "name": "Photos",
-            "icon": "folderFull.png",
-            "x": 2,
-            "y": 43,
-            "action": ""
-        },
-        {
-            "name": "Document1",
-            "icon": "folderFull.png",
-            "x": 1,
-            "y": 56,
-            "action": ""
-        },
-        {
-            "name": "Report",
-            "icon": "folderFull.png",
-            "x": 2,
-            "y": 69,
-            "action": ""
-        },
-        {
-            "name": "Important 7dd9c.JPG",
-            "icon": "fileImage.png",
-            "x": 0,
+            "x": 95,
             "y": 82,
             "action": ""
         },
         {
-            "name": "File2.png",
+            "name": "C:/",
+            "icon": "hdd.png",
+            "x": 95,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Fotos",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 43,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Dok-122",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 56,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Report-A",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "IMG-7dd9c.JPG",
+            "icon": "fileImage.png",
+            "x": 2,
+            "y": 82,
+            "action": "startDefaultProgram('imageViewer');"
+        },
+        {
+            "name": "Bildschirmfoto.png",
             "icon": "fileImage.png",
             "x": 9,
             "y": 4,
-            "action": ""
+            "action": "startDefaultProgram('imageViewer');"
         },
         {
-            "name": "Photos",
+            "name": "Report-B",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 17,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Mein Computer",
+            "icon": "computer.png",
+            "x": 79,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Dokument 7612d Copy",
             "icon": "folderFull.png",
             "x": 9,
-            "y": 17,
-            "action": ""
+            "y": 43,
+            "action": "startDefaultProgram('fileManager');"
         },
         {
-            "name": "File2",
-            "icon": "folderFull.png",
+            "name": "Text.pdf",
+            "icon": "pdf.png",
             "x": 10,
             "y": 30,
             "action": ""
         },
         {
-            "name": "Document 7612d Copy",
-            "icon": "folderFull.png",
-            "x": 7,
-            "y": 43,
-            "action": ""
-        },
-        {
-            "name": "Text.pdf",
-            "icon": "pdf.png",
+            "name": "Präsentation Kopie.txt",
+            "icon": "txt.png",
             "x": 9,
-            "y": 56,
-            "action": ""
-        },
-        {
-            "name": "Presentation Copy.txt",
-            "icon": "txt.png",
-            "x": 7,
-            "y": 69,
-            "action": ""
-        },
-        {
-            "name": "Spreadsheet e7dac.jpg",
-            "icon": "fileImage.png",
-            "x": 7,
-            "y": 82,
-            "action": ""
-        },
-        {
-            "name": "Report Copy.txt",
-            "icon": "txt.png",
-            "x": 14,
-            "y": 4,
-            "action": ""
-        },
-        {
-            "name": "File2",
-            "icon": "folderFull.png",
-            "x": 17,
             "y": 17,
-            "action": ""
+            "action": "startDefaultProgram('textEditor-random');"
         },
         {
-            "name": "Note.pdf",
+            "name": "Report 78-9.1.txt",
+            "icon": "txt.png",
+            "x": 16,
+            "y": 56,
+            "action": "startDefaultProgram('textEditor-random');"
+        },
+        {
+            "name": "Notiz-Gerber.pdf",
             "icon": "pdf.png",
             "x": 16,
-            "y": 30,
-            "action": ""
+            "y": 4,
+            "action": "startDefaultProgram('imageViewer');"
         },
         {
             "name": "Links",
             "icon": "folderFull.png",
-            "x": 17,
-            "y": 43,
+            "x": 18,
+            "y": 17,
             "action": ""
         },
         {
             "name": "Text",
             "icon": "folderFull.png",
-            "x": 17,
-            "y": 56,
+            "x": 18,
+            "y": 30,
             "action": ""
         },
         {
             "name": "Links.txt",
             "icon": "txt.png",
-            "x": 16,
-            "y": 69,
+            "x": 17,
+            "y": 43,
             "action": ""
         },
         {
-            "name": "Document1",
+            "name": "Report-C",
             "icon": "folderFull.png",
-            "x": 15,
-            "y": 82,
-            "action": ""
-        },
-        {
-            "name": "Photos 4d55e",
-            "icon": "folderFull.png",
-            "x": 22,
-            "y": 4,
-            "action": ""
+            "x": 3,
+            "y": 30,
+            "action": "startDefaultProgram('fileManager');"
         },
         {
             "name": "A-433.mp3",
             "icon": "mp3.png",
-            "x": 1,
-            "y": 16,
+            "x": 3,
+            "y": 69,
             "action": ""
         }
     ],
