@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-25.07.2025 20:11
-=======
-16.10.2024 16:20
->>>>>>> halifax
+08.08.2025 17:48
 os/windows95/systemIcons/dvd.png
 os/windows95/systemIcons/server.png
 os/windows95/systemIcons/python.png
@@ -178,48 +174,18 @@ os/spa/desktop.jpg
 os/mac/desktop.jpg
 os/linux/desktop.jpg
 os/windows/desktop.jpg
-<<<<<<< HEAD
-workstations/drSteiger/files/calendar.png
+workstations/Default/userpicture.jpg
 workstations/_default/userpicture.jpg
-workstations/drSteiger/userpicture.jpg
-=======
-workstations/Saul/desktops/clouds.png
-workstations/_default/userpicture.jpg
-workstations/OperationsCenter/userpicture.jpg
-workstations/generic/userpicture.jpg
-workstations/Saul/userpicture.jpg
-workstations/Carine/userpicture.jpg
->>>>>>> halifax
+workstations/Default/settings.json
+workstations/Default/folders.json
+workstations/Default/settings FULL EXAMPLE.json
+workstations/Default/browser.json
 workstations/_default/settings.json
 workstations/_default/folders.json
 workstations/_default/settings FULL EXAMPLE.json
 workstations/_default/browser.json
-<<<<<<< HEAD
-workstations/drSteiger/settings.json
-workstations/drSteiger/folders.json
-workstations/drSteiger/browser.json
+workstations/Default/bash/script.fakeBash
 workstations/_default/bash/script.fakeBash
-workstations/drSteiger/bash/script.fakeBash
-=======
-workstations/OperationsCenter/settings.json
-workstations/OperationsCenter/folders.json
-workstations/OperationsCenter/browser.json
-workstations/generic/settings.json
-workstations/generic/folders.json
-workstations/generic/browser.json
-workstations/Saul/settings.json
-workstations/Saul/folders.json
-workstations/Saul/settings FULL EXAMPLE.json
-workstations/Saul/browser.json
-workstations/Carine/settings.json
-workstations/Carine/folders.json
-workstations/Carine/browser.json
-workstations/_default/bash/script.fakeBash
-workstations/OperationsCenter/bash/script.fakeBash
-workstations/generic/bash/script.fakeBash
-workstations/Saul/bash/script.fakeBash
-workstations/Carine/bash/script.fakeBash
->>>>>>> halifax
 programs/securiton/icon.png
 programs/securiton/splash.png
 programs/securiton/data/213a-4.png
@@ -699,7 +665,6 @@ programs/chat/data/508/chat.json
 programs/browser/sites/defaultWebsites.json
 programs/map/data/614/pointsOfInterest.json
 programs/.vscode/settings.json
-programs/email/data/000/inbox.json
 programs/email/data/examples/de.json
 programs/email/data/examples/inbox.json
 programs/email/data/examples/en.json
