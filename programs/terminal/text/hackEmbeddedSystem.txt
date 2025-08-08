@@ -1,0 +1,87 @@
+import serial
+import serial.tools.list_ports
+import time
+import datetime
+import binascii
+
+def log(msg):
+    ts = datetime.datetime.now().strftime("%H:%M:%S.%f")[:-3]
+    print(f"[{ts}] {msg}")
+
+def list_serial_ports():
+    return [p.device for p in serial.tools.list_ports.comports()]
+
+def try_connect(port):
+    try:
+        return serial.Serial(port, baudrate=115200, timeout=1)
+    except Exception as e:
+        log(f"{port} unavailable")
+        return None
+
+def dump(data):
+    hex_part = ' '.join(f"{b:02X}" for b in data)
+    ascii_part = ''.join(chr(b) if 32 <= b <= 126 else '.' for b in data)
+    return f"{hex_part:<48}  {ascii_part}"
+
+def probe_patterns(s):
+    payloads = [
+        b'\x00\x01\x02\x03',
+        b'\xAA\x55\xAA\x55',
+        b'HELLO\n',
+        b'ID?\n',
+        b'\xF0\x0D',
+        b'\xDE\xAD\xBE\xEF',
+        b'STATUS\r\n',
+        b'\x7E\x01\x00\x7F',
+        b'\x01\x03\x00\x00\x00\x01\x84\x0A',  # Modbus read
+    ]
+    responses = []
+    for p in payloads:
+        s.write(p)
+        time.sleep(0.2)
+        r = s.read(128)
+        if r:
+            responses.append((p, r))
+    return responses
+
+def fingerprint(response):
+    try:
+        ascii = response.decode('ascii')
+        if "ready" in ascii.lower():
+            return "Possibly shell or bootloader"
+        if "error" in ascii.lower():
+            return "Responds to command format"
+        if "id" in ascii.lower() or "version" in ascii.lower():
+            return "Might support device info requests"
+        return "Plain ASCII response"
+    except:
+        if b'\x7E' in response or len(response) >= 4 and response[0] == 0x7E:
+            return "Framed protocol (e.g. XBee or HDLC)"
+        return "Binary/unknown encoding"
+
+ports = list_serial_ports()
+if not ports:
+    log("No serial ports found.")
+    exit()
+
+log(f"Found ports: {ports}")
+
+for port in ports:
+    s = try_connect(port)
+    if not s:
+        continue
+
+    log(f"Connected to {port}")
+    responses = probe_patterns(s)
+
+    if not responses:
+        log(f"No response from {port}")
+        s.close()
+        continue
+
+    for sent, received in responses:
+        log(f"Sent: {binascii.hexlify(sent).decode()}")
+        log(f"Recv: {dump(received)}")
+        log(f"-> {fingerprint(received)}\n")
+
+    s.close()
