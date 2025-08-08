@@ -1,0 +1,93 @@
+# ------- setup
+# bashProfileName - plain text or html
+<span class='green'>admin</span>@<span class='red'>robot-core</span>:<span class='grey'>~</span> $ 
+# -------
+
+
+
+[bashProfile] [forceType, "ls -l -a | head -n 20", "*"]
+[autoType, "total 128"]
+[autoType, "drwxr-xr-x  6 root     root      4096 Mar  5 14:32 ."]
+[autoType, "drwxr-xr-x 16 root     root      4096 Mar  5 13:01 .."]
+[autoType, "-rw-r--r--  1 root     root      2244 Feb 28 09:02 .env"]
+[autoType, "-rw-r--r--  1 root     root       642 Feb 28 09:03 .firmwarerc"]
+[autoType, "-rw-r--r--  1 root     root       125 Feb 27 18:55 .gitignore"]
+[autoType, "-rw-r--r--  1 root     root     18236 Mar  4 16:45 main.bin"]
+[autoType, "-rw-r--r--  1 root     root      9644 Mar  4 16:46 update.pkg"]
+[autoType, "-rw-r--r--  1 root     root      1067 Feb 28 09:10 log.txt"]
+[autoType, "-rw-r--r--  1 root     root       889 Feb 28 09:10 README.md"]
+[autoType, "-rwxr-xr-x  1 root     root      4521 Mar  1 12:11 robotctl"]
+[autoType, "drwxr-xr-x  2 root     root      4096 Mar  1 12:12 backup/"]
+[autoType, "drwx------  3 root     root      4096 Feb 29 08:01 .trash/"]
+[autoType, "-rw-r--r--  1 root     root      2048 Feb 27 17:00 core.dump"]
+
+[bashProfile] [forceType, "cd /.firmwarerc"]
+
+[bashProfile] [forceType, "strings update.pkg | grep version"]
+[autoType, "firmware_version=1.3.7-beta"]
+[br]
+
+[bashProfile] [forceType, "chmod +x update.pkg"]
+[loader, "\[", "▓", "░", "\]", 30, 666, 0, 100, "", "%"]
+[autoType, "Done", 555]
+[br]
+
+[bashProfile] [forceType, "./update.pkg"]
+[autoType, "Extracting..."]
+[loader, "\[", "▓", "░", "\]", 30, 1200, 0, 100, "", "%"]
+[br]
+[autoType:red, "Segmentation fault (core dumped)", 666]
+[br]
+
+[bashProfile] [forceType, "hexdump -C main.bin | head -n 3"]
+[autoType, "00000000  7f 45 4c 46 01 01 01 00  ...  |.ELF....|"]
+[autoType, "00000010  02 00 03 00 01 00 00 00  ..."]
+[autoType, "00000020  80 80 04 08 34 00 00 00  ..."]
+[br]
+
+[bashProfile] [forceType, "head -n 26 README.md"]
+[autoType, "---------------------------------------", 222]
+[autoType, "# Robot Firmware Directory"]
+[autoType, "---------------------------------------"]
+[br]
+[autoType:blue, "                         _    ___ "]
+[autoType:blue, "    ___ __ _ _ __ ___   / \  |_ _|  (TM)"]
+[autoType:blue, "   / __/ _` | '__/ _ \ / _ \  | | "]
+[autoType:blue, "  | (_| (_| | | |  __// ___ \ | | "]
+[autoType:blue, "   \___\__,_|_|  \___/_/   \_\___|"]
+[br]
+[br]
+[autoType:grey, "This directory contains core components, logs, and maintenance tools for the embedded control system of the unit."]
+[br]
+[autoType:grey, "---------------------------------------"]
+[br]
+[autoType:blue, "## Contents"]
+[br]
+[autoType:grey, "- `main.bin` Compiled firmware image currently loaded into flash. Contains the runtime logic for motor control, telemetry, and system I/O."]
+[br]
+[autoType:grey, "- `update.pkg`  Package archive for firmware updates. Should be verified and flashed using `robotctl`."]
+[br]
+[autoType:grey, "- `log.txt`  System log file. Rotates on reboot. Stores warning and info level messages."]
+[br]
+[autoType:grey, "- `README.md` This file."]
+[br]
+[autoType:grey, "---------------------------------------"]
+[br]
+[autoType:blue, "## robotctl - Firmware Control Utility"]
+[br]
+[autoType:grey, "`robotctl` is a CLI tool used for managing firmware state, performing maintenance, and interacting with internal subsystems."]
+[br]
+[autoType:blue, "### Usage:"]
+[br]
+
+[bashProfile] [forceType, "sudo /usr/bin/robotctl --status", false]
+[br]
+
+[bashProfile] [forceType, "sudo /usr/bin/robotctl --reboot", false]
+[br]
+
+[bashProfile] [forceType, "exit"]
+[autoType:grey, "Session terminated.", 500]
+[sleep, 1000]
+[clear]
+EXIT

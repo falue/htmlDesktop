@@ -1,1 +1,99 @@
-{"settings":{"systemColor":"#000000","desktopColor":"#1d1b1b","desktopImg":"os/windows/desktop.jpg","os":"windows","darkMode":true,"username":"user","password":"","workstation":"Default","selectedSystemMessage":3,"osNotificationsDelay":0},"systemIcons":["expand_less","account_circle","wifi","bluetooth","mail","lan","volume_mute"],"windows":[{"metaTitle":"#000 Greenscreen - right click title to change!","windowName":"Window","icon":"grid_view","contentPath":"colorMarker","x":4,"y":2,"w":1000,"h":777,"zIndex":1,"minimized":false,"renderToDom":false}],"shortcuts":[{"name":"DVD","icon":"dvd.png","x":94,"y":69,"action":""},{"name":"Trash","icon":"trashFull.png","x":94,"y":82,"action":""},{"name":"HDD","icon":"hdd.png","x":3,"y":4,"action":"startDefaultProgram('fileManager');"}],"actions":[],"osNotifications":[]}
+{
+    "settings": {
+        "systemColor": "#000000",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "os/windows/desktop.jpg",
+        "os": "windows",
+        "darkMode": true,
+        "username": "user",
+        "password": "",
+        "workstation": "Default",
+        "selectedSystemMessage": 3,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 1,
+            "minimized": false,
+            "renderToDom": false
+        },
+        {
+            "windowName": "PERISTALTIX - PYTHON [zen mode]",
+            "icon": "view_in_ar",
+            "contentPath": "terminal/index.html?byRows=false&startChar=1500&text=hackEmbeddedSystem&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 6,
+            "y": 12,
+            "w": 1280,
+            "h": 666,
+            "zIndex": 50,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Bash console - admin",
+            "icon": "code",
+            "contentPath": "bash/index.html?script=hackingEmbeddedSystem&darkMode=true",
+            "x": 44,
+            "y": 8,
+            "w": 888,
+            "h": 1000,
+            "zIndex": 51,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Neptcode Notebook",
+            "icon": "grid_view",
+            "contentPath": "neptcode/index.html?scene=",
+            "x": 10,
+            "y": 2,
+            "w": 1400,
+            "h": 1200,
+            "zIndex": 49,
+            "minimized": false,
+            "renderToDom": true
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 94,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        }
+    ],
+    "actions": [],
+    "osNotifications": []
+}
