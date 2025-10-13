@@ -1,0 +1,135 @@
+{
+    "settings": {
+        "systemColor": "#2d202c",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "os/_generic/desktops/9.jpg",
+        "os": "windows",
+        "darkMode": true,
+        "username": "telefabi",
+        "password": "",
+        "workstation": "telefabi",
+        "selectedSystemMessage": -1,
+        "bootSpeed": 3,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "windowName": "Image viewer",
+            "icon": "image",
+            "contentPath": "imageviewer/index.html?files=arrow_down.gif",
+            "x": 9,
+            "y": 70,
+            "w": 343,
+            "h": 223,
+            "zIndex": 13,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Browser",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=telefabi.ch",
+            "x": 23,
+            "y": 16,
+            "w": 831,
+            "h": 549,
+            "zIndex": 29,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager",
+            "x": 8,
+            "y": 8,
+            "w": 643,
+            "h": 405,
+            "zIndex": 16,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Email Petabird",
+            "icon": "email",
+            "contentPath": "email",
+            "x": 32,
+            "y": 36,
+            "w": 1088,
+            "h": 514,
+            "zIndex": 28,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager",
+            "x": 49,
+            "y": 18,
+            "w": 600,
+            "h": 350,
+            "zIndex": 25,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Neptcode Notebook",
+            "icon": "code",
+            "contentPath": "neptcode/index.html?scene=basic",
+            "x": 42,
+            "y": 1,
+            "w": 888,
+            "h": 850,
+            "zIndex": 27,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 1,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 94,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 4,
+            "action": "startDefaultProgram('fileManager');"
+        }
+    ],
+    "osNotifications": [],
+    "actions": []
+}
