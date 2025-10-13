@@ -380,7 +380,7 @@ li.showMac { display: list-item !important; }
 /* DOCK */
 .dock {
     position: fixed;
-    left: 50%;
+    left: 50% !important;
     bottom: .75em;
     transform: translate(-50%, 2em);
 }
