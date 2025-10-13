@@ -33,11 +33,19 @@
             "showInFavorites": true,
             "onclick": false
         },{
-            "spoofUrl": "telefabi.ch",
-            "realUrl": "sites/telefabi",
-            "favoritesName": "telefabi.ch",
+            "spoofUrl": "mapden.ch",
+            "realUrl": "sites/maps/index.html?scene=67&darkMode=true",
+            "favoritesName": "mapden.ch",
             "metaName": false,
-            "materialIcon": "code",
+            "materialIcon": "map",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "avmail.ch",
+            "realUrl": "../email/index.html?webmail=true",
+            "favoritesName": "avmail.ch",
+            "metaName": false,
+            "materialIcon": "email",
             "showInFavorites": true,
             "onclick": false
         },{
@@ -63,14 +71,6 @@
             "metaName": false,
             "materialIcon": "biotech",
             "showInFavorites": false,
-            "onclick": false
-        },{
-            "spoofUrl": "sites/runnershigh",
-            "realUrl": "sites/runnershigh",
-            "favoritesName": "runnershigh.ch",
-            "metaName": false,
-            "materialIcon": "directions_run",
-            "showInFavorites": true,
             "onclick": false
         },{
             "spoofUrl": "",

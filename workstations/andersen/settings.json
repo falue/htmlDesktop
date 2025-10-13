@@ -1,0 +1,322 @@
+{
+    "settings": {
+        "systemColor": "#000000",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "./os/_generic/desktops/5.jpg",
+        "os": "windows",
+        "darkMode": true,
+        "username": "andersen",
+        "password": "",
+        "workstation": "andersen",
+        "selectedSystemMessage": -1,
+        "bootSpeed": 3,
+        "osNotificationsDelay": 0
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "windowName": "Browser",
+            "metaTitle": "#67 Browser mit Maps",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=mapden.ch",
+            "x": 6,
+            "y": 4,
+            "w": 1200,
+            "h": 777,
+            "zIndex": 2,
+            "minimized": true,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Window",
+            "metaTitle": "Greenscreen Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 4,
+            "y": 2,
+            "w": 1000,
+            "h": 777,
+            "zIndex": 1,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 82,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 94,
+            "y": 4,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Termine-4.docx",
+            "icon": "doc.png",
+            "x": 1,
+            "y": 30,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "File Copy.png",
+            "icon": "fileImage.png",
+            "x": 1,
+            "y": 43,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "Pictures",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 4,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Report Copy",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 69,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Video-2.mp4",
+            "icon": "fileMovie.png",
+            "x": 1,
+            "y": 82,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "Text.jpg",
+            "icon": "fileImage.png",
+            "x": 3,
+            "y": 56,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "Video-MJVFS.mp4",
+            "icon": "fileMovie.png",
+            "x": 8,
+            "y": 17,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 30,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Spreadsheet e7dad.zip",
+            "icon": "zip.png",
+            "x": 8,
+            "y": 43,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 56,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Home Copy.docx",
+            "icon": "doc.png",
+            "x": 8,
+            "y": 69,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "Document1.doc",
+            "icon": "doc.png",
+            "x": 8,
+            "y": 82,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 17,
+            "y": 4,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 17,
+            "y": 17,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Spreadsheet 41359 Copy.txt",
+            "icon": "txt.png",
+            "x": 15,
+            "y": 30,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "File Copy",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 43,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Document1 4d2df Copy",
+            "icon": "folderFull.png",
+            "x": 15,
+            "y": 56,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "file Copy.doc",
+            "icon": "doc.png",
+            "x": 15,
+            "y": 69,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "Presentation",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 82,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Memo",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 4,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Spreadsheet",
+            "icon": "folderFull.png",
+            "x": 23,
+            "y": 17,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Personal",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 17,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "Data.cvs",
+            "icon": "doc.png",
+            "x": 23,
+            "y": 43,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "File2",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 56,
+            "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
+        },
+        {
+            "name": "IMG-4330.jpg",
+            "icon": "fileImage.png",
+            "x": 71,
+            "y": 4,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-4331.jpg",
+            "icon": "fileImage.png",
+            "x": 71,
+            "y": 17,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-4332.jpg",
+            "icon": "fileImage.png",
+            "x": 71,
+            "y": 30,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-4333.jpg",
+            "icon": "fileImage.png",
+            "x": 71,
+            "y": 43,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-4334.jpg",
+            "icon": "fileImage.png",
+            "x": 71,
+            "y": 56,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-4335.jpg",
+            "icon": "fileImage.png",
+            "x": 71,
+            "y": 69,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-4336.jpg",
+            "icon": "fileImage.png",
+            "x": 71,
+            "y": 82,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-4337.mp4",
+            "icon": "fileMovie.png",
+            "x": 78,
+            "y": 4,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-4338.jpg",
+            "icon": "fileImage.png",
+            "x": 78,
+            "y": 17,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-4339.jpg",
+            "icon": "fileImage.png",
+            "x": 78,
+            "y": 30,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-43310.jpg",
+            "icon": "fileImage.png",
+            "x": 78,
+            "y": 43,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        },
+        {
+            "name": "IMG-43311.jpg",
+            "icon": "fileImage.png",
+            "x": 78,
+            "y": 56,
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+        }
+    ],
+    "osNotifications": [],
+    "actions": []
+}
