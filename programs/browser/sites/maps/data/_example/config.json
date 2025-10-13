@@ -1,0 +1,43 @@
+{
+    "worldWidth": 10000,
+    "worldHeight": 10000,
+    "initialView": { "x": 2048, "y": 2048, "z": 0.25 },
+    "marker": { "display": true, "x": 2200, "y": 1800, "angle": 45 },
+    "minZoom": 0.05,
+    "maxZoom": 4,
+    "forceType": "Mallorca",
+    "scaleAtZoom1": 1.5,
+    "lods": [
+      {
+        "maxZ": 0.3,
+        "grid": { "size": 200, "color": "rgba(255,0,0,.5)" },
+        "layers": [
+          { "url": "sat_low.png", "type": "base", "width": 2028, "height": 1488, "offsetX": 0, "offsetY": 0 },
+          { "url": "sat_low.png", "type": "military", "width": 2028, "height": 1488, "offsetX": 2028, "offsetY": 0 },
+          { "url": "roads_low.svg", "type": "overlay", "width": 1600, "height": 900, "offsetX": 0, "offsetY": 0 }
+        ]
+      },
+      {
+        "maxZ": 0.9,
+        "grid": { "size": 100, "color": "rgba(0,255,0,.5)" },
+        "layers": [
+          { "url": "sat_mid.png", "type": "base", "width": 2448, "height": 1530, "offsetX": 0, "offsetY": 0 },
+          { "url": "roads_mid.svg", "type": "overlay", "width": 1600, "height": 900, "offsetX": 500, "offsetY": 0 }
+        ]
+      },
+      {
+        "maxZ": 99,
+        "grid": { "size": 50, "color": "rgba(0,128,255,.5)" },
+        "layers": [
+          { "url": "sat_hi.png", "type": "base", "width": 2640, "height": 1588, "offsetX": 0, "offsetY": 0 },
+          { "url": "roads_hi.svg", "type": "overlay", "width": 1600, "height": 900, "offsetX": 0, "offsetY": 0 }
+        ]
+      }
+    ],
+    "presets": [
+      { "label": "HQ Gate", "x": 1800, "y": 1800, "z": 0.5 },
+      { "label": "Warehouse", "x": 3100, "y": 2100, "z": 0.8 },
+      { "label": "Main Sq.", "x": 2048, "y": 2048, "z": 1.2 }
+    ]
+  }
+  

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Map Prop (LOD + POIs)</title>
+  <link rel="stylesheet" type="text/css" href="../../../../tools/fonts.css" media="all">
+  <link rel="stylesheet" href="../../../../tools/general.css" media="all">
+  <link rel="stylesheet" href="stylesheet.css" media="all">
+  <script src="../../../../tools/general.js"></script>
+</head>
+<body id="body" onload="setup();">
+<div id="app" aria-label="Map viewport">
+  <div class="world" id="world">
+    <div class="layers" id="layers"></div>
+    <div class="pois" id="pois"></div>
+    <div class="marker" id="marker" data-angle="45"></div>
+  </div>
+
+  <!-- LEFT UI -->
+  <div class="hud">
+    <div class="panel">
+      <div class="row search" style="gap:10px; flex-wrap:nowrap; margin-bottom: 6px;">
+        <input type="text" id="search" placeholder="Search..">
+      </div>
+      <div class="row" style="gap:10px; flex-wrap:nowrap;">
+        <button class="btn" id="zoomIn"><i class="material-icons valign">zoom_in</i></button>
+        <button class="btn" id="zoomOut"><i class="material-icons valign">zoom_out</i></button>
+        <button class="btn" id="centerBtn"><i class="material-icons valign">zoom_out_map</i></button>
+        <button class="btn"><i class="material-icons small valign">send</i></button>
+        <button class="btn" onclick="gebi('body').classList.toggle('dark')"><i class="material-icons small valign">contrast</i></button>
+        <button class="btn" onclick="toggleClass('debug');"><i class="material-icons small valign">bolt</i></button>
+      </div>
+    </div>
+    <div class="panel debug hide">
+      <div class="row"><strong>View (X/Y/Z):</strong> <span class="stat" id="viewStat">-</span></div>
+      <div class="row"><strong>Marker (X/Y/Z):</strong> <span class="stat" id="markerStat">-</span></div>
+    </div>
+
+    <div class="panel">
+      <div class="row title" style="margin-bottom: 6px;">
+        <i class="material-icons valign">layers</i>
+        Layers
+        <i class="material-icons valign right paddingX50 op50 pointer">more_vert</i>
+      </div>
+      <div id="layerToggles" class="row"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT UI (Presets) -->
+  <div class="presets">
+    <div class="panel debug hide">
+      <div style="margin-bottom:6px; font-weight:700;">Presets</div>
+      <div class="preset-grid" id="presetButtons"></div>
+      <div class="legend" style="margin-top:6px;">Press <span class="kbd">1…9</span> to fly</div>
+    </div>
+  </div>
+
+  <!-- RIGHT BOTTOM UI -->
+  <div class="rightBottomMenu">
+    <span class="legend text-shadow--black">Drag to pan • Wheel to zoom • Arrows pan • Hold <span class="kbd">Shift</span> for bigger steps<!--  • <span class="kbd">+</span>/<span class="kbd">-</span> zoom --></span>
+    <div class="watermark"><i class="material-icons valign">map</i> MAP DEN</div>
+  </div>
+
+  
+  <!-- SCALE -->
+  <!-- NORTH STAR -->
+  <div class="panel leftBottomMenu">
+    <i class="northStar material-icons large rotate-45">explore</i>
+    <div class="scale" id="scalePanel" style="min-width:160px;">
+      <div class="bar" id="scaleBar" style="width:160px;"></div>
+      <div class="ticks"><span>0</span><span id="scaleRight">100 m</span></div>
+      <div class="label debug hide" id="scaleLabel">Scale</div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+:root {
+  --ui-bg: rgba(18, 18, 18, .78);
+  --ui-fg: #f2f2f2;
+  --accent: #4cc2ff;
+  --markerAngle: 0deg;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #0e0e0e;
+  color: var(--ui-fg);
+  font: 14px/1.35 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+body:not(.dark) {
+  background: #dcdcdc;
+}
+
+#app {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  cursor: grab;
+  touch-action: none;
+}
+
+#app.grabbing {
+  cursor: grabbing;
+}
+
+/* World canvas that we transform */
+.world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+/* Layers (images/SVGs) inside world */
+.layers,
+.pois {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.layers > * {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.layer-img {
+  pointer-events: none;
+}
+
+
+.poi {
+  position: absolute;
+  display: inline-flex;
+  align-items: flex-end;
+  gap: .35em;
+  pointer-events: auto;
+  padding:3px 6px;
+}
+.poi.noBox {
+  padding: 0;
+  align-items: center;
+}
+.poi.noBox .icon {
+  margin-left:60%;
+  margin-top:50%;
+}
+
+.poi:not(.noBox) {
+  margin: 0 9px 9px 0;
+  background-color: rgb(17, 17, 17);
+  border-radius: 8px;
+  border-bottom-right-radius:0;
+  border:solid .08em white;
+}
+.poi:not(.noBox)::after {
+  content: "";
+  width:8px;
+  box-sizing: border-box;
+  height:8px;
+  border-radius: 666px;
+  position: absolute;
+  right:-6px;
+  bottom:-6px;
+  background-color:rgb(17, 17, 17);
+  border:solid .075em white;
+}
+
+.poi .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.poi .label {
+  font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  min-width: 66px;
+  padding-left: 6px;
+  width: fit-content;
+}
+
+.poi:not(.noBox):hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+}
+
+.marker {
+  position: absolute;
+}
+
+.marker::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  margin: 0 0 0 -8px;
+  border-radius: 50%;
+  background: #4784ff;
+  border:3px white solid;
+}
+
+.marker::before {
+  content: "";
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  left:-44px;
+  top:-44px;
+  background: radial-gradient(
+    circle farthest-side at 50% 70%,
+    rgba(71, 132, 255, 0.5) 0%,           /* start solid */
+    rgba(71, 132, 255, 0.5) 50%,          /* stay solid until 75% of the radius */
+    transparent 100%       /* fade to transparent by edge */
+  );
+  -webkit-mask: conic-gradient(from -33deg at 50% 70%, #0000, #000 1deg 66deg, #0000 67deg);
+  mask: conic-gradient(from -33deg at 50% 70%, #0000, #000 1deg 66deg, #0000 67deg);
+  transform: rotate(var(--markerAngle, 0deg));
+  transform-origin:  center 60%;
+}
+
+/* UI panels */
+.hud {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  display: grid;
+  gap: 8px;
+  z-index: 5;
+}
+
+.panel {
+  background: var(--ui-bg);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+  cursor: default;
+}
+
+body:not(.dark) .panel,
+body:not(.dark) .poi {
+  filter: invert(180) hue-rotate(180deg);
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+  align-items: start;
+  flex-wrap: wrap;
+}
+
+.row.title {
+  opacity: 0.87;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: .85em;
+}
+
+input,
+.btn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: #1f1f1f;
+  color: var(--ui-fg);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+input[type=text] {
+  width: 100%;
+  cursor: text;
+  padding: 12px 10px;
+  font-weight: inherit;
+}
+
+.btn:not(:disabled):hover {
+  border-color: var(--accent);
+}
+
+.btn:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.btn.small {
+  padding: 6px 8px;
+  font-size: 12px;
+}
+.row.search::after {
+  content: "search";
+  position: absolute;
+  font-weight: 600;
+  font-size: 24px;
+  font-family: 'Material Icons';
+  opacity: 0.4;
+  right: 24px;
+  top: 16px;
+  pointer-events: none;
+}
+
+#layerToggles .btn {
+  width: 100%;
+  text-align: left;
+}
+#layerToggles .btn::before {
+  content: "check_box_outline_blank ";
+  /* color:red; */
+  font-family: 'Material Icons';
+  vertical-align: middle;
+}
+#layerToggles .btn.active::before {
+  content: "check_box ";
+  /* color:green; */
+}
+
+.stat {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.presets {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: grid;
+  gap: 8px;
+  z-index: 5;
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 6px;
+}
+
+.legend {
+  font-size: 12px;
+  opacity: .8;
+}
+
+.rightBottomMenu {
+  /* mix-blend-mode: difference; */
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.kbd {
+  font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, .15);
+}
+
+.northStar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+/* Scale bar */
+.leftBottomMenu {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 5;
+  display: inline-flex;
+  gap: 8px;
+}
+
+.scale .bar {
+  position: relative;
+  height: 6px;
+  background: #eaeaea;
+  border-radius: 4px 4px 0 0;
+  border: 1px solid rgba(0, 0, 0, .6);
+}
+
+.scale .ticks {
+  display: flex;
+  justify-content: space-between;
+  font: 11px ui-monospace, Menlo, Consolas, monospace;
+  margin: 0 1px;
+  padding: 4px 4px 0 4px;
+  opacity: .85;
+  border-left:white 2px solid;
+  border-right:white 2px solid;
+  transform: translateY(-1px);
+}
+
+.scale .label {
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: .85;
+}
+
+.watermark {
+  opacity: .34;
+  font-weight: 700;
+  letter-spacing: .04em;
+  pointer-events: none;
+  user-select: none;
+  color: var(--accent);
+}
