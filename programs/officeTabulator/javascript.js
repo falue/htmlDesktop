@@ -1,19 +1,12 @@
-<<<<<<< HEAD
-=======
 let scene;
 
->>>>>>> halifax
 async function setup() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let os = urlParams.get("os");
   let workstation = urlParams.get("workstation");
   let darkMode = urlParams.get("darkMode");
-<<<<<<< HEAD
-  let scene = urlParams.get("scene");
-=======
   scene = urlParams.get("scene");
->>>>>>> halifax
   let type = urlParams.get("type");
 
   let tabulatorFont =  urlParams.get("font");
