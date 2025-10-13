@@ -1,0 +1,28 @@
+[
+    {
+        "tooltip": "This is videocam 1234123-B",
+        "icon": "videocam",
+        "x": 666,
+        "y": 333,
+        "minZ": 0.4,
+        "maxZ": 2.5,
+        "size": 2,
+        "iconClasses": "",
+        "iconStyles": "",
+        "text": "xx asdf asdf asdf asdfasdf asdf asdfasd fasdf x",
+        "action": ""
+    },
+    {
+        "tooltip": "This is videocam 1234123-A",
+        "icon": "location_pin",
+        "x": 999,
+        "y": 333,
+        "minZ": 0,
+        "maxZ": 4,
+        "size": 2,
+        "pointClasses": "red text-shadow--white noBox",
+        "iconStyles": "",
+        "text": "",
+        "action": "alert('cam A - AAAAA')"
+    }
+]
