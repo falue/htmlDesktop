@@ -25,12 +25,12 @@
       --><button class="programButtons">Camera</button><!-- 
       --><button class="programButtons">Share</button><!-- 
       --><button class="programButtons">Presentation</button><!-- 
-      --><button id="actionButton" class="programButtons" onclick="toggle('settings')"><i class="material-icons blue valign small">bolt</i> View</button><!-- 
       --><button class="programButtons">About</button><!-- 
       --><button class="programButtons" onclick="document.getElementsByTagName('body')[0].requestFullscreen();"><i class="material-icons blue valign">fullscreen</i></button><!-- 
       --><button id="zoomIn" class="programButtons" onclick="zoom({wheelDeltaY: -25, wheelDeltaX: 0, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_in</i></button><!-- 
       --><button id="zoomOut" class="programButtons" onclick="zoom({wheelDeltaY: 40, wheelDeltaX: 0, offsetX: window.innerWidth/2, offsetY: window.innerHeight/2 }, getCurrentContentWrapper())"><i class="material-icons blue valign">zoom_out</i></button><!--
-      --><button id="zoomReset" class="programButtons" onclick="zoom(100, getCurrentContentWrapper())"><i class="material-icons blue valign">search_off</i></button>
+      --><button id="zoomReset" class="programButtons" onclick="zoom(100, getCurrentContentWrapper())"><i class="material-icons blue valign">search_off</i></button><!-- 
+      --><button id="actionButton" class="programButtons" onclick="toggle('settings')"><i class="material-icons blue valign small">bolt</i> View</button>
     </header>
 
     <div id="settings" class="hide radius3 fixed top right margin2 padding1 whiteBg shadow" style="z-index:9999">
@@ -50,7 +50,7 @@
         <!-- <input id="autoplay" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="autoplay = this.checked; this.checked ? localStorage.setItem('imageViewer-autoplay', true) :  localStorage.removeItem('imageViewer-autoplay')"> -->
         <label for="autoplay">Autoplay</label><br>
         
-        <input id="disableThumbs" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="toggleThumbnails()">
+        <input id="disableThumbs" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="gebi('thumbnails').style.transition = 'padding-top 250ms, opacity 350ms, transform 1s'; toggleThumbnails()">
         <label for="disableThumbs">Gallery: Hide miniatures</label><br>
         
         <input id="disableVideoControls" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="disableVideoControls = this.checked; setVideoControls()">

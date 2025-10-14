@@ -46,6 +46,8 @@ async function setupImageViewer() {
 
     if(disableThumbs) {
         toggleThumbnails();
+    } else {
+        gebi('thumbnails').style.transition = "padding-top 250ms, opacity 350ms, transform 1s";
     }
     
     // Get sort list from storage
