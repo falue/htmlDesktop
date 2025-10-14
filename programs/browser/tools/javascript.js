@@ -105,6 +105,12 @@ function toggleDarkMode() {
   document.body.classList.toggle('dark');
 }
 
+function toggleFavorites() {
+  toggle('favorites');
+  let fakeBrowserContainer = document.getElementsByClassName('fake-browser-container')[0];
+  fakeBrowserContainer.style.top = fakeBrowserContainer.style.top == "49px" ? "80px" :"49px";
+}
+
 function showLoader(isLoading) {
   let loadingIsActivated = document.getElementById('loadToggle').checked;
   let loadingTypeCircle = document.getElementById('loaderCircle').checked;

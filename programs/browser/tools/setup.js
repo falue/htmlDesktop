@@ -145,7 +145,7 @@ async function setupFavorites(urls) {
       let spanUrlsList = document.createElement("span");
       spanUrlsList.innerHTML = " " + metaName;
       let action = onclick ? onclick : "";
-      spanUrlsList.setAttribute("onclick", "hide('favoritesMenu'); goToUrl('"+realUrl+"', '"+spoofUrl+"'); "+action);
+      spanUrlsList.setAttribute("onclick", "goToUrl('"+realUrl+"', '"+spoofUrl+"'); "+action);
       spanUrlsList.prepend(iUrlsList);
 
       urlsList.appendChild(spanUrlsList);
@@ -161,7 +161,7 @@ async function setupFavorites(urls) {
           li.style.listStyle = 'none';
           li.title=`On qsearch.ch; you can search for "${key}" and find ${value.length} results`;
           li.innerHTML = `<span style="color:grey; display:inline">q:</span> "${key}"`; // Druckt Schlüssel und Wert
-          li.setAttribute("onclick", "hide('favoritesMenu'); goToUrl('sites/qsearch/index.html?search="+key+"', 'qsearch.ch/q/"+key+"')");
+          li.setAttribute("onclick", "goToUrl('sites/qsearch/index.html?search="+key+"', 'qsearch.ch/q/"+key+"')");
           ul.appendChild(li);
         }
         urlsList.appendChild(ul);
