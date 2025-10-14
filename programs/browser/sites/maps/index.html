@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Map Prop (LOD + POIs)</title>
+  <title>MapDen</title>
   <link rel="stylesheet" type="text/css" href="../../../../tools/fonts.css" media="all">
   <link rel="stylesheet" href="../../../../tools/general.css" media="all">
   <link rel="stylesheet" href="stylesheet.css" media="all">
@@ -29,12 +29,15 @@
         <button class="btn" id="centerBtn"><i class="material-icons valign">zoom_out_map</i></button>
         <button class="btn"><i class="material-icons small valign">send</i></button>
         <button class="btn" onclick="gebi('body').classList.toggle('dark')"><i class="material-icons small valign">contrast</i></button>
-        <button class="btn" onclick="toggleClass('debug');"><i class="material-icons small valign">bolt</i></button>
+        <button class="btn" onclick="toggleClass('debug'); debug=true"><i class="material-icons small valign">bolt</i></button>
       </div>
     </div>
     <div class="panel debug hide">
       <div class="row"><strong>View (X/Y/Z):</strong> <span class="stat" id="viewStat">-</span></div>
       <div class="row"><strong>Marker (X/Y/Z):</strong> <span class="stat" id="markerStat">-</span></div>
+      <div class="row">
+        <button class="btn" onclick="debugShowAllLods();"><i class="material-icons small valign">layers</i><i class="material-icons small valign">bug_report</i> Debug LOD Layers</button>
+      </div>
     </div>
 
     <div class="panel">
@@ -52,7 +55,10 @@
     <div class="panel debug hide">
       <div style="margin-bottom:6px; font-weight:700;">Presets</div>
       <div class="preset-grid" id="presetButtons"></div>
-      <div class="legend" style="margin-top:6px;">Press <span class="kbd">1…9</span> to fly</div>
+      <div class="legend" style="margin-top:6px;">Press <span id="kbdMax" class="kbd"></span> to fly</div>
+      <div style="margin-top:12px; margin-bottom:6px; font-weight:700;">POI helper</div>
+      <div class="" id="debugPois"></div>
+      <div class="legend" style="margin-top:6px;">Right click to get X/Y/Z location</div>
     </div>
   </div>
 

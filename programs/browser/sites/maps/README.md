@@ -73,6 +73,11 @@ Defines map geometry, zoom limits, and image layers per zoom level (LOD).
   }
 ```
 
+scaling:
+width height needs the same proportions as the imgs, but no necessarily be the dimensions of the img.
+so you can scale with it$
+use the bolt-button and the debug button to debug the position of the lods by using the dev tools of your browser to adjust for left/right and fill those as offsetsX/Y.
+
 ### 🔹 Fields
 | Key | Description |
 |-----|--------------|
