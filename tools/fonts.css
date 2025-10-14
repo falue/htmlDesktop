@@ -128,6 +128,7 @@ input[type='checkbox']:before {
     transform: translateY(-7px) translateX(-5px);
     color:grey;
     background-color: white;  /* hack to hide original checkbox */
+    vertical-align: middle;
 }
 input[type='radio']:before {
     font-size: 1.4em;
