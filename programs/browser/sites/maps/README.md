@@ -1,31 +1,13 @@
 # 🎬 Map Prop Engine – Quick Reference
 
-This is a lightweight HTML/JS map engine built for **digital props on film shoots**.  
-It behaves like a simple Google-Maps viewer: panning, smooth zooming, multiple image levels (LODs), grids, POIs, and togglable overlay layers.
-
----
-
-## Folder Structure
+# URL parameters
 ```
-maps/data/
-  ├── 3/                      → scene specific data, loaded by URL param "scene"
-  ├── 11/
-  └── 67/                     
-      ├── config.json         → configuration: world size, LODs, zoom, presets, etc
-      ├── points.json         → list of points of interest (POIs)
-      └── assets/             → map data for this scene
-          ├── sat_low.png
-          ├── sat_mid.png
-          ├── sat_hi.png
-          ├── roads_low.svg
-          ├── roads_mid.svg
-          └── roads_hi.svg
+darkMode              sets darkMode
+scene                 defines where assets, config and points are coming from ("data/{scene}/...")
+limitMovementToWorld  inhibit moving out of the world space. overwrites this setting from config.json.
 ```
-
----
 
 ## `config.json` Structure
-
 Defines map geometry, zoom limits, and image layers per zoom level (LOD).
 
 ```json
@@ -37,7 +19,8 @@ Defines map geometry, zoom limits, and image layers per zoom level (LOD).
     "minZoom": 0.05,
     "maxZoom": 4,
     "forceType": "Mallorca",
-    "scaleAtZoom1": 1.5,  // = real-world units per pixel at z=1 (e.g., metersPerPixelAtZ1)
+    "limitMovementToWorld": true,
+    "scaleAtZoom1": 1.5,  // = real-world units per pixel at z=1 (e.g., metersPerPixelAtZ1). 
     "lods": [
       {
         "maxZ": 0.3,
@@ -73,10 +56,17 @@ Defines map geometry, zoom limits, and image layers per zoom level (LOD).
   }
 ```
 
-scaling:
-width height needs the same proportions as the imgs, but no necessarily be the dimensions of the img.
-so you can scale with it$
-use the bolt-button and the debug button to debug the position of the lods by using the dev tools of your browser to adjust for left/right and fill those as offsetsX/Y.
+## Scaling map images
+Width & height needs the same proportions as the imgs, but no necessarily be the dimensions of the img.
+So an image can be 1000 x 1000px wide but be defined as 666 x 666px to scale it down.
+
+Use the bolt-button and the debug button to see the images all at once.
+Find the correct X/Y position and offset of these lods by using the dev tools of your browser.
+Adjust for left/right and fill those as offsets X/Y.
+
+## Find POIs
+if in debug mode, right click on the world to see X/Y/Z of that point.
+This also copies a valid json object to your clipboard for isnerting into `points.json`.
 
 ### 🔹 Fields
 | Key | Description |
@@ -86,7 +76,9 @@ use the bolt-button and the debug button to debug the position of the lods by us
 | `initialView` | starting camera position |
 | `initialMarker` | marker position (stays constant size) |
 | `scaleAtZoom1` | meters per pixel at zoom = 1 (for scale bar) |
-| `presets` | optional named camera positions (fly-to) |
+| `forceType` | If not empty, this is the text that gets force-typed into the search bar. On enter, you fly to saved preset nr 1 (or to initialView if no presets defined). |
+| `limitMovementToWorld` | Don't go out of bounds (outside worldWidth/height) |
+| `presets` | optional named camera positions (fly-to these by pressing 1...x on keyboard) |
 | `lods` | list of image sets per zoom range |
 | `grid` | optional debug grid for that LOD |
 | `layers` | individual image/SVG files to draw |
@@ -147,30 +139,6 @@ Hint: Add class `noBox` to a poi so thers no box around it. The bottom center of
 | `action` | JS snippet to execute on click |
 
 
----
-
-## 🧭 UI Controls
-
-| Control | Action |
-|----------|--------|
-| 🖱 Drag | Pan |
-| 🖱 Scroll / `+` / `-` | Zoom about cursor |
-| ⬆️ ⬇️ ⬅️ ➡️ | Move view |
-| `Center` | Return to initial view |
-| `1–9` | Jump to preset views |
-| `Layers` buttons | Toggle layer types (`base`, `overlay`, etc.) |
-
----
-
-## 🧱 Adding New Imagery
-
-1. Add your new file to `assets/`.
-2. Add it to a layer entry in `config.json` under the appropriate LOD.
-3. Give it a unique `"type"` if you want it toggleable separately.
-4. Reload the map — all assets are preloaded automatically.
-
----
-
 ## 🧩 Grids
 
 Each LOD can define its own grid overlay:
@@ -178,18 +146,4 @@ Each LOD can define its own grid overlay:
 "grid": { "size": 100, "color": "rgba(255,255,255,0.2)" }
 ```
 - **Size**: grid cell spacing in world pixels  
-- **Color**: any CSS color  
-- Grid lines zoom **with the map**, but their thickness stays constant on screen.
-
----
-
-## 💡 Notes
-
-- All coordinates are in world pixels.
-- No external dependencies — everything runs in a single HTML file.
-- Ideal for playback on Raspberry Pi / Caddy servers for on-set props.
-- Images and SVGs can be any aspect ratio.
-
----
-
-© Film-Props Map Engine by Fabian Lüscher
+- **Color**: any CSS color. if no color is set, it is not rendered for that LOD.

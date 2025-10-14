@@ -58,7 +58,7 @@ async function boot() {
     collectLayerTypes();
     initWorld();
     enableDebugClick();
-    renderPresets(CONFIG.presets || []);
+    renderPresets(CONFIG.presets.length ? CONFIG.presets : [{"label": "Initial view", "x": CONFIG.initialView.x, "y": CONFIG.initialView.y, "z": CONFIG.initialView.z}]);
     renderPOIs(POIS);
     // get limitMovementToWorld from cionfig.json if no URL param for it is set
     if(limitMovementToWorld === null) limitMovementToWorld = CONFIG.limitMovementToWorld;
@@ -108,9 +108,14 @@ async function preloadAllImages(cfg) {
 }
 
 function setForceTypeSearch() {
+  let input = gebi('search');
   if(CONFIG.forceType.length > 0) {
-    let input = gebi('search');
     input.setAttribute("onkeydown", `forceType(event, this, '${CONFIG.forceType}', function () { gebi('search').value = ''; flyToPreset(1); }, true)`);
+  } else {
+    input.setAttribute(
+      "onkeydown",
+      "if(event.key === 'Enter'){ gebi('search').value=''; flyToPreset(1); }"
+    );
   }
 }
 
@@ -192,55 +197,6 @@ function refreshLodIfNeeded() {
 }
 
 /* ---------- rendering ---------- */
-/* function renderLayersForLod(idx) {
-    cl(idx);
-    layersEl.innerHTML = "";  // this erases the complete
-    if (idx < 0) return;
-    const lod = CONFIG.lods[idx];
-  
-    // Create background grid (fills entire world space)
-    const gridDiv = document.createElement("div");
-    gridDiv.className = "grid";
-    gridDiv.style.position = "absolute";
-    gridDiv.style.left = "0";
-    gridDiv.style.top = "0";
-    gridDiv.style.width = CONFIG.worldWidth + "px";
-    gridDiv.style.height = CONFIG.worldHeight + "px";
-    gridDiv.style.pointerEvents = "none";
-  
-    if (lod.grid) {
-      const gsize = lod.grid.size || 100;
-      const gcol = lod.grid.color || "rgba(255,255,255,.15)";
-      gridDiv.style.backgroundImage =
-        `linear-gradient(to right, ${gcol} .5vw, transparent .5vw),
-         linear-gradient(to bottom, ${gcol} .5vw, transparent .5vw)`;
-      gridDiv.style.backgroundSize = `${gsize}px ${gsize}px`;
-      gridDiv.style.backgroundPosition = "0 0";
-    }
-  
-    layersEl.appendChild(gridDiv);
-  
-    // Draw LOD image layers above grid
-    lod.layers.forEach(layer => {
-      const img = document.createElement("img");
-      img.className = "layer-img";
-      img.src = `${scenePath}/assets/${layer.url}`;
-      img.alt = layer.type || "layer";
-      img.decoding = "async";
-      img.loading = "eager";
-  
-      // Keep aspect ratio
-      if (layer.width) img.width = layer.width;
-      if (layer.height) img.height = layer.height;
-      if (layer.offsetX) img.style.left = layer.offsetX + "px";
-      if (layer.offsetY) img.style.top = layer.offsetY + "px";
-  
-      layersEl.appendChild(img);
-    });
-
-    applyLayerFilters();
-  } */
-  
 function renderLayersForLod(idx) {
   if(debugLods) return;
   cl("render LOD:", idx);
@@ -699,6 +655,7 @@ function stepZoom(f) {
 }
 
 function renderPresets(presets) {
+  console.log(presets);
   const presetButtons = document.getElementById("presetButtons");
   presetButtons.innerHTML = "";
   (presets || []).forEach((p, i) => {
@@ -764,7 +721,7 @@ window.addEventListener("keydown", (e) => {
   // numeric keys 1-9: fly to preset
 window.addEventListener("keydown", (e) => {
     const num = parseInt(e.key, 10);
-    if (!isNaN(num) && CONFIG.presets && num >= 1 && num <= CONFIG.presets.length) {
+    if (!isNaN(num) && CONFIG.presets && num >= 1) {
       e.preventDefault();
       /* const p = CONFIG.presets[num - 1];
       if (p) flyTo(p.x, p.y, p.z); */
@@ -775,6 +732,10 @@ window.addEventListener("keydown", (e) => {
   
 function flyToPreset(presetIndex) {
     const p = CONFIG.presets[presetIndex - 1];
-    if (p) flyTo(p.x, p.y, p.z);
+    if (p) {
+      flyTo(p.x, p.y, p.z);
+    } else {
+      flyTo(CONFIG.initialView.x, CONFIG.initialView.y, CONFIG.initialView.z);
+    }
 
 }
