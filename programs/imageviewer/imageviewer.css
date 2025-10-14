@@ -95,7 +95,6 @@ body {
     text-align: center;
     padding-top: 3em;
     transform: translateY(0em);
-    transition: padding-top 250ms, opacity 350ms, transform 1s;
     z-index: 3;
 }
 .thumbnails:hover {
