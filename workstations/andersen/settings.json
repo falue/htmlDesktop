@@ -37,7 +37,6 @@
         },
         {
             "windowName": "Window",
-            "metaTitle": "Greenscreen Window",
             "icon": "grid_view",
             "contentPath": "colorMarker",
             "x": 4,
@@ -55,7 +54,7 @@
             "icon": "trashFull.png",
             "x": 94,
             "y": 82,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "HDD",
@@ -69,14 +68,14 @@
             "icon": "doc.png",
             "x": 1,
             "y": 30,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "File Copy.png",
             "icon": "fileImage.png",
             "x": 1,
             "y": 43,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "Pictures",
@@ -86,7 +85,7 @@
             "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
         },
         {
-            "name": "Report Copy",
+            "name": "patient_data",
             "icon": "folderFull.png",
             "x": 2,
             "y": 69,
@@ -97,21 +96,21 @@
             "icon": "fileMovie.png",
             "x": 1,
             "y": 82,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
-            "name": "Text.jpg",
+            "name": "IMG-4567899.jpg",
             "icon": "fileImage.png",
-            "x": 3,
+            "x": 1,
             "y": 56,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "Video-MJVFS.mp4",
             "icon": "fileMovie.png",
             "x": 8,
             "y": 17,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "var",
@@ -128,9 +127,9 @@
             "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
         },
         {
-            "name": "var",
+            "name": "brainscans",
             "icon": "folderFull.png",
-            "x": 10,
+            "x": 9,
             "y": 56,
             "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
         },
@@ -139,26 +138,26 @@
             "icon": "doc.png",
             "x": 8,
             "y": 69,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "Document1.doc",
             "icon": "doc.png",
             "x": 8,
             "y": 82,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
-            "name": "file",
+            "name": "clinic_reports",
             "icon": "folderFull.png",
-            "x": 17,
+            "x": 15,
             "y": 4,
             "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
         },
         {
-            "name": "Home",
+            "name": "MRI-files",
             "icon": "folderFull.png",
-            "x": 17,
+            "x": 16,
             "y": 17,
             "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
         },
@@ -167,7 +166,7 @@
             "icon": "txt.png",
             "x": 15,
             "y": 30,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "File Copy",
@@ -177,7 +176,7 @@
             "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
         },
         {
-            "name": "Document1 4d2df Copy",
+            "name": "clinic_reports-2",
             "icon": "folderFull.png",
             "x": 15,
             "y": 56,
@@ -188,7 +187,7 @@
             "icon": "doc.png",
             "x": 15,
             "y": 69,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "Presentation",
@@ -223,12 +222,12 @@
             "icon": "doc.png",
             "x": 23,
             "y": 43,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
-            "name": "File2",
+            "name": "Reports-Complaints",
             "icon": "folderFull.png",
-            "x": 24,
+            "x": 22,
             "y": 56,
             "action": "addWindow('File manager', 'folder', 'filemanager/index.html?folderContent=Desktop/Pictures', 8, 10, 888,700, false);"
         },
@@ -237,84 +236,84 @@
             "icon": "fileImage.png",
             "x": 71,
             "y": 4,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-4331.jpg",
             "icon": "fileImage.png",
             "x": 71,
             "y": 17,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-4332.jpg",
             "icon": "fileImage.png",
             "x": 71,
             "y": 30,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-4333.jpg",
             "icon": "fileImage.png",
             "x": 71,
             "y": 43,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-4334.jpg",
             "icon": "fileImage.png",
             "x": 71,
             "y": 56,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-4335.jpg",
             "icon": "fileImage.png",
             "x": 71,
             "y": 69,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-4336.jpg",
             "icon": "fileImage.png",
             "x": 71,
             "y": 82,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-4337.mp4",
             "icon": "fileMovie.png",
             "x": 78,
             "y": 4,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-4338.jpg",
             "icon": "fileImage.png",
             "x": 78,
             "y": 17,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-4339.jpg",
             "icon": "fileImage.png",
             "x": 78,
             "y": 30,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-43310.jpg",
             "icon": "fileImage.png",
             "x": 78,
             "y": 43,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         },
         {
             "name": "IMG-43311.jpg",
             "icon": "fileImage.png",
             "x": 78,
             "y": 56,
-            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
+            "action": "addWindow('Image viewer', 'image', 'imageviewer/index.html?disableThumbs=true&files=01.jpg|02.jpg|03.jpg|04.jpg|05.jpg|06.jpg|07.jpg|08.mp4|09.jpg|10.jpg|11.jpg|12.jpg', 6, 8, 1250,777, false);"
         }
     ],
     "osNotifications": [],
