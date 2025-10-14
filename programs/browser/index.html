@@ -23,17 +23,11 @@
         <span id="unikVersion" class="unikVersion alignRight italics small">v0.0</span>
       </h2>
         <p>
-          <button onclick="hide('menu'); show('favoritesMenu');" style="width: 100%;">See URLs</button>
-          <br>
-          <br>
-        </p>
-
-        <p>
           <input id="darkmode" type="checkbox" onchange="toggleDarkMode();">
           <label for="darkmode">Dark mode</label>
         </p>
         <p>
-          <input id="favoritesToggle" type="checkbox" onchange="toggle('favorites');">
+          <input id="favoritesToggle" type="checkbox" onchange="toggleFavorites();">
           <label for="favoritesToggle">Hide Favorite list</label>
         </p>
         <p>
@@ -68,40 +62,29 @@
             </label>
           </div>
         </p>
-
         <p>
           <input id="internetToggle" type="checkbox" onchange="toggle('iframe'); document.getElementById('noInternet').innerHTML = 'NO INTERNET :(';">
           <label for="internetToggle">Break the Internet</label>
+        </p>
+        <br>
+        <h3>
+          All working URLs
+        </h3>
+        <div id="savedURLS">
+        </div>
+
+        <p class="small blue">
+          <br>
+          You can also enter these URLs in the fake browser bar.
+          <br>
+        <p class="italics small grey">
+          Note: You can basically enter any URL, and it will try to load the website.
+          But most websites on the web forbid this for security reasons.
         </p>
 
         <div class="close" onclick="hide('menu');">
           <button><i class="material-icons small vertCenter">close</i> Close</button>
         </div>
-    </div>
-
-    <!-- URLS MENU -->
-    <div id="favoritesMenu" class="menu favoritesMenu">
-      <h2>
-        <!-- <i class="material-icons small vertCenter">star</i> -->
-        All working URLs
-      </h2>
-      <div id="savedURLS">
-      </div>
-
-      <p class="small blue">
-        <br>
-        You can also enter these URLs in the fake browser bar.
-        <br>
-      <p class="italics small grey">
-        Note: You can basically enter any URL, and it will try to load the website.
-        But most websites on the web forbid this for security reasons.
-      </p>
-
-      <div class="close" onclick="hide('favoritesMenu');">
-        <button>
-          <i class="material-icons small vertCenter">close</i> Close
-        </button>
-      </div>
     </div>
 
     <!-- FAKE BROWSER START -->
@@ -114,8 +97,8 @@
                 <i id="homeButton" class="material-icons" onclick="goToUrl('sites/telefabi');">home</i>
                 <i id="reloadButton" class="material-icons" onclick="reloadIframe();">cached</i>
             </div>
-            <div class="hamburger-menu" onclick="toggle('menu'); hide('favoritesMenu');">
-              <i class="material-icons">more_vert</i>
+            <div class="hamburger-menu" onclick="toggle('menu')">
+              <i class="material-icons">bolt</i>
             </div>
             <div id="addons" class="addons">
                 <i class="material-icons">extension</i>
@@ -150,8 +133,8 @@
         <!-- FAVORITE LIST -->
         <div id="favorites" class="fake-browser-bar favorites noScrollbar">
         </div>
-        <div class="favoritesToggle"  onclick="toggle('favoritesMenu'); hide('menu');">
-          <i class="material-icons">bolt</i>
+        <div class="favoritesToggle">
+          <i class="material-icons">more_vert</i>
         </div>
         
         <!-- SERVER ERROR -->
