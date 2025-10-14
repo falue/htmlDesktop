@@ -257,6 +257,12 @@ body {
     background-color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     white-space: initial;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.menu input[type='checkbox']:before {
+    vertical-align: top;
 }
 
 .unikVersion {
@@ -279,19 +285,14 @@ body {
     color: grey;
 }
 
-.menu.favoritesMenu {
-    overflow: auto;
-    margin-top: 38px;
-    max-height: 80%;
-}
-.menu.favoritesMenu #savedURLS span {
+#savedURLS span {
     display: block;
     cursor: pointer;
     padding-left: .5em;
     margin-bottom: .5em;
 }
 
-.menu.favoritesMenu #savedURLS span:hover {
+#savedURLS span:hover {
     background-color: rgba(0,0,0,0.45);
     color:white;
     border-radius: 50px;
