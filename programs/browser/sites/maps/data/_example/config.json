@@ -6,6 +6,7 @@
     "minZoom": 0.05,
     "maxZoom": 4,
     "forceType": "Mallorca",
+    "limitMovementToWorld": true,
     "scaleAtZoom1": 1.5,
     "lods": [
       {

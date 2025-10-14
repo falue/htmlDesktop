@@ -19,6 +19,10 @@ let POIS = [];
 
 let scenePath = "";
 
+let limitMovementToWorld = null;
+let debug = false;
+let debugLods = false;
+
 function setup() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -27,9 +31,14 @@ function setup() {
     let darkMode = urlParams.get('darkMode') === 'true';
     let scene = urlParams.get('scene');
 
+    const paramLimit = urlParams.get('limitMovementToWorld');
+    // Keep "null" for later definition by config.json in boot()
+    if (paramLimit === 'true')  limitMovementToWorld = true;
+    if (paramLimit === 'false') limitMovementToWorld = false;
+
     if(darkMode) gebi('body').classList.add('dark');
     if(scene) scenePath = `./data/${scene}`;
-
+    
     // Start the map generation
     boot();
 }
@@ -48,8 +57,11 @@ async function boot() {
     setForceTypeSearch();
     collectLayerTypes();
     initWorld();
+    enableDebugClick();
     renderPresets(CONFIG.presets || []);
     renderPOIs(POIS);
+    // get limitMovementToWorld from cionfig.json if no URL param for it is set
+    if(limitMovementToWorld === null) limitMovementToWorld = CONFIG.limitMovementToWorld;
   } catch (e) {
     console.error("Boot failed:", e);
     alert("Boot failed - see console.");
@@ -111,30 +123,51 @@ let anim = null;
 let currentLodIndex = -1;
 
 function setCamera(x, y, z) {
+  if (limitMovementToWorld) {
+    const vw = app.clientWidth / z;
+    const vh = app.clientHeight / z;
+    const halfW = vw / 2;
+    const halfH = vh / 2;
+
+    // handle case: view larger than world
+    const worldW = CONFIG.worldWidth;
+    const worldH = CONFIG.worldHeight;
+
+    if (vw >= worldW) x = worldW / 2;
+    else x = clamp(x, halfW, worldW - halfW);
+
+    if (vh >= worldH) y = worldH / 2;
+    else y = clamp(y, halfH, worldH - halfH);
+  }
+
   camera.x = x;
   camera.y = y;
   camera.z = z;
+
   const tx = app.clientWidth / 2 - x * z;
   const ty = app.clientHeight / 2 - y * z;
   worldEl.style.transform = `translate(${tx}px,${ty}px) scale(${z})`;
+
   refreshLodIfNeeded();
   updateStats();
   updateScale();
   updatePOIVisibility();
-  updateGridThickness(camera.z);
-  // keep marker constant size (like POI)
-    if (markerEl) {
-        const inv = 1 / camera.z;
-        markerEl.style.transform = `scale(${inv})`;
-        markerEl.style.transformOrigin = "center bottom";
-    }
+  updateGridThickness(z);
+
+  if (markerEl) {
+    const inv = 1 / z;
+    markerEl.style.transform = `scale(${inv})`;
+    markerEl.style.transformOrigin = "center bottom";
+  }
 }
+
 
 function updateGridThickness(z) {
     const grids = layersEl.querySelectorAll(".grid");
     grids.forEach(g => {
+      if(!g.dataset.gridColor.length) return;
       const gsize = parseFloat(g.dataset.baseGridSize || 100);
-      const gcol  = g.dataset.gridColor || "rgba(255,255,255,.15)";
+      const gcol  = g.dataset.gridColor;
       // line thickness inversely proportional to zoom
       const line = 1 / z;  // 1 px at z=1
       g.style.backgroundImage =
@@ -209,6 +242,7 @@ function refreshLodIfNeeded() {
   } */
   
 function renderLayersForLod(idx) {
+  if(debugLods) return;
   cl("render LOD:", idx);
   if (idx < 0) return;
   const lod = CONFIG.lods[idx];
@@ -240,14 +274,21 @@ function renderLayersForLod(idx) {
 
     if (lod.grid) {
       const gsize = lod.grid.size || 100;
-      const gcol = lod.grid.color || "rgba(255,255,255,.15)";
-      gridDiv.dataset.baseGridSize = gsize;
-      gridDiv.dataset.gridColor = gcol;
-      gridDiv.style.backgroundImage =
-        `linear-gradient(to right, ${gcol} .5vw, transparent .5vw),
-         linear-gradient(to bottom, ${gcol} .5vw, transparent .5vw)`;
-      gridDiv.style.backgroundSize = `${gsize}px ${gsize}px`;
-      gridDiv.style.backgroundPosition = "0 0";
+      const gcol = lod.grid.color ?? "rgba(255,255,255,.15)";
+    
+      // --- skip rendering grid if color string is empty ---
+      if (!gcol || gcol.trim().length === 0) {
+        gridDiv.dataset.gridColor = "";
+        gridDiv.style.display = "none";
+      } else {
+        gridDiv.dataset.baseGridSize = gsize;
+        gridDiv.dataset.gridColor = gcol;
+        gridDiv.style.backgroundImage =
+          `linear-gradient(to right, ${gcol} .5vw, transparent .5vw),
+           linear-gradient(to bottom, ${gcol} .5vw, transparent .5vw)`;
+        gridDiv.style.backgroundSize = `${gsize}px ${gsize}px`;
+        gridDiv.style.backgroundPosition = "0 0";
+      }
     }
 
     layersEl.appendChild(gridDiv);
@@ -409,6 +450,117 @@ function applyLayerFilters() {
   });
 }
 
+function debugShowAllLods() {
+  if(debugLods) {
+    alert("reload to go to normal mode :)");
+    return;
+  }
+  console.warn("🧩 Debug: showing all LODs simultaneously");
+
+  // Zoom fully out so the entire world is visible
+  limitMovementToWorld = false;
+  const z =  CONFIG.minZoom;
+  CONFIG.minZoom = -666;
+  CONFIG.maxZoom = 666;
+  setCamera(CONFIG.worldWidth / 2, CONFIG.worldHeight / 2, z);
+
+  // Clear any previous debug state
+  layersEl.innerHTML = "";
+
+  // Define color palette per LOD
+  const colors = [
+    "#e74c3c", // red
+    "#f1c40f", // yellow
+    "#2ecc71", // green
+    "#3498db", // blue
+    "#9b59b6", // purple
+    "#e67e22", // orange
+    "#1abc9c", // teal
+  ];
+
+  CONFIG.lods.forEach((lod, i) => {
+    renderLayersForLod(i); // render as normal
+
+    // Apply borders to each image inside this LOD
+    let currentLodContainer = layersEl.querySelectorAll(`.lod-group[data-lod-index="${i}"]`)[0];
+    currentLodContainer.style.boxShadow = "inset 0 0 0 10px magenta";
+    const imgs = layersEl.querySelectorAll(`.lod-group[data-lod-index="${i}"] img.layer-img`);
+    imgs.forEach(img => {
+      img.style.outline = `15px solid ${colors[i % colors.length]}`;
+      // img.style.outlineOffset = `-${i}px`; // slight offset so stacked borders are visible
+      img.title = `LOD ${i}`;
+      img.style.opacity = `0.66`;
+      let imgName = `LOD ${i}:` + img.src.slice(img.src.lastIndexOf('/') + 1);
+      // img.dataset["src"] = imgName;
+      let nameTag = document.createElement("div"); 
+      nameTag.innerHTML = imgName;
+      nameTag.classList.add("nameTagDebug");
+      nameTag.style.left = img.style.left;
+      nameTag.style.top = (parseInt(img.style.top) + i * 60) + "px";
+      currentLodContainer.appendChild(nameTag);
+    });
+
+    // Optionally tint or label grids
+    const grid = layersEl.querySelector(`.grid[data-lod-index="${i}"]`);
+    if (grid) {
+      grid.style.opacity = 0.1;
+      grid.title = `Grid for LOD ${i}`;
+    }
+  });
+
+  debugLods = true;
+  console.log("✅ All LODs rendered with colored borders for debugging.");
+}
+
+function enableDebugClick() {
+  const debugPois = document.getElementById("debugPois");
+  app.addEventListener("contextmenu", (e) => {
+    if (!debug) {
+      return
+    }
+    e.preventDefault(); // prevent browser right-click menu
+
+    // get world coordinates under cursor
+    const rect = app.getBoundingClientRect();
+    const worldX = (e.clientX - rect.left - app.clientWidth / 2) / camera.z + camera.x;
+    const worldY = (e.clientY - rect.top - app.clientHeight / 2) / camera.z + camera.y;
+    const worldZ = camera.z;
+
+    // format nicely
+    const line = document.createElement("div");
+    line.textContent = `X=${worldX.toFixed(1)}  Y=${worldY.toFixed(1)}  Z=${worldZ.toFixed(3)}`;
+    line.style.fontFamily = "monospace";
+    line.style.fontSize = "12px";
+    line.style.padding = "2px 4px";
+    line.style.borderBottom = "1px solid rgba(255,255,255,0.1)";
+    line.style.color = "lime";
+
+    debugPois.append(line); // newest last
+    console.log("🟣 Debug POI", worldX, worldY, worldZ);
+
+    // --- copy POI JSON to clipboard ---
+    const poi = {
+      tooltip: "",
+      icon: "location_pin",
+      x: worldX.toFixed(1),
+      y: worldY.toFixed(1),
+      minZ: CONFIG.minZoom,
+      maxZ: CONFIG.maxZoom,
+      size: 2,
+      pointClasses: "red text-shadow--white noBox",
+      iconStyles: "",
+      text: "",
+      action: "alert('cam A - AAAAA')"
+    };
+
+    const poiStr = JSON.stringify(poi, null, 4);
+    navigator.clipboard.writeText(poiStr).then(() => {
+      console.log("📋 copied POI to clipboard", poi);
+    });
+  });
+}
+
+
 function updateStats() {
   viewStat.textContent = `${camera.x.toFixed(1)} / ${camera.y.toFixed(
     1
@@ -497,9 +649,16 @@ app.addEventListener(
 function zoomAboutCursor(factor, sx, sy) {
   const rect = app.getBoundingClientRect();
   const { x, y, z } = camera;
+  let nz = z * factor;
+  nz = clamp(nz, CONFIG.minZoom, CONFIG.maxZoom);
 
-  // Clamp zoom before applying
-  const nz = clamp(z * factor, CONFIG.minZoom, CONFIG.maxZoom);
+  if (limitMovementToWorld) {
+    const minZoomToFitWidth  = app.clientWidth  / CONFIG.worldWidth;
+    const minZoomToFitHeight = app.clientHeight / CONFIG.worldHeight;
+    // must satisfy both ⇒ take the larger one
+    const minZoom = Math.max(minZoomToFitWidth, minZoomToFitHeight);
+    nz = Math.max(nz, minZoom);
+  }
 
   // If we're already at a limit, abort
   if (nz === z) return;
@@ -508,7 +667,7 @@ function zoomAboutCursor(factor, sx, sy) {
   const worldX = (sx - rect.left - app.clientWidth / 2) / z + x;
   const worldY = (sy - rect.top - app.clientHeight / 2) / z + y;
 
-  // Keep the cursor position stable in screen space
+  // Keep cursor fixed
   const nx = worldX - (sx - rect.left - app.clientWidth / 2) / nz;
   const ny = worldY - (sy - rect.top - app.clientHeight / 2) / nz;
 
@@ -550,6 +709,11 @@ function renderPresets(presets) {
     b.onclick = () => flyTo(p.x, p.y, p.z);
     presetButtons.appendChild(b);
   });
+  if(presets.length) {
+    gebi('kbdMax').innerHTML = `1${presets.length > 1 ? '…' + presets.length : ''}`;
+  } else {
+    presetButtons.innerHTML = "No presets saved in config.json";
+  }
 }
 
 /* ---------- init ---------- */
