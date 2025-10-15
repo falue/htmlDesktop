@@ -240,7 +240,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   let overlayId = id + "-"+createUniqueId(6);
   windowManagerOverlay.setAttribute("id", overlayId);
   windowManagerOverlay.setAttribute("onclick", "bringToFront('"+id+"'); hide('"+overlayId+"');");
-  windowManagerOverlay.setAttribute("class", "hide windowManagerOverlay");
+  windowManagerOverlay.setAttribute("class", "windowManagerOverlay");
   windowContainer.appendChild(windowManagerOverlay);
 
   // Window Title
@@ -1105,7 +1105,7 @@ function startDefaultProgram(program, parameters) {
       break;
     case "neptcode":
         addWindow('Neptcode Notebook', 'code', `neptcode/index.html?scene=${parameters || "basic"}`, x, y, 888,850, false);
-      break;neptcode
+      break;
     case "terminal":
       // If no parameters set, start with random terminal content
       if(!parameters) parameters = randomBetween(0,6);
