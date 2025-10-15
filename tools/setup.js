@@ -196,7 +196,10 @@ async function setup() {
   // cl("SETUP: windows success, "+windows.length+" windows placed.");
 
   // Hide overlay on frontMostWindow
-  hideFrontMostWindowOverlay();
+  // Somehow, the list of windows is empty when called here. Therefore, wait 1s
+  window.setTimeout(function() {
+    hideFrontMostWindowOverlay();
+  }, 1000);
   
   // Loop over windows
   setupSystemIcons(systemIcons);
