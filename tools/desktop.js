@@ -353,7 +353,7 @@ async function openFileManager() {
 }
 
 async function openTerminal() {
-    let id = await addWindow('Terminal', 'code', 'bash/index.html?script=changePassword&darkMode=true', 8,8, 1024,706, false, 1114);
+    let id = await addWindow('Terminal', 'code', 'bash/index.html?scene=_example&script=changePassword&darkMode=true', 8,8, 1024,706, false, 1114);
     moveWindowToNewParent(id, 'lockScreenColorOverlay');
 }
 

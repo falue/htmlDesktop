@@ -1,5 +1,12 @@
 # fakeBash
 
+## URL parameters
+```
+scene                   folder name in "/data/"
+script                  file name in "/data/{script}/{script}.fakeBash". If not set, defaults to "script". If script is "freetext" (independent of scene) it loads a basic freetext-bash console with all the defaultScripts available.
+```
+
+## Description
 One or more commands on a line describe the actions of the script.
 Every command is in `[..]` brackets, and must contain at least the function name and may contain additional comma-seperated parameters.
 
@@ -29,7 +36,8 @@ The `EXIT` command stops parsing the file at this location. Good for testing.
 - `[sleep, 1000]` - waits 1000ms
 - `[javascript, "parent.show('elementOnDesktop')"]` - does anything
 - `[goto, 4]` - jump to command index `4`; `0` for begin of script
-- `[clear]` - clears the screen. Use `[clear] [goto:nobr, 0]` to clear the screen, start from scratch and get the white space correct.
+- `[reset]` - hard reloads everything from scratch; clears the screen.
+- `[clear]` - clears the screen content. Use `[clear] [goto:nobr, 0]` to clear the screen without losing memory, start from scratch and get the white space correct.
 - `[garbageCollection, 50]` - removes first 50 lines from `body` to preserve data
 - `[resetProfile]` - reset the path in the bash profile to its initial state.
 - `[loader, "Loading: \[", "▓", "░", "\]", 30, 2000, 0, 100, "Progress: ", "%"]` - Shows a loading animation with the char `▓` max repeated `30` times; `2000`ms total duration; goes from `0` to `100`;  and looks like this:

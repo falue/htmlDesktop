@@ -17,17 +17,22 @@ async function setup() {
   let workstation = urlParams.get("workstation");
   let darkMode = urlParams.get("darkMode");
   let scriptName = urlParams.get("script");
+  let scene = urlParams.get("scene");
+
   let script = [];
-  if(scriptName && scriptName != "default") {
-    script = await parseFile(
-      `../../workstations/${workstation}/bash/${scriptName}.fakeBash`
-    );
-  } else {
+
+  if(scriptName == "freetext") {
     // make default bashProfile and enable freetext bashing
     script[0] = `<span class='green'>${workstation || "admin"}</span>@<span class='red'>localhost</span>:<span class='path grey'>~</span> $ `;
     script.push(`[bashProfile] [freeText]`);
     script.push(`[goto:nobr,0]`);
     darkMode = "true";
+  } else {
+    scene = scene ? scene : "_example";
+    scriptName = scriptName ? scriptName : "script";
+    script = await parseFile(
+      `data/${scene}/${scriptName}.fakeBash`
+    );
   }
 
   if(darkMode === "true") {
@@ -61,7 +66,7 @@ function loadScript(script, getBashProfile = true) {
   for (lines of script) {
     if (lines === "EXIT") break; // Abort parsing file when keyword EXIT is found
     localCommands = [...localCommands, ...splitCommandLines(lines)];
-    if (lines != "[br]" && !lines.includes(":nobr") && !lines.includes("javascript") && !lines.includes("garbageCollection")) {
+    if (lines != "[br]" && !lines.includes(":nobr") && !lines.includes("javascript") && !lines.includes("garbageCollection") && !lines.includes("clear") && !lines.includes("reset")) {
       // Do not add br for "br" "nobr" and "javascript" command
       localCommands.push({ function: "br" });
     }
@@ -149,6 +154,10 @@ function resetConsole() {
   window.location.href = url.toString();
 }
 
+function clearConsole() {
+  gebi("console").innerHTML = "";
+}
+
 function removeLastCommandOutput(className) {
   // If no class is specified, remove every command
   let lastCommandOutput = document.querySelectorAll(`#console${className ? ` .${className}` : '>*'}`);
@@ -170,6 +179,44 @@ function waitForKey(keyCode) {
 }
 
 /* SPECIFIC */
+async function say(words, lang = "en", voice = "default") {
+  if (!("speechSynthesis" in window)) {
+    return;
+  };
+
+  const voices = await new Promise(res => {
+    const v = speechSynthesis.getVoices();
+    if (v.length) res(v);
+    else speechSynthesis.onvoiceschanged = () => res(speechSynthesis.getVoices());
+  });
+
+  const utter = new SpeechSynthesisUtterance(words);
+  utter.lang = lang;
+
+  // Find best matching voice
+  let chosen = null;
+  if (voice !== "default") {
+    chosen = voices.find(v => v.name.toLowerCase().includes(voice.toLowerCase()));
+  }
+  if (!chosen) {
+    chosen = voices.find(v => v.lang.toLowerCase().startsWith(lang.toLowerCase())) || voices[0];
+  }
+  utter.voice = chosen;
+
+  return new Promise(async resolve => {
+    utter.onend = resolve;
+    utter.onerror = () => {showError(event)};
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utter);
+
+    async function showError(e) {
+      console.log("no speechSynthesis or no user intaraction on this window first or other error:", e.error);
+      await delay(Math.max(888, words.length * 66)); // delay for it so seem like time is advancing - more chars more time
+      resolve();
+    }
+  });
+}
+
 let credentialsTrials = 0;
 async function askCredentials(outcome, prompt=false, success=false, error=false) {
   /* cl("outcome::");
@@ -426,7 +473,7 @@ async function evalCommand(command, sudoOutcome) {
     await loadExternalScript(command);
 
   } else if(command === "clear") {
-    gebi("console").innerHTML = "";
+    clearConsole();
 
   } else if(command === "cd") {
     return;  // ignore when empty parameter
@@ -465,6 +512,10 @@ async function playCommand(command) {
       await delay(command.parameters[1]);
       printToConsole(command.parameters[0], command.classes);
       break;
+    case "say":
+      printToConsole(command.parameters[0], command.classes);
+      await say(command.parameters[0], command.parameters[1], command.parameters[2]);
+      break;
     case "forceType":
       setupForceType(command);
       break;
@@ -501,8 +552,11 @@ async function playCommand(command) {
       await setupSpinner(command);
       show("cursor");
       break;
-    case "clear":
+    case "reset":
       resetConsole();
+      break;
+    case "clear":
+      clearConsole();
       break;
     case "goto":
       await playCommandAtIndex(command.parameters[0]);

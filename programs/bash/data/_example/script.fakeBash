@@ -35,7 +35,10 @@
 [autoType:grey, "Commence graceful shutdown and reboot..", 1500]
 [autoType:grey, "Rebooting now.. Thanks for having me!", 2500]
 [sleep, 1000]
-[bashProfile] [autoType, "Start again?", 0] [wait]
+#[bashProfile] [autoType, "Start again?", 0] [wait]
+[javascript, "parent.shutDown();"]
+[sleep, 3500]
+[javascript, "parent.startUp();"]
 [clear] [goto:nobr, 0]
 
 # Use EXIT for stop parsing here
