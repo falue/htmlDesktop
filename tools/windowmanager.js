@@ -329,16 +329,27 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
 
   // For some godforsaken reason, i cannot parse .html files OR files with no extension,
   // This is why i use .splash
-  let splashPath = `programs/${mainProgram.endsWith(".html") ? mainProgram.split("/").slice(0, -1).join("/") : mainProgram}/index.splash`;
-  let splash = await parseFile(splashPath, false);
-  if(splash != 404 && !minimized) {
-    show('splashScreen');
-    gebi('splashScreenWindow').innerHTML = splash;
-    let delayTime = splash.match(/\<\!-- ?delay ?= ?(\d*?) ?--\>/);
-    delayTime = delayTime ? parseInt(delayTime[1]) : 2000;
-    await delay(delayTime);
-    hide('splashScreen');
+  try {
+    const splashPath = `programs/${mainProgram.endsWith(".html")
+      ? mainProgram.split("/").slice(0, -1).join("/")
+      : mainProgram}/index.splash`;
+  
+    const splash = await parseFile(splashPath, false);
+  
+    // only continue if file actually exists and not minimized
+    if (splash && splash !== 404 && !minimized) {
+      show("splashScreen");
+      gebi("splashScreenWindow").innerHTML = splash;
+      // extract optional delay: <!-- delay = 1234 -->
+      let delayTime = splash.match(/<!--\s*delay\s*=\s*(\d+)\s*-->/i);
+      delayTime = delayTime ? parseInt(delayTime[1]) : 2000;
+      await delay(delayTime);
+      hide("splashScreen");
+    }
+  } catch (err) {
+    console.log("No splash screen found or error loading splash:", err.message || err);
   }
+  
     
   gebi('desktop').appendChild(windowContainer);
 
