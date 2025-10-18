@@ -227,7 +227,7 @@ function previewEmail(index, name) {
 function createHeader(email, fromTo="from") {
     email = `<div class='relative'>
         <div class='left top relative avatar greyBg white uppercase noPrint'>
-            ${email.sender.avatar ? email.sender.avatar : email.sender.name[0] }
+            ${email.sender.avatar ? `<img src="${email.sender.avatar}">` : email.sender.name[0] }
         </div>
         <div class='paddingL3-50'>
           <div class='small'>
