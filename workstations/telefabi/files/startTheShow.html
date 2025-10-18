@@ -1,0 +1,31 @@
+<html>
+    <head>
+
+        <style>
+            html, body {
+                background-color: white;
+            }
+            h1 {
+                margin:0;
+            }
+            p {
+                margin-top:0;
+            }
+        </style>
+        <script>
+            function delay(delayTimeMs) {
+                return new Promise(resolve => setTimeout(resolve, delayTimeMs));
+            }
+            async function starting() {
+                document.getElementById('theButton').style.display="none";
+                parent.addWindow('Bash console - theShow.bash', 'code', 'bash/index.html?scene=theshow', 8,11, 945,444, false);
+            }
+        </script>
+            
+    </head>
+    <body>
+        <h1>OMG click here</h1>
+        <p>for the full show</p>
+        <img id="theButton" src="button.gif" onclick="starting()" style="cursor: pointer;">
+    </body>
+</html>

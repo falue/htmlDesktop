@@ -1,11 +1,11 @@
 {
     "settings": {
-        "systemColor": "#2d202c",
+        "systemColor": "#3b0d39",
         "desktopColor": "#1d1b1b",
-        "desktopImg": "os/_generic/desktops/9.jpg",
+        "desktopImg": "os/windows/desktop.jpg",
         "os": "windows",
         "darkMode": true,
-        "username": "telefabi",
+        "username": "telefabi.ch",
         "password": "",
         "workstation": "telefabi",
         "selectedSystemMessage": -1,
@@ -15,61 +15,17 @@
     "systemIcons": [
         "expand_less",
         "account_circle",
-        "wifi",
+        "wifi_off",
         "bluetooth",
+        "gpp_maybe",
+        "warning",
         "mail",
         "lan",
+        "cloud",
+        "volume_up",
         "volume_mute"
     ],
     "windows": [
-        {
-            "windowName": "Image viewer",
-            "icon": "image",
-            "contentPath": "imageviewer/index.html?files=arrow_down.gif",
-            "x": 9,
-            "y": 70,
-            "w": 343,
-            "h": 223,
-            "zIndex": 13,
-            "minimized": false,
-            "renderToDom": true
-        },
-        {
-            "windowName": "Browser",
-            "icon": "public",
-            "contentPath": "browser/index.html?site=telefabi.ch",
-            "x": 23,
-            "y": 16,
-            "w": 831,
-            "h": 549,
-            "zIndex": 29,
-            "minimized": false,
-            "renderToDom": true
-        },
-        {
-            "windowName": "File manager",
-            "icon": "folder",
-            "contentPath": "filemanager",
-            "x": 8,
-            "y": 8,
-            "w": 643,
-            "h": 405,
-            "zIndex": 16,
-            "minimized": false,
-            "renderToDom": true
-        },
-        {
-            "windowName": "Email Petabird",
-            "icon": "email",
-            "contentPath": "email",
-            "x": 32,
-            "y": 36,
-            "w": 1088,
-            "h": 514,
-            "zIndex": 28,
-            "minimized": false,
-            "renderToDom": true
-        },
         {
             "windowName": "File manager",
             "icon": "folder",
@@ -78,19 +34,19 @@
             "y": 18,
             "w": 600,
             "h": 350,
-            "zIndex": 25,
+            "zIndex": 1,
             "minimized": false,
             "renderToDom": true
         },
         {
-            "windowName": "Neptcode Notebook",
-            "icon": "code",
-            "contentPath": "neptcode/index.html?scene=basic",
+            "windowName": "Email Petabird",
+            "icon": "email",
+            "contentPath": "email/index.html?scene=fjodor&account=alostsoul@funbaloon-animals.com",
             "x": 42,
             "y": 1,
             "w": 888,
             "h": 850,
-            "zIndex": 27,
+            "zIndex": 2,
             "minimized": false,
             "renderToDom": true
         },
@@ -102,32 +58,393 @@
             "y": 2,
             "w": 1000,
             "h": 777,
-            "zIndex": 1,
+            "zIndex": 3,
             "minimized": false,
             "renderToDom": false
+        },
+        {
+            "windowName": "Neptcode Notebook",
+            "icon": "code",
+            "contentPath": "neptcode/index.html?scene=basic",
+            "x": 32,
+            "y": 36,
+            "w": 1088,
+            "h": 514,
+            "zIndex": 4,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "PERISTALTIX::ZEN MODE - PYTHON [monroe.py]*",
+            "icon": "view_in_ar",
+            "contentPath": "terminal/index.html?byRows=false&startChar=178&text=randall&theme=paraiso-dark&speed=1&language=python&autotype=false&humanTyper=true&cursor=true&truncateText=12000&bgColor=212121&fontColor=FFFFFF&paddingRange=10",
+            "x": 50,
+            "y": 46,
+            "w": 666,
+            "h": 450,
+            "zIndex": 5,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Bash Console",
+            "icon": "code",
+            "contentPath": "bash/index.html?scene=_example",
+            "x": 1,
+            "y": 13,
+            "w": 666,
+            "h": 450,
+            "zIndex": 6,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "File manager",
+            "icon": "folder",
+            "contentPath": "filemanager",
+            "x": 10,
+            "y": 5,
+            "w": 643,
+            "h": 405,
+            "zIndex": 7,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Browser",
+            "windowTitle": "#666 Browser, prepared for this scene",
+            "icon": "public",
+            "contentPath": "browser/index.html?site=telefabi.ch",
+            "x": 20,
+            "y": 16,
+            "w": 831,
+            "h": 549,
+            "zIndex": 8,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Text editor",
+            "icon": "edit_note",
+            "contentPath": "texteditor/index.html?text=HELLO%0A%0AThis%20is%20my%20project%20htmlDesktop.%0AIt%20took%20awhile.%0A%0AIts%20useful%20out%20of%20the%20box%20for%20many%20things,%20TV,%20Film%20and%20Commercial%20alike.%20But%20even%20useful-er%20when%20prepared%20by%20me.%0A%0ADont%20hesitate%20to%20contact%20me%20for%20special%20features.%20almost%20everything%20here%20is%20grown%20this%20way.%0A%0AEnjoy.❤️%0A%0APS.%20This%20is%20open%20source%20on%20github.com/falue/htmlDesktop",
+            "x": 72,
+            "y": 17,
+            "w": 400,
+            "h": 600,
+            "zIndex": 9,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Please pay attention to the BOLT",
+            "icon": "image",
+            "contentPath": "imageviewer/index.html?files=arrow_down.gif",
+            "x": 9,
+            "y": 70,
+            "w": 343,
+            "h": 223,
+            "zIndex": 10,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "WordP - MyFiles/Data/How_to.doc*",
+            "icon": "description",
+            "contentPath": "word/index.html?scene=_example",
+            "x": 11,
+            "y": 28,
+            "w": 900,
+            "h": 600,
+            "zIndex": 11,
+            "minimized": true,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Start the show",
+            "icon": "local_fire_department",
+            "contentPath": "../workstations/telefabi/files/startTheShow.html",
+            "x": 67,
+            "y": 63,
+            "w": 250,
+            "h": 300,
+            "zIndex": 12,
+            "minimized": false,
+            "renderToDom": true
         }
     ],
     "shortcuts": [
         {
             "name": "DVD",
             "icon": "dvd.png",
-            "x": 94,
-            "y": 69,
+            "x": 3,
+            "y": 4,
             "action": ""
         },
         {
             "name": "Trash",
             "icon": "trashFull.png",
-            "x": 94,
-            "y": 82,
+            "x": 3,
+            "y": 17,
             "action": ""
         },
         {
             "name": "HDD",
             "icon": "hdd.png",
             "x": 3,
-            "y": 4,
+            "y": 30,
             "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "File bbb1b Copy",
+            "icon": "folderFull.png",
+            "x": 1,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Picture.jpg",
+            "icon": "fileImage.png",
+            "x": 2,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Links",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Image 24de9.pyc",
+            "icon": "python.png",
+            "x": 8,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Important Copy",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Important Copy",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Notes",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Report b1cb2 Copy",
+            "icon": "folderFull.png",
+            "x": 8,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Document1 Copy.txt",
+            "icon": "txt.png",
+            "x": 8,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Image",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "VAR",
+            "icon": "folderFull.png",
+            "x": 17,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Photos 1826c",
+            "icon": "folderFull.png",
+            "x": 15,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Home Copy.txt",
+            "icon": "txt.png",
+            "x": 15,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Image",
+            "icon": "folderFull.png",
+            "x": 17,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Image",
+            "icon": "folderFull.png",
+            "x": 17,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Project.mpeg",
+            "icon": "fileMovie.png",
+            "x": 15,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet",
+            "icon": "folderFull.png",
+            "x": 23,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Project",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Document 3aad8",
+            "icon": "folderFull.png",
+            "x": 22,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Links.jpeg",
+            "icon": "fileImage.png",
+            "x": 23,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "File2",
+            "icon": "folderFull.png",
+            "x": 24,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Presentation",
+            "icon": "folderFull.png",
+            "x": 23,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Note",
+            "icon": "folderFull.png",
+            "x": 31,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Image.trash",
+            "icon": "trashFull.png",
+            "x": 30,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 31,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Document Copy",
+            "icon": "folderFull.png",
+            "x": 29,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "File Copy",
+            "icon": "folderFull.png",
+            "x": 30,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "file.mkv",
+            "icon": "fileMovie.png",
+            "x": 31,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Webcam",
+            "icon": "../../../programs/webcam/splash.png",
+            "x": 50,
+            "y": 4,
+            "action": "startDefaultProgram('webcam')"
+        },
+        {
+            "name": "Project Copy.png",
+            "icon": "fileImage.png",
+            "x": 85,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "VAR",
+            "icon": "folderFull.png",
+            "x": 3,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Data.avi",
+            "icon": "fileMovie.png",
+            "x": 16,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Note.tiff",
+            "icon": "fileImage.png",
+            "x": 23,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "var.JPG",
+            "icon": "fileImage.png",
+            "x": 73,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "var",
+            "icon": "folderFull.png",
+            "x": 80,
+            "y": 56,
+            "action": ""
         }
     ],
     "osNotifications": [],

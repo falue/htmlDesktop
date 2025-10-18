@@ -33,6 +33,22 @@
             "showInFavorites": true,
             "onclick": false
         },{
+            "spoofUrl": "mapden.ch",
+            "realUrl": "sites/maps/index.html?scene=67",
+            "favoritesName": "mapden.ch",
+            "metaName": false,
+            "materialIcon": "map",
+            "showInFavorites": true,
+            "onclick": false
+        },{
+            "spoofUrl": "htmldesktop.ch",
+            "realUrl": "../../desktop.html?workstation=telefabi",
+            "favoritesName": "htmldesktop.ch",
+            "metaName": false,
+            "materialIcon": "code",
+            "showInFavorites": true,
+            "onclick": false
+        },{
             "spoofUrl": "avmail.ch",
             "realUrl": "../email/index.html?webmail=true",
             "favoritesName": "avmail.ch",
