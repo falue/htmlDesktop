@@ -493,9 +493,9 @@ function maximizeWindow(id) {
 
   let resetMaxButton = gebi("maximizeWindow-"+id);
   // Set click into window action button to reset window position
-  resetMaxButton.setAttribute("onclick", "resetWindowSize('"+id+"', '"+lastX+"', '"+lastY+"', '"+lastW+"', '"+lastH+"')");
+  resetMaxButton.setAttribute("onclick", `setWindowPos('${id}', {"x": '${lastX}', "y": '${lastY}', "w": '${lastW}', "h": '${lastH}'})`);
   // Set click into window top bar to reset window position
-  windowContainer.getElementsByClassName("windowFrame")[0].setAttribute("ondblclick", "resetWindowSize('"+id+"', '"+lastX+"', '"+lastY+"', '"+lastW+"', '"+lastH+"')");
+  windowContainer.getElementsByClassName("windowFrame")[0].setAttribute("ondblclick", `setWindowPos('${id}', {"x": '${lastX}', "y": '${lastY}', "w": '${lastW}', "h": '${lastH}'})`);
 }
 
 async function setWindowTitle(id, event) {
@@ -729,12 +729,12 @@ async function hideFrontMostWindowOverlay() {
   }
 }
 
-function resetWindowSize(id, x,y, w,h) {
+function setWindowPos(id, options) {
   let windowContainer = gebi(id);
-  windowContainer.style.left = x;
-  windowContainer.style.top = y;
-  windowContainer.style.width = w;
-  windowContainer.style.height = h;
+  if(options.x !== null) windowContainer.style.left = options.x;
+  if(options.y !== null) windowContainer.style.top = options.y;
+  if(options.w !== null) windowContainer.style.width = options.w;
+  if(options.h !== null) windowContainer.style.height = options.h;
 
   // reset reset:
   let resetMaxButton = gebi("maximizeWindow-"+id);
