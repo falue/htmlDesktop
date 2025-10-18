@@ -568,11 +568,13 @@ function closeWindow(id) {
   hideFrontMostWindowOverlay();
 }
 
-function closeAllWindows() {
+function closeAllWindows(except="") {
   let windowsFromDom = document.querySelectorAll("[data-setup-type='window']");
   for (let windowData of windowsFromDom) {
-    gebi(windowData.id).remove();
-    gebi("minimized-"+windowData.id).remove();
+    if(windowData.id != except) {
+      gebi(windowData.id).remove();
+      gebi("minimized-"+windowData.id).remove();
+    }
   }
 }
 
