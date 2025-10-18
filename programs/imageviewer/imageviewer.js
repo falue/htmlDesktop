@@ -86,7 +86,12 @@ async function setupImageViewer() {
                 showImage(0);  // Show first image
             }
         } else {
-            gebi('content').innerHTML = "No files in URL or local storage";
+            cl("No files in URL or local storage - get random imgs");
+            files = [
+                `https://picsum.photos/${300 + Math.floor(Math.random() * 301)}/${300 + Math.floor(Math.random() * 301)}`
+            ];
+            await setupThumbnails(files, true);
+            showImage(0);  // Show first image
         }
     }
 
@@ -172,7 +177,7 @@ async function setupThumbnails(files, initial=false) {
             } else if(file.startsWith("blob:")) {
                 // local video
                 thumbnail.style.backgroundImage = "url(../../os/"+os+"/systemIcons/fileMovie.png)";
-            } else if(file.startsWith('data:image')) {
+            } else if(file.startsWith('data:image') || file.startsWith('http')) {
                 thumbnail.style.backgroundImage = "url("+file+")";
             } else {
                 thumbnail.style.backgroundImage = "url(../../workstations/"+workstation+"/files/"+file+")";
@@ -244,7 +249,7 @@ async function showImage(index) {
         show("videoPlayer");
         await setVideoSrcAndPlay(path, 'video/mp4');
         gebi('thumbnails').classList.add("videplayer");
-    } else if(file.startsWith('data:image')) {
+    } else if(file.startsWith('data:image') || file.startsWith('http')) {
         content.style.backgroundImage = "url("+file+")";
         hide("videoPlayer");
         let player = videojs(document.querySelector('.video-js'));
