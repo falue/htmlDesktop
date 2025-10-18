@@ -35,6 +35,7 @@ async function setup() {
     let os = urlParams.get('os');
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
+    let onloadSettings = urlParams.get('onloadSettings') == "true";
     fontSize = parseInt(urlParams.get('size')) || 4;
     markerIndex = parseInt(urlParams.get('marker')) || 5;
     patternIndex = parseInt(urlParams.get('pattern')) || 1;
@@ -72,13 +73,30 @@ async function setup() {
 
     // Hide back to index button if in iframe
     if(window.location !== window.parent.location) {
+        // Is in iframe
         hide('backToIndex');
     } else {
         show('blackoutHint');
-        hide('fullscreenSettings');
+    }
+        
+    if(onloadSettings) {
+        show('settings');
+    }
+
+    if (window.matchMedia("(max-width: 900px)").matches) {
+        hide('keyboardStrokehint');
+        hide('blackoutHint');
     }
 }
 
+function hideSettings() {
+    const el = gebi('settings');
+    el.classList.add('shrinking');
+    el.addEventListener('transitionend', () => {
+      el.classList.add('hide');
+      el.classList.remove('shrinking');
+    }, { once: true });
+  }
 
 function createCells(currentMarkerIndex) {
     let container = gebi("container");

@@ -69,10 +69,22 @@ h5 {
 }
 
 #settings {
+    background-color: rgba(0,0,0,.65);
     line-height: 1em;
     padding: .5em 1em;
     overflow-y: auto;
+    max-width: 90%;
     max-height: 90%;
+    transition: all 1s ease-in-out;
+  }
+#settings.shrinking {
+    max-width: 3em;
+    max-height: 3em;
+    padding: 0;
+    top:0;
+    right:0;
+    background-color: blue;
+    opacity: 0;
 }
 
 button, input[type=color] {
