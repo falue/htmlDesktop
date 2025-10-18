@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Word</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- style and script resources -->
+    <link rel="stylesheet" type="text/css" href="../../tools/fonts.css" media="all">
+    <link rel="stylesheet" href="../../tools/general.css" media="all">
+    <link rel="stylesheet" href="../../tools/desktop.css" media="all">
+    <link rel="stylesheet" href="stylesheet.css" media="all">
+    <link rel="stylesheet" href="rulers.css" media="all">
+    <script src="../../tools/general.js"></script>
+    <script src="javascript.js"></script>
+
+  </head>
+  <body onload="setup();">
+    <!--  onkeydown="if(event.source.id != 'editor') {parent.keyboardController(event);}" -->
+    <header class="windowmenu">
+      <button class="programButtons">WordP</button><!-- 
+       --><button class="programButtons">File</button><!-- 
+       --><button class="programButtons">Edit</button><!-- 
+       --><button class="programButtons">View</button><!-- 
+       --><button class="programButtons">Insert</button><!-- 
+       --><button class="programButtons">Format</button><!-- 
+       --><button class="programButtons">Styles</button><!-- 
+       --><button class="programButtons">Table</button><!-- 
+       --><button class="programButtons">Form</button><!-- 
+       --><button class="programButtons">Tools</button><!-- 
+       --><button class="programButtons">Window</button><!-- 
+       --><button class="programButtons">Help</button>
+    </header>
+
+    <div class="container">
+      <div class="rulers">
+        <div class="ruler ruler-top"></div>
+        <div class="ruler ruler-left"></div>
+      </div>
+
+      <div id="editor" class="pell">
+      </div>
+
+    </div>
+    <script src="pell.min.js" ></script>
+  </body>
+  </html>
