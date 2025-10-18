@@ -9,6 +9,7 @@ let freeTextCommand = "";
 let lastFreeTextCommand = "";
 // Filenames in folder defaultScripts. sudo is seperatly handled
 let availableBasicCommands = ["top", "ls", "ls -l", "ls -l -a"];
+let windowId;
 
 async function setup() {
   const queryString = window.location.search;
@@ -16,6 +17,7 @@ async function setup() {
   let os = urlParams.get("os");
   let workstation = urlParams.get("workstation");
   let darkMode = urlParams.get("darkMode");
+  windowId = urlParams.get("windowId");
   let scriptName = urlParams.get("script");
   let scene = urlParams.get("scene");
 
