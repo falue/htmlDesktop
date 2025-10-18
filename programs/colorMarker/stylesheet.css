@@ -6,6 +6,9 @@ body {
     overflow: auto;
     background-color: rgb(0,255,0);
     color: white;
+    overscroll-behavior: none;  /* disable scroll chaining */
+    touch-action: none;         /* block touch gestures (scroll, pinch, swipe) */
+    user-select: none;          /* prevent text selection / hold highlight */
 }
 
 fieldset {
