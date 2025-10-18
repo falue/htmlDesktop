@@ -1,0 +1,110 @@
+:root {
+    --ruler-bg: #444444;
+    --ruler-fg: #000000;
+    --minor: 4;   /* length of small ticks */
+    --medium: 8px;  /* length of 5vw ticks */
+    --major: 12px;  /* length of 10vw ticks */
+    --ruler-top-h: 12px;
+    --ruler-left-w: 12px;
+
+    --line1: rgba(125,125,125,.2);
+    --line2: rgba(125,125,125,.5);
+    --line3: rgba(125,125,125,.8);
+  }
+  
+  /* container */
+  .page-with-rulers {
+    position: relative;
+    width: 80vw;
+    height: 60vh;
+    margin: 3em auto;
+    background: #222;
+    overflow: hidden;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px #000 inset;
+  }
+  
+  /* shared look for rulers */
+  .ruler-top,
+  .ruler-left {
+    position: absolute;
+    background: var(--ruler-bg);
+    color: var(--ruler-fg);
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  /* ==== TOP ruler ==== */
+  .ruler-top {
+    z-index: 11;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--ruler-top-h);
+    box-shadow: inset 0 -1px #000, inset 0 -2px rgba(255,255,255,.05);
+  
+    background-image:
+      /* minor (every 1vw) */
+      repeating-linear-gradient(to right,
+        transparent 0 calc(1vw - 1px),
+        var(--line1) calc(1vw - 1px) 1vw),
+      /* medium (every 5vw) */
+      repeating-linear-gradient(to right,
+        transparent 0 calc(5vw - 2px),
+        var(--line2) calc(5vw - 2px) 5vw),
+      /* major (every 10vw) */
+      repeating-linear-gradient(to right,
+        transparent 0 calc(10vw - 3px),
+        var(--line3) calc(10vw - 3px) 10vw);
+  
+    background-size:
+      100% var(--minor),
+      100% var(--medium),
+      100% var(--major);
+    background-position: bottom left;
+    background-repeat: repeat;
+  }
+  
+  /* ==== LEFT ruler ==== */
+  .ruler-left {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--ruler-left-w);
+    box-shadow: inset -1px 0 #000, inset -2px 0 rgba(255,255,255,.05);
+  
+    background-image:
+      /* minor (every 1vw) */
+      repeating-linear-gradient(to bottom,
+        transparent 0 calc(1vw - 1px),
+        var(--line1) calc(1vw - 1px) 1vw),
+      /* medium (every 5vw) */
+      repeating-linear-gradient(to bottom,
+        transparent 0 calc(5vw - 2px),
+        var(--line2) calc(5vw - 2px) 5vw),
+      /* major (every 10vw) */
+      repeating-linear-gradient(to bottom,
+        transparent 0 calc(10vw - 3px),
+        var(--line3) calc(10vw - 3px) 10vw);
+  
+    background-size:
+      var(--minor) 100%,
+      var(--medium) 100%,
+      var(--major) 100%;
+    background-position: right top;
+    background-repeat: repeat;
+  }
+  
+  /* content area */
+  .content {
+    position: absolute;
+    top: var(--ruler-top-h);
+    left: var(--ruler-left-w);
+    right: 0;
+    bottom: 0;
+    padding: 1em;
+    color: #fff;
+    overflow: auto;
+    font-family: system-ui, sans-serif;
+  }
+  
