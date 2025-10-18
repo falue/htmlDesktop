@@ -100,14 +100,12 @@ a:hover {
 .results .dots {
   /* padding: 0 .5em; */
   opacity: .5;
-  transform: translateY(-8px);  /* because fuck you */
+  transform: translateY(-4px);
 }
 
 .results #searchbarButton {
-  transform: translateY(-24px);  /* because fuck you */
 }
 .results #searchbarInput {
-  transform: translateY(-28px);  /* because fuck you */
 }
 
 .home .searchMenu {
