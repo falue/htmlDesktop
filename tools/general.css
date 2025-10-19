@@ -605,6 +605,12 @@ textarea {
 .fadeIn { animation: fadeIn 1s linear 1 forwards; }
 .fadeInFast { animation: fadeIn 250ms linear 1 forwards; }
 .dyingScreen { animation: dyingScreenEffect 500ms ease-in-out forwards; }
+.flashBg{animation:flashBg .5s ease-out}
+
+@keyframes flashBg{
+    0%   {background:rgba(255,255,255,.75)}
+    100% {background:transparent}
+}
 
 @keyframes spinner { 
     100% { transform:rotate(360deg); } 
