@@ -157,11 +157,14 @@
 [say:blue, "See? Easy!", "en"]
 [br] [sleep, 1250]
 
-
+# actionMenu
 [say, "All this you can change in what I call the action menu.", "en"]
+[javascript, "parent.addWindow('Please pay attention to the BOLT', 'image', 'imageviewer/index.html?files=arrow_down.gif', 9, 70, 343, 223, false);"]
+[say, "Its here, down there.", "en"]
 [say, "YOU can call it whatever though.", "en"]
 [javascript, "parent.show('actionMenu');"]
 [say, "I'm not your boss.", "en"] [sleep, 666]
+[javascript, "parent.closeAllWindows(windowId);"]
 
 # "About this workstation"
 [javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[0\].classList.add('flashBg');"]
@@ -235,17 +238,17 @@
 
 # "saved windows"
 [javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[4\].classList.add('whiteBgTransparent');"]
-[say, "These are saved and prepared windows for this workstation. Can be general or just for one specific scene.", "en"]
+[say, "These are saved and prepared windows for this workstation. Can be general or just for one specific scene. This has to be programmed and cannot be adjsuted here.", "en"]
 [javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
 
 # "desktop & screen"
 [javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[5\].classList.add('whiteBgTransparent');"]
 [say, "Add desktop shortcuts like i did before, personalize the state of this workstation with windows etc.", "en"]
-[javascript, "parent.startDefaultProgram();"]
-[javascript, "parent.startDefaultProgram();"]
-[javascript, "parent.startDefaultProgram();"]
-[javascript, "parent.startDefaultProgram();"]
-[javascript, "parent.startDefaultProgram();"]
+[javascript, "parent.startDefaultProgram();"] [sleep, 666]
+[javascript, "parent.startDefaultProgram();"] [sleep, 666]
+[javascript, "parent.startDefaultProgram();"] [sleep, 666]
+[javascript, "parent.startDefaultProgram();"] [sleep, 666]
+[javascript, "parent.startDefaultProgram();"] [sleep, 666]
 [sleep, 2200]
 [javascript, "parent.closeAllWindows(windowId);"]
 [sleep, 666]
@@ -259,7 +262,7 @@
 
 # "computer functions"
 [javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[6\].classList.add('whiteBgTransparent');"]
-[say, "Here, you get a greenscreen window, trigger some typical computer functions, like screensaver, log out, GPU failings, and, finally, inevitably, crash.", "en"]
+[say, "Here, you get a greenscreen window, set the speed of the boot sequence you just watched, trigger some typical computer functions, like screensaver, log out, GPU failings, and, finally, inevitably, crash.", "en"]
 [javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
 
 [say:blue, "Everything is controllable by keyboard inputs.", "en"]
@@ -281,8 +284,8 @@
 [say, "This is some sort of maps page.", "en"] [sleep, 1000]
 
 [javascript, "parent.closeAllWindows(windowId);"]
-[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=telefabi.ch', 6, 12, 1200,650, false);"]
-[say, "This is.. like, my homepage.", "en"] [sleep, 1000]
+[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=https%3A%2F%2Ffluescher.ch', 6, 12, 1200,650, false);"]
+[say, "This is.. like, my real website. Loaded from the web.", "en"] [sleep, 1000]
 
 [javascript, "parent.closeAllWindows(windowId);"]
 [javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=avmail.ch', 6, 12, 1200,650, false);"]
