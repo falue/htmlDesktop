@@ -668,7 +668,7 @@ async function writeStartupTexts(element, totDuration) {
     return;
 }
 
-async function hotSwapOs(nextOs) {
+async function hotSwapOs(nextOs, exludeFromReload=false) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     
@@ -693,7 +693,7 @@ async function hotSwapOs(nextOs) {
     // I is smart
     // Reload setup. in setup, the windwos & shortcuts get removed & reloaded
     // to trigger new icons
-    await setup();
+    await setup(exludeFromReload);
 
     // Remove temp save from localStorage
     clearLocalStorageItem(saveFileName);

@@ -14,7 +14,7 @@ let bootSpeed = 3;
 let localStorageSettings;
 let arrowAction = 'NOTHING';
 
-async function setup() {
+async function setup(exludeFromReload=false) {
   // Get Workstation parameter
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -126,7 +126,7 @@ async function setup() {
     }
 
     // Clear all windows, because they get re-set with new icons
-    closeAllWindows();
+    closeAllWindows(exludeFromReload);
     // Clear all shortcuts, because they get re-set with new icons
     removeAllShortcuts();
     // clear all osNotifications
@@ -192,7 +192,7 @@ async function setup() {
   // cl("SETUP: placeShortcut success, "+shortcuts.length+" shortcuts placed.");
 
   // Loop over windows
-  setupWindows(windows);
+  if(!exludeFromReload) setupWindows(windows);
   // cl("SETUP: windows success, "+windows.length+" windows placed.");
 
   // Hide overlay on frontMostWindow
