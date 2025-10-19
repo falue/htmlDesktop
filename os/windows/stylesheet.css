@@ -239,6 +239,7 @@ body {
     padding-left: .5em;
     white-space: nowrap;
     z-index: 1;
+    overflow:hidden;
 }
 .systemBar > div {
     /* border: hotpink solid thin; */
