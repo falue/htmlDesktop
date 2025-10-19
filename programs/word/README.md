@@ -13,9 +13,10 @@ forcetype               if true, document is forcetyped, meaning the text to typ
 > NOTE: when forcetype is activated (also with the bolt in the menu), the full text is there. so no text is to be typed. click an element and delete stuff, than you can retype it.
 > double click any text block to delete them.
 > Be ready for special cahracter to be replaced, for eg 
-> does only work with enclosing html elements, like `<div>`, `<h1>` or `<p>`.Stuff like that does not work:
+> does only work with enclosing html elements, like `<div>`, `<h1>` or `<p>`. Also don't nest html tags. Stuff like that does not work:
 ```html
 <br>text
+<p>This is <b>BOLD</b> of you!</p>
 ```
 
 ## file
