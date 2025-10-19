@@ -298,6 +298,8 @@ li.showMac { display: list-item !important; }
     height: 2em;
     width: 2em;
     padding: 0;
+    border:none !important;
+    box-shadow:none !important;
 }
 .systemBar .buttonGroup button {
     border-radius: 0;

@@ -208,6 +208,7 @@ body {
     height: 2em;
     width: 2em;
     padding: 0;
+    box-shadow:none !important;
 }
 .systemBar button:hover {
     background-color: rgba(125,125,125,0.2) !important;
