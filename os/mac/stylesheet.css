@@ -280,6 +280,7 @@ li.showMac { display: list-item !important; }
     white-space: nowrap;
     z-index: 1;
     font-size:.7em;  /* different to windows */
+    overflow:hidden;
 }
 .systemBar > div {
     /* border: hotpink solid thin; */

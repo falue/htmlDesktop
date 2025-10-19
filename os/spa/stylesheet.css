@@ -237,6 +237,7 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
     white-space: nowrap;
     z-index: 1;
     font-size:.7em;  /* different to windows */
+    overflow:hidden;
 }
 .systemBar > div {
     /* border: hotpink solid thin; */
@@ -339,7 +340,7 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
 /* DOCK */
 .dock {
     position: fixed;
-    left: 50%;
+    left: 50% !important;
     bottom: .75em;
     transform: translate(-50%, 2em);
 }
