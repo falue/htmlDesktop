@@ -3,35 +3,14 @@
 <span class='green'>commonUser</span>@<span class='red'>localhost</span>:<span class='grey'>~</span> $ 
 # -------
 
-
 # Close everything except this bash window
 [javascript, "windowId = new URLSearchParams(window.location.search).get('windowId')"]
 [javascript, "parent.closeAllWindows(windowId);"]
 
-# [bashProfile] [autoType, "Yes I am ready - press enter: ", 666] [wait]
-# [bashProfile] [say, "Hi!", "en"]
-# [bashProfile] [say, "like again", "en", "fuudi"]
-# [bashProfile] [say, "hallo nochmals krankenhaus.", "de"]
-# [clear]
-# [bashProfile] [say, "C'est une tres courte texte.", "fr"]
-# [bashProfile] [say, "was mache ein ✈️ und so?", "de"]
-
-# [say, "before swap", "en"] [sleep, 1200]
-# [javascript, "parent.hotSwapOs('mac');"] [sleep, 2600]
-# [say, "after swap", "en"]
-# EXIT
-
-# [goto, 280]
-
-# [sleep, 1500]
 # [javascript, "parent.minimizeWindow(windowId);"]
-# [sleep, 1500]
 # [javascript, "parent.getWindowFromTaskbar(windowId);"]
-# [sleep, 1500]
 # [javascript, "parent.setWindowPos(windowId, {'x': '66%'});"]
-# [sleep, 1500]
 # [javascript, "parent.setWindowPos(windowId, {'w': '333px'});"]
-# [sleep, 1500]
 # [javascript, "parent.maximizeWindow(windowId);"]
 # [javascript, "alert(windowId)"]
 # [javascript, "alert(new URLSearchParams(window.location.search).get('windowId'));"]
@@ -49,7 +28,7 @@
 [autoType, "🎉 ", 50] [autoType, "🥳 ", 50] [autoType, "🙌 ", 50] [autoType, "💃 ", 50] [autoType, "🕺 ", 50]  [autoType, "🌈 ", 50] [autoType, "🎉 ", 50] [autoType, "🥳 ", 50] [autoType, "🙌 ", 50] [autoType, "💃 ", 50] [autoType, "🕺 ", 50]  [autoType, "🌈 ", 50] [autoType, "🎉 ", 50] [autoType, "🥳 ", 50] [autoType, "🙌 ", 50] [autoType, "💃 ", 50] [autoType, "🕺 ", 50]  [autoType, "🌈 ", 50] [autoType, "🎉 ", 50] [autoType, "🥳 ", 50] [autoType, "🙌 ", 50] [autoType, "💃 ", 50] [autoType, "🕺 ", 50]  [autoType, "🌈 ", 50] [autoType, "🎉 ", 50] [autoType, "🥳 ", 50] [autoType, "🙌 ", 50] [autoType, "💃 ", 50] [autoType, "🕺 ", 50]  [autoType, "🌈 ", 50] [autoType, "🎉 ", 50] [autoType, "🥳 ", 50] [autoType, "🙌 ", 50] [autoType, "💃 ", 50]
 [br]
 [say, "..welcome to the show!", "en"]
-[say, "Turn up your volume, crank up the speakers and enjoy my voice to the max.", "en"]
+[say, "Turn up your volume, crank up the speakers and enjoy my voice to the max!", "en"]
 [say, "And make this browser window fullscreen for max pleasure.", "en"]
 [br]
 [say, "Yes, it starts now.", "en"]
@@ -83,25 +62,7 @@
 [clear]
 [say, "yes?", "en"] [sleep, 500]
 
-# VIEWPORTS
-[say:green, "next up.."] [sleep, 1500]
-[javascript, "parent.setWindowPos(windowId, {'w': '333px'});"]
-[javascript, "parent.setViewportMargins({'topMargin': 150, 'rightMargin': 0, 'bottomMargin': 0, 'leftMargin': 0})"]
-[javascript, "parent.changeViewportMargins()"] [sleep, 666]
-[javascript, "parent.setViewportMargins({'topMargin': 150, 'rightMargin': 0, 'bottomMargin': 150, 'leftMargin': 0})"]
-[javascript, "parent.changeViewportMargins()"] [sleep, 666]
-[javascript, "parent.setViewportMargins({'topMargin': 150, 'rightMargin': 0, 'bottomMargin': 150, 'leftMargin': 250})"]
-[javascript, "parent.changeViewportMargins()"] [sleep, 666]
-[javascript, "parent.setViewportMargins({'topMargin': 150, 'rightMargin': 250, 'bottomMargin': 150, 'leftMargin': 250})"]
-[javascript, "parent.changeViewportMargins()"]
-[say, "Neat again. For when your monitor does not fit the desktop. Or with some overscroll behaviour.", "en"] [sleep, 1250]
-[say, "but lets reset..", "en"] [sleep, 1250]
-[javascript, "parent.setViewportMargins({'topMargin': 0, 'rightMargin': 0, 'bottomMargin': 0, 'leftMargin': 0})"]
-[javascript, "parent.changeViewportMargins()"] [sleep, 1250]
-[javascript, "parent.setWindowPos(windowId, {'w': '945px'});"]
-[br]
-[say:blue, "See? Easy!", "en"]
-[br] [sleep, 1250]
+[say:green, "next up.."]
 
 # GPU error and crash!
 [say, "But uh?! what is that?", "en"] [sleep, 666]
@@ -135,28 +96,28 @@
 [javascript, "parent.removeAllShortcuts();"]
 [javascript, "parent.bringToFront(windowId);"]
 [bashProfile] [autoType, "Are you here again? Press enter now: "] [waitForEnter]
-[say, "Interesting, all the desktop shurtcuts are gone now. Brilliant.", "en"]
+[say, "Interesting, all the desktop shortcuts are gone now. Brilliant.", "en"]
 [sleep, 666]
 
 # new desktop clutter
 [say, "Lets make some new ones.", "en"]
 [javascript, "parent.minimizeWindow(windowId);"][sleep, 1000]
 [javascript, "parent.clutterDesktop(4);"]
-[sleep, 666]
+[sleep, 111]
 [javascript, "parent.clutterDesktop(4);"]
-[sleep, 666]
+[sleep, 111]
 [javascript, "parent.clutterDesktop(4);"]
-[sleep, 666]
+[sleep, 111]
 [javascript, "parent.clutterDesktop(4);"]
-[sleep, 666]
+[sleep, 111]
 [javascript, "parent.clutterDesktop(6);"]
-[sleep, 666]
+[sleep, 111]
 [javascript, "parent.clutterDesktop(7);"]
-[sleep, 666]
+[sleep, 111]
 [javascript, "parent.clutterDesktop(12);"]
-[sleep, 666]
+[sleep, 111]
 [javascript, "parent.clutterDesktop(36);"]
-[sleep, 666]
+[sleep, 111]
 [say, "Ok ok thats enough.", "en"] [clear]
 [javascript, "parent.getWindowFromTaskbar(windowId);"][sleep, 1000]
 [say, "What a mess.", "en"]
@@ -169,18 +130,143 @@
 [say, "A bit better now. Phew. It LOOKS like you are still a messy person though.", "en"]
 [say, "Are you a messy person?", "en"]
 
-# Change os
-# [sleep, 1200]
-# [say, "Maybe change the operating system for a cleaner look.", "en"] [sleep, 1200]
-# does not work because this bash window gets hard reloaded because setup() runs, and this re-renders all the windows with new styles
-# [javascript, "parent.hotSwapOs('mac');"]
-
 # specific desktop url
 [say, "Maybe..", "en"] [sleep, 1200]
 [javascript, "parent.setDesktopImg('workstations/telefabi/desktops/weeb.jpg');"]
-[say, "Did NOT help.", "en"] [sleep, 1200]
+[say, "This did NOT help.", "en"] [sleep, 1200]
 [say, "No. That weeb image is not helping AT ALL.", "en"] [sleep, 1200]
 [javascript, "parent.cycleBackgroundImage();"][sleep, 1000]
+
+# VIEWPORTS
+[say:green, "next up.."] [sleep, 1500]
+[javascript, "parent.setWindowPos(windowId, {'w': '333px'});"]
+[javascript, "parent.setViewportMargins({'topMargin': 150, 'rightMargin': 0, 'bottomMargin': 0, 'leftMargin': 0})"]
+[javascript, "parent.changeViewportMargins()"] [sleep, 666]
+[javascript, "parent.setViewportMargins({'topMargin': 150, 'rightMargin': 0, 'bottomMargin': 150, 'leftMargin': 0})"]
+[javascript, "parent.changeViewportMargins()"] [sleep, 666]
+[javascript, "parent.setViewportMargins({'topMargin': 150, 'rightMargin': 0, 'bottomMargin': 150, 'leftMargin': 250})"]
+[javascript, "parent.changeViewportMargins()"] [sleep, 666]
+[javascript, "parent.setViewportMargins({'topMargin': 150, 'rightMargin': 250, 'bottomMargin': 150, 'leftMargin': 250})"]
+[javascript, "parent.changeViewportMargins()"]
+[say, "Neat, again. For when your monitor does not fit the desktop. Or with some overscroll behaviour.", "en"] [sleep, 1250]
+[say, "but lets reset..", "en"] [sleep, 1250]
+[javascript, "parent.setViewportMargins({'topMargin': 0, 'rightMargin': 0, 'bottomMargin': 0, 'leftMargin': 0})"]
+[javascript, "parent.changeViewportMargins()"] [sleep, 1250]
+[javascript, "parent.setWindowPos(windowId, {'w': '945px'});"]
+[br]
+[say:blue, "See? Easy!", "en"]
+[br] [sleep, 1250]
+
+
+[say, "All this you can change in what I call the action menu.", "en"]
+[say, "YOU can call it whatever though.", "en"]
+[javascript, "parent.show('actionMenu');"]
+[say, "I'm not your boss.", "en"] [sleep, 666]
+
+# "About this workstation"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[0\].classList.add('flashBg');"]
+[say:blue, "You have this", "en"]
+
+# "state mngmnt"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[1\].classList.add('flashBg');"]
+[say, "this", "en"]
+
+# "appearance"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[2\].classList.add('flashBg');"]
+[say, "this", "en"]
+
+# "here be dragons"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[3\].classList.add('flashBg');"]
+[say:red, "this - that is dangerous though. Would not recommend.", "en"]
+
+# "saved windows"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[4\].classList.add('flashBg');"]
+[say, "also this", "en"]
+
+# "desktop & screen"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[5\].classList.add('flashBg');"]
+[say, "that", "en"]
+
+# "computer functions"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[6\].classList.add('flashBg');"]
+[say, "and that.", "en"]
+[sleep, 333]
+
+[say, "See? A million actions. Choices. Would make sense to call it an 'Action menu', no?", "en"]
+[javascript, "parent.document.querySelectorAll('.flashBg').forEach(el => el.classList.remove('flashBg'));"]
+[say, "Do you mind if i go into details? Thanks, I will", "en"]
+[clear]
+
+# show off actionMenu
+# "About this workstation"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[0\].classList.add('whiteBgTransparent');"]
+[say:blue, "Here you can swap workstations. Pre-defined setups that have a specific user and operating systems set; desktop shortcuts, open windows, etc.", "en"]
+[javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
+
+# "state mngmnt"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[1\].classList.add('whiteBgTransparent');"]
+[say, "Thats for saving and loading your current setup. if you changed windows or colors, you can save, load and reset them here. Also exporting and importing is possible for use on other machines.", "en"]
+[javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
+
+# "appearance"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[2\].classList.add('whiteBgTransparent');"]
+[say, "Change the OS, colors, desktop image, etc.", "en"]
+[javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
+
+# show off OS hotswap
+[javascript, "parent.hide('actionMenu');"]
+[say, "Operating systems are not 1 to 1 clones on purpose. To avoid copyright infringement.", "en"]
+[say, "You can change them on-the-fly. This is a windows clone.", "en"]
+[javascript, "parent.hotSwapOs('mac', windowId); parent.setDefaultSystemColors('mac');"] [sleep, 1200]
+[say, "Next up, a mac clone.", "en"] [sleep, 1200]
+[javascript, "parent.hotSwapOs('spa', windowId); parent.setDefaultSystemColors('spa');"] [sleep, 1200]
+[say, "This is some sort of linux", "en"] [sleep, 1200]
+[say, "Also this, for some reason.", "en"]
+[javascript, "parent.hotSwapOs('windows95', windowId); parent.setDefaultSystemColors('windows95');"] [sleep, 1200]
+[say, "But lets revert", "en"] [sleep, 1200]
+[javascript, "parent.hotSwapOs('windows', windowId); parent.setSystemColors('#3b0d39');"] [sleep, 1200]
+[javascript, "parent.show('actionMenu');"]
+[say, "Happiness.", "en"]
+
+# "here be dragons"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[3\].classList.add('whiteBgTransparent');"]
+[say, "Some options for displaying.", "en"]
+[javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
+
+# "saved windows"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[4\].classList.add('whiteBgTransparent');"]
+[say, "These are saved and prepared windows for this workstation. Can be general or just for one specific scene.", "en"]
+[javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
+
+# "desktop & screen"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[5\].classList.add('whiteBgTransparent');"]
+[say, "Add desktop shortcuts like i did before, personalize the state of this workstation with windows etc.", "en"]
+[javascript, "parent.startDefaultProgram();"]
+[javascript, "parent.startDefaultProgram();"]
+[javascript, "parent.startDefaultProgram();"]
+[javascript, "parent.startDefaultProgram();"]
+[javascript, "parent.startDefaultProgram();"]
+[sleep, 2200]
+[javascript, "parent.closeAllWindows(windowId);"]
+[sleep, 666]
+[say, "Also, trigger system notifications, like this", "en"]
+[javascript, "parent.triggerActionOrMessage(parent.gebi('osNotificationsSelect').value);"]
+[sleep, 1100]
+[say, "Don't be scared.", "en"]
+[sleep, 1100]
+[say, "Those are setup by an admin.", "en"]
+[javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
+
+# "computer functions"
+[javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[6\].classList.add('whiteBgTransparent');"]
+[say, "Here, you get a greenscreen window, trigger some typical computer functions, like screensaver, log out, GPU failings, and, finally, inevitably, crash.", "en"]
+[javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
+
+[say:blue, "Everything is controllable by keyboard inputs.", "en"]
+[say, "Connect a second keyboard to the computer, if an actor or actress is using one.", "en"]
+[say, "Thats about it.", "en"]
+[clear]
+[javascript, "parent.hide('actionMenu');"]
 
 # Browser
 [say, "lets see what the browser has to offer.", "en"] [sleep, 1000]
@@ -258,7 +344,7 @@
 [say:grey, "thanks!", "en"]
 [say:grey, "thanks!", "en"]
 [say:grey, "thanks!", "en"]
-[say:grey, "thanks!", "en"]
+[say:grey, "thanks!", "en"] [goto, 530]
 
 # Use EXIT for stop parsing here
 EXIT
