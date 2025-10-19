@@ -233,7 +233,7 @@
 
 # "here be dragons"
 [javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[3\].classList.add('whiteBgTransparent');"]
-[say, "Some options for displaying.", "en"]
+[say, "Here are some options for displaying.", "en"]
 [javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
 
 # "saved windows"
@@ -267,7 +267,7 @@
 
 [say:blue, "Everything is controllable by keyboard inputs.", "en"]
 [say, "Connect a second keyboard to the computer, if an actor or actress is using one.", "en"]
-[say, "Thats about it.", "en"]
+[say, "Thats about it with the action menu.", "en"]
 [clear]
 [javascript, "parent.hide('actionMenu');"]
 
