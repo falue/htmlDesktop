@@ -347,7 +347,8 @@
 [say:grey, "thanks!", "en"]
 [say:grey, "thanks!", "en"]
 [say:grey, "thanks!", "en"]
-[say:grey, "thanks!", "en"] [goto, 530]
+[say:grey, "thanks!", "en"]
+[goto, 530]
 
 # Use EXIT for stop parsing here
 EXIT
