@@ -22,6 +22,10 @@ let topMarginLast = topMargin;
 let leftMarginLast = leftMargin;
 
 function setup() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let onloadSettings = urlParams.get('onloadSettings') == "true";
+
     video = gebi("video");
     gallery = gebi("gallery");
 
@@ -36,6 +40,13 @@ function setup() {
         showClass('gallery');
         displayImage(0);
         gebi('galleryList').innerHTML = `<li>${imageGallery.length} image(s) from memory <button onclick="clearMemory()" style="display:inline-block; width: fit-content;">clear memory</button></li>`;
+    }
+
+    if(onloadSettings) show('menu');
+
+    if(window.location !== window.parent.location) {
+        // Is in iframe
+        hide('backToIndex');
     }
 }
 
@@ -64,7 +75,7 @@ function setColors() {
 
     changeSpeed(speed);
 
-    gebi("speed-val").innerHTML = speed/10;
+    gebi("speed-val").innerHTML = (speed/10).toFixed(2);
     gebi("blur-val").innerHTML = blur;
     gebi("saturate-val").innerHTML = saturate;
     gebi("hue-val").innerHTML = hue;
@@ -81,7 +92,7 @@ function toggleClass(id, className) {
 
 function changeSpeed(value) {
     value /= 10;
-    gebi("speed-val").innerHTML = value;
+    gebi("speed-val").innerHTML = value.toFixed(2);
 
     //console.log(timeout, timeoutSpeedChange);
 
@@ -137,6 +148,11 @@ function uploadFile(data) {
         // Hide video controls
         makeImageGallery(data)
     } else if (type.includes('video')) {
+        if(data.files.length > 1) {
+            alert("Do not select multiple videos AND images.");
+            gebi('movieSelector').value = '';
+            return;
+        }
         isVideoplayer = true;
         localStorage.removeItem('videoplayer');
         // Show videoplayer
@@ -151,6 +167,11 @@ function uploadFile(data) {
 async function makeImageGallery(data) {
     gebi('galleryList').innerHTML = '';
     for (let index = 0; index < data.files.length; index++) {
+        if(!data.files[index].type.includes('image')) {
+            alert("Do not select multiple videos AND images.");
+            gebi('movieSelector').value = '';
+            return;
+        }
         imageGallery.push(await convertBase64(data.files[index]));
         gebi('galleryList').innerHTML += `<li>${index+1}. ${data.files[index].name}</li>`;
     }
@@ -629,9 +650,9 @@ function buildChapters() {
     chapterIndicators.innerHTML = '';
     chapters.sort(function (a, b) {  return a - b;  });
     for(i=0; i< chapters.length; i++) {
-        let clearChapter = '<span class="redBg" title="Remove chapter" style="color:white; display:inline-block; width:1.5em; height:1.5em; border-radius:50%; top:0; margin-left:.5em; padding-top:.12em; box-sizing:border-box;" onclick="removeChapter('+i+')">&times;</span>';
+        let clearChapter = '<span class="redBg" title="Remove chapter" style="color:white; display:inline-block; width:1.5em; height:1.5em; border-radius:50%; top:0; margin-left:.5em; padding-top:.12em; box-sizing:border-box;" onclick="event.preventDefault(); removeChapter('+i+')">&times;</span>';
         if(i == 0) clearChapter = '';
-        chapterList.innerHTML += '<button class="small" title="alt + '+(i+1)+'" style="margin:0 0.5em 0.5em 0">#'+(i+1)+') <span onclick="seek('+chapters[i]+')">'+secToTime(chapters[i])+'</span>'+clearChapter+'</button>';
+        chapterList.innerHTML += '<button class="small" title="alt + '+(i+1)+'" style="margin:0 0.5em 0.5em 0" onclick="seek('+chapters[i]+')">#'+(i+1)+') '+secToTime(chapters[i])+''+clearChapter+'</button>';
         let left = (chapters[i] / duration) * 100;
         chapterIndicators.innerHTML += '<div class="redBg" style="border:none; position:absolute; top:.4em; height:19px; left:'+left+'%; width:1px; pointer-events: none; padding:0;"></div>'
     }
