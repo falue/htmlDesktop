@@ -1,3 +1,27 @@
+:root {
+  --wm-handle-edges: 20px;
+  --wm-handle-corners: 25px;
+  --wm-debug-color: transparent;  /* rgba(255,0,0,.5); */
+}
+
+.window { box-sizing: border-box; }
+
+/* edges */
+.window .wm-handle {
+  position:absolute;
+  background: var(--wm-debug-color);
+}
+.window .wm-h-n { top:-8px; left:0; right:0; height:var(--wm-handle-edges); cursor: ns-resize; }
+.window .wm-h-s { bottom:-8px; left:0; right:0; height:var(--wm-handle-edges); cursor: ns-resize; }
+.window .wm-h-e { top:0; bottom:0; right:-8px; width:var(--wm-handle-edges); cursor: ew-resize; }
+.window .wm-h-w { top:0; bottom:0; left:-8px; width:var(--wm-handle-edges); cursor: ew-resize; }
+
+/* corners */
+.window .wm-h-nw { border-radius: 50%; top:-12px; left:-12px; width:var(--wm-handle-corners); height:var(--wm-handle-corners); cursor:nwse-resize; }
+.window .wm-h-ne { border-radius: 50%; top:-12px; right:-12px; width:var(--wm-handle-corners); height:var(--wm-handle-corners); cursor:nesw-resize; }
+.window .wm-h-sw { border-radius: 50%; bottom:-12px; left:-12px; width:var(--wm-handle-corners); height:var(--wm-handle-corners); cursor:nesw-resize; }
+.window .wm-h-se { border-radius: 50%; bottom:-12px; right:-12px; width:var(--wm-handle-corners); height:var(--wm-handle-corners); cursor:nwse-resize; }
+
 .window {
   position: absolute;
   width:600px;
@@ -43,46 +67,3 @@
 .window .windowFrame div {
   display: inline-block;
 }
-
-/* RESIZE */
-.resizable .resizers{
-  position: relative;
-  /* background-color: green; */
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  z-index: 9;
-}
-
-.resizable .resizers .resizer{
-  width: 10px;
-  height: 10px;
-  /* border-radius: 50%; /*magic to turn square into circle*/
-  background: white;
-  border: 3px solid #4286f4;
-  opacity: 0;
-  position: absolute;
-}
-
-.resizable .resizers .resizer.top-left {
-  left: -5px;
-  top: -5px;
-  cursor: nwse-resize; /*resizer cursor*/
-}
-.resizable .resizers .resizer.top-right {
-  right: -5px;
-  top: -5px;
-  cursor: nesw-resize;
-}
-.resizable .resizers .resizer.bottom-left {
-  left: -5px;
-  bottom: -5px;
-  cursor: nesw-resize;
-}
-.resizable .resizers .resizer.bottom-right {
-  right: -5px;
-  bottom: -5px;
-  cursor: nwse-resize;
-}
-
-/* DRAG */

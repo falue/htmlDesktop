@@ -1,107 +1,15 @@
 let newWindowPositions = {"x": 5,"y": 5};
-
-/*Make resizable div by Hung Nguyen*/
-// see https://medium.com/the-z/making-a-resizable-div-in-js-is-not-easy-as-you-think-bda19a1bc53d
-
-function makeResizableDiv(div) {
-  const element = document.querySelector(div);
-  const resizers = document.querySelectorAll(div + ' .resizer')
-  const minimum_size = 20;
-  let original_width = 0;
-  let original_height = 0;
-  let original_x = 0;
-  let original_y = 0;
-  let original_mouse_x = 0;
-  let original_mouse_y = 0;
-  for (let i = 0;i < resizers.length; i++) {
-    const currentResizer = resizers[i];
-    currentResizer.addEventListener('mousedown', function(e) {
-      /* console.log("Start resize"); */
-      e.preventDefault()
-      original_width = parseFloat(getComputedStyle(element, null).getPropertyValue('width').replace('px', ''));
-      original_height = parseFloat(getComputedStyle(element, null).getPropertyValue('height').replace('px', ''));
-      original_x = element.getBoundingClientRect().left;
-      original_y = element.getBoundingClientRect().top;
-      original_mouse_x = e.pageX;
-      original_mouse_y = e.pageY;
-      window.addEventListener('mousemove', resize);
-      window.addEventListener('mouseup', stopResizeIntermediate);
-      // Bring to front so user can see window
-      bringToFront(element.id);
-      // .. but show overlay to not interfere right after (!)
-      showClass('windowManagerOverlay');
-    })
-
-    function stopResizeIntermediate() {
-      // I need this so i can grab the element, and to later stop it
-      stopResize(element);
-    }
-    
-    function resize(e) {
-      /* console.log("do a resize"); */
-
-      if (currentResizer.classList.contains('bottom-right')) {
-        const width = original_width + (e.pageX - original_mouse_x);
-        const height = original_height + (e.pageY - original_mouse_y)
-        if (width > minimum_size) {
-          element.style.width = width + 'px'
-        }
-        if (height > minimum_size) {
-          element.style.height = height + 'px'
-        }
-      }
-      else if (currentResizer.classList.contains('bottom-left')) {
-        const height = original_height + (e.pageY - original_mouse_y)
-        const width = original_width - (e.pageX - original_mouse_x)
-        if (height > minimum_size) {
-          element.style.height = height + 'px'
-        }
-        if (width > minimum_size) {
-          element.style.width = width + 'px'
-          element.style.left = getPositionInPercentage("left", original_x + (e.pageX - original_mouse_x)) + '%'
-        }
-      }
-      else if (currentResizer.classList.contains('top-right')) {
-        const width = original_width + (e.pageX - original_mouse_x)
-        const height = original_height - (e.pageY - original_mouse_y)
-        if (width > minimum_size) {
-          element.style.width = width + 'px'
-        }
-        if (height > minimum_size) {
-          element.style.height = height + 'px'
-          element.style.top = getPositionInPercentage("top", original_y + (e.pageY - original_mouse_y)) + '%'
-        }
-      }
-      else {
-        const width = original_width - (e.pageX - original_mouse_x)
-        const height = original_height - (e.pageY - original_mouse_y)
-        if (width > minimum_size) {
-          element.style.width = width + 'px'
-          element.style.left = getPositionInPercentage("left", original_x + (e.pageX - original_mouse_x)) + '%'
-        }
-        if (height > minimum_size) {
-          element.style.height = height + 'px'
-          element.style.top = getPositionInPercentage("top", original_y + (e.pageY - original_mouse_y)) + '%'
-        }
-      }
-    }
-    
-    function stopResize(currentElement) {
-      /* console.log("stop resize"); */
-      // Show current overlay again
-      hide(currentElement.getElementsByClassName('windowManagerOverlay')[0].id);
-      window.removeEventListener('mousemove', resize);
-      window.removeEventListener('mouseup', stopResizeIntermediate);
-    }
-  }
-}
-
-
 /* DRAG & MOVE WINDOW */
 // see https://stackoverflow.com/a/57438497
 let offsetX;
 let offsetY;
 let dropSuccessful = false;
+const WM_MIN_W = 150;
+const WM_MIN_H = 100;
+
+let recentZIndex = 10;
+let recentX = 2;
+let recentY = 2;
 
 onDragStart = function(ev) {
   showClass('windowManagerOverlay');
@@ -153,16 +61,164 @@ dragoverHandler = function(ev) {
 
 onDragEnd = function() {
   if(!dropSuccessful) {
-    /* cl("dragend failed: "); */
+    // cl("dragend failed: ");
     gebi(currentDragId).style.opacity="1";
   }
   // Reset for next drop
   dropSuccessful = false;
 }
 
-let recentZIndex = 10;
-let recentX = 2;
-let recentY = 2;
+
+
+/* HELPERS */
+function wmDesktopRect() {
+  const desk = gebi('desktop').getBoundingClientRect();
+  return {x: desk.left, y: desk.top, w: desk.width, h: desk.height};
+}
+function wmNum(v) { return typeof v === 'number' ? v : parseFloat(String(v).replace('px','')); }
+
+/* Ensure titlebar stays retrievable; allow partial overhang */
+function wmConstrainMove(el, nx, ny) {
+  const desk = wmDesktopRect();
+  const title = el.querySelector('.windowFrame');
+  const th = title ? title.getBoundingClientRect().height : 28;
+  const allowOff = el.dataset.allowOffscreen === 'true';
+
+  if (allowOff) return {x: nx, y: ny}; // full freedom if explicitly allowed
+
+  const w = el.offsetWidth, h = el.offsetHeight;
+
+  // Keep at least Xpx horizontally visible; keep titlebar vertically reachable
+  const minX = -(w - 40);
+  const maxX = desk.w - 40;
+  const minY = - (th - 8);
+  const maxY = Math.max(desk.h - 24, minY); // avoid negative max
+
+  return { x: Math.max(minX, Math.min(nx, maxX)), y: Math.max(minY, Math.min(ny, maxY)) };
+}
+
+/* MOVE BY TITLEBAR*/
+let _moveState = null;
+
+function startWindowMove(e, id) {
+  const el = gebi(id);
+  bringToFront(id);
+  showClass('windowManagerOverlay');
+  el.setPointerCapture(e.pointerId);
+
+  const rect = el.getBoundingClientRect();
+  const desk = wmDesktopRect();
+  _moveState = {
+    id, sx: e.clientX, sy: e.clientY,
+    ox: rect.left - desk.x, oy: rect.top - desk.y
+  };
+
+  el.setAttribute('onpointermove', `wmMove(event,'${id}')`);
+  el.setAttribute('onpointerup',   `wmMoveEnd(event,'${id}')`);
+  document.body.style.userSelect = 'none';
+}
+
+function wmMove(e, id) {
+  if (!_moveState || _moveState.id !== id) return;
+  const el = gebi(id);
+  const dx = e.clientX - _moveState.sx;
+  const dy = e.clientY - _moveState.sy;
+  const nx = _moveState.ox + dx;
+  const ny = _moveState.oy + dy;
+  const c  = wmConstrainMove(el, nx, ny);
+  el.style.left = c.x + 'px';
+  el.style.top  = c.y + 'px';
+}
+
+function wmMoveEnd(e, id) {
+  const el = gebi(id);
+  el.releasePointerCapture(e.pointerId);
+  el.removeAttribute('onpointermove');
+  el.removeAttribute('onpointerup');
+  _moveState = null;
+  document.body.style.userSelect = '';
+  // Hide only the active overlay (your helper already does that)
+  hide(el.getElementsByClassName('windowManagerOverlay')[0].id);
+}
+
+/* RESIZE (8 handles) */
+let _rz = null;
+
+function startWindowResize(e, id, dir) {
+  e.preventDefault();
+document.body.style.cursor = window.getComputedStyle(e.target).cursor;
+
+  e.stopPropagation();
+  const el = gebi(id);
+  bringToFront(id);
+  showClass('windowManagerOverlay');
+  /////el.setPointerCapture(e.pointerId);
+  e.target.setPointerCapture(e.pointerId);
+
+  const desk = wmDesktopRect();
+  const r = el.getBoundingClientRect();
+  _rz = {
+    id, dir,
+    sx: e.clientX, sy: e.clientY,
+    left: r.left - desk.x, top: r.top - desk.y,
+    w: r.width, h: r.height
+  };
+
+  el.setAttribute('onpointermove', `wmResize(event,'${id}')`);
+  el.setAttribute('onpointerup',   `wmResizeEnd(event,'${id}')`);
+  document.body.style.userSelect = 'none';
+}
+
+function wmResize(e, id) {
+  if (!_rz || _rz.id !== id) return;
+  const el = gebi(id);
+  const dx = e.clientX - _rz.sx;
+  const dy = e.clientY - _rz.sy;
+
+  let L = _rz.left, T = _rz.top, W = _rz.w, H = _rz.h;
+
+  // Horizontal
+  if (_rz.dir.includes('e')) W = Math.max(W + dx, WM_MIN_W);
+  if (_rz.dir.includes('w')) { L = L + dx; W = Math.max(_rz.w - dx, WM_MIN_W); }
+  // Vertical
+  if (_rz.dir.includes('s')) H = Math.max(H + dy, WM_MIN_H);
+  if (_rz.dir.includes('n')) { T = T + dy; H = Math.max(_rz.h - dy, WM_MIN_H); }
+
+  // Allow overhang while resizing; we only enforce min size.
+  el.style.left  = L + 'px';
+  el.style.top   = T + 'px';
+  el.style.width = W + 'px';
+  el.style.height= H + 'px';
+}
+
+function wmResizeEnd(e, id) {
+  if (_rz?.target) _rz.target.releasePointerCapture(e.pointerId);
+  const el = gebi(id);
+  el.removeAttribute('onpointermove');
+  el.removeAttribute('onpointerup');
+  _rz = null;
+  document.body.style.userSelect = '';
+  document.body.style.cursor = '';
+  hide(el.getElementsByClassName('windowManagerOverlay')[0].id);
+}
+
+/* Add 8 handles (edges + corners) once per window, below your existing resizers if you keep them) */
+function wmAddHandles(winEl) {
+  const mk = (cls, dir) => {
+    const h = document.createElement('div');
+    h.className = 'wm-handle ' + cls;
+    h.setAttribute('onpointerdown', `startWindowResize(event,'${winEl.id}','${dir}')`);
+    return h;
+  };
+  winEl.appendChild(mk('wm-h-n',  'n'));
+  winEl.appendChild(mk('wm-h-s',  's'));
+  winEl.appendChild(mk('wm-h-e',  'e'));
+  winEl.appendChild(mk('wm-h-w',  'w'));
+  winEl.appendChild(mk('wm-h-nw', 'nw'));
+  winEl.appendChild(mk('wm-h-ne', 'ne'));
+  winEl.appendChild(mk('wm-h-sw', 'sw'));
+  winEl.appendChild(mk('wm-h-se', 'se'));
+}
 
 async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIndex) {
   // Display overlay in all other windows that youre able to click on them later
@@ -181,7 +237,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   windowContainer.setAttribute("data-setup", "['"+[windowName, icon, contentPath].join("', '")+"']");
   windowContainer.setAttribute("data-setup-minimized", minimized);
   windowContainer.setAttribute("data-setup-render-to-dom", "true");
-  windowContainer.classList.add("window","resizable","shadow");
+  windowContainer.classList.add("window","shadow");
   if(minimized) {
     windowContainer.classList.add("hide");
   }
@@ -191,14 +247,14 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
 
   // If position X+Y is set to null, place window a bit to further down and to the right.
   // reset after 30s.
-  if(!x){
+  if(!x && x !== 0){
     x = recentX+1;
     recentX = x;
     setTimeout(function() {
       recentX = 2;
     }, 20000);
   }
-  if(!y) {
+  if(!y && y !== 0) {
     y = recentY+3;
     recentY = y;
     setTimeout(function() {
@@ -217,23 +273,6 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
   } else {
     windowContainer.style.zIndex = recentZIndex;
   }
-
-  // Resizers
-  let resizers = document.createElement("div");
-  resizers.setAttribute("class", "resizers");
-  let resizerTopLeft = document.createElement("div");
-  resizerTopLeft.setAttribute("class", "resizer top-left");
-  resizers.appendChild(resizerTopLeft);
-  let resizerTopRight = document.createElement("div");
-  resizerTopRight.setAttribute("class", "resizer top-right");
-  resizers.appendChild(resizerTopRight);
-  let resizerBottomLeft = document.createElement("div");
-  resizerBottomLeft.setAttribute("class", "resizer bottom-left");
-  resizers.appendChild(resizerBottomLeft);
-  let resizerBottomRight = document.createElement("div");
-  resizerBottomRight.setAttribute("class", "resizer bottom-right");
-  resizers.appendChild(resizerBottomRight);
-  windowContainer.appendChild(resizers);
 
   // windowManagerOverlay
   let windowManagerOverlay = document.createElement("div");
@@ -350,7 +389,7 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     console.log("No splash screen found or error loading splash:", err.message || err);
   }
   
-    
+  // Add the window to the desktop!
   gebi('desktop').appendChild(windowContainer);
 
   // Add to taskbar or dock
@@ -387,8 +426,9 @@ async function addWindow(windowName, icon, contentPath, x,y, w,h, minimized, zIn
     gebi('dockTaskbar').appendChild(miminmizedWindow);
   }
 
-  makeResizableDiv('#'+id);
   setSystemColors(systemColor);
+
+  wmAddHandles(windowContainer);
 
   // Set focus to iframe content
   content.contentWindow.focus();
@@ -469,14 +509,27 @@ function getWindowFromTaskbar(id) {
 }
 
 async function minimizeWindow(id) {
-  /* console.log("minimizeWindow WTF: "+id); */
-  let currentWindow = gebi(id);
-  currentWindow.setAttribute("data-setup-minimized", true);
-  currentWindow.classList.add("minimizeWindow");
-  hideFrontMostWindowOverlay(); 
-  await delay(1000);  // Await CSS animation
+  const el = gebi(id);
+  el.setAttribute("data-setup-minimized", true);
+  el.classList.add("minimizeWindow");
+  hideFrontMostWindowOverlay();
+
+  // wait for animation or transition to finish
+  await new Promise(resolve => {
+    const done = () => {
+      el.removeEventListener('animationend', done);
+      el.removeEventListener('transitionend', done);
+      resolve();
+    };
+    el.addEventListener('animationend', done, {once:true});
+    el.addEventListener('transitionend', done, {once:true});
+
+    // fallback in case there is no animation
+    setTimeout(resolve, 1200);
+  });
+
   hide(id);
-  currentWindow.classList.remove("minimizeWindow");
+  el.classList.remove("minimizeWindow");
 }
 
 function maximizeWindow(id) {
@@ -530,7 +583,6 @@ async function setWindowIcon(id, event) {
     cl("Press alt key to change window icon");
     return;
   }
-
 
   let currentWindowIcon = gebi(id).getElementsByClassName('windowTitle')[0].getElementsByTagName('i')[0];
   let textContent = `<div class="chooseBox editIcon radius5 alignCenter">
