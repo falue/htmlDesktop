@@ -391,6 +391,8 @@ header.windowmenu .programButtons:hover {
 
 .dialog {
     font-family: Roboto, Arial, Helvetica, sans-serif;
+    position: absolute;
+    z-index: 99999;
 }
 
 .dialog input[type=text],
