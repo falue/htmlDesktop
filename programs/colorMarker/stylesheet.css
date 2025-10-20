@@ -23,11 +23,6 @@ fieldset legend {
     text-transform: uppercase;
 }
 
-input[type='checkbox']:not(:checked):before,
-input[type='checkbox']:checked:before {
-    content: "";
-}
-
 h5 {
     padding-top: .75em;
     line-height: 1em !important;

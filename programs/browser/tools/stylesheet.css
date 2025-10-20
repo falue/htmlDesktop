@@ -262,7 +262,7 @@ body {
 }
 
 .menu input[type='checkbox']:before {
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 .unikVersion {

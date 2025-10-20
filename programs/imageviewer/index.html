@@ -43,22 +43,22 @@
         <legend>Content + controls</legend>
         <button onclick="resetOrder(); location.reload(true);" class="pointer">Reset order</button><br>
         
-        <input id="hiddenBar" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="hiddenBar = this.checked; this.checked ? hideBar() : showBar()">
+        <input id="hiddenBar" type="checkbox" class="small" style="margin-right:.5em;" onchange="hiddenBar = this.checked; this.checked ? hideBar() : showBar()">
         <label for="hiddenBar">Hide program bar</label><br>
         
-        <input id="autoplay" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="autoplay = this.checked; localStorage.setItem('imageViewer-autoplay', this.checked)">
-        <!-- <input id="autoplay" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="autoplay = this.checked; this.checked ? localStorage.setItem('imageViewer-autoplay', true) :  localStorage.removeItem('imageViewer-autoplay')"> -->
+        <input id="autoplay" type="checkbox" class="small" style="margin-right:.5em;" onchange="autoplay = this.checked; localStorage.setItem('imageViewer-autoplay', this.checked)">
+        <!-- <input id="autoplay" type="checkbox" class="small" style="margin-right:.5em;" onchange="autoplay = this.checked; this.checked ? localStorage.setItem('imageViewer-autoplay', true) :  localStorage.removeItem('imageViewer-autoplay')"> -->
         <label for="autoplay">Autoplay</label><br>
         
-        <input id="disableThumbs" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="gebi('thumbnails').style.transition = 'padding-top 250ms, opacity 350ms, transform 1s'; toggleThumbnails()">
+        <input id="disableThumbs" type="checkbox" class="small" style="margin-right:.5em;" onchange="gebi('thumbnails').style.transition = 'padding-top 250ms, opacity 350ms, transform 1s'; toggleThumbnails()">
         <label for="disableThumbs">Gallery: Hide miniatures</label><br>
         
-        <input id="disableVideoControls" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="disableVideoControls = this.checked; setVideoControls()">
+        <input id="disableVideoControls" type="checkbox" class="small" style="margin-right:.5em;" onchange="disableVideoControls = this.checked; setVideoControls()">
         <label for="disableVideoControls">Video: Hide Controls</label><br>
 
-        <input id="allowZoom" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="toggleZoom(this.checked)">
+        <input id="allowZoom" type="checkbox" class="small" style="margin-right:.5em;" onchange="toggleZoom(this.checked)">
         <label for="allowZoom">Allow zoom</label><br>
-        <input id="letterbox" type="checkbox" class="small" style="margin-right:.5em; transform: translateY(.25em)" onchange="toggleLetterbox(this.checked)" checked>
+        <input id="letterbox" type="checkbox" class="small" style="margin-right:.5em;" onchange="toggleLetterbox(this.checked)" checked>
         <label for="letterbox">Images: Letterboxed</label>
         <br>
         <button onclick="gebi('content').classList.toggle('transition'); hide('settings');" class="pointer">Use transition animation</button><br>
