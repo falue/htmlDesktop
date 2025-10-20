@@ -42,6 +42,12 @@ function compileSaveFile(saveFileName, download) {
 
   let selectedSystemMessage = gebi('osNotificationsSelect').selectedIndex;
 
+  let effects = ppe.querySelectorAll('#ppe div:not(.hide)');
+  let enabledEffects = [];
+  effects.forEach((element, i) => {
+    enabledEffects[i] = {"id": element.id, "opacity": parseFloat(element.style.opacity)};
+  });
+
   let data = {};
   data["settings"] = {
     systemColor: systemColor,
@@ -59,7 +65,8 @@ function compileSaveFile(saveFileName, download) {
     workstation: workstation,
     selectedSystemMessage: selectedSystemMessage,
     bootSpeed: parseInt(gebi('bootSpeedSlider').value),
-    osNotificationsDelay: parseInt(gebi('osNotificationsDurationSlider').value)
+    osNotificationsDelay: parseInt(gebi('osNotificationsDurationSlider').value),
+    enabledPpe: enabledEffects
   };
   data["systemIcons"] = systemIcons;
   data["windows"] = dataWindows;

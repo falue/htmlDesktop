@@ -38,6 +38,20 @@ Object with all general settings of this workstation. OS and workstation-name ar
 - `"workstation": "telefabi"` *same name as folder in `workstations/..`*
 - `"selectedSystemMessage": 1` *index of osNotification array; starts with `0`*
 - `"osNotificationsDelay": 0` *only gets re-set by changing the delay slider via the UI*
+- `"enabledPpe": []`"  *arrayof objc ets of id and opacity of enable post processing effect (ppe)*
+
+> these PPEs are available with these standard opacities:
+```
+    ppe-vignette (0.5)
+    ppe-bloom (0.25)
+    ppe-pixels (0.25)
+    ppe-scanlines (0.25)
+    ppe-scanlines-old (0.25)
+    ppe-jja-lensflares (0.4)
+    ppe-filmgrain (0.1)
+    ppe-dirty-screen (0.25)
+    ppe-crt-reflection (0.25)
+```
 
 #### **systemIcons**
 Array of strings containig specific material-icon names. Add any icon name that you want to be displayed. If empty, no icons are shown.

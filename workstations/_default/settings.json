@@ -9,7 +9,12 @@
         "password": "1234",
         "workstation": "_default",
         "selectedSystemMessage": 3,
-        "osNotificationsDelay": 0
+        "osNotificationsDelay": 0,
+        "enabledPpe": [
+            {"id": "ppe-vignette", "opacity": 0.5},
+            {"id": "ppe-pixels", "opacity": 0.25},
+            {"id": "ppe-filmgrain", "opacity": 0.1}
+        ]
     },
     "systemIcons": [
         "expand_less",

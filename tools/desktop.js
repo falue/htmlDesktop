@@ -229,14 +229,28 @@ function setLoginGradient(gradient, saveToLocalStorage) {
     }
 }
 
+function setPpeOpacity(id, opacityDelta) {
+    let newOpacity = parseFloat(gebi(id).style.opacity) + opacityDelta;
+    newOpacity = clamp(newOpacity, 0.05, 1.0);
+    gebi(`${id}-val`).innerHTML = parseInt(newOpacity*100) + "%";
+    gebi(id).style.opacity = newOpacity;
+}
+
 function createPpeDialog() {
     let effects = ppe.querySelectorAll('#ppe div');
     let effectsList = "";
     effects.forEach(element => {
-        effectsList += `<li>
+        let opacity = parseFloat(element.style.opacity);
+        let opacityValue = `<span id="${element.id}-val" class="grey paddingX50">${parseInt(opacity*100)}%</span>`;
+        let opacityBtns = `<button class="small" onclick="setPpeOpacity('${element.id}', -0.05)">-</button> <button class="small" onclick="setPpeOpacity('${element.id}', 0.05)">+</button>`;
+        effectsList += `<li class="relative">
         <label class="maxWidth block pointer">
             <input type="checkbox" class="valign" ${element.classList.contains('hide') ? '' : 'checked'} onchange="toggle('${element.id}')">
             ${element.dataset['name']}
+            <div class="small right top padding75 paddingX0">
+                ${opacityValue} 
+                ${opacityBtns}
+            </div>
         </label>
         </li>`
     });
