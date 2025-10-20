@@ -269,7 +269,7 @@ header.windowmenu .programButtons:hover {
 #actionMenu:not(.hide) {
     display: flex !important;
     justify-content: center;
-    z-index: 99998;
+    z-index: 200000;
 }
 
 .actionMenu {
@@ -280,7 +280,7 @@ header.windowmenu .programButtons:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    z-index: 99998;
+    z-index: 200000;
 }
 
 @media all and (max-width: 1100px), (max-height: 800px) {
@@ -392,7 +392,7 @@ header.windowmenu .programButtons:hover {
 .dialog {
     font-family: Roboto, Arial, Helvetica, sans-serif;
     position: absolute;
-    z-index: 99999;
+    z-index: 200001;
 }
 
 .dialog input[type=text],

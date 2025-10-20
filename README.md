@@ -55,6 +55,57 @@ In order to make the brute force attack on the local cache work (click in the ac
 
 cd into `tools/` and execute `bash collectPaths.sh`. This saves all the current .css, .js, .txt, .json, .fakeBash, .splash paths in a document called `collectedPAths.txt`, which is used to hard reload all meta data files from within javascript.
 
+---
+
+# Z-index guide table
+| zIndex                       | element                      | Note                                                             |
+|------------------------------|------------------------------|------------------------------------------------------------------|
+| 0                            | desktop                      |                                                                  |
+| 1                            | systemBar                    |                                                                  |
+| 2                            | desktop shortcuts            |                                                                  |
+| 3...                         | windows                      | Apps etc., dynamically created                                   |
+|                              |                              |                                                                  |
+| ***Special system windows*** |                              |                                                                  |
+| 998                          | osNotifications              |                                                                  |
+| 999                          | splash                       |                                                                  |
+|                              |                              |                                                                  |
+| ***Special screens***        |                              |                                                                  |
+| 5000                         | loggingOut                   |                                                                  |
+| 5000                         | shuttingDown                 |                                                                  |
+| 5001                         | lockScreenSystemColorOverlay |                                                                  |
+| 5002                         | lockScreenColorOverlay       |                                                                  |
+| 5003                         | boot/startup                 |                                                                  |
+|                              |                              |                                                                  |
+| ***Fullscreen elements p1*** |                              |                                                                  |
+| 9997                         | screensaver                  |                                                                  |
+| 9998                         | GPU fail                     |                                                                  |
+| 9999                         | death                        |                                                                  |
+|                              |                              |                                                                  |
+| ***PPE***                    |                              | Post processing effects - these do affect everything above here! |
+| 100000                       | ppe-vignette                 |                                                                  |
+| 100001                       | ppe-bloom                    |                                                                  |
+| 100002                       | ppe-pixels                   |                                                                  |
+| 100003                       | ppe-scanlines                |                                                                  |
+| 100004                       | ppe-scanlines-old            |                                                                  |
+| 100005                       | ppe-jja-lensflares           |                                                                  |
+| 100006                       | ppe-filmgrain                |                                                                  |
+| 111111                       | brightnessOverlay            | Does also affect the PPE themselves                              |
+|                              |                              |                                                                  |
+| ***above***                  |                              |                                                                  |
+| 150000                       | black                        |                                                                  |
+|                              |                              |                                                                  |
+| ***Effects on top of all***  |                              | Also affects the black screen when enabled                       |
+| 175000                       | ppe ppe-dirty-screen         |                                                                  |
+| 175001                       | ppe ppe-crt-reflection       |                                                                  |
+|                              |                              |                                                                  |
+| ***Fullscreen elements p2*** |                              |                                                                  |
+| 190000                       | green                        | Is not affected by ANY PPEs                                      |
+|                              |                              |                                                                  |
+| ***Meta***                   |                              |                                                                  |
+| 200000                       | actionMenu                   |                                                                  |
+| 200001                       | dialogBoxes                  |                                                                  |
+
+
 
 # Problems with GIT update on prop machines
 
