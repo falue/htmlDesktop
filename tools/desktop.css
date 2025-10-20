@@ -590,6 +590,89 @@ body {
     box-shadow: -80px 0 0 80px #808080;
 }
 
+.ppe {
+    pointer-events: none;
+    position: relative;
+    /* z-index: 11112; */
+}
+.ppe > div {
+    /* position: relative; */
+    isolation: isolate;
+}
+
+#ppe-dirty-screen {
+    background-image: url(../tools/ppe/dirty-screen.jpg);
+    background-size: 100% 100%;
+    opacity: 0.25;
+    mix-blend-mode: exclusion;
+}
+
+#ppe-crt-reflection {
+    background-image: url(../tools/ppe/crt-reflection.png);
+    background-size: 100% 100%;
+    opacity: 0.25;
+    mix-blend-mode: lighten;
+}
+
+#ppe-pixels {
+    background-image: url(../tools/ppe/pixels.png);
+    /* background-size: 4px 5px; */
+    image-rendering: pixelated;
+    mix-blend-mode: overlay;
+    opacity: 0.25;
+}
+
+#ppe-vignette {
+    background: radial-gradient(transparent, rgba(43, 24, 0, .25), rgba(43, 24, 0, 1));
+    mix-blend-mode: soft-light;
+    opacity: 0.5;
+}
+
+#ppe-scanlines {
+    background-image: url(../tools/ppe/scanlines.png);
+    background-size: 6px;
+    image-rendering: pixelated;
+    mix-blend-mode: overlay;
+    opacity: 0.25;
+}
+
+#ppe-scanlines-old {
+    background-image: url(../tools/ppe/scanlines-old.png);
+    background-size: 5px;
+    image-rendering: pixelated;
+    mix-blend-mode: exclusion;
+    opacity: 0.25;
+}
+
+#ppe-grain {
+    background-image: url(../tools/ppe/scanlines-old.png);
+    /* background-size: 5px; */
+    image-rendering: pixelated;
+    mix-blend-mode: exclusion;
+    opacity: 0.25;
+}
+
+#ppe-bloom {
+    backdrop-filter: blur(12px) contrast(150%) brightness(2);
+    opacity: 0.25;
+}
+
+#ppe-filmgrain {
+    background-image: url(../tools/ppe/filmgrain.jpg);
+    background-size: 150%;
+    background-position: 50% 50%;
+    mix-blend-mode: multiply;
+    opacity: 0.1;
+    animation: filmgrain 240ms steps(1) infinite;
+}
+
+#ppe-jja-lensflares {
+    backdrop-filter: blur(3px) brightness(1.5);
+    transform: scaleX(10);
+    filter: hue-rotate(70deg) saturate(1.6);
+    opacity: 0.4;
+}
+
 #gpuFail {
     pointer-events: none;
     background-image: url(../tools/gpuFail.png);
