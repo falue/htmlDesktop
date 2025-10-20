@@ -34,7 +34,7 @@
             "y": 18,
             "w": 600,
             "h": 350,
-            "zIndex": 1,
+            "zIndex": 2,
             "minimized": false,
             "renderToDom": true
         },
@@ -46,7 +46,7 @@
             "y": 1,
             "w": 888,
             "h": 850,
-            "zIndex": 2,
+            "zIndex": 3,
             "minimized": false,
             "renderToDom": true
         },
@@ -58,7 +58,7 @@
             "y": 2,
             "w": 1000,
             "h": 777,
-            "zIndex": 3,
+            "zIndex": 4,
             "minimized": false,
             "renderToDom": false
         },
@@ -70,7 +70,7 @@
             "y": 36,
             "w": 1088,
             "h": 514,
-            "zIndex": 4,
+            "zIndex": 5,
             "minimized": false,
             "renderToDom": true
         },
@@ -82,7 +82,7 @@
             "y": 46,
             "w": 666,
             "h": 450,
-            "zIndex": 5,
+            "zIndex": 6,
             "minimized": false,
             "renderToDom": true
         },
@@ -94,7 +94,7 @@
             "y": 13,
             "w": 666,
             "h": 450,
-            "zIndex": 6,
+            "zIndex": 7,
             "minimized": false,
             "renderToDom": true
         },
@@ -106,7 +106,7 @@
             "y": 5,
             "w": 643,
             "h": 405,
-            "zIndex": 7,
+            "zIndex": 8,
             "minimized": false,
             "renderToDom": true
         },
@@ -119,7 +119,7 @@
             "y": 16,
             "w": 831,
             "h": 549,
-            "zIndex": 8,
+            "zIndex": 9,
             "minimized": false,
             "renderToDom": true
         },
@@ -131,7 +131,7 @@
             "y": 17,
             "w": 400,
             "h": 600,
-            "zIndex": 9,
+            "zIndex": 10,
             "minimized": false,
             "renderToDom": true
         },
@@ -143,7 +143,7 @@
             "y": 70,
             "w": 343,
             "h": 223,
-            "zIndex": 10,
+            "zIndex": 111,
             "minimized": false,
             "renderToDom": true
         },
@@ -155,7 +155,7 @@
             "y": 28,
             "w": 900,
             "h": 600,
-            "zIndex": 11,
+            "zIndex": 112,
             "minimized": true,
             "renderToDom": true
         },
@@ -167,7 +167,7 @@
             "y": 63,
             "w": 250,
             "h": 300,
-            "zIndex": 12,
+            "zIndex": 113,
             "minimized": false,
             "renderToDom": true
         }
