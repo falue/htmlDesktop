@@ -40,22 +40,22 @@
     </div>
 
     <!-- BRIGHTNESS -->
-    <div id="brightnessOverlay" class="blackBg fixed top left maxWidth maxHeight op0" style="pointer-events: none; z-index: 10000;">
+    <div id="brightnessOverlay" class="blackBg fixed top left maxWidth maxHeight op0" style="pointer-events: none; z-index: 111111;">
     </div>
 
     <!-- SHENANIGANS -->
     <!-- lock screen -->
     <div id="lockScreen" class="hide">
-      <div id="loggingOut" class="fixed centerContent white blackDarkBgTransparent maxWidth maxHeight" style="z-index: 9998;">
+      <div id="loggingOut" class="fixed centerContent white blackDarkBgTransparent maxWidth maxHeight" style="z-index: 5000;">
         Logging out.. <i class="material-icons spin valign small white relative">refresh</i>
       </div>
-      <div id="shuttingDown" class="fixed centerContent white blackDarkBgTransparent maxWidth maxHeight hide" style="z-index: 9998;">
+      <div id="shuttingDown" class="fixed centerContent white blackDarkBgTransparent maxWidth maxHeight hide" style="z-index: 5000;">
         Shutting down.. <i class="material-icons spin valign small white relative">refresh</i>
       </div>
 
-      <div id="lockScreenSystemColorOverlay" class="hide fixed centerContent systemColors maxWidth maxHeight" style="z-index: 9998;">
+      <div id="lockScreenSystemColorOverlay" class="hide fixed centerContent systemColors maxWidth maxHeight" style="z-index: 5001;">
       </div>
-      <div id="lockScreenColorOverlay" class="hide lockScreen fixed centerContent maxWidth maxHeight alignCenter" style="z-index: 9999;">
+      <div id="lockScreenColorOverlay" class="hide lockScreen fixed centerContent maxWidth maxHeight alignCenter" style="z-index: 5002;">
         <div id="lockScreenWindow" class="systemColors whiteBgTransparent padding05 radius10">
           <img id="lockScreenUserPicture" class="shadow" src="os/_generic/userpicture.jpg" alt="">
           <div class="small italics" id="lockScreenUserName">USERNAME</div>
@@ -97,7 +97,7 @@
     </div>
 
     <!-- GREENSCREEN -->
-    <div id="greenscreen" class="fixed blackBg maxWidth maxHeight hide" style="z-index: 9999;">
+    <div id="greenscreen" class="fixed blackBg maxWidth maxHeight hide" style="z-index: 190000;">
       <iframe id="greenscreen-iframe" src="programs/colorMarker/index.html" class="fixed maxHeight maxWidth"></iframe>
     </div>
 
@@ -111,10 +111,10 @@
     </div>
 
     <!-- BLACKOUT -->
-    <div id="blackout" onclick="setOverlayColor('BLACK');" class="fixed top left blackBg maxWidth maxHeight hide noCursor" style="z-index: 11111;"></div>
+    <div id="blackout" onclick="setOverlayColor('BLACK');" class="fixed top left blackBg maxWidth maxHeight hide noCursor" style="z-index: 150000;"></div>
 
     <!-- STARTUP -->
-    <div id="startUp" data-is-starting-up="false" onclick="startUp();" class="fixed top left blackBg white maxWidth maxHeight hide noCursor padding1" style="z-index: 9999;">
+    <div id="startUp" data-is-starting-up="false" onclick="startUp();" class="fixed top left blackBg white maxWidth maxHeight hide noCursor padding1" style="z-index: 5003;">
       <code id="startUp-code" class="small whiteSpace" style="font-family:'Source Code Pro', Consolas, monospace;"></code>
       <div id="startUp-loader" class="hide centerContent white maxHeight">
         <div class="block alignCenter">
@@ -128,13 +128,13 @@
     </div>
     
     <!-- SCREENSAVER -->
-    <video id="screensaver" onclick="screensaverHide();" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 9999; object-fit: cover;" playsinline loop muted>
+    <video id="screensaver" onclick="screensaverHide();" class="fixed blackBg maxWidth maxHeight hide noCursor" style="z-index: 9997; object-fit: cover;" playsinline loop muted>
       <source id="screensaverSrc" src="os/windows/screensaver.mp4" type="video/mp4">
     </video>
 
     <!-- SPLASHSCREENS -->
     <div id="splashScreen" class="hide" onclick="hide('splashScreen')">
-      <div id="splashScreenOverlay" class="splashScreen fixed centerContent maxWidth maxHeight alignCenter" style="z-index: 9999;">
+      <div id="splashScreenOverlay" class="splashScreen fixed centerContent maxWidth maxHeight alignCenter" style="z-index: 999;">
         <div id="splashScreenWindow" class="systemColors shadow"></div>
       </div>
     </div>
@@ -322,7 +322,7 @@
     </div>
 
     <!-- ACTION MENU -->
-    <div id="actionMenu" class="hide fixed top left maxWidth maxHeight dontResizeWithGui">
+    <div id="actionMenu" class="hide blackBgTransparent fixed top left maxWidth maxHeight dontResizeWithGui">
       <div class="actionMenu darkGreyBg shadow radius5 noScrollbar">
         <!-- TITEL -->
         <div class="actionMenuTitle paddingY50 paddingX1 maxWidth fancy" onclick="hide('actionMenu');">
