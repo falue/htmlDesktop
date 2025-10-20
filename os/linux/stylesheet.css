@@ -343,12 +343,14 @@ padding-top: .2em;
 .startMenu ul div.submenu {
     display: none;
     position: absolute;
-    top: -2em;
+    bottom: -19em;
     left: 90%;
     box-sizing: content-box;
     border: 1em transparent solid;
     border-left: 2.5em transparent solid;
     border-radius: .3em;
+    max-height: 85vh;
+    overflow-y: auto;
 }
 
 .startMenu li:hover div.submenu {
@@ -357,8 +359,7 @@ padding-top: .2em;
 
 .startMenu ul div.submenu ul {
     padding: .5em;
-    max-height:17.75em;
-    overflow: auto;
+    border-radius: .3em;
 }
 
 .startMenu ul div.submenu ul li {

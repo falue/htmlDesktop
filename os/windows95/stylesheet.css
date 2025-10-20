@@ -532,7 +532,7 @@ body .minimizeWindow { animation: minimizeWindow 0s ease-in 1 forwards !importan
 .startMenu ul div.submenu {
     display: none;
     position: absolute;
-    bottom: -11.75em;
+    bottom: -16em;
     left: 100%;
     box-sizing: content-box;
     border-top:solid .1em white;
@@ -540,6 +540,8 @@ body .minimizeWindow { animation: minimizeWindow 0s ease-in 1 forwards !importan
     border-right:solid .1em black;
     border-bottom:solid .1em black;
     box-shadow:inset -.1em -.1em #808080, inset .1em .1em #dfdfdf;
+    max-height: 85vh;
+    overflow-y: auto;
 }
 
 .startMenu li:hover div.submenu {
@@ -547,9 +549,6 @@ body .minimizeWindow { animation: minimizeWindow 0s ease-in 1 forwards !importan
 }
 
 .startMenu ul div.submenu ul {
-    /* padding: .5em; */
-    max-height:17.75em;
-    overflow: auto;
 }
 
 .startMenu ul div.submenu ul li {

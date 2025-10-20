@@ -201,7 +201,7 @@
           </ul>
 
           <ul class="appList">
-            <li>
+            <li onclick="hide('startMenu'); startDefaultProgram('fileManager');">
               <i class="material-icons systemColors clearBg op50">folder</i>
               Filemanager
             </li>
@@ -212,26 +212,119 @@
               <i class="material-icons whiteTransparent systemColors clearBg right">chevron_right</i>
               <div class="submenu">
                 <ul class="systemColors shadow noScrollbar">
+
+                   <!-- Office -->
+                  <li class="op50 maxWidth small noLiHover" style="padding-top:0.75em;">Office</li>
+                  
                   <li onclick="hide('startMenu'); startDefaultProgram('fileManager')">
                     <i class="material-icons small systemColors clearBg">folder</i> File manager
+                  </li>
+
+                  <li onclick="hide('startMenu'); addWindow('Office - Turbo Encabulator', 'window', 'officeTabulator', null,null, 1200,825, false);">
+                    <i class="material-icons small systemColors clearBg">window</i> Office Encabulator
+                  </li>
+
+                  <li onclick="hide('startMenu'); addWindow('Office - WordP - Untitled.doc*', 'description', 'word', null,null, 1000,666, false);">
+                    <i class="material-icons small systemColors clearBg">description</i> Office WordP
                   </li>
 
                   <li onclick="hide('startMenu'); startDefaultProgram('textEditor')">
                     <i class="material-icons small systemColors clearBg">edit_note</i> Text editor
                   </li>
 
-                  <li onclick="hide('startMenu'); addWindow('WordP - Untitled.doc*', 'description', 'word', 12, 6, 1000,666, false);">
-                    <i class="material-icons small systemColors clearBg">description</i> WordP
-                  </li>
+
+                  <!-- Research -->
+                  <li class="op50 maxWidth small noLiHover" style="padding-top:0.75em;">Research</li>
 
                   <li onclick="hide('startMenu'); startDefaultProgram('browser')">
                     <i class="material-icons small systemColors clearBg">public</i> Browser
                   </li>
 
+                  <li onclick="hide('startMenu'); addWindow('FingerLab', 'fingerprint', 'fingerlab', null,null, 888,666);">
+                    <i class="material-icons small systemColors clearBg">fingerprint</i> FingerLab
+                  </li>
+
+                  <li onclick="hide('startMenu'); addWindow('Surveillance|Surveillance', 'photo_camera_front', 'map', null,null, 888,666);">
+                    <i class="material-icons small systemColors clearBg">photo_camera_front</i> Surveillance|Surveillance
+                  </li>
+
+                  <li onclick="hide('startMenu'); addWindow('DNA profiler', 'api', 'dna', null,null, 888,666);">
+                    <i class="material-icons small systemColors clearBg">api</i> DNA profiler
+                  </li>
+
+                  <li onclick="hide('startMenu'); addWindow('PKU Patient List', 'local_hospital', 'helpdesk', null,null, 1000,777);">
+                    <i class="material-icons small systemColors clearBg">local_hospital</i> PKU Patient List
+                  </li>
+
+
+                  <!-- Communication -->
+                  <li class="op50 maxWidth small noLiHover" style="padding-top:0.75em;">Communication</li>
+
+                  <li onclick="hide('startMenu'); addWindow('Messenger', 'forum', 'chat', null,null, 400,550, false);">
+                    <i class="material-icons small systemColors clearBg">forum</i> Chat
+                  </li>
+
+                  <li onclick="hide('startMenu'); startDefaultProgram('webcam')">
+                    <i class="material-icons small systemColors clearBg">videocam</i> Webcam
+                  </li>
+
+                  <li onclick="hide('startMenu'); addWindow('iqcsn Messenger', 'try', 'iqcsn', null,null, 800,700, false);">
+                    <i class="material-icons small systemColors clearBg">try</i> iqcsn Messenger
+                  </li>
+
+
+                  <!-- Programming -->
+                  <li class="op50 maxWidth small noLiHover" style="padding-top:0.75em;">Programming</li>
+
+                  <li onclick="hide('startMenu'); addWindow('x_ide', 'data_object', 'x_ide', null,null, 1280,777);">
+                    <i class="material-icons small systemColors clearBg">data_object</i> x_ide
+                  </li>
+
+                  <li onclick="hide('startMenu'); addWindow('Neptcode Notebook', 'code', 'neptcode', null,null, 1200,650, false);">
+                    <i class="material-icons small systemColors clearBg">code</i> Neptcode Notebook
+                  </li>
+                  
+                  <!-- Creative -->
+                  <li class="op50 maxWidth small noLiHover" style="padding-top:0.75em;">Creative</li>
+
+                  <li onclick="hide('startMenu'); startDefaultProgram('colorMarker')">
+                    <i class="material-icons small systemColors clearBg">palette</i> Paint
+                  </li>
+
                   <li onclick="hide('startMenu'); startDefaultProgram('imageViewer')">
                     <i class="material-icons small systemColors clearBg">image</i> Image viewer
                   </li>
-                  
+
+                  <!-- NEEDS WORK! 
+                    menu btn to top right
+                    hide menu on load if URL param set?
+                    make "nicer" like colormarker..?
+                  -->
+                  <li onclick="hide('startMenu'); addWindow('VidPlayer', 'ondemand_video', 'videoplayer', null,null, 800,700, false);">
+                    <i class="material-icons small systemColors clearBg">ondemand_video</i> VidPlayer
+                  </li>
+
+                  <li onclick="hide('startMenu'); addWindow('New Window', 'grid_view', 'magic', null,null, 1200,825, false);">
+                    <i class="material-icons small systemColors clearBg">auto_fix_normal</i> Magic
+                  </li>
+
+                  <li class="absolute" onclick="hide('startMenu'); startDefaultProgram('threejsEditor')" >
+                    <i class="material-icons small systemColors clearBg">view_in_ar</i> Threejs - Editor
+                    <div class="right top relative padding60">
+                      <i class="material-icons op50">chevron_right</i>
+                      <button data-title="3d Player" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('threejsPlayer');">
+                        <i class="material-icons">view_in_ar</i>
+                      </button>
+                    </div>
+                  </li>
+
+                  <!-- System -->
+                  <li class="op50 maxWidth small noLiHover" style="padding-top:0.75em;">System</li>
+
+                  <li onclick="hide('startMenu'); startDefaultProgram('bash')">
+                    <i class="material-icons small systemColors clearBg">code</i> Bash Console
+                  </li>
+                                    
                   <li class="absolute" onclick="hide('startMenu'); startDefaultProgram('terminal', 0);">
                     <i class="material-icons small systemColors clearBg">code</i> Terminal
                     <div class="right top relative padding60">
@@ -257,50 +350,21 @@
                     </div>
                   </li>
 
-                  <li onclick="hide('startMenu'); startDefaultProgram('bash')">
-                    <i class="material-icons small systemColors clearBg">code</i> Bash Console
-                  </li>
-
-                  <li onclick="hide('startMenu'); startDefaultProgram('webcam')">
-                    <i class="material-icons small systemColors clearBg">videocam</i> Webcam
-                  </li>
-
-                  <li onclick="hide('startMenu'); startDefaultProgram('colorMarker')">
-                    <i class="material-icons small systemColors clearBg">palette</i> Paint
-                  </li>
-
-                  <li onclick="hide('startMenu'); addWindow('New Window', 'grid_view', 'magic', 12, 6, 1200,900, false);">
-                    <i class="material-icons small systemColors clearBg">auto_fix_normal</i> Magic
-                  </li>
-
-                  <li onclick="hide('startMenu'); addWindow('Office - Turbo Encabulator', 'window', 'officeTabulator',12, 6, 1200,900, false);">
-                    <i class="material-icons small systemColors clearBg">window</i> Office Encabulator
-                  </li>
-
-                  <li class="absolute" onclick="hide('startMenu'); startDefaultProgram('ftp')" >
+                  <li class="absolute" onclick="hide('startMenu'); startDefaultProgram('ftp')">
                     <i class="material-icons small systemColors clearBg">storm</i> FTP Client
-                    <div class="right top relative padding60">
-                      <i class="material-icons op50">chevron_right</i>
-                      <button data-title="Connect" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('ftp-connect');">
-                        <i class="material-icons">storm</i>
-                      </button>
-                    </div>
                   </li>
                   
-                  <li class="absolute" onclick="hide('startMenu'); startDefaultProgram('threejsEditor')" >
-                    <i class="material-icons small systemColors clearBg">view_in_ar</i> Threejs - Editor
-                    <div class="right top relative padding60">
-                      <i class="material-icons op50">chevron_right</i>
-                      <button data-title="3d Player" class="valign tiny tooltip" onclick="event.stopPropagation(); hide('startMenu'); startDefaultProgram('threejsPlayer');">
-                        <i class="material-icons">view_in_ar</i>
-                      </button>
-                    </div>
+                  <li onclick="hide('startMenu'); addWindow('Securiton', 'camera_indoor', 'securiton', null,null, 1200,825, false);">
+                    <i class="material-icons small systemColors clearBg">camera_indoor</i> Securiton
                   </li>
 
-                  <li onclick="hide('startMenu'); addWindow('Neptcode Notebook', 'code', 'neptcode', incrementWindowsPosition('x'), incrementWindowsPosition('y'), 1200,650, false);">
-                    <i class="material-icons small systemColors clearBg">code</i> Neptcode Notebook
+                  <li onclick="hide('startMenu'); addWindow('ServerMNGR', 'storage', 'servermanager', null,null, 1200,825, false);">
+                    <i class="material-icons small systemColors clearBg">storage</i> ServerMNGR
                   </li>
 
+                  <li onclick="hide('startMenu'); addWindow('Server|Supervisor', 'holiday_village', 'supervisor', null,null, 1200,825, false);">
+                    <i class="material-icons small systemColors clearBg">holiday_village</i> Server|Supervisor
+                  </li>
                 </ul>
               </div>
             </li>
@@ -312,7 +376,7 @@
               <i class="material-icons systemColors clearBg op50">construction</i>
               Accessoires
             </li>
-            <li>
+            <li onclick="hide('startMenu'); startDefaultProgram('bash');">
               <i class="material-icons systemColors clearBg op50">send</i>
               Run..
             </li>
@@ -866,8 +930,8 @@
             </div>
             <div class="op50"><i data-setup-system-icons class="material-icons hover" id="systemIcons-expand_less">expand_less</i></div><!-- 
          --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-account_circle">account_circle</i></div><!-- 
-         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-wifi">wifi</i></div><!-- 
-         --><div><i data-setup-system-icons class="material-icons hover hide" id="systemIcons-wifi_off">wifi_off</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-wifi" ondblclick="addWindow('Wifi Settings', 'wifi', 'wifi', 12, 6, 450,550, false)">wifi</i></div><!-- 
+         --><div><i data-setup-system-icons class="material-icons hover hide" id="systemIcons-wifi_off" ondblclick="addWindow('Wifi Settings', 'wifi', 'wifi', 12, 6, 450,550, false)">wifi_off</i></div><!-- 
          --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-usb">usb</i></div><!-- 
          --><div><i data-setup-system-icons class="material-icons hover" id="systemIcons-bluetooth">bluetooth</i></div><!-- 
          --><div><i data-setup-system-icons class="material-icons hover hide" id="systemIcons-gpp_maybe">gpp_maybe</i></div><!-- 
