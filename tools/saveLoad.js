@@ -298,6 +298,7 @@ function saveAllWindows() {
     contentsSaved.push(data[0]+"-"+data[2]);
     // Get original positions and data & add to object
     windows.push({
+      metaTitle: "",  // maybe get the title from initial windows or so?
       windowName: gebi('title-' + windowData.id).innerHTML,
       icon: gebi(windowData.id).getElementsByClassName('windowTitle')[0].getElementsByTagName('i')[0].innerHTML,
       contentPath: data[2],
