@@ -17,6 +17,9 @@ body {
     box-orient: horizontal;
     background: black;
     color: white;
+    overscroll-behavior: none;  /* disable scroll chaining */
+    touch-action: none;         /* block touch gestures (scroll, pinch, swipe) */
+    user-select: none;          /* prevent text selection / hold highlight */
 }
 
 .blue { color: rgba(88,150,255,1); }
@@ -31,18 +34,20 @@ aside {
     padding: 1em;
     box-sizing: border-box;
     position: fixed;
+    right:0;
     width: 420px;
     background: #444;
     overflow-y: auto;
     z-index: 666;
-    max-height: calc(100% - 2em);
+    max-height: 85%;
     border-radius: 3px;
 }
 
 aside > div {
-    padding: 10px 0;
-    border-bottom: 1px solid #222;
-    border-top: 1px solid #888;
+    padding: 0.75em;
+    border: thin rgba(127,127,127,0.5) solid;
+    border-radius: 5px;
+    margin:0.5em 0 ;
     transition: background 0.3s ease;
 }
 
@@ -54,15 +59,6 @@ aside > div {
 #hotkeysImages div:hover,
 #hotkeysVideos div:hover {
     background: #666;
-}
-
-aside div:first-child {
-    padding-top: 20px;
-    border-top: none;
-}
-
-aside div:last-child {
-    border-radius: 0 0 4px 0;
 }
 
 label {
@@ -104,6 +100,10 @@ input:focus, input:active {
     outline: none;
 }
 
+input::placeholder {
+    color:white;
+}
+
 button:active {
     filter:invert(1)
 }
@@ -121,14 +121,18 @@ button:active {
 select, input, button {
     background: #777;
     width: 100%;
-    height: 20px;
     border: none;
     color: white;
     border-radius: 3px;
 }
 
+select {
+    padding:8px 12px;
+}
+
 input, button {
     appearance: none !important;
+    padding:8px 12px;
 }
 
 input[type=file] {
@@ -140,6 +144,9 @@ select:hover, input:hover, button:hover {
     cursor: pointer;
 }
 
+input[type="range"] {
+    padding: 0;
+}
 input[type="range"]:hover {
     cursor: col-resize;
 }
@@ -195,7 +202,7 @@ video.noControls {
 .menu-hidden {
     position: fixed;
     top:0;
-    left: 0;
+    right: 0;
     width: 40px;
     height: 40px;
     z-index: 3;
