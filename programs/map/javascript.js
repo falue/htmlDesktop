@@ -5,6 +5,8 @@ async function setup() {
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode') === 'true';
     let scene = urlParams.get('scene');
+    if(!scene) scene = "_example";
+    console.log(scene)
     let mapPath = `data/${scene}/map.svg`;
     
     // Set generic system fonts

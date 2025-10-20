@@ -8,8 +8,12 @@ header {
     width: 100%;
     height: 1.5em;
     box-sizing: border-box;
-    border-bottom: solid thin grey;
+    /* border-bottom: solid thin grey; */
     background-color: rgba(0,0,0,.05);
+}
+
+.programButtons {
+    border:none !important;
 }
 
 .toolBar {
@@ -21,8 +25,8 @@ header {
 
 .toolBar button {
     font-family: inherit;
-    border: solid thin grey;
-    padding: .25em;
+    /* border: solid thin grey; */
+    padding: .25em .5em;
 }
 
 .toolBar > button {
@@ -41,7 +45,7 @@ header {
 .buttonGroup button:first-of-type {
     border-top-left-radius: .25em;
     border-bottom-left-radius: .25em;
-    border-left: solid thin grey;
+    /* border-left: solid thin grey; */
 }
 
 .buttonGroup button:last-of-type {
@@ -54,7 +58,7 @@ header {
     height: calc(100% - 3.6em);
     top: 3.6em;
     box-sizing: content-box;
-    border-right: solid rgba(125,125,125,.25) thin;
+    /* border-right: solid rgba(125,125,125,.25) thin; */
 }
 
 iframe {

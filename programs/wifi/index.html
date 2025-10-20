@@ -16,7 +16,7 @@
   <body onload="setup();" onkeydown="parent.keyboardController(event);">
     <div class="relative paddingX1">
       <h2 class="marginY1 relative">Wifi Connections</h2>
-      <div class="top right absolute paddingX1" onclick="parent.openPrinter();">
+      <div class="top right absolute paddingX1" onclick="parent.openPrinter('<h2>WiFi Network Diagnostic Report</h2><ul><li>Network Adapter: Intel(R) Wireless-AC 9260 160MHz</li><li>Date: 2024-01-16</li><li>Time: 15:42 GMT</li></ul><h3>1. MLK_intern_5G</h2><ul><li>Status: Connected</li><li>Signal Quality: Good</li><li>Signal Strength: -45 dBm</li><li>Security Type: WPA2-Personal</li><li>IPv4 Address: 192.168.1.5</li><li>IPv6 Address: fe80::2c4d:54ff:feaa:3d2b</li><li>Subnet Mask: 255.255.255.0</li><li>Default Gateway: 192.168.1.1</li><li>DHCP Server: 192.168.1.1</li><li>DNS Servers: 192.168.1.1, 8.8.8.8</li><li>Lease Obtained: 2024-01-16 14:42 G</li></ul><li>Notes: Stable connection established. Bandwidth tests indicate nominal data speeds. No network disruptions detected.</li><h2>2. MLK_guest_free</h2><ul><li>Status: No Internet Access</li><li>Signal Quality: Moderate</li><li>Signal Strength: -60 dBm</li><li>Security Type: Open</li><li>IPv4 Address: 169.254.9.101</li></ul>');">
         <button class=""><i class="material-icons valign">settings</i></button>
         <button class=""><i class="material-icons valign">print</i></button>
         <button class=""><i class="material-icons valign">info</i></button>
@@ -26,7 +26,7 @@
     <div class="container">
       <ul>
         <li class="blueBg white">
-          <h3>ATHLETICS_intern_5G</h3>
+          <h3>MLK_intern_5G</h3>
           <span class="small">Connection: Good</span>
           <span class="right absolute paddingX1 medium">
             <i class="material-icons small valign">edit</i>
@@ -35,7 +35,7 @@
           </span>
         </li>
         <li>
-          <h3>ATHLETICS_guest_free</h3>
+          <h3>MLK_guest_free</h3>
           <span class="right absolute paddingX1 medium">
             <i class="material-icons small valign">edit</i>
             <i class="material-icons small valign">delete</i>
