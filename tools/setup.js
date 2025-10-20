@@ -371,6 +371,11 @@ async function setupSettings(settings) {
           setDesktopImg(value);
         }
       break;
+      case "enabledPpe":
+        value.forEach(element => {
+          show(element.id);
+          gebi(element.id).style.opacity=element.opacity;
+        });
       case "desktopColor":
         if (value) {
           /* console.log("Hex desktopColor: ", value); */
