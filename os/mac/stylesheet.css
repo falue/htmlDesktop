@@ -495,13 +495,14 @@ li.showMac { display: list-item !important; }
     box-sizing: content-box;
     border: 1em transparent solid;
     border-left: 2.5em transparent solid;
+    max-height: 85vh;
+    overflow-y: auto;
 }
 .startMenu li:hover div.submenu {
     display: block;
 }
 .startMenu ul div.submenu ul {
     padding: .5em;
-    max-height:17.75em;
     overflow: auto;
     border-radius: 0.6em;
     border:solid .06em rgba(125,125,125,.5);

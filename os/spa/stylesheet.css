@@ -451,6 +451,8 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
     box-sizing: content-box;
     border: 1em transparent solid;
     border-left: 2.5em transparent solid;
+    max-height: 85vh;
+    overflow-y: auto;
 }
 .startMenu li {
     padding: .15em .5em .15em .5em;
@@ -464,7 +466,6 @@ font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 .startMenu ul div.submenu ul {
     padding: .5em;
-    max-height:17.75em;
     overflow: auto;
     border-radius: 0.6em;
     border:solid .06em rgba(125,125,125,.5);
