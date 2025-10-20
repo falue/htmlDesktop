@@ -8,6 +8,8 @@ async function setup() {
     let workstation = urlParams.get('workstation');
     let darkMode = urlParams.get('darkMode');
     let scene = urlParams.get('scene');
+
+    if(!scene) scene = "34";
     
     // Set generic system fonts
     setSystemFont(os);
