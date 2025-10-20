@@ -757,7 +757,13 @@ textarea {
     }
 }
 
-
+@keyframes filmgrain {
+    0%, 100% { background-position-x: 50%; }
+    15% { background-position-x: 25%; }
+    30% { background-position-x: 66%; }
+    65% { background-position-x: 75%; }
+    80% { background-position-x: 11%; }
+}
 
 @keyframes gpuFailMovement {
     0.0% { background-position: 0px 0px;  background-size: 100% 100%; }

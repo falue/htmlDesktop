@@ -44,6 +44,20 @@
     </div>
 
     <!-- SHENANIGANS -->
+    <!-- Post processing effects -->
+    <div  id="ppe" class="ppe">
+      <div id="ppe-vignette" data-name="Vignette" class="fixed maxWidth maxHeight hide" style="z-index: 100000;"></div>
+      <div id="ppe-bloom" data-name="Slight bloom" class="fixed maxWidth maxHeight hide" style="z-index: 100001;"></div>
+      <div id="ppe-pixels" data-name="Big pixels" class="fixed maxWidth maxHeight hide" style="z-index: 100002;"></div>
+      <div id="ppe-scanlines" data-name="Scanlines" class="fixed maxWidth maxHeight hide" style="z-index: 100003;"></div>
+      <div id="ppe-scanlines-old" data-name="Colorful scanlines" class="fixed maxWidth maxHeight hide" style="z-index: 100004;"></div>
+      <div id="ppe-jja-lensflares" data-name="J.J. Abrahms Lensflares" class="fixed maxWidth maxHeight hide" style="z-index: 100005;"></div>
+      <div id="ppe-filmgrain" data-name="Film grain" class="fixed maxWidth maxHeight hide" style="z-index: 100006;"></div>
+      <!-- The following are show above: black / off -->
+      <div id="ppe-dirty-screen" data-name="Dirty Screen" class="fixed maxWidth maxHeight hide" style="z-index: 175000;"></div>
+      <div id="ppe-crt-reflection" data-name="CRT reflections" class="fixed maxWidth maxHeight hide" style="z-index: 175001;"></div>
+    </div>
+
     <!-- lock screen -->
     <div id="lockScreen" class="hide">
       <div id="loggingOut" class="fixed centerContent white blackDarkBgTransparent maxWidth maxHeight" style="z-index: 5000;">
@@ -458,6 +472,12 @@
                   <span>
                     <i id="loginBackgroundPreview" class="greyBorder material-icons fancy transparent small padding125">home</i>
                   </span>
+                </div>
+              </li>
+              <li class="relative pointer">
+                <div onclick="createPpeDialog();">
+                  <i class="material-icons blue small">layers</i>
+                  Set post processing effects..
                 </div>
               </li>
               <li id="actionMenuDockLock" class="hide maxWidth pointer" onclick="gebi('dock').classList.toggle('dockLock'); swap('dockLock-locked', 'dockLock-unlocked')">

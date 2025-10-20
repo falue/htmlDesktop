@@ -229,6 +229,20 @@ function setLoginGradient(gradient, saveToLocalStorage) {
     }
 }
 
+function createPpeDialog() {
+    let effects = ppe.querySelectorAll('#ppe div');
+    let effectsList = "";
+    effects.forEach(element => {
+        effectsList += `<li>
+        <label class="maxWidth block pointer">
+            <input type="checkbox" class="valign" ${element.classList.contains('hide') ? '' : 'checked'} onchange="toggle('${element.id}')">
+            ${element.dataset['name']}
+        </label>
+        </li>`
+    });
+    showDialog('Set post processing effects', `<p>Note: These do not get saved.</p><div class="chooseBox radius5" style="overflow-y:initial"><ul>${effectsList}</ul></div>`)
+}
+
 
 // NOT async but maybe super for other things?
 // fileExists("foo.gif", function(){ cl("good"); }, function(){ cl("bad"); } );
