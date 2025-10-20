@@ -13,7 +13,7 @@ let loop = true;
 async function setup() {
     /* 
         URL parameter
-        `chat`: is scene number. looks for 'chat.json' file located in program,s/chat/data/{scenenr}/chat.js
+        `scene`: is scene number. looks for '{scene}/chat.json' file
         `sharpCorners`: make the corners on every bubble not rounded but isntead adds a pointer thingy
         `bg`: hex code of background color
         `loop`: default true; if true the chat restarts after the last pre-programmed message without deleting the chat history.
@@ -43,15 +43,13 @@ async function setup() {
     loop = urlParams.get('loop') === "true" || !urlParams.get('loop');
     gebi('loop-checkbox').checked = loop;
     
-    let chat = urlParams.get('chat');
-    if(chat) {
-        messages = await parseFile(
-        `data/${chat}/chat.json`, false
-        );
-        messagesInitial = JSON.parse(JSON.stringify(messages));
-    } else {
-        cl("URL parameter chat is not defined");
+    let chat = urlParams.get('scene');
+    if(!chat) {
+        cl("URL parameter chat is not defined; default to _example");
+        chat = "_example";
     }
+    messages = await parseFile(`data/${chat}/chat.json`, false);
+    messagesInitial = JSON.parse(JSON.stringify(messages));
 
     setupNextMessage(messageIndex);
     

@@ -120,14 +120,18 @@
     transform: translateY(.2em);
 }
 
+input[type='radio'],
+input[type='checkbox'] {
+    appearance: none;
+    padding:0 !important;
+}
+
 input[type='radio']:before,
 input[type='checkbox']:before {
     display: inline-block;
     font-family: 'Material Icons';
     font-size: 2em;
-    transform: translateY(-7px) translateX(-5px);
     color:grey;
-    background-color: white;  /* hack to hide original checkbox */
     vertical-align: middle;
 }
 input[type='radio']:before {
