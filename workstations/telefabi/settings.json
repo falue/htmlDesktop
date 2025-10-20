@@ -10,7 +10,10 @@
         "workstation": "telefabi",
         "selectedSystemMessage": 3,
         "bootSpeed": 3,
-        "osNotificationsDelay": 0
+        "osNotificationsDelay": 0,
+        "enabledPpe": [
+            {"id": "ppe-vignette", "opacity": 0.25}
+        ]
     },
     "systemIcons": [
         "expand_less",
