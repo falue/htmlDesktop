@@ -1,4 +1,4 @@
-19.10.2025 19:16
+22.10.2025 19:50
 os/windows95/systemIcons/dvd.png
 os/windows95/systemIcons/server.png
 os/windows95/systemIcons/python.png
@@ -502,8 +502,8 @@ programs/browser/sites/wintiwurm/tools/fontface/_/roboto-slab-v13-latin/RobotoSl
 programs/browser/sites/wintiwurm/tools/fontface/Quicksand-Bold.svg
 programs/browser/sites/telefabi/tools/imgs/fl.svg
 programs/browser/sites/telefabi/tools/imgs/fl_1.svg
-programs/map/data/614/map.svg
-programs/map/data/614/map_orig.svg
+programs/map/data/_example/map.svg
+programs/map/data/_example/map_orig.svg
 programs/wifi/stylesheet.css
 programs/ftp/stylesheet.css
 programs/securiton/stylesheet.css
@@ -678,15 +678,15 @@ programs/terminal/text/apollo_guidance_computer.txt
 programs/browser/sites/qsearch/CHAT GPT PROMPT.txt
 programs/filemanager/CHAT GPT PROMPT.txt
 programs/fingerlab/data/prints/NOTE.txt
-programs/chat/data/example/chat.json
 programs/chat/data/315/chat.json
 programs/chat/data/508/chat.json
+programs/chat/data/_example/chat.json
 programs/browser/sites/maps/data/67/config.json
 programs/browser/sites/maps/data/67/points.json
 programs/browser/sites/maps/data/_example/config.json
 programs/browser/sites/maps/data/_example/points.json
 programs/browser/sites/defaultWebsites.json
-programs/map/data/614/pointsOfInterest.json
+programs/map/data/_example/pointsOfInterest.json
 programs/.vscode/settings.json
 programs/email/data/fjodor/inbox.json
 programs/email/data/examples/de.json
@@ -702,9 +702,15 @@ programs/bash/defaultScripts/sudo.fakeBash
 programs/bash/data/_example/changePassword.fakeBash
 programs/bash/data/_example/script.fakeBash
 programs/bash/data/theshow/script.fakeBash
+tools/ppe/scanlines-old.png
+tools/ppe/crt-reflection.png
+tools/ppe/scanlines.png
+tools/ppe/pixels.png
 tools/libraries/highlight/styles/school-book.png
 tools/libraries/highlight/styles/brown-papersq.png
 tools/gpuFail.png
+tools/ppe/filmgrain.jpg
+tools/ppe/dirty-screen.jpg
 tools/libraries/highlight/styles/pojoaque.jpg
 tools/fontface/weblysleek-semibold.svg
 tools/fontface/roboto-v29-latin-regular.svg
