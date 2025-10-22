@@ -21,14 +21,8 @@
     <meta property="og:image" content="https://telefabi.ch/htmlDesktop/beschatterSe02/indexTools/ogimage.jpeg">
 
     <script>
-      let host = window.location.origin + window.location.pathname;
-      if(host === `https://www.telefabi.ch/index.html` || host === `https://telefabi.ch/index.html`) {
-        // If mobile, redirect to "business card" website
-        if (window.matchMedia("(max-width: 900px)").matches) {
-          window.location.href = "programs/browser/sites/telefabi/index.html";
-        } else {
-          window.location.href = "desktop.html?workstation=telefabi";
-        }
+      if (window.matchMedia("(max-width: 900px)").matches) {
+        window.location.href = "../../index.html";
       }
 
       async function editUrlBeforeLoading(url) {
