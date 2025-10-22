@@ -2,7 +2,7 @@
     "settings": {
         "systemColor": "#3b0d39",
         "desktopColor": "#1d1b1b",
-        "desktopImg": "os/windows/desktop.jpg",
+        "desktopImg": "../../os/windows/desktop.jpg",
         "os": "windows",
         "darkMode": true,
         "username": "telefabi.ch",
