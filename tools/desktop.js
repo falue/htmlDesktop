@@ -278,7 +278,7 @@ async function fileExists(imageSrc, fallback) {
     }).catch(err => console.log('Error:', err));
 }
 
-function setDesktopImg(path) {
+async function setDesktopImg(path) {
     if(path === 'random') {
         path = getRandomElement([
             "os/"+os+"/desktop.jpg",
@@ -294,23 +294,9 @@ function setDesktopImg(path) {
             "os/_generic/desktops/10.jpg"
         ]);
     }
-    gebi("desktop").style.backgroundImage = "url("+path+")";
 
-    /* const img = new Image();
-    let width;
-    img.onload = function() {
-        width = this.width;
-        //cl(this.width + 'x' + this.height);
-        cl(width);
-        cl(window.innerWidth);
-        if(width > window.innerWidth) {
-            gebi("desktop").style.backgroundSize = "cover";
-        } else {
-            gebi("desktop").style.backgroundSize = "initial";
-        }
-    }
-    img.src = path; */
-    
+    await delay(222);  // Somehow, on initial laod img is not set correctly
+    gebi("desktop").style.backgroundImage = "url("+path+")";
 }
 
 // AKA logout
