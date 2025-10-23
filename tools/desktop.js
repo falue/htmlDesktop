@@ -278,7 +278,7 @@ async function fileExists(imageSrc, fallback) {
     }).catch(err => console.log('Error:', err));
 }
 
-async function setDesktopImg(path) {
+function setDesktopImg(path) {
     if(path === 'random') {
         path = getRandomElement([
             "os/"+os+"/desktop.jpg",
@@ -294,8 +294,6 @@ async function setDesktopImg(path) {
             "os/_generic/desktops/10.jpg"
         ]);
     }
-
-    await delay(222);  // Somehow, on initial laod img is not set correctly
     gebi("desktop").style.backgroundImage = "url("+path+")";
 }
 
