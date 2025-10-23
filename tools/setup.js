@@ -376,6 +376,7 @@ async function setupSettings(settings) {
           show(element.id);
           gebi(element.id).style.opacity=element.opacity;
         });
+      break;
       case "desktopColor":
         if (value) {
           /* console.log("Hex desktopColor: ", value); */
