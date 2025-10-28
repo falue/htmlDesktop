@@ -62,6 +62,7 @@
         {
             "name": "DVD",
             "icon": "dvd.png",
+            "classes": "",
             "x": 3,
             "y": 4,
             "action": "startDefaultProgram('fileManager');"
@@ -69,6 +70,7 @@
         {
             "name": "Trash",
             "icon": "trashFull.png",
+            "classes": "",
             "x": 93,
             "y": 83,
             "action": ""
@@ -76,6 +78,7 @@
         {
             "name": "HDD",
             "icon": "hdd.png",
+            "classes": "",
             "x": 84,
             "y": 15,
             "action": "startDefaultProgram('fileManager');"
@@ -83,6 +86,7 @@
         {
             "name": "Photos",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 2,
             "y": 43,
             "action": ""
@@ -90,6 +94,7 @@
         {
             "name": "Document1",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 1,
             "y": 56,
             "action": ""
@@ -97,6 +102,7 @@
         {
             "name": "Report",
             "icon": "folderFull.png",
+            "classes": "blink",
             "x": 2,
             "y": 69,
             "action": ""
@@ -104,6 +110,7 @@
         {
             "name": "Important 7dd9c.JPG",
             "icon": "fileImage.png",
+            "classes": "",
             "x": 0,
             "y": 82,
             "action": ""
@@ -111,6 +118,7 @@
         {
             "name": "File2.png",
             "icon": "fileImage.png",
+            "classes": "",
             "x": 9,
             "y": 4,
             "action": ""
@@ -118,6 +126,7 @@
         {
             "name": "Photos",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 9,
             "y": 17,
             "action": ""
@@ -125,6 +134,7 @@
         {
             "name": "File2",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 10,
             "y": 30,
             "action": ""
@@ -132,6 +142,7 @@
         {
             "name": "Document 7612d Copy",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 7,
             "y": 43,
             "action": ""
@@ -139,6 +150,7 @@
         {
             "name": "Text.pdf",
             "icon": "pdf.png",
+            "classes": "",
             "x": 9,
             "y": 56,
             "action": ""
@@ -146,6 +158,7 @@
         {
             "name": "Presentation Copy.txt",
             "icon": "txt.png",
+            "classes": "",
             "x": 7,
             "y": 69,
             "action": ""
@@ -153,6 +166,7 @@
         {
             "name": "Spreadsheet e7dac.jpg",
             "icon": "fileImage.png",
+            "classes": "",
             "x": 7,
             "y": 82,
             "action": ""
@@ -160,6 +174,7 @@
         {
             "name": "Report Copy.txt",
             "icon": "txt.png",
+            "classes": "",
             "x": 14,
             "y": 4,
             "action": ""
@@ -167,6 +182,7 @@
         {
             "name": "File2",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 17,
             "y": 17,
             "action": ""
@@ -174,6 +190,7 @@
         {
             "name": "Note.pdf",
             "icon": "pdf.png",
+            "classes": "",
             "x": 16,
             "y": 30,
             "action": ""
@@ -181,6 +198,7 @@
         {
             "name": "Links",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 17,
             "y": 43,
             "action": ""
@@ -188,6 +206,7 @@
         {
             "name": "Text",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 17,
             "y": 56,
             "action": ""
@@ -195,6 +214,7 @@
         {
             "name": "Links.txt",
             "icon": "txt.png",
+            "classes": "",
             "x": 16,
             "y": 69,
             "action": ""
@@ -202,6 +222,7 @@
         {
             "name": "Document1",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 15,
             "y": 82,
             "action": ""
@@ -209,6 +230,7 @@
         {
             "name": "Photos 4d55e",
             "icon": "folderFull.png",
+            "classes": "",
             "x": 22,
             "y": 4,
             "action": ""
@@ -216,6 +238,7 @@
         {
             "name": "A-433.mp3",
             "icon": "mp3.png",
+            "classes": "",
             "x": 1,
             "y": 16,
             "action": ""
