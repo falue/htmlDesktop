@@ -25,6 +25,9 @@ body {
 }
 
 /* GENERAL */
+.fontMonospaced { font-family: courier, monospace; }
+.fontSansSerif { font-family: sans-serif; }
+
 article {
     scroll-behavior: smooth;
 }
