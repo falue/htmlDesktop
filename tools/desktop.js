@@ -985,7 +985,6 @@ async function showDialog(title, text, selfClosing, input, feedbackButtons) {
 
 async function showNote(title, text, icon, deathDelay) {
     show("autoNote");
-    let  = title;
     /* gebi("autoNoteText").innerHTML = text; */
     let listOfNotes = gebi('autoNote');
     let id = "note-"+createUniqueId();
