@@ -187,7 +187,7 @@ async function setup(exludeFromReload=false) {
 
   // Loop over shortcuts
   for (let shortcut of shortcuts) {
-    placeShortcut(shortcut["name"], shortcut["icon"], shortcut["x"],shortcut["y"], shortcut["action"]);
+    placeShortcut(shortcut["name"], shortcut["icon"], shortcut["classes"], shortcut["x"],shortcut["y"], shortcut["action"]);
   }
   // cl("SETUP: placeShortcut success, "+shortcuts.length+" shortcuts placed.");
 
@@ -223,10 +223,10 @@ async function setup(exludeFromReload=false) {
   // Create generic Shortcuts if none are defined
   if(!shortcuts.length) {
     cl("create some default shortcuts if none are defined");
-    placeShortcut("Computer", "hdd.png", 1,0, "startDefaultProgram('fileManager')");
-    placeShortcut("DVD", "dvd.png", 93,67, "startDefaultProgram('fileManager')");
-    placeShortcut("Files", "folderFull.png", 2,15, "startDefaultProgram('fileManager')");
-    placeShortcut("Trash", "trashFull.png", 93,80, "");
+    placeShortcut("Computer", "hdd.png", "", 1,0, "startDefaultProgram('fileManager')");
+    placeShortcut("DVD", "dvd.png", "", 93,67, "startDefaultProgram('fileManager')");
+    placeShortcut("Files", "folderFull.png", "", 2,15, "startDefaultProgram('fileManager')");
+    placeShortcut("Trash", "trashFull.png", "", 93,80, "");
   }
 
   // cl("SETUP: Finished!");
