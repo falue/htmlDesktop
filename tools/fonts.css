@@ -52,15 +52,31 @@
         url('fontface/weblysleek.svg#weblysleek') format('svg'); /* Legacy iOS */
 }
 
-/* icons overview: https://fonts.google.com/icons?selected=Material+Icons:settings  */
-  @font-face {
+/* 
+    icons overview: https://fonts.google.com/icons?selected=Material+Icons
+    https://github.com/google/material-design-icons/tree/master/variablefont
+    https://github.com/google/material-design-icons/tree/master/font (deprecated)
+*/
+@font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
-    src: url('fontface/MaterialIcons-Regular.eot');
-    src: url('fontface/MaterialIcons-Regular.woff2') format('woff2'), 
-    url('fontface/MaterialIcons-Regular.woff') format('woff'), 
-    url('fontface/MaterialIcons-Regular.ttf') format('truetype');
+    src: url('fontface/Material_Icons_baseline.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Material Icons Outline';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fontface/Material_Icons_Outlined.woff2') format('woff2');
+}
+
+@font-face {
+    /* very buggy: colors! */
+    font-family: 'Material Icons Two Tone';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fontface/Material_Icons_Two_Tone.woff2') format('woff2');
 }
 
 /* Font W95FA by Alina Sava */
@@ -89,7 +105,7 @@
          url('fontface/topaz.woff') format('woff');
 }
 
-  .material-icons {
+.material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
@@ -104,8 +120,25 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-font-feature-settings: 'liga';
     font-feature-settings: 'liga';
     user-select: none;
+}
+
+.material-icons.outline, .material-icons-outline {
+    font-family: 'Material Icons Outline';
+}
+.material-icons.two-tone, .material-icons-two-tone {
+    font-family: 'Material Icons Two Tone';
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+.darkMode .material-icons.two-tone, .darkMode .material-icons-two-tone {
+    background-color: white;
+}
+.lightMode .material-icons.two-tone, .lightMode .material-icons-two-tone {
+    background-color: black;
 }
 
 .material-icons.small {

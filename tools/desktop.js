@@ -771,7 +771,11 @@ async function changePassword() {
 function setSystemColors(newcolor) {
     systemColor = newcolor;  // Update globals
     const systemElements = document.querySelectorAll('.systemColors');
-    let color = isLightColor(newcolor) ? "#000000" : "#FFFFFF";
+    let isLight = isLightColor(newcolor);
+    let color = isLight ? "#000000" : "#FFFFFF";
+
+    gebi('body').classList.add(isLight ? 'lightMode' : 'darkMode');
+    gebi('body').classList.remove(!isLight ? 'lightMode' : 'darkMode');
     
     // Change the text of multiple elements with a loop
     systemElements.forEach(element => {
