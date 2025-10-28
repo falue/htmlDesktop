@@ -918,12 +918,12 @@ function saveShortcut(id) {
 // makes a new shortcut on demand
 function createShortcut() {
   gebi('editNewShortcut').value = "true";
-  let id = placeShortcut("", "", 3,4, "");
+  let id = placeShortcut("", "", "", 3,4, "");
   editShortcut(id);
 }
 
 // Places a shortcut in the scene
-function placeShortcut(name, icon, x,y, action) {
+function placeShortcut(name, icon, classes, x,y, action) {
   // place existing shortcut on desktop
   /* console.log(name, icon, x,y, action); */
   let id = "shortcut-" + createUniqueId();
@@ -936,7 +936,7 @@ function placeShortcut(name, icon, x,y, action) {
   shortcutContainer.setAttribute("data-setup-icon", icon);
   shortcutContainer.setAttribute("data-setup-action", action);
 
-  shortcutContainer.setAttribute("class", "shortcut");
+  shortcutContainer.setAttribute("class", `shortcut ${classes}`);
   shortcutContainer.setAttribute("style", "left:"+x+"%; top:"+y+"%");
   shortcutContainer.setAttribute("draggable", "true");
   shortcutContainer.setAttribute("ondragstart", "onDragStart(event)");
@@ -1002,7 +1002,7 @@ function clutterDesktop(count) {
     name += randomBetween(0, 100) > 75 ? " Copy" : "";
     name += randomNameSuffix[chooseRandomKey(randomNameSuffix)];
     //console.log(name);
-    placeShortcut(name, iconDecider(name, name.split(".").length === 1), x,y, "");
+    placeShortcut(name, iconDecider(name, name.split(".").length === 1), "", x,y, "");
   }
 }
 
