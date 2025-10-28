@@ -99,6 +99,7 @@ a:focus { outline: none; }
 .noUserSelect { user-select: none; }
 .userSelect { user-select: text; }
 .noPointerEvents { pointer-events: none; }
+.allUnset, .resetStyles { all: unset; }
 
 .noScrollbar::-webkit-scrollbar { display: none; }
 .noScrollbar { scrollbar-width: none; }
