@@ -88,7 +88,7 @@ function splitCommandLines(line) {
     // Get name of function and optional class names
     let nameOfFunctionParts = keys.shift().split(":");
     let nameOfFunction = nameOfFunctionParts[0];
-    let classes = nameOfFunctionParts[1] ? nameOfFunctionParts[1] : "";
+    let classes = nameOfFunctionParts[1] ? nameOfFunctionParts[1].split(";") : "";
     // Remove trailing and leading quotes from parameters, or parse int
     keys.forEach((element, index) => {
       keys[index] = isNaN(element)
@@ -109,7 +109,7 @@ function splitCommandLines(line) {
 
 function printToConsole(text, classes) {
   let span = document.createElement("span");
-  if (classes) span.classList.add(classes);
+  if (classes) span.classList.add(...classes);
   span.innerHTML = text.replaceAll("  ", "&nbsp;&nbsp;");
   gebi("console").appendChild(span);
 }
@@ -125,7 +125,7 @@ function keyboardControllerBash(event) {
 }
 
 async function playCommandAtIndex(index) {
-  cl(commandIndex[currentCommandKey]);
+  cl("currentCommandKey: " + commandIndex[currentCommandKey]);
   if (index === undefined && commandIndex[currentCommandKey] < commands[currentCommandKey].length - 1) {
     commandIndex[currentCommandKey]++;
     await playCommand(commands[currentCommandKey][commandIndex[currentCommandKey]]);
@@ -512,6 +512,9 @@ async function playCommand(command) {
       break;
     case "autoType":
       await delay(command.parameters[1]);
+      if(command.parameters[0].startsWith("javascript:")) {
+        command.parameters[0] = eval(command.parameters[0]);
+      }
       printToConsole(command.parameters[0], command.classes);
       break;
     case "say":
