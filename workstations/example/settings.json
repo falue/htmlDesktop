@@ -5,9 +5,9 @@
         "desktopImg": "",
         "os": "windows",
         "darkMode": true,
-        "username": "drSteiger",
+        "username": "example",
         "password": "",
-        "workstation": "drSteiger",
+        "workstation": "example",
         "selectedSystemMessage": 3,
         "osNotificationsDelay": 0
     },
@@ -48,7 +48,7 @@
         {
             "windowName": "Email Petabird",
             "icon": "email",
-            "contentPath": "email/index.html?scene=000&lang=de",
+            "contentPath": "email/index.html?lang=de",
             "x": 12,
             "y": 4,
             "w": 1400,
