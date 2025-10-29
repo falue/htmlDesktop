@@ -4,7 +4,7 @@
     "initialView": { "x": 450, "y": 2580, "z": 1.9 },
     "marker": { "display": false, "x": 2200, "y": 1800, "angle": 45 },
     "minZoom": 0.33,
-    "maxZoom": 46,
+    "maxZoom": 999,
     "forceType": "",
     "limitMovementToWorld": true,
     "scaleAtZoom1": 0.4,
@@ -41,7 +41,8 @@
     ],
     "presets": [
       { "label": "Start", "x": 450, "y": 2580, "z": 1.9 },
-      { "label": "Ende", "x": 275, "y": 1040, "z": 4.4 }
+      { "label": "Ende", "x": 275, "y": 1040, "z": 4.4 },
+      { "label": "Ende mit zoom in", "x": 306.3, "y": 1072.2, "z": 999 }
     ]
   }
   
