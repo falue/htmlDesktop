@@ -1,4 +1,4 @@
-14.10.2025 15:04
+29.10.2025 19:32
 os/windows95/systemIcons/dvd.png
 os/windows95/systemIcons/server.png
 os/windows95/systemIcons/python.png
@@ -178,6 +178,7 @@ workstations/_default/userpicture.jpg
 workstations/andersen/userpicture.jpg
 workstations/andersen/files/01.jpg
 workstations/andersen/files/03.jpg
+workstations/andersen/files/07_neu.jpg
 workstations/andersen/files/02.jpg
 workstations/andersen/files/12.jpg
 workstations/andersen/files/06.jpg
@@ -193,7 +194,6 @@ workstations/_default/settings FULL EXAMPLE.json
 workstations/_default/browser.json
 workstations/andersen/settings.json
 workstations/andersen/folders.json
-workstations/andersen/settings FULL EXAMPLE.json
 workstations/andersen/browser.json
 workstations/_default/bash/script.fakeBash
 workstations/andersen/bash/script.fakeBash
