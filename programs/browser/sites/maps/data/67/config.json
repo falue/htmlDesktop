@@ -4,7 +4,7 @@
     "initialView": { "x": 450, "y": 2580, "z": 1.9 },
     "marker": { "display": false, "x": 2200, "y": 1800, "angle": 45 },
     "minZoom": 0.33,
-    "maxZoom": 7,
+    "maxZoom": 46,
     "forceType": "",
     "limitMovementToWorld": true,
     "scaleAtZoom1": 0.4,
