@@ -1,28 +1,44 @@
 [
     {
-        "tooltip": "This is videocam 1234123-B",
-        "icon": "videocam",
-        "x": 666,
-        "y": 333,
-        "minZ": 0.4,
+        "tooltip": "This is your target",
+        "icon": "location_pin",
+        "x": 2500,
+        "y": 999,
+        "minZ": 0.0,
         "maxZ": 2.5,
         "size": 2,
-        "iconClasses": "",
+        "iconClasses": "red",
+        "pointClasses": "",
         "iconStyles": "",
-        "text": "xx asdf asdf asdf asdfasdf asdf asdfasd fasdf x",
+        "text": "This is a pin!",
+        "action": ""
+    },
+    {
+        "tooltip": "Another target",
+        "icon": "location_pin",
+        "x": 2650,
+        "y": 988,
+        "minZ": 0.0,
+        "maxZ": 999,
+        "size": 4,
+        "iconClasses": "",
+        "pointClasses": "red text-shadow--black noBox",
+        "iconStyles": "",
+        "text": "",
         "action": ""
     },
     {
         "tooltip": "This is videocam 1234123-A",
-        "icon": "location_pin",
-        "x": 999,
-        "y": 333,
-        "minZ": 0,
-        "maxZ": 4,
-        "size": 2,
+        "icon": "videocam",
+        "x": 2300,
+        "y": 950,
+        "minZ": 0.7,
+        "maxZ": 999,
+        "size": 3,
+        "iconClasses": "blink",
         "pointClasses": "red text-shadow--white noBox",
         "iconStyles": "",
         "text": "",
-        "action": "alert('cam A - AAAAA')"
+        "action": "alert('Eat my shorts!')"
     }
 ]

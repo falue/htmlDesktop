@@ -1,43 +1,51 @@
 {
-    "worldWidth": 5000,
-    "worldHeight": 2235,
-    "initialView": { "x": 1730, "y": 1870, "z": 1.4 },
-    "marker": { "display": false, "x": 2200, "y": 1800, "angle": 45 },
-    "minZoom": 0.33,
-    "maxZoom": 7,
-    "forceType": "Mallorca",
-    "scaleAtZoom1": 0.05,
-    "lods": [
-      {
-        "maxZ": 0.75,
-        "grid": { "size": 200, "color": "rgba(255,255,255,.25)" },
-        "layers": [
-          { "url": "swissimage.png", "type": "Satellite", "width": 8246, "height": 5596, "offsetX": -1600, "offsetY": -2850 }
-        ]
-      },
-      {
-        "maxZ": 1.7,
-        "grid": { "size": 100, "color": "rgba(255,255,255,.25)" },
-        "layers": [
-          { "url": "sat_low.jpg", "type": "Satellite", "width": 1000, "height": 2235, "offsetX": 1250, "offsetY": 0 }
-        ]
-      },
-      {
-        "maxZ": 2.5,
-        "grid": { "size": 50, "color": "rgba(255,255,255,.25)" },
-        "layers": [
-          { "url": "sat_mid.jpg", "type": "Satellite", "width": 1000, "height": 944, "offsetX": 1250, "offsetY": 930 }
-        ]
-      },
-      {
-        "maxZ": 99,
-        "grid": { "size": 25, "color": "rgba(255,255,255,.25)" },
-        "layers": [
-          { "url": "sat_hi.jpg", "type": "Satellite", "width": 788, "height": 374, "offsetX": 1250, "offsetY": 1010 }
-        ]
-      }
-    ],
-    "presets": [
-    ]
-  }
-  
+  "worldWidth": 900,
+  "worldHeight": 2830,
+  "initialView": { "x": 450, "y": 2580, "z": 1.9 },
+  "marker": { "display": false, "x": 2200, "y": 1800, "angle": 45 },
+  "minZoom": 0.25,
+  "maxZoom": 7,
+  "forceType": "",
+  "limitMovementToWorld": false,
+  "scaleAtZoom1": 0.4,
+  "lods": [
+    {
+      "maxZ": 0.75,
+      "grid": { "size": 200, "color": "" },
+      "layers": [
+        { "url": "swissimage.jpg", "type": "Satellite", "width": 6802, "height": 5488, "offsetX": -2775, "offsetY": -2700 }
+      ]
+    },
+    {
+      "maxZ": 1.7,
+      "grid": { "size": 100, "color": "" },
+      "note": "off x 1775, Y 2700",
+      "layers": [
+        { "url": "sat_low.jpg?v=3", "type": "Satellite", "width": 900, "height": 2830, "offsetX": 0, "offsetY": 0 }
+      ]
+    },
+    {
+      "maxZ": 2.5,
+      "grid": { "size": 50, "color": "" },
+      "layers": [
+        { "url": "sat_mid.jpg?v=3", "type": "Satellite", "width": 900, "height": 1774, "offsetX": 0, "offsetY": 567 }
+      ]
+    },
+    {
+      "maxZ": 99,
+      "grid": { "size": 25, "color": "" },
+      "layers": [
+        { "url": "sat_hi.jpg?v=3", "type": "Satellite", "width": 900, "height": 900, "offsetX": 0, "offsetY": 607 }
+      ]
+    }
+  ],
+  "fakeLayers": [
+    {"type": "Military Secrets"},
+    {"type": "Streetmap"}
+  ],
+  "presets": [
+    { "label": "Start", "x": 450, "y": 2580, "z": 1.9 },
+    { "label": "Ende", "x": 275, "y": 1040, "z": 4.4 },
+    { "label": "Ende mit zoom in", "x": 306.3, "y": 1072.2, "z": 999 }
+  ]
+}

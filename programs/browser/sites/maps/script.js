@@ -318,7 +318,7 @@ function renderPOIs(points) {
     el.title = p.tooltip || "";
 
     const icon = document.createElement("i");
-    icon.className = "material-icons icon";
+    icon.className = "material-icons icon " + p.iconClasses;
     icon.style.fontSize = (p.size ? p.size * 10 : 14) + "px";
     icon.textContent = p.icon || "•";
     el.appendChild(icon);
@@ -376,6 +376,13 @@ function collectLayerTypes() {
   CONFIG.lods.forEach(lod => lod.layers.forEach(layer => {
     if (layer.type) LAYER_TYPES.add(layer.type);
   }));
+  // Add fake layers that do nothing
+  if(CONFIG.fakeLayers.length) {
+    console.log("has fake layers");
+    CONFIG.fakeLayers.forEach(layer => {
+      LAYER_TYPES.add(layer.type);
+    });
+  }
   LAYER_FILTERS = Object.fromEntries([...LAYER_TYPES].map(t => [t, true]));
   renderLayerToggles();
 }
@@ -504,6 +511,7 @@ function enableDebugClick() {
       maxZ: CONFIG.maxZoom,
       size: 2,
       pointClasses: "red text-shadow--white noBox",
+      iconClasses: "",
       iconStyles: "",
       text: "",
       action: "alert('cam A - AAAAA')"

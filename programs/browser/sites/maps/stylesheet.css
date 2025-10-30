@@ -127,6 +127,7 @@ body:not(.dark) {
 
 .marker {
   position: absolute;
+  z-index: 999;
 }
 
 .marker::after {

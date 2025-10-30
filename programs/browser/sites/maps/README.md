@@ -1,4 +1,4 @@
-# 🎬 Map Prop Engine – Quick Reference
+# Map Prop Engine – Quick Reference
 
 # URL parameters
 ```
@@ -48,6 +48,10 @@ Defines map geometry, zoom limits, and image layers per zoom level (LOD).
         ]
       }
     ],
+    "fakeLayers": [
+      {"type": "Military Secrets"},
+      {"type": "Streetmap"}
+    ],
     "presets": [
       { "label": "HQ Gate", "x": 1800, "y": 1800, "z": 0.5 },
       { "label": "Warehouse", "x": 3100, "y": 2100, "z": 0.8 },
@@ -68,32 +72,37 @@ Adjust for left/right and fill those as offsets X/Y.
 if in debug mode, right click on the world to see X/Y/Z of that point.
 This also copies a valid json object to your clipboard for isnerting into `points.json`.
 
-### 🔹 Fields
+### Fields
 | Key | Description |
 |-----|--------------|
 | `worldWidth`, `worldHeight` | total world pixel size (sets coordinate system) |
-| `minZoom`, `maxZoom` | zoom limits |
 | `initialView` | starting camera position |
-| `initialMarker` | marker position (stays constant size) |
-| `scaleAtZoom1` | meters per pixel at zoom = 1 (for scale bar) |
+| `marker` | marker position (stays constant size) |
+| `minZoom`, `maxZoom` | zoom limits |
 | `forceType` | If not empty, this is the text that gets force-typed into the search bar. On enter, you fly to saved preset nr 1 (or to initialView if no presets defined). |
 | `limitMovementToWorld` | Don't go out of bounds (outside worldWidth/height) |
+| `scaleAtZoom1` | meters per pixel at zoom = 1 (for scale bar) |
+| `lods` | Array of objects with data, layer image sets per zoom range etc |
+| `fakeLayers` | additional non-working layers displayed in the layers list |
 | `presets` | optional named camera positions (fly-to these by pressing 1...x on keyboard) |
-| `lods` | list of image sets per zoom range |
-| `grid` | optional debug grid for that LOD |
-| `layers` | individual image/SVG files to draw |
 
-Each `layer` has:
+Each object in `config.lods` has these keys:
+- `maxZ`: Max zoom where this lod is visible. Below this, its visible; above it is not.
+- `grid`: Spacing and color of the grid. Make empty String if you don't want any grid showing.
+- `layers`: Array of objects of individual image/SVG files to draw. Use multiple to tile or stack iamges (for isntance , streets over satellite imagery).
+
+Each object in `config.lods.layers` has these keys:
 - `url`: path to image or SVG  
-- `type`: category (used for toggling on/off)  
+- `type`: category that shows up in layer list (used for toggling on/off)  
 - `width` / `height`: native pixel dimensions  
 - `offsetX` / `offsetY`: optional placement offset  
 
 ---
 
-## 📍 `points.json` (POIs)
+## `points.json` (POIs)
 
 Defines interactive points of interest (icons, text, tooltips, actions).
+Get this data copied to your pasteboard when right clicking while in debug mode.
 
 ```json
 [
@@ -105,7 +114,8 @@ Defines interactive points of interest (icons, text, tooltips, actions).
     "minZ": 0.4,
     "maxZ": 2.5,
     "size": 2,
-    "iconClasses": "",
+    "iconClasses": "red",
+    "pointClasses": "blue",
     "iconStyles": "",
     "text": "Lorem Ipsum",
     "action": ""
@@ -118,16 +128,16 @@ Defines interactive points of interest (icons, text, tooltips, actions).
     "minZ": 0,
     "maxZ": 4,
     "size": 2,
+    "iconClasses": "",
     "pointClasses": "red text-shadow--white noBox",
     "iconStyles": "",
     "text": "",
     "action": "alert('cam A - AAAAA')"
   }
-  ]
-
+]
 ```
 
-Hint: Add class `noBox` to a poi so thers no box around it. The bottom center of the icon is then at the defined point.
+> Hint: Add class `noBox` to a poi so thers no box around it. The bottom center of the icon is then at the defined point.
 
 | Key | Meaning |
 |-----|----------|
@@ -135,11 +145,12 @@ Hint: Add class `noBox` to a poi so thers no box around it. The bottom center of
 | `icon` | emoji or short text |
 | `size` | relative size (1 = 10 px base) |
 | `minZ` / `maxZ` | visible zoom range |
-| `iconClasses` / `iconStyles` | optional CSS styling |
+| `pointClasses` | optional CSS styling for the whole bubble |
+| `iconClasses` / `iconStyles` | optional CSS styling for the icon |
 | `action` | JS snippet to execute on click |
 
 
-## 🧩 Grids
+## Grids
 
 Each LOD can define its own grid overlay:
 ```json

@@ -1,12 +1,12 @@
 {
     "worldWidth": 10000,
     "worldHeight": 10000,
-    "initialView": { "x": 2048, "y": 2048, "z": 0.25 },
-    "marker": { "display": true, "x": 2200, "y": 1800, "angle": 45 },
-    "minZoom": 0.05,
+    "initialView": { "x": 2720, "y": 2025, "z": 0.263 },
+    "marker": { "display": true, "x": 2475, "y": 1060, "angle": 45 },
+    "minZoom": 0.15,
     "maxZoom": 4,
     "forceType": "Mallorca",
-    "limitMovementToWorld": true,
+    "limitMovementToWorld": false,
     "scaleAtZoom1": 1.5,
     "lods": [
       {
@@ -34,6 +34,10 @@
           { "url": "roads_hi.svg", "type": "overlay", "width": 1600, "height": 900, "offsetX": 0, "offsetY": 0 }
         ]
       }
+    ],
+    "fakeLayers": [
+      {"type": "Military Secrets"},
+      {"type": "Streetmap"}
     ],
     "presets": [
       { "label": "HQ Gate", "x": 1800, "y": 1800, "z": 0.5 },
