@@ -11,7 +11,9 @@
         "selectedSystemMessage": 0,
         "bootSpeed": 3,
         "osNotificationsDelay": 0,
-        "enabledPpe": []
+        "enabledPpe": [
+            { "id": "ppe-pixels", "opacity": 0.1 }
+        ]
     },
     "systemIcons": [
         "expand_less",
@@ -200,9 +202,9 @@
             "action": ""
         },
         {
-            "name": "Important",
+            "name": "Important 2",
             "icon": "folderFull.png",
-            "x": 16,
+            "x": 24,
             "y": 69,
             "action": ""
         },
@@ -224,7 +226,7 @@
             "name": "Personal 215ae",
             "icon": "folderFull.png",
             "x": 50,
-            "y": 4,
+            "y": 17,
             "action": ""
         },
         {
