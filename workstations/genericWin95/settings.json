@@ -1,0 +1,266 @@
+{
+    "settings": {
+        "systemColor": "#c0c0c0",
+        "desktopColor": "#008080",
+        "desktopImg": "",
+        "os": "windows95",
+        "darkMode": true,
+        "username": "user workstation",
+        "password": "",
+        "workstation": "genericWin95",
+        "selectedSystemMessage": 0,
+        "bootSpeed": 3,
+        "osNotificationsDelay": 0,
+        "enabledPpe": []
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 8,
+            "y": 12,
+            "w": 444,
+            "h": 333,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 95,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 3,
+            "y": 17,
+            "action": "startDefaultProgram('fileManager');"
+        },
+        {
+            "name": "Personal Copy",
+            "icon": "folderFull.png",
+            "x": 1,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "A-433 Copy",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "File2.docx",
+            "icon": "doc.png",
+            "x": 2,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Document.mp4",
+            "icon": "fileMovie.png",
+            "x": 1,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Presentation",
+            "icon": "folderFull.png",
+            "x": 2,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Data",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Links Copy",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "File2",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 10,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "VAR 29301",
+            "icon": "folderFull.png",
+            "x": 9,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Project Copy.rtf",
+            "icon": "txt.png",
+            "x": 8,
+            "y": 82,
+            "action": ""
+        },
+        {
+            "name": "Personal a25d4",
+            "icon": "folderFull.png",
+            "x": 15,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Personal ece95",
+            "icon": "folderFull.png",
+            "x": 15,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Presentation.avi",
+            "icon": "fileMovie.png",
+            "x": 15,
+            "y": 43,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet Copy.pyc",
+            "icon": "python.png",
+            "x": 15,
+            "y": 56,
+            "action": ""
+        },
+        {
+            "name": "Spreadsheet",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Home Copy.PDF",
+            "icon": "pdf.png",
+            "x": 1,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "File2",
+            "icon": "folderFull.png",
+            "x": 80,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "file",
+            "icon": "folderFull.png",
+            "x": 46,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Important",
+            "icon": "folderFull.png",
+            "x": 16,
+            "y": 69,
+            "action": ""
+        },
+        {
+            "name": "Image Copy.jpg",
+            "icon": "fileImage.png",
+            "x": 50,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Photos",
+            "icon": "folderFull.png",
+            "x": 45,
+            "y": 30,
+            "action": ""
+        },
+        {
+            "name": "Personal 215ae",
+            "icon": "folderFull.png",
+            "x": 50,
+            "y": 4,
+            "action": ""
+        },
+        {
+            "name": "Home",
+            "icon": "folderFull.png",
+            "x": 45,
+            "y": 17,
+            "action": ""
+        },
+        {
+            "name": "Image",
+            "icon": "folderFull.png",
+            "x": 52,
+            "y": 69,
+            "action": ""
+        }
+    ],
+    "osNotifications": [
+        {
+            "metaTitle": "this meta title - for your eyes only",
+            "title": "You've got mail (2)",
+            "description": "The following messages have just arrived: (..)",
+            "icon": "email",
+            "initialDelay": true,
+            "timeOut": 0,
+            "action": "startDefaultProgram('textEditor')"
+        }
+    ],
+    "actions": [
+        [
+            "Start terminal > blackout > texteditor w/ message",
+            "startDefaultProgram('terminal'); await delay(2200); show('blackout'); await delay(1200); hide('blackout'); await delay(666);addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=This is why we can\\'t have nice things. Do not do that again.', 5, 8, 1000,850, false);"
+        ],
+        [
+            "USB stick: Place shortcut & notify",
+            "placeShortcut('USB drive', 'hdd.png', '', 4,85, 'startDefaultProgram(\"fileManager\");'); await delay(2000); showSystemMessage({'title': 'New USB drive detected', 'description': 'Open drive & check for viruses', 'icon': 'stream', 'initialDelay': 0, 'timeOut': 2500, 'action': 'startDefaultProgram(\"fileManager\");'})"
+        ]
+    ]
+}

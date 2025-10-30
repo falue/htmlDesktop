@@ -1,3 +1,7 @@
 # Define all available workstations here
 
 workstation=telefabi;windows
+workstation=genericWindows;windows
+workstation=genericMac;mac
+workstation=genericLinux-spa;spa
+workstation=genericWin95;windows95

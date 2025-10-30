@@ -1,4 +1,4 @@
-22.10.2025 19:50
+30.10.2025 11:28
 os/windows95/systemIcons/dvd.png
 os/windows95/systemIcons/server.png
 os/windows95/systemIcons/python.png
@@ -174,13 +174,29 @@ os/spa/desktop.jpg
 os/mac/desktop.jpg
 os/linux/desktop.jpg
 os/windows/desktop.jpg
+workstations/genericWin95/userpicture.jpg
+workstations/genericWindows/userpicture.jpg
 workstations/_default/userpicture.jpg
+workstations/genericLinux-spa/userpicture.jpg
+workstations/genericMac/userpicture.jpg
 workstations/telefabi/userpicture.jpg
 workstations/telefabi/desktops/weeb.jpg
+workstations/genericWin95/settings.json
+workstations/genericWin95/folders.json
+workstations/genericWin95/browser.json
+workstations/genericWindows/settings.json
+workstations/genericWindows/folders.json
+workstations/genericWindows/browser.json
 workstations/_default/settings.json
 workstations/_default/folders.json
 workstations/_default/settings FULL EXAMPLE.json
 workstations/_default/browser.json
+workstations/genericLinux-spa/settings.json
+workstations/genericLinux-spa/folders.json
+workstations/genericLinux-spa/browser.json
+workstations/genericMac/settings.json
+workstations/genericMac/folders.json
+workstations/genericMac/browser.json
 workstations/telefabi/settings.json
 workstations/telefabi/folders.json
 workstations/telefabi/settings FULL EXAMPLE.json
@@ -195,7 +211,6 @@ programs/servermanager/monalisa.png
 programs/servermanager/splash.png
 programs/neptcode/data/basic.png
 programs/browser/sites/carregistry/flag.png
-programs/browser/sites/maps/data/67/assets/swissimage.png
 programs/browser/sites/maps/data/_example/assets/sat_mid.png
 programs/browser/sites/maps/data/_example/assets/sat_hi.png
 programs/browser/sites/maps/data/_example/assets/sat_low.png
@@ -305,7 +320,7 @@ programs/securiton/data/618-5.jpg
 programs/browser/tools/img/open-in-popup.jpg
 programs/browser/tools/img/winBtns.jpg
 programs/browser/tools/img/winUnik.jpg
-programs/browser/sites/maps/data/67/assets/sat_low copy.jpg
+programs/browser/sites/maps/data/67/assets/swissimage.jpg
 programs/browser/sites/maps/data/67/assets/sat_mid.jpg
 programs/browser/sites/maps/data/67/assets/sat_hi.jpg
 programs/browser/sites/maps/data/67/assets/sat_low.jpg

@@ -1,0 +1,84 @@
+{
+    "settings": {
+        "systemColor": "#FCFCFC",
+        "desktopColor": "#1d1b1b",
+        "desktopImg": "os/_generic/desktops/8.jpg",
+        "os": "mac",
+        "darkMode": true,
+        "username": "user workstation",
+        "password": "",
+        "workstation": "genericMac",
+        "selectedSystemMessage": 0,
+        "bootSpeed": 3,
+        "osNotificationsDelay": 0,
+        "enabledPpe": []
+    },
+    "systemIcons": [
+        "expand_less",
+        "account_circle",
+        "wifi",
+        "bluetooth",
+        "mail",
+        "lan",
+        "volume_mute"
+    ],
+    "windows": [
+        {
+            "metaTitle": "#000 Greenscreen - right click title to change!",
+            "windowName": "Window",
+            "icon": "grid_view",
+            "contentPath": "colorMarker",
+            "x": 8,
+            "y": 12,
+            "w": 444,
+            "h": 333,
+            "zIndex": 2,
+            "minimized": false,
+            "renderToDom": false
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "DVD",
+            "icon": "dvd.png",
+            "x": 94,
+            "y": 6,
+            "action": ""
+        },
+        {
+            "name": "Trash",
+            "icon": "trashFull.png",
+            "x": 94,
+            "y": 86,
+            "action": ""
+        },
+        {
+            "name": "HDD",
+            "icon": "hdd.png",
+            "x": 94,
+            "y": 20,
+            "action": "startDefaultProgram('fileManager');"
+        }
+    ],
+    "osNotifications": [
+        {
+            "metaTitle": "this meta title - for your eyes only",
+            "title": "You've got mail (2)",
+            "description": "The following messages have just arrived: (..)",
+            "icon": "email",
+            "initialDelay": true,
+            "timeOut": 0,
+            "action": "startDefaultProgram('textEditor')"
+        }
+    ],
+    "actions": [
+        [
+            "Start terminal > blackout > texteditor w/ message",
+            "startDefaultProgram('terminal'); await delay(2200); show('blackout'); await delay(1200); hide('blackout'); await delay(666);addWindow('Text editor', 'edit_note', 'texteditor/index.html?text=This is why we can\\'t have nice things. Do not do that again.', 5, 8, 1000,850, false);"
+        ],
+        [
+            "USB stick: Place shortcut & notify",
+            "placeShortcut('USB drive', 'hdd.png', '', 4,85, 'startDefaultProgram(\"fileManager\");'); await delay(2000); showSystemMessage({'title': 'New USB drive detected', 'description': 'Open drive & check for viruses', 'icon': 'stream', 'initialDelay': 0, 'timeOut': 2500, 'action': 'startDefaultProgram(\"fileManager\");'})"
+        ]
+    ]
+}
