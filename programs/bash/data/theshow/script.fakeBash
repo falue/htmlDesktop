@@ -131,9 +131,9 @@
 [say, "Are you a messy person?", "en"]
 
 # specific desktop url
-[say, "Maybe..", "en"] [sleep, 1200]
+[say, "Maybe.. we choose something you like? Something calm? Directly out of your brain.", "en"] [sleep, 1200]
 [javascript, "parent.setDesktopImg('workstations/telefabi/desktops/weeb.jpg');"]
-[say, "This did NOT help.", "en"] [sleep, 1200]
+[say, "This did NOT help. Why would you think about this now, I am trying to get a point across.", "en"] [sleep, 1200]
 [say, "No. That weeb image is not helping AT ALL.", "en"] [sleep, 1200]
 [javascript, "parent.cycleBackgroundImage();"][sleep, 1000]
 
@@ -162,6 +162,10 @@
 [javascript, "parent.addWindow('Please pay attention to the BOLT', 'image', 'imageviewer/index.html?files=arrow_down.gif', 9, 70, 343, 223, false);"]
 [say, "Its here, down there.", "en"]
 [say, "YOU can call it whatever though.", "en"]
+[javascript, "parent.setWindowPos(windowId, {'x': '2%'});"]
+[javascript, "parent.setWindowPos(windowId, {'y': '4%'});"]
+[javascript, "parent.setWindowPos(windowId, {'w': '400px'});"]
+[javascript, "parent.setWindowPos(windowId, {'h': '88%'});"]
 [javascript, "parent.show('actionMenu');"]
 [say, "I'm not your boss.", "en"] [sleep, 666]
 [javascript, "parent.closeAllWindows(windowId);"]
@@ -197,13 +201,18 @@
 
 [say, "See? A million actions. Choices. Would make sense to call it an 'Action menu', no?", "en"]
 [javascript, "parent.document.querySelectorAll('.flashBg').forEach(el => el.classList.remove('flashBg'));"]
-[say, "Do you mind if i go into details? Thanks, I will", "en"]
+[say, "Do you mind if i go into excruciating details? Thanks, I will", "en"]
 [clear]
 
 # show off actionMenu
 # "About this workstation"
 [javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[0\].classList.add('whiteBgTransparent');"]
 [say:blue, "Here you can swap workstations. Pre-defined setups that have a specific user and operating systems set; desktop shortcuts, open windows, etc.", "en"]
+[javascript, "parent.hide('actionMenu');"]
+[javascript, "parent.show('overlayWorkstation'); parent.show('closeOverlayWorkstation');"]
+[say, "Some are prepared for you. The first one is the one you are looking at now, and others are bare-bones for actual work.", "en"]
+[javascript, "parent.hide('overlayWorkstation'); parent.hide('closeOverlayWorkstation');"]
+[javascript, "parent.show('actionMenu');"]
 [javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
 
 # "state mngmnt"
@@ -238,7 +247,7 @@
 
 # "saved windows"
 [javascript, "parent.document.querySelectorAll('#actionMenu .columns .chooseBox')\[4\].classList.add('whiteBgTransparent');"]
-[say, "These are saved and prepared windows for this workstation. Can be general or just for one specific scene. This has to be programmed and cannot be adjsuted here.", "en"]
+[say, "These are saved and prepared windows for this workstation. Can be general or just for one specific scene. This has to be programmed and cannot be adjusted here.", "en"]
 [javascript, "parent.document.querySelectorAll('#actionMenu .whiteBgTransparent').forEach(el => el.classList.remove('whiteBgTransparent'));"] [sleep, 666]
 
 # "desktop & screen"
@@ -273,7 +282,8 @@
 
 # Browser
 [say, "lets see what the browser has to offer.", "en"] [sleep, 1000]
-[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=qsearch.ch', 6, 12, 1200,650, false);"]
+[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=qsearch.ch', 2, 12, 1200,650, false);"]
+[javascript, "parent.setWindowPos(windowId, {'x': '74%'});"]
 [say, "You can type whatever into the address bar. Some sites exist. Most don't.", "en"]
 [say, "This for example is Q-Search dot ch. Thats fake google. You can type, for instance, my name, to get the search results. I defined them. Happiness.", "en"] [sleep, 1000]
 [say, "As of now i can't automate this in this show. Just imagine the most wonderful search results.", "en"] [sleep, 1000]
@@ -302,8 +312,6 @@
 [say:blue, "And now something else.", "en"]
 [say, "If you stood before anyone in charge that cannot be bothered to think of content to show -", "en"]
 [say, "Just show them this.", "en"]
-[javascript, "parent.setWindowPos(windowId, {'x': '66%'});"]
-[javascript, "parent.setWindowPos(windowId, {'w': '333px'});"]
 [javascript, "parent.addWindow('A random ass-window', 'auto_fix_normal', 'colorMarker', 4, 4, 800,600, false);"][sleep, 1500]
 [say, "A greenscreen window for the un- imaginitive.", "en"]
 [say, "Can be fullscreen as well but then.. whats all this for?", "en"]
@@ -313,7 +321,7 @@
 [javascript, "parent.addWindow('A random ass-window', 'auto_fix_normal', 'colorMarker/index.html?onloadSettings=true', 4, 4, 800,600, false);"]
 [say, "Like change colors, hide the markers, etc.", "en"]
 [say, "The button, it's on the top right of the window, inside it.", "en"]
-[say, "Cmon, play around now.", "en"]
+[say, "Com on, play around now.", "en"]
 [say, "play around now.", "en"]
 [say, "play around now.", "en"]
 [clear]
@@ -328,7 +336,7 @@
 [br]
 [bashProfile] [autoType, "Goddamit yes i'm here this is so amazing - "] [say, "press enter now: ", "en"] [waitForEnter]
 [br]
-[say:grey, "This is the end of the show - for now. thanks!"", "en"]
+[say:grey, "This is the end of the show - for now. Thanks!", "en"]
 [say:grey, "thanks!", "en"]
 [say:grey, "thanks!", "en"]
 [say:grey, "thanks!", "en"]
