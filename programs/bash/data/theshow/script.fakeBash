@@ -94,8 +94,8 @@
 
 # Revcovery
 [javascript, "parent.removeAllShortcuts();"]
-[javascript, "parent.bringToFront(windowId);"]
-[bashProfile] [autoType, "Are you here again? Press enter now: "] [waitForEnter]
+# [javascript, "parent.bringToFront(windowId);"]
+[bashProfile] [autoType, "Are you here again? Click this window - Press enter now: "] [waitForEnter]
 [say, "Interesting, all the desktop shortcuts are gone now. Brilliant.", "en"]
 [sleep, 666]
 
