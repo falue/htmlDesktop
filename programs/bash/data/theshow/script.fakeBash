@@ -290,19 +290,19 @@
 [say, "Good?", "en"] [sleep, 1000]
 
 [javascript, "parent.closeAllWindows(windowId);"]
-[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=mapden.ch', 6, 12, 1200,650, false);"]
+[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=mapden.ch', 2, 12, 1200,650, false);"]
 [say, "This is some sort of maps page.", "en"] [sleep, 1000]
 
 [javascript, "parent.closeAllWindows(windowId);"]
-[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=https%3A%2F%2Ffluescher.ch', 6, 12, 1200,650, false);"]
+[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=https%3A%2F%2Ffluescher.ch', 2, 12, 1200,650, false);"]
 [say, "This is.. like, my real website. Loaded from the web.", "en"] [sleep, 1000]
 
 [javascript, "parent.closeAllWindows(windowId);"]
-[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=avmail.ch', 6, 12, 1200,650, false);"]
+[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=avmail.ch', 2, 12, 1200,650, false);"]
 [say, "Thats the same as the email program. Just like, in a browser.", "en"] [sleep, 1000]
 
 [javascript, "parent.closeAllWindows(windowId);"]
-[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=htmldesktop.ch', 6, 12, 1200,650, false);"]
+[javascript, "parent.addWindow('Browser', 'public', 'browser/index.html?site=htmldesktop.ch', 2, 12, 1200,650, false);"]
 [say, "And this.."]
 [say, "Well this is weird. Why would you type this url into the bar? Why would you do this? This makes no sense at all. Very confusing, much inception.", "en"]
 [javascript, "parent.closeAllWindows(windowId);"]
