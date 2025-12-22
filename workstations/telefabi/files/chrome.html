@@ -31,31 +31,57 @@
             }
         </style>
         <script>
-            /* function delay(delayTimeMs) {
-                return new Promise(resolve => setTimeout(resolve, delayTimeMs));
-            }
-            async function starting() {
-                document.getElementById('theButton').style.display="none";
-                parent.addWindow('Bash console - theShow.bash', 'code', 'bash/index.html?scene=theshow', 8,11, 945,444, false);
-            } */
             function isChromium() {
                 return !!window.chrome &&
                         (!!window.chrome.runtime || !!window.chrome.webstore);
                 }
 
-            async function closeWindowIfNotChromiumBased() {
-                if (!navigator.userAgentData) return false;
-                const brands = navigator.userAgentData.brands.map(b => b.brand);
-                let result = brands.includes("Chromium");
-                if(result === true) {
-                    console.log("Chromium based browser used - close hint window");
+                async function closeWindowIfNotChromiumBased() {
                     const params = new URLSearchParams(window.location.search);
                     const windowId = params.get('windowId');
-                    if(typeof parent.closeWindow === 'function') parent.closeWindow(windowId);
-                } else {
-                    console.log("Not chromium based bwoser - leave hint window open on display for all to see")
+
+                    // Determine Chromium-ness
+                    let isChromium = false;
+
+                    if (navigator.userAgentData?.brands?.length) {
+                        const brands = navigator.userAgentData.brands.map(b => b.brand);
+                        isChromium = brands.includes("Chromium");
+                    } else {
+                        // Fallback for Safari/Firefox/older: UA sniff (coarse but effective)
+                        const ua = navigator.userAgent;
+                        isChromium = /Chrome\/|Chromium\//.test(ua) && !/Firefox\//.test(ua) && !/Safari\/(?!.*Chrome\/)/.test(ua);
+                        // (Safari has Safari/ but no Chrome/)
+                    }
+
+                    if (isChromium) {
+                        console.log("Chromium based browser used - close hint window");
+                        if (typeof parent.closeWindow === "function") parent.closeWindow(windowId);
+                    } else {
+                        console.log("Not chromium based browser - Close all other windows, leave hint window open on display for all to see");
+                        if (typeof parent.closeAllWindows === "function") {
+                            parent.closeAllWindows(windowId);
+                            await parent.delay(2222);
+                            parent.show('gpuFail');
+                            parent.gebi('gpuFail').style.mixBlendMode = 'color-dodge';
+                            await parent.delay(2222);
+
+                            let newText= `
+                                This page works best in google chrome (or chromium based eg opera/brave/..)
+                                <br>
+                                <center>
+                                    <a href="https://www.google.com/chrome/" target="_blank">
+                                        <img src="../../workstations/telefabi/files/chrome.png" style="width:3em; vertical-align:middle; margin:1em">
+                                    </a>
+                                </center>
+                                <br>
+                                *Sucks* in safari / firefox etc - sorry!<br>
+                                Press any key to continue`
+                            parent.gebi('death-iframe').contentWindow.document.getElementById('text').innerHTML = newText;
+                            parent.setOverlayColor('DEATH');
+                            parent.hide('gpuFail');
+                        }
+                    }
                 }
-            }
         </script>
     </head>
     <body onload="closeWindowIfNotChromiumBased();">
