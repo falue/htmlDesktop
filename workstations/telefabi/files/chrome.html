@@ -61,12 +61,19 @@
                         if (typeof parent.closeAllWindows === "function") {
                             parent.closeAllWindows(windowId);
                             await parent.delay(2222);
-                            parent.show('gpuFail');
                             parent.gebi('gpuFail').style.mixBlendMode = 'color-dodge';
-                            await parent.delay(2222);
+                            parent.show('gpuFail');
+                            await parent.delay(222);
+                            parent.hide('gpuFail');
+                            await parent.delay(1250);
+                            parent.gebi('gpuFail').style.mixBlendMode = 'screen';
+                            parent.show('gpuFail');
+                            await parent.delay(1666);
 
                             let newText= `
-                                This page works best in google chrome (or chromium based eg opera/brave/..)
+                                This tool works best in google chrome (or chromium based eg opera/brave/..)
+                                <br>
+                                *Sucks* in safari / firefox etc - sorry!<br>
                                 <br>
                                 <center>
                                     <a href="https://www.google.com/chrome/" target="_blank">
@@ -74,11 +81,17 @@
                                     </a>
                                 </center>
                                 <br>
-                                *Sucks* in safari / firefox etc - sorry!<br>
+                                Or click <a href="../browser/sites/telefabi" style="text-decoration:underline">here</a> for a static site & contact info
+                                <br>
                                 Press any key to continue`
                             parent.gebi('death-iframe').contentWindow.document.getElementById('text').innerHTML = newText;
+                            parent.gebi('death-iframe').contentWindow.document.documentElement.style.cursor = 'crosshair'
+                            parent.gebi('death-iframe').contentWindow.document.body.style.cursor = 'crosshair'
                             parent.setOverlayColor('DEATH');
+                            
+                            // Hide window as the user, after reboot, gets it now
                             parent.hide('gpuFail');
+                            parent.closeWindow(windowId);
                         }
                     }
                 }
