@@ -59,7 +59,7 @@
                     } else {
                         console.log("Not chromium based browser - Close all other windows, leave hint window open on display for all to see");
                         if (typeof parent.closeAllWindows === "function") {
-                            parent.closeAllWindows(windowId);
+                            //parent.closeAllWindows(windowId);
                             await parent.delay(2222);
                             parent.gebi('gpuFail').style.mixBlendMode = 'color-dodge';
                             parent.show('gpuFail');
@@ -91,7 +91,7 @@
                             
                             // Hide window as the user, after reboot, gets it now
                             parent.hide('gpuFail');
-                            parent.closeWindow(windowId);
+                            //parent.closeWindow(windowId);
                         }
                     }
                 }
