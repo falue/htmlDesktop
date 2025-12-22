@@ -93,7 +93,7 @@
             "icon": "code",
             "contentPath": "bash/index.html?scene=_example",
             "x": 1,
-            "y": 13,
+            "y": 16,
             "w": 666,
             "h": 450,
             "zIndex": 7,
@@ -121,7 +121,7 @@
             "y": 16,
             "w": 831,
             "h": 549,
-            "zIndex": 9,
+            "zIndex": 14,
             "minimized": false,
             "renderToDom": true
         },
@@ -133,7 +133,7 @@
             "y": 17,
             "w": 400,
             "h": 600,
-            "zIndex": 10,
+            "zIndex": 9,
             "minimized": false,
             "renderToDom": true
         },
@@ -145,7 +145,7 @@
             "y": 70,
             "w": 343,
             "h": 223,
-            "zIndex": 111,
+            "zIndex": 10,
             "minimized": false,
             "renderToDom": true
         },
@@ -157,7 +157,7 @@
             "y": 28,
             "w": 900,
             "h": 600,
-            "zIndex": 112,
+            "zIndex": 11,
             "minimized": true,
             "renderToDom": true
         },
@@ -169,7 +169,19 @@
             "y": 63,
             "w": 250,
             "h": 300,
-            "zIndex": 113,
+            "zIndex": 12,
+            "minimized": false,
+            "renderToDom": true
+        },
+        {
+            "windowName": "Works best in Chrome!",
+            "icon": "language",
+            "contentPath": "../workstations/telefabi/files/chrome.html",
+            "x": 2,
+            "y": 2,
+            "w": 600,
+            "h": 110,
+            "zIndex": 13,
             "minimized": false,
             "renderToDom": true
         }

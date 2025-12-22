@@ -1,0 +1,68 @@
+<html>
+    <head>
+
+        <style>
+            @font-face {
+                font-family: 'win95';
+                font-style: normal;
+                font-weight: 400;
+                src: url('../../../tools/fontface/w95fa.eot');
+                src: url('../../../tools/fontface/w95fa.woff2') format('woff2'), 
+                    url('../../../tools/fontface/w95fa.woff') format('woff');
+            }
+            html, body {
+                background-color: green;
+                font-family: win95, Verdana, Helvetica, sans-serif;
+                color:white;
+            }
+            h1 {
+                margin:0;
+            }
+            p {
+                margin-top:0;
+            }
+
+            .blink { animation: blinker 1s linear infinite; }
+            @keyframes blinker {
+                0%   { opacity: 0.75; }
+                49%  { opacity: 0.75; }
+                50%  { opacity: 1; }
+                100% { opacity: 1; }
+            }
+        </style>
+        <script>
+            /* function delay(delayTimeMs) {
+                return new Promise(resolve => setTimeout(resolve, delayTimeMs));
+            }
+            async function starting() {
+                document.getElementById('theButton').style.display="none";
+                parent.addWindow('Bash console - theShow.bash', 'code', 'bash/index.html?scene=theshow', 8,11, 945,444, false);
+            } */
+            function isChromium() {
+                return !!window.chrome &&
+                        (!!window.chrome.runtime || !!window.chrome.webstore);
+                }
+
+            async function closeWindowIfNotChromiumBased() {
+                if (!navigator.userAgentData) return false;
+                const brands = navigator.userAgentData.brands.map(b => b.brand);
+                let result = brands.includes("Chromium");
+                if(result === true) {
+                    console.log("Chromium based browser used - close hint window");
+                    const params = new URLSearchParams(window.location.search);
+                    const windowId = params.get('windowId');
+                    if(typeof parent.closeWindow === 'function') parent.closeWindow(windowId);
+                } else {
+                    console.log("Not chromium based bwoser - leave hint window open on display for all to see")
+                }
+            }
+        </script>
+    </head>
+    <body onload="closeWindowIfNotChromiumBased();">
+        <img src="chrome.png" style="width:2em; vertical-align:middle; margin-right:0.25em">
+        This page works best in <span class="blink">google chrome</span> (or chromium based eg opera/brave/..)
+        <br>
+        <hr style="opacity:0.5">
+        *Sucks* in safari / firefox etc
+    </body>
+</html>
